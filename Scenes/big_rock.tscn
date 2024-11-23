@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://caneye84hasg"]
+
+[ext_resource type="Texture2D" uid="uid://dx7kx6e221dpv" path="res://Images/Big_rock.png" id="1_vgoso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4wrr"]
+size = Vector2(180.36, 168.768)
+
+[node name="Stone" type="Sprite2D"]
+z_index = -7
+position = Vector2(542, 142)
+scale = Vector2(2.03482, 2.07386)
+texture = ExtResource("1_vgoso")
+offset = Vector2(0.159712, -75.5717)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(0.491486, -68.4714)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.245636, -1.44658)
+shape = SubResource("RectangleShape2D_h4wrr")

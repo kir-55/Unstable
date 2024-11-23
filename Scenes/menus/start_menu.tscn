@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://daai0thrp4xay"]
+
+[ext_resource type="Script" path="res://Scripts/menus/game_over_menu.gd" id="1_yv4ht"]
+[ext_resource type="AudioStream" uid="uid://b68n6d1ersh7e" path="res://music/lobby.mp3" id="2_lcuww"]
+
+[sub_resource type="Gradient" id="Gradient_848mm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kn5nj"]
+gradient = SubResource("Gradient_848mm")
+fill_from = Vector2(0.61828, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dfoim"]
+texture = SubResource("GradientTexture2D_kn5nj")
+region_rect = Rect2(0, 0, 49, 33)
+modulate_color = Color(0, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_wijda"]
+offsets = PackedFloat32Array(0, 0.393443, 0.663934, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.401639, 0.401639, 0.401639, 1, 0.498671, 0.498671, 0.498671, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u1jk0"]
+gradient = SubResource("Gradient_wijda")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7j6wq"]
+texture = SubResource("GradientTexture1D_u1jk0")
+modulate_color = Color(0.564706, 0.447059, 0.560784, 1)
+
+[sub_resource type="Gradient" id="Gradient_aqng2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3tw24"]
+gradient = SubResource("Gradient_aqng2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abjer"]
+texture = SubResource("GradientTexture2D_3tw24")
+modulate_color = Color(0.317352, 0.426786, 0.752292, 1)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+script = ExtResource("1_yv4ht")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -237.5
+offset_right = 276.0
+offset_bottom = 237.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.765569, 1.03013)
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dfoim")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_top = 91.736
+offset_right = 552.0
+offset_bottom = 386.736
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Unstable"
+horizontal_alignment = 1
+
+[node name="Margin2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Again" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_7j6wq")
+text = "Graj"
+
+[node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_abjer")
+text = "Wyjdź z gry"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_lcuww")
+autoplay = true
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

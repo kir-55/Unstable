@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgexcecl28dh0"]
+
+[ext_resource type="Texture2D" uid="uid://bravuad5e8urb" path="res://textures/cyber2.png" id="1_0clx8"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="2_8ibpp"]
+
+[node name="House 2 City" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.8)
+z_index = -2
+position = Vector2(0, 4)
+scale = Vector2(6, 6)
+texture = ExtResource("1_0clx8")
+offset = Vector2(-0.000286326, -44.1667)
+script = ExtResource("2_8ibpp")
+max_angle = 50.0

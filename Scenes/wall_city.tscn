@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj0n3ymjobgpv"]
+
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="2_yfw61"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_7qnbl"]
+[ext_resource type="Script" path="res://Scenes/deadly_area.gd" id="3_n2k0q"]
+[ext_resource type="Texture2D" uid="uid://dakyyk5dh86ig" path="res://textures/hay_bale.png" id="4_atlll"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://music/wybuch.tscn" id="4_ulcr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3ok3"]
+size = Vector2(30.7966, 12.5611)
+
+[node name="Wall City" type="Sprite2D"]
+z_index = -1
+position = Vector2(9, 0)
+offset = Vector2(-9.02312, -8.00103)
+script = ExtResource("2_yfw61")
+max_angle = 50.0
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("3_7qnbl")
+audio = ExtResource("4_ulcr0")
+
+[node name="hay_bale1" type="Sprite2D" parent="."]
+position = Vector2(-2.88508, -12.9733)
+texture = ExtResource("4_atlll")
+offset = Vector2(-5.11492, -10.9657)
+
+[node name="hay_bale2" type="Sprite2D" parent="."]
+position = Vector2(-2.88508, -12.9733)
+texture = ExtResource("4_atlll")
+offset = Vector2(-4.86199, 4.82939)
+
+[node name="hay_bale3" type="Sprite2D" parent="."]
+position = Vector2(-2.88508, -12.9733)
+texture = ExtResource("4_atlll")
+offset = Vector2(-5.11492, -27.0267)
+
+[node name="hay_bale4" type="Sprite2D" parent="."]
+position = Vector2(-2.88508, -12.9733)
+texture = ExtResource("4_atlll")
+offset = Vector2(11, 5)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(7.11492, -8.9733)
+scale = Vector2(1.03148, 3.80849)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_n2k0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6.67296, -3.93857)
+shape = SubResource("RectangleShape2D_i3ok3")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

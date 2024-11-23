@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dou4shwlwq4ya"]
+
+[ext_resource type="Texture2D" uid="uid://dma5cba6qs6tn" path="res://Images/Ellipse 2.png" id="1_8rsuo"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="2_rkxb8"]
+
+[node name="Grasss" type="Sprite2D"]
+modulate = Color(0.466667, 0.454902, 0.231373, 1)
+z_index = 1
+z_as_relative = false
+position = Vector2(0, -17)
+scale = Vector2(0.36, 0.319036)
+texture = ExtResource("1_8rsuo")
+offset = Vector2(1.48401, -12.6766)
+script = ExtResource("2_rkxb8")
+rotation_speed = 0.5

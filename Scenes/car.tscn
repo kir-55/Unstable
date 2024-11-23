@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://spdye7fmeaws"]
+
+[ext_resource type="Texture2D" uid="uid://dmq13ktr5f57d" path="res://textures/Rysunek_4_.png" id="1_ryxlp"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="2_a4bpw"]
+[ext_resource type="Script" path="res://Scenes/deadly_area.gd" id="3_klybg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_num7u"]
+radius = 5.0
+height = 23.5833
+
+[node name="Car" type="Sprite2D"]
+z_index = 5
+position = Vector2(1, -21)
+scale = Vector2(12, 12)
+texture = ExtResource("1_ryxlp")
+offset = Vector2(-0.41695, -3.83333)
+script = ExtResource("2_a4bpw")
+max_angle = 50.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0.0833333, -5.08333)
+script = ExtResource("3_klybg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.25, 0.249997)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_num7u")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

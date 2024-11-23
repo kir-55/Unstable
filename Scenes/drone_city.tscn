@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg47bhbbhmphx"]
+
+[ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://textures/drone_city.png" id="1_mmtfv"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="2_7fpmb"]
+[ext_resource type="Script" path="res://Scenes/deadly_area.gd" id="3_qvvja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
+size = Vector2(18, 11.25)
+
+[node name="Drone City" type="Sprite2D"]
+z_index = -1
+position = Vector2(1, 57)
+scale = Vector2(6, 6)
+texture = ExtResource("1_mmtfv")
+offset = Vector2(-0.166952, -61)
+script = ExtResource("2_7fpmb")
+max_angle = 50.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.5, -53.1667)
+script = ExtResource("3_qvvja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.166667, -12.5)
+shape = SubResource("RectangleShape2D_1iamu")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://kxq0jo51lwl4"]
+
+[ext_resource type="Texture2D" uid="uid://calimuwrdtpyp" path="res://textures/U.F.O..png" id="1_2fgo2"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="2_s4rpb"]
+[ext_resource type="Script" path="res://Scenes/deadly_area.gd" id="3_nnjgb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
+size = Vector2(12, 8.97917)
+
+[node name="Drone City" type="Sprite2D"]
+z_index = -1
+position = Vector2(2, -86)
+scale = Vector2(6, 6)
+texture = ExtResource("1_2fgo2")
+offset = Vector2(-0.333619, -37.1666)
+script = ExtResource("2_s4rpb")
+max_angle = 50.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-1.33333, -27)
+script = ExtResource("3_nnjgb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.16666, -6.66667)
+shape = SubResource("RectangleShape2D_1iamu")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

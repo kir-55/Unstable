@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://cvkqwwgephkuk"]
+
+[ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_qxeh0"]
+[ext_resource type="Script" path="res://Scripts/random_system.gd" id="2_emgq0"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="3_d4m16"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="4_thtfn"]
+[ext_resource type="Script" path="res://Scripts/decoration.gd" id="6_o3f1s"]
+[ext_resource type="Script" path="res://Scripts/sloper.gd" id="7_u7w05"]
+[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="8_8kpwf"]
+[ext_resource type="PackedScene" uid="uid://d3d05t20i0h0r" path="res://Scenes/spike.tscn" id="8_bjssm"]
+[ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="9_0neal"]
+[ext_resource type="Script" path="res://Scenes/change_scene.gd" id="10_dwjq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_cp0fc"]
+interpolation_mode = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1lf8x"]
+gradient = SubResource("Gradient_cp0fc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53rot"]
+shader = ExtResource("8_8kpwf")
+shader_parameter/XShiftAmplitude = null
+shader_parameter/MinLineThikness = Vector2(0, 300)
+shader_parameter/MaxThikness = 3000.0
+
+[sub_resource type="Resource" id="Resource_3fvch"]
+script = ExtResource("6_o3f1s")
+prefab = ExtResource("8_bjssm")
+spawn_on_center = true
+initial_chance = 100
+chance_to_spawn = 30.0
+chance_multiplyer = 1
+min_scale = 6.0
+max_scale = 6.0
+
+[node name="Midage" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(-291, 81)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("1_qxeh0")
+speed = 30.0
+target = NodePath("../Player")
+max_distance = Vector2(1, 1)
+
+[node name="RandomSystem" type="Node" parent="."]
+script = ExtResource("2_emgq0")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-300, 109)
+script = ExtResource("3_d4m16")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_uu4jv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = SubResource("GradientTexture2D_1lf8x")
+
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
+position = Vector2(-758, 278)
+script = ExtResource("4_thtfn")
+ground_line = NodePath("Line2D")
+grass_line = NodePath("Line2D2")
+floor_collider = NodePath("Line2D/StaticBody2D")
+rs = NodePath("../RandomSystem")
+sloper = NodePath("Sloper")
+player = NodePath("../Player")
+
+[node name="Sloper" type="Node" parent="TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
+script = ExtResource("7_u7w05")
+line = NodePath("../Line2D")
+terrain_generator = NodePath("..")
+
+[node name="Line2D2" type="Line2D" parent="TerrainGenerator"]
+z_index = 1
+material = SubResource("ShaderMaterial_53rot")
+default_color = Color(0.37671, 0.314875, 0, 1)
+
+[node name="Line2D" type="Line2D" parent="TerrainGenerator"]
+material = SubResource("ShaderMaterial_53rot")
+default_color = Color(0.25098, 0.207843, 0.0196078, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/Line2D"]
+
+[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator/Line2D" node_paths=PackedStringArray("rs", "sloper", "player", "line", "terrain_generator")]
+script = ExtResource("9_0neal")
+rs = NodePath("../../../RandomSystem")
+sloper = NodePath("../../Sloper")
+player = NodePath("../../../Player")
+line = NodePath("..")
+terrain_generator = NodePath("../..")
+decorations = Array[ExtResource("6_o3f1s")]([SubResource("Resource_3fvch")])
+
+[node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
+wait_time = 30.0
+autostart = true
+script = ExtResource("10_dwjq4")
+player = NodePath("../Player")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
