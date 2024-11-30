@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cspxs10ugo7o2" path="res://textures/player/prawieladuj1.png" id="7_akl3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
-size = Vector2(34, 58)
+size = Vector2(31.4286, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ob57i"]
 animations = [{
@@ -48,7 +48,8 @@ MAX_JUMP_VEL = -1000.0
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 2)
+position = Vector2(0, -0.714287)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("timer")]

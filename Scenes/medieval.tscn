@@ -103,7 +103,6 @@ script = ExtResource("2_voxu0")
 [node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("3_k3rvn")]
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
-DASH_COOLDOWN = 1.4
 score_label = NodePath("../CanvasLayer/Label")
 
 [node name="ArrowSpawner" type="Node2D" parent="Player" node_paths=PackedStringArray("player")]
@@ -157,6 +156,7 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
 line = NodePath("../Line2D")
 terrain_generator = NodePath("..")
+spawn_from = 3
 decorations = Array[ExtResource("9_y0pu7")]([SubResource("Resource_7ld4r"), SubResource("Resource_qyi53"), SubResource("Resource_44b66"), SubResource("Resource_tbkt1"), SubResource("Resource_eppxr")])
 
 [node name="Line2D" type="Line2D" parent="."]

@@ -103,5 +103,7 @@ func end_dash() -> void:
 func drop_through() -> void:
 	# Temporarily disable collision to allow dropping through platforms
 	print("works")
+	if is_dashing:
+		end_dash()
 	position.y += DROP_THROUGH_VELOCITY * get_physics_process_delta_time()
 	velocity.y = DROP_THROUGH_VELOCITY

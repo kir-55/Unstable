@@ -112,7 +112,6 @@ script = ExtResource("2_sjffl")
 [node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("3_1apsn")]
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
-DASH_COOLDOWN = 1.4
 score_label = NodePath("../CanvasLayer/Label")
 
 [node name="Timer" type="Timer" parent="Player"]
