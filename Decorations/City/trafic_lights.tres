@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://c35v8c7ihbvso"]
+
+[ext_resource type="PackedScene" uid="uid://r1f33hjc7aw7" path="res://Scenes/traffic_lights_city.tscn" id="1_7aijk"]
+[ext_resource type="Script" path="res://Scripts/decoration.gd" id="2_jvobb"]
+
+[resource]
+script = ExtResource("2_jvobb")
+prefab = ExtResource("1_7aijk")
+spawn_on_center = false
+initial_chance = 100
+chance_to_spawn = 13.0
+chance_multiplyer = 1
+type = 3
+incompatible_with_types = Array[int]([3, 0])
+min_scale = 0.0
+max_scale = 0.0

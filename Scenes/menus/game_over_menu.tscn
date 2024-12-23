@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://hj7nfep0o7s3"]
 
-[ext_resource type="Script" path="res://Scripts/menus/game_over_menu.gd" id="1_yislu"]
+[ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yislu"]
 
 [sub_resource type="Gradient" id="Gradient_848mm"]
 

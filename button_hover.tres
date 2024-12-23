@@ -1,0 +1,19 @@
+[gd_resource type="StyleBoxTexture" load_steps=4 format=3 uid="uid://d2bmcyyj3mhkh"]
+
+[sub_resource type="Gradient" id="Gradient_fgjl7"]
+interpolation_mode = 2
+colors = PackedColorArray(0.8, 0.192157, 0.2, 1, 0.0862745, 0.0901961, 0.109804, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7rtrw"]
+noise_type = 5
+frequency = 0.0376
+offset = Vector3(404.76, 494.12, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_627el"]
+width = 350
+height = 45
+color_ramp = SubResource("Gradient_fgjl7")
+noise = SubResource("FastNoiseLite_7rtrw")
+
+[resource]
+texture = SubResource("NoiseTexture2D_627el")

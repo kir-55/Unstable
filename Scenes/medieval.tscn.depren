@@ -1,0 +1,174 @@
+[gd_scene load_steps=22 format=3 uid="uid://caupmfpqwlmdt"]
+
+[ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_qfj4m"]
+[ext_resource type="Script" path="res://Scripts/random_system.gd" id="2_voxu0"]
+[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Textures/player.tscn" id="3_ekyns"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="4_vu7nd"]
+[ext_resource type="Script" path="res://Scripts/arrow_physics.gd" id="4_yatsu"]
+[ext_resource type="Script" path="res://Scripts/sloper.gd" id="5_7wuvf"]
+[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="6_51kem"]
+[ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="7_iju3l"]
+[ext_resource type="PackedScene" uid="uid://cj0n3ymjobgpv" path="res://Scenes/wall_city.tscn" id="8_fw0p8"]
+[ext_resource type="Script" path="res://Scripts/decoration.gd" id="9_y0pu7"]
+[ext_resource type="PackedScene" uid="uid://dlhbq1n76mmo0" path="res://Scenes/arrow.tscn" id="10_dewq8"]
+[ext_resource type="PackedScene" uid="uid://q0a03p4jso3a" path="res://Scenes/house1_med.tscn" id="11_dlmlf"]
+[ext_resource type="PackedScene" uid="uid://b0ggstijougtq" path="res://Scenes/house2_med.tscn" id="12_q670x"]
+[ext_resource type="PackedScene" uid="uid://bhld3hgqh3vsh" path="res://Scenes/house3_med.tscn" id="13_kqulp"]
+[ext_resource type="Script" path="res://change_scene.gd" id="15_rfpng"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53rot"]
+shader = ExtResource("6_51kem")
+shader_parameter/XShiftAmplitude = null
+shader_parameter/MinLineThikness = Vector2(0, 300)
+shader_parameter/MaxThikness = 3000.0
+
+[sub_resource type="Resource" id="Resource_7ld4r"]
+script = ExtResource("9_y0pu7")
+prefab = ExtResource("8_fw0p8")
+spawn_on_center = true
+initial_chance = 100
+chance_to_spawn = 32.0
+chance_multiplyer = 1
+min_scale = 4.0
+max_scale = 5.0
+
+[sub_resource type="Resource" id="Resource_qyi53"]
+script = ExtResource("9_y0pu7")
+prefab = ExtResource("10_dewq8")
+spawn_on_center = true
+initial_chance = 100
+chance_to_spawn = 60.0
+chance_multiplyer = 1
+min_scale = 0.0
+max_scale = 0.0
+
+[sub_resource type="Resource" id="Resource_44b66"]
+script = ExtResource("9_y0pu7")
+prefab = ExtResource("11_dlmlf")
+spawn_on_center = true
+initial_chance = 100
+chance_to_spawn = 10.0
+chance_multiplyer = 1
+min_scale = 0.0
+max_scale = 0.0
+
+[sub_resource type="Resource" id="Resource_tbkt1"]
+script = ExtResource("9_y0pu7")
+prefab = ExtResource("12_q670x")
+spawn_on_center = true
+initial_chance = 100
+chance_to_spawn = 10.0
+chance_multiplyer = 1
+min_scale = 0.0
+max_scale = 0.0
+
+[sub_resource type="Resource" id="Resource_eppxr"]
+script = ExtResource("9_y0pu7")
+prefab = ExtResource("13_kqulp")
+spawn_on_center = false
+initial_chance = 100
+chance_to_spawn = 10.0
+chance_multiplyer = 1
+min_scale = 0.0
+max_scale = 0.0
+
+[node name="Medieval" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 69.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(-181, 52)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("1_qfj4m")
+speed = 30.0
+target = NodePath("../Player")
+max_distance = Vector2(1, 1)
+
+[node name="RandomSystem" type="Node" parent="."]
+script = ExtResource("2_voxu0")
+
+[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("3_ekyns")]
+DASH_SPEED_BOOST = 600.0
+DASH_DURATION = 0.2
+score_label = NodePath("../CanvasLayer/Label")
+
+[node name="ArrowSpawner" type="Node2D" parent="Player" node_paths=PackedStringArray("player")]
+script = ExtResource("4_yatsu")
+player = NodePath("..")
+
+[node name="Timer" type="Timer" parent="Player/ArrowSpawner"]
+autostart = true
+
+[node name="Timer" type="Timer" parent="Player"]
+autostart = true
+
+[node name="Line2D" type="Line2D" parent="Player"]
+
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
+position = Vector2(-758, 278)
+scale = Vector2(0.982645, 1.14761)
+script = ExtResource("4_vu7nd")
+ground_line = NodePath("Line2D")
+grass_line = NodePath("Line2D2")
+floor_collider = NodePath("Line2D2/StaticBody2D")
+rs = NodePath("../RandomSystem")
+sloper = NodePath("Sloper")
+line_section_length = 500
+section_y_change_amplitude = 0
+player = NodePath("../Player")
+
+[node name="Sloper" type="Node" parent="TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
+script = ExtResource("5_7wuvf")
+line = NodePath("../Line2D")
+terrain_generator = NodePath("..")
+
+[node name="Line2D" type="Line2D" parent="TerrainGenerator"]
+material = SubResource("ShaderMaterial_53rot")
+position = Vector2(0, 18)
+default_color = Color(0.603098, 0.365292, 1.92523e-07, 1)
+
+[node name="Line2D2" type="Line2D" parent="TerrainGenerator"]
+width = 50.0
+default_color = Color(0.462833, 0.406401, 0.0475139, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/Line2D2"]
+
+[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "player", "line", "terrain_generator")]
+scale = Vector2(1.10038, 1.15793)
+script = ExtResource("7_iju3l")
+load_radius = 3
+max_radius = 10
+rs = NodePath("../../RandomSystem")
+sloper = NodePath("../Sloper")
+player = NodePath("../../Player")
+line = NodePath("../Line2D")
+terrain_generator = NodePath("..")
+spawn_from = 3
+decorations = Array[ExtResource("9_y0pu7")]([SubResource("Resource_7ld4r"), SubResource("Resource_qyi53"), SubResource("Resource_44b66"), SubResource("Resource_tbkt1"), SubResource("Resource_eppxr")])
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
+wait_time = 15.0
+autostart = true
+script = ExtResource("15_rfpng")
+player = NodePath("../Player")
+current_world = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

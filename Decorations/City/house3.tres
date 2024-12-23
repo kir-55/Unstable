@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://c8prmjxvamrvd"]
+
+[ext_resource type="PackedScene" uid="uid://cy3ygjy30f1t2" path="res://Scenes/house3_city.tscn" id="1_t7ed4"]
+[ext_resource type="Script" path="res://Scripts/decoration.gd" id="2_tfl18"]
+
+[resource]
+script = ExtResource("2_tfl18")
+prefab = ExtResource("1_t7ed4")
+spawn_on_center = true
+initial_chance = 100
+chance_to_spawn = 33.0
+chance_multiplyer = 1
+type = 3
+incompatible_with_types = Array[int]([3, 3])
+min_scale = 0.0
+max_scale = 0.0

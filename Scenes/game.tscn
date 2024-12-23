@@ -1,87 +1,27 @@
-[gd_scene load_steps=24 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=18 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="1_38dti"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_g3w6i"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="1_pfyk3"]
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="2_mltma"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="2_redno"]
-[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://textures/player.tscn" id="3_wxxgn"]
+[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Textures/player.tscn" id="3_hwkf2"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="4_21xhv"]
-[ext_resource type="Script" path="res://Scripts/decoration.gd" id="4_ygruv"]
-[ext_resource type="PackedScene" uid="uid://spdye7fmeaws" path="res://Scenes/car.tscn" id="10_krgj7"]
-[ext_resource type="Script" path="res://Scenes/change_scene.gd" id="10_xua8x"]
-[ext_resource type="PackedScene" uid="uid://r1f33hjc7aw7" path="res://Scenes/traffic_lights_city.tscn" id="12_f37ki"]
-[ext_resource type="PackedScene" uid="uid://hqspj08hycbj" path="res://Scenes/house1_city.tscn" id="13_dqrb1"]
-[ext_resource type="PackedScene" uid="uid://cd4pgi5mckdsk" path="res://Scenes/house2_city.tscn" id="14_1d5qc"]
-[ext_resource type="PackedScene" uid="uid://cg47bhbbhmphx" path="res://Scenes/drone_city.tscn" id="14_gsk4m"]
-[ext_resource type="PackedScene" uid="uid://cy3ygjy30f1t2" path="res://Scenes/house3_city.tscn" id="15_l43rq"]
-[ext_resource type="AudioStream" uid="uid://b68n6d1ersh7e" path="res://music/lobby.mp3" id="16_5h54n"]
+[ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="8_42q7i"]
+[ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="9_s7k86"]
+[ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="10_sqdli"]
+[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house1.tres" id="11_gajlj"]
+[ext_resource type="Resource" uid="uid://vlbm0o70pr0a" path="res://Decorations/City/house2.tres" id="12_svw1e"]
+[ext_resource type="Resource" uid="uid://c8prmjxvamrvd" path="res://Decorations/City/house3.tres" id="13_6dotu"]
+[ext_resource type="Script" path="res://Scripts/change_scene.gd" id="14_0dufa"]
+[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_tk21i"]
+[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Music/do gry2.mp3" id="15_6haxf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53rot"]
 shader = ExtResource("4_21xhv")
 shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
-
-[sub_resource type="Resource" id="Resource_yck0j"]
-script = ExtResource("4_ygruv")
-prefab = ExtResource("10_krgj7")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 20.0
-chance_multiplyer = 1
-min_scale = 5.0
-max_scale = 6.0
-
-[sub_resource type="Resource" id="Resource_g4ddf"]
-script = ExtResource("4_ygruv")
-prefab = ExtResource("12_f37ki")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 13.0
-chance_multiplyer = 1
-min_scale = 0.0
-max_scale = 0.0
-
-[sub_resource type="Resource" id="Resource_o104x"]
-script = ExtResource("4_ygruv")
-prefab = ExtResource("13_dqrb1")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 33.0
-chance_multiplyer = 1
-min_scale = 0.0
-max_scale = 0.0
-
-[sub_resource type="Resource" id="Resource_px5pj"]
-script = ExtResource("4_ygruv")
-prefab = ExtResource("14_1d5qc")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 33.0
-chance_multiplyer = 1
-min_scale = 0.0
-max_scale = 0.0
-
-[sub_resource type="Resource" id="Resource_blmxp"]
-script = ExtResource("4_ygruv")
-prefab = ExtResource("15_l43rq")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 10.0
-chance_multiplyer = 1
-min_scale = 0.0
-max_scale = 0.0
-
-[sub_resource type="Resource" id="Resource_a0x5q"]
-script = ExtResource("4_ygruv")
-prefab = ExtResource("14_gsk4m")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 10.0
-chance_multiplyer = 1
-min_scale = 2.0
-max_scale = 3.0
 
 [node name="Game" type="Node2D"]
 
@@ -110,7 +50,7 @@ max_distance = Vector2(1, 1)
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("1_38dti")
 
-[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("3_wxxgn")]
+[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("3_hwkf2")]
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
 score_label = NodePath("../CanvasLayer/Label")
@@ -123,9 +63,9 @@ autostart = true
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
 position = Vector2(-758, 278)
 script = ExtResource("2_redno")
-ground_line = NodePath("Line2D")
-grass_line = NodePath("Line2D2")
-floor_collider = NodePath("Line2D2/StaticBody2D")
+ground_line = NodePath("GroundLine")
+grass_line = NodePath("GrassLine")
+floor_collider = NodePath("GrassLine/StaticBody2D")
 rs = NodePath("../RandomSystem")
 sloper = NodePath("Sloper")
 line_section_length = 500
@@ -134,19 +74,19 @@ player = NodePath("../Player")
 
 [node name="Sloper" type="Node" parent="TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
 script = ExtResource("1_pfyk3")
-line = NodePath("../Line2D2")
+line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 
-[node name="Line2D" type="Line2D" parent="TerrainGenerator"]
+[node name="GroundLine" type="Line2D" parent="TerrainGenerator"]
 material = SubResource("ShaderMaterial_53rot")
 position = Vector2(0, 8)
-default_color = Color(0.581895, 0.397161, 0.114336, 1)
+default_color = Color(0.11502, 0.0656286, 0.00661148, 1)
 
-[node name="Line2D2" type="Line2D" parent="TerrainGenerator"]
+[node name="GrassLine" type="Line2D" parent="TerrainGenerator"]
 width = 30.0
-default_color = Color(0.395763, 0.419923, 0.400711, 1)
+default_color = Color(0.108257, 0.118032, 0.110268, 1)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/Line2D2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 
 [node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "player", "line", "terrain_generator")]
 scale = Vector2(1.10038, 1.15793)
@@ -156,20 +96,20 @@ max_radius = 10
 rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
-line = NodePath("../Line2D")
+line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-decorations = Array[ExtResource("4_ygruv")]([SubResource("Resource_yck0j"), SubResource("Resource_g4ddf"), SubResource("Resource_o104x"), SubResource("Resource_px5pj"), SubResource("Resource_blmxp"), SubResource("Resource_a0x5q")])
+decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_gajlj"), ExtResource("12_svw1e"), ExtResource("13_6dotu"), ExtResource("14_tk21i")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
 wait_time = 5.0
 autostart = true
-script = ExtResource("10_xua8x")
+script = ExtResource("14_0dufa")
 player = NodePath("../Player")
 
 [node name="Line2D" type="Line2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_5h54n")
+stream = ExtResource("15_6haxf")
 autoplay = true
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]

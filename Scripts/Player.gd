@@ -5,10 +5,17 @@ extends CharacterBody2D
 @export var MAX_SPEED: float = 1000.0
 @export var JUMP_VELOCITY: float = -500.0     # Jump velocity
 @export var MAX_JUMP_VEL: float = -700.0
+
 @export var DROP_THROUGH_VELOCITY: float = 700  # Downward drop velocity (controlled fall)
+
 @export var DASH_SPEED_BOOST: float = 400.0  # Speed boost for dash
 @export var DASH_DURATION: float = 0.5       # Dash duration in seconds
 @export var DASH_COOLDOWN: float = 0.4      # Time between dashes
+
+
+@export var STOP_DURATION: float = 0.5       # Dash duration in seconds
+@export var STOP_COOLDOWN: float = 0.4      # Time between dashes
+
 @export var score_label: Label
 @export var animated_sprite : AnimatedSprite2D
 
@@ -23,6 +30,9 @@ var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 var original_speed: float = SPEED
 
+var is_stopping: bool = false
+var stop_timer: float = 0.0
+var stop_cooldown_timer: float = 0.0
 
 func _ready():
 	start_x = global_position.x
@@ -40,18 +50,29 @@ func _physics_process(delta: float) -> void:
 	# Handle dash activation
 	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
 		start_dash()
-
+	if Input.is_action_just_pressed("stop") and stop_cooldown_timer <= 0 and not is_stopping:
+		is_stopping = true
+		stop_timer = STOP_DURATION
+		stop_cooldown_timer = STOP_COOLDOWN
 	# Handle dashing
 	if is_dashing:
-
 		velocity.y = 0
 		dash_timer -= delta
 		if dash_timer <= 0:
 			end_dash()
+			
+	if is_stopping: 
+		velocity.x = 0
+		stop_timer -= delta
+		if stop_timer <= 0:
+			is_stopping = false
 
 	# Dash cooldown
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
+		
+	if stop_cooldown_timer > 0:
+		stop_cooldown_timer -= delta
 
 	# Handle jumping
 	if is_on_floor():
@@ -68,10 +89,11 @@ func _physics_process(delta: float) -> void:
 		drop_through()
 
 	# Set horizontal movement speed
-	velocity.x = direction.x * SPEED
+	if !is_stopping:
+		velocity.x = direction.x * SPEED
 	
 	
-	var direction=Input.get_axis("left","right")
+	var direction=1
 
 	if not is_on_floor():
 		animated_sprite.play("jump")
@@ -87,6 +109,7 @@ func _physics_process(delta: float) -> void:
 func start_dash() -> void:
 	scale.y = scale.y/2
 	# Start the dash by increasing the speed and setting timers
+	is_stopping = false
 	is_dashing = true
 	dash_timer = DASH_DURATION
 	dash_cooldown_timer = DASH_COOLDOWN

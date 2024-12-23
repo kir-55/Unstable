@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cou6chkoc84gr"
-path="res://.godot/imported/Rysunek_2_Animacja_3.png-fbff8b83c5391a56e37c47867bb8b2a8.ctex"
+uid="uid://c40frdglo8qia"
+path="res://.godot/imported/pasek.png-7f2193c2aabb81dc4c9a7b8616845bd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Rysunek_2_Animacja_3.png"
-dest_files=["res://.godot/imported/Rysunek_2_Animacja_3.png-fbff8b83c5391a56e37c47867bb8b2a8.ctex"]
+source_file="res://Textures/pasek.png"
+dest_files=["res://.godot/imported/pasek.png-7f2193c2aabb81dc4c9a7b8616845bd0.ctex"]
 
 [params]
 

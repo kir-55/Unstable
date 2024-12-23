@@ -45,6 +45,5 @@ func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segme
 	instance.rotation = distance.angle()
 	if scale.x != 0 and scale.y != 0:
 		instance.scale = scale
-	
 	parent.add_child(instance)
 	return instance

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="2_yfw61"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_7qnbl"]
-[ext_resource type="Script" path="res://Scenes/deadly_area.gd" id="3_n2k0q"]
-[ext_resource type="Texture2D" uid="uid://dakyyk5dh86ig" path="res://textures/hay_bale.png" id="4_atlll"]
-[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://music/wybuch.tscn" id="4_ulcr0"]
+[ext_resource type="Script" path="res://Scripts/deadly_area.gd" id="3_n2k0q"]
+[ext_resource type="Texture2D" uid="uid://dakyyk5dh86ig" path="res://Textures/hay_bale.png" id="4_atlll"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Music/wybuch.tscn" id="4_ulcr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3ok3"]
 size = Vector2(30.7966, 12.5611)

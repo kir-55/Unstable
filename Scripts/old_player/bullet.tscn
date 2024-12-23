@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://buxptejpeo6y3"]
 
 [ext_resource type="Script" path="res://Scripts/old_player/bullet.gd" id="1_tu75s"]
-[ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://music/strzal.mp3" id="2_ijheg"]
+[ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://Music/strzal.mp3" id="2_ijheg"]
 
 [sub_resource type="Gradient" id="Gradient_3w352"]
 colors = PackedColorArray(0.799562, 0.462021, 0.0898499, 1, 1, 1, 1, 1)

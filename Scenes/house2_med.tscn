@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0ggstijougtq"]
+[gd_scene load_steps=2 format=3 uid="uid://b0ggstijougtq"]
 
-[ext_resource type="Texture2D" uid="uid://cchmcyr8wy8je" path="res://textures/sred2.png" id="1_70wfy"]
-[ext_resource type="Script" path="res://Scripts/TerrainGeneration/smart_decoration.gd" id="1_ogrcp"]
+[ext_resource type="Texture2D" uid="uid://cchmcyr8wy8je" path="res://Textures/sred2.png" id="1_70wfy"]
 
 [node name="House2Med" type="Sprite2D"]
 z_index = -2
@@ -9,5 +8,3 @@ position = Vector2(9, 28)
 scale = Vector2(6, 6)
 texture = ExtResource("1_70wfy")
 offset = Vector2(0.49971, -61.8334)
-script = ExtResource("1_ogrcp")
-max_angle = 50.0

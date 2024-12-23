@@ -1,10 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bh2l45rd6upik"]
+[gd_scene load_steps=24 format=3 uid="uid://bh2l45rd6upik"]
 
 [ext_resource type="Environment" uid="uid://d11xgpobgk0rd" path="res://new_environment.tres" id="1_pw3af"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_x54wi"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="2_sjffl"]
-[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://textures/player.tscn" id="3_1apsn"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="4_6y7yh"]
+[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Textures/player.tscn" id="4_714o2"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="5_sjxdq"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="6_38bwd"]
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="7_w4n6f"]
@@ -13,8 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://kxq0jo51lwl4" path="res://Scenes/ufo.tscn" id="10_hnv6w"]
 [ext_resource type="PackedScene" uid="uid://bgexcecl28dh0" path="res://Scenes/house2_cyberpunk.tscn" id="12_gx2ua"]
 [ext_resource type="PackedScene" uid="uid://dm85340u4k466" path="res://Scenes/house1_cyberpunk.tscn" id="13_vpbf7"]
-[ext_resource type="AudioStream" uid="uid://dpveeo85b2dpw" path="res://music/cyberpunk.mp3" id="15_5m3xb"]
-[ext_resource type="Script" path="res://Scenes/change_scene.gd" id="15_bclfa"]
+[ext_resource type="Script" path="res://Scripts/change_scene.gd" id="14_l0c2g"]
+[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_t2yep"]
+[ext_resource type="AudioStream" uid="uid://h7wwoiarnc76" path="res://Music/do gry cyber2.mp3" id="15_jemqb"]
 
 [sub_resource type="Gradient" id="Gradient_bnu6x"]
 interpolation_mode = 2
@@ -40,6 +41,8 @@ spawn_on_center = true
 initial_chance = 100
 chance_to_spawn = 50.0
 chance_multiplyer = 1
+type = 1
+incompatible_with_types = Array[int]([])
 min_scale = 10.0
 max_scale = 10.0
 
@@ -50,6 +53,8 @@ spawn_on_center = true
 initial_chance = 100
 chance_to_spawn = 50.0
 chance_multiplyer = 1
+type = 1
+incompatible_with_types = Array[int]([])
 min_scale = 0.0
 max_scale = 0.0
 
@@ -60,6 +65,8 @@ spawn_on_center = true
 initial_chance = 100
 chance_to_spawn = 33.0
 chance_multiplyer = 1
+type = 1
+incompatible_with_types = Array[int]([])
 min_scale = 0.0
 max_scale = 0.0
 
@@ -70,6 +77,8 @@ spawn_on_center = true
 initial_chance = 100
 chance_to_spawn = 10.0
 chance_multiplyer = 1
+type = 1
+incompatible_with_types = Array[int]([])
 min_scale = 0.0
 max_scale = 0.0
 
@@ -109,7 +118,7 @@ texture = SubResource("GradientTexture2D_udxwv")
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("2_sjffl")
 
-[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("3_1apsn")]
+[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("4_714o2")]
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
 score_label = NodePath("../CanvasLayer/Label")
@@ -158,19 +167,19 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
 line = NodePath("../Line2D")
 terrain_generator = NodePath("..")
-decorations = Array[ExtResource("9_gysyr")]([SubResource("Resource_yck0j"), SubResource("Resource_g4ddf"), SubResource("Resource_px5pj"), SubResource("Resource_blmxp")])
+decorations = Array[ExtResource("9_gysyr")]([SubResource("Resource_yck0j"), SubResource("Resource_g4ddf"), SubResource("Resource_px5pj"), SubResource("Resource_blmxp"), ExtResource("14_t2yep")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
 wait_time = 15.0
 autostart = true
-script = ExtResource("15_bclfa")
+script = ExtResource("14_l0c2g")
 player = NodePath("../Player")
 current_world = 1
 
 [node name="Line2D" type="Line2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_5m3xb")
+stream = ExtResource("15_jemqb")
 autoplay = true
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]

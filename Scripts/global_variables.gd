@@ -11,6 +11,13 @@ enum LEVELS {
 		FUTURE,
 		MEDIVEL
 	}
+	
+enum DECORATION_LAYERS{
+	AIR,
+	ON_GROUND,
+	GROUND,
+	BACKGROUND
+}
 
 var levels = { 
 	LEVELS.START : preload("res://Scenes/game.tscn"),
