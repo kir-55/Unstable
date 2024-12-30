@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccuodpd2eafc6"
-path="res://.godot/imported/traffic_lights_city.png-7922264676f281dc8b1141cedf94c76d.ctex"
+path="res://.godot/imported/traffic_lights_city.png-37f26a89fd7a0f606b4faacbdb684023.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/traffic_lights_city.png"
-dest_files=["res://.godot/imported/traffic_lights_city.png-7922264676f281dc8b1141cedf94c76d.ctex"]
+source_file="res://Textures/traffic_lights_city.png"
+dest_files=["res://.godot/imported/traffic_lights_city.png-37f26a89fd7a0f606b4faacbdb684023.ctex"]
 
 [params]
 

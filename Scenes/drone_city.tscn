@@ -4,21 +4,21 @@
 [ext_resource type="Script" path="res://Scripts/deadly_area.gd" id="2_uyrou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
-size = Vector2(18, 11.25)
+size = Vector2(18, 10.7917)
 
 [node name="Drone City" type="Sprite2D"]
 z_index = -1
-position = Vector2(1, 57)
+position = Vector2(1, 91)
 scale = Vector2(6, 6)
 texture = ExtResource("1_mmtfv")
-offset = Vector2(-0.166952, -61)
+offset = Vector2(-0.166952, -66.6667)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-0.5, -53.1667)
 script = ExtResource("2_uyrou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.166667, -12.5)
+position = Vector2(0.333333, -18.0625)
 shape = SubResource("RectangleShape2D_1iamu")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf2ihvdsrbkhy"]
+
+[ext_resource type="Texture2D" uid="uid://dumv6v0grpcg5" path="res://Textures/nowa_dziura.png" id="1_xic0k"]
+[ext_resource type="Script" path="res://Scripts/deadly_area.gd" id="2_fksbt"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="2_p1a6c"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Music/wybuch.tscn" id="3_3kpbs"]
+[ext_resource type="Texture2D" uid="uid://mfhqfusv0tgx" path="res://Textures/nowa_barierka.png" id="3_xpkfg"]
+[ext_resource type="Texture2D" uid="uid://byt2uuian5r3w" path="res://Textures/nowy_znak.png" id="4_iwdcy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
+size = Vector2(24, 3.33334)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol1y4"]
+size = Vector2(7.14286, 16.6428)
+
+[node name="Hole" type="Sprite2D"]
+z_index = 5
+position = Vector2(-3, -20)
+scale = Vector2(3, 3)
+texture = ExtResource("1_xic0k")
+offset = Vector2(-0.166952, -6.16667)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0.0833333, -5.08333)
+script = ExtResource("2_fksbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.75, 7.41667)
+shape = SubResource("RectangleShape2D_1iamu")
+
+[node name="Barier1" type="Sprite2D" parent="."]
+position = Vector2(-19.8, -6.13333)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_xpkfg")
+
+[node name="HealthSystem" type="Node" parent="Barier1"]
+script = ExtResource("2_p1a6c")
+max_health = 30.0
+audio = ExtResource("3_3kpbs")
+
+[node name="Area2D" type="Area2D" parent="Barier1"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_fksbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barier1/Area2D"]
+position = Vector2(-0.523806, 7.69048)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ol1y4")
+
+[node name="Barier2" type="Sprite2D" parent="."]
+position = Vector2(19.5333, -6.13333)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_xpkfg")
+
+[node name="HealthSystem" type="Node" parent="Barier2"]
+script = ExtResource("2_p1a6c")
+max_health = 30.0
+audio = ExtResource("3_3kpbs")
+
+[node name="Area2D" type="Area2D" parent="Barier2"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_fksbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barier2/Area2D"]
+position = Vector2(-0.476192, 7.55953)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ol1y4")
+
+[node name="NowyZnak" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(-32, -15.3333)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_iwdcy")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Barier1/Area2D" to="Barier1/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Barier2/Area2D" to="Barier2/Area2D" method="_on_body_entered"]

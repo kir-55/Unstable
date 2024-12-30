@@ -16,3 +16,5 @@ func _on_body_entered(body):
 
 func change_scene():
 	get_tree().change_scene_to_file("res://Scenes/menus/game_over_menu.tscn")
+
+

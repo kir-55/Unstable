@@ -68,8 +68,8 @@ func create_next_point(position: Vector2, lastPosition: Vector2):
 	var new_shape = CollisionShape2D.new()
 	floor_collider.add_child(new_shape)
 	var segment = SegmentShape2D.new()
-	segment.a = lastPosition - Vector2(0, line_offset)
-	segment.b = position - Vector2(0, line_offset)
+	segment.a = lastPosition# - Vector2(0, line_offset)
+	segment.b = position# - Vector2(0, line_offset)
 	new_shape.shape = segment
 	ground_line.add_point(position)
 	grass_line.add_point(position)

@@ -1,7 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://spdye7fmeaws"]
+[gd_scene load_steps=8 format=3 uid="uid://spdye7fmeaws"]
 
-[ext_resource type="Texture2D" uid="uid://dmq13ktr5f57d" path="res://Textures/Rysunek_4_.png" id="1_ryxlp"]
+[ext_resource type="Texture2D" uid="uid://dmq13ktr5f57d" path="res://Textures/car.png" id="1_kjiup"]
 [ext_resource type="Script" path="res://Scripts/deadly_area.gd" id="2_3v8b0"]
+[ext_resource type="Texture2D" uid="uid://da7dr7k2t2rsa" path="res://Textures/car1.png" id="3_avq6h"]
+[ext_resource type="Texture2D" uid="uid://d4cv23pe68sxq" path="res://Textures/car2.png" id="4_gm8dm"]
+[ext_resource type="Texture2D" uid="uid://dq65p2b4khibq" path="res://Textures/car3.png" id="5_v5iof"]
+
+[sub_resource type="GDScript" id="GDScript_yi0s1"]
+script/source = "extends Sprite2D
+
+
+@export var visual_variations: Array[Texture2D]
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	if visual_variations:
+		texture = visual_variations.pick_random()
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_num7u"]
 radius = 5.0
@@ -11,8 +26,10 @@ height = 23.5833
 z_index = 5
 position = Vector2(1, -21)
 scale = Vector2(12, 12)
-texture = ExtResource("1_ryxlp")
+texture = ExtResource("1_kjiup")
 offset = Vector2(-0.41695, -3.83333)
+script = SubResource("GDScript_yi0s1")
+visual_variations = Array[Texture2D]([ExtResource("1_kjiup"), ExtResource("3_avq6h"), ExtResource("4_gm8dm"), ExtResource("5_v5iof")])
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0.0833333, -5.08333)

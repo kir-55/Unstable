@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://hqspj08hycbj"]
+
+[ext_resource type="Texture2D" uid="uid://b2gcmxd5wp2xn" path="res://Textures/house1_city.png" id="1_g3h3f"]
+[ext_resource type="Texture2D" uid="uid://83f86u5t53jv" path="res://Textures/house2_city.png" id="2_gbr6v"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="2_w7xei"]
+[ext_resource type="Texture2D" uid="uid://bemm227lwwow2" path="res://Textures/house3_city.png" id="3_gvk4n"]
+
+[node name="HouseCity" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.8)
+z_index = -2
+position = Vector2(0, -5)
+scale = Vector2(6, 6)
+texture = ExtResource("1_g3h3f")
+offset = Vector2(0.499714, -42.6667)
+script = ExtResource("2_w7xei")
+visual_variations = Array[Texture2D]([ExtResource("1_g3h3f"), ExtResource("2_gbr6v"), ExtResource("3_gvk4n")])

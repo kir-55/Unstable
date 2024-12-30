@@ -4,7 +4,7 @@
 
 [node name="House1Med" type="Sprite2D"]
 z_index = -2
-position = Vector2(1, 49)
+position = Vector2(-46, 45)
 scale = Vector2(6, 6)
 texture = ExtResource("1_7ygag")
-offset = Vector2(0.33305, -51.6667)
+offset = Vector2(8.16638, -51)

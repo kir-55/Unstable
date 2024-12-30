@@ -4,7 +4,10 @@ var player_global_speed : float
 var best_score : int = 0
 var last_score : int = 0
 
+
 var score_divider: int = 12
+
+
 
 enum LEVELS {
 		START,
@@ -24,6 +27,8 @@ var levels = {
 	LEVELS.FUTURE : preload("res://Scenes/future.tscn"),
 	LEVELS.MEDIVEL : preload("res://Scenes/medieval.tscn")
 }
+
+var last_world: LEVELS
 
 func change_level(new_level):
 	if new_level is LEVELS:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmq13ktr5f57d"
-path="res://.godot/imported/Rysunek_4_.png-a1fa8936da5e2445a8baae012b5f86e7.ctex"
+uid="uid://pnqwu4ua0non"
+path="res://.godot/imported/dziura3.png-2381ce27d21bcb33a45999d614c3b20d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Rysunek_4_.png"
-dest_files=["res://.godot/imported/Rysunek_4_.png-a1fa8936da5e2445a8baae012b5f86e7.ctex"]
+source_file="res://Textures/dziura3.png"
+dest_files=["res://.godot/imported/dziura3.png-2381ce27d21bcb33a45999d614c3b20d.ctex"]
 
 [params]
 

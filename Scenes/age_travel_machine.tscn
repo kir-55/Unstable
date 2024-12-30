@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvk85grtcjnak"]
+
+[ext_resource type="Texture2D" uid="uid://0dwlp03c63nb" path="res://Textures/UnstableLogo.png" id="1_m0a0p"]
+[ext_resource type="Script" path="res://Scripts/change_scene.gd" id="2_72xiy"]
+
+[node name="Transition" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0901961, 0.109804, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -299.5
+offset_right = 299.5
+offset_bottom = 176.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_m0a0p")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 388.0
+offset_top = 186.0
+offset_right = 742.0
+offset_bottom = 285.0
+theme_override_font_sizes/font_size = 30
+text = "going to medieval germany..."
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+script = ExtResource("2_72xiy")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

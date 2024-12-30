@@ -1,12 +1,14 @@
 extends Timer
 
-@export var player: Node2D
-@export var current_world: GlobalVariables.LEVELS
 
+var destination: GlobalVariables.LEVELS
+
+
+func _ready():
+	destination = GlobalVariables.LEVELS[GlobalVariables.LEVELS.keys()[randi() % GlobalVariables.LEVELS.size()]]
+	while GlobalVariables.last_world == destination:
+		destination = GlobalVariables.LEVELS[GlobalVariables.LEVELS.keys()[randi() % GlobalVariables.LEVELS.size()]]
+	
 func _on_timeout():
-	GlobalVariables.last_score += player.global_position.x / GlobalVariables.score_divider
-	var rnd = GlobalVariables.LEVELS[GlobalVariables.LEVELS.keys()[randi() % GlobalVariables.LEVELS.size()]]
-	while current_world == rnd:
-		rnd = GlobalVariables.LEVELS[GlobalVariables.LEVELS.keys()[randi() % GlobalVariables.LEVELS.size()]]
-	GlobalVariables.change_level(rnd)
+	GlobalVariables.change_level(destination)
  

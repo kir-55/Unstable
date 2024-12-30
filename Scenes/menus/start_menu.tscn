@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://daai0thrp4xay"]
+[gd_scene load_steps=28 format=3 uid="uid://daai0thrp4xay"]
 
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Music/do gry2.mp3" id="1_fnpvs"]
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yv4ht"]
@@ -13,9 +13,8 @@
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="8_ewsx1"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="13_io3tw"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="14_4vnkg"]
-[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house1.tres" id="15_v51w2"]
-[ext_resource type="Resource" uid="uid://vlbm0o70pr0a" path="res://Decorations/City/house2.tres" id="16_rb7dg"]
-[ext_resource type="Resource" uid="uid://c8prmjxvamrvd" path="res://Decorations/City/house3.tres" id="17_wqtxv"]
+[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="15_v51w2"]
+[ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="17_xoou5"]
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="18_lwfrx"]
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="18_tgdhe"]
 
@@ -69,7 +68,6 @@ script = ExtResource("5_srgek")
 speed = 200
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MovingGround/Camera2D"]
-position = Vector2(55, -22)
 stream = ExtResource("1_fnpvs")
 autoplay = true
 
@@ -198,7 +196,7 @@ player = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 spawn_from = 0
-decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("16_rb7dg"), ExtResource("17_wqtxv"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")])
+decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe"), ExtResource("17_xoou5")])
 
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Again" to="MovingGround/Camera2D/StartMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Exit" to="MovingGround/Camera2D/StartMenu" method="_on_exit_pressed"]

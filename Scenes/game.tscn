@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=17 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="1_38dti"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_g3w6i"]
@@ -10,10 +10,9 @@
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="8_42q7i"]
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="9_s7k86"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="10_sqdli"]
-[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house1.tres" id="11_gajlj"]
-[ext_resource type="Resource" uid="uid://vlbm0o70pr0a" path="res://Decorations/City/house2.tres" id="12_svw1e"]
-[ext_resource type="Resource" uid="uid://c8prmjxvamrvd" path="res://Decorations/City/house3.tres" id="13_6dotu"]
-[ext_resource type="Script" path="res://Scripts/change_scene.gd" id="14_0dufa"]
+[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="11_ce5fi"]
+[ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="13_3ljpo"]
+[ext_resource type="Script" path="res://Scripts/go_to_transition.gd" id="14_8ml7d"]
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_tk21i"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Music/do gry2.mp3" id="15_6haxf"]
 
@@ -46,6 +45,10 @@ script = ExtResource("1_g3w6i")
 speed = 30.0
 target = NodePath("../Player")
 max_distance = Vector2(1, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("15_6haxf")
+autoplay = true
 
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("1_38dti")
@@ -98,19 +101,15 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_gajlj"), ExtResource("12_svw1e"), ExtResource("13_6dotu"), ExtResource("14_tk21i")])
+decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i"), ExtResource("13_3ljpo")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
-wait_time = 5.0
+wait_time = 15.0
 autostart = true
-script = ExtResource("14_0dufa")
+script = ExtResource("14_8ml7d")
 player = NodePath("../Player")
 
 [node name="Line2D" type="Line2D" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_6haxf")
-autoplay = true
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
