@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dnwwaxloyoewm" path="res://Textures/Baners/city_baner.png" id="3_qw8j0"]
 [ext_resource type="Script" path="res://Scripts/level_info.gd" id="4_4n0hf"]
 [ext_resource type="PackedScene" uid="uid://bh2l45rd6upik" path="res://Scenes/future.tscn" id="5_vj5yt"]
-[ext_resource type="Texture2D" uid="uid://dcqsh44r35i4" path="res://Textures/Baners/future_baner.png" id="6_2owmi"]
+[ext_resource type="Texture2D" uid="uid://ctx3s4l74xb6d" path="res://Textures/Baners/future_baner.png" id="6_2owmi"]
 [ext_resource type="PackedScene" uid="uid://caupmfpqwlmdt" path="res://Scenes/medieval.tscn" id="6_xxsxn"]
 [ext_resource type="Texture2D" uid="uid://du51rvnovd0h" path="res://Textures/Baners/medieval_baner.png" id="8_lgr14"]
 

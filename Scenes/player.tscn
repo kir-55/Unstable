@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=12 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fpcwa"]
 [ext_resource type="Texture2D" uid="uid://cou6chkoc84gr" path="res://Textures/Player/Rysunek_2_Animacja_3.png" id="2_px8fe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cxh42mcxdryb5" path="res://Textures/Player/stoi.png" id="6_stggv"]
 [ext_resource type="Texture2D" uid="uid://b53gkq67jnwww" path="res://Textures/Player/uniesionaprzzed1.png" id="7_hecih"]
 [ext_resource type="Texture2D" uid="uid://cspxs10ugo7o2" path="res://Textures/Player/prawieladuj1.png" id="8_bxbgp"]
+[ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
 size = Vector2(21.4286, 54)
@@ -40,15 +41,15 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail")]
 z_index = 6
-position = Vector2(-185, 114)
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_fpcwa")
 MAX_JUMP_VEL = -1000.0
 STOP_DURATION = 0.6
 STOP_COOLDOWN = 1.5
 animated_sprite = NodePath("AnimatedSprite2D")
+trail = NodePath("Trail")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.42857, -0.714287)
@@ -74,5 +75,22 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ob57i")
 animation = &"jump"
 autoplay = "walk"
+
+[node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails")]
+script = ExtResource("9_lardo")
+trails = [NodePath("Trail"), NodePath("Trail2"), NodePath("Trail3")]
+
+[node name="Trail" type="Line2D" parent="Trail"]
+default_color = Color(1, 1, 1, 0.321569)
+
+[node name="Trail2" type="Line2D" parent="Trail"]
+position = Vector2(12, -16)
+width = 5.0
+default_color = Color(1, 1, 1, 0.321569)
+
+[node name="Trail3" type="Line2D" parent="Trail"]
+position = Vector2(-13, 14)
+width = 5.0
+default_color = Color(1, 1, 1, 0.321569)
 
 [connection signal="timeout" from="Weapon/Timer" to="Weapon" method="_on_timer_timeout"]

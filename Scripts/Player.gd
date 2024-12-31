@@ -19,6 +19,8 @@ extends CharacterBody2D
 @export var score_label: Label
 @export var animated_sprite : AnimatedSprite2D
 
+@export var trail: Node
+
 # Variables
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")  # Sync gravity with project settings
 var direction: Vector2 = Vector2.ZERO  # Movement direction
@@ -34,6 +36,9 @@ var is_stopping: bool = false
 var stop_timer: float = 0.0
 var stop_cooldown_timer: float = 0.0
 
+var is_dropping = false
+var is_jumping
+
 func _ready():
 	start_x = global_position.x
 	if GlobalVariables.player_global_speed:
@@ -41,8 +46,10 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if GlobalVariables.game_is_on:
+		
 		# Apply gravity if not on the floor
 		if not is_on_floor():
+			
 			velocity.y += gravity * delta
 
 		# Handle movement input
@@ -57,6 +64,7 @@ func _physics_process(delta: float) -> void:
 			stop_cooldown_timer = STOP_COOLDOWN
 		# Handle dashing
 		if is_dashing:
+			trail.process_points()
 			velocity.y = 0
 			dash_timer -= delta
 			if dash_timer <= 0:
@@ -67,17 +75,29 @@ func _physics_process(delta: float) -> void:
 			stop_timer -= delta
 			if stop_timer <= 0:
 				is_stopping = false
-
+				
+		if is_dropping:
+			trail.process_points()
+			
+		if is_jumping:
+			trail.process_points()
+			if velocity.y > 0:
+				is_jumping = false
+			
 		# Dash cooldown
 		if dash_cooldown_timer > 0:
 			dash_cooldown_timer -= delta
 			
 		if stop_cooldown_timer > 0:
 			stop_cooldown_timer -= delta
+		
 
 		# Handle jumping
 		if is_on_floor():
+			is_dropping = false
 			if Input.is_action_just_pressed("up"):
+				trail.remove_points()
+				is_jumping = true
 				velocity.y = JUMP_VELOCITY
 				if SPEED < MAX_SPEED:
 					SPEED += 20
@@ -86,7 +106,7 @@ func _physics_process(delta: float) -> void:
 					JUMP_VELOCITY -= 5
 
 		# Handle dropping down
-		if Input.is_action_just_pressed("bottom"):
+		if Input.is_action_just_pressed("bottom") and not is_on_floor():
 			drop_through()
 
 		# Set horizontal movement speed
@@ -109,6 +129,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.stop()
 
 func start_dash() -> void:
+	trail.remove_points()
 	scale.y = scale.y/2
 	# Start the dash by increasing the speed and setting timers
 	is_stopping = false
@@ -126,6 +147,7 @@ func end_dash() -> void:
 	SPEED = original_speed
 
 func drop_through() -> void:
+	is_dropping = true
 	# Temporarily disable collision to allow dropping through platforms
 	print("works")
 	if is_dashing:
