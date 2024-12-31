@@ -1,8 +1,15 @@
 extends Sprite2D
 
-@export var fall_speed: float = 200.0  # Prędkość spadania strzały
+@export_category("arrow")
+@export var arrow_min_speed: float = 200
+@export var arrow_max_speed: float = 400
 
+var arrow_speed: float
+
+func _ready():
+	arrow_speed = randf_range(arrow_min_speed, arrow_max_speed)
 
 func _process(delta):
-	global_position.y += fall_speed * delta
+	if GlobalVariables.game_is_on:
+		global_position.y += arrow_speed * delta
 

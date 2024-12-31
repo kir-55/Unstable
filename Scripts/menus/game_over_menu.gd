@@ -13,6 +13,8 @@ func _on_exit_pressed():
 func _on_again_pressed():
 	GlobalVariables.last_score = 0
 	GlobalVariables.player_global_speed = initialPlayerSpeed
+	GlobalVariables.game_is_on = true
+	
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 func _ready():

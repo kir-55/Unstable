@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=18 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="1_38dti"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_g3w6i"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="1_pfyk3"]
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="2_mltma"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="2_redno"]
-[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Textures/player.tscn" id="3_hwkf2"]
+[ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="3_skbog"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="4_21xhv"]
+[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/player.tscn" id="4_a1jms"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="8_42q7i"]
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="9_s7k86"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="10_sqdli"]
@@ -38,7 +39,7 @@ theme_override_font_sizes/font_size = 50
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(-181, 52)
+position = Vector2(311, 55)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("1_g3w6i")
@@ -49,11 +50,13 @@ max_distance = Vector2(1, 1)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("15_6haxf")
 autoplay = true
+script = ExtResource("3_skbog")
 
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("1_38dti")
 
-[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("3_hwkf2")]
+[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("4_a1jms")]
+position = Vector2(0, 114)
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
 score_label = NodePath("../CanvasLayer/Label")
@@ -64,7 +67,7 @@ autostart = true
 [node name="Line2D" type="Line2D" parent="Player"]
 
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
-position = Vector2(-758, 278)
+position = Vector2(-288, 271)
 script = ExtResource("2_redno")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
@@ -101,10 +104,10 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i"), ExtResource("13_3ljpo")])
+decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
-wait_time = 15.0
+wait_time = 10.0
 autostart = true
 script = ExtResource("14_8ml7d")
 player = NodePath("../Player")

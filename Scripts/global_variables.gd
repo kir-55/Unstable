@@ -22,18 +22,8 @@ enum DECORATION_LAYERS{
 	BACKGROUND
 }
 
-var levels = { 
-	LEVELS.START : preload("res://Scenes/game.tscn"),
-	LEVELS.FUTURE : preload("res://Scenes/future.tscn"),
-	LEVELS.MEDIVEL : preload("res://Scenes/medieval.tscn")
-}
 
 var last_world: LEVELS
 
-func change_level(new_level):
-	if new_level is LEVELS:
-		get_tree().change_scene_to_packed(levels[new_level])
-	else:
-		print("didnt change the scene")
-		return false
+var game_is_on := true
 

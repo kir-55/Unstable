@@ -74,8 +74,6 @@ func spawn_decoration(point):
 					for _i in range(decoration.chance_multiplyer):
 						var rnd = rs.get_rnd_int_at(0, 99)
 						if decoration.chance_to_spawn > rnd:
-							
-									
 							var segment_part := 0.5
 							if !decoration.spawn_on_center:
 								segment_part = rs.get_rnd_float_at(0, 1)

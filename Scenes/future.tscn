@@ -1,11 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://bh2l45rd6upik"]
+[gd_scene load_steps=24 format=3 uid="uid://bh2l45rd6upik"]
 
 [ext_resource type="Environment" uid="uid://d11xgpobgk0rd" path="res://new_environment.tres" id="1_pw3af"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_x54wi"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="2_sjffl"]
 [ext_resource type="AudioStream" uid="uid://dpveeo85b2dpw" path="res://Music/cyberpunk.mp3" id="3_5v1p8"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="4_6y7yh"]
-[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Textures/player.tscn" id="4_714o2"]
+[ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="4_oafp7"]
+[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/player.tscn" id="5_dnrmd"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="5_sjxdq"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="6_38bwd"]
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="7_w4n6f"]
@@ -20,7 +21,7 @@
 [sub_resource type="Gradient" id="Gradient_bnu6x"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.331606)
-colors = PackedColorArray(0.192435, 0.0882293, 0.235833, 1)
+colors = PackedColorArray(0.155122, 0.0858843, 0.158111, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_udxwv"]
 gradient = SubResource("Gradient_bnu6x")
@@ -89,7 +90,7 @@ theme_override_font_sizes/font_size = 50
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(-181, 52)
+position = Vector2(386, 23)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("1_x54wi")
@@ -105,12 +106,15 @@ texture = SubResource("GradientTexture2D_udxwv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("3_5v1p8")
+volume_db = 10.0
 autoplay = true
+script = ExtResource("4_oafp7")
 
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("2_sjffl")
 
-[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("4_714o2")]
+[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("5_dnrmd")]
+position = Vector2(0, 114)
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
 score_label = NodePath("../CanvasLayer/Label")
@@ -121,11 +125,11 @@ autostart = true
 [node name="Line2D" type="Line2D" parent="Player"]
 
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
-position = Vector2(-758, 278)
+position = Vector2(-402, 292)
 script = ExtResource("4_6y7yh")
-ground_line = NodePath("Line2D")
-grass_line = NodePath("Line2D2")
-floor_collider = NodePath("Line2D2/StaticBody2D")
+ground_line = NodePath("GroundLine")
+grass_line = NodePath("GrassLine")
+floor_collider = NodePath("GrassLine/StaticBody2D")
 rs = NodePath("../RandomSystem")
 sloper = NodePath("Sloper")
 line_section_length = 500
@@ -134,19 +138,19 @@ player = NodePath("../Player")
 
 [node name="Sloper" type="Node" parent="TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
 script = ExtResource("5_sjxdq")
-line = NodePath("../Line2D2")
+line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 
-[node name="Line2D" type="Line2D" parent="TerrainGenerator"]
+[node name="GroundLine" type="Line2D" parent="TerrainGenerator"]
 material = SubResource("ShaderMaterial_53rot")
 position = Vector2(1, 9)
-default_color = Color(0.28973, 0.263652, 0.0593681, 1)
+default_color = Color(0.152545, 0.0437388, 0.00234565, 1)
 
-[node name="Line2D2" type="Line2D" parent="TerrainGenerator"]
+[node name="GrassLine" type="Line2D" parent="TerrainGenerator"]
 width = 30.0
-default_color = Color(0.136314, 0.147722, 0.138661, 1)
+default_color = Color(0.0599943, 0.0669163, 0.0614191, 1)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/Line2D2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 
 [node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "player", "line", "terrain_generator")]
 position = Vector2(-4, 0)
@@ -157,12 +161,12 @@ max_radius = 10
 rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
-line = NodePath("../Line2D")
+line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
 decorations = Array[ExtResource("9_gysyr")]([ExtResource("9_cgx32"), SubResource("Resource_g4ddf"), SubResource("Resource_px5pj"), SubResource("Resource_blmxp"), ExtResource("14_t2yep")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
-wait_time = 15.0
+wait_time = 4096.0
 autostart = true
 script = ExtResource("15_0fvja")
 player = NodePath("../Player")

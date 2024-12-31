@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://r1f33hjc7aw7"]
 
-[ext_resource type="Texture2D" uid="uid://ccuodpd2eafc6" path="res://Textures/traffic_lights_city.png" id="1_v4ygq"]
+[ext_resource type="Texture2D" uid="uid://ccuodpd2eafc6" path="res://Textures/Decorations/traffic_lights_city.png" id="1_b1nif"]
 
 [node name="Traffic Lights City" type="Sprite2D"]
 z_index = -1
 position = Vector2(0, -1)
 scale = Vector2(6, 6)
-texture = ExtResource("1_v4ygq")
+texture = ExtResource("1_b1nif")
 offset = Vector2(-0.333619, -15.8333)

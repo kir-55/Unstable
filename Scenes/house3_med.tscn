@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhld3hgqh3vsh"]
 
-[ext_resource type="Texture2D" uid="uid://cw6o325yr4ekd" path="res://Textures/sred3.png" id="1_b6ss4"]
+[ext_resource type="Texture2D" uid="uid://cw6o325yr4ekd" path="res://Textures/Decorations/sred3.png" id="1_7jv7q"]
 
 [node name="House3Med" type="Sprite2D"]
 z_index = -2
 position = Vector2(0, -15)
 scale = Vector2(6, 6)
-texture = ExtResource("1_b6ss4")
+texture = ExtResource("1_7jv7q")
 offset = Vector2(0.49971, -61.1667)

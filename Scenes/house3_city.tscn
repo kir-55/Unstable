@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpdxgkgikj8f6"]
 
-[ext_resource type="Texture2D" uid="uid://bemm227lwwow2" path="res://Textures/house3_city.png" id="1_2tkks"]
+[ext_resource type="Texture2D" uid="uid://bemm227lwwow2" path="res://Textures/Decorations/house3_city.png" id="1_2tkks"]
 
 [node name="House 3 City" type="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0.8)

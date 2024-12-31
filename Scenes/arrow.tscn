@@ -1,26 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlhbq1n76mmo0"]
 
-[ext_resource type="Texture2D" uid="uid://oag3y7rlxdvo" path="res://Textures/Arrow.png" id="1_lm34x"]
+[ext_resource type="Texture2D" uid="uid://oag3y7rlxdvo" path="res://Textures/Decorations/Arrow.png" id="1_eopyy"]
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="2_mb1na"]
 [ext_resource type="Script" path="res://Scripts/deadly_area.gd" id="3_r3257"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1c21"]
-size = Vector2(3.08334, 14)
+size = Vector2(3, 3)
 
 [node name="Arrow" type="Sprite2D"]
-z_index = 5
-position = Vector2(0, 333)
-scale = Vector2(6, 6)
-texture = ExtResource("1_lm34x")
-offset = Vector2(-0.500285, -84.6667)
+z_index = 7
+z_as_relative = false
+position = Vector2(3, 581)
+scale = Vector2(3, 3)
+texture = ExtResource("1_eopyy")
+offset = Vector2(-1.50029, -167.333)
 script = ExtResource("2_mb1na")
+arrow_max_speed = 600.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -84)
 script = ExtResource("3_r3257")
+death_messages = Array[String](["Arrow hit you", "The arrow couldn't resist touching you", "Arrow wanted to hug you"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.0416695, -0.666668)
+position = Vector2(-0.833333, -77.8333)
 shape = SubResource("RectangleShape2D_f1c21")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

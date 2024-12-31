@@ -40,71 +40,73 @@ func _ready():
 		SPEED = GlobalVariables.player_global_speed
 
 func _physics_process(delta: float) -> void:
-	# Apply gravity if not on the floor
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	if GlobalVariables.game_is_on:
+		# Apply gravity if not on the floor
+		if not is_on_floor():
+			velocity.y += gravity * delta
 
-	# Handle movement input
-	direction.x = 1  # Fixed direction (right movement)
-	
-	# Handle dash activation
-	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
-		start_dash()
-	if Input.is_action_just_pressed("stop") and stop_cooldown_timer <= 0 and not is_stopping:
-		is_stopping = true
-		stop_timer = STOP_DURATION
-		stop_cooldown_timer = STOP_COOLDOWN
-	# Handle dashing
-	if is_dashing:
-		velocity.y = 0
-		dash_timer -= delta
-		if dash_timer <= 0:
-			end_dash()
-			
-	if is_stopping: 
-		velocity.x = 0
-		stop_timer -= delta
-		if stop_timer <= 0:
-			is_stopping = false
-
-	# Dash cooldown
-	if dash_cooldown_timer > 0:
-		dash_cooldown_timer -= delta
+		# Handle movement input
+		direction.x = 1  # Fixed direction (right movement)
 		
-	if stop_cooldown_timer > 0:
-		stop_cooldown_timer -= delta
+		# Handle dash activation
+		if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
+			start_dash()
+		if Input.is_action_just_pressed("stop") and stop_cooldown_timer <= 0 and not is_stopping:
+			is_stopping = true
+			stop_timer = STOP_DURATION
+			stop_cooldown_timer = STOP_COOLDOWN
+		# Handle dashing
+		if is_dashing:
+			velocity.y = 0
+			dash_timer -= delta
+			if dash_timer <= 0:
+				end_dash()
+				
+		if is_stopping: 
+			velocity.x = 0
+			stop_timer -= delta
+			if stop_timer <= 0:
+				is_stopping = false
 
-	# Handle jumping
-	if is_on_floor():
-		if Input.is_action_just_pressed("up"):
-			velocity.y = JUMP_VELOCITY
-			if SPEED < MAX_SPEED:
-				SPEED += 20
-				GlobalVariables.player_global_speed = SPEED
-			if JUMP_VELOCITY > MAX_JUMP_VEL:
-				JUMP_VELOCITY -= 5
+		# Dash cooldown
+		if dash_cooldown_timer > 0:
+			dash_cooldown_timer -= delta
+			
+		if stop_cooldown_timer > 0:
+			stop_cooldown_timer -= delta
 
-	# Handle dropping down
-	if Input.is_action_just_pressed("bottom"):
-		drop_through()
+		# Handle jumping
+		if is_on_floor():
+			if Input.is_action_just_pressed("up"):
+				velocity.y = JUMP_VELOCITY
+				if SPEED < MAX_SPEED:
+					SPEED += 20
+					GlobalVariables.player_global_speed = SPEED
+				if JUMP_VELOCITY > MAX_JUMP_VEL:
+					JUMP_VELOCITY -= 5
 
-	# Set horizontal movement speed
-	if !is_stopping:
-		velocity.x = direction.x * SPEED
-	
-	
-	var direction=1
+		# Handle dropping down
+		if Input.is_action_just_pressed("bottom"):
+			drop_through()
 
-	if not is_on_floor():
-		animated_sprite.play("jump")
+		# Set horizontal movement speed
+		if !is_stopping:
+			velocity.x = direction.x * SPEED
+		
+		
+		var direction=1
+
+		if not is_on_floor():
+			animated_sprite.play("jump")
+		else:
+			animated_sprite.play("walk")
+		# Update score
+		score_label.set_text(str(int(GlobalVariables.last_score + int(global_position.x) / GlobalVariables.score_divider)))
+
+		# Move the character
+		move_and_slide()
 	else:
-		animated_sprite.play("walk")
-
-	# Update score
-	score_label.set_text(str(GlobalVariables.last_score + (floori(global_position.x) - floori(start_x)) / GlobalVariables.score_divider))
-
-	# Move the character
-	move_and_slide()
+		animated_sprite.stop()
 
 func start_dash() -> void:
 	scale.y = scale.y/2

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://0dwlp03c63nb" path="res://Textures/UnstableLogo.png" id="3_ekuea"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://button_hover.tres" id="4_rrgdv"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="4_yih76"]
-[ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Scenes/menus/button_hover_yellow.tres" id="5_1mafq"]
+[ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://button_hover_yellow.tres" id="5_1mafq"]
 [ext_resource type="Script" path="res://Scenes/menus/move_right.gd" id="5_srgek"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="5_xu6qi"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="6_y8vvb"]
@@ -143,7 +143,7 @@ size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_7j6wq")
 theme_override_styles/hover = ExtResource("4_rrgdv")
-text = "Graj"
+text = "Play"
 
 [node name="Exit" type="Button" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -152,7 +152,7 @@ size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_abjer")
 theme_override_styles/hover = ExtResource("5_1mafq")
-text = "Wyjdź z gry"
+text = "Exit"
 
 [node name="RandomSystem" type="Node" parent="MovingGround"]
 script = ExtResource("4_yih76")
@@ -196,7 +196,7 @@ player = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 spawn_from = 0
-decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe"), ExtResource("17_xoou5")])
+decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")])
 
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Again" to="MovingGround/Camera2D/StartMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Exit" to="MovingGround/Camera2D/StartMenu" method="_on_exit_pressed"]

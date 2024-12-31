@@ -12,7 +12,7 @@ var can_shoot: bool = true
 
 func _process(delta: float) -> void:
 	# Check if the player wants to shoot
-	if Input.is_action_just_pressed("fire") and can_shoot:
+	if GlobalVariables.game_is_on and Input.is_action_just_pressed("fire") and can_shoot:
 		fire_weapon()
 
 func fire_weapon() -> void:

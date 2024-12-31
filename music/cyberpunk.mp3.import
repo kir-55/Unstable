@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/cyberpunk.mp3-1f11924df088b187276b615638e4fea
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
