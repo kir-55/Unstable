@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://ck3y4w6052w5e"]
-
-[node name="MainHouse" type="Sprite2D"]
-modulate = Color(0.435294, 0.34902, 0.219608, 1)
-z_index = -5
-z_as_relative = false
-position = Vector2(399, 382.395)
-scale = Vector2(0.486631, 0.823263)
-offset = Vector2(0, -118)

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dou4shwlwq4ya"]
-
-[node name="Grasss" type="Sprite2D"]
-modulate = Color(0.466667, 0.454902, 0.231373, 1)
-z_index = 1
-z_as_relative = false
-position = Vector2(0, -17)
-scale = Vector2(0.36, 0.319036)
-offset = Vector2(1.48401, -12.6766)

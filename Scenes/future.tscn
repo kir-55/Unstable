@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bh2l45rd6upik"]
+[gd_scene load_steps=19 format=3 uid="uid://bh2l45rd6upik"]
 
 [ext_resource type="Environment" uid="uid://d11xgpobgk0rd" path="res://new_environment.tres" id="1_pw3af"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_x54wi"]
@@ -11,10 +11,8 @@
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="6_38bwd"]
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="7_w4n6f"]
 [ext_resource type="Resource" uid="uid://cuqmq6v5i85qk" path="res://Decorations/Future/acid.tres" id="9_cgx32"]
-[ext_resource type="Script" path="res://Scripts/decoration.gd" id="9_gysyr"]
-[ext_resource type="PackedScene" uid="uid://kxq0jo51lwl4" path="res://Scenes/ufo.tscn" id="10_hnv6w"]
-[ext_resource type="PackedScene" uid="uid://bgexcecl28dh0" path="res://Scenes/house2_cyberpunk.tscn" id="12_gx2ua"]
-[ext_resource type="PackedScene" uid="uid://dm85340u4k466" path="res://Scenes/house1_cyberpunk.tscn" id="13_vpbf7"]
+[ext_resource type="Resource" uid="uid://dpvkb0rwmnqll" path="res://Decorations/Future/ufo.tres" id="11_f7px4"]
+[ext_resource type="Resource" uid="uid://c5yelpxafnl1j" path="res://Decorations/Future/house.tres" id="13_pikp5"]
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_t2yep"]
 [ext_resource type="Script" path="res://Scripts/go_to_transition.gd" id="15_0fvja"]
 
@@ -34,42 +32,6 @@ shader = ExtResource("6_38bwd")
 shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
-
-[sub_resource type="Resource" id="Resource_g4ddf"]
-script = ExtResource("9_gysyr")
-prefab = ExtResource("10_hnv6w")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 50.0
-chance_multiplyer = 1
-type = 1
-incompatible_with_types = Array[int]([])
-min_scale = 0.0
-max_scale = 0.0
-
-[sub_resource type="Resource" id="Resource_px5pj"]
-script = ExtResource("9_gysyr")
-prefab = ExtResource("12_gx2ua")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 33.0
-chance_multiplyer = 1
-type = 1
-incompatible_with_types = Array[int]([])
-min_scale = 0.0
-max_scale = 0.0
-
-[sub_resource type="Resource" id="Resource_blmxp"]
-script = ExtResource("9_gysyr")
-prefab = ExtResource("13_vpbf7")
-spawn_on_center = true
-initial_chance = 100
-chance_to_spawn = 10.0
-chance_multiplyer = 1
-type = 1
-incompatible_with_types = Array[int]([])
-min_scale = 0.0
-max_scale = 0.0
 
 [node name="Future" type="Node2D"]
 
@@ -163,10 +125,10 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-decorations = Array[ExtResource("9_gysyr")]([ExtResource("9_cgx32"), SubResource("Resource_g4ddf"), SubResource("Resource_px5pj"), SubResource("Resource_blmxp"), ExtResource("14_t2yep")])
+decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("11_f7px4"), ExtResource("14_t2yep"), ExtResource("13_pikp5"), ExtResource("9_cgx32")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
-wait_time = 4096.0
+wait_time = 10.0
 autostart = true
 script = ExtResource("15_0fvja")
 player = NodePath("../Player")

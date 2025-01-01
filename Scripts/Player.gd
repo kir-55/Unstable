@@ -129,7 +129,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.stop()
 
 func start_dash() -> void:
-	trail.remove_points()
+	if !is_jumping:
+		trail.remove_points()
 	scale.y = scale.y/2
 	# Start the dash by increasing the speed and setting timers
 	is_stopping = false

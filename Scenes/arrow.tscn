@@ -15,7 +15,8 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_eopyy")
 offset = Vector2(-1.50029, -167.333)
 script = ExtResource("2_mb1na")
-arrow_max_speed = 600.0
+arrow_min_speed = 400.0
+arrow_max_speed = 1000.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -84)
