@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bravuad5e8urb" path="res://Textures/Decorations/cyber2.png" id="3_r3qyu"]
 
 [node name="House Future" type="Sprite2D"]
-self_modulate = Color(1, 1, 1, 0.643137)
+self_modulate = Color(0.639216, 0.639216, 0.639216, 1)
 z_index = -2
 position = Vector2(2, 2)
 scale = Vector2(6, 6)

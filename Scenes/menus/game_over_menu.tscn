@@ -125,6 +125,8 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = ExtResource("2_rm1ji")
+theme_override_styles/pressed = ExtResource("2_rm1ji")
+theme_override_styles/focus = ExtResource("2_rm1ji")
 text = "Play again"
 
 [node name="Exit" type="Button" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
@@ -133,6 +135,8 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = ExtResource("3_s1ds5")
+theme_override_styles/pressed = ExtResource("3_s1ds5")
+theme_override_styles/focus = ExtResource("3_s1ds5")
 text = "Exit"
 
 [connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Again" to="GameOverMenu" method="_on_again_pressed"]

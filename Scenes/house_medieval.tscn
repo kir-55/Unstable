@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cw6o325yr4ekd" path="res://Textures/Decorations/sred3.png" id="4_n5ori"]
 
 [node name="House1Med" type="Sprite2D"]
+self_modulate = Color(0.639216, 0.639216, 0.639216, 1)
 z_index = -2
 position = Vector2(-46, 45)
 scale = Vector2(6, 6)

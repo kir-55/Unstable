@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bh2l45rd6upik"]
 
-[ext_resource type="Environment" uid="uid://d11xgpobgk0rd" path="res://new_environment.tres" id="1_pw3af"]
+[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_ea0pi"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_x54wi"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="2_sjffl"]
 [ext_resource type="AudioStream" uid="uid://dpveeo85b2dpw" path="res://Music/cyberpunk.mp3" id="3_5v1p8"]
@@ -36,7 +36,7 @@ shader_parameter/MaxThikness = 3000.0
 [node name="Future" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_pw3af")
+environment = ExtResource("1_ea0pi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

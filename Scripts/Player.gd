@@ -99,9 +99,7 @@ func _physics_process(delta: float) -> void:
 				trail.remove_points()
 				is_jumping = true
 				velocity.y = JUMP_VELOCITY
-				if SPEED < MAX_SPEED:
-					SPEED += 20
-					GlobalVariables.player_global_speed = SPEED
+
 				if JUMP_VELOCITY > MAX_JUMP_VEL:
 					JUMP_VELOCITY -= 5
 
@@ -155,3 +153,9 @@ func drop_through() -> void:
 		end_dash()
 	position.y += DROP_THROUGH_VELOCITY * get_physics_process_delta_time()
 	velocity.y = DROP_THROUGH_VELOCITY
+
+
+func _on_speed_up_timer_timeout():
+	if SPEED < MAX_SPEED:
+		SPEED += 20
+		GlobalVariables.player_global_speed = SPEED

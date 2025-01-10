@@ -6,7 +6,6 @@ glow_enabled = true
 glow_normalized = true
 glow_strength = 1.86
 glow_blend_mode = 0
-glow_hdr_luminance_cap = 19.69
 fog_light_color = Color(0.45098, 0.490196, 0.541176, 1)
 fog_light_energy = 28.55
 fog_sun_scatter = 0.5

@@ -4,4 +4,6 @@
 
 [node name="wybuch" type="AudioStreamPlayer"]
 stream = ExtResource("1_vh5hb")
+volume_db = -10.0
 autoplay = true
+mix_target = 1

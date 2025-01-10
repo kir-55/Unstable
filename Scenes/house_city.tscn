@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bemm227lwwow2" path="res://Textures/Decorations/house3_city.png" id="4_xkmby"]
 
 [node name="HouseCity" type="Sprite2D"]
-self_modulate = Color(1, 1, 1, 0.8)
+self_modulate = Color(0.637843, 0.637843, 0.637843, 1)
 z_index = -2
 position = Vector2(0, -5)
 scale = Vector2(6, 6)

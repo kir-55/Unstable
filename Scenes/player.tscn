@@ -55,6 +55,8 @@ trail = NodePath("Trail")
 position = Vector2(1.42857, -0.714287)
 shape = SubResource("RectangleShape2D_uu4jv")
 
+[node name="SpeedUpTimer" type="Timer" parent="."]
+
 [node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("timer")]
 z_index = 3
 position = Vector2(2.85715, -1.42857)
@@ -93,4 +95,5 @@ position = Vector2(-13, 14)
 width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
+[connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]
 [connection signal="timeout" from="Weapon/Timer" to="Weapon" method="_on_timer_timeout"]

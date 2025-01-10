@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://daai0thrp4xay"]
+[gd_scene load_steps=30 format=3 uid="uid://daai0thrp4xay"]
 
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="1_6eqel"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Music/do gry2.mp3" id="1_fnpvs"]
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yv4ht"]
+[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="2_02dsf"]
 [ext_resource type="Texture2D" uid="uid://0dwlp03c63nb" path="res://Textures/UnstableLogo.png" id="3_ekuea"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://button_hover.tres" id="4_rrgdv"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="4_yih76"]
@@ -59,6 +61,52 @@ shader_parameter/MaxThikness = 3000.0
 
 [node name="MovingGround" type="Node2D" parent="."]
 position = Vector2(-2, 2)
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="MovingGround"]
+layer = 10
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="MovingGround/ParallaxBackground2"]
+z_index = -2
+position = Vector2(24, 142)
+motion_scale = Vector2(1.6, 0.9)
+motion_mirroring = Vector2(7000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground2/ParallaxLayer"]
+self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+position = Vector2(-16, -312)
+scale = Vector2(12, 12)
+texture = ExtResource("1_6eqel")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="MovingGround"]
+scroll_offset = Vector2(1000, 0)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
+self_modulate = Color(1, 1, 1, 0.984314)
+position = Vector2(-621, 39)
+motion_scale = Vector2(0.1, 0.8)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(199, 168)
+scale = Vector2(2, 2)
+texture = ExtResource("2_02dsf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(1208, 171)
+scale = Vector2(2, 2)
+texture = ExtResource("2_02dsf")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
+position = Vector2(-332, 10)
+motion_scale = Vector2(0.3, 0.9)
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(200, 76)
+scale = Vector2(4, 4)
+texture = ExtResource("2_02dsf")
 
 [node name="Camera2D" type="Camera2D" parent="MovingGround"]
 position = Vector2(-338, 17)
@@ -143,6 +191,8 @@ size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_7j6wq")
 theme_override_styles/hover = ExtResource("4_rrgdv")
+theme_override_styles/pressed = ExtResource("4_rrgdv")
+theme_override_styles/focus = ExtResource("4_rrgdv")
 text = "Play"
 
 [node name="Exit" type="Button" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer"]
@@ -152,6 +202,8 @@ size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_abjer")
 theme_override_styles/hover = ExtResource("5_1mafq")
+theme_override_styles/pressed = ExtResource("5_1mafq")
+theme_override_styles/focus = ExtResource("5_1mafq")
 text = "Exit"
 
 [node name="RandomSystem" type="Node" parent="MovingGround"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://caupmfpqwlmdt"]
+[gd_scene load_steps=16 format=3 uid="uid://caupmfpqwlmdt"]
 
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_qfj4m"]
+[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_xj3b6"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="2_voxu0"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="3_kis5v"]
 [ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/player.tscn" id="4_e7a0x"]
@@ -21,6 +22,9 @@ shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
 [node name="Medieval" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_xj3b6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
