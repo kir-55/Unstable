@@ -100,8 +100,8 @@ func _physics_process(delta: float) -> void:
 				is_jumping = true
 				velocity.y = JUMP_VELOCITY
 
-				if JUMP_VELOCITY > MAX_JUMP_VEL:
-					JUMP_VELOCITY -= 5
+				if JUMP_VELOCITY < MAX_JUMP_VEL:
+					JUMP_VELOCITY += 5
 
 		# Handle dropping down
 		if Input.is_action_just_pressed("bottom") and not is_on_floor():

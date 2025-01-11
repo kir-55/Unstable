@@ -16,7 +16,7 @@ func set_velocity(direction: Vector2) -> void:
 	velocity = direction.normalized() * speed
 
 func _on_area_entered(body: Node) -> void:
-	if body and body.get_parent() and body.get_parent().get_node("HealthSystem"):
+	if body and body.get_parent() and body.get_parent().has_node("HealthSystem"):
 		body.get_parent().get_node("HealthSystem").take_damage(40) 
 	queue_free()  # Destroy the bullet upon collision
 
