@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://daai0thrp4xay"]
+[gd_scene load_steps=31 format=3 uid="uid://daai0thrp4xay"]
 
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="1_6eqel"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Music/do gry2.mp3" id="1_fnpvs"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="8_ewsx1"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="13_io3tw"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="14_4vnkg"]
+[ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="15_mst61"]
 [ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="15_v51w2"]
 [ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="17_xoou5"]
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="18_lwfrx"]
@@ -248,7 +249,7 @@ player = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 spawn_from = 0
-decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")])
+decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("15_mst61"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")])
 
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Again" to="MovingGround/Camera2D/StartMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Exit" to="MovingGround/Camera2D/StartMenu" method="_on_exit_pressed"]

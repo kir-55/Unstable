@@ -56,6 +56,7 @@ position = Vector2(1.42857, -0.714287)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("timer")]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://ddjxwuj1qgcor"]
+
+[ext_resource type="PackedScene" uid="uid://dubebyv7np2j1" path="res://Scenes/hydrant.tscn" id="1_ijdn5"]
+[ext_resource type="Script" path="res://Scripts/decoration.gd" id="2_f5dcn"]
+
+[resource]
+script = ExtResource("2_f5dcn")
+prefab = ExtResource("1_ijdn5")
+spawn_on_center = false
+initial_chance = 100
+chance_to_spawn = 20.0
+chance_multiplyer = 1
+type = 1
+incompatible_with_types = Array[int]([1, 2])
+min_scale = 4.0
+max_scale = 4.0

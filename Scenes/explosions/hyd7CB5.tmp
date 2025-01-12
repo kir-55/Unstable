@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu6h8qbv3df6m"]
+
+[ext_resource type="Script" path="res://Scripts/throwable.gd" id="1_5dgw7"]
+[ext_resource type="Texture2D" uid="uid://careweli3bkl2" path="res://Textures/Decorations/hydrant.png" id="1_hjqmu"]
+[ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Music/break.mp3" id="1_tvtnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]
+size = Vector2(21, 62.5)
+
+[sub_resource type="Curve" id="Curve_25yfo"]
+_data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_sijup"]
+colors = PackedColorArray(0.0854914, 0.323126, 1, 1, 0.12549, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfwsl"]
+radius = 18.0
+height = 64.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+z_index = 6
+collision_layer = 2
+collision_mask = 3
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, -10)
+linear_velocity = Vector2(1000, -700)
+angular_velocity = 0.349066
+script = ExtResource("1_5dgw7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0.75)
+shape = SubResource("RectangleShape2D_0t1dm")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 20
+position = Vector2(4, 0)
+scale = Vector2(6, 6)
+amount = 16
+randomness = 1.0
+lifetime_randomness = 0.61
+emission_shape = 1
+emission_sphere_radius = 2.35
+direction = Vector2(0, 1)
+spread = 94.01
+gravity = Vector2(0, 900)
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_25yfo")
+color_ramp = SubResource("Gradient_sijup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_cfwsl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hjqmu")
+
+[node name="wybuch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_tvtnf")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

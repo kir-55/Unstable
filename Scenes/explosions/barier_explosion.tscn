@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6jkxex0pqycv"]
+
+[ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Music/break.mp3" id="1_s1pw8"]
+
+[sub_resource type="Curve" id="Curve_25yfo"]
+_data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kf85m"]
+offsets = PackedFloat32Array(0.477612, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+z_index = 20
+scale = Vector2(6, 6)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.61
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 92.98
+gravity = Vector2(0, 400)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_25yfo")
+color_ramp = SubResource("Gradient_kf85m")
+
+[node name="wybuch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_s1pw8")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
