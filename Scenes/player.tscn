@@ -1,23 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=15 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fpcwa"]
-[ext_resource type="Texture2D" uid="uid://cou6chkoc84gr" path="res://Textures/Player/Rysunek_2_Animacja_3.png" id="2_px8fe"]
 [ext_resource type="Script" path="res://Scripts/old_player/weapon.gd" id="3_mhttw"]
 [ext_resource type="PackedScene" uid="uid://buxptejpeo6y3" path="res://Scripts/old_player/bullet.tscn" id="4_ye3hi"]
-[ext_resource type="Texture2D" uid="uid://c0acdo4jb8wcx" path="res://Textures/Player/skok.png" id="5_q0n38"]
-[ext_resource type="Texture2D" uid="uid://cxh42mcxdryb5" path="res://Textures/Player/stoi.png" id="6_stggv"]
-[ext_resource type="Texture2D" uid="uid://b53gkq67jnwww" path="res://Textures/Player/uniesionaprzzed1.png" id="7_hecih"]
-[ext_resource type="Texture2D" uid="uid://cspxs10ugo7o2" path="res://Textures/Player/prawieladuj1.png" id="8_bxbgp"]
+[ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/NewPlayer/1.png" id="6_iaany"]
+[ext_resource type="Texture2D" uid="uid://bfllsgqcnea8h" path="res://Textures/Player/NewPlayer/2.png" id="7_1t3cn"]
+[ext_resource type="Texture2D" uid="uid://bnqy5phdfqc8y" path="res://Textures/Player/NewPlayer/3.png" id="8_bwfdr"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
+[ext_resource type="Texture2D" uid="uid://icl8g7dyq38u" path="res://Textures/Player/NewPlayer/4.png" id="9_piadv"]
+[ext_resource type="Texture2D" uid="uid://sj3gqiiuldle" path="res://Textures/Player/NewPlayer/5.png" id="10_5sxtt"]
+[ext_resource type="Texture2D" uid="uid://c0kt14syxving" path="res://Textures/Player/NewPlayer/6.png" id="11_0pnto"]
+[ext_resource type="Texture2D" uid="uid://cp2xyb0wba0sr" path="res://Textures/Player/NewPlayer/7.png" id="12_e6lyb"]
+[ext_resource type="Texture2D" uid="uid://w8sie85hw4eo" path="res://Textures/Player/NewPlayer/8.png" id="13_mr70v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
-size = Vector2(21.4286, 54)
+size = Vector2(21.4286, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ob57i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_q0n38")
+"texture": ExtResource("6_iaany")
 }],
 "loop": true,
 "name": &"jump",
@@ -25,16 +28,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_stggv")
+"texture": ExtResource("6_iaany")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_hecih")
+"texture": ExtResource("7_1t3cn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_stggv")
+"texture": ExtResource("8_bwfdr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_bxbgp")
+"texture": ExtResource("9_piadv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5sxtt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0pnto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_e6lyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mr70v")
 }],
 "loop": true,
 "name": &"walk",
@@ -52,7 +67,7 @@ animated_sprite = NodePath("AnimatedSprite2D")
 trail = NodePath("Trail")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.42857, -0.714287)
+position = Vector2(1.42857, 6.42857)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
@@ -61,9 +76,8 @@ autostart = true
 
 [node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("timer")]
 z_index = 3
-position = Vector2(2.85715, -1.42857)
+position = Vector2(2.14286, -1.42857)
 scale = Vector2(6, 6)
-texture = ExtResource("2_px8fe")
 script = ExtResource("3_mhttw")
 bullet_scene = ExtResource("4_ye3hi")
 bullet_speed = 2000.0
@@ -79,6 +93,8 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ob57i")
 animation = &"jump"
 autoplay = "walk"
+frame_progress = 0.66128
+speed_scale = 2.0
 
 [node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails")]
 script = ExtResource("9_lardo")

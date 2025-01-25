@@ -71,10 +71,12 @@ func _physics_process(delta: float) -> void:
 				end_dash()
 				
 		if is_stopping: 
+			animated_sprite.stop()
 			velocity.x = 0
 			stop_timer -= delta
 			if stop_timer <= 0:
 				is_stopping = false
+				animated_sprite.play()
 				
 		if is_dropping:
 			trail.process_points()

@@ -23,8 +23,10 @@ GlobalVariables="*res://Scripts/global_variables.gd"
 
 [display]
 
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [gui]
 
