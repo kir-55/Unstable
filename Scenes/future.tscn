@@ -51,6 +51,18 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 metadata/_edit_use_anchors_ = true
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1144.0
+offset_top = 9.0
+offset_right = -1082.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(386, 23)
 process_callback = 0
@@ -75,11 +87,12 @@ script = ExtResource("4_oafp7")
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("2_sjffl")
 
-[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("5_dnrmd")]
+[node name="Player" parent="." node_paths=PackedStringArray("score_label", "amulets_panel") instance=ExtResource("5_dnrmd")]
 position = Vector2(0, 114)
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
 score_label = NodePath("../CanvasLayer/Label")
+amulets_panel = NodePath("../CanvasLayer/VBoxContainer")
 
 [node name="Timer" type="Timer" parent="Player"]
 autostart = true
@@ -132,7 +145,7 @@ wait_time = 10.0
 autostart = true
 script = ExtResource("15_0fvja")
 player = NodePath("../Player")
-current_world = 1
+current_world = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 

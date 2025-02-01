@@ -17,9 +17,14 @@ extends CharacterBody2D
 @export var STOP_COOLDOWN: float = 0.4      # Time between dashes
 
 @export var score_label: Label
-@export var animated_sprite : AnimatedSprite2D
+@export var amulets_panel: Container
 
+
+@export var animated_sprite : AnimatedSprite2D
 @export var trail: Node
+
+@export var weapon: Node
+@export var amulet_system: Node
 
 # Variables
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")  # Sync gravity with project settings
@@ -40,6 +45,10 @@ var is_dropping = false
 var is_jumping
 
 func _ready():
+	amulet_system.amulets_avaliable = GlobalVariables.player_amulets
+	amulet_system.amulets_panel = amulets_panel
+	if !amulet_system.amulets_avaliable.has(0):
+		weapon.set_process(false)
 	start_x = global_position.x
 	if GlobalVariables.player_global_speed:
 		SPEED = GlobalVariables.player_global_speed
@@ -86,7 +95,7 @@ func _physics_process(delta: float) -> void:
 			if velocity.y > 0:
 				is_jumping = false
 			
-		# Dash cooldown
+		# Dash cooldown 
 		if dash_cooldown_timer > 0:
 			dash_cooldown_timer -= delta
 			
@@ -96,7 +105,8 @@ func _physics_process(delta: float) -> void:
 
 		# Handle jumping
 		if is_on_floor():
-			is_dropping = false
+			if is_dropping:
+				is_dropping = false
 			if Input.is_action_just_pressed("up"):
 				trail.remove_points()
 				is_jumping = true
@@ -129,8 +139,14 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.stop()
 
 func start_dash() -> void:
+
 	if !is_jumping:
 		trail.remove_points()
+	
+	if is_dropping:
+		is_dropping = false
+	
+
 	scale.y = scale.y/2
 	# Start the dash by increasing the speed and setting timers
 	is_stopping = false

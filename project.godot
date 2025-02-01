@@ -31,6 +31,7 @@ window/stretch/scale_mode="integer"
 [gui]
 
 theme/default_font_antialiasing=2
+timers/tooltip_delay_sec=0.1
 
 [input]
 

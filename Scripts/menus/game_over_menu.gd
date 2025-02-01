@@ -14,7 +14,8 @@ func _on_again_pressed():
 	GlobalVariables.last_score = 0
 	GlobalVariables.player_global_speed = initialPlayerSpeed
 	GlobalVariables.game_is_on = true
-	
+	GlobalVariables.player_amulets = []
+	GlobalVariables.times_treveled = 0
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 func _ready():

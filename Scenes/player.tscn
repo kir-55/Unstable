@@ -1,8 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=19 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fpcwa"]
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="Script" path="res://Scripts/old_player/weapon.gd" id="3_mhttw"]
+[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/amulet_icon_template.tscn" id="3_tciku"]
+[ext_resource type="Resource" uid="uid://dbplhi6u5tp6p" path="res://Amulets/bag_of_tools.tres" id="4_dhlh7"]
 [ext_resource type="PackedScene" uid="uid://buxptejpeo6y3" path="res://Scripts/old_player/bullet.tscn" id="4_ye3hi"]
+[ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="5_twxj0"]
 [ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/NewPlayer/1.png" id="6_iaany"]
 [ext_resource type="Texture2D" uid="uid://bfllsgqcnea8h" path="res://Textures/Player/NewPlayer/2.png" id="7_1t3cn"]
 [ext_resource type="Texture2D" uid="uid://bnqy5phdfqc8y" path="res://Textures/Player/NewPlayer/3.png" id="8_bwfdr"]
@@ -56,7 +60,7 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system")]
 z_index = 6
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_fpcwa")
@@ -65,6 +69,14 @@ STOP_DURATION = 0.6
 STOP_COOLDOWN = 1.5
 animated_sprite = NodePath("AnimatedSprite2D")
 trail = NodePath("Trail")
+weapon = NodePath("Weapon")
+amulet_system = NodePath("Amulets")
+
+[node name="Amulets" type="Node" parent="."]
+script = ExtResource("2_sxsw1")
+amulet_icon_template = ExtResource("3_tciku")
+amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("4_dhlh7"), ExtResource("5_twxj0")])
+amulets_avaliable = Array[int]([1])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.42857, 6.42857)

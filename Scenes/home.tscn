@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhjxp4p8df2qp"]
+
+[ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://Textures/Baners/Home/unstable_home4.png" id="1_ej7bc"]
+[ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://Textures/Baners/Home/unstable_home3.png" id="2_hm0lt"]
+[ext_resource type="Texture2D" uid="uid://cgs0nsb18ahpp" path="res://Textures/Baners/Home/unstable_home2.png" id="3_nyt66"]
+[ext_resource type="Texture2D" uid="uid://cehxuhsv2bhp8" path="res://Textures/Baners/Home/unstable_home.png" id="4_n2qug"]
+[ext_resource type="Script" path="res://Scenes/spawn_amulets.gd" id="5_edxcn"]
+[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/amulet_icon_template.tscn" id="6_f4kpi"]
+[ext_resource type="Resource" uid="uid://dbplhi6u5tp6p" path="res://Amulets/bag_of_tools.tres" id="7_wgo7m"]
+[ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="8_tgnv0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ej7bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hm0lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nyt66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n2qug")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lncj"]
+font_size = 24
+
+[node name="Transition" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(576, 324)
+scale = Vector2(3.209, 3.209)
+sprite_frames = SubResource("SpriteFrames_fxmdu")
+autoplay = "default"
+frame_progress = 0.619749
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(500, 70)
+offset_left = 538.0
+offset_top = 393.0
+offset_right = 1038.0
+offset_bottom = 463.0
+rotation = 0.0198443
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("5_edxcn")
+label = NodePath("../ColorRect/Label")
+amulet_prefab = ExtResource("6_f4kpi")
+amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("7_wgo7m"), ExtResource("8_tgnv0")])
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 555.0
+offset_top = 16.0
+offset_right = -14.0
+offset_bottom = -565.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0901961, 0.109804, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_right = 583.0
+offset_bottom = 66.0
+text = "You have a few seconds to grab 1 item"
+label_settings = SubResource("LabelSettings_1lncj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
