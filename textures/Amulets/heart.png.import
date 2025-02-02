@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj4bdslc6roka"
-path="res://.godot/imported/clock.png-b17af882405124fe5ddddb138bb5b86d.ctex"
+uid="uid://cx1awwuu2u232"
+path="res://.godot/imported/heart.png-1f04bf3dc77ee904086236cef6958727.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/clock.png"
-dest_files=["res://.godot/imported/clock.png-b17af882405124fe5ddddb138bb5b86d.ctex"]
+source_file="res://Textures/Amulets/heart.png"
+dest_files=["res://.godot/imported/heart.png-1f04bf3dc77ee904086236cef6958727.ctex"]
 
 [params]
 

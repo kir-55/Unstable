@@ -13,6 +13,12 @@ var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
 @export var amulet_prefab: PackedScene
 @export var amulets_list: Array[Amulet]
 
+
+
+
+
+
+
 func _ready():
 	label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
 	for i in range(GlobalVariables.items_in_home):
@@ -29,10 +35,11 @@ func chosed_amulet(event: InputEvent, amulet):
 	if event is InputEventMouseButton and event.pressed:
 		print("amulet clicked " + str(amulet[0]))
 		if amulet[0] == 1:
-			GlobalVariables.player_global_speed += 20
-			if amount_of_items_to_take+1 >= GlobalVariables.items_in_home:
-				GlobalVariables.items_in_home += 1
-		
+			GlobalVariables.player_global_speed += 50
+			GlobalVariables.items_in_home += 1
+		if amulet[0] == 4:
+			GlobalVariables.player_global_speed -= 70
+			GlobalVariables.initial_chance_for_lag -= 10
 		amulets_chosen.append(amulet[0])
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
 		

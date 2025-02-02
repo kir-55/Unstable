@@ -32,6 +32,7 @@ var direction: Vector2 = Vector2.ZERO  # Movement direction
 var start_x
 
 # Dash variables
+
 var is_dashing: bool = false
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
@@ -41,14 +42,23 @@ var is_stopping: bool = false
 var stop_timer: float = 0.0
 var stop_cooldown_timer: float = 0.0
 
+
 var is_dropping = false
 var is_jumping
 
 func _ready():
-	amulet_system.amulets_avaliable = GlobalVariables.player_amulets
+	amulet_system.amulets_available = GlobalVariables.player_amulets
 	amulet_system.amulets_panel = amulets_panel
-	if !amulet_system.amulets_avaliable.has(0):
+	
+	if !amulet_system.amulets_available.has(0):
 		weapon.set_process(false)
+		
+	for i in range(amulet_system.amulets_available.count(2)):
+		DASH_DURATION += amulet_system.dash_duration_increase
+		DASH_SPEED_BOOST += amulet_system.dash_speed_increase 
+		DASH_COOLDOWN += amulet_system.dash_cooldown_increase
+		DROP_THROUGH_VELOCITY += amulet_system.drop_throgh_speed_increase
+		
 	start_x = global_position.x
 	if GlobalVariables.player_global_speed:
 		SPEED = GlobalVariables.player_global_speed
@@ -165,13 +175,17 @@ func end_dash() -> void:
 
 func drop_through() -> void:
 	is_dropping = true
-	# Temporarily disable collision to allow dropping through platforms
-	print("works")
 	if is_dashing:
 		end_dash()
 	position.y += DROP_THROUGH_VELOCITY * get_physics_process_delta_time()
 	velocity.y = DROP_THROUGH_VELOCITY
 
+func kill():
+	if amulet_system.amulets_available.has(3):
+		amulet_system.remove_amulet(3)
+		return false;
+	return true;
+	
 
 func _on_speed_up_timer_timeout():
 	if SPEED < MAX_SPEED:

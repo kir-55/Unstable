@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4gt65xd5xb3n"]
+[gd_scene load_steps=6 format=3 uid="uid://b4gt65xd5xb3n"]
 
 [ext_resource type="Theme" uid="uid://o1p54tv8dklw" path="res://theme.tres" id="1_cfxai"]
-[ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://Textures/clock.png" id="2_iysjj"]
+[ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://Textures/Amulets/clock.png" id="2_inqig"]
 [ext_resource type="Script" path="res://Scenes/custom_tooltip.gd" id="2_tm8sk"]
 [ext_resource type="PackedScene" uid="uid://bigmbkrs23ifx" path="res://Scenes/menus/tooltip.tscn" id="3_fsn3f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v2uu3"]
+font_size = 32
 
 [node name="TextureRect" type="TextureRect"]
 custom_minimum_size = Vector2(64, 64)
@@ -11,7 +14,15 @@ offset_right = 32.0
 offset_bottom = 32.0
 mouse_default_cursor_shape = 16
 theme = ExtResource("1_cfxai")
-texture = ExtResource("2_iysjj")
+texture = ExtResource("2_inqig")
 stretch_mode = 6
 script = ExtResource("2_tm8sk")
 tooltip_prefab = ExtResource("3_fsn3f")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 33.0
+offset_right = 81.0
+offset_bottom = 78.0
+label_settings = SubResource("LabelSettings_v2uu3")

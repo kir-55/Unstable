@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://daai0thrp4xay"]
+[gd_scene load_steps=24 format=3 uid="uid://daai0thrp4xay"]
 
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="1_6eqel"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Music/do gry2.mp3" id="1_fnpvs"]
@@ -10,8 +10,10 @@
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://button_hover_yellow.tres" id="5_1mafq"]
 [ext_resource type="Script" path="res://Scenes/menus/move_right.gd" id="5_srgek"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="5_xu6qi"]
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://panel.tres" id="6_25x81"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="6_y8vvb"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="7_g27u5"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://transparent_button.tres" id="7_ug5gg"]
 [ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="8_ewsx1"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="13_io3tw"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="14_4vnkg"]
@@ -20,37 +22,6 @@
 [ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="17_xoou5"]
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="18_lwfrx"]
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="18_tgdhe"]
-
-[sub_resource type="Gradient" id="Gradient_5tlfr"]
-offsets = PackedFloat32Array(0.60084)
-colors = PackedColorArray(0.0862745, 0.0901961, 0.109804, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8jruo"]
-gradient = SubResource("Gradient_5tlfr")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dfoim"]
-texture = SubResource("GradientTexture2D_8jruo")
-region_rect = Rect2(0, 0, 49, 33)
-
-[sub_resource type="Gradient" id="Gradient_wijda"]
-offsets = PackedFloat32Array(0.411765)
-colors = PackedColorArray(0.0862745, 0.0901961, 0.109804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_u1jk0"]
-gradient = SubResource("Gradient_wijda")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7j6wq"]
-texture = SubResource("GradientTexture1D_u1jk0")
-
-[sub_resource type="Gradient" id="Gradient_aqng2"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.0862745, 0.0901961, 0.109804, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3tw24"]
-gradient = SubResource("Gradient_aqng2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abjer"]
-texture = SubResource("GradientTexture2D_3tw24")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v15ys"]
 shader = ExtResource("7_g27u5")
@@ -154,7 +125,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(204, 150)
 size_flags_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_dfoim")
+theme_override_styles/panel = ExtResource("6_25x81")
 
 [node name="MarginContainer" type="MarginContainer" parent="MovingGround/Camera2D/StartMenu/Panel"]
 layout_mode = 1
@@ -171,6 +142,7 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 alignment = 1
 
@@ -190,7 +162,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_7j6wq")
+theme_override_styles/normal = ExtResource("7_ug5gg")
 theme_override_styles/hover = ExtResource("4_rrgdv")
 theme_override_styles/pressed = ExtResource("4_rrgdv")
 theme_override_styles/focus = ExtResource("4_rrgdv")
@@ -201,7 +173,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_abjer")
+theme_override_styles/normal = ExtResource("7_ug5gg")
 theme_override_styles/hover = ExtResource("5_1mafq")
 theme_override_styles/pressed = ExtResource("5_1mafq")
 theme_override_styles/focus = ExtResource("5_1mafq")

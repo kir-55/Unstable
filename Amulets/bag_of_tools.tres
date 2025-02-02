@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://dbplhi6u5tp6p"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_cg8eo"]
-[ext_resource type="Texture2D" uid="uid://b0c206cmmmb8n" path="res://Textures/unstable_tools.png" id="2_d3u7h"]
+[ext_resource type="Texture2D" uid="uid://b0c206cmmmb8n" path="res://Textures/Amulets/unstable_tools.png" id="2_d3u7h"]
 
 [resource]
 script = ExtResource("1_cg8eo")

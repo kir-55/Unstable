@@ -25,6 +25,7 @@ var loaded_segments: Array[int]
 func _ready():
 	line_start_x = line.global_position.x
 	line_section_length = terrain_generator.line_section_length
+	spawn_from += int(GlobalVariables.times_treveled/3)
 	
 func _process(delta):
 	

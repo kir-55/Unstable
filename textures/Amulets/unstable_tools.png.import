@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0c206cmmmb8n"
-path="res://.godot/imported/unstable_tools.png-d6f1417181d65dfc0af84c7da01086eb.ctex"
+path="res://.godot/imported/unstable_tools.png-76203f8661b2a68f723272ae97ce0a66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/unstable_tools.png"
-dest_files=["res://.godot/imported/unstable_tools.png-d6f1417181d65dfc0af84c7da01086eb.ctex"]
+source_file="res://Textures/Amulets/unstable_tools.png"
+dest_files=["res://.godot/imported/unstable_tools.png-76203f8661b2a68f723272ae97ce0a66.ctex"]
 
 [params]
 
