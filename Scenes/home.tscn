@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhjxp4p8df2qp"]
+[gd_scene load_steps=15 format=3 uid="uid://bhjxp4p8df2qp"]
 
 [ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://Textures/Baners/Home/unstable_home4.png" id="1_ej7bc"]
 [ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://Textures/Baners/Home/unstable_home3.png" id="2_hm0lt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://cgk8wbbvqcoc7" path="res://Amulets/some_plant.tres" id="9_cdo5p"]
 [ext_resource type="Resource" uid="uid://yuapycu40c26" path="res://Amulets/second_heart.tres" id="10_4gv14"]
 [ext_resource type="Resource" uid="uid://e1k2wmn1gx6m" path="res://Amulets/wrench.tres" id="11_ibjks"]
+[ext_resource type="Resource" uid="uid://b8eetrsna3r4n" path="res://Amulets/pizza_slice.tres" id="12_bnax5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
 animations = [{
@@ -59,7 +60,7 @@ alignment = 1
 script = ExtResource("5_edxcn")
 label = NodePath("../ColorRect/Label")
 amulet_prefab = ExtResource("6_f4kpi")
-amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("7_wgo7m"), ExtResource("8_tgnv0"), ExtResource("9_cdo5p"), ExtResource("10_4gv14"), ExtResource("11_ibjks")])
+amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("7_wgo7m"), ExtResource("8_tgnv0"), ExtResource("9_cdo5p"), ExtResource("10_4gv14"), ExtResource("11_ibjks"), ExtResource("12_bnax5")])
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

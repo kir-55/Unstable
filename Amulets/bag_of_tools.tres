@@ -9,3 +9,5 @@ id = 0
 name = "Bag of tools"
 description = "Gives you ability to throw tools and destroy some obsticles"
 texture = ExtResource("2_d3u7h")
+stack_limit = true
+limit = 1

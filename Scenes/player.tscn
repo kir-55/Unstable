@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=23 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fpcwa"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://icl8g7dyq38u" path="res://Textures/Player/NewPlayer/4.png" id="9_piadv"]
 [ext_resource type="Resource" uid="uid://e1k2wmn1gx6m" path="res://Amulets/wrench.tres" id="9_u770r"]
 [ext_resource type="Texture2D" uid="uid://sj3gqiiuldle" path="res://Textures/Player/NewPlayer/5.png" id="10_5sxtt"]
+[ext_resource type="Resource" uid="uid://b8eetrsna3r4n" path="res://Amulets/pizza_slice.tres" id="10_102ue"]
 [ext_resource type="Texture2D" uid="uid://c0kt14syxving" path="res://Textures/Player/NewPlayer/6.png" id="11_0pnto"]
 [ext_resource type="Texture2D" uid="uid://cp2xyb0wba0sr" path="res://Textures/Player/NewPlayer/7.png" id="12_e6lyb"]
 [ext_resource type="Texture2D" uid="uid://w8sie85hw4eo" path="res://Textures/Player/NewPlayer/8.png" id="13_mr70v"]
@@ -96,7 +97,7 @@ default_color = Color(1, 1, 1, 0.321569)
 [node name="Amulets" type="Node" parent="."]
 script = ExtResource("2_sxsw1")
 amulet_icon_template = ExtResource("3_tciku")
-amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("4_dhlh7"), ExtResource("5_twxj0"), ExtResource("6_6nwpy"), ExtResource("8_2rtq2"), ExtResource("9_u770r")])
+amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("4_dhlh7"), ExtResource("5_twxj0"), ExtResource("6_6nwpy"), ExtResource("8_2rtq2"), ExtResource("9_u770r"), ExtResource("10_102ue")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.42857, 6.42857)

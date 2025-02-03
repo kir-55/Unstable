@@ -7,6 +7,10 @@ func _on_timeout():
 	if GlobalVariables.game_is_on:
 		GlobalVariables.last_score = GlobalVariables.last_score + int(player.global_position.x) / GlobalVariables.score_divider
 		GlobalVariables.last_world = current_world
+		
+		if GlobalVariables.player_amulets.has(5):
+			GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(5))
+		
 		var rnd = randi_range(0, 100)
 		print(GlobalVariables.initial_chance_for_lag+GlobalVariables.times_treveled*3)
 		if GlobalVariables.times_treveled == 0 or rnd <= GlobalVariables.initial_chance_for_lag+GlobalVariables.times_treveled*3:

@@ -26,23 +26,26 @@ extends CharacterBody2D
 @export var weapon: Node
 @export var amulet_system: Node
 
-# Variables
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")  # Sync gravity with project settings
 var direction: Vector2 = Vector2.ZERO  # Movement direction
 var start_x
 
-# Dash variables
+# Doble jump
+@onready var doble_jump_active = GlobalVariables.player_amulets.has(5) # checks if player has pizza
+var doble_jump_used = false
 
+# Dash variables
 var is_dashing: bool = false
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 var original_speed: float = SPEED
 
+# Stop
 var is_stopping: bool = false
 var stop_timer: float = 0.0
 var stop_cooldown_timer: float = 0.0
 
-
+# Drop
 var is_dropping = false
 var is_jumping
 
@@ -113,50 +116,55 @@ func _physics_process(delta: float) -> void:
 			stop_cooldown_timer -= delta
 		
 
-		# Handle jumping
 		if is_on_floor():
+			doble_jump_used = false
 			if is_dropping:
 				is_dropping = false
-			if Input.is_action_just_pressed("up"):
-				trail.remove_points()
-				is_jumping = true
-				velocity.y = JUMP_VELOCITY
+		
+		# Handle jumping
+		if (is_on_floor() or (doble_jump_active and !doble_jump_used)) and Input.is_action_just_pressed("up"):
+			trail.remove_points()
+			is_jumping = true
+			is_dashing = false
+			
+			velocity.y = JUMP_VELOCITY
+			
+			if !is_on_floor():
+				doble_jump_used = true
+				
+			if JUMP_VELOCITY < MAX_JUMP_VEL:
+				JUMP_VELOCITY += 5
+				
 
-				if JUMP_VELOCITY < MAX_JUMP_VEL:
-					JUMP_VELOCITY += 5
 
 		# Handle dropping down
 		if Input.is_action_just_pressed("bottom") and not is_on_floor():
 			drop_through()
-
+		
 		# Set horizontal movement speed
 		if !is_stopping:
 			velocity.x = direction.x * SPEED
-		
-		
 		var direction=1
-
+		
 		if not is_on_floor():
 			animated_sprite.play("jump")
 		else:
 			animated_sprite.play("walk")
 		# Update score
 		score_label.set_text(str(int(GlobalVariables.last_score + int(global_position.x) / GlobalVariables.score_divider)))
-
+		
 		# Move the character
 		move_and_slide()
 	else:
 		animated_sprite.stop()
 
 func start_dash() -> void:
-
 	if !is_jumping:
 		trail.remove_points()
 	
 	if is_dropping:
 		is_dropping = false
 	
-
 	scale.y = scale.y/2
 	# Start the dash by increasing the speed and setting timers
 	is_stopping = false

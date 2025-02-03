@@ -9,3 +9,5 @@ id = 2
 name = "Some Plant"
 description = "Gives you green energy"
 texture = ExtResource("2_acyar")
+stack_limit = true
+limit = 2

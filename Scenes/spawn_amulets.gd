@@ -13,16 +13,28 @@ var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
 @export var amulet_prefab: PackedScene
 @export var amulets_list: Array[Amulet]
 
-
-
-
-
-
+@export var amulets_displayed: Array[int]
 
 func _ready():
 	label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
 	for i in range(GlobalVariables.items_in_home):
-		spawn_amulet(amulets_list.pick_random())
+		var random_amulet = amulets_list.pick_random()
+		
+		while !can_be_generated(random_amulet.id):
+			random_amulet = amulets_list.pick_random()
+		
+		amulets_displayed.append(random_amulet.id)
+		spawn_amulet(random_amulet)
+
+
+		
+func can_be_generated(amulet_id: int):
+	if !amulets_list[amulet_id].stack_limit:
+		return true
+	elif amulets_list[amulet_id].limit > GlobalVariables.player_amulets.count(amulet_id) + amulets_displayed.count(amulet_id):
+		return true
+	else:
+		return false
 
 func spawn_amulet(amulet):
 	var amulet_representation = amulet_prefab.instantiate()
@@ -38,7 +50,7 @@ func chosed_amulet(event: InputEvent, amulet):
 			GlobalVariables.player_global_speed += 50
 			GlobalVariables.items_in_home += 1
 		if amulet[0] == 4:
-			GlobalVariables.player_global_speed -= 70
+			GlobalVariables.player_global_speed -= 100
 			GlobalVariables.initial_chance_for_lag -= 10
 		amulets_chosen.append(amulet[0])
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")

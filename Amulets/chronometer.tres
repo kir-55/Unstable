@@ -9,3 +9,5 @@ id = 1
 name = "Chronometer"
 description = "Allows you to grab 1 more item when visiting home, but you will move faster"
 texture = ExtResource("2_mc4rt")
+stack_limit = true
+limit = 3

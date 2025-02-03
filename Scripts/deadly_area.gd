@@ -11,10 +11,11 @@ func _on_body_entered(body):
 			var best_score = GlobalVariables.best_score
 			if last_score > best_score:
 				GlobalVariables.best_score = last_score
-				
+			
+			# Reset the variables
 			GlobalVariables.last_score = last_score
 			GlobalVariables.player_global_speed = 0
-			
+			GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 
 			
 			# spawning death menu

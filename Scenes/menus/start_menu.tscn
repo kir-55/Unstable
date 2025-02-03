@@ -82,7 +82,6 @@ texture = ExtResource("2_02dsf")
 
 [node name="Camera2D" type="Camera2D" parent="MovingGround"]
 position = Vector2(-338, 17)
-process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("5_srgek")
 speed = 200
