@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5747t13hg1or"
-path="res://.godot/imported/wrench.png-26ff84daabb0db31445eef5fce6f2ae5.ctex"
+path="res://.godot/imported/wrench.png-4cd7f803485ee5e86076d0e261409422.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Amulets/wrench.png"
-dest_files=["res://.godot/imported/wrench.png-26ff84daabb0db31445eef5fce6f2ae5.ctex"]
+source_file="res://textures/Amulets/wrench.png"
+dest_files=["res://.godot/imported/wrench.png-4cd7f803485ee5e86076d0e261409422.ctex"]
 
 [params]
 

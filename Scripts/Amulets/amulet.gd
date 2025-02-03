@@ -15,6 +15,8 @@ extends Resource
 
 @export var limit: int = 1
 
+@export var chance_multiplier : int = 1
+
 
 
 func _validate_property(property: Dictionary) -> void:

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://du51rvnovd0h"
-path="res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"
+path="res://.godot/imported/medieval_baner.png-7582cda0aff6eca8461d13db6c138a20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/medieval_baner.png"
-dest_files=["res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"]
+source_file="res://textures/Baners/medieval_baner.png"
+dest_files=["res://.godot/imported/medieval_baner.png-7582cda0aff6eca8461d13db6c138a20.ctex"]
 
 [params]
 

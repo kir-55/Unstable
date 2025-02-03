@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0dwlp03c63nb"
-path="res://.godot/imported/UnstableLogo.png-07514133397f5aa4ba5da38149e68457.ctex"
+path="res://.godot/imported/UnstableLogo.png-d05d77b23afc9c17b62af52f6b7e5ebe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/UnstableLogo.png"
-dest_files=["res://.godot/imported/UnstableLogo.png-07514133397f5aa4ba5da38149e68457.ctex"]
+source_file="res://textures/UnstableLogo.png"
+dest_files=["res://.godot/imported/UnstableLogo.png-d05d77b23afc9c17b62af52f6b7e5ebe.ctex"]
 
 [params]
 

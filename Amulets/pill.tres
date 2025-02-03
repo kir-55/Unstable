@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://dbw5s5ormsd16"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ybbcq"]
-[ext_resource type="Texture2D" uid="uid://bajf802bkjwcw" path="res://Textures/Amulets/pill.png" id="2_d32lt"]
+[ext_resource type="Texture2D" uid="uid://bajf802bkjwcw" path="res://textures/Amulets/pill.png" id="2_d32lt"]
 
 [resource]
 script = ExtResource("1_ybbcq")
@@ -11,3 +11,4 @@ description = "Makes you think faster, therefore slowing the environment "
 texture = ExtResource("2_d32lt")
 stack_limit = true
 limit = 1
+chance_multiplier = 7
