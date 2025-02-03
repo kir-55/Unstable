@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cv65jnoi1cdpj"]
 
-[ext_resource type="Texture2D" uid="uid://ca2emaiaub5dm" path="res://Textures/Decorations/acid.png" id="1_513qv"]
+[ext_resource type="Texture2D" uid="uid://ca2emaiaub5dm" path="res://textures/Decorations/acid.png" id="1_513qv"]
 [ext_resource type="Script" path="res://Scripts/deadly_area.gd" id="2_o347i"]
 
 [sub_resource type="GDScript" id="GDScript_7nkye"]

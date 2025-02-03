@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://bhjxp4p8df2qp"]
 
-[ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://Textures/Baners/Home/unstable_home4.png" id="1_ej7bc"]
-[ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://Textures/Baners/Home/unstable_home3.png" id="2_hm0lt"]
-[ext_resource type="Texture2D" uid="uid://cgs0nsb18ahpp" path="res://Textures/Baners/Home/unstable_home2.png" id="3_nyt66"]
-[ext_resource type="Texture2D" uid="uid://cehxuhsv2bhp8" path="res://Textures/Baners/Home/unstable_home.png" id="4_n2qug"]
+[ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://textures/Baners/Home/unstable_home4.png" id="1_ej7bc"]
+[ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://textures/Baners/Home/unstable_home3.png" id="2_hm0lt"]
+[ext_resource type="Texture2D" uid="uid://cgs0nsb18ahpp" path="res://textures/Baners/Home/unstable_home2.png" id="3_nyt66"]
+[ext_resource type="Texture2D" uid="uid://cehxuhsv2bhp8" path="res://textures/Baners/Home/unstable_home.png" id="4_n2qug"]
 [ext_resource type="Script" path="res://Scenes/spawn_amulets.gd" id="5_edxcn"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/amulet_icon_template.tscn" id="6_f4kpi"]
 [ext_resource type="Resource" uid="uid://dbplhi6u5tp6p" path="res://Amulets/bag_of_tools.tres" id="7_wgo7m"]

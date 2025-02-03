@@ -15,14 +15,43 @@ var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
 
 
 
-
-
-
-
 func _ready():
 	label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
+	var one_per_player_amulets : Array[Amulet]
+	for i in amulets_list:
+		if i.one_per_player == true:
+			one_per_player_amulets.append(i)
+	var spawned_amulets_ids : Array[int]
+	
 	for i in range(GlobalVariables.items_in_home):
-		spawn_amulet(amulets_list.pick_random())
+		if(one_per_player_amulets.size() == amulets_list.size()):
+			spawn_amulet(amulets_list.pick_random())
+			continue
+			
+		var random_amulet = amulets_list.pick_random()
+		#var does_player_have_all_one_amulets = one_per_player_amulets.all(func(amulet): return amulet.id in GlobalVariables.player_amulets)
+		#var all_one_per_player_amulets_spawned = one_per_player_amulets.all(func(amulet): return spawned_amulets_ids.has(amulet.id))
+		if random_amulet.one_per_player and is_generating_one_per_player_amulet_possible(spawned_amulets_ids, one_per_player_amulets):
+				while random_amulet.id in spawned_amulets_ids or random_amulet.id in GlobalVariables.player_amulets:
+					random_amulet = one_per_player_amulets.pick_random()
+		else:
+			while random_amulet.one_per_player == true:
+				random_amulet = amulets_list.pick_random()
+		spawned_amulets_ids.append(random_amulet.id)
+		spawn_amulet(random_amulet)
+
+func is_generating_one_per_player_amulet_possible(spawned_amulets_ids, one_per_player_amulets):
+	if one_per_player_amulets.all(func(amulet): return amulet.id in GlobalVariables.player_amulets) or one_per_player_amulets.all(func(amulet): return spawned_amulets_ids.has(amulet.id)):
+		return false
+	
+	var combined = spawned_amulets_ids
+	for item in GlobalVariables.player_amulets:
+		if not combined.has(item):
+			combined.append(item)
+	if combined.all(func(element): return element in one_per_player_amulets):
+		return false
+	else:
+		return true
 
 func spawn_amulet(amulet):
 	var amulet_representation = amulet_prefab.instantiate()
