@@ -47,7 +47,7 @@ func chosed_amulet(event: InputEvent, amulet):
 	if event is InputEventMouseButton and event.pressed:
 		print("amulet clicked " + str(amulet[0]))
 		if amulet[0] == 1:
-			GlobalVariables.player_global_speed += 50
+			GlobalVariables.player_global_speed += 100
 			GlobalVariables.items_in_home += 1
 		if amulet[0] == 4:
 			GlobalVariables.player_global_speed -= 100
