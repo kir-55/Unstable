@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dumv6v0grpcg5"
-path="res://.godot/imported/nowa_dziura.png-d3fdc412ca0f3b25cfcafa068da8bf4c.ctex"
+path="res://.godot/imported/nowa_dziura.png-eed79cfdb69fd80a6f802591d6a78d22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Decorations/nowa_dziura.png"
-dest_files=["res://.godot/imported/nowa_dziura.png-d3fdc412ca0f3b25cfcafa068da8bf4c.ctex"]
+source_file="res://Textures/Decorations/nowa_dziura.png"
+dest_files=["res://.godot/imported/nowa_dziura.png-eed79cfdb69fd80a6f802591d6a78d22.ctex"]
 
 [params]
 

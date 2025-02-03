@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://cf2ihvdsrbkhy"]
 
-[ext_resource type="Texture2D" uid="uid://dumv6v0grpcg5" path="res://textures/Decorations/nowa_dziura.png" id="1_basot"]
+[ext_resource type="Texture2D" uid="uid://dumv6v0grpcg5" path="res://Textures/Decorations/nowa_dziura.png" id="1_basot"]
 [ext_resource type="Script" path="res://Scripts/deadly_area.gd" id="2_2c7y6"]
-[ext_resource type="Texture2D" uid="uid://mfhqfusv0tgx" path="res://textures/Decorations/nowa_barierka.png" id="3_hlgjw"]
+[ext_resource type="Texture2D" uid="uid://mfhqfusv0tgx" path="res://Textures/Decorations/nowa_barierka.png" id="3_hlgjw"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_b3iql"]
 [ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/explosions/barier_explosion.tscn" id="5_hlcji"]
-[ext_resource type="Texture2D" uid="uid://byt2uuian5r3w" path="res://textures/Decorations/nowy_znak.png" id="6_pwtc5"]
+[ext_resource type="Texture2D" uid="uid://byt2uuian5r3w" path="res://Textures/Decorations/nowy_znak.png" id="6_pwtc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
 size = Vector2(18.6667, 1.33333)

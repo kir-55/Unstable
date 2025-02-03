@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://h7wwoiarnc76"
-path="res://.godot/imported/do gry cyber2.mp3-1fb0c00dfb3be9cd964f6162e2150661.mp3str"
+path="res://.godot/imported/do gry cyber2.mp3-525f1ff2494937d1120db0fbbf46d329.mp3str"
 
 [deps]
 
-source_file="res://music/do gry cyber2.mp3"
-dest_files=["res://.godot/imported/do gry cyber2.mp3-1fb0c00dfb3be9cd964f6162e2150661.mp3str"]
+source_file="res://Music/do gry cyber2.mp3"
+dest_files=["res://.godot/imported/do gry cyber2.mp3-525f1ff2494937d1120db0fbbf46d329.mp3str"]
 
 [params]
 

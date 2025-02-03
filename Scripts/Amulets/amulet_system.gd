@@ -26,7 +26,6 @@ func _ready():
 func display_amulets():
 	var unique_amulets = {}
 	
-	# Add array elements as keys to the dictionary
 	for item in amulets_available:
 		if item in unique_amulets:
 			unique_amulets[item] += 1
@@ -62,7 +61,6 @@ func remove_amulet(id):
 		# Check if the id was found
 		if index >= 0 and index < amulets_available.size() and amulets_available[index] == id:
 			amulets_available.remove_at(index)
-			#GlobalVariables.player_amulets.remove_at(index)
 		else:
 			print("ID not found in the array.")
 		amulets_displayed = false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dakyyk5dh86ig"
-path="res://.godot/imported/hay_bale.png-6911fa7c023b0bb748ad638b136ca2f2.ctex"
+path="res://.godot/imported/hay_bale.png-8704888b48699ad5f15d0fed8b82193a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Decorations/hay_bale.png"
-dest_files=["res://.godot/imported/hay_bale.png-6911fa7c023b0bb748ad638b136ca2f2.ctex"]
+source_file="res://Textures/Decorations/hay_bale.png"
+dest_files=["res://.godot/imported/hay_bale.png-8704888b48699ad5f15d0fed8b82193a.ctex"]
 
 [params]
 

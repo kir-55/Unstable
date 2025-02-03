@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b2mm6fhdu7v5v"
-path="res://.godot/imported/strzal.mp3-b17e14d170abf96db100682fb393d320.mp3str"
+path="res://.godot/imported/strzal.mp3-c02fd9688d444d49298bfc2bb7dcbdfa.mp3str"
 
 [deps]
 
-source_file="res://music/strzal.mp3"
-dest_files=["res://.godot/imported/strzal.mp3-b17e14d170abf96db100682fb393d320.mp3str"]
+source_file="res://Music/strzal.mp3"
+dest_files=["res://.godot/imported/strzal.mp3-c02fd9688d444d49298bfc2bb7dcbdfa.mp3str"]
 
 [params]
 

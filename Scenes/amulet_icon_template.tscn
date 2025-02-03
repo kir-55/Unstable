@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4gt65xd5xb3n"]
 
 [ext_resource type="Theme" uid="uid://o1p54tv8dklw" path="res://theme.tres" id="1_cfxai"]
-[ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://textures/Amulets/clock.png" id="2_inqig"]
+[ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://Textures/Amulets/clock.png" id="2_inqig"]
 [ext_resource type="Script" path="res://Scenes/custom_tooltip.gd" id="2_tm8sk"]
 [ext_resource type="PackedScene" uid="uid://bigmbkrs23ifx" path="res://Scenes/menus/tooltip.tscn" id="3_fsn3f"]
 

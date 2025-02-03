@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnqy5phdfqc8y"
-path="res://.godot/imported/3.png-a76c4f15f9105d90dc5cb038e7e6afaa.ctex"
+uid="uid://riixd6yx27ho"
+path="res://.godot/imported/pizza.png-0ac41c9a1e2e97e073fe605fc89e464c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Player/NewPlayer/3.png"
-dest_files=["res://.godot/imported/3.png-a76c4f15f9105d90dc5cb038e7e6afaa.ctex"]
+source_file="res://Textures/Amulets/pizza.png"
+dest_files=["res://.godot/imported/pizza.png-0ac41c9a1e2e97e073fe605fc89e464c.ctex"]
 
 [params]
 

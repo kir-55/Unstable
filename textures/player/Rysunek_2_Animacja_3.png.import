@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cou6chkoc84gr"
-path="res://.godot/imported/Rysunek_2_Animacja_3.png-adbe2a76faf73e52ef7790e8dcd61dba.ctex"
+path="res://.godot/imported/Rysunek_2_Animacja_3.png-18bfa452dcd58d83e655f3a603c5c175.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/Rysunek_2_Animacja_3.png"
-dest_files=["res://.godot/imported/Rysunek_2_Animacja_3.png-adbe2a76faf73e52ef7790e8dcd61dba.ctex"]
+source_file="res://Textures/Player/Rysunek_2_Animacja_3.png"
+dest_files=["res://.godot/imported/Rysunek_2_Animacja_3.png-18bfa452dcd58d83e655f3a603c5c175.ctex"]
 
 [params]
 

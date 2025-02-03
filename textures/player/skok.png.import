@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0acdo4jb8wcx"
-path="res://.godot/imported/skok.png-d6171e3d38b5eb3f7a132e7eff140954.ctex"
+path="res://.godot/imported/skok.png-2cd15e8262d3a74494e3787441fdf359.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/skok.png"
-dest_files=["res://.godot/imported/skok.png-d6171e3d38b5eb3f7a132e7eff140954.ctex"]
+source_file="res://Textures/Player/skok.png"
+dest_files=["res://.godot/imported/skok.png-2cd15e8262d3a74494e3787441fdf359.ctex"]
 
 [params]
 
