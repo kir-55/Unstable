@@ -9,5 +9,7 @@ id = 7
 name = "Some Pill"
 description = "Makes you think faster, therefore slowing the environment "
 texture = ExtResource("2_d32lt")
+consumable = true
 stack_limit = true
 limit = 1
+chance_multiplier = 2

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cmqkkb8e7eb51"]
 
-[ext_resource type="PackedScene" uid="uid://q0a03p4jso3a" path="res://Scenes/house_medieval.tscn" id="1_o847y"]
-[ext_resource type="Script" path="res://Scripts/decoration.gd" id="1_oek3n"]
+[ext_resource type="PackedScene" uid="uid://q0a03p4jso3a" path="res://Scenes/Decorations/house_medieval.tscn" id="1_o847y"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="1_oek3n"]
 
 [resource]
 script = ExtResource("1_oek3n")

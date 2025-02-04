@@ -1,37 +1,130 @@
-[gd_scene load_steps=26 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=22 format=3 uid="uid://bty2oxq2nwcn6"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fpcwa"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
-[ext_resource type="Script" path="res://Scripts/old_player/weapon.gd" id="3_mhttw"]
-[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/amulet_icon_template.tscn" id="3_tciku"]
-[ext_resource type="Resource" uid="uid://dbplhi6u5tp6p" path="res://Amulets/bag_of_tools.tres" id="4_dhlh7"]
-[ext_resource type="PackedScene" uid="uid://buxptejpeo6y3" path="res://Scripts/old_player/bullet.tscn" id="4_ye3hi"]
-[ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="5_twxj0"]
-[ext_resource type="Resource" uid="uid://cgk8wbbvqcoc7" path="res://Amulets/some_plant.tres" id="6_6nwpy"]
-[ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/NewPlayer/1.png" id="6_iaany"]
-[ext_resource type="Texture2D" uid="uid://bfllsgqcnea8h" path="res://Textures/Player/NewPlayer/2.png" id="7_1t3cn"]
-[ext_resource type="Resource" uid="uid://yuapycu40c26" path="res://Amulets/second_heart.tres" id="8_2rtq2"]
-[ext_resource type="Texture2D" uid="uid://bnqy5phdfqc8y" path="res://Textures/Player/NewPlayer/3.png" id="8_bwfdr"]
+[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
-[ext_resource type="Texture2D" uid="uid://icl8g7dyq38u" path="res://Textures/Player/NewPlayer/4.png" id="9_piadv"]
-[ext_resource type="Resource" uid="uid://e1k2wmn1gx6m" path="res://Amulets/wrench.tres" id="9_u770r"]
-[ext_resource type="Texture2D" uid="uid://sj3gqiiuldle" path="res://Textures/Player/NewPlayer/5.png" id="10_5sxtt"]
-[ext_resource type="Resource" uid="uid://b8eetrsna3r4n" path="res://Amulets/pizza_slice.tres" id="10_102ue"]
-[ext_resource type="Texture2D" uid="uid://c0kt14syxving" path="res://Textures/Player/NewPlayer/6.png" id="11_0pnto"]
-[ext_resource type="Resource" uid="uid://bhobshe57i1af" path="res://Amulets/notes.tres" id="11_20fcd"]
-[ext_resource type="Resource" uid="uid://dbw5s5ormsd16" path="res://Amulets/pill.tres" id="12_2nn26"]
-[ext_resource type="Texture2D" uid="uid://cp2xyb0wba0sr" path="res://Textures/Player/NewPlayer/7.png" id="12_e6lyb"]
-[ext_resource type="Texture2D" uid="uid://w8sie85hw4eo" path="res://Textures/Player/NewPlayer/8.png" id="13_mr70v"]
-[ext_resource type="Resource" uid="uid://cw3j7kvwcevbv" path="res://Amulets/mystery_pill.tres" id="13_y7r2x"]
+[ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://Audio/Sounds/strzal.mp3" id="14_hg3xp"]
+[ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/1.png" id="15_rej4y"]
+[ext_resource type="Texture2D" uid="uid://bfllsgqcnea8h" path="res://Textures/Player/2.png" id="16_udaus"]
+[ext_resource type="Texture2D" uid="uid://bnqy5phdfqc8y" path="res://Textures/Player/3.png" id="17_5dhva"]
+[ext_resource type="Texture2D" uid="uid://icl8g7dyq38u" path="res://Textures/Player/4.png" id="18_mxoim"]
+[ext_resource type="Texture2D" uid="uid://sj3gqiiuldle" path="res://Textures/Player/5.png" id="19_ouaol"]
+[ext_resource type="Texture2D" uid="uid://c0kt14syxving" path="res://Textures/Player/6.png" id="20_j7w74"]
+[ext_resource type="Texture2D" uid="uid://cp2xyb0wba0sr" path="res://Textures/Player/7.png" id="21_8taeu"]
+[ext_resource type="Texture2D" uid="uid://w8sie85hw4eo" path="res://Textures/Player/8.png" id="22_8wiyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
 size = Vector2(21.4286, 50)
+
+[sub_resource type="GDScript" id="GDScript_yujad"]
+script/source = "extends Node2D
+
+@export var bullet_scene: PackedScene        # Drag & drop the bullet scene here
+@export var bullet_speed: float = 600.0      # Speed of the spawned bullets
+@export var knockback_force: float = 200.0   # Knockback magnitude applied to the parent
+@export var timer: Timer
+
+
+@export var description: String              # Reference to the timer for cooldown
+
+var can_shoot: bool = true
+
+func _process(delta: float) -> void:
+	# Check if the player wants to shoot
+	if GlobalVariables.game_is_on and Input.is_action_just_pressed(\"fire\") and can_shoot:
+		fire_weapon()
+
+func fire_weapon() -> void:
+	if bullet_scene:
+		# Spawn the bullet
+		var bullet = bullet_scene.instantiate()
+		bullet.global_position = global_position
+		get_tree().current_scene.add_child(bullet)
+		 
+		# Determine shooting direction based on player's input
+		var input_direction = get_parent().direction
+
+		# Default to shooting right if no inputd
+		if input_direction == Vector2.ZERO:
+			input_direction = Vector2.RIGHT
+
+		bullet.set_velocity(Vector2(get_parent().velocity.x, 0) + input_direction * bullet_speed)
+
+		# Apply knockback to the player
+		if owner is CharacterBody2D:
+			owner.velocity -= input_direction * knockback_force
+
+		# Start cooldown
+		can_shoot = false
+		timer.start()
+
+
+
+func _on_timer_timeout():
+	can_shoot = true
+"
+
+[sub_resource type="GDScript" id="GDScript_tmomb"]
+script/source = "extends Area2D
+
+@export var speed: float = 600.0        # Bullet movement speed
+var velocity: Vector2 = Vector2.ZERO   # Bullet velocity
+
+
+func _process(delta: float) -> void:
+	
+	# Move the bullet based on velocity
+	if GlobalVariables.game_is_on:
+		position += velocity * delta
+
+
+func set_velocity(direction: Vector2) -> void:
+	# Set the bullet's velocity in a specific direction
+	velocity = direction.normalized() * speed
+
+func _on_area_entered(body: Node) -> void:
+	if body and body.get_parent() and body.get_parent().has_node(\"HealthSystem\"):
+		body.get_parent().get_node(\"HealthSystem\").take_damage(40) 
+	queue_free()  # Destroy the bullet upon collision
+
+	 # Example: Apply 10 damages
+
+
+func _on_body_entered(body):
+	queue_free()  # D
+"
+
+[sub_resource type="Gradient" id="Gradient_3w352"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.976471, 0.552941, 0.0196078, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_its3e"]
+gradient = SubResource("Gradient_3w352")
+width = 1
+height = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hog3m"]
+size = Vector2(1, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_wdmy2"]
+_bundled = {
+"conn_count": 3,
+"conns": PackedInt32Array(1073741830, 1073741829, 33, 32, 2, 0, 0, 1073741832, 1073741831, 35, 34, 2, 0, 0, 1073741834, 1073741833, 37, 36, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Bullet", "Area2D", "z_index", "scale", "collision_layer", "collision_mask", "script", "speed", "CPUParticles2D", "CPUParticles2D", "lifetime", "emission_shape", "emission_sphere_radius", "gravity", "angular_velocity_min", "angular_velocity_max", "scale_amount_max", "color", "Sprite2D", "Sprite2D", "texture", "Timer", "Timer", "one_shot", "autostart", "CollisionShape2D", "CollisionShape2D", "shape", "AudioStreamPlayer2D", "AudioStreamPlayer2D", "stream", "autoplay", "_on_area_entered", "area_entered", "_on_body_entered", "body_entered", "_on_timer_timeout", "timeout"),
+"node_count": 6,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("Timer")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0, 1073741824, 0, 9, 8, -1, 8, 10, 6, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 1, 20, 14, 0, 1073741826, 0, 22, 21, -1, 2, 23, 15, 24, 16, 0, 1073741827, 0, 26, 25, -1, 1, 27, 17, 0, 1073741828, 0, 29, 28, -1, 2, 30, 18, 31, 19, 0),
+"variants": [-2, Vector2(12, 12), 2, 2, SubResource("GDScript_tmomb"), 2000.0, 0.1, 1, 1.0, Vector2(0, 2), -103.65, 167.06, 7.0, Color(0.624211, 0.433471, 0, 1), SubResource("GradientTexture2D_its3e"), true, true, SubResource("RectangleShape2D_hog3m"), ExtResource("14_hg3xp"), true],
+"version": 3
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ob57i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_iaany")
+"texture": ExtResource("15_rej4y")
 }],
 "loop": true,
 "name": &"jump",
@@ -39,28 +132,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_iaany")
+"texture": ExtResource("15_rej4y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_1t3cn")
+"texture": ExtResource("16_udaus")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_bwfdr")
+"texture": ExtResource("17_5dhva")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_piadv")
+"texture": ExtResource("18_mxoim")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_5sxtt")
+"texture": ExtResource("19_ouaol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_0pnto")
+"texture": ExtResource("20_j7w74")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_e6lyb")
+"texture": ExtResource("21_8taeu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_mr70v")
+"texture": ExtResource("22_8wiyi")
 }],
 "loop": true,
 "name": &"walk",
@@ -70,7 +163,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system")]
 z_index = 6
 scale = Vector2(1.4, 1.4)
-script = ExtResource("1_fpcwa")
+script = ExtResource("1_22t7u")
 MAX_JUMP_VEL = -1000.0
 STOP_DURATION = 0.6
 STOP_COOLDOWN = 1.5
@@ -99,8 +192,7 @@ default_color = Color(1, 1, 1, 0.321569)
 
 [node name="Amulets" type="Node" parent="."]
 script = ExtResource("2_sxsw1")
-amulet_icon_template = ExtResource("3_tciku")
-amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("4_dhlh7"), ExtResource("5_twxj0"), ExtResource("6_6nwpy"), ExtResource("8_2rtq2"), ExtResource("9_u770r"), ExtResource("10_102ue"), ExtResource("11_20fcd"), ExtResource("12_2nn26"), ExtResource("13_y7r2x")])
+amulet_icon_template = ExtResource("4_e8l5m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.42857, 6.42857)
@@ -114,8 +206,8 @@ autostart = true
 z_index = 3
 position = Vector2(2.14286, -1.42857)
 scale = Vector2(6, 6)
-script = ExtResource("3_mhttw")
-bullet_scene = ExtResource("4_ye3hi")
+script = SubResource("GDScript_yujad")
+bullet_scene = SubResource("PackedScene_wdmy2")
 bullet_speed = 2000.0
 timer = NodePath("Timer")
 

@@ -11,3 +11,4 @@ description = "Gives you green energy"
 texture = ExtResource("2_acyar")
 stack_limit = true
 limit = 2
+chance_multiplier = 2

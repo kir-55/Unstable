@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=3 format=3 uid="uid://ctr8ofv38du6p"]
+
+[ext_resource type="Texture2D" uid="uid://dnwwaxloyoewm" path="res://Textures/Baners/city_baner.png" id="1_cx422"]
+[ext_resource type="Script" path="res://Scripts/level_info.gd" id="3_p7c1v"]
+
+[resource]
+script = ExtResource("3_p7c1v")
+level = 0
+scene = "res://Scenes/Locations/city.tscn"
+title = "City"
+description = "21` century, cars, drones, road fixes, ..."
+baner = ExtResource("1_cx422")

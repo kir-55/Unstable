@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Unstable"
-run/main_scene="res://Scenes/menus/start_menu.tscn"
+run/main_scene="res://Scenes/Menus/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.0862745, 0.0901961, 0.109804, 1)
 boot_splash/image="res://Textures/UnstableLogo.png"
@@ -19,7 +19,18 @@ boot_splash/fullsize=false
 
 [autoload]
 
-GlobalVariables="*res://Scripts/global_variables.gd"
+GlobalEnums="*res://Scripts/global_enums.gd"
+GlobalVariables="*res://Scenes/global_variables.tscn"
+GlobalFunctions="*res://Scripts/global_functions.gd"
+
+[debug]
+
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/unassigned_variable_op_assign=0
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
 
 [display]
 

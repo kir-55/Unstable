@@ -9,5 +9,7 @@ id = 8
 name = "Mystery Pill"
 description = "You don't remember what it deos"
 texture = ExtResource("2_78ovb")
+consumable = true
 stack_limit = true
 limit = 1
+chance_multiplier = 1

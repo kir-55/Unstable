@@ -1,20 +1,20 @@
 [gd_scene load_steps=24 format=3 uid="uid://daai0thrp4xay"]
 
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="1_6eqel"]
-[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Music/do gry2.mp3" id="1_fnpvs"]
+[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="1_fnpvs"]
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yv4ht"]
 [ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="2_02dsf"]
 [ext_resource type="Texture2D" uid="uid://0dwlp03c63nb" path="res://Textures/UnstableLogo.png" id="3_ekuea"]
-[ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://button_hover.tres" id="4_rrgdv"]
+[ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_rrgdv"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="4_yih76"]
-[ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://button_hover_yellow.tres" id="5_1mafq"]
-[ext_resource type="Script" path="res://Scenes/menus/move_right.gd" id="5_srgek"]
+[ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="5_1mafq"]
+[ext_resource type="Script" path="res://Scenes/Menus/move_right.gd" id="5_srgek"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="5_xu6qi"]
-[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://panel.tres" id="6_25x81"]
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="6_25x81"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="6_y8vvb"]
-[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://line.tres" id="7_g27u5"]
-[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://transparent_button.tres" id="7_ug5gg"]
-[ext_resource type="Script" path="res://Scripts/decoration_spawner.gd" id="8_ewsx1"]
+[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="7_g27u5"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="7_ug5gg"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="8_ewsx1"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="13_io3tw"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="14_4vnkg"]
 [ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="15_mst61"]
@@ -220,7 +220,7 @@ player = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 spawn_from = 0
-decorations = Array[Resource("res://Scripts/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("15_mst61"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")])
+decorations = [ExtResource("13_io3tw"), ExtResource("15_mst61"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")]
 
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Again" to="MovingGround/Camera2D/StartMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Exit" to="MovingGround/Camera2D/StartMenu" method="_on_exit_pressed"]

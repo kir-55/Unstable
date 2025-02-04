@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://hj7nfep0o7s3"]
 
-[ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yislu"]
-[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://panel.tres" id="2_velnk"]
-[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://transparent_button.tres" id="3_1g3xo"]
+[ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_fseod"]
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
 
 [sub_resource type="Gradient" id="Gradient_yp7ek"]
 colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-script = ExtResource("1_yislu")
+script = ExtResource("1_fseod")
 last_score_label = NodePath("Panel/MarginContainer/VBoxContainer/Last Score")
 best_score_label = NodePath("Panel/MarginContainer/VBoxContainer/Best Score")
 
@@ -58,7 +58,7 @@ offset_bottom = 181.0
 grow_vertical = 2
 scale = Vector2(1, 1.03)
 size_flags_horizontal = 0
-theme_override_styles/panel = ExtResource("2_velnk")
+theme_override_styles/panel = ExtResource("2_1y0su")
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOverMenu/Panel"]
 layout_mode = 0
@@ -110,7 +110,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("3_1g3xo")
+theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Play again"
 
 [node name="Exit" type="Button" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
@@ -118,7 +118,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("3_1g3xo")
+theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Exit"
 
 [connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Again" to="GameOverMenu" method="_on_again_pressed"]
