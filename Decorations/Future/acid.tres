@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cuqmq6v5i85qk"]
 
-[ext_resource type="PackedScene" uid="uid://cv65jnoi1cdpj" path="res://Scenes/acid.tscn" id="1_oxral"]
-[ext_resource type="Script" path="res://Scripts/decoration.gd" id="2_q05qg"]
+[ext_resource type="PackedScene" uid="uid://cv65jnoi1cdpj" path="res://Scenes/Decorations/acid.tscn" id="1_oxral"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_q05qg"]
 
 [resource]
 script = ExtResource("2_q05qg")

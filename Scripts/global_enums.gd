@@ -1,0 +1,14 @@
+extends Node
+
+enum LEVELS {
+	START,
+	FUTURE,
+	MEDIVEL
+}
+
+enum DECORATION_LAYERS{
+	AIR,
+	ON_GROUND,
+	GROUND,
+	BACKGROUND
+}

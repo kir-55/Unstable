@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg47bhbbhmphx"]
+
+[ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://Textures/Decorations/drone_city.png" id="1_22p13"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="2_mexp6"]
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_uyrou"]
+[ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/Explosions/drone_explosion.tscn" id="3_eoxcv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
+size = Vector2(18, 10.7917)
+
+[node name="Drone City" type="Sprite2D"]
+z_index = -1
+position = Vector2(1, 91)
+scale = Vector2(6, 6)
+texture = ExtResource("1_22p13")
+offset = Vector2(-0.166952, -66.6667)
+
+[node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("2_mexp6")
+max_health = 90.0
+explosion_prefab = ExtResource("3_eoxcv")
+explosion_point = NodePath("../Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.5, -53.1667)
+script = ExtResource("2_uyrou")
+death_messages = Array[String](["Drone didn't liked you", "You kicked the drone with your head (the drone was harder)", "You jumped into the drone"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.333333, -18.0625)
+shape = SubResource("RectangleShape2D_1iamu")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

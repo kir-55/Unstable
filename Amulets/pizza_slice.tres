@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://b8eetrsna3r4n"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_wyi2k"]
-[ext_resource type="Texture2D" uid="uid://riixd6yx27ho" path="res://textures/Amulets/pizza.png" id="2_unxdd"]
+[ext_resource type="Texture2D" uid="uid://riixd6yx27ho" path="res://Textures/Amulets/pizza.png" id="2_unxdd"]
 
 [resource]
 script = ExtResource("1_wyi2k")
@@ -9,6 +9,7 @@ id = 5
 name = "Pizza Slice"
 description = "Gives you temporary energy to doble jump, consumes by the end of next epoch"
 texture = ExtResource("2_unxdd")
+consumable = false
 stack_limit = true
 limit = 1
 chance_multiplier = 1

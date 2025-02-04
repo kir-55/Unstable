@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://cgk8wbbvqcoc7"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ddvoi"]
-[ext_resource type="Texture2D" uid="uid://vx8dssydrwi4" path="res://textures/Amulets/plant.png" id="2_acyar"]
+[ext_resource type="Texture2D" uid="uid://vx8dssydrwi4" path="res://Textures/Amulets/plant.png" id="2_acyar"]
 
 [resource]
 script = ExtResource("1_ddvoi")
@@ -11,4 +11,4 @@ description = "Gives you green energy"
 texture = ExtResource("2_acyar")
 stack_limit = true
 limit = 2
-chance_multiplier = 1
+chance_multiplier = 2

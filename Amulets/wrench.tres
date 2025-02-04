@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://e1k2wmn1gx6m"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ofyad"]
-[ext_resource type="Texture2D" uid="uid://b5747t13hg1or" path="res://textures/Amulets/wrench.png" id="2_8qg5w"]
+[ext_resource type="Texture2D" uid="uid://b5747t13hg1or" path="res://Textures/Amulets/wrench.png" id="2_8qg5w"]
 
 [resource]
 script = ExtResource("1_ofyad")
@@ -9,6 +9,7 @@ id = 4
 name = "Right Wrench"
 description = "Adjusts machine to reduce your speed, decreases machine lags; more tools needed for full repair."
 texture = ExtResource("2_8qg5w")
+consumable = false
 stack_limit = true
 limit = 1
 chance_multiplier = 1

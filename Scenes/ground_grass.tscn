@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://dgpjbn06f57ec"]
-
-[node name="GroundGrass" type="Sprite2D"]
-self_modulate = Color(0.701961, 0.647059, 0.333333, 1)
-z_index = 20
-position = Vector2(707, 149)
-scale = Vector2(0.3, 0.3)
-offset = Vector2(3.33354, 36.6667)

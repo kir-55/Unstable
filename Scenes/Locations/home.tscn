@@ -1,0 +1,160 @@
+[gd_scene load_steps=22 format=3 uid="uid://bhjxp4p8df2qp"]
+
+[ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://Textures/Baners/Home/unstable_home4.png" id="1_1s6hv"]
+[ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://Textures/Baners/Home/unstable_home3.png" id="2_5fefa"]
+[ext_resource type="Texture2D" uid="uid://cgs0nsb18ahpp" path="res://Textures/Baners/Home/unstable_home2.png" id="3_dv88k"]
+[ext_resource type="Texture2D" uid="uid://cehxuhsv2bhp8" path="res://Textures/Baners/Home/unstable_home.png" id="4_swkg2"]
+[ext_resource type="Script" path="res://Scripts/epoch_displayer.gd" id="5_b7opy"]
+[ext_resource type="Script" path="res://Scripts/Amulets/spawn_amulets.gd" id="5_i6kwn"]
+[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="6_58chv"]
+[ext_resource type="Resource" uid="uid://dbplhi6u5tp6p" path="res://Amulets/bag_of_tools.tres" id="7_xuo3h"]
+[ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="8_2fmrr"]
+[ext_resource type="Resource" uid="uid://cgk8wbbvqcoc7" path="res://Amulets/some_plant.tres" id="9_ysgxt"]
+[ext_resource type="Resource" uid="uid://yuapycu40c26" path="res://Amulets/second_heart.tres" id="10_p5otn"]
+[ext_resource type="Resource" uid="uid://e1k2wmn1gx6m" path="res://Amulets/wrench.tres" id="11_3c1i3"]
+[ext_resource type="Resource" uid="uid://b8eetrsna3r4n" path="res://Amulets/pizza_slice.tres" id="12_t8wfy"]
+[ext_resource type="Resource" uid="uid://bhobshe57i1af" path="res://Amulets/notes.tres" id="13_tnqby"]
+[ext_resource type="Resource" uid="uid://dbw5s5ormsd16" path="res://Amulets/pill.tres" id="14_t4lh0"]
+[ext_resource type="Resource" uid="uid://cw3j7kvwcevbv" path="res://Amulets/mystery_pill.tres" id="15_1fem8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1s6hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5fefa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dv88k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_swkg2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjjjx"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.882353, 0.658824, 0.270588, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_gidgj"]
+font_size = 66
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kaiwq"]
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lncj"]
+font_size = 24
+
+[node name="Transition" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(576, 324)
+scale = Vector2(3.209, 3.209)
+sprite_frames = SubResource("SpriteFrames_fxmdu")
+autoplay = "default"
+frame_progress = 0.619749
+
+[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("texture_rect")]
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 328.0
+offset_bottom = 167.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjjjx")
+script = ExtResource("5_b7opy")
+texture_rect = NodePath("TextureRect")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -37.5
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+label_settings = SubResource("LabelSettings_gidgj")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 41.0
+grow_horizontal = 2
+text = "Next Epoch:"
+label_settings = SubResource("LabelSettings_kaiwq")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(500, 70)
+offset_left = 538.0
+offset_top = 393.0
+offset_right = 1038.0
+offset_bottom = 463.0
+rotation = 0.0198443
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("5_i6kwn")
+label = NodePath("../ColorRect/Label")
+amulet_prefab = ExtResource("6_58chv")
+amulets_list = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("7_xuo3h"), ExtResource("8_2fmrr"), ExtResource("9_ysgxt"), ExtResource("10_p5otn"), ExtResource("11_3c1i3"), ExtResource("12_t8wfy"), ExtResource("13_tnqby"), ExtResource("14_t4lh0"), ExtResource("15_1fem8")])
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 555.0
+offset_top = 16.0
+offset_right = -14.0
+offset_bottom = -565.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0901961, 0.109804, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_right = 583.0
+offset_bottom = 66.0
+text = "You have a few seconds to grab 1 item"
+label_settings = SubResource("LabelSettings_1lncj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

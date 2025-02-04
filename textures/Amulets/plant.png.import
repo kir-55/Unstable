@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vx8dssydrwi4"
-path="res://.godot/imported/plant.png-284fad9348b5af852adbb70a7d48e4c2.ctex"
+path="res://.godot/imported/plant.png-37670fa9c9c996edb1a8605c544b7dd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Amulets/plant.png"
-dest_files=["res://.godot/imported/plant.png-284fad9348b5af852adbb70a7d48e4c2.ctex"]
+source_file="res://Textures/Amulets/plant.png"
+dest_files=["res://.godot/imported/plant.png-37670fa9c9c996edb1a8605c544b7dd8.ctex"]
 
 [params]
 

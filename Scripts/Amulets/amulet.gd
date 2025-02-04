@@ -7,6 +7,9 @@ extends Resource
 @export var description: String = ""
 @export var texture: Texture2D
 
+
+@export var consumable: bool = false
+
 #Regulacja widoczności w edytorze
 @export var stack_limit: bool = false:
 	set(value):

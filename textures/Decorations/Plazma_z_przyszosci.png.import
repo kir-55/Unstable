@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccepwmremjvqx"
-path="res://.godot/imported/Plazma_z_przyszosci.png-c0f7f4dd2658adbe945312c768f952f5.ctex"
+path="res://.godot/imported/Plazma_z_przyszosci.png-a7ea48514d2a522b75247c19ac3375d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Decorations/Plazma_z_przyszosci.png"
-dest_files=["res://.godot/imported/Plazma_z_przyszosci.png-c0f7f4dd2658adbe945312c768f952f5.ctex"]
+source_file="res://Textures/Decorations/Plazma_z_przyszosci.png"
+dest_files=["res://.godot/imported/Plazma_z_przyszosci.png-a7ea48514d2a522b75247c19ac3375d0.ctex"]
 
 [params]
 

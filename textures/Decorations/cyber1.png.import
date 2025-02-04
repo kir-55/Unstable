@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf4nuq84o1vlw"
-path="res://.godot/imported/cyber1.png-7621c6e3a2fc7df9615ce1d670305bdb.ctex"
+path="res://.godot/imported/cyber1.png-7920f7200e0c9c15122575f2b3f01a1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Decorations/cyber1.png"
-dest_files=["res://.godot/imported/cyber1.png-7621c6e3a2fc7df9615ce1d670305bdb.ctex"]
+source_file="res://Textures/Decorations/cyber1.png"
+dest_files=["res://.godot/imported/cyber1.png-7920f7200e0c9c15122575f2b3f01a1e.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://dpvkb0rwmnqll"]
 
-[ext_resource type="Script" path="res://Scripts/decoration.gd" id="1_d47c1"]
-[ext_resource type="PackedScene" uid="uid://kxq0jo51lwl4" path="res://Scenes/ufo.tscn" id="1_tsoia"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="1_d47c1"]
+[ext_resource type="PackedScene" uid="uid://kxq0jo51lwl4" path="res://Scenes/Decorations/ufo.tscn" id="1_tsoia"]
 
 [resource]
 script = ExtResource("1_d47c1")
