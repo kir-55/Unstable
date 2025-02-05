@@ -7,7 +7,7 @@
 script = ExtResource("1_mc4rk")
 id = 8
 name = "Mystery Pill"
-description = "You don't remember what it deos"
+description = "You don't remember what it deos (click to use)"
 texture = ExtResource("2_78ovb")
 consumable = true
 stack_limit = true
