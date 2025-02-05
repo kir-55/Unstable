@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mfhqfusv0tgx"
-path="res://.godot/imported/nowa_barierka.png-82b6eb07a2f0c159a30e0c54d3eebccf.ctex"
+path="res://.godot/imported/nowa_barierka.png-d685fda442a9eedb8cc85b0921f6db1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/nowa_barierka.png"
-dest_files=["res://.godot/imported/nowa_barierka.png-82b6eb07a2f0c159a30e0c54d3eebccf.ctex"]
+source_file="res://textures/Decorations/nowa_barierka.png"
+dest_files=["res://.godot/imported/nowa_barierka.png-d685fda442a9eedb8cc85b0921f6db1e.ctex"]
 
 [params]
 

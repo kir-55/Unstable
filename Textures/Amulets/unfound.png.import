@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2gcmxd5wp2xn"
-path="res://.godot/imported/house1_city.png-81a9b8ad3c924818c7b53e3789866b88.ctex"
+uid="uid://c1dp2t0q0chrc"
+path="res://.godot/imported/unfound.png-0294d175faa55f21aa5ecfa2b6d85024.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Decorations/house1_city.png"
-dest_files=["res://.godot/imported/house1_city.png-81a9b8ad3c924818c7b53e3789866b88.ctex"]
+source_file="res://textures/Amulets/unfound.png"
+dest_files=["res://.godot/imported/unfound.png-0294d175faa55f21aa5ecfa2b6d85024.ctex"]
 
 [params]
 

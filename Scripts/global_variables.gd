@@ -21,6 +21,7 @@ var items_in_home: int = initial_items_in_home
 
 @export var amulets: Array[Amulet]
 var player_amulets: Array[int]
+var player_amulet_collection : Array[int] = [0,1]
 
 
 var last_epoch: GlobalEnums.LEVELS
@@ -28,6 +29,17 @@ var next_epoch: GlobalEnums.LEVELS
 
 var game_is_on := true
 
+enum MENU_LEVEL {
+	NONE,
+	MAIN,
+	PROGRESS
+}
+
+var menus = {
+	MENU_LEVEL.MAIN: preload("res://Scenes/menus/start_menu.tscn"),
+	MENU_LEVEL.PROGRESS: preload("res://Scenes/menus/progress_menu.tscn")
+}
+var current_menu
 
 
 

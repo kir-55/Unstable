@@ -113,6 +113,14 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Play again"
 
+[node name="Progress" type="Button" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_ca5b1")
+text = "Progress"
+
 [node name="Exit" type="Button" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -122,4 +130,5 @@ theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Exit"
 
 [connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Again" to="GameOverMenu" method="_on_again_pressed"]
+[connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Progress" to="GameOverMenu" method="_on_gameover_progress_pressed"]
 [connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Exit" to="GameOverMenu" method="_on_exit_pressed"]

@@ -11,6 +11,12 @@ extends Control
 func _on_exit_pressed():
 	get_tree().quit()
 	
+func _on_progress_pressed():
+	GlobalFunctions.load_menu(GlobalVariables.MENU_LEVEL.PROGRESS, get_node(get_parent().get_path()))
+
+func _on_gameover_progress_pressed():
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+
 
 func _on_again_pressed():
 	GlobalFunctions.reload()
@@ -20,3 +26,4 @@ func _ready():
 		return
 	last_score_label.set_text(last_score_label.get_text() + str(GlobalVariables.last_score))
 	best_score_label.set_text(best_score_label.get_text() + str(GlobalVariables.best_score))
+	
