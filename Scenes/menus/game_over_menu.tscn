@@ -4,11 +4,11 @@
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
 
-[sub_resource type="Gradient" id="Gradient_yp7ek"]
+[sub_resource type="Gradient" id="Gradient_18d3l"]
 colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xp8cl"]
-gradient = SubResource("Gradient_yp7ek")
+gradient = SubResource("Gradient_18d3l")
 width = 1152
 height = 648
 fill = 1
@@ -20,7 +20,7 @@ metadata/_snap_enabled = true
 font_size = 20
 font_color = Color(0.707013, 0.0313546, 0.0515839, 1)
 
-[node name="GameOverMenu" type="Control" node_paths=PackedStringArray("last_score_label", "best_score_label")]
+[node name="GameOverMenu" type="Control" node_paths=PackedStringArray("last_score_label", "best_score_label", "new_amulet_count_label")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,6 +34,7 @@ size_flags_stretch_ratio = 2.0
 script = ExtResource("1_fseod")
 last_score_label = NodePath("Panel/MarginContainer/VBoxContainer/Last Score")
 best_score_label = NodePath("Panel/MarginContainer/VBoxContainer/Best Score")
+new_amulet_count_label = NodePath("Panel/MarginContainer/VBoxContainer/RichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -111,13 +112,26 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Play again"
 
-[node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+fit_content = true
+
+[node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer/RichTextLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.3
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
-text = "Progress"
 
 [node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -128,5 +142,6 @@ theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Exit"
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Progress" to="." method="_on_gameover_progress_pressed"]
+[connection signal="ready" from="Panel/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_new_amulet_count_ready"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/RichTextLabel/Progress" to="." method="_on_gameover_progress_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -7,6 +7,7 @@ func reload():
 	GlobalVariables.game_is_on = true
 	print(GlobalVariables.player_amulets)
 	GlobalVariables.player_amulets = []
+	GlobalVariables.player_new_amulets = []
 	GlobalVariables.times_treveled = 0
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 	get_tree().change_scene_to_file("res://Scenes/Locations/city.tscn")

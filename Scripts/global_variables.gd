@@ -21,7 +21,8 @@ var items_in_home: int = initial_items_in_home
 
 @export var amulets: Array[Amulet]
 var player_amulets: Array[int]
-var player_amulet_collection : Array[int] = [0,1]
+var player_amulet_collection : Array[int] = [0]
+var player_new_amulets : Array[int]
 
 
 var last_epoch: GlobalEnums.LEVELS

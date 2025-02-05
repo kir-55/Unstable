@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://j2nldvt0tvg5"]
+[gd_scene load_steps=11 format=3 uid="uid://j2nldvt0tvg5"]
 
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_jjbf4"]
 [ext_resource type="Script" path="res://Scripts/menus/Progress/menu.gd" id="1_k6kla"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/menus/Progress/spawn_amulets.gd" id="4_86uri"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/menus/amulet_icon_template.tscn" id="5_b7kvo"]
 [ext_resource type="Texture2D" uid="uid://c1dp2t0q0chrc" path="res://textures/Amulets/unfound.png" id="6_v6gmf"]
+[ext_resource type="PackedScene" uid="uid://pfv7mxqwmppe" path="res://Amulets/new_outline.tscn" id="8_mjkde"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxiux"]
 bg_color = Color(0.230315, 0.230315, 0.230315, 1)
@@ -105,6 +106,7 @@ columns = 9
 script = ExtResource("4_86uri")
 amulet_prefab = ExtResource("5_b7kvo")
 not_found_amulet_texture = ExtResource("6_v6gmf")
+new_amulet_outline = ExtResource("8_mjkde")
 
 [node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
