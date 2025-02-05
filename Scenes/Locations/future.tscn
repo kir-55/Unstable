@@ -138,7 +138,7 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-decorations = [ExtResource("11_f7px4"), ExtResource("14_t2yep"), ExtResource("13_pikp5"), ExtResource("9_cgx32")]
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("11_f7px4"), ExtResource("14_t2yep"), ExtResource("13_pikp5"), ExtResource("9_cgx32")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
 wait_time = 10.0

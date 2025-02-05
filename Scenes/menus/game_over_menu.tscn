@@ -18,7 +18,7 @@ metadata/_snap_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_hxf4e"]
 font_size = 20
-font_color = Color(0.707013, 0.0313546, 0.0515839, 1)
+font_color = Color(0.764706, 0.235294, 0.25098, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 

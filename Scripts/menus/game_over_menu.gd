@@ -20,3 +20,4 @@ func _ready():
 		return
 	last_score_label.set_text(last_score_label.get_text() + str(GlobalVariables.last_score))
 	best_score_label.set_text(best_score_label.get_text() + str(GlobalVariables.best_score))
+	GlobalFunctions.save_player_data()

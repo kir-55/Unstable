@@ -8,7 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_rrgdv"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="4_yih76"]
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="5_1mafq"]
-[ext_resource type="Script" path="res://Scenes/Menus/move_right.gd" id="5_srgek"]
+[ext_resource type="Script" path="res://Scripts/move_right.gd" id="5_srgek"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="5_xu6qi"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="6_25x81"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="6_y8vvb"]
@@ -220,7 +220,7 @@ player = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 spawn_from = 0
-decorations = [ExtResource("13_io3tw"), ExtResource("15_mst61"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")]
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("15_mst61"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")])
 
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Again" to="MovingGround/Camera2D/StartMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Exit" to="MovingGround/Camera2D/StartMenu" method="_on_exit_pressed"]

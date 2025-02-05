@@ -29,6 +29,8 @@ var next_epoch: GlobalEnums.LEVELS
 var game_is_on := true
 
 
+@export var player_data_path: String = "res://player_data.json"
+
 
 
 
