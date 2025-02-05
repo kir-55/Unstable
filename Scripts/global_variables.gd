@@ -29,17 +29,11 @@ var next_epoch: GlobalEnums.LEVELS
 
 var game_is_on := true
 
-enum MENU_LEVEL {
-	NONE,
-	MAIN,
-	PROGRESS
-}
-
 var menus = {
-	MENU_LEVEL.MAIN: preload("res://Scenes/menus/start_menu.tscn"),
-	MENU_LEVEL.PROGRESS: preload("res://Scenes/menus/progress_menu.tscn")
+	GlobalEnums.MENU_LEVEL.MAIN: "res://Scenes/menus/start_menu.tscn",
+	GlobalEnums.MENU_LEVEL.PROGRESS: "res://Scenes/menus/progress_menu.tscn",
 }
-var current_menu
+var current_menu = GlobalEnums.MENU_LEVEL.MAIN
 
 
 

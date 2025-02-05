@@ -12,10 +12,10 @@ func _on_exit_pressed():
 	get_tree().quit()
 	
 func _on_progress_pressed():
-	GlobalFunctions.load_menu(GlobalVariables.MENU_LEVEL.PROGRESS, get_node(get_parent().get_path()))
+	GlobalFunctions.load_menu(GlobalEnums.MENU_LEVEL.PROGRESS, true)
 
 func _on_gameover_progress_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	GlobalFunctions.load_menu(GlobalEnums.MENU_LEVEL.PROGRESS, true, true)
 
 
 func _on_again_pressed():

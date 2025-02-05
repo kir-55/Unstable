@@ -20,9 +20,7 @@ metadata/_snap_enabled = true
 font_size = 20
 font_color = Color(0.707013, 0.0313546, 0.0515839, 1)
 
-[node name="CanvasLayer" type="CanvasLayer"]
-
-[node name="GameOverMenu" type="Control" parent="." node_paths=PackedStringArray("last_score_label", "best_score_label")]
+[node name="GameOverMenu" type="Control" node_paths=PackedStringArray("last_score_label", "best_score_label")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,7 +35,7 @@ script = ExtResource("1_fseod")
 last_score_label = NodePath("Panel/MarginContainer/VBoxContainer/Last Score")
 best_score_label = NodePath("Panel/MarginContainer/VBoxContainer/Best Score")
 
-[node name="TextureRect" type="TextureRect" parent="GameOverMenu"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -47,7 +45,7 @@ texture = SubResource("GradientTexture2D_xp8cl")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Panel" type="Panel" parent="GameOverMenu"]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -60,7 +58,7 @@ scale = Vector2(1, 1.03)
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("2_1y0su")
 
-[node name="MarginContainer" type="MarginContainer" parent="GameOverMenu/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 0
 offset_left = -2.61246
 offset_top = -3.883
@@ -71,10 +69,10 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="DeathMessageLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 50
@@ -84,28 +82,28 @@ horizontal_alignment = 1
 autowrap_mode = 3
 justification_flags = 0
 
-[node name="Margin3" type="Control" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Margin3" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Last Score" type="Label" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Last Score" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.760784, 0.0627451, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score: "
 
-[node name="Best Score" type="Label" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Best Score" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.976471, 0.65098, 0.0196078, 1)
 theme_override_font_sizes/font_size = 30
 text = "Best Score:"
 
-[node name="Margin2" type="Control" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Margin2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Again" type="Button" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Again" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -113,7 +111,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Play again"
 
-[node name="Progress" type="Button" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -121,7 +119,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Progress"
 
-[node name="Exit" type="Button" parent="GameOverMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -129,6 +127,6 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Exit"
 
-[connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Again" to="GameOverMenu" method="_on_again_pressed"]
-[connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Progress" to="GameOverMenu" method="_on_gameover_progress_pressed"]
-[connection signal="pressed" from="GameOverMenu/Panel/MarginContainer/VBoxContainer/Exit" to="GameOverMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Progress" to="." method="_on_gameover_progress_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

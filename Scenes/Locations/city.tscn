@@ -1,11 +1,11 @@
 [gd_scene load_steps=22 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="1_38dti"]
-[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="1_b5qif"]
+[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://textures/Unstable_paralax_layer1.png" id="1_b5qif"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_g3w6i"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="1_pfyk3"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_uj810"]
-[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="2_fxvmq"]
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://textures/Unstable_paralax_layer-1.png" id="2_fxvmq"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="2_redno"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="3_skbog"]
 [ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/player.tscn" id="4_a1jms"]
