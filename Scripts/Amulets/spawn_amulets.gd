@@ -71,4 +71,10 @@ func chosed_amulet(event: InputEvent, amulet):
 			
 func grab_and_leave():
 	GlobalVariables.player_amulets.append_array(amulets_chosen)
+	for i in GlobalVariables.player_amulets:
+		if !(i in GlobalVariables.player_amulet_collection):
+			print(str(i) + "grab and leave")
+			GlobalVariables.player_new_amulets.append(i)
+			GlobalVariables.player_amulet_collection.append(i)
+
 	get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")

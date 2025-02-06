@@ -5,3 +5,6 @@ extends Node2D
 
 func _process(delta):
 	position.x += delta * speed
+
+func _ready():
+	GlobalFunctions.load_menu(GlobalVariables.current_menu)

@@ -1,96 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://daai0thrp4xay"]
+[gd_scene load_steps=8 format=3 uid="uid://b34nhv4f6un8n"]
 
-[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="1_6eqel"]
-[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="1_fnpvs"]
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yv4ht"]
-[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="2_02dsf"]
 [ext_resource type="Texture2D" uid="uid://0dwlp03c63nb" path="res://Textures/UnstableLogo.png" id="3_ekuea"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_rrgdv"]
-[ext_resource type="Script" path="res://Scripts/random_system.gd" id="4_yih76"]
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="5_1mafq"]
+[ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="6_4jgwr"]
+
 [ext_resource type="Script" path="res://Scripts/move_right.gd" id="5_srgek"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="5_xu6qi"]
+
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="6_25x81"]
-[ext_resource type="Script" path="res://Scripts/sloper.gd" id="6_y8vvb"]
-[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="7_g27u5"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="7_ug5gg"]
-[ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="8_ewsx1"]
-[ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="13_io3tw"]
-[ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="14_4vnkg"]
-[ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="15_mst61"]
-[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="15_v51w2"]
-[ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="17_xoou5"]
-[ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="18_lwfrx"]
-[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="18_tgdhe"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v15ys"]
-shader = ExtResource("7_g27u5")
-shader_parameter/XShiftAmplitude = null
-shader_parameter/MinLineThikness = Vector2(0, 300)
-shader_parameter/MaxThikness = 3000.0
-
-[node name="Node2D" type="Node2D"]
-
-[node name="MovingGround" type="Node2D" parent="."]
-position = Vector2(-2, 2)
-
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="MovingGround"]
-layer = 10
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="MovingGround/ParallaxBackground2"]
-z_index = -2
-position = Vector2(24, 142)
-motion_scale = Vector2(1.6, 0.9)
-motion_mirroring = Vector2(7000, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground2/ParallaxLayer"]
-self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
-position = Vector2(-16, -312)
-scale = Vector2(12, 12)
-texture = ExtResource("1_6eqel")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="MovingGround"]
-scroll_offset = Vector2(1000, 0)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
-self_modulate = Color(1, 1, 1, 0.984314)
-position = Vector2(-621, 39)
-motion_scale = Vector2(0.1, 0.8)
-motion_mirroring = Vector2(2000, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer3"]
-self_modulate = Color(1, 1, 1, 0.556863)
-position = Vector2(199, 168)
-scale = Vector2(2, 2)
-texture = ExtResource("2_02dsf")
-
-[node name="Sprite2D2" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer3"]
-self_modulate = Color(1, 1, 1, 0.556863)
-position = Vector2(1208, 171)
-scale = Vector2(2, 2)
-texture = ExtResource("2_02dsf")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
-position = Vector2(-332, 10)
-motion_scale = Vector2(0.3, 0.9)
-motion_mirroring = Vector2(1900, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer2"]
-position = Vector2(200, 76)
-scale = Vector2(4, 4)
-texture = ExtResource("2_02dsf")
-
-[node name="Camera2D" type="Camera2D" parent="MovingGround"]
-position = Vector2(-338, 17)
-position_smoothing_enabled = true
-script = ExtResource("5_srgek")
-speed = 200
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MovingGround/Camera2D"]
-stream = ExtResource("1_fnpvs")
-autoplay = true
-
-[node name="StartMenu" type="Control" parent="MovingGround/Camera2D"]
+[node name="StartMenu" type="Control"]
 z_index = 3
 layout_mode = 3
 anchors_preset = 8
@@ -98,10 +20,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 55.0
-offset_top = -22.0
-offset_right = 55.0
-offset_bottom = -22.0
+offset_left = -208.0
+offset_top = -177.0
+offset_right = -208.0
+offset_bottom = -177.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(-51, 12)
@@ -109,24 +31,15 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 script = ExtResource("1_yv4ht")
 
-[node name="Panel" type="Panel" parent="MovingGround/Camera2D/StartMenu"]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 400.0
+offset_bottom = 300.0
 pivot_offset = Vector2(204, 150)
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("6_25x81")
 
-[node name="MarginContainer" type="MarginContainer" parent="MovingGround/Camera2D/StartMenu/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,23 +53,23 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 texture = ExtResource("3_ekuea")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Margin2" type="Control" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Margin2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Again" type="Button" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Again" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -167,7 +80,18 @@ theme_override_styles/pressed = ExtResource("4_rrgdv")
 theme_override_styles/focus = ExtResource("4_rrgdv")
 text = "Play"
 
-[node name="Exit" type="Button" parent="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_ug5gg")
+theme_override_styles/hover = ExtResource("6_4jgwr")
+theme_override_styles/pressed = ExtResource("4_rrgdv")
+theme_override_styles/focus = ExtResource("4_rrgdv")
+text = "Progress"
+
+[node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -177,6 +101,7 @@ theme_override_styles/hover = ExtResource("5_1mafq")
 theme_override_styles/pressed = ExtResource("5_1mafq")
 theme_override_styles/focus = ExtResource("5_1mafq")
 text = "Exit"
+
 
 [node name="RandomSystem" type="Node" parent="MovingGround"]
 script = ExtResource("4_yih76")
@@ -224,3 +149,7 @@ decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtRes
 
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Again" to="MovingGround/Camera2D/StartMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Exit" to="MovingGround/Camera2D/StartMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Progress" to="." method="_on_progress_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+
