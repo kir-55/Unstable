@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blmayflby86ef"]
+
+[ext_resource type="Shader" path="res://Styles/new_outline.gdshader" id="1_gexga"]
+
+[resource]
+shader = ExtResource("1_gexga")
+shader_parameter/highlight_color = Color(0.772549, 0.470588, 0.207843, 1)
+shader_parameter/frequency = 4.235
+shader_parameter/highlight_speed = 1.608
+shader_parameter/highlight_width = 789.189

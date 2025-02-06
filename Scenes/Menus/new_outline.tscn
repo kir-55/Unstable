@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://pfv7mxqwmppe"]
+
+[ext_resource type="Material" uid="uid://blmayflby86ef" path="res://Styles/new_highlight.tres" id="1_4s54f"]
+[ext_resource type="Texture2D" uid="uid://bs0xlloapmy83" path="res://Textures/Amulets/outline.png" id="2_7300f"]
+
+[node name="TextureRect" type="TextureRect"]
+modulate = Color(1, 1, 0, 1)
+self_modulate = Color(1, 1, 0, 1)
+show_behind_parent = true
+clip_children = 2
+material = ExtResource("1_4s54f")
+custom_minimum_size = Vector2(72, 72)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7300f")
+stretch_mode = 5

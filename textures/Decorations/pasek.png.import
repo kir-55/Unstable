@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c40frdglo8qia"
-path="res://.godot/imported/pasek.png-a7710faf56ab4c5fb339d0506f4fa506.ctex"
+path="res://.godot/imported/pasek.png-224fadd47766df2071760bf81fba6a5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Decorations/pasek.png"
-dest_files=["res://.godot/imported/pasek.png-a7710faf56ab4c5fb339d0506f4fa506.ctex"]
+source_file="res://Textures/Decorations/pasek.png"
+dest_files=["res://.godot/imported/pasek.png-224fadd47766df2071760bf81fba6a5e.ctex"]
 
 [params]
 

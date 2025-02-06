@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byt2uuian5r3w"
-path="res://.godot/imported/nowy_znak.png-fea2856784457cdfbb9975639337a9a0.ctex"
+path="res://.godot/imported/nowy_znak.png-77e7ecb738a71a82ab377232f6af981b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Decorations/nowy_znak.png"
-dest_files=["res://.godot/imported/nowy_znak.png-fea2856784457cdfbb9975639337a9a0.ctex"]
+source_file="res://Textures/Decorations/nowy_znak.png"
+dest_files=["res://.godot/imported/nowy_znak.png-77e7ecb738a71a82ab377232f6af981b.ctex"]
 
 [params]
 

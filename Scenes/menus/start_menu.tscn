@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b34nhv4f6un8n"]
+[gd_scene load_steps=8 format=3 uid="uid://b34nhv4f6un8n"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yv4ht"]
-[ext_resource type="Texture2D" uid="uid://0dwlp03c63nb" path="res://textures/UnstableLogo.png" id="3_ekuea"]
+[ext_resource type="Texture2D" uid="uid://0dwlp03c63nb" path="res://Textures/UnstableLogo.png" id="3_ekuea"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_rrgdv"]
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="5_1mafq"]
+[ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="6_4jgwr"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="6_25x81"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="7_ug5gg"]
 
@@ -81,7 +82,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_ug5gg")
-theme_override_styles/hover = ExtResource("4_rrgdv")
+theme_override_styles/hover = ExtResource("6_4jgwr")
 theme_override_styles/pressed = ExtResource("4_rrgdv")
 theme_override_styles/focus = ExtResource("4_rrgdv")
 text = "Progress"

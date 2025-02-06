@@ -6,12 +6,12 @@
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_mkup5"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_7j6te"]
 [ext_resource type="Script" path="res://Scripts/menus/Progress/spawn_amulets.gd" id="4_86uri"]
-[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/menus/amulet_icon_template.tscn" id="5_b7kvo"]
-[ext_resource type="Texture2D" uid="uid://c1dp2t0q0chrc" path="res://textures/Amulets/unfound.png" id="6_v6gmf"]
-[ext_resource type="PackedScene" uid="uid://pfv7mxqwmppe" path="res://Amulets/new_outline.tscn" id="8_mjkde"]
+[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="5_b7kvo"]
+[ext_resource type="Texture2D" uid="uid://c1dp2t0q0chrc" path="res://Textures/Amulets/unfound.png" id="6_v6gmf"]
+[ext_resource type="PackedScene" uid="uid://pfv7mxqwmppe" path="res://Scenes/Menus/new_outline.tscn" id="8_mjkde"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxiux"]
-bg_color = Color(0.230315, 0.230315, 0.230315, 1)
+bg_color = Color(0.208756, 0.237667, 0.300274, 1)
 
 [node name="ProgressMenu" type="Control"]
 z_index = 10
@@ -54,7 +54,7 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(466.1, 444.125)
 layout_mode = 2
 alignment = 1
 
@@ -84,6 +84,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.02
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(794, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -91,6 +92,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_kxiux")
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(785.165, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20

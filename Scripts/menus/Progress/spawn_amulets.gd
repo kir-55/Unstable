@@ -6,14 +6,15 @@ extends GridContainer
 
 func _ready():
 	GlobalVariables.player_amulet_collection.sort()
-	for id in GlobalVariables.player_amulet_collection:
-		spawn_amulet(GlobalVariables.amulets[id])
-		
-	for i in range(GlobalVariables.amulets.size() - GlobalVariables.player_amulet_collection.size()):
-		var amulet_representation = amulet_prefab.instantiate()
-		amulet_representation.texture = not_found_amulet_texture
-		amulet_representation.tooltip_text = "???\n" +  "This amulet has not been found yet..."
-		add_child(amulet_representation)
+	
+	for amulet_id in GlobalVariables.amulets.size():
+		if GlobalVariables.player_amulet_collection.has(amulet_id):
+			spawn_amulet(GlobalVariables.amulets[amulet_id])
+		else:
+			var amulet_representation = amulet_prefab.instantiate()
+			amulet_representation.texture = not_found_amulet_texture
+			amulet_representation.tooltip_text = "???\n" +  "This amulet has not been found yet..."
+			add_child(amulet_representation)
 
 func spawn_amulet(amulet):
 	var amulet_representation = amulet_prefab.instantiate()
