@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_fseod"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
-[ext_resource type="Script" path="res://Scenes/Menus/superscript_effect.gd" id="4_eh833"]
+[ext_resource type="Script" path="res://Scripts/superscript_effect.gd" id="4_eh833"]
 
 [sub_resource type="Gradient" id="Gradient_18d3l"]
 colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
