@@ -84,7 +84,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.02
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(794, 0)
+custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -92,8 +92,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_kxiux")
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(785.165, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -104,13 +104,14 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
-columns = 9
+columns = 10
 script = ExtResource("4_86uri")
 amulet_prefab = ExtResource("5_b7kvo")
 not_found_amulet_texture = ExtResource("6_v6gmf")
 new_amulet_outline = ExtResource("8_mjkde")
 
 [node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_mkup5")

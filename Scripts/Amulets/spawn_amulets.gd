@@ -11,7 +11,6 @@ var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
 
 
 @export var amulet_prefab: PackedScene
-@export var amulets_list: Array[Amulet]
 
 
 @export var amulets_displayed: Array[int]
@@ -19,7 +18,7 @@ var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
 func _ready():
 	label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
 	var multiplied_amulets_list : Array[Amulet]
-	for i in amulets_list:
+	for i in GlobalVariables.amulets:
 		for j in range(i.chance_multiplier):
 			multiplied_amulets_list.append(i)
 	print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)))
@@ -38,9 +37,9 @@ func _ready():
 
 		
 func can_be_generated(amulet_id: int):
-	if !amulets_list[amulet_id].stack_limit:
+	if !GlobalVariables.amulets[amulet_id].stack_limit:
 		return true
-	elif amulets_list[amulet_id].limit > GlobalVariables.player_amulets.count(amulet_id) + amulets_displayed.count(amulet_id):
+	elif GlobalVariables.amulets[amulet_id].limit > GlobalVariables.player_amulets.count(amulet_id) + amulets_displayed.count(amulet_id):
 		return true
 	else:
 		return false

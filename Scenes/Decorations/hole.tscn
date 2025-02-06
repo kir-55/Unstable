@@ -13,7 +13,7 @@ size = Vector2(18.6667, 1.33333)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol1y4"]
 size = Vector2(7.14286, 16.6428)
 
-[node name="Hole" type="Sprite2D"]
+[node name="Hole" type="Sprite2D" groups=["Obsticle"]]
 z_index = 5
 position = Vector2(-3, -20)
 scale = Vector2(3, 3)

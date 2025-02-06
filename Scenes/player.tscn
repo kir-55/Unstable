@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=23 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
+[ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/microbot.tscn" id="6_70j50"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
 [ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://Audio/Sounds/strzal.mp3" id="14_hg3xp"]
 [ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/1.png" id="15_rej4y"]
@@ -24,13 +25,21 @@ script/source = "extends Node2D
 @export var bullet_speed: float = 600.0      # Speed of the spawned bullets
 @export var knockback_force: float = 200.0   # Knockback magnitude applied to the parent
 @export var timer: Timer
+@export var microbot_timer: Timer
 
 
 @export var description: String              # Reference to the timer for cooldown
 
 var can_shoot: bool = true
 
-func _process(delta: float) -> void:
+@export var microbot: PackedScene
+
+func _ready():
+	if microbot_timer and GlobalVariables.player_amulets.has(9):
+		microbot_timer.start()
+		
+
+func _unhandled_input(event):
 	# Check if the player wants to shoot
 	if GlobalVariables.game_is_on and Input.is_action_just_pressed(\"fire\") and can_shoot:
 		fire_weapon()
@@ -63,6 +72,13 @@ func fire_weapon() -> void:
 
 func _on_timer_timeout():
 	can_shoot = true
+
+
+func _on_microbot_timeout():
+	if microbot:
+		var instance = microbot.instantiate()
+		instance.global_position = global_position
+		get_parent().get_parent().add_child(instance)
 "
 
 [sub_resource type="GDScript" id="GDScript_tmomb"]
@@ -202,7 +218,7 @@ shape = SubResource("RectangleShape2D_uu4jv")
 wait_time = 2.0
 autostart = true
 
-[node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("timer")]
+[node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("timer", "microbot_timer")]
 z_index = 3
 position = Vector2(2.14286, -1.42857)
 scale = Vector2(6, 6)
@@ -210,10 +226,15 @@ script = SubResource("GDScript_yujad")
 bullet_scene = SubResource("PackedScene_wdmy2")
 bullet_speed = 2000.0
 timer = NodePath("Timer")
+microbot_timer = NodePath("Timer2")
+microbot = ExtResource("6_70j50")
 
 [node name="Timer" type="Timer" parent="Weapon"]
 wait_time = 0.2
 autostart = true
+
+[node name="Timer2" type="Timer" parent="Weapon"]
+wait_time = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0.5)
@@ -226,3 +247,4 @@ speed_scale = 2.0
 
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]
 [connection signal="timeout" from="Weapon/Timer" to="Weapon" method="_on_timer_timeout"]
+[connection signal="timeout" from="Weapon/Timer2" to="Weapon" method="_on_microbot_timeout"]

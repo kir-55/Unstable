@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://d3l6fb2c4pdeg"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_cihre"]
+[ext_resource type="Texture2D" uid="uid://e2t3t5py6r3u" path="res://Textures/Amulets/backpack.png" id="2_ibapu"]
+
+[resource]
+script = ExtResource("1_cihre")
+id = 9
+name = "Microbot BackPack"
+description = "Backpack with your new innovation, once a while generates microbot wich scales down nearby obticle"
+texture = ExtResource("2_ibapu")
+consumable = false
+stack_limit = true
+limit = 1
+chance_multiplier = 200
