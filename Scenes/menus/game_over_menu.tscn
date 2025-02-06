@@ -17,10 +17,8 @@ fill_from = Vector2(0, 0.3)
 fill_to = Vector2(0.991453, 0)
 metadata/_snap_enabled = true
 
-
 [sub_resource type="RichTextEffect" id="RichTextEffect_j0opp"]
 script = ExtResource("4_eh833")
-
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_xlhj1"]
 script = ExtResource("4_eh833")

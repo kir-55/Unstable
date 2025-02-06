@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://blmayflby86ef" path="res://Styles/new_highlight.tres" id="1_4s54f"]
 [ext_resource type="Texture2D" uid="uid://bs0xlloapmy83" path="res://Textures/Amulets/outline.png" id="2_7300f"]
-[ext_resource type="Script" path="res://Scenes/Menus/remove_outline.gd" id="3_chlqi"]
+[ext_resource type="Script" path="res://Scripts/remove_outline.gd" id="3_chlqi"]
 
 [node name="TextureRect" type="TextureRect"]
 modulate = Color(1, 1, 0, 1)

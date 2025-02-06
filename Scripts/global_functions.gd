@@ -21,7 +21,8 @@ func save_player_data():
 	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.WRITE)
 	if file:
 		var data = {
-			"best_score": GlobalVariables.best_score
+			"best_score": GlobalVariables.best_score,
+			"amulet_collection": GlobalVariables.player_amulet_collection
 		}
 		file.store_string(JSON.stringify(data))
 		file.close()
@@ -33,7 +34,11 @@ func load_player_data():
 		var data = JSON.parse_string(content)
 		if data and "best_score" in data:
 			GlobalVariables.best_score = data["best_score"]
-		file.close()
+		if data and "amulet_collection" in data:
+			GlobalVariables.player_amulet_collection.clear()
+			for value in data["amulet_collection"]:
+				GlobalVariables.player_amulet_collection.append(int(value))
+				file.close()
 
 func load_menu(menu, remove_all_children = true, transition_to_main = false):
 	if transition_to_main:

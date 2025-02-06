@@ -1,7 +1,6 @@
 extends Timer
 
 
-var destination: GlobalEnums.LEVELS
 
 
 
@@ -13,7 +12,7 @@ var destination_level_info: LevelInfo
 @export var description: Label
 
 func _ready():
-
+	var destination = GlobalVariables.next_epoch
 	
 	for level_info in GlobalVariables.epochs:
 		if level_info.level == destination:

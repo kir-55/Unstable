@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://b0fjlwsniivuy"]
 
 [ext_resource type="Script" path="res://Scripts/global_variables.gd" id="1_6fhdc"]
-[ext_resource type="Resource" uid="uid://ctr8ofv38du6p" path="res://Epochs/city.tres" id="2_tede6"]
-[ext_resource type="Resource" uid="uid://b5ga8fmqhitgk" path="res://Epochs/future.tres" id="3_h80lx"]
-[ext_resource type="Resource" uid="uid://d4jipchxnkrhx" path="res://Epochs/medieval.tres" id="4_rv33m"]
+[ext_resource type="Resource" uid="uid://ctr8ofv38du6p" path="res://Ages/city.tres" id="2_tede6"]
+[ext_resource type="Resource" uid="uid://b5ga8fmqhitgk" path="res://Ages/future.tres" id="3_h80lx"]
+[ext_resource type="Resource" uid="uid://d4jipchxnkrhx" path="res://Ages/medieval.tres" id="4_rv33m"]
 [ext_resource type="Resource" uid="uid://dbplhi6u5tp6p" path="res://Amulets/bag_of_tools.tres" id="5_pw5te"]
 [ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="6_1i2bb"]
 [ext_resource type="Resource" uid="uid://cgk8wbbvqcoc7" path="res://Amulets/some_plant.tres" id="7_2hcst"]

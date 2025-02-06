@@ -5,10 +5,6 @@
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_rrgdv"]
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="5_1mafq"]
 [ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="6_4jgwr"]
-
-[ext_resource type="Script" path="res://Scripts/move_right.gd" id="5_srgek"]
-[ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="5_xu6qi"]
-
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="6_25x81"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="7_ug5gg"]
 
@@ -102,54 +98,6 @@ theme_override_styles/pressed = ExtResource("5_1mafq")
 theme_override_styles/focus = ExtResource("5_1mafq")
 text = "Exit"
 
-
-[node name="RandomSystem" type="Node" parent="MovingGround"]
-script = ExtResource("4_yih76")
-
-[node name="TerrainGenerator" type="Node2D" parent="MovingGround" node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
-position = Vector2(-1029, 250)
-script = ExtResource("5_xu6qi")
-ground_line = NodePath("GroundLine")
-grass_line = NodePath("GrassLine")
-floor_collider = NodePath("GrassLine/StaticBody2D")
-rs = NodePath("../RandomSystem")
-sloper = NodePath("Sloper")
-line_section_length = 500
-section_y_change_amplitude = 0
-player = NodePath("../Camera2D")
-
-[node name="Sloper" type="Node" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
-script = ExtResource("6_y8vvb")
-line = NodePath("../GrassLine")
-terrain_generator = NodePath("..")
-
-[node name="GroundLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
-material = SubResource("ShaderMaterial_v15ys")
-position = Vector2(0, 8)
-default_color = Color(0.11502, 0.0656286, 0.00661148, 1)
-
-[node name="GrassLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
-width = 30.0
-default_color = Color(0.108257, 0.118032, 0.110268, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MovingGround/TerrainGenerator/GrassLine"]
-
-[node name="DecorationSpawner" type="Node2D" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "player", "line", "terrain_generator")]
-scale = Vector2(1.10038, 1.15793)
-script = ExtResource("8_ewsx1")
-load_radius = 3
-max_radius = 10
-rs = NodePath("../../RandomSystem")
-sloper = NodePath("../Sloper")
-player = NodePath("../../Camera2D")
-line = NodePath("../GrassLine")
-terrain_generator = NodePath("..")
-spawn_from = 0
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("13_io3tw"), ExtResource("15_mst61"), ExtResource("17_xoou5"), ExtResource("14_4vnkg"), ExtResource("15_v51w2"), ExtResource("18_lwfrx"), ExtResource("18_tgdhe")])
-
-[connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Again" to="MovingGround/Camera2D/StartMenu" method="_on_again_pressed"]
-[connection signal="pressed" from="MovingGround/Camera2D/StartMenu/Panel/MarginContainer/VBoxContainer/Exit" to="MovingGround/Camera2D/StartMenu" method="_on_exit_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Progress" to="." method="_on_progress_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-
