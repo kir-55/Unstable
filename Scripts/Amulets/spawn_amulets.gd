@@ -25,9 +25,10 @@ func _ready():
 	print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)))
 	for i in range(GlobalVariables.items_in_home):
 		if multiplied_amulets_list.size() <= 0:
-			amount_of_items_to_take -= 1
+			amount_of_items_to_take = amulets_displayed.size()
 			label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
 			break
+			
 		var random_amulet = multiplied_amulets_list.pick_random()
 		
 		while !can_be_generated(random_amulet.id):
