@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1dp2t0q0chrc"
-path="res://.godot/imported/unfound.png-bc0c7cb53461800c1f36a88b3bf974cd.ctex"
+path="res://.godot/imported/unfound.png-0294d175faa55f21aa5ecfa2b6d85024.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Amulets/unfound.png"
-dest_files=["res://.godot/imported/unfound.png-bc0c7cb53461800c1f36a88b3bf974cd.ctex"]
+source_file="res://textures/Amulets/unfound.png"
+dest_files=["res://.godot/imported/unfound.png-0294d175faa55f21aa5ecfa2b6d85024.ctex"]
 
 [params]
 

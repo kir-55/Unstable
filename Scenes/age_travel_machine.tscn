@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvk85grtcjnak"]
 
-[ext_resource type="Texture2D" uid="uid://du51rvnovd0h" path="res://Textures/Baners/medieval_baner.png" id="1_8vpsh"]
+[ext_resource type="Texture2D" uid="uid://du51rvnovd0h" path="res://textures/Baners/medieval_baner.png" id="1_8vpsh"]
 [ext_resource type="Script" path="res://Scripts/change_scene.gd" id="2_m0f35"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ola1w"]

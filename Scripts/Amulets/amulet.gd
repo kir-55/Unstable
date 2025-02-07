@@ -6,6 +6,7 @@ extends Resource
 @export var name: String = "Amulet"
 @export var description: String = ""
 @export var texture: Texture2D
+@export var incompatible_amulets : Array[int]
 
 
 @export var consumable: bool = false

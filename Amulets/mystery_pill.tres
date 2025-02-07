@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://cw3j7kvwcevbv"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_mc4rk"]
-[ext_resource type="Texture2D" uid="uid://btqbhjn6v0vqa" path="res://Textures/Amulets/mystery_pill.png" id="2_78ovb"]
+[ext_resource type="Texture2D" uid="uid://btqbhjn6v0vqa" path="res://textures/Amulets/mystery_pill.png" id="2_loarq"]
 
 [resource]
 script = ExtResource("1_mc4rk")
 id = 8
 name = "Mystery Pill"
-description = "You don't remember what it deos"
-texture = ExtResource("2_78ovb")
+description = "You don't remember what it doess"
+texture = ExtResource("2_loarq")
+incompatible_amulets = Array[int]([])
 consumable = true
 stack_limit = true
 limit = 1

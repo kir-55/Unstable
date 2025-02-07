@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dr46dnkcbkqui"
-path="res://.godot/imported/unstable_home4.png-d7793a7a947a47a39e0fa0a8d7bdcf7f.ctex"
+path="res://.godot/imported/unstable_home4.png-b8880f3585b6f85311cae3ff3ba43cf9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/Home/unstable_home4.png"
-dest_files=["res://.godot/imported/unstable_home4.png-d7793a7a947a47a39e0fa0a8d7bdcf7f.ctex"]
+source_file="res://textures/Baners/Home/unstable_home4.png"
+dest_files=["res://.godot/imported/unstable_home4.png-b8880f3585b6f85311cae3ff3ba43cf9.ctex"]
 
 [params]
 
