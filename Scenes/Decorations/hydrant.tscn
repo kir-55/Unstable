@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvb52"]
 size = Vector2(5.91667, 13.75)
 
-[node name="Hydrant" type="Sprite2D"]
+[node name="Hydrant" type="Sprite2D" groups=["Obsticle"]]
 z_index = 5
 position = Vector2(0, 6)
 scale = Vector2(6, 6)

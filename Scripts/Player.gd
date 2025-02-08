@@ -199,3 +199,5 @@ func _on_speed_up_timer_timeout():
 	if SPEED < MAX_SPEED:
 		SPEED += 20
 		GlobalVariables.player_global_speed = SPEED
+
+

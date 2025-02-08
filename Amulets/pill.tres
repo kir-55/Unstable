@@ -7,7 +7,7 @@
 script = ExtResource("1_ybbcq")
 id = 7
 name = "Some Pill"
-description = "Makes you think faster, therefore slowing the environment "
+description = "Makes you think faster, therefore slowing the environment (click to use)"
 texture = ExtResource("2_y06ph")
 incompatible_amulets = Array[int]([])
 consumable = true

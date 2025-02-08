@@ -42,7 +42,7 @@ func _process(delta):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
 size = Vector2(23, 3)
 
-[node name="Acid" type="Sprite2D"]
+[node name="Acid" type="Sprite2D" groups=["Obsticle"]]
 z_index = 5
 position = Vector2(0, -39)
 texture = ExtResource("1_yuikr")

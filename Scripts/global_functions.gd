@@ -12,6 +12,34 @@ func reload():
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 	get_tree().change_scene_to_file("res://Scenes/Locations/city.tscn")
 
+
+func _ready():
+	load_player_data()
+
+
+func save_player_data():
+	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.WRITE)
+	if file:
+		var data = {
+			"best_score": GlobalVariables.best_score,
+			"amulet_collection": GlobalVariables.player_amulet_collection
+		}
+		file.store_string(JSON.stringify(data))
+		file.close()
+
+func load_player_data():
+	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.READ)
+	if file:
+		var content = file.get_as_text()
+		var data = JSON.parse_string(content)
+		if data and "best_score" in data:
+			GlobalVariables.best_score = data["best_score"]
+		if data and "amulet_collection" in data:
+			GlobalVariables.player_amulet_collection.clear()
+			for value in data["amulet_collection"]:
+				GlobalVariables.player_amulet_collection.append(int(value))
+				file.close()
+
 func load_menu(menu, remove_all_children = true, transition_to_main = false):
 	if transition_to_main:
 		GlobalVariables.current_menu = menu
@@ -38,3 +66,4 @@ func load_menu(menu, remove_all_children = true, transition_to_main = false):
 		var menu_instance = load(GlobalVariables.menus[menu]).instantiate()
 		menu_instance.name = "menu"
 		container.add_child(menu_instance)
+

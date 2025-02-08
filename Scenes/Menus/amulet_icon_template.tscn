@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://o1p54tv8dklw" path="res://Styles/theme.tres" id="1_7aqtk"]
 [ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://Textures/Amulets/clock.png" id="2_l7lqn"]
 [ext_resource type="Script" path="res://Scripts/custom_tooltip.gd" id="3_287wm"]
-[ext_resource type="PackedScene" uid="uid://bigmbkrs23ifx" path="res://Scenes/Menus/tooltip.tscn" id="4_qkxax"]
+[ext_resource type="PackedScene" uid="uid://bigmbkrs23ifx" path="res://Scenes/menus/tooltip.tscn" id="4_qkxax"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v2uu3"]
 font_size = 32

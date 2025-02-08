@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3ok3"]
 size = Vector2(27.2569, 12.5611)
 
-[node name="Hay Wall" type="Sprite2D"]
+[node name="Hay Wall" type="Sprite2D" groups=["Obsticle"]]
 z_index = 3
 position = Vector2(9, -11)
 offset = Vector2(-9.02312, 2.99897)
