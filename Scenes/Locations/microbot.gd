@@ -25,7 +25,7 @@ func find_closest_target():
 				target = area
 
 func move_towards_target(delta):
-	if target and !target.is_queued_for_deletion():
+	if target and is_instance_valid(target) and !target.is_queued_for_deletion():
 		var direction = (target.global_position - global_position).normalized()
 		velocity = velocity.lerp(direction * speed, acceleration * delta)  # Smooth movement
 		rotation = velocity.angle()  # Rotate towards movement direction
