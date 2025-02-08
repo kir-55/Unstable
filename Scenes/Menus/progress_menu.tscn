@@ -6,9 +6,9 @@
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_mkup5"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_7j6te"]
 [ext_resource type="Script" path="res://Scripts/menus/Progress/spawn_amulets.gd" id="4_86uri"]
-[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/menus/amulet_icon_template.tscn" id="5_b7kvo"]
-[ext_resource type="Texture2D" uid="uid://c1dp2t0q0chrc" path="res://textures/Amulets/unfound.png" id="6_v6gmf"]
-[ext_resource type="PackedScene" uid="uid://pfv7mxqwmppe" path="res://Scenes/menus/new_outline.tscn" id="8_mjkde"]
+[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="5_b7kvo"]
+[ext_resource type="Texture2D" uid="uid://c1dp2t0q0chrc" path="res://Textures/Amulets/unfound.png" id="6_v6gmf"]
+[ext_resource type="PackedScene" uid="uid://pfv7mxqwmppe" path="res://Scenes/Menus/new_outline.tscn" id="8_mjkde"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxiux"]
 bg_color = Color(0.208756, 0.237667, 0.300274, 1)

@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://bhobshe57i1af"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_cayfh"]
-[ext_resource type="Texture2D" uid="uid://buq7p2x78eg0x" path="res://textures/Amulets/notes.png" id="2_fwi8t"]
+[ext_resource type="Texture2D" uid="uid://buq7p2x78eg0x" path="res://Textures/Amulets/notes.png" id="2_862eq"]
 
 [resource]
 script = ExtResource("1_cayfh")
 id = 6
 name = "Notes"
 description = "Your notes about machine, desplays next epoch, required for repair."
-texture = ExtResource("2_fwi8t")
+texture = ExtResource("2_862eq")
 incompatible_amulets = Array[int]([])
 consumable = false
 stack_limit = true

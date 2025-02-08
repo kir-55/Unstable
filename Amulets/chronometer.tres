@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://bh4tipha1kv5b"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_uiy2w"]
-[ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://textures/Amulets/clock.png" id="2_31r54"]
+[ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://Textures/Amulets/clock.png" id="2_vsdfn"]
 
 [resource]
 script = ExtResource("1_uiy2w")
 id = 1
 name = "Chronometer"
 description = "Allows you to grab 1 more item when visiting home, but you will move faster"
-texture = ExtResource("2_31r54")
+texture = ExtResource("2_vsdfn")
 incompatible_amulets = Array[int]([])
 consumable = false
 stack_limit = true

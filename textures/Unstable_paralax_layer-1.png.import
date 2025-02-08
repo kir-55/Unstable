@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2g18eyedc21g"
-path="res://.godot/imported/Unstable_paralax_layer-1.png-0219cf0d650421b9e90fe53fd13aaca2.ctex"
+path="res://.godot/imported/Unstable_paralax_layer-1.png-c1bd21f13c65d689c7272ec97da2c1c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Unstable_paralax_layer-1.png"
-dest_files=["res://.godot/imported/Unstable_paralax_layer-1.png-0219cf0d650421b9e90fe53fd13aaca2.ctex"]
+source_file="res://Textures/Unstable_paralax_layer-1.png"
+dest_files=["res://.godot/imported/Unstable_paralax_layer-1.png-c1bd21f13c65d689c7272ec97da2c1c9.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctx3s4l74xb6d"
-path="res://.godot/imported/future_baner.png-7591b81940a3975463e36e7ffcda29f7.ctex"
+path="res://.godot/imported/future_baner.png-58163c4e95a2b2b9b1c7c97e9e49cb30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Baners/future_baner.png"
-dest_files=["res://.godot/imported/future_baner.png-7591b81940a3975463e36e7ffcda29f7.ctex"]
+source_file="res://Textures/Baners/future_baner.png"
+dest_files=["res://.godot/imported/future_baner.png-58163c4e95a2b2b9b1c7c97e9e49cb30.ctex"]
 
 [params]
 

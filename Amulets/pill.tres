@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://dbw5s5ormsd16"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ybbcq"]
-[ext_resource type="Texture2D" uid="uid://bajf802bkjwcw" path="res://textures/Amulets/pill.png" id="2_1l0e4"]
+[ext_resource type="Texture2D" uid="uid://bajf802bkjwcw" path="res://Textures/Amulets/pill.png" id="2_y06ph"]
 
 [resource]
 script = ExtResource("1_ybbcq")
 id = 7
 name = "Some Pill"
 description = "Makes you think faster, therefore slowing the environment "
-texture = ExtResource("2_1l0e4")
+texture = ExtResource("2_y06ph")
 incompatible_amulets = Array[int]([])
 consumable = true
 stack_limit = true
