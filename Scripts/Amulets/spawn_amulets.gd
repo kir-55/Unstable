@@ -23,20 +23,38 @@ func _ready():
 			multiplied_amulets_list.append(i)
 	print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)))
 	for i in range(GlobalVariables.items_in_home):
+		if multiplied_amulets_list.size() <= 0:
+			amount_of_items_to_take = amulets_displayed.size()
+			label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
+			break
+			
 		var random_amulet = multiplied_amulets_list.pick_random()
 		
 		while !can_be_generated(random_amulet.id):
+			
 			while multiplied_amulets_list.has(random_amulet):
 				multiplied_amulets_list.erase(random_amulet)
 			print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)) + " po usunieciu")
-			random_amulet = multiplied_amulets_list.pick_random()
+			
+			if multiplied_amulets_list.size() > 0:
+				random_amulet = multiplied_amulets_list.pick_random()
+			else:
+				GlobalVariables.items_in_home -= 1
+				break
 		
-		amulets_displayed.append(random_amulet.id)
-		spawn_amulet(random_amulet)
+		if i < GlobalVariables.items_in_home:
+			amulets_displayed.append(random_amulet.id)
+			print(str(random_amulet.id) + " displayed")
+			spawn_amulet(random_amulet)
+
 
 
 		
 func can_be_generated(amulet_id: int):
+	for id in GlobalVariables.player_amulets:
+		if GlobalVariables.amulets[amulet_id].incompatible_amulets.has(amulet_id):
+			return false
+	
 	if !GlobalVariables.amulets[amulet_id].stack_limit:
 		return true
 	elif GlobalVariables.amulets[amulet_id].limit > GlobalVariables.player_amulets.count(amulet_id) + amulets_displayed.count(amulet_id):

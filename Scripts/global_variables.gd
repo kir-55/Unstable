@@ -13,7 +13,7 @@ var times_treveled: int = 0
 var items_in_home: int = initial_items_in_home
 
 
-@export var initial_chance_for_lag = 40
+@export var initial_chance_for_lag = 100
 
 @export var score_divider: int = 12
 

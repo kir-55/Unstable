@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://yuapycu40c26"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_y1s8g"]
-[ext_resource type="Texture2D" uid="uid://cx1awwuu2u232" path="res://Textures/Amulets/heart.png" id="2_aapsc"]
+[ext_resource type="Texture2D" uid="uid://cx1awwuu2u232" path="res://Textures/Amulets/heart.png" id="2_wwwrf"]
 
 [resource]
 script = ExtResource("1_y1s8g")
 id = 3
 name = "Second Heart"
 description = "Gives you second chance to live (removes when used)"
-texture = ExtResource("2_aapsc")
+texture = ExtResource("2_wwwrf")
+incompatible_amulets = Array[int]([0])
+consumable = false
 stack_limit = false
 limit = 1
 chance_multiplier = 2
