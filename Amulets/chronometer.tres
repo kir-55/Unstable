@@ -13,4 +13,4 @@ incompatible_amulets = Array[int]([])
 consumable = false
 stack_limit = true
 limit = 3
-chance_multiplier = 1
+chance_multiplier = 2

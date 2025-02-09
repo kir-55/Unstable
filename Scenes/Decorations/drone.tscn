@@ -15,10 +15,8 @@ position = Vector2(1, -268)
 scale = Vector2(6, 6)
 texture = ExtResource("1_22p13")
 script = ExtResource("2_q6afg")
-
 min_height = 90.0
 speed = 0.04
-
 
 [node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
 script = ExtResource("2_mexp6")
