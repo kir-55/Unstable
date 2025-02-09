@@ -7,7 +7,7 @@
 script = ExtResource("1_cg8eo")
 id = 0
 name = "Bag of tools"
-description = "Gives you ability to throw tools and destroy some obsticles"
+description = "Gives you ability to throw tools and destroy some obstacles"
 texture = ExtResource("2_shbr0")
 incompatible_amulets = Array[int]([])
 consumable = false

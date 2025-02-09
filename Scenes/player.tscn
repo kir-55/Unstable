@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
+
 [ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/microbot.tscn" id="6_70j50"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
 [ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://Audio/Sounds/strzal.mp3" id="14_hg3xp"]
@@ -36,8 +37,6 @@ var can_shoot: bool = true
 @export var microbot: PackedScene
 
 func _ready():
-	if GlobalVariables.player_amulets.has(0):
-		has_bag_of_tools = true
 	if microbot_timer and GlobalVariables.player_amulets.has(9):
 		microbot_timer.start()
 		

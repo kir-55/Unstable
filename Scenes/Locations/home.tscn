@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Amulets/spawn_amulets.gd" id="5_i6kwn"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="6_58chv"]
 
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
 animations = [{
 "frames": [{
