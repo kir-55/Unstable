@@ -52,9 +52,6 @@ var is_jumping
 func _ready():
 	amulet_system.amulets_available = GlobalVariables.player_amulets
 	amulet_system.amulets_panel = amulets_panel
-	
-	if !amulet_system.amulets_available.has(0):
-		weapon.set_process(false)
 		
 	for i in range(amulet_system.amulets_available.count(2)):
 		DASH_DURATION += amulet_system.dash_duration_increase
@@ -125,7 +122,8 @@ func _physics_process(delta: float) -> void:
 		if (is_on_floor() or (doble_jump_active and !doble_jump_used)) and Input.is_action_just_pressed("up"):
 			trail.remove_points()
 			is_jumping = true
-			is_dashing = false
+			if is_dashing: 
+				end_dash()
 			
 			velocity.y = JUMP_VELOCITY
 			

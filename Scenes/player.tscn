@@ -30,18 +30,21 @@ script/source = "extends Node2D
 
 @export var description: String              # Reference to the timer for cooldown
 
+var has_bag_of_tools: bool = false
 var can_shoot: bool = true
 
 @export var microbot: PackedScene
 
 func _ready():
+	if GlobalVariables.player_amulets.has(0):
+		has_bag_of_tools = true
 	if microbot_timer and GlobalVariables.player_amulets.has(9):
 		microbot_timer.start()
 		
 
 func _unhandled_input(event):
 	# Check if the player wants to shoot
-	if GlobalVariables.game_is_on and Input.is_action_just_pressed(\"fire\") and can_shoot:
+	if GlobalVariables.game_is_on and has_bag_of_tools and Input.is_action_just_pressed(\"fire\") and can_shoot:
 		fire_weapon()
 
 func fire_weapon() -> void:
