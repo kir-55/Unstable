@@ -1,12 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=19 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/menus/amulet_icon_template.tscn" id="4_e8l5m"]
+[ext_resource type="PackedScene" uid="uid://b8itocxc1xfcd" path="res://Scenes/bullet.tscn" id="5_bm4pq"]
 [ext_resource type="PackedScene" uid="uid://cnxt5vr2tcgk4" path="res://Scenes/ameridium_bullet.tscn" id="6_2qycl"]
 [ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/microbot.tscn" id="6_70j50"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
-[ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://Audio/Sounds/strzal.mp3" id="14_hg3xp"]
 [ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/1.png" id="15_rej4y"]
 [ext_resource type="Texture2D" uid="uid://bfllsgqcnea8h" path="res://Textures/Player/2.png" id="16_udaus"]
 [ext_resource type="Texture2D" uid="uid://bnqy5phdfqc8y" path="res://Textures/Player/3.png" id="17_5dhva"]
@@ -34,7 +34,7 @@ script/source = "extends Node2D
 @export var description: String              # Reference to the timer for cooldown
 
 var has_bag_of_tools: bool = false
-var has_ameridium_gun : bool = false
+var has_ameridium_gun : bool = true
 var can_shoot: bool = true
 
 @export var microbot: PackedScene
@@ -95,61 +95,6 @@ func _on_microbot_timeout():
 func _on_ameridium_gun_timeout():
 	can_shoot = true
 "
-
-[sub_resource type="GDScript" id="GDScript_tmomb"]
-script/source = "extends Area2D
-
-@export var speed: float = 600.0        # Bullet movement speed
-var velocity: Vector2 = Vector2.ZERO   # Bullet velocity
-
-
-func _process(delta: float) -> void:
-	
-	# Move the bullet based on velocity
-	if GlobalVariables.game_is_on:
-		position += velocity * delta
-
-
-func set_velocity(direction: Vector2) -> void:
-	# Set the bullet's velocity in a specific direction
-	velocity = direction.normalized() * speed
-
-func _on_area_entered(body: Node) -> void:
-	if body and body.get_parent() and body.get_parent().has_node(\"HealthSystem\"):
-		body.get_parent().get_node(\"HealthSystem\").take_damage(40) 
-	queue_free()  # Destroy the bullet upon collision
-
-	 # Example: Apply 10 damages
-
-
-func _on_body_entered(body):
-	queue_free()  # D
-"
-
-[sub_resource type="Gradient" id="Gradient_3w352"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.976471, 0.552941, 0.0196078, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_its3e"]
-gradient = SubResource("Gradient_3w352")
-width = 1
-height = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hog3m"]
-size = Vector2(1, 1)
-
-[sub_resource type="PackedScene" id="PackedScene_wdmy2"]
-_bundled = {
-"conn_count": 3,
-"conns": PackedInt32Array(1073741830, 1073741829, 33, 32, 2, 0, 0, 1073741832, 1073741831, 35, 34, 2, 0, 0, 1073741834, 1073741833, 37, 36, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("Bullet", "Area2D", "z_index", "scale", "collision_layer", "collision_mask", "script", "speed", "CPUParticles2D", "CPUParticles2D", "lifetime", "emission_shape", "emission_sphere_radius", "gravity", "angular_velocity_min", "angular_velocity_max", "scale_amount_max", "color", "Sprite2D", "Sprite2D", "texture", "Timer", "Timer", "one_shot", "autostart", "CollisionShape2D", "CollisionShape2D", "shape", "AudioStreamPlayer2D", "AudioStreamPlayer2D", "stream", "autoplay", "_on_area_entered", "area_entered", "_on_body_entered", "body_entered", "_on_timer_timeout", "timeout"),
-"node_count": 6,
-"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("Timer")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0, 1073741824, 0, 9, 8, -1, 8, 10, 6, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 1, 20, 14, 0, 1073741826, 0, 22, 21, -1, 2, 23, 15, 24, 16, 0, 1073741827, 0, 26, 25, -1, 1, 27, 17, 0, 1073741828, 0, 29, 28, -1, 2, 30, 18, 31, 19, 0),
-"variants": [-2, Vector2(12, 12), 2, 2, SubResource("GDScript_tmomb"), 2000.0, 0.1, 1, 1.0, Vector2(0, 2), -103.65, 167.06, 7.0, Color(0.624211, 0.433471, 0, 1), SubResource("GradientTexture2D_its3e"), true, true, SubResource("RectangleShape2D_hog3m"), ExtResource("14_hg3xp"), true],
-"version": 3
-}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ob57i"]
 animations = [{
@@ -238,12 +183,12 @@ z_index = 3
 position = Vector2(2.14286, -1.42857)
 scale = Vector2(6, 6)
 script = SubResource("GDScript_yujad")
-bullet_scene = SubResource("PackedScene_wdmy2")
+bullet_scene = ExtResource("5_bm4pq")
 ameridium_bullet_scene = ExtResource("6_2qycl")
 bullet_speed = 2000.0
 timer = NodePath("Timer")
 microbot_timer = NodePath("Timer2")
-ameridium_gun_timer = NodePath("AmeridiumGun")
+ameridium_gun_timer = NodePath("AmeridiumGunTimer")
 microbot = ExtResource("6_70j50")
 
 [node name="Timer" type="Timer" parent="Weapon"]
@@ -252,7 +197,7 @@ wait_time = 0.2
 [node name="Timer2" type="Timer" parent="Weapon"]
 wait_time = 3.0
 
-[node name="AmeridiumGun" type="Timer" parent="Weapon"]
+[node name="AmeridiumGunTimer" type="Timer" parent="Weapon"]
 wait_time = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -267,4 +212,4 @@ speed_scale = 2.0
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]
 [connection signal="timeout" from="Weapon/Timer" to="Weapon" method="_on_timer_timeout"]
 [connection signal="timeout" from="Weapon/Timer2" to="Weapon" method="_on_microbot_timeout"]
-[connection signal="timeout" from="Weapon/AmeridiumGun" to="Weapon" method="_on_ameridium_gun_timeout"]
+[connection signal="timeout" from="Weapon/AmeridiumGunTimer" to="Weapon" method="_on_ameridium_gun_timeout"]

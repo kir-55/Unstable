@@ -4,5 +4,5 @@ extends Sprite2D
 @export var speed: float = 1
 
 func _process(delta):
-	if global_position.y > min_height:
-		global_position.y = lerp(global_position.y, global_position.y - 20, 1)
+	if get_parent().global_position.y > min_height:
+		get_parent().global_position.y = lerp(get_parent().global_position.y, get_parent().global_position.y - 20, 1)

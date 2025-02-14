@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ca2emaiaub5dm" path="res://Textures/Decorations/acid.png" id="1_yuikr"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_0d3ph"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
+size = Vector2(23, 3)
+
 [sub_resource type="GDScript" id="GDScript_7nkye"]
 script/source = "extends Sprite2D
 
@@ -39,24 +42,19 @@ func _process(delta):
 
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
-size = Vector2(23, 3)
+[node name="Area2D" type="Area2D" groups=["Obsticle"]]
+script = ExtResource("2_0d3ph")
+death_messages = Array[String](["You decided to swim in acid (it ended pourly)", "Acid is dangerous!", "You was courious what is the green liquid (it was acid)", "Don't touch acid!"])
 
-[node name="Acid" type="Sprite2D" groups=["Obsticle"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_1iamu")
+
+[node name="Acid" type="Sprite2D" parent="."]
 z_index = 5
-position = Vector2(0, -39)
 texture = ExtResource("1_yuikr")
 offset = Vector2(-0.166952, -6.00001)
 script = SubResource("GDScript_7nkye")
 max_angle = 50.0
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0.0833333, -5.08333)
-script = ExtResource("2_0d3ph")
-death_messages = Array[String](["You decided to swim in acid (it ended pourly)", "Acid is dangerous!", "You was courious what is the green liquid (it was acid)", "Don't touch acid!"])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.583333, 7.58333)
-shape = SubResource("RectangleShape2D_1iamu")
-
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -14,7 +14,7 @@ func _on_body_entered(body):
 				GlobalVariables.best_score = last_score
 			
 			# Reset the variables
-			GlobalVariables.last_score = last_score
+			GlobalVariables.last_score = last_score	
 			
 			
 			# spawning death menu
@@ -24,6 +24,6 @@ func _on_body_entered(body):
 				instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_messages.pick_random() + "[/color][/shake][/font_size][center]")
 			get_tree().current_scene.find_child("CanvasLayer").add_child(instance)
 		else:
-			get_parent().queue_free()
+				queue_free()
 			
 			

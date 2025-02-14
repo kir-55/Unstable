@@ -14,9 +14,9 @@ func _on_cpu_particles_2d_finished():
 
 func _on_area_entered(area2d):
 	var colliding_areas = get_overlapping_areas()
-	print(str(colliding_areas))
 	for area in colliding_areas:
-		if area.get_parent():
-			area.get_parent().queue_free()
-		else:
-			area.queue_free()
+		if area.is_in_group("Obsticle") or area.get_parent().is_in_group("Obsticle"):
+			if area.has_node("HealthSystem"):
+				area.get_node("HealthSystem").take_damage(3000)
+			else:
+				area.queue_free()
