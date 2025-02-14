@@ -62,6 +62,8 @@ func _ready():
 	start_x = global_position.x
 	if GlobalVariables.player_global_speed:
 		SPEED = GlobalVariables.player_global_speed
+	if GlobalVariables.player_amulets.has(11):
+		get_tree().current_scene.find_child("Camera2D").zoom = Vector2(0.7, 1)
 
 func _physics_process(delta: float) -> void:
 	if GlobalVariables.game_is_on:

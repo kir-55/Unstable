@@ -2,6 +2,7 @@ extends Node
 
 @export var amulet_icon_template: PackedScene
 var amulets_panel: Container
+@export var animation_player : AnimationPlayer
 
 var amulets_displayed = false
 
@@ -27,6 +28,8 @@ func use_amulet(event: InputEvent, amulet_id: int):
 			Engine.time_scale = 0.5
 		if amulet_id == 8:
 			Engine.time_scale = 1.5
+		if amulet_id == 12:
+			animation_player.play("immunity")
 		remove_amulet(amulet_id)
 
 func display_amulets():

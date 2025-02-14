@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0fjlwsniivuy"]
+[gd_scene load_steps=18 format=3 uid="uid://b0fjlwsniivuy"]
 
 [ext_resource type="Script" path="res://Scripts/global_variables.gd" id="1_6fhdc"]
 [ext_resource type="Resource" uid="uid://ctr8ofv38du6p" path="res://Ages/city.tres" id="2_tede6"]
@@ -15,8 +15,10 @@
 [ext_resource type="Resource" uid="uid://cw3j7kvwcevbv" path="res://Amulets/mystery_pill.tres" id="12_ex3xr"]
 [ext_resource type="Resource" uid="uid://d3l6fb2c4pdeg" path="res://Amulets/microbot_backpack.tres" id="14_nnbhk"]
 [ext_resource type="Resource" uid="uid://cy4dj5okjguw3" path="res://Amulets/ameridium_gun.tres" id="15_okhnc"]
+[ext_resource type="Resource" uid="uid://crd8o4hn3c05k" path="res://Amulets/glasses.tres" id="16_hclqi"]
+[ext_resource type="Resource" uid="uid://clihaphekywxx" path="res://Amulets/immunity_potion.tres" id="17_x0qbh"]
 
 [node name="GlobalVariables" type="Node"]
 script = ExtResource("1_6fhdc")
 epochs = Array[Resource("res://Scripts/level_info.gd")]([ExtResource("2_tede6"), ExtResource("3_h80lx"), ExtResource("4_rv33m")])
-amulets = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("5_pw5te"), ExtResource("6_1i2bb"), ExtResource("7_2hcst"), ExtResource("8_xnc4u"), ExtResource("9_x0npk"), ExtResource("9_g67nn"), ExtResource("10_6kl3f"), ExtResource("11_tgtug"), ExtResource("12_ex3xr"), ExtResource("14_nnbhk"), ExtResource("15_okhnc")])
+amulets = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("5_pw5te"), ExtResource("6_1i2bb"), ExtResource("7_2hcst"), ExtResource("8_xnc4u"), ExtResource("9_x0npk"), ExtResource("9_g67nn"), ExtResource("10_6kl3f"), ExtResource("11_tgtug"), ExtResource("12_ex3xr"), ExtResource("14_nnbhk"), ExtResource("15_okhnc"), ExtResource("16_hclqi"), ExtResource("17_x0qbh")])

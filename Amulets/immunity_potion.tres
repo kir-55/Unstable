@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://clihaphekywxx"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_tus25"]
+[ext_resource type="Texture2D" uid="uid://dm48wskafeswa" path="res://Textures/Amulets/potion.png" id="2_k4p7q"]
+
+[resource]
+script = ExtResource("1_tus25")
+id = 12
+name = "Immunity potion"
+description = "Allows player to become invulnerable to all obstacles for 5 seconds (click to use)"
+texture = ExtResource("2_k4p7q")
+incompatible_amulets = Array[int]([])
+consumable = true
+stack_limit = true
+limit = 1
+chance_multiplier = 1
