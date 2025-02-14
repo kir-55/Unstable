@@ -1,6 +1,6 @@
 extends Node2D
 
-signal player_spawned(player: Player)
+signal player_spawned(player)
 
 @export var player_prefab: String = "res://Scenes/player.tscn"
 @export var spawn_point: Node2D

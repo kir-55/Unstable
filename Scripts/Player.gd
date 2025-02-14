@@ -1,4 +1,3 @@
-class_name Player
 extends CharacterBody2D
 
 @export var REMOTE_PLAYER_POSITION: Vector2

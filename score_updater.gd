@@ -1,6 +1,6 @@
 extends Label
 
-var player: Player
+var player
 
 
 func _enter_tree():
