@@ -115,7 +115,7 @@ func create_peer(id):
 	if id != self.id:
 		var peer := WebRTCPeerConnection.new()
 		peer.initialize({
-			"iceServers" : [{"urls":["stun:stun.l.google.com:19302"]}]
+			"iceServers" : [{"urls":["stun:stun.services.mozilla.com:3478"]}]
 		})
 		print("CLIENT(" + str(self.id) + "): binding id " + str(id))
 		
