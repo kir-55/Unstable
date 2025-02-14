@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqjw4k0c6cv18"]
+
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_join.gd" id="1_tggoh"]
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_grad6"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_24a4h"]
+[ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="4_0tuhf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg37s"]
+bg_color = Color(0.101961, 0.121569, 0.180392, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p76jy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c64rp"]
+bg_color = Color(0.101961, 0.121569, 0.180392, 1)
+
+[node name="MultiplayerJoin" type="Control" node_paths=PackedStringArray("nickname_input", "lobby_id_input")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tggoh")
+nickname_input = NodePath("Panel/Nickname")
+lobby_id_input = NodePath("Panel/LobbyID")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -93.0
+offset_right = 117.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_grad6")
+
+[node name="Nickname" type="LineEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -50.5
+offset_right = -20.0
+offset_bottom = -19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lg37s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p76jy")
+placeholder_text = "Nickname"
+
+[node name="LobbyID" type="LineEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -12.5
+offset_right = -20.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c64rp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p76jy")
+placeholder_text = "Lobby ID"
+
+[node name="Join" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(0, 37.025)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = 23.0
+offset_right = -65.0
+offset_bottom = 60.025
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("3_24a4h")
+theme_override_styles/hover = ExtResource("4_0tuhf")
+text = "JOIN"
+
+[connection signal="pressed" from="Panel/Join" to="." method="_on_button_pressed"]

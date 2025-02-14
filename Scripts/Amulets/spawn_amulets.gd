@@ -76,7 +76,7 @@ func spawn_amulet(amulet):
 	add_child(amulet_representation)
 
 func chosed_amulet(event: InputEvent, amulet):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and amulets_chosen.size() < amount_of_items_to_take:
 		print("amulet clicked " + str(amulet[0]))
 		if amulet[0] == 1:
 			GlobalVariables.player_global_speed += 100
@@ -89,7 +89,7 @@ func chosed_amulet(event: InputEvent, amulet):
 		
 		amulet[1].queue_free()
 		
-		if !GlobalVariables.player_amulets.has(1) or  amulets_chosen.size() >= amount_of_items_to_take:
+		if !GlobalVariables.player_amulets.has(1) or amulets_chosen.size() >= amount_of_items_to_take:
 			grab_and_leave()
 			
 func grab_and_leave():
@@ -99,5 +99,5 @@ func grab_and_leave():
 			print(str(i) + "grab and leave")
 			GlobalVariables.player_new_amulets.append(i)
 			GlobalVariables.player_amulet_collection.append(i)
+	Client.leave_home.rpc(Client.id)
 
-	get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")

@@ -6,8 +6,8 @@ func reload():
 	GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 	GlobalVariables.game_is_on = true
 	print(GlobalVariables.player_amulets)
-	GlobalVariables.player_amulets = []
-	GlobalVariables.player_new_amulets = []
+	GlobalVariables.player_amulets.clear()
+	GlobalVariables.player_new_amulets.clear()
 	GlobalVariables.times_treveled = 0
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 	get_tree().change_scene_to_file("res://Scenes/Locations/city.tscn")
@@ -40,7 +40,7 @@ func load_player_data():
 				GlobalVariables.player_amulet_collection.append(int(value))
 				file.close()
 
-func load_menu(menu, remove_all_children = true, transition_to_main = false):
+func load_menu(menu: String, remove_all_children = true, transition_to_main = false):
 	if transition_to_main:
 		GlobalVariables.current_menu = menu
 		get_tree().change_scene_to_file("res://Scenes/main.tscn")
@@ -61,9 +61,9 @@ func load_menu(menu, remove_all_children = true, transition_to_main = false):
 				container.remove_child(menu_child)
 				break
 	
-	if menu != GlobalEnums.MENU_LEVEL.NONE:
-		GlobalVariables.current_menu = menu
-		var menu_instance = load(GlobalVariables.menus[menu]).instantiate()
-		menu_instance.name = "menu"
-		container.add_child(menu_instance)
+	
+	GlobalVariables.current_menu = menu
+	var menu_instance = GlobalVariables.menus[menu].instantiate()
+	menu_instance.name = "menu"
+	container.add_child(menu_instance)
 

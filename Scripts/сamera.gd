@@ -6,13 +6,13 @@ extends Camera2D
 var distance_to_target: Vector2
 @export var offsett:= Vector2(400, -130)
 
+func _enter_tree():
+	if !target and get_tree().root.get_child(4).has_signal("player_spawned"):
+		get_tree().root.get_child(4).player_spawned.connect(_set_target)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _set_target(target):
+	self.target = target 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if target and !target.is_queued_for_deletion():
 		if GlobalVariables.game_is_on:

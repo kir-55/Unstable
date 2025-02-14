@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://sntjooc6xaot"]
+
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_start_game.gd" id="1_ifo1o"]
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_n648y"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="2_6a3o1"]
+[ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="2_tj424"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_shl63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b08np"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5ykr"]
+
+[node name="MultiplayerLobby" type="Control" node_paths=PackedStringArray("in_lobby_label", "players_list", "start_game_button", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ifo1o")
+in_lobby_label = NodePath("Panel/InLobby")
+players_list = NodePath("Panel/PlayersList")
+start_game_button = NodePath("Panel/Button")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -184.5
+offset_right = 161.0
+offset_bottom = 184.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_n648y")
+
+[node name="Button" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(0, 45.485)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.5
+offset_bottom = -20.015
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = ExtResource("2_6a3o1")
+theme_override_styles/hover = ExtResource("2_tj424")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_shl63")
+text = "Start Game"
+
+[node name="InLobby" type="RichTextLabel" parent="Panel"]
+custom_minimum_size = Vector2(0, 42.225)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b08np")
+bbcode_enabled = true
+selection_enabled = true
+
+[node name="PlayersList" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 52.0
+offset_right = -17.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5ykr")
+bbcode_enabled = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

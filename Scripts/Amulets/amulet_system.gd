@@ -1,12 +1,12 @@
 extends Node
 
 @export var amulet_icon_template: PackedScene
-var amulets_panel: Container
+@onready var amulets_panel: Container = get_tree().root.get_child(4).amulets_panel
 
 var amulets_displayed = false
 
  
-@export var amulets_available: Array[int] = []
+@export var amulets_available = GlobalVariables.player_amulets
 
 @export_group("amulets variables")
 
@@ -20,7 +20,7 @@ var amulets_displayed = false
 
 
 
-	
+
 func use_amulet(event: InputEvent, amulet_id: int):
 	if event is InputEventMouseButton and event.pressed:
 		if amulet_id == 7:
@@ -30,6 +30,7 @@ func use_amulet(event: InputEvent, amulet_id: int):
 		remove_amulet(amulet_id)
 
 func display_amulets():
+	print("displaying: " + str(amulets_available))
 	var unique_amulets = {}
 	
 	for item in amulets_available:
@@ -53,11 +54,11 @@ func display_amulets():
 	amulets_displayed = true
 
 func _ready():
-	if amulets_panel:
+	#if amulets_panel:
 		display_amulets()
 
 func _process(delta):
-	if !amulets_displayed and amulets_panel:
+	if !amulets_displayed and amulets_panel: 
 		display_amulets()
 	
 func atach_amulet(id):

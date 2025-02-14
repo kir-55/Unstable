@@ -57,8 +57,6 @@ script = ExtResource("5_8ma2d")
 
 [node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("6_wyh8r")]
 position = Vector2(0, 114)
-DASH_SPEED_BOOST = 600.0
-DASH_DURATION = 0.2
 score_label = NodePath("../CanvasLayer/Label")
 
 [node name="ArrowSpawner" type="Node2D" parent="Player" node_paths=PackedStringArray("player")]

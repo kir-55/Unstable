@@ -3,7 +3,7 @@ extends Area2D
 @export var death_messages: Array[String]
 
 func _on_body_entered(body):
-	if body.name == "Player" and GlobalVariables.game_is_on:
+	if (body.name == "Player" or body.name == "Player" + str(Client.id)) and GlobalVariables.game_is_on:
 		if body.kill():
 			Engine.time_scale = 1
 			GlobalVariables.game_is_on = false

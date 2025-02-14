@@ -22,36 +22,45 @@ var line_section_length: int
 var last_point: int
 var loaded_segments: Array[int]
 
+func _enter_tree():
+	if !player:
+		get_tree().root.get_child(4).player_spawned.connect(_set_player)
+
+
+func _set_player(player):
+	self.player = player
+
+
 func _ready():
 	line_start_x = line.global_position.x
 	line_section_length = terrain_generator.line_section_length
 	spawn_from += int(GlobalVariables.times_treveled/3)
 	
 func _process(delta):
-	
-	var x = player.position.x
-	var closest_point = int((x - line_start_x)/line_section_length)
-	
-	for loaded_segment in loaded_segments:
-		if abs(loaded_segment - closest_point) > max_radius:
-			loaded_segments.erase(loaded_segment)
-			for child in get_children():
-				var cp = int((child.global_position.x - line_start_x)/line_section_length)
-				if abs(cp - closest_point) > max_radius:
-					child.queue_free()
-	
-	if closest_point != last_point:
-		for i in range(load_radius*2):
-			var point = closest_point + i - load_radius
-			var already_loaded := false 
-			
-			for loaded_segment in loaded_segments:
-				if point == loaded_segment:
-					already_loaded = true
-					break
-			if !already_loaded and point > -1 and point < line.points.size():
-				spawn_decoration(point)
-				loaded_segments.append(point)
+	if player:
+		var x = player.position.x
+		var closest_point = int((x - line_start_x)/line_section_length)
+		
+		for loaded_segment in loaded_segments:
+			if abs(loaded_segment - closest_point) > max_radius:
+				loaded_segments.erase(loaded_segment)
+				for child in get_children():
+					var cp = int((child.global_position.x - line_start_x)/line_section_length)
+					if abs(cp - closest_point) > max_radius:
+						child.queue_free()
+		
+		if closest_point != last_point:
+			for i in range(load_radius*2):
+				var point = closest_point + i - load_radius
+				var already_loaded := false 
+				
+				for loaded_segment in loaded_segments:
+					if point == loaded_segment:
+						already_loaded = true
+						break
+				if !already_loaded and point > -1 and point < line.points.size():
+					spawn_decoration(point)
+					loaded_segments.append(point)
 		
 
 func spawn_decoration(point):

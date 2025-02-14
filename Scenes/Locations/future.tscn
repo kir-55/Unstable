@@ -87,12 +87,9 @@ script = ExtResource("4_oafp7")
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("2_sjffl")
 
-[node name="Player" parent="." node_paths=PackedStringArray("score_label", "amulets_panel") instance=ExtResource("5_dnrmd")]
+[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("5_dnrmd")]
 position = Vector2(0, 114)
-DASH_SPEED_BOOST = 600.0
-DASH_DURATION = 0.2
 score_label = NodePath("../CanvasLayer/Label")
-amulets_panel = NodePath("../CanvasLayer/VBoxContainer")
 
 [node name="Timer" type="Timer" parent="Player"]
 autostart = true

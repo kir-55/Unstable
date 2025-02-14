@@ -31,10 +31,12 @@ var next_epoch: GlobalEnums.LEVELS
 var game_is_on := true
 
 var menus = {
-	GlobalEnums.MENU_LEVEL.MAIN: "res://Scenes/menus/start_menu.tscn",
-	GlobalEnums.MENU_LEVEL.PROGRESS: "res://Scenes/menus/progress_menu.tscn",
+	"main" : load("res://Scenes/menus/start_menu.tscn"),
+	"progress" : load("res://Scenes/menus/progress_menu.tscn"),
+	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
+	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn")
 }
-var current_menu = GlobalEnums.MENU_LEVEL.MAIN
+var current_menu = "main"
 
 @export var player_data_path: String = "res://player_data.json"
 

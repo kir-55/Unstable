@@ -22,6 +22,7 @@ boot_splash/fullsize=false
 GlobalEnums="*res://Scripts/global_enums.gd"
 GlobalVariables="*res://Scenes/global_variables.tscn"
 GlobalFunctions="*res://Scripts/global_functions.gd"
+Client="*res://Scripts/Multiplayer/client.gd"
 
 [debug]
 

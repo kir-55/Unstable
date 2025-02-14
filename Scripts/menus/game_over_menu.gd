@@ -10,22 +10,27 @@ extends Control
 
 func _on_exit_pressed():
 	get_tree().quit()
-	
+
+
+# has to be fixed, two identical functions
 func _on_progress_pressed():
-	GlobalFunctions.load_menu(GlobalEnums.MENU_LEVEL.PROGRESS, true)
+	GlobalFunctions.load_menu("progress", true)
+
 
 func _on_gameover_progress_pressed():
-	GlobalFunctions.load_menu(GlobalEnums.MENU_LEVEL.PROGRESS, true)
+	GlobalFunctions.load_menu("progress", true)
+
 
 func _on_again_pressed():
 	GlobalFunctions.reload()
 
+
 func _ready():
 	if !death_info:
 		return
-
+	
 	GlobalFunctions.save_player_data()
-
+	
 	if GlobalVariables.last_score == GlobalVariables.best_score:
 		death_info.append_text("[center][font_size=25][color='#3d80a3']Score: " + str(GlobalVariables.last_score) + "[/color][/font_size][color='#c57835'][font_size=16][shake rate=5 level=10][sup] (New Best!)[/sup][/shake][/font_size][/color][/center]")
 	else:
@@ -37,3 +42,7 @@ func _on_new_amulet_count_ready():
 	else:
 		new_amulet_count_label.append_text("[center]Progress[/center]")
 
+
+
+func _on_multiplayer_pressed():
+	GlobalFunctions.load_menu("multiplayer_join")

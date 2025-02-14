@@ -27,7 +27,17 @@ extends Node
 
 @onready var line_offset = grass_line.width / 2 - 1
 
+func _enter_tree():
+	if !player:
+		get_tree().root.get_child(4).player_spawned.connect(_set_player)
+
+
+func _set_player(player):
+	self.player = player
+
+
 func _ready():
+	
 	ground_line.add_point(Vector2.ZERO)
 	grass_line.add_point(Vector2.ZERO)
 	points_amount -= 1
@@ -42,23 +52,14 @@ func _ready():
 	
 	var points = grass_line.points
 		
-	#poligon_points.append(points[points.size()-1] - Vector2(0, line_offset - 300))
-	#poligon_points.append(points[0] - Vector2(0, line_offset - 300))
-	
-	#light_occuluder.occluder.polygon = poligon_points
-	
-	#print("occluder: " + str(light_occuluder.occluder.polygon[1]))
-	#sloper.spawn_at_point(big_rock, self, 3, rs.get_rnd_float(0, 1))
-	#$sloper.spawn_at_point(big_rock, self, points_amount - 3, rs.get_rnd_float(0, 1))
-	
-	#sloper.spawn_at_point(main_house_prefab, village, main_house_pos, rs.get_rnd_float(0, 1))
 
 func _process(delta):
-	if player.global_position.x > grass_line.get_point_position(grass_line.points.size()-1).x - 2000:
-		if grass_line.points.size() % 2 == 1:
-			create_next_point(grass_line.get_point_position(grass_line.points.size()-1) + Vector2(line_section_length, rs.get_rnd_float(-section_y_change_amplitude, section_y_change_amplitude)), grass_line.get_point_position(grass_line.points.size()-1))
-		else:
-			create_next_point(grass_line.get_point_position(grass_line.points.size()-1) + Vector2(line_section_length, 0), grass_line.get_point_position(grass_line.points.size()-1))
+	if player:
+		if player.global_position.x > grass_line.get_point_position(grass_line.points.size()-1).x - 2000:
+			if grass_line.points.size() % 2 == 1:
+				create_next_point(grass_line.get_point_position(grass_line.points.size()-1) + Vector2(line_section_length, rs.get_rnd_float(-section_y_change_amplitude, section_y_change_amplitude)), grass_line.get_point_position(grass_line.points.size()-1))
+			else:
+				create_next_point(grass_line.get_point_position(grass_line.points.size()-1) + Vector2(line_section_length, 0), grass_line.get_point_position(grass_line.points.size()-1))
 
 
 func create_next_point(position: Vector2, lastPosition: Vector2):

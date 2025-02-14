@@ -1,4 +1,7 @@
+class_name Player
 extends CharacterBody2D
+
+@export var REMOTE_PLAYER_POSITION: Vector2
 
 # Constants
 @export var SPEED: float = 600.0              # Horizontal movement speed
@@ -17,7 +20,6 @@ extends CharacterBody2D
 @export var STOP_COOLDOWN: float = 0.4      # Time between dashes
 
 @export var score_label: Label
-@export var amulets_panel: Container
 
 
 @export var animated_sprite : AnimatedSprite2D
@@ -30,9 +32,17 @@ extends CharacterBody2D
 var direction: Vector2 = Vector2.ZERO  # Movement direction
 var start_x
 
+# Multiplayer
+@export var multiplayer_synchronizer: MultiplayerSynchronizer
+@export var collision_shape: CollisionShape2D
+@export var nickname_label: Label
+
+
 # Doble jump
 @onready var doble_jump_active = GlobalVariables.player_amulets.has(5) # checks if player has pizza
 var doble_jump_used = false
+
+
 
 # Dash variables
 var is_dashing: bool = false
@@ -49,23 +59,40 @@ var stop_cooldown_timer: float = 0.0
 var is_dropping = false
 var is_jumping
 
+func _enter_tree():
+	if Client.active:
+		set_multiplayer_authority(name.to_int())
+
 func _ready():
-	amulet_system.amulets_available = GlobalVariables.player_amulets
-	amulet_system.amulets_panel = amulets_panel
+	if Client.active:
+		nickname_label.text = Client.players[str(name.to_int())].name
+	else:
+		multiplayer_synchronizer.queue_free()
 		
-	for i in range(amulet_system.amulets_available.count(2)):
-		DASH_DURATION += amulet_system.dash_duration_increase
-		DASH_SPEED_BOOST += amulet_system.dash_speed_increase 
-		DASH_COOLDOWN += amulet_system.dash_cooldown_increase
-		DROP_THROUGH_VELOCITY += amulet_system.drop_throgh_speed_increase
+	if is_multiplayer_authority() or !Client.active:
+		$Nickname.queue_free()
+		amulet_system.amulets_available = GlobalVariables.player_amulets
 		
-	start_x = global_position.x
-	if GlobalVariables.player_global_speed:
-		SPEED = GlobalVariables.player_global_speed
+		for i in range(amulet_system.amulets_available.count(2)):
+			DASH_DURATION += amulet_system.dash_duration_increase
+			DASH_SPEED_BOOST += amulet_system.dash_speed_increase 
+			DASH_COOLDOWN += amulet_system.dash_cooldown_increase
+			DROP_THROUGH_VELOCITY += amulet_system.drop_throgh_speed_increase
+			
+		start_x = global_position.x
+		if GlobalVariables.player_global_speed:
+			SPEED = GlobalVariables.player_global_speed
+	else:
+		collision_shape.disabled = true
+		animated_sprite.self_modulate = Color("#ffffff8e")
+		
+		$Weapon.queue_free()
+		$Amulets.queue_free()
+		$SpeedUpTimer.queue_free()
 
 func _physics_process(delta: float) -> void:
-	if GlobalVariables.game_is_on:
-		
+	if GlobalVariables.game_is_on and is_multiplayer_authority():
+		REMOTE_PLAYER_POSITION = global_position
 		# Apply gravity if not on the floor
 		if not is_on_floor():
 			
@@ -112,7 +139,6 @@ func _physics_process(delta: float) -> void:
 		if stop_cooldown_timer > 0:
 			stop_cooldown_timer -= delta
 		
-
 		if is_on_floor():
 			doble_jump_used = false
 			if is_dropping:
@@ -134,6 +160,7 @@ func _physics_process(delta: float) -> void:
 				JUMP_VELOCITY += 5
 				
 
+		
 
 		# Handle dropping down
 		if Input.is_action_just_pressed("bottom") and not is_on_floor():
@@ -148,13 +175,17 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("jump")
 		else:
 			animated_sprite.play("walk")
-		# Update score
-		score_label.set_text(str(int(GlobalVariables.last_score + int(global_position.x) / GlobalVariables.score_divider)))
+		
 		
 		# Move the character
 		move_and_slide()
-	else:
+	elif !GlobalVariables.game_is_on:
 		animated_sprite.stop()
+	else:
+		global_position = REMOTE_PLAYER_POSITION
+		#lerp(global_position, REMOTE_PLAYER_POSITION, 1)
+	
+
 
 func start_dash() -> void:
 	if !is_jumping:
