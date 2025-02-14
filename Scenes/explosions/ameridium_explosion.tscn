@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3fdfqr1y35e7"]
+
+[ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Audio/Sounds/break.mp3" id="1_a7pwl"]
+[ext_resource type="Script" path="res://Scripts/Amulets/ameridium_explosion.gd" id="1_y6spp"]
+
+[sub_resource type="Curve" id="Curve_25yfo"]
+_data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_2jktp"]
+offsets = PackedFloat32Array(0, 0.277612, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.937255, 0.952941, 0.486275, 1, 0.45098, 0.603922, 0.439216, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pldu1"]
+radius = 327.098
+
+[node name="AmeridiumExplosion" type="Area2D" node_paths=PackedStringArray("particles", "collision_shape")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_y6spp")
+particles = NodePath("CPUParticles2D")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 20
+scale = Vector2(6, 6)
+emitting = false
+amount = 500
+lifetime = 1.5
+one_shot = true
+speed_scale = 3.58
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.61
+emission_shape = 1
+emission_sphere_radius = 60.0
+spread = 158.95
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 5.0
+scale_amount_max = 15.1
+scale_amount_curve = SubResource("Curve_25yfo")
+color_ramp = SubResource("Gradient_2jktp")
+
+[node name="wybuch" type="AudioStreamPlayer" parent="CPUParticles2D"]
+stream = ExtResource("1_a7pwl")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pldu1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

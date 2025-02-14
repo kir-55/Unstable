@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="2_mexp6"]
 [ext_resource type="Script" path="res://Scripts/drone.gd" id="2_q6afg"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_uyrou"]
-[ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/Explosions/drone_explosion.tscn" id="3_eoxcv"]
+[ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/explosions/drone_explosion.tscn" id="3_eoxcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
 size = Vector2(18, 10.7917)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4s2q8qnapvsn"]
 
-[ext_resource type="Script" path="res://Scenes/Locations/microbot.gd" id="1_arids"]
+[ext_resource type="Script" path="res://Scripts/Amulets/microbot.gd" id="1_bpl4y"]
 [ext_resource type="Texture2D" uid="uid://c6e1wc2j1i0y3" path="res://Textures/microbot.png" id="2_wm70c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gbc3e"]
@@ -9,7 +9,7 @@ radius = 4.8534
 [node name="Microbot" type="CharacterBody2D"]
 position = Vector2(39, 120)
 scale = Vector2(3, 3)
-script = ExtResource("1_arids")
+script = ExtResource("1_bpl4y")
 speed = 1300.0
 acceleration = 10.0
 

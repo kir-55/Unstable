@@ -18,6 +18,8 @@ speed = 0.1
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 2.63)
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("2_p365i")
 death_messages = Array[String](["UFO killed you", "You was taken by UFO", "You punched UFO"])
 

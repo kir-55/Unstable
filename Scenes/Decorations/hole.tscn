@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_ebr3f"]
 [ext_resource type="Texture2D" uid="uid://mfhqfusv0tgx" path="res://Textures/Decorations/nowa_barierka.png" id="3_mn1go"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_ytwoc"]
-[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/Explosions/barier_explosion.tscn" id="5_t4h6e"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/explosions/barier_explosion.tscn" id="5_t4h6e"]
 [ext_resource type="Texture2D" uid="uid://byt2uuian5r3w" path="res://Textures/Decorations/nowy_znak.png" id="6_r3kei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]

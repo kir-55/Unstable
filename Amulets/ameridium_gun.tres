@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://cy4dj5okjguw3"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ir5mw"]
+[ext_resource type="Texture2D" uid="uid://da8t7fx0yw4rw" path="res://Textures/Amulets/ameridium_gun.png" id="2_sefd7"]
+
+[resource]
+script = ExtResource("1_ir5mw")
+id = 10
+name = "Ameridium gun"
+description = "Allows player to shoot one explosive bullet every 5 seconds. The bullet explodes on its own after 0.8 if no were shot"
+texture = ExtResource("2_sefd7")
+incompatible_amulets = Array[int]([0])
+consumable = false
+stack_limit = true
+limit = 1
+chance_multiplier = 2
