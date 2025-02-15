@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnxt5vr2tcgk4"]
+[gd_scene load_steps=7 format=3 uid="uid://cnxt5vr2tcgk4"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/ameridium_bullet.gd" id="1_omeem"]
-[ext_resource type="PackedScene" uid="uid://d3fdfqr1y35e7" path="res://Scenes/explosions/ameridium_explosion.tscn" id="2_x1eb0"]
+[ext_resource type="PackedScene" uid="uid://d3fdfqr1y35e7" path="res://Scenes/Explosions/ameridium_explosion.tscn" id="2_x1eb0"]
+[ext_resource type="Gradient" uid="uid://bo6o3coe52wpb" path="res://Styles/ameridium_gradient.tres" id="3_ms48t"]
 [ext_resource type="Texture2D" uid="uid://d18vnn3wqgob7" path="res://Textures/Amulets/Projectiles/ameridium_bullet.png" id="3_w7pxc"]
+
+[sub_resource type="Gradient" id="Gradient_tubif"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1lox"]
 radius = 8.34
@@ -16,23 +19,24 @@ explosion_scene = ExtResource("2_x1eb0")
 velocity = Vector2(1500, 0)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-7.42188, 0.390625)
-rotation = -2.34243
+position = Vector2(-0.781252, -0.78125)
+rotation = 1.5708
 scale = Vector2(0.992474, 7659.23)
 amount = 36
 lifetime = 0.4
 speed_scale = 1.5
 randomness = 0.68
 emission_shape = 3
-emission_rect_extents = Vector2(11.455, 0)
-gravity = Vector2(116.215, 100)
+emission_rect_extents = Vector2(6, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
 linear_accel_max = 100.0
 radial_accel_max = 100.0
-tangential_accel_min = -100.0
-tangential_accel_max = 8.51
-angle_max = 720.0
+scale_amount_min = 4.0
 scale_amount_max = 7.0
-color = Color(0.623529, 1, 0, 1)
+color = Color(0.301961, 0.4, 0.34902, 1)
+color_ramp = ExtResource("3_ms48t")
+color_initial_ramp = SubResource("Gradient_tubif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h1lox")

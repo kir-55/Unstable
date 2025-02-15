@@ -63,7 +63,14 @@ func _ready():
 	if GlobalVariables.player_global_speed:
 		SPEED = GlobalVariables.player_global_speed
 	if GlobalVariables.player_amulets.has(11):
-		get_tree().current_scene.find_child("Camera2D").zoom = Vector2(0.7, 1)
+		var camera = get_tree().current_scene.find_child("Camera2D")
+		camera.zoom = Vector2(0.7, 0.7)
+		camera.offsett.y = -300
+	reset_velocity()
+
+func reset_velocity():
+	velocity.x = SPEED
+	
 
 func _physics_process(delta: float) -> void:
 	if GlobalVariables.game_is_on:
@@ -96,6 +103,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 			stop_timer -= delta
 			if stop_timer <= 0:
+				reset_velocity()
 				is_stopping = false
 				animated_sprite.play()
 				
@@ -141,9 +149,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("bottom") and not is_on_floor():
 			drop_through()
 		
-		# Set horizontal movement speed
-		if !is_stopping:
-			velocity.x = direction.x * SPEED
 		var direction=1
 		
 		if not is_on_floor():
@@ -155,6 +160,9 @@ func _physics_process(delta: float) -> void:
 		
 		# Move the character
 		move_and_slide()
+		if velocity.x < SPEED and !is_stopping:
+			reset_velocity()
+			
 	else:
 		animated_sprite.stop()
 
@@ -173,6 +181,7 @@ func start_dash() -> void:
 	dash_cooldown_timer = DASH_COOLDOWN
 	original_speed = SPEED  # Store the original speed
 	SPEED += DASH_SPEED_BOOST
+	reset_velocity()
 	velocity.y = 0
 
 func end_dash() -> void:
@@ -180,6 +189,7 @@ func end_dash() -> void:
 	# End the dash and restore the original speed
 	is_dashing = false
 	SPEED = original_speed
+	reset_velocity()
 
 func drop_through() -> void:
 	is_dropping = true
