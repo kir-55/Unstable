@@ -46,7 +46,7 @@ var rtc_peer = WebRTCMultiplayerPeer.new()
 var id: int = 0
 var host_id: int = 0
 var lobby_id: String
-var public_ip
+var public_ip: String
 
 
 var player_name: String
@@ -66,7 +66,7 @@ func _ready():
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
 	
-	var url = "https://api64.ipify.org?format=text"
+	var url = "http://checkip.amazonaws.com"
 	var error = http_request.request(url)
 	
 	if error != OK:
@@ -165,6 +165,10 @@ func send_answer(id, data):
 
 
 func _on_request_completed(_result, _response_code, _headers, body):
+	print("result: " + str(_result))
+	print("response code: " + str(_response_code))
+	print("hearders: " + str(_headers))
+	print("body: " + str(body))
 	public_ip = body.get_string_from_utf8()
 	print("Public IPv4 Address: ", public_ip)
 
