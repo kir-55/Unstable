@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="2_fxvmq"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="2_redno"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="3_skbog"]
-[ext_resource type="Script" path="res://score_updater.gd" id="5_y8nvw"]
+[ext_resource type="Script" path="res://Scripts/score_updater.gd" id="5_y8nvw"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="8_42q7i"]
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="9_s7k86"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="10_sqdli"]

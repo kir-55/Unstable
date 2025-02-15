@@ -46,6 +46,8 @@ var rtc_peer = WebRTCMultiplayerPeer.new()
 var id: int = 0
 var host_id: int = 0
 var lobby_id: String
+var public_ip
+
 
 var player_name: String
 
@@ -60,7 +62,15 @@ func _ready():
 	multiplayer.peer_connected.connect(rtc_peer_connected) 
 	multiplayer.peer_disconnected.connect(rtc_peer_disconnected) 
 	
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request_completed.connect(_on_request_completed)
 	
+	var url = "https://api64.ipify.org?format=text"
+	var error = http_request.request(url)
+	
+	if error != OK:
+		print("Failed to make request: ", error)
 
 
 	
@@ -154,16 +164,25 @@ func send_answer(id, data):
 	send_to_server(message)
 
 
+func _on_request_completed(_result, _response_code, _headers, body):
+	public_ip = body.get_string_from_utf8()
+	print("Public IPv4 Address: ", public_ip)
+
+
+
 func _on_offer_created(type, data, id):
+	var modified_sdp = data.replace("IN IP4 127.0.0.1", "IN IP4 " + public_ip)
+	modified_sdp = modified_sdp.replace("c=IN IP4 0.0.0.0", "c=IN IP4 " + public_ip)
+	
 	if !rtc_peer.has_peer(id):
 		return
 	
-	rtc_peer.get_peer(id).connection.set_local_description(type, data)
+	rtc_peer.get_peer(id).connection.set_local_description(type, modified_sdp)
 	
 	if type == "offer":
-		send_offer(id, data)
+		send_offer(id, modified_sdp)
 	else:
-		send_answer(id, data)
+		send_answer(id, modified_sdp)
 
 
 func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
