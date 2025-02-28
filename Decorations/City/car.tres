@@ -12,5 +12,5 @@ chance_to_spawn = 20.0
 chance_multiplyer = 1
 type = 1
 incompatible_with_types = Array[int]([1, 2])
-min_scale = 5.0
-max_scale = 6.0
+min_scale = 3.0
+max_scale = 3.0
