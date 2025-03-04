@@ -5,21 +5,22 @@
 [node name="road_lines" type="Node2D"]
 
 [node name="road_line" type="Sprite2D" parent="."]
-modulate = Color(0.976471, 0.65098, 0.0196078, 1)
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(3, -10.998)
 scale = Vector2(6, 6)
 texture = ExtResource("1_e4jts")
 offset = Vector2(-0.166666, 2.33333)
 
 [node name="road_line2" type="Sprite2D" parent="."]
-modulate = Color(0.976471, 0.65098, 0.0196078, 1)
-position = Vector2(163, 0)
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(166, -10.998)
 scale = Vector2(6, 6)
 texture = ExtResource("1_e4jts")
 offset = Vector2(0, 2.333)
 
 [node name="road_line3" type="Sprite2D" parent="."]
-modulate = Color(0.976471, 0.65098, 0.0196078, 1)
-position = Vector2(-163, 0)
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(-160, -10.998)
 scale = Vector2(6, 6)
 texture = ExtResource("1_e4jts")
 offset = Vector2(0, 2.333)

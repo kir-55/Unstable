@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dumv6v0grpcg5" path="res://Textures/Decorations/nowa_dziura.png" id="1_hyjar"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_ebr3f"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_ytwoc"]
-[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/explosions/barier_explosion.tscn" id="5_t4h6e"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/Explosions/barier_explosion.tscn" id="5_t4h6e"]
 [ext_resource type="Texture2D" uid="uid://cr8dnnmcwfiht" path="res://Textures/Decorations/barierka.png" id="6_csbap"]
 [ext_resource type="Texture2D" uid="uid://byt2uuian5r3w" path="res://Textures/Decorations/nowy_znak.png" id="6_r3kei"]
 
@@ -11,7 +11,7 @@
 size = Vector2(24, 1.66667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol1y4"]
-size = Vector2(11.4286, 16.6428)
+size = Vector2(19, 14)
 
 [node name="Area2D" type="Area2D" groups=["Obsticle"]]
 z_index = 4
@@ -25,20 +25,18 @@ shape = SubResource("RectangleShape2D_1iamu")
 
 [node name="Hole" type="Sprite2D" parent="."]
 z_index = 5
-position = Vector2(-0.0833333, 0.0833302)
+position = Vector2(9, -1)
 texture = ExtResource("1_hyjar")
 offset = Vector2(-0.166952, -6.16667)
 
 [node name="NowyZnak" type="Sprite2D" parent="Hole"]
 z_index = -1
 z_as_relative = false
-position = Vector2(-32, -15.3333)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-48, -30)
 texture = ExtResource("6_r3kei")
 
 [node name="Barier1" type="Area2D" parent="."]
-position = Vector2(-20.8833, -8.05)
-scale = Vector2(0.7, 0.7)
+position = Vector2(-23, -14)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_ebr3f")
@@ -51,7 +49,6 @@ explosion_prefab = ExtResource("5_t4h6e")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barier1"]
 position = Vector2(-0.166711, 6.79761)
-scale = Vector2(0.601504, 1.2619)
 texture = ExtResource("6_csbap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barier1"]
@@ -59,8 +56,7 @@ position = Vector2(-0.16671, 7.69048)
 shape = SubResource("RectangleShape2D_ol1y4")
 
 [node name="Barier2" type="Area2D" parent="."]
-position = Vector2(20.45, -8.05)
-scale = Vector2(0.7, 0.7)
+position = Vector2(39, -14)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_ebr3f")
@@ -73,11 +69,10 @@ explosion_prefab = ExtResource("5_t4h6e")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barier2"]
 position = Vector2(-0.642859, 6.79761)
-scale = Vector2(0.601504, 1.2619)
 texture = ExtResource("6_csbap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barier2"]
-position = Vector2(-0.476191, 7.55953)
+position = Vector2(-0.5, 7)
 shape = SubResource("RectangleShape2D_ol1y4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

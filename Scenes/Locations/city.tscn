@@ -152,15 +152,16 @@ terrain_generator = NodePath("..")
 [node name="GroundLine" type="Line2D" parent="TerrainGenerator"]
 material = SubResource("ShaderMaterial_53rot")
 position = Vector2(0, 8)
-default_color = Color(0.11502, 0.0656286, 0.00661148, 1)
+default_color = Color(0.168627, 0.133333, 0.164706, 1)
 
 [node name="GrassLine" type="Line2D" parent="TerrainGenerator"]
 width = 30.0
-default_color = Color(0.108257, 0.118032, 0.110268, 1)
+default_color = Color(0.156863, 0.180392, 0.231373, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 
 [node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "player", "line", "terrain_generator")]
+position = Vector2(0, 2)
 scale = Vector2(1.10038, 1.15793)
 script = ExtResource("12_gsrp6")
 load_radius = 6
@@ -170,6 +171,7 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Player")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
+spawn_from = 3
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("14_stlej"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
