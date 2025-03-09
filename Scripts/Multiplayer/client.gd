@@ -127,11 +127,15 @@ func create_peer(id):
 		var peer := WebRTCPeerConnection.new()
 		peer.initialize({
 			"iceServers": [
-				{"urls": ["stun:stun1.l.google.com:19302"]},
-				{"urls": ["turn:turn.anyfirewall.com:443?transport=tcp"], "username": "user", "credential": "pass"}
-			]
+				{"urls": ["stun:stun.l.google.com:19302"]},
+				{"urls": ["turn:openrelay.metered.ca:80?transport=tcp"], 
+				 "username": "openrelayproject", 
+				 "credential": "openrelayproject"}
+			],
+			"iceTransportPolicy": "public"  # ← ADD THIS (Godot 4.2+ only)
 		})
-
+		# REST IN PEACE
+		# {"urls": ["turn:turn.anyfirewall.com:443?transport=tcp"], "username": "user", "credential": "pass"}
 		# {"urls": ["turn:firegame.pl:3478"], "username": "example_user", "credential": "example_password"}
 		print("CLIENT(" + str(self.id) + "): binding id " + str(id))
 
@@ -183,12 +187,13 @@ func _on_request_completed(_result, _response_code, _headers, body):
 func _on_offer_created(type, data, id):
 	var modified_sdp = data.replace("IN IP4 127.0.0.1", "IN IP4 " + public_ip)
 	modified_sdp = modified_sdp.replace("c=IN IP4 0.0.0.0", "c=IN IP4 " + public_ip)
-
+	modified_sdp = modified_sdp.replace("m=application 9 UDP/DTLS/SCTP", "m=application 5000 UDP/DTLS/SCTP")  # ← ADD THIS
+	
 	if !rtc_peer.has_peer(id):
 		return
-
+	
 	rtc_peer.get_peer(id).connection.set_local_description(type, modified_sdp)
-
+	
 	if type == "offer":
 		send_offer(id, modified_sdp)
 	else:
