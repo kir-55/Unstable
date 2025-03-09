@@ -145,8 +145,8 @@ func _process(delta):
 				if rtc_peer.has_peer(data.org_peer):
 					var peer_conn = rtc_peer.get_peer(data.org_peer).connection
 					
-					# Check if remote description is set
-					if peer_conn.get_remote_description().is_empty():
+					# Check if remote description exists
+					if peer_conn.remote_description.is_empty():  # ← Use property, not function
 						# Queue candidates if remote description isn't set
 						if not candidate_queues.has(data.org_peer):
 							candidate_queues[data.org_peer] = []
