@@ -88,6 +88,7 @@ func rtc_peer_disconnected(id):
 
 func _process(delta):
 	peer.poll()
+	rtc_peer.poll()
 	if peer.get_available_packet_count() > 0:
 		var packet = peer.get_packet()
 		if packet:
@@ -127,9 +128,11 @@ func create_peer(id):
 		peer.initialize({
 			"iceServers": [
 				{"urls": ["stun:stun1.l.google.com:19302"]},
-				{"urls": ["turn:firegame.pl:3478"], "username": "example_user", "credential": "example_password"}
+				{"urls": ["turn:turn.anyfirewall.com:443?transport=tcp"], "username": "user", "credential": "pass"}
 			]
 		})
+
+		# {"urls": ["turn:firegame.pl:3478"], "username": "example_user", "credential": "example_password"}
 		print("CLIENT(" + str(self.id) + "): binding id " + str(id))
 
 		peer.session_description_created.connect(_on_offer_created.bind(id))
@@ -193,6 +196,7 @@ func _on_offer_created(type, data, id):
 
 
 func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
+	print("ICE Candidate for %d: %s" % [id, sdp_name])
 	var message = {
 		"message_type": MessageTypes.CANDIDATE,
 		"id": id,
