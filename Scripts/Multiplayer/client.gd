@@ -120,60 +120,32 @@ var candidate_queues = {}  # Add this at the top of your client script
 func _process(delta):
 	peer.poll()
 	rtc_peer.poll()
-	
 	if peer.get_available_packet_count() > 0:
 		var packet = peer.get_packet()
 		if packet:
 			var data_string = packet.get_string_from_utf8()
 			var data = JSON.parse_string(data_string)
 			print(data)
-			
 			if data.message_type == MessageTypes.ID:
 				id = data.id
 				connected(id)
-				print("CLIENT: Received id: " + str(id))
-			
+				print("CLIENT: Recieved id: " + str(id))
 			elif data.message_type == MessageTypes.USER_CONNECTED:
 				create_peer(data.id)
-			
 			elif data.message_type == MessageTypes.LOBBY:
 				players = data.players
 				lobby_id = data.lobby_id
 				host_id = data.host
-			
 			elif data.message_type == MessageTypes.CANDIDATE:
 				if rtc_peer.has_peer(data.org_peer):
-					var peer_conn = rtc_peer.get_peer(data.org_peer).connection
-					
-					# Check if remote description exists
-					if peer_conn.remote_description.is_empty():  # ← Use property, not function
-						# Queue candidates if remote description isn't set
-						if not candidate_queues.has(data.org_peer):
-							candidate_queues[data.org_peer] = []
-						candidate_queues[data.org_peer].append(data)
-						print("CLIENT(" + str(id) + ") Queued candidate for peer " + str(data.org_peer))
-					else:
-						# Add candidate if remote description is set
-						peer_conn.add_ice_candidate(data.mid, int(data.index), data.sdp)
-						print("CLIENT(" + str(id) + ") Added candidate for peer " + str(data.org_peer))
-			
-			elif data.message_type == MessageTypes.OFFER or data.message_type == MessageTypes.ANSWER:
+					print("CLIENT(" + str(id) + ") Got candidate: " + str(data.org_peer))
+					rtc_peer.get_peer(data.org_peer).connection.add_ice_candidate(data.mid, int(data.index), data.sdp)
+			elif data.message_type == MessageTypes.OFFER:
 				if rtc_peer.has_peer(data.org_peer):
-					var peer_conn = rtc_peer.get_peer(data.org_peer).connection
-					
-					# Set remote description
-					if data.message_type == MessageTypes.OFFER:
-						peer_conn.set_remote_description("offer", data.data)
-					elif data.message_type == MessageTypes.ANSWER:
-						peer_conn.set_remote_description("answer", data.data)
-					print("CLIENT(" + str(id) + ") Set remote description for peer " + str(data.org_peer))
-					
-					# Process queued candidates for this peer
-					if candidate_queues.has(data.org_peer):
-						for candidate in candidate_queues[data.org_peer]:
-							peer_conn.add_ice_candidate(candidate.mid, int(candidate.index), candidate.sdp)
-							print("CLIENT(" + str(id) + ") Processed queued candidate for peer " + str(data.org_peer))
-						candidate_queues.erase(data.org_peer)
+					rtc_peer.get_peer(data.org_peer).connection.set_remote_description("offer", data.data)
+			elif data.message_type == MessageTypes.ANSWER:
+				if rtc_peer.has_peer(data.org_peer):
+					rtc_peer.get_peer(data.org_peer).connection.set_remote_description("answer", data.data)
 
 func connected(id):
 	rtc_peer.create_mesh(id)
@@ -185,10 +157,19 @@ func create_peer(id):
 		var peer := WebRTCPeerConnection.new()
 		peer.initialize({
 			"iceServers": [
-				{"urls": ["stun:stun.l.google.com:19302"]},
-				{"urls": ["turn:relay.metered.ca:80?transport=tcp"], 
-				 "username": "c1b5b3a1d1a9c9b1", 
-				 "credential": "9c1b5b3a1d1a9c9b1"}
+				{
+				"urls": "stun:stun.l.google.com:19302",
+				},
+				{
+				"urls": "turn:global.relay.metered.ca:80?transport=tcp",
+				"username": "63f31ac8c1461346174ed164",
+				"credential": "fr5Bdg0NsoOPxhOz",
+				},
+				{
+				"urls": "turns:global.relay.metered.ca:443?transport=tcp",
+				"username": "63f31ac8c1461346174ed164",
+				"credential": "fr5Bdg0NsoOPxhOz",
+				},
 			],
 			"iceTransportPolicy": "all"  # Use "public" if IPv6 is causing issues
 		})
@@ -196,7 +177,12 @@ func create_peer(id):
 		# {"urls": ["turn:turn.anyfirewall.com:443?transport=tcp"], "username": "user", "credential": "pass"}
 		# {"urls": ["turn:firegame.pl:3478"], "username": "example_user", "credential": "example_password"}
 		print("CLIENT(" + str(self.id) + "): binding id " + str(id))
-
+#"iceServers": [
+				#{"urls": ["stun:stun1.l.google.com:19302"]},
+				#{"urls": ["turn:turn.bistri.com:80?transport=tcp"], 
+				 #"username": "homeo", 
+				 #"credential": "homeo"}
+			#],
 		peer.session_description_created.connect(_on_offer_created.bind(id))
 		peer.ice_candidate_created.connect(_on_ice_candidate_created.bind(id))
 		rtc_peer.add_peer(peer, id)
