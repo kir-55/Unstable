@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dumv6v0grpcg5" path="res://Textures/Decorations/nowa_dziura.png" id="1_hyjar"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_ebr3f"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_ytwoc"]
-[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/Explosions/barier_explosion.tscn" id="5_t4h6e"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/explosions/barier_explosion.tscn" id="5_t4h6e"]
 [ext_resource type="Texture2D" uid="uid://cr8dnnmcwfiht" path="res://Textures/Decorations/barierka.png" id="6_csbap"]
 [ext_resource type="Texture2D" uid="uid://byt2uuian5r3w" path="res://Textures/Decorations/nowy_znak.png" id="6_r3kei"]
 

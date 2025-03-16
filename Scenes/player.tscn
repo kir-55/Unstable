@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=23 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
+[ext_resource type="PackedScene" uid="uid://c8lspr0ou0j8r" path="res://Scenes/amulet_timer.tscn" id="5_382f2"]
 [ext_resource type="PackedScene" uid="uid://b8itocxc1xfcd" path="res://Scenes/bullet.tscn" id="5_bm4pq"]
+[ext_resource type="PackedScene" uid="uid://c51ptv4stfpdi" path="res://Scenes/amulet_timer_bar.tscn" id="5_ewkn8"]
 [ext_resource type="PackedScene" uid="uid://cnxt5vr2tcgk4" path="res://Scenes/ameridium_bullet.tscn" id="6_2qycl"]
 [ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/microbot.tscn" id="6_70j50"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
@@ -26,30 +28,45 @@ script/source = "extends Node2D
 @export var ameridium_bullet_scene: PackedScene
 @export var bullet_speed: float = 600.0      # Speed of the spawned bullets
 @export var knockback_force: float = 200.0   # Knockback magnitude applied to the parent
-@export var timer: Timer
-@export var microbot_timer: Timer
-@export var ameridium_gun_timer : Timer
+@export var amulet_timer : PackedScene
 
 
 @export var description: String              # Reference to the timer for cooldown
 
 var has_bag_of_tools: bool = false
+var bag_of_tools_timer : Timer
+
 var has_ameridium_gun : bool = false
+var ameridium_gun_timer: Timer
 var can_shoot: bool = true
 
 @export var microbot: PackedScene
+var microbot_timer: Timer
+
+var shooting_weapon_timer : Timer
 
 func _ready():
+	
+	for amulet_id in GlobalVariables.player_amulets:
+		if GlobalVariables.amulets[amulet_id].has_timer:
+			var amulet_timer_representation = amulet_timer.instantiate()
+			amulet_timer_representation.name = str(amulet_id) + \"timer\"
+			amulet_timer_representation.wait_time = GlobalVariables.amulets[amulet_id].timer_reload
+			add_child(amulet_timer_representation)
+	
 	if GlobalVariables.player_amulets.has(0):
 		has_bag_of_tools = true
+		bag_of_tools_timer = assign_timer(0, _on_ameridium_gun_timeout)
+		shooting_weapon_timer = bag_of_tools_timer
 	if GlobalVariables.player_amulets.has(10):
 		has_ameridium_gun = true
-	if microbot_timer and GlobalVariables.player_amulets.has(9):
-		microbot_timer.start()
-		
-	if has_ameridium_gun:
-		timer = ameridium_gun_timer
+		ameridium_gun_timer = assign_timer(10, _on_ameridium_gun_timeout)
 		bullet_scene = ameridium_bullet_scene
+		shooting_weapon_timer = ameridium_gun_timer
+	if GlobalVariables.player_amulets.has(9):
+		microbot_timer = assign_timer(9, _on_microbot_timeout)
+		microbot_timer.set_one_shot(false)
+		microbot_timer.start()
 
 func _unhandled_input(event):
 	# Check if the player wants to shoot
@@ -73,13 +90,13 @@ func fire_weapon() -> void:
 		get_parent().velocity.x -= knockback_force
 		# Start cooldown
 		can_shoot = false
-		timer.start()
+		shooting_weapon_timer.start()
 
-
-
-func _on_timer_timeout():
-	can_shoot = true
-
+func assign_timer(amulet_id : int, timeout_function) -> Timer:
+	var timer = find_child(str(amulet_id) + \"timer\", false, false)
+	timer.wait_time = GlobalVariables.amulets[amulet_id].timer_reload
+	timer.timeout.connect(timeout_function)
+	return timer
 
 func _on_microbot_timeout():
 	if microbot:
@@ -168,6 +185,7 @@ _data = {
 self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)
+collision_layer = 128
 script = ExtResource("1_22t7u")
 MAX_JUMP_VEL = -1000.0
 STOP_DURATION = 0.6
@@ -195,9 +213,11 @@ position = Vector2(-13, 14)
 width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
-[node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
+[node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("weapon_system", "animation_player")]
 script = ExtResource("2_sxsw1")
 amulet_icon_template = ExtResource("4_e8l5m")
+weapon_system = NodePath("../Weapon")
+amulet_timer_bar = ExtResource("5_ewkn8")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -208,7 +228,7 @@ shape = SubResource("RectangleShape2D_uu4jv")
 wait_time = 2.0
 autostart = true
 
-[node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("timer", "microbot_timer", "ameridium_gun_timer")]
+[node name="Weapon" type="Sprite2D" parent="."]
 z_index = 3
 position = Vector2(13.5714, 5.71429)
 scale = Vector2(6, 6)
@@ -216,19 +236,8 @@ script = SubResource("GDScript_yujad")
 bullet_scene = ExtResource("5_bm4pq")
 ameridium_bullet_scene = ExtResource("6_2qycl")
 bullet_speed = 2000.0
-timer = NodePath("BagOfToolsTimer")
-microbot_timer = NodePath("MicrobotTimer")
-ameridium_gun_timer = NodePath("AmeridiumGunTimer")
+amulet_timer = ExtResource("5_382f2")
 microbot = ExtResource("6_70j50")
-
-[node name="BagOfToolsTimer" type="Timer" parent="Weapon"]
-wait_time = 0.2
-
-[node name="MicrobotTimer" type="Timer" parent="Weapon"]
-wait_time = 3.0
-
-[node name="AmeridiumGunTimer" type="Timer" parent="Weapon"]
-wait_time = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0.5)
@@ -245,6 +254,3 @@ libraries = {
 }
 
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]
-[connection signal="timeout" from="Weapon/BagOfToolsTimer" to="Weapon" method="_on_timer_timeout"]
-[connection signal="timeout" from="Weapon/MicrobotTimer" to="Weapon" method="_on_microbot_timeout"]
-[connection signal="timeout" from="Weapon/AmeridiumGunTimer" to="Weapon" method="_on_ameridium_gun_timeout"]

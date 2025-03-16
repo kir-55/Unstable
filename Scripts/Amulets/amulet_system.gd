@@ -1,6 +1,10 @@
 extends Node
 
 @export var amulet_icon_template: PackedScene
+
+@export var weapon_system : Sprite2D
+@export var amulet_timer_bar : PackedScene
+
 var amulets_panel: Container
 @export var animation_player : AnimationPlayer
 
@@ -52,6 +56,10 @@ func display_amulets():
 			amulet_representation.get_child(0).text = str(unique_amulets[amulet_id]) + "X"
 		if GlobalVariables.amulets[amulet_id].consumable == true:
 			amulet_representation.gui_input.connect(use_amulet.bind(amulet_id))
+		if GlobalVariables.amulets[amulet_id].has_timer:
+			var amulet_timer_bar_representation = amulet_timer_bar.instantiate()
+			amulet_timer_bar_representation.amulet_timer = weapon_system.find_child(str(amulet_id) + "timer", false, false)
+			amulet_representation.add_child(amulet_timer_bar_representation)
 		amulets_panel.add_child(amulet_representation)
 	amulets_displayed = true
 

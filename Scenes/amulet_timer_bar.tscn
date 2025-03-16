@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c51ptv4stfpdi"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet_timer_bar.gd" id="1_8dbtx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x33w"]
+bg_color = Color(0.816727, 0.765978, 0.765976, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvxqy"]
+bg_color = Color(1, 0.584314, 0.27451, 1)
+
+[node name="ProgressBar" type="ProgressBar"]
+offset_left = 119.0
+offset_top = 20.0
+offset_right = 321.0
+offset_bottom = 46.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2x33w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yvxqy")
+show_percentage = false
+script = ExtResource("1_8dbtx")

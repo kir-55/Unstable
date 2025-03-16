@@ -11,6 +11,14 @@ extends Resource
 
 @export var consumable: bool = false
 
+@export var has_timer: bool = false:
+	set(value):
+		has_timer = value
+		notify_property_list_changed()
+
+@export var timer_reload: float = 1
+
+
 #Regulacja widoczności w edytorze
 @export var stack_limit: bool = false:
 	set(value):
@@ -25,4 +33,6 @@ extends Resource
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["limit"] and !stack_limit:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name in ["timer_reload"] and !has_timer:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
