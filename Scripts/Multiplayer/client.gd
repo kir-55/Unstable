@@ -1,7 +1,5 @@
 extends Node
 
-
-
 var game_scene: String = "res://Scenes/Locations/city.tscn"
 
 #@export var player_prefab: PackedScene
@@ -61,6 +59,8 @@ func _ready():
 	multiplayer.connected_to_server.connect(rtc_server_connected)
 	multiplayer.peer_connected.connect(rtc_peer_connected)
 	multiplayer.peer_disconnected.connect(rtc_peer_disconnected)
+	
+	
 
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
@@ -86,35 +86,6 @@ func rtc_peer_disconnected(id):
 	print("RTC peer disonnected " + str(id))
 
 
-#func _process(delta):
-	#peer.poll()
-	#rtc_peer.poll()
-	#if peer.get_available_packet_count() > 0:
-		#var packet = peer.get_packet()
-		#if packet:
-			#var data_string = packet.get_string_from_utf8()
-			#var data = JSON.parse_string(data_string)
-			#print(data)
-			#if data.message_type == MessageTypes.ID:
-				#id = data.id
-				#connected(id)
-				#print("CLIENT: Recieved id: " + str(id))
-			#elif data.message_type == MessageTypes.USER_CONNECTED:
-				#create_peer(data.id)
-			#elif data.message_type == MessageTypes.LOBBY:
-				#players = data.players
-				#lobby_id = data.lobby_id
-				#host_id = data.host
-			#elif data.message_type == MessageTypes.CANDIDATE:
-				#if rtc_peer.has_peer(data.org_peer):
-					#print("CLIENT(" + str(id) + ") Got candidate: " + str(data.org_peer))
-					#rtc_peer.get_peer(data.org_peer).connection.add_ice_candidate(data.mid, int(data.index), data.sdp)
-			#elif data.message_type == MessageTypes.OFFER:
-				#if rtc_peer.has_peer(data.org_peer):
-					#rtc_peer.get_peer(data.org_peer).connection.set_remote_description("offer", data.data)
-			#elif data.message_type == MessageTypes.ANSWER:
-				#if rtc_peer.has_peer(data.org_peer):
-					#rtc_peer.get_peer(data.org_peer).connection.set_remote_description("answer", data.data)
 var candidate_queues = {}  # Add this at the top of your client script
 
 func _process(delta):
@@ -152,39 +123,48 @@ func connected(id):
 	multiplayer.multiplayer_peer = rtc_peer
 
 
+func _on_connection_state_changed(id):
+	var peer = rtc_peer.get_peer(id)
+	if peer:
+		var state = peer.connection.get_connection_state()
+		print("WebRTC State Changed for peer ", id, ": ", state)
+		
+		# Once connected, print the selected candidate pair
+		if state == "connected":
+			var stats = peer.connection.get_stats()
+			for stat in stats:
+				if "selectedCandidatePairId" in stat:
+					print("Selected candidate for peer %d: %s" % [id, stat["selectedCandidatePairId"]])
+		
+
+
 func create_peer(id):
 	if id != self.id:
+		print("CLIENT(" + str(self.id) + "): Creating peer for id " + str(id))
+
 		var peer := WebRTCPeerConnection.new()
 		peer.initialize({
 			"iceServers": [
+				{ "urls": ["stun:stun.l.google.com:19302"] },
 				{
-				"urls": "stun:stun.l.google.com:19302",
-				},
-				{
-				"urls": "turn:global.relay.metered.ca:80?transport=tcp",
-				"username": "63f31ac8c1461346174ed164",
-				"credential": "fr5Bdg0NsoOPxhOz",
-				},
-				{
-				"urls": "turns:global.relay.metered.ca:443?transport=tcp",
-				"username": "63f31ac8c1461346174ed164",
-				"credential": "fr5Bdg0NsoOPxhOz",
-				},
+					"urls": [
+						"turn:global.relay.metered.ca:80?transport=udp",
+						"turn:global.relay.metered.ca:80?transport=tcp",
+						"turns:global.relay.metered.ca:443"
+					],
+					"username": "63f31ac8c1461346174ed164",
+					"credential": "fr5Bdg0NsoOPxhOz"
+				}
 			],
-			"iceTransportPolicy": "all"  # Use "public" if IPv6 is causing issues
+			"iceTransportPolicy": "all"
 		})
-		# REST IN PEACE
-		# {"urls": ["turn:turn.anyfirewall.com:443?transport=tcp"], "username": "user", "credential": "pass"}
-		# {"urls": ["turn:firegame.pl:3478"], "username": "example_user", "credential": "example_password"}
-		print("CLIENT(" + str(self.id) + "): binding id " + str(id))
-#"iceServers": [
-				#{"urls": ["stun:stun1.l.google.com:19302"]},
-				#{"urls": ["turn:turn.bistri.com:80?transport=tcp"], 
-				 #"username": "homeo", 
-				 #"credential": "homeo"}
-			#],
+
+		# Connect to the state change signal
+		peer.connection.connection_state_changed.connect(_on_connection_state_changed.bind(id))
+
 		peer.session_description_created.connect(_on_offer_created.bind(id))
 		peer.ice_candidate_created.connect(_on_ice_candidate_created.bind(id))
+
 		rtc_peer.add_peer(peer, id)
 		if id < rtc_peer.get_unique_id():
 			peer.create_offer()
