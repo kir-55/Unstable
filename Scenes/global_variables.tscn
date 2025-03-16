@@ -14,9 +14,9 @@
 [ext_resource type="Resource" uid="uid://dbw5s5ormsd16" path="res://Amulets/pill.tres" id="11_tgtug"]
 [ext_resource type="Resource" uid="uid://cw3j7kvwcevbv" path="res://Amulets/mystery_pill.tres" id="12_ex3xr"]
 [ext_resource type="Resource" uid="uid://d3l6fb2c4pdeg" path="res://Amulets/microbot_backpack.tres" id="14_nnbhk"]
-[ext_resource type="Resource" uid="uid://cy4dj5okjguw3" path="res://Amulets/ameridium_gun.tres" id="15_okhnc"]
-[ext_resource type="Resource" uid="uid://crd8o4hn3c05k" path="res://Amulets/glasses.tres" id="16_hclqi"]
-[ext_resource type="Resource" uid="uid://clihaphekywxx" path="res://Amulets/immunity_potion.tres" id="17_x0qbh"]
+[ext_resource type="Resource" path="res://Amulets/ameridium_gun.tres" id="15_okhnc"]
+[ext_resource type="Resource" path="res://Amulets/glasses.tres" id="16_hclqi"]
+[ext_resource type="Resource" uid="uid://kxfxw3rbc6ya" path="res://Amulets/immunity_potion.tres" id="17_x0qbh"]
 
 [node name="GlobalVariables" type="Node"]
 script = ExtResource("1_6fhdc")
