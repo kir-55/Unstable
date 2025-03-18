@@ -36,6 +36,8 @@ enum MessageTypes {
 }
 
 
+
+
 var is_active = false
 
 var peer = WebSocketMultiplayerPeer.new()
@@ -121,20 +123,6 @@ func _process(delta):
 func connected(id):
 	rtc_peer.create_mesh(id)
 	multiplayer.multiplayer_peer = rtc_peer
-
-
-func _on_connection_state_changed(id):
-	var peer = rtc_peer.get_peer(id)
-	if peer:
-		var state = peer.connection.get_connection_state()
-		print("WebRTC State Changed for peer ", id, ": ", state)
-		
-		# Once connected, print the selected candidate pair
-		if state == "connected":
-			var stats = peer.connection.get_stats()
-			for stat in stats:
-				if "selectedCandidatePairId" in stat:
-					print("Selected candidate for peer %d: %s" % [id, stat["selectedCandidatePairId"]])
 		
 
 
@@ -156,18 +144,27 @@ func create_peer(id):
 					"credential": "fr5Bdg0NsoOPxhOz"
 				}
 			],
-			"iceTransportPolicy": "all"
+			"iceTransportPolicy": "relay"
 		})
 
-		# Connect to the state change signal
-		peer.connection.connection_state_changed.connect(_on_connection_state_changed.bind(id))
-
-		peer.session_description_created.connect(_on_offer_created.bind(id))
+		# Connect ICE candidate and session events
 		peer.ice_candidate_created.connect(_on_ice_candidate_created.bind(id))
+		peer.session_description_created.connect(_on_offer_created.bind(id))
+
+		# Periodically check the connection state (since no direct signal exists)
+		get_tree().create_timer(1.0).timeout.connect(func():
+			var signaling_states = ["stable", "have-local-offer", "have-remote-offer", "have-local-pranswer", "have-remote-pranswer", "closed"]
+			var connection_states = ["new", "checking", "connected", "completed", "failed", "disconnected", "closed"]
+
+			print("Peer %d signaling state: %s" % [id, signaling_states[peer.get_signaling_state()]])
+			print("Peer %d connection state: %s" % [id, connection_states[peer.get_connection_state()]])
+
+		)
 
 		rtc_peer.add_peer(peer, id)
 		if id < rtc_peer.get_unique_id():
 			peer.create_offer()
+
 
 
 func send_to_server(message):
@@ -211,7 +208,7 @@ func _on_request_completed(_result, _response_code, _headers, body):
 func _on_offer_created(type, data, id):
 	var modified_sdp = data.replace("IN IP4 127.0.0.1", "IN IP4 " + public_ip)
 	modified_sdp = modified_sdp.replace("c=IN IP4 0.0.0.0", "c=IN IP4 " + public_ip)
-	modified_sdp = modified_sdp.replace("m=application 9 UDP/DTLS/SCTP", "m=application 5000 UDP/DTLS/SCTP")  # ← ADD THIS
+	modified_sdp = modified_sdp.replace("m=application 9 UDP/DTLS/SCTP", "m=application 5000 UDP/DTLS/SCTP")
 	
 	if !rtc_peer.has_peer(id):
 		return
