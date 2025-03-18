@@ -57,7 +57,7 @@ grow_vertical = 0
 theme_override_styles/normal = ExtResource("2_6a3o1")
 theme_override_styles/hover = ExtResource("2_tj424")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_shl63")
-text = "Start Game"
+text = "Ready"
 
 [node name="InLobby" type="RichTextLabel" parent="Panel"]
 custom_minimum_size = Vector2(0, 42.225)

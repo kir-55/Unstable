@@ -279,7 +279,7 @@ func leave_home(id):
 			voted_to_leave_home = true
 		leave_home_vote += 1
 
-	if leave_home_vote >= players.size():
+	if leave_home_vote >= players.size() - dead_players.size():
 		leave_home_vote = 0
 		voted_to_leave_home = false
 		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
@@ -288,5 +288,6 @@ func leave_home(id):
 func player_died(id):
 	dead_players.append(id)
 	
-	if GlobalVariables.game_is_on and dead_players.size() == players.size() + 1:
-		print("YOU WON!!!")
+	if GlobalVariables.game_is_on and dead_players.size() == players.size() - 1:
+		GlobalVariables.game_is_on = false
+		get_tree().change_scene_to_file("res://Scenes/multiplayer_victory.tscn")

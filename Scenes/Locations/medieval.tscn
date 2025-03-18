@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b4mjxnd6d0142" path="res://Audio/Melodies/gra sre4.mp3" id="3_3pf4p"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="4_aeiye"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="5_8ma2d"]
-[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/player.tscn" id="6_wyh8r"]
+[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/Entities/player.tscn" id="6_wyh8r"]
 [ext_resource type="Script" path="res://Scripts/Decorations/arrow_physics.gd" id="7_pucfl"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="8_n6r57"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="9_dlgnq"]

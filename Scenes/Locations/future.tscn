@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dpveeo85b2dpw" path="res://Audio/Melodies/cyberpunk.mp3" id="3_5v1p8"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="4_6y7yh"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="4_oafp7"]
-[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/player.tscn" id="5_dnrmd"]
+[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/Entities/player.tscn" id="5_dnrmd"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="5_sjxdq"]
 [ext_resource type="Resource" uid="uid://cuqmq6v5i85qk" path="res://Decorations/Future/acid.tres" id="9_cgx32"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="9_pgo7h"]

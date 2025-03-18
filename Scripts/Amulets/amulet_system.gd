@@ -55,7 +55,7 @@ func display_amulets():
 
 func _ready():
 	#if amulets_panel:
-		display_amulets()
+	display_amulets()
 
 func _process(delta):
 	if !amulets_displayed and amulets_panel: 
