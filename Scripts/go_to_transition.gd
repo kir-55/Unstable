@@ -12,21 +12,23 @@ func _set_player(player):
 
 @rpc("any_peer", "call_local")
 func transition(destination):
-	Engine.time_scale = 1
-	GlobalVariables.last_score = GlobalVariables.last_score + int(player.global_position.x) / GlobalVariables.score_divider
-	GlobalVariables.last_epoch = current_world
-	
-	if GlobalVariables.player_amulets.has(5):
-		GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(5))
-	
-	
-	GlobalVariables.next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
-	while GlobalVariables.last_epoch == GlobalVariables.next_epoch:
+	if GlobalVariables.game_is_on:
+		Engine.time_scale = 1
+		GlobalVariables.last_score = GlobalVariables.last_score + int(player.global_position.x) / GlobalVariables.score_divider
+		GlobalVariables.last_epoch = current_world
+		
+		if GlobalVariables.player_amulets.has(5):
+			GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(5))
+		
+		
 		GlobalVariables.next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
-			
-	
-	GlobalVariables.times_treveled += 1
-	get_tree().change_scene_to_file(destination)
+		while GlobalVariables.last_epoch == GlobalVariables.next_epoch:
+			GlobalVariables.next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
+				
+		
+		GlobalVariables.times_treveled += 1
+		GlobalVariables.terrain_code += 1
+		get_tree().change_scene_to_file(destination)
 
 
 func _on_timeout():

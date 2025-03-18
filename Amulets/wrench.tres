@@ -10,6 +10,7 @@ name = "Right Wrench"
 description = "Adjusts machine to reduce your speed, decreases machine lags; more tools needed for full repair."
 texture = ExtResource("2_7dhaf")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = true
 consumable = false
 stack_limit = true
 limit = 1

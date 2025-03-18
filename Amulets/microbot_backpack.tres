@@ -7,11 +7,10 @@
 script = ExtResource("1_cihre")
 id = 9
 name = "Microbot BackPack"
-
 description = "Backpack with your new innovation, once a while generates microbot wich scales down nearby obstacle"
-
 texture = ExtResource("2_ibapu")
 incompatible_amulets = Array[int]([0])
+available_in_multiplayer = true
 consumable = false
 stack_limit = true
 limit = 1

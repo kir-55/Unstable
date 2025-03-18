@@ -18,9 +18,10 @@ var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
 func _ready():
 	label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
 	var multiplied_amulets_list : Array[Amulet]
-	for i in GlobalVariables.amulets:
-		for j in range(i.chance_multiplier):
-			multiplied_amulets_list.append(i)
+	for amulet in GlobalVariables.amulets:
+		if !Client.active or amulet.available_in_multiplayer == true:
+			for i in range(amulet.chance_multiplier):
+				multiplied_amulets_list.append(amulet)
 	print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)))
 	for i in range(GlobalVariables.items_in_home):
 			
@@ -85,7 +86,11 @@ func chosed_amulet(event: InputEvent, amulet):
 			GlobalVariables.player_global_speed -= 100
 			GlobalVariables.initial_chance_for_lag -= 10
 		amulets_chosen.append(amulet[0])
-		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
+		
+		if amount_of_items_to_take-amulets_chosen.size() <= 0 and Client.active:
+			label.text = "Wait for other players!"
+		else:
+			label.text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
 		
 		amulet[1].queue_free()
 		

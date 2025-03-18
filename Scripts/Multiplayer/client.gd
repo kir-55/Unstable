@@ -12,6 +12,7 @@ const LOBBY_ID_SYMBOLS = "abcdefghijklmnopqrstuvwxyz1234567890"
 const DELETE_LOBBY_AFTER = 3  #measured in hours
 
 var players = {}
+var dead_players = []
 
 var active = false
 
@@ -265,6 +266,7 @@ func start_game(id):
 			"lobby_id": lobby_id
 		}
 		
+		GlobalVariables.terrain_code = hash(lobby_id)
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 		send_to_server(message)
 		get_tree().change_scene_to_file(game_scene)
@@ -281,3 +283,10 @@ func leave_home(id):
 		leave_home_vote = 0
 		voted_to_leave_home = false
 		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
+		
+@rpc("any_peer")
+func player_died(id):
+	dead_players.append(id)
+	
+	if GlobalVariables.game_is_on and dead_players.size() == players.size() + 1:
+		print("YOU WON!!!")

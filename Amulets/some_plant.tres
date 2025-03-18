@@ -10,6 +10,7 @@ name = "Some Plant"
 description = "Gives you green energy"
 texture = ExtResource("2_gch6j")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = true
 consumable = false
 stack_limit = true
 limit = 2

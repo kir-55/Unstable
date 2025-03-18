@@ -8,7 +8,7 @@ extends Resource
 @export var texture: Texture2D
 @export var incompatible_amulets : Array[int]
 
-
+@export var available_in_multiplayer: bool = true
 @export var consumable: bool = false
 
 #Regulacja widoczności w edytorze

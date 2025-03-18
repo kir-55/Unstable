@@ -23,6 +23,9 @@ func _on_body_entered(body):
 			if death_messages and death_messages.size() != 0:
 				instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_messages.pick_random() + "[/color][/shake][/font_size][center]")
 			get_tree().current_scene.find_child("CanvasLayer").add_child(instance)
+			
+			if Client.active:
+				Client.player_died.rpc(Client.id)
 		else:
 			get_parent().queue_free()
 			

@@ -10,6 +10,7 @@ name = "Pizza Slice"
 description = "Gives you temporary energy to doble jump, consumes by the end of next epoch"
 texture = ExtResource("2_ptnk6")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = true
 consumable = false
 stack_limit = true
 limit = 1

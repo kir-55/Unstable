@@ -9,8 +9,7 @@ var state
 
 
 func _ready():
-	#rng.state = 1
-	pass
+	rng.state = GlobalVariables.terrain_code
 
 func get_rnd_int(min: int, max: int) -> int:
 	return rng.randi_range(min, max)# randi_range

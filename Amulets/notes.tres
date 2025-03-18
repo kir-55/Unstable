@@ -10,6 +10,7 @@ name = "Notes"
 description = "Your notes about machine, desplays next epoch, required for repair."
 texture = ExtResource("2_862eq")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = false
 consumable = false
 stack_limit = true
 limit = 1

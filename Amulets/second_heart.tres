@@ -10,6 +10,7 @@ name = "Second Heart"
 description = "Gives you second chance to live (removes when used)"
 texture = ExtResource("2_wwwrf")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = true
 consumable = false
 stack_limit = false
 limit = 1
