@@ -264,6 +264,8 @@ func start_game(id):
 			"message_type": MessageTypes.REMOVE_LOBBY,
 			"lobby_id": lobby_id
 		}
+		
+		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 		send_to_server(message)
 		get_tree().change_scene_to_file(game_scene)
 

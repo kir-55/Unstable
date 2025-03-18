@@ -94,7 +94,6 @@ func _physics_process(delta: float) -> void:
 		REMOTE_PLAYER_POSITION = global_position
 		# Apply gravity if not on the floor
 		if not is_on_floor():
-			
 			velocity.y += gravity * delta
 
 		# Handle movement input

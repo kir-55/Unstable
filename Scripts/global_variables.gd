@@ -1,7 +1,7 @@
 class_name Global
 extends Node
 
-var player_global_speed : float
+var player_global_speed: float = 0
 var best_score : int = 0
 var last_score : int = 0
 var times_treveled: int = 0
