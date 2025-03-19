@@ -140,7 +140,6 @@ grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
 rs = NodePath("../RandomSystem")
 sloper = NodePath("Sloper")
-line_section_length = 500
 section_y_change_amplitude = 0
 player = NodePath("../Player")
 
