@@ -9,6 +9,7 @@ prefab = ExtResource("1_a3pgd")
 spawn_on_center = true
 initial_chance = 100
 chance_to_spawn = 20.0
+spawn_with_gap = false
 chance_multiplyer = 1
 type = 1
 incompatible_with_types = Array[int]([1, 2])

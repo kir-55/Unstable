@@ -14,13 +14,17 @@ var line_section_length: int
 @export var line: Line2D
 @export var terrain_generator: Node2D
 
+@export var spawn_gap : int = 2
 
-
-@export var spawn_from: int = 2 
+@export var spawn_from: int = 2
 
 @export var decorations: Array[Decoration]
+
 var last_point: int
 var loaded_segments: Array[int]
+
+var gap_count := 0
+var decorations_in_gap : Array[Decoration]
 
 func _ready():
 	line_start_x = line.global_position.x
@@ -43,13 +47,18 @@ func _process(delta):
 	if closest_point != last_point:
 		for i in range(load_radius*2):
 			var point = closest_point + i - load_radius
-			var already_loaded := false 
+			var already_loaded := false
 			
 			for loaded_segment in loaded_segments:
 				if point == loaded_segment:
 					already_loaded = true
 					break
+			
 			if !already_loaded and point > -1 and point < line.points.size():
+				gap_count += 1
+				if gap_count > spawn_gap:
+					gap_count = 0
+					decorations_in_gap.clear()
 				spawn_decoration(point)
 				loaded_segments.append(point)
 		
@@ -67,7 +76,10 @@ func spawn_decoration(point):
 				
 			if has_incompatible:
 				continue
-			
+				
+			if decoration in decorations_in_gap:
+				print(gap_count)
+				continue
 			
 			if decoration and decoration.prefab:
 				var rnd_i = rs.get_rnd_int_at(0, 99)
@@ -80,6 +92,8 @@ func spawn_decoration(point):
 								segment_part = rs.get_rnd_float_at(0, 1)
 							var scale = rs.get_rnd_float(decoration.min_scale, decoration.max_scale)
 							types_spawned.append(decoration.type)
+							if decoration.spawn_with_gap == true:
+								decorations_in_gap.append(decoration)
 							sloper.spawn_at_point(decoration.prefab, self, point, segment_part, Vector2(scale, scale))
 				i += 1
 
