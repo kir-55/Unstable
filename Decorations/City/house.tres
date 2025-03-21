@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_t5xrx")
 prefab = ExtResource("1_sit36")
+name = "House"
 spawn_on_center = true
 initial_chance = 100
 chance_to_spawn = 40.0

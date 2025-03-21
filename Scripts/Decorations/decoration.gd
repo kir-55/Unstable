@@ -3,6 +3,7 @@ extends Resource
 
 @export var prefab: PackedScene
 @export_category("Chances")
+@export var name : String
 @export var spawn_on_center := false
 @export var initial_chance := 100
 @export var chance_to_spawn: float

@@ -14,7 +14,7 @@ var line_section_length: int
 @export var line: Line2D
 @export var terrain_generator: Node2D
 
-@export var spawn_gap : int = 2
+@export var spawn_gap : int = 2 # if there are problem with gaps please make sure every decoration has a unique name in .tres!
 
 @export var spawn_from: int = 2
 
@@ -23,8 +23,7 @@ var line_section_length: int
 var last_point: int
 var loaded_segments: Array[int]
 
-var gap_count := 0
-var decorations_in_gap : Array[Decoration]
+var decorations_with_gap : Dictionary
 
 func _ready():
 	line_start_x = line.global_position.x
@@ -55,10 +54,17 @@ func _process(delta):
 					break
 			
 			if !already_loaded and point > -1 and point < line.points.size():
-				gap_count += 1
-				if gap_count > spawn_gap:
-					gap_count = 0
-					decorations_in_gap.clear()
+				for decoration_name in decorations_with_gap.keys():
+					decorations_with_gap[decoration_name] +=1
+				
+				var decorations_with_gap_copy := decorations_with_gap.duplicate(true)
+				
+				for decoration_name in decorations_with_gap:
+					if decorations_with_gap[decoration_name] > spawn_gap:
+						decorations_with_gap_copy.erase(decoration_name)
+				
+				decorations_with_gap = decorations_with_gap_copy.duplicate(true)
+				
 				spawn_decoration(point)
 				loaded_segments.append(point)
 		
@@ -76,9 +82,9 @@ func spawn_decoration(point):
 				
 			if has_incompatible:
 				continue
-				
-			if decoration in decorations_in_gap:
-				print(gap_count)
+			
+			var decoration_gap = decorations_with_gap.get(decoration.name)
+			if  decoration_gap != null and decoration_gap <= spawn_gap:
 				continue
 			
 			if decoration and decoration.prefab:
@@ -93,8 +99,9 @@ func spawn_decoration(point):
 							var scale = rs.get_rnd_float(decoration.min_scale, decoration.max_scale)
 							types_spawned.append(decoration.type)
 							if decoration.spawn_with_gap == true:
-								decorations_in_gap.append(decoration)
+								if decoration_gap != null:
+									decorations_with_gap[decoration.name] += 1
+								else:
+									decorations_with_gap[decoration.name] = 0
 							sloper.spawn_at_point(decoration.prefab, self, point, segment_part, Vector2(scale, scale))
 				i += 1
-
-
