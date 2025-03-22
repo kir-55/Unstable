@@ -1,6 +1,7 @@
 extends Node
 
 func reload():
+	start_timer()
 	Engine.time_scale = 1
 	GlobalVariables.last_score = 0
 	GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
@@ -16,6 +17,12 @@ func reload():
 func _ready():
 	load_player_data()
 
+
+func start_timer():
+	GlobalVariables.time_started = Time.get_ticks_msec()
+
+func end_timer():
+	GlobalVariables.time_ended = Time.get_ticks_msec()
 
 func save_player_data():
 	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.WRITE)

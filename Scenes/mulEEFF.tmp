@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_clws8"]
 [ext_resource type="Texture2D" uid="uid://cirjfin1oh6eb" path="res://Textures/UnstableVictory.png" id="1_rb1n2"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="2_tp5eh"]
-[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_ranking.gd" id="3_67ih4"]
+[ext_resource type="Script" path="res://Scripts/multiplayer_ranking.gd" id="3_67ih4"]
 [ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="3_fibqh"]
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="3_pq45m"]
 [ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="4_xxylm"]

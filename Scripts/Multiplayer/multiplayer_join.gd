@@ -11,5 +11,5 @@ func _ready():
 
 func _on_button_pressed():
 	Client.active = true
-	Client.join_lobby(nickname_input.text, lobby_id_input.text)
-	GlobalFunctions.load_menu("multiplayer_lobby")
+	Client.join_lobby(lobby_id_input.text, nickname_input.text)
+	#GlobalFunctions.load_menu("multiplayer_lobby")

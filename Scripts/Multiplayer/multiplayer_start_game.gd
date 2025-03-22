@@ -26,3 +26,7 @@ func _on_timer_timeout():
 	if Client.lobby_id:
 		timer.stop()
 		in_lobby_label.text = "[center]In Lobby: " + Client.lobby_id + "[/center]"
+
+
+func _on_leave_pressed():
+	Client.leave_lobby()

@@ -7,9 +7,17 @@ var terrain_code: int = 1
 var player_global_speed: float = 0
 var best_score : int = 0
 var last_score : int = 0
+
+
+var time_started: int = 0
+var time_ended: int = 0
+
+
 var times_treveled: int = 0
 
 @export var initial_player_speed: int = 500
+
+
 
 
 @export var initial_items_in_home: int = 3
@@ -37,7 +45,9 @@ var menus = {
 	"main" : load("res://Scenes/menus/start_menu.tscn"),
 	"progress" : load("res://Scenes/menus/progress_menu.tscn"),
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
-	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn")
+	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
+	"multiplayer_victory" : load("res://Scenes/multiplayer_victory.tscn"),
+	"multiplayer_loss" : load("res://Scenes/multiplayer_loss.tscn")
 }
 var current_menu = "main"
 

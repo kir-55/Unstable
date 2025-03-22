@@ -1,5 +1,6 @@
 extends Node
 
+
 var game_scene: String = "res://Scenes/Locations/city.tscn"
 
 #@export var player_prefab: PackedScene
@@ -23,6 +24,8 @@ var voted_to_start_game = false
 var leave_home_vote = 0
 var voted_to_leave_home = false
 
+var id_to_rejoin: String = "" 
+
 enum MessageTypes {
 	ID,
 	JOIN,
@@ -33,13 +36,17 @@ enum MessageTypes {
 	CANDIDATE,
 	OFFER,
 	ANSWER,
-	CHECK_IN
+	CHECK_IN,
+	LEAVE_LOBBY,
 }
 
 
 
 
-var is_active = false
+var is_active := false
+
+var has_to_rejoin := false
+var queue_to_play_again := false
 
 var peer = WebSocketMultiplayerPeer.new()
 var rtc_peer = WebRTCMultiplayerPeer.new()
@@ -50,7 +57,7 @@ var lobby_id: String
 var public_ip: String
 
 
-var player_name: String
+var player_name: String = ""
 
 
 func connect_to_server():
@@ -83,6 +90,7 @@ func rtc_server_connected():
 
 func rtc_peer_connected(id):
 	print("RTC peer connected " + str(id))
+	
 
 
 func rtc_peer_disconnected(id):
@@ -106,10 +114,24 @@ func _process(delta):
 				print("CLIENT: Recieved id: " + str(id))
 			elif data.message_type == MessageTypes.USER_CONNECTED:
 				create_peer(data.id)
+			elif data.message_type == MessageTypes.LEAVE_LOBBY:
+				players = data.players
+				lobby_id = data.lobby_id
+				host_id = data.host
 			elif data.message_type == MessageTypes.LOBBY:
 				players = data.players
 				lobby_id = data.lobby_id
 				host_id = data.host
+
+				if queue_to_play_again == true:
+					rejoin.rpc(data.lobby_id)
+					queue_to_play_again = false
+					has_to_rejoin = true
+				elif has_to_rejoin:
+					has_to_rejoin = false
+					rejoin(data.lobby_id)
+				GlobalFunctions.load_menu("multiplayer_lobby")
+				
 			elif data.message_type == MessageTypes.CANDIDATE:
 				if rtc_peer.has_peer(data.org_peer):
 					print("CLIENT(" + str(id) + ") Got candidate: " + str(data.org_peer))
@@ -124,7 +146,10 @@ func _process(delta):
 func connected(id):
 	rtc_peer.create_mesh(id)
 	multiplayer.multiplayer_peer = rtc_peer
-		
+	if id_to_rejoin != "":
+		join_lobby(id_to_rejoin)
+		id_to_rejoin = ""
+
 
 
 func create_peer(id):
@@ -235,12 +260,46 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 	}
 	send_to_server(message)
 
+func reset_multiplayer_connection():
+	if multiplayer.multiplayer_peer:
+		multiplayer.multiplayer_peer.close()  # Disconnect from the current session
+		multiplayer.multiplayer_peer = null     # Clear the reference
+		print("Multiplayer connection closed. Resetting connection...")
+	# Reinitialize your peer (create a new instance if needed)
+	peer = WebSocketMultiplayerPeer.new()
+	connect_to_server()  # This reestablishes the connection with the server
+
+@rpc("any_peer")
+func rejoin(lobby_id: String):
+	print("trying to rejoin")
+	players.clear()
+	dead_players.clear()
+	id_to_rejoin = lobby_id
+	reset_multiplayer_connection()
+	
+	
 
 
+func leave_lobby():
+	var message = {
+		"message_type": MessageTypes.LEAVE_LOBBY,
+		"id": id,
+		"lobby_id": lobby_id
+	}
+	send_to_server(message)
+	GlobalFunctions.load_menu("main")
+	#reset_multiplayer_connection()
+	
+	
 
-func join_lobby(nickname: String, lobby_id: String):
-	player_name = nickname
-
+@rpc("any_peer")
+func join_lobby(lobby_id: String, nickname: String = ""):
+	
+	if nickname == "" and player_name != "":
+		nickname = player_name
+	else:
+		player_name = nickname
+	
 	var message = {
 		"message_type": MessageTypes.LOBBY,
 		"id": id,
@@ -248,6 +307,7 @@ func join_lobby(nickname: String, lobby_id: String):
 		"lobby_id": lobby_id
 	}
 	send_to_server(message)
+
 
 
 @rpc("any_peer", "call_local")
@@ -268,6 +328,7 @@ func start_game(id):
 		
 		GlobalVariables.terrain_code = hash(lobby_id)
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
+		GlobalFunctions.start_timer()
 		send_to_server(message)
 		get_tree().change_scene_to_file(game_scene)
 
@@ -285,9 +346,16 @@ func leave_home(id):
 		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
 		
 @rpc("any_peer")
-func player_died(id):
-	dead_players.append(id)
+func player_died(id, name, score, time):
+	var player = {
+		"id": id,
+		"name": name,
+		"score": score,
+		"time": time
+	}
+	dead_players.append(player)
 	
-	if GlobalVariables.game_is_on and dead_players.size() == players.size() - 1:
-		GlobalVariables.game_is_on = false
-		get_tree().change_scene_to_file("res://Scenes/multiplayer_victory.tscn")
+	if dead_players.size() == players.size() - 1:
+		if GlobalVariables.game_is_on:
+			GlobalVariables.game_is_on = false
+			GlobalFunctions.load_menu("multiplayer_victory", false)

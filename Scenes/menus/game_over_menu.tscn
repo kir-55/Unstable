@@ -4,6 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
 [ext_resource type="Script" path="res://Scripts/superscript_effect.gd" id="4_eh833"]
+[ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="5_o7vdc"]
 
 [sub_resource type="Gradient" id="Gradient_18d3l"]
 colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
@@ -18,9 +19,6 @@ fill_to = Vector2(0.991453, 0)
 metadata/_snap_enabled = true
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_j0opp"]
-script = ExtResource("4_eh833")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_xlhj1"]
 script = ExtResource("4_eh833")
 
 [node name="GameOverMenu" type="Control" node_paths=PackedStringArray("death_info", "new_amulet_count_label")]
@@ -111,7 +109,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 fit_content = true
-custom_effects = [SubResource("RichTextEffect_xlhj1")]
+custom_effects = [ExtResource("5_o7vdc")]
 
 [node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer/RichTextLabel"]
 show_behind_parent = true
