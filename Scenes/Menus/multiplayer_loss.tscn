@@ -1,0 +1,159 @@
+[gd_scene load_steps=12 format=3 uid="uid://13bgyn5tbelr"]
+
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_4n8oe"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="2_8jf83"]
+[ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="4_unfpl"]
+[ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="6_edeqo"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_ranking.gd" id="7_ofvul"]
+
+[sub_resource type="Gradient" id="Gradient_18d3l"]
+colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nn3gk"]
+gradient = SubResource("Gradient_18d3l")
+width = 1152
+height = 648
+fill = 1
+fill_from = Vector2(0, 0.3)
+fill_to = Vector2(0.991453, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4dck"]
+font_size = 24
+
+[sub_resource type="FontFile" id="FontFile_63enl"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="FontFile_g5di8"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/1/variation_coordinates = {}
+cache/1/face_index = 0
+cache/1/embolden = 2.0
+cache/1/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/1/spacing_top = 0
+cache/1/spacing_bottom = 0
+cache/1/spacing_space = 0
+cache/1/spacing_glyph = 0
+cache/1/40/0/ascent = 0.0
+cache/1/40/0/descent = 0.0
+cache/1/40/0/underline_position = 0.0
+cache/1/40/0/underline_thickness = 0.0
+cache/1/40/0/scale = 1.0
+cache/1/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/1/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/1/16/0/ascent = 0.0
+cache/1/16/0/descent = 0.0
+cache/1/16/0/underline_position = 0.0
+cache/1/16/0/underline_thickness = 0.0
+cache/1/16/0/scale = 1.0
+cache/1/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/1/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_p0u03"]
+base_font = SubResource("FontFile_g5di8")
+variation_embolden = 2.0
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_nn3gk")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -381.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_4n8oe")
+
+[node name="Leave" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -71.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("2_8jf83")
+theme_override_styles/hover = ExtResource("4_unfpl")
+theme_override_styles/pressed = ExtResource("4_unfpl")
+text = "Leave"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 356.0
+offset_bottom = 135.0
+text = "Ranking:"
+label_settings = SubResource("LabelSettings_b4dck")
+
+[node name="RankedPlayer" type="RichTextLabel" parent="Panel/Label"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 38.0
+offset_right = 330.0
+offset_bottom = 207.0
+bbcode_enabled = true
+custom_effects = [ExtResource("6_edeqo")]
+script = ExtResource("7_ofvul")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 30.0
+offset_right = 1111.0
+offset_bottom = 90.0
+theme_override_fonts/normal_font = SubResource("FontFile_63enl")
+theme_override_fonts/bold_font = SubResource("FontVariation_p0u03")
+bbcode_enabled = true
+text = "[center] [b][shake rate=20 level=20 connected=1][font_size=40][color=#c33c40]F[/color] [color=#e47259]A[/color] [color=#7b234c]I[/color] [color=#c33c40]L[/color][/font_size][/shake][/b][/center]"
+
+[connection signal="pressed" from="Panel/Leave" to="Panel/Label/RankedPlayer" method="_on_leave_pressed"]

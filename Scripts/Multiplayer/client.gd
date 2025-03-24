@@ -13,7 +13,7 @@ const LOBBY_ID_SYMBOLS = "abcdefghijklmnopqrstuvwxyz1234567890"
 const DELETE_LOBBY_AFTER = 3  #measured in hours
 
 var players = {}
-var dead_players = []
+var dead_players = {}
 
 var active = false
 
@@ -162,9 +162,7 @@ func create_peer(id):
 				{ "urls": ["stun:stun.l.google.com:19302"] },
 				{
 					"urls": [
-						"turn:global.relay.metered.ca:80?transport=udp",
-						"turn:global.relay.metered.ca:80?transport=tcp",
-						"turns:global.relay.metered.ca:443"
+						"turn:global.relay.metered.ca:80?transport=udp"
 					],
 					"username": "63f31ac8c1461346174ed164",
 					"credential": "fr5Bdg0NsoOPxhOz"
@@ -262,12 +260,23 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 
 func reset_multiplayer_connection():
 	if multiplayer.multiplayer_peer:
-		multiplayer.multiplayer_peer.close()  # Disconnect from the current session
-		multiplayer.multiplayer_peer = null     # Clear the reference
+		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer = null
 		print("Multiplayer connection closed. Resetting connection...")
-	# Reinitialize your peer (create a new instance if needed)
+	
 	peer = WebSocketMultiplayerPeer.new()
-	connect_to_server()  # This reestablishes the connection with the server
+	rtc_peer = WebRTCMultiplayerPeer.new()
+	
+	# Ensure all peers are removed
+	players.clear()
+	dead_players.clear()
+	
+	# Removes all mp sync from scene
+	for node in get_tree().get_nodes_in_group("multiplayer_sync"):
+		node.queue_free()
+		
+	multiplayer.multiplayer_peer = null  # This forces Godot to reinitialize networking
+	connect_to_server()
 
 @rpc("any_peer")
 func rejoin(lobby_id: String):
@@ -326,6 +335,7 @@ func start_game(id):
 			"lobby_id": lobby_id
 		}
 		
+		GlobalVariables.game_is_on = true
 		GlobalVariables.terrain_code = hash(lobby_id)
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 		GlobalFunctions.start_timer()
@@ -339,23 +349,27 @@ func leave_home(id):
 		if id == self.id:
 			voted_to_leave_home = true
 		leave_home_vote += 1
-
+		
 	if leave_home_vote >= players.size() - dead_players.size():
 		leave_home_vote = 0
 		voted_to_leave_home = false
 		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
-		
-@rpc("any_peer")
-func player_died(id, name, score, time):
+
+
+
+@rpc("any_peer", "call_local")
+func player_died(id: int, name, score, time):
 	var player = {
 		"id": id,
 		"name": name,
 		"score": score,
 		"time": time
 	}
-	dead_players.append(player)
+	dead_players[id] = player
 	
 	if dead_players.size() == players.size() - 1:
 		if GlobalVariables.game_is_on:
 			GlobalVariables.game_is_on = false
 			GlobalFunctions.load_menu("multiplayer_victory", false)
+		else:
+			GlobalFunctions.load_menu("multiplayer_loss", false)

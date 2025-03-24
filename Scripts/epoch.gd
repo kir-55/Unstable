@@ -6,7 +6,15 @@ signal player_spawned(player)
 @export var spawn_point: Node2D
 @export var amulets_panel: VBoxContainer
 
+@export var countdown_panel: Panel
+@export var countdown_label: Label
+var current_countdown_value: int
+
+
 func _ready():
+	GlobalVariables.game_is_on = false
+	current_countdown_value = GlobalVariables.pre_game_countdown_time
+	
 	if Client.active:
 		for i in Client.players:
 			var player = load(player_prefab).instantiate()
@@ -21,3 +29,13 @@ func _ready():
 		player.global_position = spawn_point.global_position
 		player_spawned.emit(player)
 		get_tree().root.get_child(4).add_child(player)
+
+
+func _on_timer_timeout():
+	current_countdown_value -= 1
+	if current_countdown_value <= 0:
+		countdown_panel.queue_free()
+		GlobalVariables.game_is_on = true
+	else:
+		countdown_label.text = str(current_countdown_value)
+	

@@ -38,13 +38,12 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(305, 56)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("2_eqd0k")
 speed = 30.0
-target = NodePath("../Player")
 max_distance = Vector2(1, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]

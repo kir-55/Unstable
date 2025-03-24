@@ -32,6 +32,15 @@ properties/2/replication_mode = 2
 properties/3/path = NodePath(".:REMOTE_PLAYER_POSITION")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath("Trail/Trail:default_color")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Trail/Trail2:default_color")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Trail/Trail3:default_color")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
 size = Vector2(21.4286, 50)
@@ -223,7 +232,7 @@ offset_bottom = -30.5714
 label_settings = SubResource("LabelSettings_avjva")
 horizontal_alignment = 1
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." groups=["multiplayer_sync"]]
 replication_config = SubResource("SceneReplicationConfig_ftbv5")
 
 [node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails", "amulet_system")]

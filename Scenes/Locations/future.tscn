@@ -63,13 +63,12 @@ offset_bottom = 9.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(386, 23)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("1_x54wi")
 speed = 30.0
-target = NodePath("../Player")
 max_distance = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]

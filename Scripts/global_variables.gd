@@ -18,6 +18,8 @@ var times_treveled: int = 0
 @export var initial_player_speed: int = 500
 
 
+@export var pre_game_countdown_time = 3
+
 
 
 @export var initial_items_in_home: int = 3
@@ -46,8 +48,8 @@ var menus = {
 	"progress" : load("res://Scenes/menus/progress_menu.tscn"),
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
 	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
-	"multiplayer_victory" : load("res://Scenes/multiplayer_victory.tscn"),
-	"multiplayer_loss" : load("res://Scenes/multiplayer_loss.tscn")
+	"multiplayer_victory" : load("res://Scenes/Menus/multiplayer_victory.tscn"),
+	"multiplayer_loss" : load("res://Scenes/Menus/multiplayer_loss.tscn")
 }
 var current_menu = "main"
 

@@ -17,16 +17,18 @@ func _on_body_entered(body):
 			GlobalVariables.last_score = last_score
 			GlobalFunctions.end_timer()
 			
-			# spawning death menu
-			var game_over_menu = load("res://Scenes/menus/game_over_menu.tscn")
-			var instance = game_over_menu.instantiate()
-			if death_messages and death_messages.size() != 0:
-				instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_messages.pick_random() + "[/color][/shake][/font_size][center]")
-			get_tree().current_scene.find_child("CanvasLayer").add_child(instance)
 			
-			if Client.active:
+			if !Client.active:
+				# spawning death menu
+				var game_over_menu = load("res://Scenes/menus/game_over_menu.tscn")
+				var instance = game_over_menu.instantiate()
+				if death_messages and death_messages.size() != 0:
+					instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_messages.pick_random() + "[/color][/shake][/font_size][center]")
+				get_tree().current_scene.find_child("CanvasLayer").add_child(instance)
+			else:
 				var time_elapsed = GlobalVariables.time_ended - GlobalVariables.time_started
 				Client.player_died.rpc(Client.id, Client.player_name, last_score, time_elapsed)
+				
 		else:
 			get_parent().queue_free()
 			

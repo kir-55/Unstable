@@ -179,6 +179,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	elif !GlobalVariables.game_is_on:
 		animated_sprite.stop()
+		global_position = REMOTE_PLAYER_POSITION
 	else:
 		global_position = REMOTE_PLAYER_POSITION
 		#lerp(global_position, REMOTE_PLAYER_POSITION, 1)

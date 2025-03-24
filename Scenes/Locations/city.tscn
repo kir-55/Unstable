@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=25 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="1_38dti"]
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_77yam"]
@@ -22,16 +22,26 @@
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_tk21i"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="15_6haxf"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
+bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hg04r"]
+font_size = 150
+outline_size = 40
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53rot"]
 shader = ExtResource("11_kir3x")
 shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "countdown_panel", "countdown_label")]
 script = ExtResource("1_77yam")
 spawn_point = NodePath("SpawnPoint")
 amulets_panel = NodePath("CanvasLayer/AmuletLIst")
+countdown_panel = NodePath("CanvasLayer/Panel")
+countdown_label = NodePath("CanvasLayer/Panel/Label")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_uj810")
@@ -83,6 +93,27 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_b5qif")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1cbu")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 200.0
+offset_right = 624.0
+offset_bottom = 405.0
+text = "3"
+label_settings = SubResource("LabelSettings_hg04r")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Panel"]
+autostart = true
 
 [node name="Score" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
@@ -174,4 +205,5 @@ current_world = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 
+[connection signal="timeout" from="CanvasLayer/Panel/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TransitionTimer" to="TransitionTimer" method="_on_timeout"]

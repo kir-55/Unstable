@@ -9,6 +9,7 @@ extends Control
 
 
 func _on_exit_pressed():
+	Client.reset_multiplayer_connection()
 	get_tree().quit()
 
 
