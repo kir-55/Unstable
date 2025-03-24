@@ -34,13 +34,16 @@ properties/3/spawn = true
 properties/3/replication_mode = 1
 properties/4/path = NodePath("Trail/Trail:default_color")
 properties/4/spawn = true
-properties/4/replication_mode = 1
+properties/4/replication_mode = 2
 properties/5/path = NodePath("Trail/Trail2:default_color")
 properties/5/spawn = true
-properties/5/replication_mode = 1
+properties/5/replication_mode = 2
 properties/6/path = NodePath("Trail/Trail3:default_color")
 properties/6/spawn = true
-properties/6/replication_mode = 1
+properties/6/replication_mode = 2
+properties/7/path = NodePath(".:scale")
+properties/7/spawn = true
+properties/7/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
 size = Vector2(21.4286, 50)

@@ -8,9 +8,9 @@ func _ready():
 	
 	var i = 1
 	for p in Client.players:
-		if !Client.dead_players.has(p.id):
-			append_text("[font_size=20]" + str(i) + ". " + Client.player_name + "[/font_size][font_size=12][shake rate=5 level=10][sup](" + str(sorted_dead_players[0].time + 1) + "ms)[/sup][/shake][/font_size]" + "\n")
-			return
+		if !Client.dead_players.has(Client.players[p].id):
+			append_text("[font_size=20]" + str(i) + ". " +Client.players[p].name + "[/font_size][font_size=12][shake rate=5 level=10][sup](" + str(sorted_dead_players[0].time + 1) + "ms)[/sup][/shake][/font_size]" + "\n")
+			break
 		
 	# Display sorted dead players
 	for p in sorted_dead_players:
