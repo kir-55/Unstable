@@ -9,6 +9,11 @@ func _on_timeout():
 		GlobalVariables.last_score = GlobalVariables.last_score + int(player.global_position.x) / GlobalVariables.score_divider
 		GlobalVariables.last_epoch = current_world
 		
+		if GlobalVariables.win_after_next_epoch:
+			GlobalVariables.win_after_next_epoch = false
+			get_tree().change_scene_to_file("res://Scenes/Menus/progress_menu.tscn")
+			return
+		
 		if GlobalVariables.player_amulets.has(5):
 			GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(5))
 		

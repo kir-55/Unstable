@@ -85,6 +85,15 @@ func chosed_amulet(event: InputEvent, amulet):
 			GlobalVariables.player_global_speed -= 100
 			GlobalVariables.initial_chance_for_lag -= 10
 		amulets_chosen.append(amulet[0])
+		
+		var duplicate_player_amulets = GlobalVariables.player_amulets.duplicate()
+		duplicate_player_amulets.append_array(amulets_chosen)
+		if (duplicate_player_amulets.has(4) and duplicate_player_amulets.has(6) and duplicate_player_amulets.has(13)):
+			if amount_of_items_to_take > amulets_chosen.size():
+				amulet[1].queue_free()
+				get_tree().change_scene_to_file("res://Scenes/main.tscn")
+			else:
+				GlobalVariables.win_after_next_epoch = true
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
 		
 		amulet[1].queue_free()
