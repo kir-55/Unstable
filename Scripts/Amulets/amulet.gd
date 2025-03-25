@@ -10,6 +10,8 @@ extends Resource
 
 
 @export var consumable: bool = false
+@export var required_for_repair : bool = false
+@export var required_for_destruction : bool = false
 
 @export var has_timer: bool = false:
 	set(value):

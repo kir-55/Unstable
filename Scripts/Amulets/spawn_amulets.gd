@@ -7,6 +7,8 @@ extends HBoxContainer
 var amulets_chosen: Array[int]
 
 var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
+var win_type := "none"
+var win_after_next_epoch := true
 
 
 
@@ -88,12 +90,23 @@ func chosed_amulet(event: InputEvent, amulet):
 		
 		var duplicate_player_amulets = GlobalVariables.player_amulets.duplicate()
 		duplicate_player_amulets.append_array(amulets_chosen)
-		if (duplicate_player_amulets.has(4) and duplicate_player_amulets.has(6) and duplicate_player_amulets.has(13)):
-			if amount_of_items_to_take > amulets_chosen.size():
-				amulet[1].queue_free()
-				get_tree().change_scene_to_file("res://Scenes/main.tscn")
-			else:
-				GlobalVariables.win_after_next_epoch = true
+		
+		var amulets_required_for_repair = GlobalVariables.amulets.filter(func(x): return x.required_for_repair).map(func(x): return x.id)
+		var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
+		
+		if amulets_required_for_repair.size() > 0 or amulets_required_for_destruction.size() > 0:
+		
+			if amulets_required_for_repair.all(func(x): return x in duplicate_player_amulets):
+				win_type = "repair"
+			elif amulets_required_for_destruction.size() > 0 and amulets_required_for_destruction.all(func(x): return x in duplicate_player_amulets):
+				win_type = "destruction"
+			
+			if win_type != "none":
+				if amount_of_items_to_take > amulets_chosen.size():
+					amulet[1].queue_free()
+					get_tree().change_scene_to_packed(GlobalVariables.win_scene)
+				else:
+					win_after_next_epoch = true
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
 		
 		amulet[1].queue_free()

@@ -5,6 +5,7 @@ var player_global_speed : float
 var best_score : int = 0
 var last_score : int = 0
 var times_treveled: int = 0
+
 var win_after_next_epoch : bool = false
 
 @export var initial_player_speed: int = 500

@@ -11,7 +11,7 @@ func _on_timeout():
 		
 		if GlobalVariables.win_after_next_epoch:
 			GlobalVariables.win_after_next_epoch = false
-			get_tree().change_scene_to_file("res://Scenes/Menus/progress_menu.tscn")
+			get_tree().change_scene_to_packed(GlobalVariables.win_scene)
 			return
 		
 		if GlobalVariables.player_amulets.has(5):
