@@ -1,14 +1,17 @@
-extends HBoxContainer
+extends Node2D
 
 
-
-@export var label: Label
+@export var label_container : ColorRect
+@export var displayed_amulets_container : HBoxContainer
+@export var canvas_layer : CanvasLayer
+@export var panel : Panel
+@export var texture_rect: TextureRect
+@export var win_menu_scene : PackedScene
 
 var amulets_chosen: Array[int]
 
 var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
 var win_type := "none"
-var win_after_next_epoch := true
 
 
 
@@ -18,7 +21,15 @@ var win_after_next_epoch := true
 @export var amulets_displayed: Array[int]
 
 func _ready():
-	label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
+	
+	if GlobalVariables.win_after_next_epoch:
+		win()
+		return
+		
+	if GlobalVariables.player_amulets.has(6):
+		texture_rect.texture = GlobalVariables.epochs[GlobalVariables.next_epoch].baner
+	
+	label_container.get_child(0).text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1  else ".")
 	var multiplied_amulets_list : Array[Amulet]
 	for i in GlobalVariables.amulets:
 		for j in range(i.chance_multiplier):
@@ -37,7 +48,13 @@ func _ready():
 		
 		amulets_displayed.append(random_amulet.id)
 		spawn_amulet(random_amulet)
-		
+
+func win():
+	GlobalVariables.win_after_next_epoch = false
+	panel.queue_free()
+	label_container.queue_free()
+	canvas_layer.add_child(win_menu_scene.instantiate())
+
 func are_amulets_compatible(amulet1_id : int, amulet2_id : int):
 	if GlobalVariables.amulets[amulet1_id].incompatible_amulets.has(amulet2_id) or GlobalVariables.amulets[amulet2_id].incompatible_amulets.has(amulet1_id):
 		print(str(amulet1_id) + " " + str(amulet2_id) + " are not compatible")
@@ -75,7 +92,7 @@ func spawn_amulet(amulet):
 	amulet_representation.texture = amulet.texture
 	amulet_representation.tooltip_text = amulet.name.to_upper() + "\n" +  amulet.description 
 	amulet_representation.gui_input.connect(chosed_amulet.bind([amulet.id, amulet_representation]))
-	add_child(amulet_representation)
+	displayed_amulets_container.add_child(amulet_representation)
 
 func chosed_amulet(event: InputEvent, amulet):
 	if event is InputEventMouseButton and event.pressed:
@@ -104,10 +121,11 @@ func chosed_amulet(event: InputEvent, amulet):
 			if win_type != "none":
 				if amount_of_items_to_take > amulets_chosen.size():
 					amulet[1].queue_free()
-					get_tree().change_scene_to_packed(GlobalVariables.win_scene)
+					win()
+					return
 				else:
-					win_after_next_epoch = true
-		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
+					GlobalVariables.win_after_next_epoch = true
+		label_container.get_child(0).text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
 		
 		amulet[1].queue_free()
 		
