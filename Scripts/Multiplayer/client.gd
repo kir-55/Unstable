@@ -15,6 +15,8 @@ const DELETE_LOBBY_AFTER = 3  #measured in hours
 var players = {}
 var dead_players = {}
 
+var rtc_players = []
+
 var active = false
 
 # Votes for events
@@ -89,11 +91,13 @@ func rtc_server_connected():
 
 
 func rtc_peer_connected(id):
+	rtc_players.append(id)
 	print("RTC peer connected " + str(id))
 	
 
 
 func rtc_peer_disconnected(id):
+	rtc_players.erase(id)
 	print("RTC peer disonnected " + str(id))
 
 

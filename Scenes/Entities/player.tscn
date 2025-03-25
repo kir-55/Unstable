@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=26 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
+[ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
 [ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/Entities/microbot.tscn" id="6_70j50"]
@@ -209,7 +210,7 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet")]
 z_index = 6
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_22t7u")
@@ -226,6 +227,12 @@ amulet_system = NodePath("Amulets")
 multiplayer_synchronizer = NodePath("MultiplayerSynchronizer")
 collision_shape = NodePath("CollisionShape2D")
 nickname_label = NodePath("Nickname")
+feet = NodePath("Feet")
+landing_particles_prefab = ExtResource("2_5q8jb")
+
+[node name="Feet" type="Node2D" parent="."]
+position = Vector2(14.2857, 32.1429)
+scale = Vector2(2, 2)
 
 [node name="Nickname" type="Label" parent="."]
 offset_left = -54.2857

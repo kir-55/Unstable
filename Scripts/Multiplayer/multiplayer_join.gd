@@ -17,7 +17,9 @@ func _on_button_pressed():
 
 
 func _on_exit_pressed():
+	Client.active = false
 	GlobalFunctions.load_menu("main")
+
 
 
 func _on_create_pressed():

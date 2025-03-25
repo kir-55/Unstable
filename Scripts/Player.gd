@@ -36,6 +36,8 @@ var start_x
 @export var collision_shape: CollisionShape2D
 @export var nickname_label: Label
 
+@export var feet: Node2D
+@export var landing_particles_prefab: PackedScene
 
 # Doble jump
 @onready var doble_jump_active = GlobalVariables.player_amulets.has(5) # checks if player has pizza
@@ -90,7 +92,7 @@ func _ready():
 		$SpeedUpTimer.queue_free()
 
 func _physics_process(delta: float) -> void:
-	if GlobalVariables.game_is_on and is_multiplayer_authority():
+	if GlobalVariables.game_is_on and (!Client.active or is_multiplayer_authority()):
 		REMOTE_PLAYER_POSITION = global_position
 		# Apply gravity if not on the floor
 		if not is_on_floor():
@@ -140,6 +142,10 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			doble_jump_used = false
 			if is_dropping:
+				var particles = landing_particles_prefab.instantiate()
+				particles.global_position = feet.global_position
+				particles.emitting = true
+				get_tree().current_scene.add_child(particles)
 				is_dropping = false
 		
 		# Handle jumping
