@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/throwable.gd" id="1_5dgw7"]
 [ext_resource type="Texture2D" uid="uid://careweli3bkl2" path="res://Textures/Decorations/hydrant.png" id="1_hjqmu"]
 [ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Audio/Sounds/break.mp3" id="1_tvtnf"]
-[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/explosions/water_explosion.tscn" id="2_i1p1x"]
+[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="2_i1p1x"]
 [ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/water_gradient.tres" id="2_rb372"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]

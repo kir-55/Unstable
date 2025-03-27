@@ -11,7 +11,7 @@ extends Node2D
 var amulets_chosen: Array[int]
 
 var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
-var win_type := "none"
+var win_type := GlobalEnums.WIN_TYPES.NONE
 
 
 
@@ -21,11 +21,7 @@ var win_type := "none"
 @export var amulets_displayed: Array[int]
 
 func _ready():
-	
-	if GlobalVariables.win_after_next_epoch:
-		win()
-		return
-		
+	check_for_win()
 	if GlobalVariables.player_amulets.has(6):
 		texture_rect.texture = GlobalVariables.epochs[GlobalVariables.next_epoch].baner
 	
@@ -49,11 +45,23 @@ func _ready():
 		amulets_displayed.append(random_amulet.id)
 		spawn_amulet(random_amulet)
 
-func win():
-	GlobalVariables.win_after_next_epoch = false
+func check_for_win():
+	var amulets_required_for_repair = GlobalVariables.amulets.filter(func(x): return x.required_for_repair).map(func(x): return x.id)
+	var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
+	if amulets_required_for_repair.all(func(x): return x in GlobalVariables.player_amulets):
+		print("you won by repair")
+		# repair - call the repair menu, run the repair animation
+		
+	elif amulets_required_for_destruction.size() > 0 and amulets_required_for_destruction.all(func(x): return x in GlobalVariables.player_amulets):
+		# destruction - call the destruction menu, run the destruction animation
+
+		print("you won by destruction")
+	else:
+		return
+		
 	panel.queue_free()
 	label_container.queue_free()
-	canvas_layer.add_child(win_menu_scene.instantiate())
+	
 
 func are_amulets_compatible(amulet1_id : int, amulet2_id : int):
 	if GlobalVariables.amulets[amulet1_id].incompatible_amulets.has(amulet2_id) or GlobalVariables.amulets[amulet2_id].incompatible_amulets.has(amulet1_id):
@@ -104,34 +112,16 @@ func chosed_amulet(event: InputEvent, amulet):
 			GlobalVariables.player_global_speed -= 100
 			GlobalVariables.initial_chance_for_lag -= 10
 		amulets_chosen.append(amulet[0])
-		
-		var duplicate_player_amulets = GlobalVariables.player_amulets.duplicate()
-		duplicate_player_amulets.append_array(amulets_chosen)
-		
-		var amulets_required_for_repair = GlobalVariables.amulets.filter(func(x): return x.required_for_repair).map(func(x): return x.id)
-		var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
-		
-		if amulets_required_for_repair.size() > 0 or amulets_required_for_destruction.size() > 0:
-		
-			if amulets_required_for_repair.all(func(x): return x in duplicate_player_amulets):
-				win_type = "repair"
-			elif amulets_required_for_destruction.size() > 0 and amulets_required_for_destruction.all(func(x): return x in duplicate_player_amulets):
-				win_type = "destruction"
-			
-			if win_type != "none":
-				if amount_of_items_to_take > amulets_chosen.size():
-					amulet[1].queue_free()
-					win()
-					return
-				else:
-					GlobalVariables.win_after_next_epoch = true
+
 		label_container.get_child(0).text = "You have a few seconds to grab " + str(amount_of_items_to_take-amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take-amulets_chosen.size() > 1  else ".")
 		
 		amulet[1].queue_free()
 		
-		if !GlobalVariables.player_amulets.has(1) or  amulets_chosen.size() >= amount_of_items_to_take:
+		if !GlobalVariables.player_amulets.has(1) or amulets_chosen.size() >= amount_of_items_to_take:
 			grab_and_leave()
-			
+		else:
+			check_for_win()
+
 func grab_and_leave():
 	GlobalVariables.player_amulets.append_array(amulets_chosen)
 	for i in GlobalVariables.player_amulets:
