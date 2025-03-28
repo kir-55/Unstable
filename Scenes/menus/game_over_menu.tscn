@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://hj7nfep0o7s3"]
+[gd_scene load_steps=10 format=3 uid="uid://hj7nfep0o7s3"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_fseod"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
 [ext_resource type="Script" path="res://Scripts/superscript_effect.gd" id="4_eh833"]
 [ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="5_o7vdc"]
+[ext_resource type="AudioStream" uid="uid://c5wvmtwmlcki6" path="res://Audio/hartbeat.mp3" id="6_c8ekr"]
 
 [sub_resource type="Gradient" id="Gradient_p7q16"]
 colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
@@ -132,6 +133,11 @@ size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_c8ekr")
+volume_db = 6.0
+autoplay = true
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
 [connection signal="ready" from="Panel/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_new_amulet_count_ready"]

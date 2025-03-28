@@ -16,12 +16,12 @@ var players = {}
 var dead_players = {}
 
 var rtc_players = []
+var players_voted = []
 
 var active = false
 
 # Votes for events
-var start_game_vote = 0
-var voted_to_start_game = false
+
 
 var leave_home_vote = 0
 var voted_to_leave_home = false
@@ -272,6 +272,8 @@ func reset_multiplayer_connection():
 	rtc_peer = WebRTCMultiplayerPeer.new()
 	
 	# Ensure all peers are removed
+	rtc_players.clear()
+	players_voted.clear()
 	players.clear()
 	dead_players.clear()
 	
@@ -307,7 +309,6 @@ func leave_lobby():
 
 @rpc("any_peer")
 func join_lobby(lobby_id: String, nickname: String = ""):
-	
 	if nickname == "" and player_name != "":
 		nickname = player_name
 	else:
@@ -324,16 +325,12 @@ func join_lobby(lobby_id: String, nickname: String = ""):
 
 
 @rpc("any_peer", "call_local")
-func start_game(id):
-	if id != self.id or !voted_to_start_game:
-		if id == self.id:
-			voted_to_start_game = true
-		start_game_vote += 1
+func start_game(id: int):
+	if !players_voted.has(id):
+		players_voted.append(id)
 
-	if start_game_vote >= players.size():
-		start_game_vote = 0
-		voted_to_start_game = false
-
+	if players_voted.size() >= players.size():
+		players_voted.clear()
 		var message = {
 			"message_type": MessageTypes.REMOVE_LOBBY,
 			"lobby_id": lobby_id
@@ -342,6 +339,8 @@ func start_game(id):
 		GlobalVariables.game_is_on = true
 		GlobalVariables.terrain_code = hash(lobby_id)
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
+		GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets)
+	
 		GlobalFunctions.start_timer()
 		send_to_server(message)
 		get_tree().change_scene_to_file(game_scene)

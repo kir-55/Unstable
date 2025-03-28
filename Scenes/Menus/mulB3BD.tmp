@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqjw4k0c6cv18"]
+[gd_scene load_steps=11 format=3 uid="uid://dqjw4k0c6cv18"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_join.gd" id="1_tggoh"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_grad6"]
@@ -17,15 +17,7 @@ bg_color = Color(0.101961, 0.121569, 0.180392, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eiv4q"]
 
-[sub_resource type="FontFile" id="FontFile_qv2w0"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[node name="MultiplayerJoin" type="Control" node_paths=PackedStringArray("nickname_input", "lobby_id_input", "join_button", "log")]
+[node name="MultiplayerJoin" type="Control" node_paths=PackedStringArray("nickname_input", "lobby_id_input")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,8 +27,6 @@ grow_vertical = 2
 script = ExtResource("1_tggoh")
 nickname_input = NodePath("Panel/Nickname")
 lobby_id_input = NodePath("Panel/LobbyID")
-join_button = NodePath("Panel/Join")
-log = NodePath("Panel/Log")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -48,7 +38,7 @@ anchor_bottom = 0.5
 offset_left = -116.0
 offset_top = -93.0
 offset_right = 135.0
-offset_bottom = 137.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_grad6")
@@ -139,19 +129,6 @@ theme_override_styles/normal = ExtResource("3_24a4h")
 theme_override_styles/hover = ExtResource("5_57fq7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_eiv4q")
 text = "EXIT"
-
-[node name="Log" type="RichTextLabel" parent="Panel"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 81.0
-offset_bottom = 115.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = SubResource("FontFile_qv2w0")
-bbcode_enabled = true
 
 [connection signal="text_changed" from="Panel/LobbyID" to="." method="_on_lobby_id_text_changed"]
 [connection signal="pressed" from="Panel/Join" to="." method="_on_button_pressed"]

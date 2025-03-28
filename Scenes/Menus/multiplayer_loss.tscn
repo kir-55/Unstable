@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://13bgyn5tbelr"]
+[gd_scene load_steps=13 format=3 uid="uid://13bgyn5tbelr"]
 
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_4n8oe"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="2_8jf83"]
 [ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="4_unfpl"]
+[ext_resource type="AudioStream" uid="uid://c5wvmtwmlcki6" path="res://Audio/hartbeat.mp3" id="6_8a47r"]
 [ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="6_edeqo"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_ranking.gd" id="7_ofvul"]
 
@@ -155,5 +156,12 @@ theme_override_fonts/normal_font = SubResource("FontFile_63enl")
 theme_override_fonts/bold_font = SubResource("FontVariation_p0u03")
 bbcode_enabled = true
 text = "[center] [b][shake rate=20 level=20 connected=1][font_size=40][color=#c33c40]F[/color] [color=#e47259]A[/color] [color=#7b234c]I[/color] [color=#c33c40]L[/color][/font_size][/shake][/b][/center]"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8a47r")
+volume_db = 6.0
+autoplay = true
+stream_paused = true
+mix_target = 1
 
 [connection signal="pressed" from="Panel/Leave" to="Panel/Label/RankedPlayer" method="_on_leave_pressed"]

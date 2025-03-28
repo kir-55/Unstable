@@ -7,7 +7,8 @@ func reload():
 	GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 	GlobalVariables.game_is_on = true
 	print(GlobalVariables.player_amulets)
-	GlobalVariables.player_amulets.clear()
+	#GlobalVariables.player_amulets.clear()
+	GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets.duplicate())
 	GlobalVariables.player_new_amulets.clear()
 	GlobalVariables.times_treveled = 0
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home

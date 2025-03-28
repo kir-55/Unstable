@@ -9,13 +9,15 @@ func _ready():
 	var i = 1
 	for p in Client.players:
 		if !Client.dead_players.has(p.to_int()):
-			append_text("[font_size=20]" + str(i) + ". " +Client.players[p].name + "[/font_size][font_size=12][shake rate=5 level=10][sup](" + str(sorted_dead_players[0].time + 1) + "ms)[/sup][/shake][/font_size]" + "\n")
+			append_text("[font_size=20]" + str(i) + ". " +Client.players[p].name + " 🥇[/font_size]" + "\n")
 			break
 		
 	# Display sorted dead players
 	for p in sorted_dead_players:
 		i += 1
-		append_text("[font_size=20]" + str(i) + ". " + p.name + "[/font_size][font_size=12][shake rate=5 level=10][sup](" + str(p.time) + "ms)[/sup][/shake][/font_size]" + "\n")
+		var a =  "🥈" if i == 2 else "🥉"  if i == 3 else ""
+		
+		append_text("[font_size=20]" + str(i) + ". " + p.name + a + "[/font_size][font_size=12][shake rate=5 level=10](" + str(p.time) + "ms)[/shake][/font_size]" + "\n")
 
 
 

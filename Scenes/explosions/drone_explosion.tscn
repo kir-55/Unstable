@@ -1,14 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://q6vw7hxexvpu"]
+[gd_scene load_steps=6 format=3 uid="uid://q6vw7hxexvpu"]
 
 [ext_resource type="Script" path="res://Scripts/throwable.gd" id="1_obmio"]
-[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="2_d6cqg"]
 [ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://Textures/Decorations/drone_city.png" id="2_ohjig"]
 [ext_resource type="PackedScene" uid="uid://cuytrv5kl6n1o" path="res://Scenes/Explosions/fire_explosion.tscn" id="2_q7hdc"]
-[ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Audio/Sounds/break.mp3" id="3_n3env"]
-
-[sub_resource type="Curve" id="Curve_25yfo"]
-_data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]
 size = Vector2(30, 19)
@@ -29,29 +23,6 @@ script = ExtResource("1_obmio")
 explosion_prefab = ExtResource("2_q7hdc")
 explosion_point = NodePath("Sprite2D")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-z_index = 20
-position = Vector2(4, 0)
-scale = Vector2(6, 6)
-emitting = false
-amount = 16
-one_shot = true
-speed_scale = 1.6
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 0.61
-emission_shape = 1
-emission_sphere_radius = 2.35
-direction = Vector2(0, 1)
-spread = 94.01
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 20.0
-scale_amount_min = 10.0
-scale_amount_max = 20.0
-scale_amount_curve = SubResource("Curve_25yfo")
-color_ramp = ExtResource("2_d6cqg")
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
 
@@ -67,10 +38,8 @@ shape = SubResource("CapsuleShape2D_cfwsl")
 scale = Vector2(3, 3)
 texture = ExtResource("2_ohjig")
 
-[node name="wybuch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_n3env")
-volume_db = -10.0
-autoplay = true
-mix_target = 1
+[node name="CPUParticles2D" parent="." instance=ExtResource("2_q7hdc")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+
+[editable path="CPUParticles2D"]

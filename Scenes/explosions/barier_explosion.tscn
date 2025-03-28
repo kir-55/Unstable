@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6jkxex0pqycv"]
+[gd_scene load_steps=5 format=3 uid="uid://c6jkxex0pqycv"]
 
 [ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Audio/Sounds/break.mp3" id="1_s1pw8"]
 
@@ -6,29 +6,38 @@
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_kf85m"]
-offsets = PackedFloat32Array(0.477612, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_lao0w"]
+offsets = PackedFloat32Array(0.00395257, 0.72332, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_kqvgi"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.0237154, 0.513834, 0.72332)
+colors = PackedColorArray(0.764706, 0.235294, 0.25098, 1, 1, 1, 1, 1, 0.247059, 0.2, 0.231373, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 z_index = 20
 scale = Vector2(6, 6)
 emitting = false
-amount = 16
+amount = 32
+lifetime = 2.0
 one_shot = true
+speed_scale = 2.0
 explosiveness = 1.0
 randomness = 1.0
 lifetime_randomness = 0.61
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 92.98
-gravity = Vector2(0, 400)
+gravity = Vector2(73.835, 400)
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
-scale_amount_min = 10.0
-scale_amount_max = 20.0
+angle_max = 360.0
+scale_amount_min = 4.0
+scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_25yfo")
-color_ramp = SubResource("Gradient_kf85m")
+color_ramp = SubResource("Gradient_lao0w")
+color_initial_ramp = SubResource("Gradient_kqvgi")
 
 [node name="wybuch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_s1pw8")
