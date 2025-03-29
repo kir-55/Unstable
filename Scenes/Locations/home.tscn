@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhjxp4p8df2qp"]
+[gd_scene load_steps=14 format=3 uid="uid://bhjxp4p8df2qp"]
 
 [ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://Textures/Baners/Home/unstable_home4.png" id="1_1s6hv"]
 [ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://Textures/Baners/Home/unstable_home3.png" id="2_5fefa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/epoch_displayer.gd" id="5_b7opy"]
 [ext_resource type="Script" path="res://Scripts/Amulets/spawn_amulets.gd" id="5_i6kwn"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="6_58chv"]
+[ext_resource type="AudioStream" uid="uid://wux0ga41vj27" path="res://Audio/house.mp3" id="8_ypbu8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
 animations = [{
@@ -148,3 +149,7 @@ vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ypbu8")
+autoplay = true

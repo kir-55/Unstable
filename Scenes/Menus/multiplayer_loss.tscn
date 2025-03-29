@@ -161,7 +161,6 @@ text = "[center] [b][shake rate=20 level=20 connected=1][font_size=40][color=#c3
 stream = ExtResource("6_8a47r")
 volume_db = 6.0
 autoplay = true
-stream_paused = true
 mix_target = 1
 
 [connection signal="pressed" from="Panel/Leave" to="Panel/Label/RankedPlayer" method="_on_leave_pressed"]
