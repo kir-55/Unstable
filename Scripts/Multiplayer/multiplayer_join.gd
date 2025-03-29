@@ -47,3 +47,16 @@ func _on_lobby_id_text_changed(new_text):
 		join_button.disabled = false
 	else:
 		join_button.disabled = true
+
+
+func _on_lobby_id_text_submitted(new_text):
+	if new_text != "":
+		var l = nickname_input.text.length()
+		if l == 0:
+			log.text = "[center][shake rate=2 level=10][color=#c33c40]Nickname can't be empty![/color][/shake][/center]"
+		elif l > 10:
+			log.text = "[center][shake rate=2 level=10][color=#c57835]Nickname is too long[/color][/shake][/center]"
+		else:
+			Client.active = true
+			Client.join_lobby(lobby_id_input.text, nickname_input.text)
+			log.text = "[center][shake rate=1 level=10][font_size=10][color=#c57835]If nothing dosnt load\nthe menu dos't exist[/color][/font_size][/shake][/center]"

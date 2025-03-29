@@ -25,7 +25,7 @@ death_messages = Array[String](["You was slain by a car", "You broke your leg, w
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0.600006, -14.8)
 scale = Vector2(1.08, 1.14496)
-polygon = PackedVector2Array(-7.03704, -7.16182, 23.5185, -7.16182, 36.4815, 6.81247, -32.963, 10.306, -36.6667, -7.16182, -24.6296, -7.16182, -13.5185, -1.04807)
+polygon = PackedVector2Array(-7.03704, -7.16182, 23.5185, -7.16182, 36.4815, 7.68586, -32.963, 10.306, -36.6667, -7.16182, -24.6296, -7.16182, -13.5185, -1.04807)
 
 [node name="Car" type="Sprite2D" parent="."]
 z_index = 5

@@ -33,6 +33,7 @@ func _process(delta):
 		rtc_players = Client.rtc_players.duplicate()
 		print("rtc playrert: " + str(rtc_players))
 		if Client.players.size() == Client.rtc_players.size()+1 and !Client.players_voted.has(Client.id):
+			print(Client.players.size())
 			start_game_button.disabled = false
 
 func _on_timer_timeout():

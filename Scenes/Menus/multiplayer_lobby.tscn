@@ -59,6 +59,7 @@ theme_override_styles/normal = ExtResource("2_6a3o1")
 theme_override_styles/hover = ExtResource("2_tj424")
 theme_override_styles/pressed = ExtResource("5_l023l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_shl63")
+disabled = true
 toggle_mode = true
 text = "Ready"
 

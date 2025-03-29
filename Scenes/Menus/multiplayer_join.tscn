@@ -154,6 +154,7 @@ theme_override_fonts/normal_font = SubResource("FontFile_qv2w0")
 bbcode_enabled = true
 
 [connection signal="text_changed" from="Panel/LobbyID" to="." method="_on_lobby_id_text_changed"]
+[connection signal="text_submitted" from="Panel/LobbyID" to="." method="_on_lobby_id_text_submitted"]
 [connection signal="pressed" from="Panel/Join" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]
