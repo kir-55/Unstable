@@ -47,8 +47,8 @@ var next_epoch: GlobalEnums.LEVELS
 var game_is_on := true
 
 var menus = {
-	"main" : load("res://Scenes/menus/start_menu.tscn"),
-	"progress" : load("res://Scenes/menus/progress_menu.tscn"),
+	"main" : load("res://Scenes/Menus/start_menu.tscn"),
+	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
 	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
 	"multiplayer_victory" : load("res://Scenes/Menus/multiplayer_victory.tscn"),

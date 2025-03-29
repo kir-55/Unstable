@@ -45,6 +45,7 @@ window/stretch/scale_mode="integer"
 folder_colors={
 "res://Amulets/": "blue",
 "res://Scenes/": "red",
+"res://Scripts/": "green",
 "res://Textures/": "yellow"
 }
 

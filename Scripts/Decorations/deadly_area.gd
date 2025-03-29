@@ -21,7 +21,7 @@ func _on_body_entered(body):
 
 			if !Client.active:
 				# spawning death menu
-				var game_over_menu = load("res://Scenes/menus/game_over_menu.tscn")
+				var game_over_menu = load("res://Scenes/Menus/game_over_menu.tscn")
 				var instance = game_over_menu.instantiate()
 				if death_messages and death_messages.size() != 0:
 					instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_messages.pick_random() + "[/color][/shake][/font_size][center]")
