@@ -40,6 +40,14 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://Amulets/": "blue",
+"res://Scenes/": "red",
+"res://Textures/": "yellow"
+}
+
 [gui]
 
 theme/default_font_antialiasing=2

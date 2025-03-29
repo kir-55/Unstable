@@ -7,3 +7,4 @@ extends Sprite2D
 func _ready():
 	if visual_variations:
 		texture = visual_variations.pick_random()
+		offset.y -= texture.get_height() / 2
