@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/throwable.gd" id="1_obmio"]
 [ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="2_d6cqg"]
 [ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://Textures/Decorations/drone_city.png" id="2_ohjig"]
-[ext_resource type="PackedScene" uid="uid://cuytrv5kl6n1o" path="res://Scenes/explosions/fire_explosion.tscn" id="2_q7hdc"]
+[ext_resource type="PackedScene" uid="uid://cuytrv5kl6n1o" path="res://Scenes/Explosions/fire_explosion.tscn" id="2_q7hdc"]
 [ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Audio/Sounds/break.mp3" id="3_n3env"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]
