@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://cf2ihvdsrbkhy"]
 
-[ext_resource type="Texture2D" uid="uid://dumv6v0grpcg5" path="res://Textures/Decorations/nowa_dziura.png" id="1_hyjar"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_ebr3f"]
+[ext_resource type="Texture2D" uid="uid://llubrpnu1vpm" path="res://Textures/Decorations/dziura1.png" id="2_t6woe"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_ytwoc"]
-[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/Explosions/barier_explosion.tscn" id="5_t4h6e"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/explosions/barier_explosion.tscn" id="5_t4h6e"]
 [ext_resource type="Texture2D" uid="uid://cr8dnnmcwfiht" path="res://Textures/Decorations/barierka.png" id="6_csbap"]
 [ext_resource type="Texture2D" uid="uid://byt2uuian5r3w" path="res://Textures/Decorations/nowy_znak.png" id="6_r3kei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
-size = Vector2(24, 1.66667)
+size = Vector2(36, 1.66667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol1y4"]
 size = Vector2(19, 14)
@@ -20,19 +20,20 @@ script = ExtResource("2_ebr3f")
 death_messages = Array[String](["You fell down the hole", "Huge hole suck you into, you couldn't resist", "You decided to check what is inside the hole"])
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-1.08333, 3.08333)
+position = Vector2(8, 1.08333)
 shape = SubResource("RectangleShape2D_1iamu")
 
 [node name="Hole" type="Sprite2D" parent="."]
 z_index = 5
-position = Vector2(9, -1)
-texture = ExtResource("1_hyjar")
+position = Vector2(8.12788, 7)
+scale = Vector2(0.765957, 0.659321)
+texture = ExtResource("2_t6woe")
 offset = Vector2(-0.166952, -6.16667)
 
-[node name="NowyZnak" type="Sprite2D" parent="Hole"]
+[node name="NowyZnak" type="Sprite2D" parent="."]
 z_index = -1
 z_as_relative = false
-position = Vector2(-48, -30)
+position = Vector2(-39, -31)
 texture = ExtResource("6_r3kei")
 
 [node name="Barier1" type="Area2D" parent="."]

@@ -22,6 +22,5 @@
 [node name="GlobalVariables" type="Node"]
 script = ExtResource("1_6fhdc")
 initial_player_speed = 400
-initial_player_amulets = []
 epochs = Array[Resource("res://Scripts/level_info.gd")]([ExtResource("2_tede6"), ExtResource("3_h80lx"), ExtResource("4_rv33m")])
 amulets = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("5_pw5te"), ExtResource("6_1i2bb"), ExtResource("7_2hcst"), ExtResource("8_xnc4u"), ExtResource("9_x0npk"), ExtResource("9_g67nn"), ExtResource("10_6kl3f"), ExtResource("11_tgtug"), ExtResource("12_ex3xr"), ExtResource("14_nnbhk"), ExtResource("15_okhnc"), ExtResource("16_hclqi"), ExtResource("17_x0qbh"), ExtResource("18_5pbgg")])
