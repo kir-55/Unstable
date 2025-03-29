@@ -186,7 +186,6 @@ default_color = Color(0.156863, 0.180392, 0.231373, 1)
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 
 [node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "line", "terrain_generator")]
-
 scale = Vector2(1.10038, 1.15793)
 script = ExtResource("12_gsrp6")
 load_radius = 6

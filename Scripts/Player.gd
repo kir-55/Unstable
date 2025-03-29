@@ -93,8 +93,8 @@ func _ready():
 		collision_shape.disabled = true
 		animated_sprite.self_modulate = Color("#ffffff8e")
 
-		$Weapon.queue_free()
 		$Amulets.queue_free()
+		$Weapon.queue_free()
 		$SpeedUpTimer.queue_free()
 
 
@@ -105,6 +105,12 @@ func reset_velocity():
 
 func _physics_process(delta: float) -> void:
 	if GlobalVariables.game_is_on and (!Client.active or is_multiplayer_authority()):
+		print("v: " + str(velocity.x))
+		print("s" + str(SPEED))
+		if velocity.x < SPEED:
+			print("trying to change velocity")
+			velocity.x += 10
+			
 		REMOTE_PLAYER_POSITION = global_position
 		# Apply gravity if not on the floor
 		if not is_on_floor():

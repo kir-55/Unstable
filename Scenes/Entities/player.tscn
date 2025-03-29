@@ -1,16 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=24 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
-
 [ext_resource type="PackedScene" uid="uid://c8lspr0ou0j8r" path="res://Scenes/amulet_timer.tscn" id="5_382f2"]
 [ext_resource type="PackedScene" uid="uid://b8itocxc1xfcd" path="res://Scenes/bullet.tscn" id="5_bm4pq"]
 [ext_resource type="PackedScene" uid="uid://cwtnwotylrivo" path="res://Scenes/amulet_timer_bar.tscn" id="5_ewkn8"]
 [ext_resource type="PackedScene" uid="uid://cnxt5vr2tcgk4" path="res://Scenes/ameridium_bullet.tscn" id="6_2qycl"]
-[ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/microbot.tscn" id="6_70j50"]
-
+[ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/Entities/microbot.tscn" id="6_70j50"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
 [ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/1.png" id="15_rej4y"]
 [ext_resource type="Texture2D" uid="uid://bfllsgqcnea8h" path="res://Textures/Player/2.png" id="16_udaus"]
@@ -50,9 +48,6 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath(".:scale")
 properties/7/spawn = true
 properties/7/replication_mode = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
-size = Vector2(21.4286, 50)
 
 [sub_resource type="GDScript" id="GDScript_yujad"]
 script/source = "extends Node2D
@@ -141,6 +136,9 @@ func _on_ameridium_gun_timeout():
 	can_shoot = true
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
+size = Vector2(21.4286, 50)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ob57i"]
 animations = [{
 "frames": [{
@@ -181,48 +179,10 @@ animations = [{
 "speed": 13.0
 }]
 
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet")]
-
-[sub_resource type="Animation" id="Animation_3tm33"]
-resource_name = "immunity"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1.1, 1.3, 1.5, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:collision_layer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [32768, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3m663"]
-_data = {
-"immunity": SubResource("Animation_3tm33")
-}
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system")]
 self_modulate = Color(1, 1, 1, 0)
-
 z_index = 6
 scale = Vector2(1.4, 1.4)
-collision_layer = 128
 script = ExtResource("1_22t7u")
 SPEED = 0.0
 MAX_JUMP_VEL = -1000.0
@@ -273,6 +233,18 @@ position = Vector2(-13, 14)
 width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
+[node name="Weapon" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(13.5714, 5.71429)
+scale = Vector2(6, 6)
+script = SubResource("GDScript_yujad")
+bullet_scene = ExtResource("5_bm4pq")
+ameridium_bullet_scene = ExtResource("6_2qycl")
+bullet_speed = 2000.0
+knockback_force = 150.0
+amulet_timer = ExtResource("5_382f2")
+microbot = ExtResource("6_70j50")
+
 [node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("weapon_system", "animation_player")]
 script = ExtResource("2_sxsw1")
 amulet_icon_template = ExtResource("4_e8l5m")
@@ -288,17 +260,6 @@ shape = SubResource("RectangleShape2D_uu4jv")
 wait_time = 2.0
 autostart = true
 
-[node name="Weapon" type="Sprite2D" parent="."]
-z_index = 3
-position = Vector2(13.5714, 5.71429)
-scale = Vector2(6, 6)
-script = SubResource("GDScript_yujad")
-bullet_scene = ExtResource("5_bm4pq")
-ameridium_bullet_scene = ExtResource("6_2qycl")
-bullet_speed = 2000.0
-amulet_timer = ExtResource("5_382f2")
-microbot = ExtResource("6_70j50")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0.5)
 scale = Vector2(2, 2)
@@ -309,8 +270,5 @@ frame_progress = 0.969207
 speed_scale = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_3m663")
-}
 
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]
