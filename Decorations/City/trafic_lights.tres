@@ -6,9 +6,11 @@
 [resource]
 script = ExtResource("2_jvobb")
 prefab = ExtResource("1_7aijk")
+name = "TrafficLights"
 spawn_on_center = false
 initial_chance = 100
 chance_to_spawn = 13.0
+spawn_with_gap = false
 chance_multiplyer = 1
 type = 3
 incompatible_with_types = Array[int]([3, 0, 2])

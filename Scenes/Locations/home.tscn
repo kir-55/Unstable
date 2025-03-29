@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://Textures/Baners/Home/unstable_home4.png" id="1_1s6hv"]
 [ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://Textures/Baners/Home/unstable_home3.png" id="2_5fefa"]
+[ext_resource type="PackedScene" uid="uid://j2nldvt0tvg5" path="res://Scenes/Menus/progress_menu.tscn" id="2_ucxui"]
 [ext_resource type="Texture2D" uid="uid://cgs0nsb18ahpp" path="res://Textures/Baners/Home/unstable_home2.png" id="3_dv88k"]
 [ext_resource type="Texture2D" uid="uid://cehxuhsv2bhp8" path="res://Textures/Baners/Home/unstable_home.png" id="4_swkg2"]
-[ext_resource type="Script" path="res://Scripts/epoch_displayer.gd" id="5_b7opy"]
-[ext_resource type="Script" path="res://Scripts/Amulets/spawn_amulets.gd" id="5_i6kwn"]
+[ext_resource type="Script" path="res://Scripts/Amulets/home.gd" id="5_i6kwn"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="6_58chv"]
 [ext_resource type="AudioStream" uid="uid://wux0ga41vj27" path="res://Audio/house.mp3" id="8_ypbu8"]
 
@@ -54,7 +54,15 @@ outline_color = Color(1, 1, 1, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_1lncj"]
 font_size = 24
 
-[node name="Transition" type="Node2D"]
+[node name="Home" type="Node2D" node_paths=PackedStringArray("label_container", "displayed_amulets_container", "canvas_layer", "panel", "texture_rect")]
+script = ExtResource("5_i6kwn")
+label_container = NodePath("CanvasLayer/ColorRect")
+displayed_amulets_container = NodePath("CanvasLayer/HBoxContainer")
+canvas_layer = NodePath("CanvasLayer")
+panel = NodePath("CanvasLayer/Panel")
+texture_rect = NodePath("CanvasLayer/Panel/TextureRect")
+win_menu_scene = ExtResource("2_ucxui")
+amulet_prefab = ExtResource("6_58chv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -66,14 +74,12 @@ sprite_frames = SubResource("SpriteFrames_fxmdu")
 autoplay = "default"
 frame_progress = 0.619749
 
-[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("texture_rect")]
+[node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_left = 72.0
 offset_top = 32.0
 offset_right = 328.0
 offset_bottom = 167.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tjjjx")
-script = ExtResource("5_b7opy")
-texture_rect = NodePath("TextureRect")
 
 [node name="Label2" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 1
@@ -113,7 +119,7 @@ text = "Next Epoch:"
 label_settings = SubResource("LabelSettings_kaiwq")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("label")]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(500, 70)
 offset_left = 538.0
 offset_top = 393.0
@@ -122,9 +128,6 @@ offset_bottom = 463.0
 rotation = 0.0198443
 size_flags_vertical = 3
 alignment = 1
-script = ExtResource("5_i6kwn")
-label = NodePath("../ColorRect/Label")
-amulet_prefab = ExtResource("6_58chv")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

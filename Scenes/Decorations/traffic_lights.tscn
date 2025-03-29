@@ -5,6 +5,6 @@
 [node name="Traffic Lights City" type="Sprite2D"]
 z_index = -1
 position = Vector2(0, -1)
-scale = Vector2(6, 6)
+scale = Vector2(3, 3)
 texture = ExtResource("1_b1nif")
 offset = Vector2(-0.333619, -15.8333)

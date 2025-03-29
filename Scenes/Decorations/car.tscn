@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://spdye7fmeaws"]
+[gd_scene load_steps=5 format=3 uid="uid://spdye7fmeaws"]
 
 [ext_resource type="Texture2D" uid="uid://dmq13ktr5f57d" path="res://Textures/Decorations/car.png" id="1_q7l73"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_3v8b0"]
 [ext_resource type="Texture2D" uid="uid://da7dr7k2t2rsa" path="res://Textures/Decorations/car1.png" id="2_wket5"]
-[ext_resource type="Texture2D" uid="uid://d4cv23pe68sxq" path="res://Textures/Decorations/car2.png" id="3_gpkfi"]
-[ext_resource type="Texture2D" uid="uid://dq65p2b4khibq" path="res://Textures/Decorations/car3.png" id="4_80tqy"]
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]
 script/source = "extends Sprite2D
@@ -18,23 +16,23 @@ func _ready():
 		texture = visual_variations.pick_random()
 "
 
-[node name="Car" type="Sprite2D" groups=["Obsticle"]]
-z_index = 5
-position = Vector2(1, -21)
-scale = Vector2(12, 12)
-texture = ExtResource("1_q7l73")
-offset = Vector2(-0.41695, -3.83333)
-script = SubResource("GDScript_yi0s1")
-visual_variations = Array[Texture2D]([ExtResource("1_q7l73"), ExtResource("2_wket5"), ExtResource("3_gpkfi"), ExtResource("4_80tqy")])
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0.0833333, -5.08333)
+[node name="Area2D" type="Area2D" groups=["Obsticle"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_3v8b0")
 death_messages = Array[String](["You was slain by a car", "You broke your leg, while kicking the car", "You was curious, what is the car made of (it was metal)"])
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(4.58333, -4.66667, 8.41667, -1.83334, 10.6667, -2.41667, 12.5, -2.16667, 12.5833, 7.25, -12.5833, 7.25, -12.5, 1.41666, -1.41667, -4.75)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.600006, -14.8)
+scale = Vector2(1.08, 1.14496)
+polygon = PackedVector2Array(-7.03704, -7.16182, 23.5185, -7.16182, 36.4815, 6.81247, -32.963, 10.306, -36.6667, -7.16182, -24.6296, -7.16182, -13.5185, -1.04807)
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="Car" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -13)
+texture = ExtResource("1_q7l73")
+offset = Vector2(0, 0.505)
+script = SubResource("GDScript_yi0s1")
+visual_variations = Array[Texture2D]([ExtResource("1_q7l73"), ExtResource("2_wket5")])
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -7,12 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/Explosions/drone_explosion.tscn" id="3_eoxcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
-size = Vector2(18, 10.7917)
+size = Vector2(30, 17.5)
 
-[node name="Drone City" type="Sprite2D" groups=["Obsticle"]]
+[node name="Area2D" type="Area2D" groups=["Obsticle"]]
+position = Vector2(0, -7)
+script = ExtResource("2_uyrou")
+death_messages = Array[String](["Drone didn't liked you", "You kicked the drone with your head (the drone was harder)", "You jumped into the drone"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.25)
+shape = SubResource("RectangleShape2D_1iamu")
+
+[node name="Drone City" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(1, -268)
-scale = Vector2(6, 6)
+position = Vector2(0, -7)
 texture = ExtResource("1_22p13")
 script = ExtResource("2_q6afg")
 min_height = 90.0
@@ -22,14 +30,6 @@ speed = 0.04
 script = ExtResource("2_mexp6")
 max_health = 90.0
 explosion_prefab = ExtResource("3_eoxcv")
-explosion_point = NodePath("../Area2D")
+explosion_point = NodePath("..")
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-0.5, -4.505)
-script = ExtResource("2_uyrou")
-death_messages = Array[String](["Drone didn't liked you", "You kicked the drone with your head (the drone was harder)", "You jumped into the drone"])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_1iamu")
-
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

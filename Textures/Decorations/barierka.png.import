@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4cv23pe68sxq"
-path="res://.godot/imported/car2.png-513ed633b907f4e2fd57aea344a9c0bd.ctex"
+uid="uid://cr8dnnmcwfiht"
+path="res://.godot/imported/barierka.png-0d75b6af9719869b101bfeebde24511a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/car2.png"
-dest_files=["res://.godot/imported/car2.png-513ed633b907f4e2fd57aea344a9c0bd.ctex"]
+source_file="res://Textures/Decorations/barierka.png"
+dest_files=["res://.godot/imported/barierka.png-0d75b6af9719869b101bfeebde24511a.ctex"]
 
 [params]
 

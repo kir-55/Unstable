@@ -109,11 +109,11 @@ terrain_generator = NodePath("..")
 [node name="GroundLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
 material = SubResource("ShaderMaterial_v15ys")
 position = Vector2(0, 8)
-default_color = Color(0.11502, 0.0656286, 0.00661148, 1)
+default_color = Color(0.168627, 0.133333, 0.164706, 1)
 
 [node name="GrassLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
 width = 30.0
-default_color = Color(0.108257, 0.118032, 0.110268, 1)
+default_color = Color(0.156863, 0.180392, 0.231373, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MovingGround/TerrainGenerator/GrassLine"]
 

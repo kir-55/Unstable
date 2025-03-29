@@ -6,11 +6,13 @@
 [resource]
 script = ExtResource("2_t5xrx")
 prefab = ExtResource("1_sit36")
+name = "House"
 spawn_on_center = true
 initial_chance = 100
-chance_to_spawn = 90.0
+chance_to_spawn = 40.0
+spawn_with_gap = true
 chance_multiplyer = 1
 type = 3
 incompatible_with_types = Array[int]([3])
-min_scale = 0.0
-max_scale = 0.0
+min_scale = 3.0
+max_scale = 3.0

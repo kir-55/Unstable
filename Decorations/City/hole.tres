@@ -6,11 +6,13 @@
 [resource]
 script = ExtResource("2_2qax0")
 prefab = ExtResource("1_uxfbq")
+name = "Hole"
 spawn_on_center = true
 initial_chance = 100
 chance_to_spawn = 20.0
+spawn_with_gap = true
 chance_multiplyer = 1
 type = 2
 incompatible_with_types = Array[int]([1, 0, 2])
-min_scale = 6.0
-max_scale = 6.0
+min_scale = 3.0
+max_scale = 3.0

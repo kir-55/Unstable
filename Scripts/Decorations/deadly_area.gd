@@ -7,17 +7,18 @@ func _on_body_entered(body):
 		if body.kill():
 			Engine.time_scale = 1
 			GlobalVariables.game_is_on = false
-			
+
 			var last_score = GlobalVariables.last_score + int(body.global_position.x) / GlobalVariables.score_divider
 			var best_score = GlobalVariables.best_score
 			if last_score > best_score:
 				GlobalVariables.best_score = last_score
-			
+
 			# Reset the variables
 			GlobalVariables.last_score = last_score
 			GlobalFunctions.end_timer()
-			
-			
+
+
+
 			if !Client.active:
 				# spawning death menu
 				var game_over_menu = load("res://Scenes/menus/game_over_menu.tscn")
@@ -28,8 +29,8 @@ func _on_body_entered(body):
 			else:
 				var time_elapsed = GlobalVariables.time_ended - GlobalVariables.time_started
 				Client.player_died.rpc(Client.id, Client.player_name, last_score, time_elapsed)
-				
+
 		else:
-			get_parent().queue_free()
-			
-			
+				queue_free()
+
+

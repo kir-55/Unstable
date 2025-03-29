@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq65p2b4khibq"
-path="res://.godot/imported/car3.png-2bdb3b60d5698162382e88c8fafe5ebb.ctex"
+uid="uid://da8t7fx0yw4rw"
+path="res://.godot/imported/ameridium_gun.png-87ae892ce83268d0baac575e57eafbc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/car3.png"
-dest_files=["res://.godot/imported/car3.png-2bdb3b60d5698162382e88c8fafe5ebb.ctex"]
+source_file="res://Textures/Amulets/ameridium_gun.png"
+dest_files=["res://.godot/imported/ameridium_gun.png-87ae892ce83268d0baac575e57eafbc4.ctex"]
 
 [params]
 

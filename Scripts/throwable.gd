@@ -9,8 +9,8 @@ extends RigidBody2D
 
 
 func _on_area_2d_area_entered(body):
-	if body and body.get_parent() and body.get_parent().has_node("HealthSystem"):
-		body.get_parent().get_node("HealthSystem").take_damage(damage)
+	if body and body.has_node("HealthSystem"):
+		body.get_node("HealthSystem").take_damage(damage)
 		
 	var explosion = explosion_prefab.instantiate()
 	if explosion_point:

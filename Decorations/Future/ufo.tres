@@ -6,9 +6,11 @@
 [resource]
 script = ExtResource("1_d47c1")
 prefab = ExtResource("1_tsoia")
+name = ""
 spawn_on_center = false
 initial_chance = 100
 chance_to_spawn = 40.0
+spawn_with_gap = false
 chance_multiplyer = 1
 type = 0
 incompatible_with_types = Array[int]([])

@@ -15,6 +15,8 @@ var time_ended: int = 0
 
 var times_treveled: int = 0
 
+var win_after_next_epoch : bool = false
+
 @export var initial_player_speed: int = 500
 @export var initial_player_amulets := [0]
 
