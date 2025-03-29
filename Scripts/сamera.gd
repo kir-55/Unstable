@@ -32,7 +32,7 @@ func _process(delta):
 				if distance_to_target.y > max_distance.y:
 					position.y = lerp(position.y, target.global_position.y + offsett.y, delta*speed)
 		else:
-			if Client.dead_players.size() == Client.players.size() - 1:
+			if Client.dead_players.size() >= Client.players.size() - 1:
 				target = initial_target
 			else:
 				var keys = Client.players.keys()

@@ -21,7 +21,7 @@ func _ready():
 			if int(i) == Client.id:
 				player_spawned.emit(player)
 			
-			player.global_position = spawn_point.global_position
+			player.global_position = spawn_point.global_position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
 			player.name = "Player" + str(i)
 			get_tree().root.get_child(4).add_child(player)
 	else:

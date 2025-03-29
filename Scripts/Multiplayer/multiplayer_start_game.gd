@@ -38,8 +38,19 @@ func _process(delta):
 func _on_timer_timeout():
 	if Client.lobby_id:
 		timer.stop()
-		in_lobby_label.text = "[center]In Lobby: " + Client.lobby_id + "[/center]"
+		in_lobby_label.text = '[center]In Lobby: [url={"lobby": "' + Client.lobby_id + '"}]' + Client.lobby_id + '[/url][/center]'
 
 
 func _on_leave_pressed():
 	Client.leave_lobby()
+
+
+func _on_in_lobby_meta_clicked(meta):
+		# Get the current contents of the clipboard
+	var li = JSON.parse_string(meta)["lobby"]
+	
+	var current_clipboard = DisplayServer.clipboard_get()
+	DisplayServer.clipboard_set(li)
+	
+	in_lobby_label.text = '[center][color=c2d64f]Coppied to clipboard![/color] [url={"lobby": "' + Client.lobby_id + '"}]' + Client.lobby_id + '[/url][/center]'
+	print("clicked on: " + li)

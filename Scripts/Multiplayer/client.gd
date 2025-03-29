@@ -336,10 +336,15 @@ func start_game(id: int):
 			"lobby_id": lobby_id
 		}
 		
+		GlobalVariables.last_score = 0
+		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 		GlobalVariables.game_is_on = true
+		GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets.duplicate())
+		GlobalVariables.player_new_amulets.clear()
+		GlobalVariables.times_treveled = 0
+		GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 		GlobalVariables.terrain_code = hash(lobby_id)
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
-		GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets)
 	
 		GlobalFunctions.start_timer()
 		send_to_server(message)
