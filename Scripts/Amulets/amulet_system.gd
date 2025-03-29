@@ -24,8 +24,6 @@ var amulets_displayed = false
 @export var trail_color = Color("#eff37c")
 
 
-
-	
 func use_amulet(event: InputEvent, amulet_id: int):
 	if event is InputEventMouseButton and event.pressed:
 		if amulet_id == 7:
@@ -34,6 +32,11 @@ func use_amulet(event: InputEvent, amulet_id: int):
 			Engine.time_scale = 1.5
 		if amulet_id == 12:
 			animation_player.play("immunity")
+		
+		if GlobalVariables.amulets[amulet_id].sound:
+			var instance = GlobalVariables.amulets[amulet_id].sound.instantiate()
+			get_tree().current_scene.add_child(instance)
+			
 		remove_amulet(amulet_id)
 
 func display_amulets():
