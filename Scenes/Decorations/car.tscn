@@ -23,13 +23,13 @@ script = ExtResource("2_3v8b0")
 death_messages = Array[String](["You was slain by a car", "You broke your leg, while kicking the car", "You was curious, what is the car made of (it was metal)"])
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0.600006, -14.8)
+position = Vector2(1.30006, -12.8)
 scale = Vector2(1.08, 1.14496)
 polygon = PackedVector2Array(-7.03704, -7.16182, 23.5185, -7.16182, 36.4815, 7.68586, -32.963, 10.306, -36.6667, -7.16182, -24.6296, -7.16182, -13.5185, -1.04807)
 
 [node name="Car" type="Sprite2D" parent="."]
 z_index = 5
-position = Vector2(0, -13)
+position = Vector2(0.70005, -11)
 texture = ExtResource("1_q7l73")
 offset = Vector2(0, 0.505)
 script = SubResource("GDScript_yi0s1")

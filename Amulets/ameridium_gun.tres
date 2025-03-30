@@ -10,6 +10,7 @@ name = "Ameridium gun"
 description = "Allows player to shoot explosive bullet every 5 seconds."
 texture = ExtResource("2_l01fq")
 incompatible_amulets = Array[int]([0])
+available_in_multiplayer = true
 consumable = false
 required_for_repair = false
 required_for_destruction = false

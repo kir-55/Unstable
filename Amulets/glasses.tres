@@ -10,6 +10,7 @@ name = "Glasses"
 description = "Enhanceaa player's vision, therefore increasing FOV"
 texture = ExtResource("2_026j1")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = true
 consumable = false
 required_for_repair = false
 required_for_destruction = false

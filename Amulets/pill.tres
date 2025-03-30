@@ -10,9 +10,7 @@ name = "Some Pill"
 description = "Makes you think faster, therefore slowing the environment (click to use)"
 texture = ExtResource("2_y06ph")
 incompatible_amulets = Array[int]([])
-
 available_in_multiplayer = false
-
 consumable = true
 required_for_repair = false
 required_for_destruction = false

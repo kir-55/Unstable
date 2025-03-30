@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bs842xniyo8fc" path="res://Textures/Decorations/hydrant2.png" id="1_kn5rp"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="2_utguk"]
-[ext_resource type="PackedScene" uid="uid://cu6h8qbv3df6m" path="res://Scenes/explosions/hydrant_explosion.tscn" id="3_t01oi"]
+[ext_resource type="PackedScene" uid="uid://cu6h8qbv3df6m" path="res://Scenes/Explosions/hydrant_explosion.tscn" id="3_t01oi"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="5_shcd0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvb52"]
@@ -15,12 +15,13 @@ script = ExtResource("5_shcd0")
 death_messages = Array[String](["There was a hydrant!", "You broke your leg, while kicking the hydrant", "You were curious, what is the hydrant made of (it was metal)"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6.5)
+position = Vector2(0.250283, -5.5)
 shape = SubResource("RectangleShape2D_lvb52")
 debug_color = Color(0.125904, 0.545454, 0.919934, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
+position = Vector2(0.250283, 1)
 texture = ExtResource("1_kn5rp")
 offset = Vector2(-0.250283, -8)
 

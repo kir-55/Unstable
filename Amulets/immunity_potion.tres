@@ -10,6 +10,7 @@ name = "Immunity potion"
 description = "Allows player to become invulnerable to all obstacles for 5 seconds (click to use)"
 texture = ExtResource("2_k4p7q")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = true
 consumable = true
 required_for_repair = false
 required_for_destruction = false

@@ -10,6 +10,7 @@ name = "Screwdriver"
 description = "It doesn't affect your gameplay but is required for an escape!"
 texture = ExtResource("2_0g2cb")
 incompatible_amulets = Array[int]([])
+available_in_multiplayer = true
 consumable = false
 required_for_repair = true
 required_for_destruction = false

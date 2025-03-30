@@ -10,9 +10,7 @@ name = "Mystery Pill"
 description = "You don't remember what it does (click to use)"
 texture = ExtResource("2_6bw27")
 incompatible_amulets = Array[int]([])
-
 available_in_multiplayer = false
-
 consumable = true
 required_for_repair = false
 required_for_destruction = false

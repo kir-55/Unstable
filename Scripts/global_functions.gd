@@ -11,6 +11,7 @@ func reload():
 	GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets.duplicate())
 	GlobalVariables.player_new_amulets.clear()
 	GlobalVariables.times_treveled = 0
+	GlobalVariables.terrain_code = randi()
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 	get_tree().change_scene_to_file("res://Scenes/Locations/city.tscn")
 
