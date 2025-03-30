@@ -1,15 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=22 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
+[ext_resource type="Script" path="res://Scripts/Weapon/weapon.gd" id="4_db2y7"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
 [ext_resource type="PackedScene" uid="uid://c8lspr0ou0j8r" path="res://Scenes/amulet_timer.tscn" id="5_382f2"]
-[ext_resource type="PackedScene" uid="uid://b8itocxc1xfcd" path="res://Scenes/bullet.tscn" id="5_bm4pq"]
 [ext_resource type="PackedScene" uid="uid://cwtnwotylrivo" path="res://Scenes/amulet_timer_bar.tscn" id="5_ewkn8"]
-[ext_resource type="PackedScene" uid="uid://cnxt5vr2tcgk4" path="res://Scenes/ameridium_bullet.tscn" id="6_2qycl"]
-[ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/Entities/microbot.tscn" id="6_70j50"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet_timers.gd" id="9_nhkjf"]
 [ext_resource type="Texture2D" uid="uid://cqnn5wprrxkk" path="res://Textures/Player/1.png" id="15_rej4y"]
 [ext_resource type="Texture2D" uid="uid://bfllsgqcnea8h" path="res://Textures/Player/2.png" id="16_udaus"]
 [ext_resource type="Texture2D" uid="uid://bnqy5phdfqc8y" path="res://Textures/Player/3.png" id="17_5dhva"]
@@ -48,93 +47,6 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath(".:scale")
 properties/7/spawn = true
 properties/7/replication_mode = 2
-
-[sub_resource type="GDScript" id="GDScript_yujad"]
-script/source = "extends Node2D
-
-@export var bullet_scene: PackedScene        # Drag & drop the bullet scene here
-@export var ameridium_bullet_scene: PackedScene
-@export var bullet_speed: float = 600.0      # Speed of the spawned bullets
-@export var knockback_force: float = 200.0   # Knockback magnitude applied to the parent
-@export var amulet_timer : PackedScene
-
-
-@export var description: String              # Reference to the timer for cooldown
-
-var has_bag_of_tools: bool = false
-var bag_of_tools_timer : Timer
-
-var has_ameridium_gun : bool = false
-var ameridium_gun_timer: Timer
-var can_shoot: bool = true
-
-@export var microbot: PackedScene
-var microbot_timer: Timer
-
-var shooting_weapon_timer : Timer
-
-func _ready():
-	
-	for amulet_id in GlobalVariables.player_amulets:
-		if GlobalVariables.amulets[amulet_id].has_timer:
-			var amulet_timer_representation = amulet_timer.instantiate()
-			amulet_timer_representation.name = str(amulet_id) + \"timer\"
-			amulet_timer_representation.wait_time = GlobalVariables.amulets[amulet_id].timer_reload
-			add_child(amulet_timer_representation)
-	
-	if GlobalVariables.player_amulets.has(0):
-		has_bag_of_tools = true
-		bag_of_tools_timer = assign_timer(0, _on_ameridium_gun_timeout)
-		shooting_weapon_timer = bag_of_tools_timer
-	if GlobalVariables.player_amulets.has(10):
-		has_ameridium_gun = true
-		ameridium_gun_timer = assign_timer(10, _on_ameridium_gun_timeout)
-		bullet_scene = ameridium_bullet_scene
-		shooting_weapon_timer = ameridium_gun_timer
-	if GlobalVariables.player_amulets.has(9):
-		microbot_timer = assign_timer(9, _on_microbot_timeout)
-		microbot_timer.set_one_shot(false)
-		microbot_timer.start()
-
-func _unhandled_input(event):
-	# Check if the player wants to shoot
-	if GlobalVariables.game_is_on and (has_bag_of_tools or has_ameridium_gun) and Input.is_action_just_pressed(\"fire\") and can_shoot:
-		fire_weapon()
-
-func fire_weapon() -> void:
-	if bullet_scene:
-		# Spawn the bullet
-		var bullet = bullet_scene.instantiate()
-		bullet.global_position = global_position
-		get_tree().current_scene.add_child(bullet)
-		 
-		# Determine shooting direction based on player's input
-		var input_direction = get_parent().direction
-
-		# Default to shooting right if no inputd
-		if input_direction == Vector2.ZERO:
-			input_direction = Vector2.RIGHT
-		bullet.set_velocity(Vector2(get_parent().velocity.x, 0) + input_direction * bullet_speed)
-		get_parent().velocity.x -= knockback_force
-		# Start cooldown
-		can_shoot = false
-		shooting_weapon_timer.start()
-
-func assign_timer(amulet_id : int, timeout_function) -> Timer:
-	var timer = find_child(str(amulet_id) + \"timer\", false, false)
-	timer.wait_time = GlobalVariables.amulets[amulet_id].timer_reload
-	timer.timeout.connect(timeout_function)
-	return timer
-
-func _on_microbot_timeout():
-	if microbot:
-		var instance = microbot.instantiate()
-		instance.global_position = global_position
-		get_parent().get_parent().add_child(instance)
-
-func _on_ameridium_gun_timeout():
-	can_shoot = true
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
 size = Vector2(21.4286, 50)
@@ -237,18 +149,17 @@ default_color = Color(1, 1, 1, 0.321569)
 z_index = 3
 position = Vector2(13.5714, 5.71429)
 scale = Vector2(6, 6)
-script = SubResource("GDScript_yujad")
-bullet_scene = ExtResource("5_bm4pq")
-ameridium_bullet_scene = ExtResource("6_2qycl")
-bullet_speed = 2000.0
-knockback_force = 150.0
-amulet_timer = ExtResource("5_382f2")
-microbot = ExtResource("6_70j50")
+script = ExtResource("4_db2y7")
 
-[node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("weapon_system", "animation_player")]
+[node name="AmuletTimers" type="Node" parent="." node_paths=PackedStringArray("weapon")]
+script = ExtResource("9_nhkjf")
+amulet_timer_prefab = ExtResource("5_382f2")
+weapon = NodePath("../Weapon")
+
+[node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("amulet_timers", "animation_player")]
 script = ExtResource("2_sxsw1")
 amulet_icon_template = ExtResource("4_e8l5m")
-weapon_system = NodePath("../Weapon")
+amulet_timers = NodePath("../AmuletTimers")
 amulet_timer_bar = ExtResource("5_ewkn8")
 animation_player = NodePath("../AnimationPlayer")
 

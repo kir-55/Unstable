@@ -1,6 +1,7 @@
 class_name Global
 extends Node
 
+signal game_state_changed(state)
 
 var terrain_code: int = 1
 
@@ -44,7 +45,11 @@ var player_new_amulets : Array[int]
 var last_epoch: GlobalEnums.LEVELS
 var next_epoch: GlobalEnums.LEVELS
 
-var game_is_on := true
+var game_is_on := true:
+	set(value):
+		game_is_on = value
+		game_state_changed.emit(value)
+		
 
 var menus = {
 	"main" : load("res://Scenes/Menus/start_menu.tscn"),

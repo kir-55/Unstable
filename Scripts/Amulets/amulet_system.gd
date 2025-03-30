@@ -4,7 +4,7 @@ extends Node
 
 @onready var amulets_panel: Container = get_tree().root.get_child(4).amulets_panel
 
-@export var weapon_system: Sprite2D
+@export var amulet_timers: AmuletTimers
 @export var amulet_timer_bar: PackedScene
 
 @export var animation_player: AnimationPlayer
@@ -62,8 +62,7 @@ func display_amulets():
 				amulet_representation.gui_input.connect(use_amulet.bind(amulet_id))
 			if GlobalVariables.amulets[amulet_id].has_timer:
 				var amulet_timer_bar_representation = amulet_timer_bar.instantiate()
-
-				amulet_timer_bar_representation.amulet_timer = weapon_system.find_child(str(amulet_id) + "timer", false, false)
+				amulet_timer_bar_representation.amulet_timer = amulet_timers.timers[amulet_id]
 				amulet_representation.add_child(amulet_timer_bar_representation)
 			amulets_panel.add_child(amulet_representation)
 		amulets_displayed = true
