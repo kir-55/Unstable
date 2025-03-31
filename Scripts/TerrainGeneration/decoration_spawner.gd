@@ -96,7 +96,6 @@ func spawn_decoration(point):
 		
 		var char_type_decorations = decorations.filter(func(x): return x.pattern_type == pattern_segment_char)
 		var spawned = false
-		var isNecessary = true
 		print(char_type_decorations.map(func(x): return x.name))
 		
 		if char_type_decorations.size() <= 0:
@@ -104,7 +103,8 @@ func spawn_decoration(point):
 		
 		if i + 1 < current_pattern_segment.length():
 			if current_pattern_segment[i + 1] == "*":
-				isNecessary = false
+				if rs.get_rnd_int_at(0, 99) < 50:
+					continue
 		
 		while !spawned:
 			#char_type_decorations.shuffle()
@@ -119,31 +119,32 @@ func spawn_decoration(point):
 				var rnd = rs.get_rnd_int_at(0, 99)
 				if rnd < decoration.chance_to_spawn:
 					var segment_part := 0.5
+					var decoration_spawn_offset = float(decoration.width) / 2 / line_section_length
 					
 					if !decoration.spawn_on_center:
-						segment_part = rs.get_rnd_float(0, 1)
+						segment_part = rs.get_rnd_float(0 + decoration_spawn_offset, 1 - decoration_spawn_offset)
 						
 					decoration_segment.position = calculate_start_end_pos(decoration.width, segment_part)
 					
 					var noMoreRetries = false
 					for _i in range(7):
 						if check_collision(decoration_segment, decoration.ignore_types, spawned_decorations_positions):
-							segment_part = rs.get_rnd_float(0, 1)
+							segment_part = rs.get_rnd_float(0 + decoration_spawn_offset, 1 - decoration_spawn_offset)
 							decoration_segment.position = calculate_start_end_pos(decoration.width, segment_part)
 						else:
 							noMoreRetries = true
 							spawned_decorations_positions.append(decoration_segment)
 							break
 					if !noMoreRetries:
-						continue
+						spawned = true
+						break
 							
 					sloper.spawn_at_point(decoration.prefab, self, point, segment_part)
 					spawned = true
 					print(decoration.name)
 					break
-		
-		
-		
+	
+	
 	current_pattern_segment_index = (current_pattern_segment_index + 1) % pattern_segments.size()
 
 func check_collision(decoration_segment: DecorationSegment, ignore_types: Array[GlobalEnums.DECORATION_LAYERS], all_segments: Array[DecorationSegment]) -> bool:
@@ -152,7 +153,7 @@ func check_collision(decoration_segment: DecorationSegment, ignore_types: Array[
 			continue
 		
 		if decoration_segment.position.end >= segment.position.start and decoration_segment.position.start <= segment.position.end:
-			print("collisition")
+			print("collision")
 			return true
 	
 	return false

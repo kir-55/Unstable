@@ -7,4 +7,4 @@ z_index = -1
 position = Vector2(0, -10)
 scale = Vector2(3, 3)
 texture = ExtResource("1_b1nif")
-offset = Vector2(-0.000285655, -24.5)
+offset = Vector2(0, -28.325)
