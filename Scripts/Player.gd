@@ -105,10 +105,7 @@ func reset_velocity():
 
 func _physics_process(delta: float) -> void:
 	if GlobalVariables.game_is_on and (!Client.active or is_multiplayer_authority()):
-		print("v: " + str(velocity.x))
-		print("s" + str(SPEED))
 		if velocity.x < SPEED:
-			print("trying to change velocity")
 			velocity.x += 10
 			
 		REMOTE_PLAYER_POSITION = global_position

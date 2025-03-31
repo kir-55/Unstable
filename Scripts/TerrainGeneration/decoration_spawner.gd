@@ -14,7 +14,7 @@ var line_section_length: int
 @export var line: Line2D
 @export var terrain_generator: Node2D
 
-@export var spawn_gap: int = 2  # if there are problem with gaps please make sure every decoration has a unique name in .tres!
+@export var spawn_pattern := "AC|BAS"
 
 @export var spawn_from: int = 2
 
@@ -22,6 +22,9 @@ var line_section_length: int
 
 var last_point: int
 var loaded_segments: Array[int]
+var current_pattern_segment_index = 0
+
+var road_line_prefab
 
 
 func _enter_tree():
@@ -32,12 +35,12 @@ func _enter_tree():
 func _set_player(player):
 	self.player = player
 
-var decorations_with_gap: Dictionary
-
-
 func _ready():
 	line_start_x = line.global_position.x
 	line_section_length = terrain_generator.line_section_length
+	var road_line_index = decorations.map(func(x): return x.name).find("RoadLine")
+	if road_line_index != -1:
+		road_line_prefab = decorations[road_line_index].prefab
 	spawn_from += int(GlobalVariables.times_treveled / 3)
 
 func _process(delta):
@@ -65,54 +68,90 @@ func _process(delta):
 						break
 
 				if !already_loaded and point > -1 and point < line.points.size():
-					for decoration_name in decorations_with_gap.keys():
-						decorations_with_gap[decoration_name] += 1
-
-					var decorations_with_gap_copy := decorations_with_gap.duplicate(true)
-
-					for decoration_name in decorations_with_gap:
-						if decorations_with_gap[decoration_name] > spawn_gap:
-							decorations_with_gap_copy.erase(decoration_name)
-
-					decorations_with_gap = decorations_with_gap_copy.duplicate(true)
-
+					if road_line_prefab:
+						sloper.spawn_at_point(road_line_prefab, self, point, 0.5, Vector2(1, 1))
 					spawn_decoration(point)
+					print(point)
 					loaded_segments.append(point)
 
 
 func spawn_decoration(point):
-	var types_spawned: Array[GlobalEnums.DECORATION_LAYERS]
-	if spawn_from <= point:
-		var i := 0
-		for decoration in decorations:
-			var has_incompatible = false
-			for type_spawned in types_spawned:
-				if type_spawned in decoration.incompatible_with_types:
-					has_incompatible = true
+	
+	var pattern_segments = spawn_pattern.split("|")
+	var current_pattern_segment = pattern_segments[current_pattern_segment_index]
+	print(current_pattern_segment)
+	
+	var types_spawned : Array[GlobalEnums.DECORATION_LAYERS]
+	var spawned_decorations_positions : Array
+	
+	for i in range(current_pattern_segment.length()):
+		var pattern_segment_char = current_pattern_segment[i]
+		if pattern_segment_char == "*":
+			continue
+		
+		var char_type_decorations = decorations.filter(func(x): return x.pattern_type == pattern_segment_char)
+		var spawned = false
+		var isNecessary = true
+		print(char_type_decorations.map(func(x): return x.name))
+		
+		if char_type_decorations.size() <= 0:
+			continue
+		
+		if i + 1 < current_pattern_segment.length():
+			if current_pattern_segment[i + 1] == "*":
+				isNecessary = false
+		
+		while !spawned:
+			char_type_decorations.shuffle()
+			for decoration in char_type_decorations:
+				
+				var rnd = rs.get_rnd_int_at(0, 99)
+				if rnd < decoration.chance_to_spawn:
+					var segment_part := 0.5
+					var scale = rs.get_rnd_float(decoration.min_scale, decoration.max_scale)
+					var position = calculate_start_end_pos(decoration.width * scale, segment_part)
+					
+					if !decoration.spawn_on_center:
+						segment_part = rs.get_rnd_float(0, 1)
+					
+					var do_collision_check = true
+					for type_spawned in types_spawned:
+						if type_spawned in decoration.incompatible_with_types:
+							do_collision_check = false
+							break
+				
+					if do_collision_check:
+						if check_collision(decoration.width * scale, segment_part, spawned_decorations_positions):
+							continue
+						else:
+							spawned_decorations_positions.append(position)
+					
+					types_spawned.append(decoration.type)
+					sloper.spawn_at_point(decoration.prefab, self, point, segment_part, Vector2(scale, scale))
+					spawned = true
+					print(decoration.name)
 					break
+			if !isNecessary:
+				break
+		
+		
+		
+	current_pattern_segment_index = (current_pattern_segment_index + 1) % pattern_segments.size()
 
-			if has_incompatible:
-				continue
+func check_collision(width : int, segment_part : float, other_objects_position : Array) -> bool:
+	var position = calculate_start_end_pos(width, segment_part)
+	
+	for object_position in other_objects_position:
+		var object_start = object_position[0]
+		var object_end = object_position[1]
+		if position[0] <  object_end and position[1] > object_start:
+			return true
+	
+	return false
 
-			var decoration_gap = decorations_with_gap.get(decoration.name)
-			if decoration_gap != null and decoration_gap <= spawn_gap:
-				continue
-
-			if decoration and decoration.prefab:
-				var rnd_i = rs.get_rnd_int_at(0, 99)
-				if decoration.initial_chance > rnd_i:
-					for _i in range(decoration.chance_multiplyer):
-						var rnd = rs.get_rnd_int_at(0, 99)
-						if decoration.chance_to_spawn > rnd:
-							var segment_part := 0.5
-							if !decoration.spawn_on_center:
-								segment_part = rs.get_rnd_float_at(0, 1)
-							var scale = rs.get_rnd_float(decoration.min_scale, decoration.max_scale)
-							types_spawned.append(decoration.type)
-							if decoration.spawn_with_gap == true:
-								if decoration_gap != null:
-									decorations_with_gap[decoration.name] += 1
-								else:
-									decorations_with_gap[decoration.name] = 0
-							sloper.spawn_at_point(decoration.prefab, self, point, segment_part, Vector2(scale, scale))
-				i += 1
+func calculate_start_end_pos(width: int, segment_part : float) -> Array:
+	var segment_position = segment_part * line_section_length
+	var pos_start = segment_position - width / 2
+	var pos_end = segment_position + width / 2
+	
+	return [pos_start, pos_end]

@@ -5,10 +5,9 @@ extends Resource
 @export_category("Chances")
 @export var name : String
 @export var spawn_on_center := false
-@export var initial_chance := 100
 @export var chance_to_spawn: float
-@export var spawn_with_gap := false
-@export var chance_multiplyer := 1
+@export var width := 0
+@export var pattern_type : String
 @export var type: GlobalEnums.DECORATION_LAYERS = GlobalEnums.DECORATION_LAYERS.ON_GROUND
 @export var incompatible_with_types: Array[GlobalEnums.DECORATION_LAYERS]
 

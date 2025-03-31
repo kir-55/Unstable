@@ -19,7 +19,7 @@ func process_points():
 
 	for trail in trails:
 		trail.add_point(player.global_position)
-	print("point spawned")
+#	print("point spawned")
 	
 	for trail in trails:
 		if trail.points.size() > max_number_of_points:

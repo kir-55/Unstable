@@ -183,6 +183,7 @@ animations = [{
 self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)
+collision_layer = 128
 script = ExtResource("1_22t7u")
 SPEED = 0.0
 MAX_JUMP_VEL = -1000.0

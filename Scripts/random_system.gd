@@ -25,12 +25,3 @@ func get_rnd_int_at(min: int, max: int) -> int:
 	#rng.state = prev_state
 	
 	return value
-
-
-func get_rnd_float_at(min: float, max: float) -> float:
-
-	
-	var value = rng.randf_range(min, max)
-
-	
-	return value
