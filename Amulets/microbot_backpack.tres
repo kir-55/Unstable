@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://d3l6fb2c4pdeg"]
+[gd_resource type="Resource" script_class="Amulet" load_steps=4 format=3 uid="uid://d3l6fb2c4pdeg"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_cihre"]
 [ext_resource type="Texture2D" uid="uid://e2t3t5py6r3u" path="res://Textures/Amulets/backpack.png" id="2_ibapu"]
+[ext_resource type="Resource" uid="uid://7cxv6136vw6y" path="res://WeaponTypes/microbot_backpack.tres" id="3_ccxiu"]
 
 [resource]
 script = ExtResource("1_cihre")
@@ -11,11 +12,13 @@ description = "Backpack with your new innovation, once a while generates microbo
 texture = ExtResource("2_ibapu")
 incompatible_amulets = Array[int]([])
 available_in_multiplayer = true
-consumable = false
 required_for_repair = false
 required_for_destruction = false
+consumable = false
+is_weapon = true
+weapon = ExtResource("3_ccxiu")
 has_timer = true
-timer_reload = 4.0
+timer_reload = 3.0
 stack_limit = true
 limit = 1
-chance_multiplier = 3
+chance_multiplier = 150

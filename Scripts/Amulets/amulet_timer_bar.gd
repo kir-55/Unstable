@@ -1,6 +1,6 @@
 extends ProgressBar
 
-var amulet_timer : Timer # this variable value is later assigned after instantiating this scene
+var amulet_timer: Timer # this variable value is later assigned after instantiating this scene
 
 func _ready():
 	max_value = amulet_timer.wait_time

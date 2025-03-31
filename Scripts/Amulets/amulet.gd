@@ -7,11 +7,18 @@ extends Resource
 @export var description: String = ""
 @export var texture: Texture2D
 
+
 @export var incompatible_amulets: Array[int]
 
 @export var available_in_multiplayer: bool = true
 
+# VICTORY IMPACT
+@export var required_for_repair: bool = false
+@export var required_for_destruction: bool = false
 
+
+
+# CONSUMABLE
 @export var consumable: bool = false:
 	set(value):
 		consumable = value
@@ -19,9 +26,18 @@ extends Resource
 @export var sound: PackedScene
 
 
-@export var required_for_repair: bool = false
-@export var required_for_destruction: bool = false
 
+# WEAPON
+@export var is_weapon: bool = false:
+	set(value):
+		is_weapon = value
+		notify_property_list_changed()
+
+@export var weapon: WeaponType
+
+
+
+# TIMER
 @export var has_timer: bool = false:
 	set(value):
 		has_timer = value
@@ -38,6 +54,7 @@ extends Resource
 
 @export var limit: int = 1
 
+
 @export var chance_multiplier: int = 1
 
 
@@ -48,4 +65,6 @@ func _validate_property(property: Dictionary) -> void:
 	if property.name in ["timer_reload"] and !has_timer:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["sound"] and !consumable:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name in ["weapon"] and !is_weapon:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
