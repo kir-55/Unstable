@@ -26,6 +26,15 @@ var current_pattern_segment_index = 0
 
 var road_line_prefab
 
+class Position:
+	var start: float
+	var end: float
+
+class DecorationSegment:
+	var layer: GlobalEnums.DECORATION_LAYERS
+	var position: Position
+
+
 
 func _enter_tree():
 	if !player:
@@ -48,7 +57,7 @@ func _process(delta):
 
 		var x = player.position.x
 		var closest_point = int((x - line_start_x) / line_section_length)
-
+		
 		for loaded_segment in loaded_segments:
 			if abs(loaded_segment - closest_point) > max_radius:
 				loaded_segments.erase(loaded_segment)
@@ -68,8 +77,6 @@ func _process(delta):
 						break
 
 				if !already_loaded and point > -1 and point < line.points.size():
-					if road_line_prefab:
-						sloper.spawn_at_point(road_line_prefab, self, point, 0.5)
 					spawn_decoration(point)
 					print(point)
 					loaded_segments.append(point)
@@ -80,9 +87,7 @@ func spawn_decoration(point):
 	var pattern_segments = spawn_pattern.split("|")
 	var current_pattern_segment = pattern_segments[current_pattern_segment_index]
 	print(current_pattern_segment)
-	
-	var types_spawned : Array[GlobalEnums.DECORATION_LAYERS]
-	var spawned_decorations_positions : Array
+	var spawned_decorations_positions: Array[DecorationSegment]
 	
 	for i in range(current_pattern_segment.length()):
 		var pattern_segment_char = current_pattern_segment[i]
@@ -102,60 +107,60 @@ func spawn_decoration(point):
 				isNecessary = false
 		
 		while !spawned:
-			char_type_decorations.shuffle()
+			#char_type_decorations.shuffle()
 			for decoration in char_type_decorations:
+				var decoration_segment: DecorationSegment = DecorationSegment.new()
+				decoration_segment.layer = decoration.type
+				
+				if point < spawn_from and decoration.type != GlobalEnums.DECORATION_LAYERS.BACKGROUND:
+					spawned = true
+					break
 				
 				var rnd = rs.get_rnd_int_at(0, 99)
 				if rnd < decoration.chance_to_spawn:
 					var segment_part := 0.5
-					var position = calculate_start_end_pos(decoration.width, segment_part)
 					
 					if !decoration.spawn_on_center:
 						segment_part = rs.get_rnd_float(0, 1)
+						
+					decoration_segment.position = calculate_start_end_pos(decoration.width, segment_part)
 					
-					var do_collision_check = true
-					for type_spawned in types_spawned:
-						if type_spawned in decoration.incompatible_with_types:
-							do_collision_check = false
+					var noMoreRetries = false
+					for _i in range(7):
+						if check_collision(decoration_segment, decoration.ignore_types, spawned_decorations_positions):
+							segment_part = rs.get_rnd_float(0, 1)
+							decoration_segment.position = calculate_start_end_pos(decoration.width, segment_part)
+						else:
+							noMoreRetries = true
+							spawned_decorations_positions.append(decoration_segment)
 							break
-					
-					if do_collision_check:
-						var noMoreRetries = false
-						for _i in range(7):
-							if check_collision(position, spawned_decorations_positions):
-								segment_part = rs.get_rnd_float(0, 1)
-								position = calculate_start_end_pos(decoration.width, segment_part)
-							else:
-								noMoreRetries = true
-								spawned_decorations_positions.append(position)
-								break
-						if !noMoreRetries:
-							continue
-					
-					types_spawned.append(decoration.type)
+					if !noMoreRetries:
+						continue
+							
 					sloper.spawn_at_point(decoration.prefab, self, point, segment_part)
 					spawned = true
 					print(decoration.name)
 					break
-			if !isNecessary:
-				break
 		
 		
 		
 	current_pattern_segment_index = (current_pattern_segment_index + 1) % pattern_segments.size()
 
-func check_collision(position, other_objects_position : Array) -> bool:
-	for object_position in other_objects_position:
-		var object_start = object_position[0]
-		var object_end = object_position[1]
-		if position[0] <  object_end and position[1] > object_start:
+func check_collision(decoration_segment: DecorationSegment, ignore_types: Array[GlobalEnums.DECORATION_LAYERS], all_segments: Array[DecorationSegment]) -> bool:
+	for segment in all_segments:
+		if segment.layer in ignore_types:
+			continue
+		
+		if decoration_segment.position.end >= segment.position.start and decoration_segment.position.start <= segment.position.end:
+			print("collisition")
 			return true
 	
 	return false
 
-func calculate_start_end_pos(width: int, segment_part : float) -> Array:
+func calculate_start_end_pos(width: int, segment_part : float) -> Position:
 	var segment_position = segment_part * line_section_length
-	var pos_start = segment_position - width / 2
-	var pos_end = segment_position + width / 2
+	var position: Position = Position.new()
+	position.start =  segment_position - width / 2
+	position.end = segment_position + width / 2
 	
-	return [pos_start, pos_end]
+	return position

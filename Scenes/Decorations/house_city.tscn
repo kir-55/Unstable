@@ -12,8 +12,7 @@
 self_modulate = Color(0.637843, 0.637843, 0.637843, 1)
 z_index = -2
 position = Vector2(2, -1)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 texture = ExtResource("1_nlixq")
-offset = Vector2(-0.667, 0)
 script = ExtResource("2_w7xei")
 visual_variations = Array[Texture2D]([ExtResource("1_nlixq"), ExtResource("3_5uwxn"), ExtResource("4_xkmby"), ExtResource("5_sfmcf"), ExtResource("6_0a363"), ExtResource("7_rfx3e")])

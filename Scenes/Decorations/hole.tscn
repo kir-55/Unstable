@@ -16,6 +16,7 @@ size = Vector2(19, 14)
 [node name="Area2D" type="Area2D" groups=["Obsticle"]]
 z_index = 4
 position = Vector2(0, -5)
+scale = Vector2(3, 3)
 script = ExtResource("2_ebr3f")
 death_messages = Array[String](["You fell down the hole", "Huge hole suck you into, you couldn't resist", "You decided to check what is inside the hole"])
 
