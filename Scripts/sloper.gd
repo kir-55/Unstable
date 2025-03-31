@@ -30,7 +30,7 @@ func calc_closest_point(entity) -> int:
 
 
 
-func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segment: float = 0, scale := Vector2.ZERO):
+func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segment: float = 0):
 	var p1 = line.get_point_position(point)
 	var p2 = line.get_point_position(point + 1)
 	
@@ -43,7 +43,5 @@ func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segme
 	
 	instance.position = Vector2(x, x * a + b - line_offset)
 	instance.rotation = distance.angle()
-	if scale.x != 0 and scale.y != 0:
-		instance.scale = scale
 	parent.add_child(instance)
 	return instance

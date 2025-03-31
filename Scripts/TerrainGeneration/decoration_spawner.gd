@@ -14,7 +14,7 @@ var line_section_length: int
 @export var line: Line2D
 @export var terrain_generator: Node2D
 
-@export var spawn_pattern := "AC|BAS"
+@export var spawn_pattern := "ACCCCCC|S"
 
 @export var spawn_from: int = 2
 
@@ -69,7 +69,7 @@ func _process(delta):
 
 				if !already_loaded and point > -1 and point < line.points.size():
 					if road_line_prefab:
-						sloper.spawn_at_point(road_line_prefab, self, point, 0.5, Vector2(1, 1))
+						sloper.spawn_at_point(road_line_prefab, self, point, 0.5)
 					spawn_decoration(point)
 					print(point)
 					loaded_segments.append(point)
@@ -108,8 +108,7 @@ func spawn_decoration(point):
 				var rnd = rs.get_rnd_int_at(0, 99)
 				if rnd < decoration.chance_to_spawn:
 					var segment_part := 0.5
-					var scale = rs.get_rnd_float(decoration.min_scale, decoration.max_scale)
-					var position = calculate_start_end_pos(decoration.width * scale, segment_part)
+					var position = calculate_start_end_pos(decoration.width, segment_part)
 					
 					if !decoration.spawn_on_center:
 						segment_part = rs.get_rnd_float(0, 1)
@@ -119,15 +118,22 @@ func spawn_decoration(point):
 						if type_spawned in decoration.incompatible_with_types:
 							do_collision_check = false
 							break
-				
+					
 					if do_collision_check:
-						if check_collision(decoration.width * scale, segment_part, spawned_decorations_positions):
+						var noMoreRetries = false
+						for _i in range(7):
+							if check_collision(position, spawned_decorations_positions):
+								segment_part = rs.get_rnd_float(0, 1)
+								position = calculate_start_end_pos(decoration.width, segment_part)
+							else:
+								noMoreRetries = true
+								spawned_decorations_positions.append(position)
+								break
+						if !noMoreRetries:
 							continue
-						else:
-							spawned_decorations_positions.append(position)
 					
 					types_spawned.append(decoration.type)
-					sloper.spawn_at_point(decoration.prefab, self, point, segment_part, Vector2(scale, scale))
+					sloper.spawn_at_point(decoration.prefab, self, point, segment_part)
 					spawned = true
 					print(decoration.name)
 					break
@@ -138,9 +144,7 @@ func spawn_decoration(point):
 		
 	current_pattern_segment_index = (current_pattern_segment_index + 1) % pattern_segments.size()
 
-func check_collision(width : int, segment_part : float, other_objects_position : Array) -> bool:
-	var position = calculate_start_end_pos(width, segment_part)
-	
+func check_collision(position, other_objects_position : Array) -> bool:
 	for object_position in other_objects_position:
 		var object_start = object_position[0]
 		var object_end = object_position[1]
