@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcgd5r2fn3b7v"]
+
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="1_qsgmi"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_ggaey"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_81k0v"]
+[ext_resource type="PackedScene" uid="uid://clnnujnjrdem3" path="res://Audio/Prefabs/car_break_sound.tscn" id="4_j0lgf"]
+
+[sub_resource type="Curve" id="Curve_25yfo"]
+_data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+z_index = 20
+scale = Vector2(6, 6)
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.85
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.61
+emission_shape = 3
+emission_rect_extents = Vector2(21.19, 2.89)
+spread = 180.0
+gravity = Vector2(0, -100)
+initial_velocity_min = 4.0
+initial_velocity_max = 10.0
+angular_velocity_max = 360.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+radial_accel_max = 90.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_25yfo")
+color_ramp = ExtResource("1_qsgmi")
+script = ExtResource("2_ggaey")
+
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("3_81k0v")
+spawn_on_start_prefab = ExtResource("4_j0lgf")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

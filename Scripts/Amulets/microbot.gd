@@ -5,6 +5,8 @@ extends CharacterBody2D
 var target: Node2D = null
 @onready var player = get_tree().get
 
+@export var sizedown_sound_prefab: PackedScene
+
 func _ready():
 	find_closest_target()
 
@@ -34,5 +36,7 @@ func move_towards_target(delta):
 
 		# Check if close enough to scale the parent
 		if global_position.distance_to(target.global_position) < 5:
+			var instance = sizedown_sound_prefab.instantiate()
+			get_tree().current_scene.add_child(instance)
 			target.scale *= Vector2(0.5, 0.5)
 			queue_free() 

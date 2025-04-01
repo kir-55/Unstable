@@ -1,6 +1,6 @@
 extends Timer
 
-@export var player: Node2D
+var player: Node2D
 @export var current_world: GlobalEnums.LEVELS
 
 func _enter_tree():

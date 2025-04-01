@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8itocxc1xfcd"]
+[gd_scene load_steps=7 format=3 uid="uid://b8itocxc1xfcd"]
 
-[ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://Audio/Sounds/strzal.mp3" id="1_cbhip"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="1_tf08y"]
+[ext_resource type="PackedScene" uid="uid://ntmdlggfg36e" path="res://Audio/Prefabs/shoot_sound.tscn" id="2_kgh4u"]
 
 [sub_resource type="GDScript" id="GDScript_tmomb"]
 script/source = "extends Area2D
@@ -72,9 +73,9 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hog3m")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_cbhip")
-autoplay = true
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("1_tf08y")
+spawn_on_start_prefab = ExtResource("2_kgh4u")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

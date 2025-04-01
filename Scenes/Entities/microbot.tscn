@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4s2q8qnapvsn"]
+[gd_scene load_steps=7 format=3 uid="uid://c4s2q8qnapvsn"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/microbot.gd" id="1_bpl4y"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_5fxe3"]
+[ext_resource type="PackedScene" uid="uid://1yeqs86rbxvb" path="res://Audio/Prefabs/sizedown_sound.tscn" id="2_vlc2j"]
 [ext_resource type="Texture2D" uid="uid://c6e1wc2j1i0y3" path="res://Textures/microbot.png" id="2_wm70c"]
+[ext_resource type="PackedScene" uid="uid://w8qf3hk6l8m0" path="res://Audio/Prefabs/bot_spawn_sound.tscn" id="3_316ld"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gbc3e"]
 radius = 4.8534
@@ -12,6 +15,11 @@ scale = Vector2(3, 3)
 script = ExtResource("1_bpl4y")
 speed = 1300.0
 acceleration = 10.0
+sizedown_sound_prefab = ExtResource("2_vlc2j")
+
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("2_5fxe3")
+spawn_on_start_prefab = ExtResource("3_316ld")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_wm70c")

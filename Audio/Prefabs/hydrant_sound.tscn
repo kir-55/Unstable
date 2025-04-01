@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://beaj23h3o8msf"]
+
+[ext_resource type="AudioStream" uid="uid://bnlrlnc6abdx0" path="res://Audio/Sounds/mixkit-metal-tool-drop-835.mp3" id="1_ekoc4"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_5hp1l"]
+
+[node name="HydrantSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_ekoc4")
+pitch_scale = 0.86
+autoplay = true
+mix_target = 1
+script = ExtResource("2_5hp1l")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

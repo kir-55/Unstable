@@ -1,12 +1,10 @@
 extends Node
 
-@export var light_occuluder: LightOccluder2D
 @export var ground_line: Line2D
 @export var grass_line: Line2D
 @export var floor_collider: StaticBody2D
 
 @export var rs: RandomSystem
-@export var sloper: Sloper
 
 @export var points_amount := 100
 
@@ -14,22 +12,13 @@ extends Node
 @export var line_section_length = 300
 @export var section_y_change_amplitude = 200
 
-@export var decorations: Array[Decoration]
-
-
-
-@export var big_rock: PackedScene
-
-@export var tower_prefab: PackedScene
-@export var main_house_prefab: PackedScene
-
 @export var player: Node2D
 
 @onready var line_offset = grass_line.width / 2 - 1
 
 func _enter_tree():
 	if !player:
-		get_tree().root.get_child(4).player_spawned.connect(_set_player)
+		get_tree().current_scene.player_spawned.connect(_set_player)
 
 
 func _set_player(player):
@@ -51,7 +40,7 @@ func _ready():
 	
 	
 	var points = grass_line.points
-		
+
 
 func _process(delta):
 	if player:

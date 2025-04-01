@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ntmdlggfg36e"]
+
+[ext_resource type="AudioStream" uid="uid://b2mm6fhdu7v5v" path="res://Audio/Sounds/strzal.mp3" id="1_rxepv"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_416wu"]
+
+[node name="Shoot" type="AudioStreamPlayer"]
+stream = ExtResource("1_rxepv")
+autoplay = true
+script = ExtResource("2_416wu")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

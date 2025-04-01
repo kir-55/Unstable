@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=23 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
+[ext_resource type="PackedScene" uid="uid://du64msy80vl6r" path="res://Audio/Prefabs/dash_sound.tscn" id="3_4uhw1"]
 [ext_resource type="Script" path="res://Scripts/Weapon/weapon.gd" id="4_db2y7"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
 [ext_resource type="PackedScene" uid="uid://c8lspr0ou0j8r" path="res://Scenes/amulet_timer.tscn" id="5_382f2"]
@@ -95,7 +96,6 @@ animations = [{
 self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)
-collision_layer = 128
 script = ExtResource("1_22t7u")
 SPEED = 0.0
 MAX_JUMP_VEL = -1000.0
@@ -112,6 +112,7 @@ collision_shape = NodePath("CollisionShape2D")
 nickname_label = NodePath("Nickname")
 feet = NodePath("Feet")
 landing_particles_prefab = ExtResource("2_5q8jb")
+dash_sound_prefab = ExtResource("3_4uhw1")
 
 [node name="Feet" type="Node2D" parent="."]
 position = Vector2(14.2857, 32.1429)
@@ -169,7 +170,7 @@ position = Vector2(1.42857, 6.42857)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

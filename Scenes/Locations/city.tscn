@@ -112,7 +112,8 @@ offset_bottom = 405.0
 text = "3"
 label_settings = SubResource("LabelSettings_hg04r")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Panel"]
+[node name="CountdownTimer" type="Timer" parent="CanvasLayer/Panel"]
+wait_time = 0.5
 autostart = true
 
 [node name="Score" type="Label" parent="CanvasLayer"]
@@ -159,14 +160,13 @@ script = ExtResource("1_38dti")
 position = Vector2(0, 114)
 scale = Vector2(1.4, 1.4)
 
-[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper")]
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
 position = Vector2(-650, 271)
 script = ExtResource("2_redno")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
 rs = NodePath("../RandomSystem")
-sloper = NodePath("Sloper")
 line_section_length = 500
 section_y_change_amplitude = 0
 
@@ -195,17 +195,17 @@ rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_pattern = "ABBCCC|HBBC"
+spawn_pattern = "RAB*C*|R|RHB*B*C*|RA*BC*|RH|B*B*B*C*|RH"
 spawn_from = 3
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("14_stlej"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 4096.0
+wait_time = 25.0
 autostart = true
 script = ExtResource("14_8ml7d")
 current_world = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 
-[connection signal="timeout" from="CanvasLayer/Panel/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Panel/CountdownTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TransitionTimer" to="TransitionTimer" method="_on_timeout"]

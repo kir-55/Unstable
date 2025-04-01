@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqs5nqfwvon56"]
+[gd_scene load_steps=6 format=3 uid="uid://dqs5nqfwvon56"]
 
 [ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/water_gradient.tres" id="1_0xmdf"]
-[ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Audio/Sounds/break.mp3" id="1_wwtpg"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_kapp7"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_v0gik"]
+[ext_resource type="PackedScene" uid="uid://yosh8a7tov2o" path="res://Audio/Prefabs/water_explosion_sound.tscn" id="4_eb7a5"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
@@ -31,9 +33,10 @@ scale_amount_min = 5.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_25yfo")
 color_ramp = ExtResource("1_0xmdf")
+script = ExtResource("2_kapp7")
 
-[node name="wybuch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_wwtpg")
-volume_db = -10.0
-autoplay = true
-mix_target = 1
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("3_v0gik")
+spawn_on_start_prefab = ExtResource("4_eb7a5")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

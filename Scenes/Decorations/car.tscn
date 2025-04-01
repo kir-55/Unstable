@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://spdye7fmeaws"]
+[gd_scene load_steps=7 format=3 uid="uid://spdye7fmeaws"]
 
 [ext_resource type="Texture2D" uid="uid://dmq13ktr5f57d" path="res://Textures/Decorations/car.png" id="1_q7l73"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_3v8b0"]
 [ext_resource type="Texture2D" uid="uid://da7dr7k2t2rsa" path="res://Textures/Decorations/car1.png" id="2_wket5"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_jpva4"]
+[ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/Explosions/car_explosion.tscn" id="5_fhbkp"]
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]
 script/source = "extends Sprite2D
@@ -35,5 +37,10 @@ texture = ExtResource("1_q7l73")
 offset = Vector2(0, 0.505)
 script = SubResource("GDScript_yi0s1")
 visual_variations = Array[Texture2D]([ExtResource("1_q7l73"), ExtResource("2_wket5")])
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("4_jpva4")
+max_health = 500.0
+explosion_prefab = ExtResource("5_fhbkp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

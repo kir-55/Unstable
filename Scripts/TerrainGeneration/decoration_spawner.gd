@@ -24,7 +24,6 @@ var last_point: int
 var loaded_segments: Array[int]
 var current_pattern_segment_index = 0
 
-var road_line_prefab
 
 class Position:
 	var start: float
@@ -38,7 +37,7 @@ class DecorationSegment:
 
 func _enter_tree():
 	if !player:
-		get_tree().root.get_child(4).player_spawned.connect(_set_player)
+		get_tree().current_scene.player_spawned.connect(_set_player)
 
 
 func _set_player(player):
@@ -47,10 +46,10 @@ func _set_player(player):
 func _ready():
 	line_start_x = line.global_position.x
 	line_section_length = terrain_generator.line_section_length
-	var road_line_index = decorations.map(func(x): return x.name).find("RoadLine")
-	if road_line_index != -1:
-		road_line_prefab = decorations[road_line_index].prefab
-	spawn_from += int(GlobalVariables.times_treveled / 3)
+	#var road_line_index = decorations.map(func(x): return x.name).find("RoadLine")
+	#if road_line_index != -1:
+		#road_line_prefab = decorations[road_line_index].prefab
+	#spawn_from += int(GlobalVariables.times_treveled / 3)
 
 func _process(delta):
 	if player:

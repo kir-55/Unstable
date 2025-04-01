@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl1r5fx6p83e5"]
+
+[ext_resource type="AudioStream" uid="uid://ch654diupqgbs" path="res://Audio/Sounds/explosion-47163.mp3" id="1_0h6pp"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_2k00w"]
+
+[node name="Shoot" type="AudioStreamPlayer"]
+stream = ExtResource("1_0h6pp")
+autoplay = true
+script = ExtResource("2_2k00w")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

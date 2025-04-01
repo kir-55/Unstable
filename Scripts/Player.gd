@@ -39,6 +39,8 @@ var start_x
 @export var feet: Node2D
 @export var landing_particles_prefab: PackedScene
 
+@export var dash_sound_prefab: PackedScene
+
 # Doble jump
 @onready var doble_jump_active = GlobalVariables.player_amulets.has(5)  # checks if player has pizza
 var doble_jump_used = false
@@ -210,6 +212,11 @@ func _physics_process(delta: float) -> void:
 
 
 func start_dash() -> void:
+	if dash_sound_prefab:
+		var instance = dash_sound_prefab.instantiate()
+		get_tree().current_scene.add_child(instance)
+		
+	
 	if !is_jumping:
 		trail.remove_points()
 

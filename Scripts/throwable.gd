@@ -3,9 +3,7 @@ extends RigidBody2D
 @export var damage: int = 100
 @export var explosion_prefab: PackedScene
 @export var explosion_point: Node2D
-#func _on_area_entered(body: Node) -> void:
-#
-#
+
 
 
 func _on_area_2d_area_entered(body):

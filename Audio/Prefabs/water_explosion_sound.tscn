@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://yosh8a7tov2o"]
+
+[ext_resource type="AudioStream" uid="uid://ce8anw13i1j8n" path="res://Audio/Sounds/splash-effect-229315.mp3" id="1_migj5"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_rsa3b"]
+
+[node name="WaterExplosionSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_migj5")
+autoplay = true
+mix_target = 1
+script = ExtResource("2_rsa3b")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
