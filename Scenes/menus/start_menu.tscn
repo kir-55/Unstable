@@ -94,7 +94,7 @@ cache/0/80/0/kerning_overrides/50/0 = Vector2(0, 0)
 cache/0/80/0/kerning_overrides/8/0 = Vector2(0, 0)
 cache/0/80/0/kerning_overrides/80/0 = Vector2(0, 0)
 
-[sub_resource type="FontFile" id="FontFile_h38lh"]
+[sub_resource type="FontFile" id="FontFile_fbtt6"]
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -133,7 +133,7 @@ cache/0/80/0/kerning_overrides/8/0 = Vector2(0, 0)
 cache/0/80/0/kerning_overrides/80/0 = Vector2(0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_vserv"]
-base_font = SubResource("FontFile_h38lh")
+base_font = SubResource("FontFile_fbtt6")
 
 [node name="StartMenu" type="Control"]
 z_index = 3
@@ -259,4 +259,5 @@ text = "Exit"
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Progress" to="." method="_on_progress_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

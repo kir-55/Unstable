@@ -47,3 +47,7 @@ func _on_new_amulet_count_ready():
 
 func _on_multiplayer_pressed():
 	GlobalFunctions.load_menu("multiplayer_join")
+
+
+func _on_settings_pressed():
+	GlobalFunctions.load_menu("settings", true)
