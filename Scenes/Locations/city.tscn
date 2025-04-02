@@ -200,7 +200,7 @@ spawn_from = 3
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("14_stlej"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 25.0
+wait_time = 8.0
 autostart = true
 script = ExtResource("14_8ml7d")
 current_world = 2

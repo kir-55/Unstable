@@ -51,17 +51,25 @@ func check_for_win():
 	var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
 	if amulets_required_for_repair.all(func(x): return x in GlobalVariables.player_amulets):
 		print("you won by repair")
+		GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_repair_callable"))
 		# repair - call the repair menu, run the repair animation
 
 	elif amulets_required_for_destruction.size() > 0 and amulets_required_for_destruction.all(func(x): return x in GlobalVariables.player_amulets):
 		# destruction - call the destruction menu, run the destruction animation
-
+		GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_destruction_callable"))
 		print("you won by destruction")
 	else:
 		return
 
 	panel.queue_free()
 	label_container.queue_free()
+	displayed_amulets_container.queue_free()
+
+func menu_instance_repair_callable(menu):
+	menu.win_type = GlobalEnums.WIN_TYPES.REPAIR
+
+func menu_instance_destruction_callable(menu):
+	menu.win_type = GlobalEnums.WIN_TYPES.DESTRUCTION
 
 
 func are_amulets_compatible(amulet1_id: int, amulet2_id: int):

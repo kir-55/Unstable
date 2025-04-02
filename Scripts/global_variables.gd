@@ -53,7 +53,9 @@ var game_is_on := true:
 
 var menus = {
 	"main" : load("res://Scenes/Menus/start_menu.tscn"),
+	"settings" : load(""),
 	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
+	"win" : load("res://Scenes/Menus/win_menu.tscn"),
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
 	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
 	"multiplayer_victory" : load("res://Scenes/Menus/multiplayer_victory.tscn"),

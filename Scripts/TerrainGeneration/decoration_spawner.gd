@@ -77,7 +77,7 @@ func _process(delta):
 
 				if !already_loaded and point > -1 and point < line.points.size():
 					spawn_decoration(point)
-					print(point)
+					#print(point)
 					loaded_segments.append(point)
 
 
@@ -85,7 +85,7 @@ func spawn_decoration(point):
 	
 	var pattern_segments = spawn_pattern.split("|")
 	var current_pattern_segment = pattern_segments[current_pattern_segment_index]
-	print(current_pattern_segment)
+	#print(current_pattern_segment)
 	var spawned_decorations_positions: Array[DecorationSegment]
 	
 	for i in range(current_pattern_segment.length()):
@@ -95,7 +95,7 @@ func spawn_decoration(point):
 		
 		var char_type_decorations = decorations.filter(func(x): return x.pattern_type == pattern_segment_char)
 		var spawned = false
-		print(char_type_decorations.map(func(x): return x.name))
+		#print(char_type_decorations.map(func(x): return x.name))
 		
 		if char_type_decorations.size() <= 0:
 			continue
@@ -140,7 +140,7 @@ func spawn_decoration(point):
 							
 					sloper.spawn_at_point(decoration.prefab, self, point, segment_part)
 					spawned = true
-					print(decoration.name)
+					#print(decoration.name)
 					break
 	
 	
@@ -152,7 +152,7 @@ func check_collision(decoration_segment: DecorationSegment, ignore_types: Array[
 			continue
 		
 		if decoration_segment.position.end >= segment.position.start and decoration_segment.position.start <= segment.position.end:
-			print("collision")
+			#print("collision")
 			return true
 	
 	return false

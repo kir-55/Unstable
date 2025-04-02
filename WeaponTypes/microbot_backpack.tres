@@ -7,3 +7,5 @@
 script = ExtResource("1_e2a4b")
 bullet_prefab = ExtResource("1_vjput")
 active = false
+bullet_speed = 600.0
+knockback_force = 200.0

@@ -49,7 +49,7 @@ func load_player_data():
 				GlobalVariables.player_amulet_collection.append(int(value))
 				file.close()
 
-func load_menu(menu: String, remove_all_children = true, transition_to_main = false):
+func load_menu(menu: String, remove_all_children = true, transition_to_main = false, menu_instance_callable : Callable = func(x): pass):
 	if transition_to_main:
 		GlobalVariables.current_menu = menu
 		get_tree().change_scene_to_file("res://Scenes/main.tscn")
@@ -74,5 +74,6 @@ func load_menu(menu: String, remove_all_children = true, transition_to_main = fa
 	GlobalVariables.current_menu = menu
 	var menu_instance = GlobalVariables.menus[menu].instantiate()
 	menu_instance.name = "menu"
+	menu_instance_callable.call(menu_instance)
 	container.add_child(menu_instance)
 
