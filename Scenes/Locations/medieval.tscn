@@ -70,7 +70,7 @@ autostart = true
 
 [node name="Line2D" type="Line2D" parent="Player"]
 
-[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "player")]
 position = Vector2(-314, 278)
 scale = Vector2(0.982645, 1.14761)
 script = ExtResource("8_n6r57")
@@ -78,7 +78,6 @@ ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
 rs = NodePath("../RandomSystem")
-sloper = NodePath("Sloper")
 line_section_length = 500
 section_y_change_amplitude = 0
 player = NodePath("../Player")
@@ -114,11 +113,10 @@ decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtRes
 
 [node name="Line2D" type="Line2D" parent="."]
 
-[node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 script = ExtResource("14_co4vu")
-player = NodePath("../Player")
 current_world = 2
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]

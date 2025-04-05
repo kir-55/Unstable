@@ -355,7 +355,7 @@ func start_game(id: int):
 		get_tree().change_scene_to_file(game_scene)
 
 
-@rpc("call_local")
+@rpc("any_peer", "call_local")
 func leave_home(id):
 	if id != self.id or !voted_to_leave_home:
 		if id == self.id:

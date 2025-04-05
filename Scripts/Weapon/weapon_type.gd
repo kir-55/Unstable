@@ -3,7 +3,7 @@
 class_name WeaponType
 extends Resource
 
-@export var bullet_prefab: PackedScene
+@export var bullet_prefab: String
 
 # if triggered with user input - active
 # if staticly called over time - !active

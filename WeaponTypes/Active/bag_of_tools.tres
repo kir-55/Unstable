@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="WeaponType" load_steps=3 format=3 uid="uid://cma8rmxom5age"]
+[gd_resource type="Resource" script_class="WeaponType" load_steps=2 format=3 uid="uid://cma8rmxom5age"]
 
-[ext_resource type="PackedScene" uid="uid://b8itocxc1xfcd" path="res://Scenes/bullet.tscn" id="1_ih2s8"]
 [ext_resource type="Script" path="res://Scripts/Weapon/weapon_type.gd" id="1_oogm0"]
 
 [resource]
 script = ExtResource("1_oogm0")
-bullet_prefab = ExtResource("1_ih2s8")
+bullet_prefab = "res://Scenes/bag_of_tools_bullet.tscn"
 active = true
 bullet_speed = 600.0
 knockback_force = 150.0

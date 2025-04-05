@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="WeaponType" load_steps=3 format=3 uid="uid://bwuqsjg3uglur"]
+[gd_resource type="Resource" script_class="WeaponType" load_steps=2 format=3 uid="uid://bwuqsjg3uglur"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon/weapon_type.gd" id="1_fasje"]
-[ext_resource type="PackedScene" uid="uid://dcm6clk8lk1ce" path="res://Scenes/Entities/banana.tscn" id="1_kklf3"]
 
 [resource]
 script = ExtResource("1_fasje")
-bullet_prefab = ExtResource("1_kklf3")
+bullet_prefab = "res://Scenes/Entities/banana.tscn"
 active = false
 bullet_speed = 0.0
 knockback_force = 0.0
