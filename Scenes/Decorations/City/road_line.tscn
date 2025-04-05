@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://x3hv7dmnnyrr"]
+
+[ext_resource type="Texture2D" uid="uid://c40frdglo8qia" path="res://Textures/Decorations/pasek.png" id="1_e4jts"]
+
+[node name="road_lines" type="Node2D"]
+
+[node name="road_line" type="Sprite2D" parent="."]
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(3, -3.998)
+scale = Vector2(6, 6)
+texture = ExtResource("1_e4jts")
+offset = Vector2(-0.166666, 2.33333)
+
+[node name="road_line2" type="Sprite2D" parent="."]
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(166, -3.998)
+scale = Vector2(6, 6)
+texture = ExtResource("1_e4jts")
+offset = Vector2(0, 2.333)
+
+[node name="road_line3" type="Sprite2D" parent="."]
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(-160, -3.998)
+scale = Vector2(6, 6)
+texture = ExtResource("1_e4jts")
+offset = Vector2(0, 2.333)

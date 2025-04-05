@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cdegcvopwdhdo"]
 
-[ext_resource type="PackedScene" uid="uid://cg47bhbbhmphx" path="res://Scenes/Decorations/drone.tscn" id="1_cwiwl"]
+[ext_resource type="PackedScene" uid="uid://cg47bhbbhmphx" path="res://Scenes/Decorations/City/drone.tscn" id="1_cwiwl"]
 [ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_3ef53"]
 
 [resource]

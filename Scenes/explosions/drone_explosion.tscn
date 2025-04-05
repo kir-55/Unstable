@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://q6vw7hxexvpu"]
 
 [ext_resource type="Script" path="res://Scripts/throwable.gd" id="1_obmio"]
-[ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://Textures/Decorations/drone_city.png" id="2_ohjig"]
+[ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://Textures/Decorations/City/drone_city.png" id="2_ohjig"]
 [ext_resource type="PackedScene" uid="uid://cuytrv5kl6n1o" path="res://Scenes/Explosions/fire_explosion.tscn" id="2_q7hdc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]

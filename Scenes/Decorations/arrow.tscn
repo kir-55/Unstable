@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlhbq1n76mmo0"]
 
-[ext_resource type="Texture2D" uid="uid://oag3y7rlxdvo" path="res://Textures/Decorations/Arrow.png" id="1_eopyy"]
+[ext_resource type="Texture2D" uid="uid://oag3y7rlxdvo" path="res://Textures/Decorations/Medieval/Arrow.png" id="1_eopyy"]
 [ext_resource type="Script" path="res://Scripts/Decorations/arrow.gd" id="2_mb1na"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="3_r3257"]
 

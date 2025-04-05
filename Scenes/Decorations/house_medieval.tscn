@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://q0a03p4jso3a"]
 
-[ext_resource type="Texture2D" uid="uid://dg22ufli7gh5q" path="res://Textures/Decorations/sred1.png" id="1_4b2fw"]
+[ext_resource type="Texture2D" uid="uid://dg22ufli7gh5q" path="res://Textures/Decorations/Medieval/sred1.png" id="1_4b2fw"]
 [ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="2_y4o01"]
-[ext_resource type="Texture2D" uid="uid://cchmcyr8wy8je" path="res://Textures/Decorations/sred2.png" id="3_gd6mh"]
-[ext_resource type="Texture2D" uid="uid://cw6o325yr4ekd" path="res://Textures/Decorations/sred3.png" id="4_n5ori"]
+[ext_resource type="Texture2D" uid="uid://cchmcyr8wy8je" path="res://Textures/Decorations/Medieval/sred2.png" id="3_gd6mh"]
+[ext_resource type="Texture2D" uid="uid://cw6o325yr4ekd" path="res://Textures/Decorations/Medieval/sred3.png" id="4_n5ori"]
 
 [node name="House1Med" type="Sprite2D"]
 self_modulate = Color(0.639216, 0.639216, 0.639216, 1)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cj0iuschfqh2i"]
 
-[ext_resource type="PackedScene" uid="uid://cf2ihvdsrbkhy" path="res://Scenes/Decorations/hole.tscn" id="1_uxfbq"]
+[ext_resource type="PackedScene" uid="uid://cf2ihvdsrbkhy" path="res://Scenes/Decorations/City/hole.tscn" id="1_uxfbq"]
 [ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_2qax0"]
 
 [resource]

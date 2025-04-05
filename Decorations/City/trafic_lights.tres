@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://c35v8c7ihbvso"]
 
-[ext_resource type="PackedScene" uid="uid://r1f33hjc7aw7" path="res://Scenes/Decorations/traffic_lights.tscn" id="1_7aijk"]
+[ext_resource type="PackedScene" uid="uid://r1f33hjc7aw7" path="res://Scenes/Decorations/City/traffic_lights.tscn" id="1_7aijk"]
 [ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_jvobb"]
 
 [resource]
