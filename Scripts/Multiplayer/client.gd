@@ -356,6 +356,16 @@ func start_game(id: int):
 
 
 @rpc("any_peer", "call_local")
+func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: float):
+	print(prefab)
+	var instance = load(prefab).instantiate()
+	instance.global_position = position
+	get_tree().current_scene.add_child(instance)
+		
+	instance.set_velocity(Vector2(player_velocity_x, 0) + Vector2.RIGHT * speed)
+	
+
+@rpc("any_peer", "call_local")
 func leave_home(id):
 	if id != self.id or !voted_to_leave_home:
 		if id == self.id:
