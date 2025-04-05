@@ -362,7 +362,7 @@ func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: f
 	instance.global_position = position
 	get_tree().current_scene.add_child(instance)
 		
-	instance.set_velocity(Vector2(player_velocity_x, 0) + Vector2.RIGHT * speed)
+	instance.set_velocity(Vector2(0, 0) + Vector2.RIGHT * speed)
 	
 
 @rpc("any_peer", "call_local")

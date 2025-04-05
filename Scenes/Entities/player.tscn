@@ -92,7 +92,7 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet") groups=["Player"]]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)

@@ -9,9 +9,8 @@
 font_size = 32
 
 [node name="TextureRect" type="TextureRect"]
-custom_minimum_size = Vector2(64, 64)
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 64.0
+offset_bottom = 64.0
 mouse_default_cursor_shape = 16
 theme = ExtResource("1_7aqtk")
 texture = ExtResource("2_l7lqn")

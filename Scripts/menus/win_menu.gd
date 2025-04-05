@@ -7,7 +7,7 @@ extends Control
 @export var new_amulet_count_label : RichTextLabel
 @export var amulets_container : GridContainer
 
-var win_type = GlobalEnums.WIN_TYPES.NONE
+var win_type = GlobalEnums.WIN_TYPES.REPAIR
 
 func _ready():
 	score.text += str(GlobalVariables.last_score)
