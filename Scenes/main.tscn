@@ -125,6 +125,6 @@ sloper = NodePath("../Sloper")
 player = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
-spawn_pattern = "RAB*C*|R|RHB*B*C*|RA*BC*|RH|B*B*B*C*|RH"
+spawn_pattern = "RAB*C*|R|RHB*B*C*|RA*BC*|RH|RB*B*B*C*|RH"
 spawn_from = 0
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("10_b7u2u"), ExtResource("11_023w8"), ExtResource("12_bklag"), ExtResource("13_t2mn0"), ExtResource("14_esdkr"), ExtResource("15_y0x6r"), ExtResource("16_6eu5w")])

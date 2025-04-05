@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Amulet" load_steps=4 format=3 uid="uid://d4cyjr008vvsd"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ghsfj"]
+[ext_resource type="Texture2D" uid="uid://bmgmsf2wpwqbq" path="res://Textures/Amulets/banana.png" id="2_clt6l"]
+[ext_resource type="Resource" uid="uid://bwuqsjg3uglur" path="res://WeaponTypes/Passive/bananas.tres" id="3_h8pox"]
+
+[resource]
+script = ExtResource("1_ghsfj")
+id = 14
+name = "Bananas"
+description = "Very slippery!!! - spawns slippery banana behind you now and then"
+texture = ExtResource("2_clt6l")
+incompatible_amulets = Array[int]([])
+available_in_singleplayer = false
+available_in_multiplayer = true
+required_for_repair = false
+required_for_destruction = false
+consumable = false
+is_weapon = true
+weapon = ExtResource("3_h8pox")
+has_timer = true
+timer_reload = 5.0
+stack_limit = true
+limit = 1
+chance_multiplier = 200

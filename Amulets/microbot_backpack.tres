@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_cihre"]
 [ext_resource type="Texture2D" uid="uid://e2t3t5py6r3u" path="res://Textures/Amulets/backpack.png" id="2_ibapu"]
-[ext_resource type="Resource" uid="uid://7cxv6136vw6y" path="res://WeaponTypes/microbot_backpack.tres" id="3_ccxiu"]
+[ext_resource type="Resource" uid="uid://7cxv6136vw6y" path="res://WeaponTypes/Passive/microbot_backpack.tres" id="3_ccxiu"]
 
 [resource]
 script = ExtResource("1_cihre")

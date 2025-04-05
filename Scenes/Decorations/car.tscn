@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://spdye7fmeaws"]
+[gd_scene load_steps=9 format=3 uid="uid://spdye7fmeaws"]
 
 [ext_resource type="Texture2D" uid="uid://dmq13ktr5f57d" path="res://Textures/Decorations/car.png" id="1_q7l73"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_3v8b0"]
 [ext_resource type="Texture2D" uid="uid://da7dr7k2t2rsa" path="res://Textures/Decorations/car1.png" id="2_wket5"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_jpva4"]
 [ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/Explosions/car_explosion.tscn" id="5_fhbkp"]
+[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/smoke_gradient.tres" id="6_nhulb"]
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]
 script/source = "extends Sprite2D
@@ -17,6 +18,10 @@ func _ready():
 	if visual_variations:
 		texture = visual_variations.pick_random()
 "
+
+[sub_resource type="Curve" id="Curve_wv4n3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.537867), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Area2D" type="Area2D" groups=["Obsticle"]]
 scale = Vector2(3, 3)
@@ -42,5 +47,24 @@ visual_variations = Array[Texture2D]([ExtResource("1_q7l73"), ExtResource("2_wke
 script = ExtResource("4_jpva4")
 max_health = 500.0
 explosion_prefab = ExtResource("5_fhbkp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(39.3333, -3.66667)
+amount = 64
+explosiveness = 0.1
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -400)
+orbit_velocity_min = -0.3
+orbit_velocity_max = 0.3
+radial_accel_min = -318.55
+radial_accel_max = 100.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 2.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_wv4n3")
+color_initial_ramp = ExtResource("6_nhulb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

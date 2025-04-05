@@ -42,7 +42,11 @@ enum MessageTypes {
 	LEAVE_LOBBY,
 }
 
-
+enum EndStates{
+	Victory,
+	Fail,
+	Draw
+} 
 
 
 var is_active := false
@@ -351,7 +355,7 @@ func start_game(id: int):
 		get_tree().change_scene_to_file(game_scene)
 
 
-@rpc("any_peer", "call_local")
+@rpc("call_local")
 func leave_home(id):
 	if id != self.id or !voted_to_leave_home:
 		if id == self.id:
@@ -363,6 +367,17 @@ func leave_home(id):
 		voted_to_leave_home = false
 		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
 
+@rpc("any_peer", "call_local")
+func end_game(result: EndStates):
+	GlobalVariables.game_is_on = false
+	
+	match result:
+		EndStates.Victory:
+			GlobalFunctions.load_menu("multiplayer_victory", false)
+		EndStates.Fail:
+			GlobalFunctions.load_menu("multiplayer_loss", false)
+		EndStates.Draw:
+			GlobalFunctions.load_menu("multiplayer_draw", false)
 
 
 @rpc("any_peer", "call_local")
@@ -375,9 +390,23 @@ func player_died(id: int, name, score, time):
 	}
 	dead_players[id] = player
 	
-	if dead_players.size() == players.size() - 1:
-		if GlobalVariables.game_is_on:
-			GlobalVariables.game_is_on = false
-			GlobalFunctions.load_menu("multiplayer_victory", false)
+	if self.id == host_id: # Only host runs this block
+		#if dead_players.size() == players.size():
+			## All died, draw
+			#end_game.rpc(EndStates.Draw)
+			#print("It's a Draw")
+		if dead_players.size() == players.size() - 1:
+			# One player left — victory for them
+			for player_id in players.keys():
+				if !dead_players.has(player_id.to_int()):
+					# Send victory to the last alive player
+					end_game.rpc_id(player_id.to_int(), EndStates.Victory)
+				else:
+					# Others get a loss screen
+					end_game.rpc_id(player_id.to_int(), EndStates.Fail)
+			print("Victory for one player, loss for others.")
 		else:
-			GlobalFunctions.load_menu("multiplayer_loss", false)
+			# Only one player died (more still alive), just update state
+			#end_game.rpc(EndStates.Fail)
+			print("One player died, game still on.")
+

@@ -59,7 +59,9 @@ var menus = {
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
 	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
 	"multiplayer_victory" : load("res://Scenes/Menus/multiplayer_victory.tscn"),
-	"multiplayer_loss" : load("res://Scenes/Menus/multiplayer_loss.tscn")
+	"multiplayer_loss" : load("res://Scenes/Menus/multiplayer_loss.tscn"),
+	"multiplayer_draw" : load("res://Scenes/Menus/multiplayer_draw.tscn")
+	
 }
 var current_menu = "main"
 

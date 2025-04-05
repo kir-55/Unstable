@@ -10,7 +10,9 @@ extends Resource
 
 @export var incompatible_amulets: Array[int]
 
+@export var available_in_singleplayer: bool = true
 @export var available_in_multiplayer: bool = true
+
 
 # VICTORY IMPACT
 @export var required_for_repair: bool = false

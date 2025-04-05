@@ -28,16 +28,16 @@ func _ready():
 	label_container.get_child(0).text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1 else ".")
 	var multiplied_amulets_list: Array[Amulet]
 	for amulet in GlobalVariables.amulets:
-		if !Client.active or amulet.available_in_multiplayer == true:
+		if (!Client.active and amulet.available_in_singleplayer) or (Client.active and amulet.available_in_multiplayer):
 			for i in range(amulet.chance_multiplier):
 				multiplied_amulets_list.append(amulet)
+		
 	print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)))
 	for i in range(GlobalVariables.items_in_home):
 
 		var random_amulet = multiplied_amulets_list.pick_random()
 
 		while !can_be_generated(random_amulet.id):
-
 			while multiplied_amulets_list.has(random_amulet):
 				multiplied_amulets_list.erase(random_amulet)
 			print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)) + " po usunieciu")

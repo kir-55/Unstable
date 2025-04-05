@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponType" load_steps=3 format=3 uid="uid://7cxv6136vw6y"]
+
+[ext_resource type="PackedScene" uid="uid://c4s2q8qnapvsn" path="res://Scenes/Entities/microbot.tscn" id="1_l2fpw"]
+[ext_resource type="Script" path="res://Scripts/Weapon/weapon_type.gd" id="2_tn4c8"]
+
+[resource]
+script = ExtResource("2_tn4c8")
+bullet_prefab = ExtResource("1_l2fpw")
+active = false
+bullet_speed = 0.0
+knockback_force = 0.0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_cg8eo"]
 [ext_resource type="Texture2D" uid="uid://b0c206cmmmb8n" path="res://Textures/Amulets/unstable_tools.png" id="2_shbr0"]
-[ext_resource type="Resource" uid="uid://cma8rmxom5age" path="res://WeaponTypes/bag_of_tools.tres" id="3_woe82"]
+[ext_resource type="Resource" uid="uid://cma8rmxom5age" path="res://WeaponTypes/Active/bag_of_tools.tres" id="3_woe82"]
 
 [resource]
 script = ExtResource("1_cg8eo")

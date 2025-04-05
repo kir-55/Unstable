@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcm6clk8lk1ce"]
+
+[ext_resource type="Script" path="res://Scripts/banana.gd" id="1_2uhie"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_o2c7d"]
+[ext_resource type="PackedScene" uid="uid://w8qf3hk6l8m0" path="res://Audio/Prefabs/bot_spawn_sound.tscn" id="4_hg0c1"]
+[ext_resource type="Texture2D" uid="uid://bmgmsf2wpwqbq" path="res://Textures/Amulets/banana.png" id="5_0j5fn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbc3e"]
+radius = 9.15302
+
+[node name="Banana" type="CharacterBody2D"]
+position = Vector2(39, 120)
+scale = Vector2(3, 3)
+collision_layer = 256
+script = ExtResource("1_2uhie")
+
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("3_o2c7d")
+spawn_on_start_prefab = ExtResource("4_hg0c1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-13, 0)
+texture = ExtResource("5_0j5fn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+z_index = 10
+position = Vector2(-13, 0)
+shape = SubResource("CircleShape2D_gbc3e")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-12.6667, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 10
+position = Vector2(-0.333333, 0)
+shape = SubResource("CircleShape2D_gbc3e")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

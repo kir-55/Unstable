@@ -1,0 +1,187 @@
+[gd_scene load_steps=13 format=3 uid="uid://cmh2rh22sneh4"]
+
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_xho1a"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="2_rk6te"]
+[ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="3_jerbm"]
+[ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="4_2hvqe"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_ranking.gd" id="5_3id3k"]
+[ext_resource type="AudioStream" uid="uid://c5wvmtwmlcki6" path="res://Audio/hartbeat.mp3" id="6_xnyel"]
+
+[sub_resource type="Gradient" id="Gradient_18d3l"]
+colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nn3gk"]
+gradient = SubResource("Gradient_18d3l")
+width = 1152
+height = 648
+fill = 1
+fill_from = Vector2(0, 0.3)
+fill_to = Vector2(0.991453, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4dck"]
+font_size = 24
+
+[sub_resource type="FontFile" id="FontFile_63enl"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="FontFile_g5di8"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/1/variation_coordinates = {}
+cache/1/face_index = 0
+cache/1/embolden = 2.0
+cache/1/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/1/spacing_top = 0
+cache/1/spacing_bottom = 0
+cache/1/spacing_space = 0
+cache/1/spacing_glyph = 0
+cache/1/40/0/ascent = 0.0
+cache/1/40/0/descent = 0.0
+cache/1/40/0/underline_position = 0.0
+cache/1/40/0/underline_thickness = 0.0
+cache/1/40/0/scale = 1.0
+cache/1/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/1/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/1/16/0/ascent = 0.0
+cache/1/16/0/descent = 0.0
+cache/1/16/0/underline_position = 0.0
+cache/1/16/0/underline_thickness = 0.0
+cache/1/16/0/scale = 1.0
+cache/1/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/1/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_p0u03"]
+base_font = SubResource("FontFile_g5di8")
+variation_embolden = 2.0
+
+[node name="Draw" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_nn3gk")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -381.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_xho1a")
+
+[node name="Leave" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -71.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("2_rk6te")
+theme_override_styles/hover = ExtResource("3_jerbm")
+theme_override_styles/pressed = ExtResource("3_jerbm")
+text = "Leave"
+
+[node name="PlayAgain" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -123.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("2_rk6te")
+theme_override_styles/hover = ExtResource("3_jerbm")
+theme_override_styles/pressed = ExtResource("3_jerbm")
+disabled = true
+text = "Play Again
+"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 356.0
+offset_bottom = 135.0
+text = "Ranking:"
+label_settings = SubResource("LabelSettings_b4dck")
+
+[node name="RankedPlayer" type="RichTextLabel" parent="Panel/Label" node_paths=PackedStringArray("play_again")]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 38.0
+offset_right = 330.0
+offset_bottom = 207.0
+bbcode_enabled = true
+custom_effects = [ExtResource("4_2hvqe")]
+script = ExtResource("5_3id3k")
+end_state = 2
+play_again = NodePath("../../PlayAgain")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 30.0
+offset_right = 1112.0
+offset_bottom = 90.0
+theme_override_fonts/normal_font = SubResource("FontFile_63enl")
+theme_override_fonts/bold_font = SubResource("FontVariation_p0u03")
+bbcode_enabled = true
+text = "[center] [b][shake rate=10 level=10 connected=1][font_size=40][color=#739a70]D[/color] [color=#eecb90]R[/color] [color=#d16974]A[/color] [color=#3d80a3]W[/color][/font_size][/shake][/b][/center]"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xnyel")
+volume_db = 6.0
+autoplay = true
+mix_target = 1
+
+[connection signal="pressed" from="Panel/Leave" to="Panel/Label/RankedPlayer" method="_on_leave_pressed"]
+[connection signal="pressed" from="Panel/PlayAgain" to="Panel/Label/RankedPlayer" method="_on_play_again_pressed"]

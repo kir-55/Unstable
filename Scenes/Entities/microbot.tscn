@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4s2q8qnapvsn"]
+[gd_scene load_steps=10 format=3 uid="uid://c4s2q8qnapvsn"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/microbot.gd" id="1_bpl4y"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_5fxe3"]
 [ext_resource type="PackedScene" uid="uid://1yeqs86rbxvb" path="res://Audio/Prefabs/sizedown_sound.tscn" id="2_vlc2j"]
 [ext_resource type="Texture2D" uid="uid://c6e1wc2j1i0y3" path="res://Textures/microbot.png" id="2_wm70c"]
 [ext_resource type="PackedScene" uid="uid://w8qf3hk6l8m0" path="res://Audio/Prefabs/bot_spawn_sound.tscn" id="3_316ld"]
+[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/smoke_gradient.tres" id="5_dlcke"]
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="6_3pwo5"]
+
+[sub_resource type="Curve" id="Curve_pf85d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.326893), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gbc3e"]
 radius = 4.8534
@@ -20,6 +26,36 @@ sizedown_sound_prefab = ExtResource("2_vlc2j")
 [node name="SoundSpawner" type="Node" parent="."]
 script = ExtResource("2_5fxe3")
 spawn_on_start_prefab = ExtResource("3_316ld")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-0.333333, 7)
+rotation = 1.45363
+amount = 16
+lifetime = 0.5
+gravity = Vector2(0, -20)
+orbit_velocity_min = -0.3
+orbit_velocity_max = 0.3
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_pf85d")
+color_initial_ramp = ExtResource("5_dlcke")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(-0.333333, 7)
+rotation = 1.45363
+amount = 16
+lifetime = 0.5
+gravity = Vector2(0, -20)
+orbit_velocity_min = -0.3
+orbit_velocity_max = 0.3
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_pf85d")
+color_initial_ramp = ExtResource("6_3pwo5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_wm70c")
