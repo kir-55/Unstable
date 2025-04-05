@@ -18,6 +18,7 @@ func reload():
 
 func _ready():
 	load_player_data()
+	load_settings()
 
 
 func start_timer():
@@ -26,12 +27,33 @@ func start_timer():
 func end_timer():
 	GlobalVariables.time_ended = Time.get_ticks_msec()
 
+func load_settings():
+	
+	############################ AUDIO SETTINGS ###############################
+	
+	var bus_to_setting_keys = {
+	"Master": "master_volume",
+	"Music": "music_volume",
+	"SFX": "sfx_volume"
+	}
+	
+	for i in range(AudioServer.bus_count):
+		var bus_name = AudioServer.get_bus_name(i)
+		if bus_name in bus_to_setting_keys:
+			var setting_key = bus_to_setting_keys[bus_name]
+			var value = GlobalVariables.settings[setting_key]
+			var volume_db = linear_to_db(value / 100)
+			AudioServer.set_bus_volume_db(i, volume_db)
+	
+	###########################################################################
+
 func save_player_data():
 	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.WRITE)
 	if file:
 		var data = {
 			"best_score": GlobalVariables.best_score,
-			"amulet_collection": GlobalVariables.player_amulet_collection
+			"amulet_collection": GlobalVariables.player_amulet_collection,
+			"settings": GlobalVariables.settings
 		}
 		file.store_string(JSON.stringify(data))
 		file.close()
@@ -40,14 +62,19 @@ func load_player_data():
 	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.READ)
 	if file:
 		var content = file.get_as_text()
+		file.close()
 		var data = JSON.parse_string(content)
-		if data and "best_score" in data:
-			GlobalVariables.best_score = data["best_score"]
-		if data and "amulet_collection" in data:
-			GlobalVariables.player_amulet_collection.clear()
-			for value in data["amulet_collection"]:
-				GlobalVariables.player_amulet_collection.append(int(value))
-				file.close()
+		if data:
+			if "best_score" in data:
+				GlobalVariables.best_score = data["best_score"]
+			if "amulet_collection" in data:
+				GlobalVariables.player_amulet_collection.clear()
+				for value in data["amulet_collection"]:
+					GlobalVariables.player_amulet_collection.append(int(value))
+			if "settings" in data:
+				for setting in data["settings"]:
+					if setting in GlobalVariables.settings:
+						GlobalVariables.settings[setting] = data["settings"][setting]
 
 func load_menu(menu: String, remove_all_children = true, transition_to_main = false, menu_instance_callable : Callable = func(x): pass):
 	if transition_to_main:

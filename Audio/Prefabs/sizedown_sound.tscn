@@ -6,6 +6,7 @@
 [node name="Sizedown" type="AudioStreamPlayer"]
 stream = ExtResource("1_hhp4h")
 autoplay = true
+bus = &"SFX"
 script = ExtResource("2_wv7oo")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

@@ -138,6 +138,7 @@ text = "Exit"
 stream = ExtResource("6_c8ekr")
 volume_db = 6.0
 autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
 [connection signal="ready" from="Panel/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_new_amulet_count_ready"]

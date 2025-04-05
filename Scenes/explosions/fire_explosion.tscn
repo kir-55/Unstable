@@ -36,3 +36,4 @@ stream = ExtResource("2_1vnew")
 volume_db = -10.0
 autoplay = true
 mix_target = 1
+bus = &"SFX"

@@ -67,6 +67,10 @@ var current_menu = "main"
 
 @export var player_data_path: String = "res://player_data.json"
 
-
+var settings = {
+	"master_volume": 100,
+	"music_volume": 100,
+	"sfx_volume": 100
+}
 
 

@@ -162,5 +162,6 @@ stream = ExtResource("6_8a47r")
 volume_db = 6.0
 autoplay = true
 mix_target = 1
+bus = &"SFX"
 
 [connection signal="pressed" from="Panel/Leave" to="Panel/Label/RankedPlayer" method="_on_leave_pressed"]

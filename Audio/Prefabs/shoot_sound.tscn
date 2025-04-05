@@ -6,6 +6,7 @@
 [node name="Shoot" type="AudioStreamPlayer"]
 stream = ExtResource("1_rxepv")
 autoplay = true
+bus = &"SFX"
 script = ExtResource("2_416wu")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

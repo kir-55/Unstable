@@ -81,6 +81,7 @@ texture = SubResource("GradientTexture2D_udxwv")
 stream = ExtResource("3_5v1p8")
 volume_db = 10.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("4_oafp7")
 
 [node name="RandomSystem" type="Node" parent="."]
@@ -95,14 +96,13 @@ autostart = true
 
 [node name="Line2D" type="Line2D" parent="Player"]
 
-[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "sloper", "player")]
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "player")]
 position = Vector2(-402, 292)
 script = ExtResource("4_6y7yh")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
 rs = NodePath("../RandomSystem")
-sloper = NodePath("Sloper")
 line_section_length = 500
 section_y_change_amplitude = 0
 player = NodePath("../Player")
@@ -136,11 +136,10 @@ line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("11_f7px4"), ExtResource("14_t2yep"), ExtResource("13_pikp5"), ExtResource("9_cgx32")])
 
-[node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("player")]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 script = ExtResource("15_0fvja")
-player = NodePath("../Player")
 current_world = 2
 
 [node name="Line2D" type="Line2D" parent="."]

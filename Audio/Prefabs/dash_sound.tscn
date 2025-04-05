@@ -6,6 +6,7 @@
 [node name="Dash" type="AudioStreamPlayer"]
 stream = ExtResource("1_mybh4")
 autoplay = true
+bus = &"SFX"
 script = ExtResource("2_bwjp7")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

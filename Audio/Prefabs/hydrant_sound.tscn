@@ -8,6 +8,7 @@ stream = ExtResource("1_ekoc4")
 pitch_scale = 0.86
 autoplay = true
 mix_target = 1
+bus = &"SFX"
 script = ExtResource("2_5hp1l")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

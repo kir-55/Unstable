@@ -85,6 +85,7 @@ speed = 300
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MovingGround/Camera2D"]
 stream = ExtResource("4_vqtpy")
 autoplay = true
+bus = &"Music"
 
 [node name="RandomSystem" type="Node" parent="MovingGround"]
 script = ExtResource("5_dnrvn")

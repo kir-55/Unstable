@@ -49,6 +49,7 @@ max_distance = Vector2(1, 1)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("3_3pf4p")
 autoplay = true
+bus = &"Music"
 script = ExtResource("4_aeiye")
 
 [node name="RandomSystem" type="Node" parent="."]
