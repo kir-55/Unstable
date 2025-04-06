@@ -11,6 +11,7 @@ name = "Bag of tools"
 description = "Gives you ability to throw tools and destroy some obstacles"
 texture = ExtResource("2_shbr0")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = true
 required_for_destruction = false

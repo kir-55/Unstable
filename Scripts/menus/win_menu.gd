@@ -1,25 +1,22 @@
 extends Control
 
-@export var score : RichTextLabel
-@export var win_type_label : RichTextLabel
-@export var win_type_amulets_label : RichTextLabel
+@export var score : Label
+@export var win_label : RichTextLabel
 @export var amulet_prefab : PackedScene
 @export var new_amulet_count_label : RichTextLabel
 @export var amulets_container : GridContainer
 
-var win_type = GlobalEnums.WIN_TYPES.REPAIR
+var win_type = GlobalEnums.WIN_TYPES.NONE
 
 func _ready():
 	score.text += str(GlobalVariables.last_score)
 	var escape_amulets : Array
 	if win_type == GlobalEnums.WIN_TYPES.REPAIR:
 		escape_amulets = GlobalVariables.amulets.filter(func(x): return x.required_for_repair)
-		win_type_label.text += "REPAIR" + "[/shake][/color][/center]!"
-		win_type_amulets_label.text = "[center]Repair amulets:"
+		win_label.text = "[center]You [color=#e1a845][wave]repaired[/wave][/color] the time machine!!![/center]"
 	elif win_type == GlobalEnums.WIN_TYPES.DESTRUCTION:
 		escape_amulets = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction)
-		win_type_label.text += "DESTRUCTION" + "[/shake][/color][/center]!"
-		win_type_amulets_label.text = "[center]Destruction amulets:"
+		win_label.text = "[center]You [color=#c33c40][wave]destroyed[/wave][/color] the time machine!!![/center]"
 	else:
 		print("Invalid/NONE Win Type!")
 	for amulet in escape_amulets:
@@ -28,7 +25,7 @@ func _ready():
 func spawn_amulet(amulet):
 	var amulet_representation = amulet_prefab.instantiate()
 	amulet_representation.texture = amulet.texture
-	amulet_representation.stretch_mode = 4
+	amulet_representation.custom_minimum_size = Vector2(32, 32)
 	amulet_representation.tooltip_text = amulet.name.to_upper() + "\n" + amulet.description
 	amulets_container.add_child(amulet_representation)
 

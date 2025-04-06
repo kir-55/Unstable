@@ -10,6 +10,7 @@ name = "Chronometer"
 description = "Allows you to grab 1 more item when visiting home, but you will move faster"
 texture = ExtResource("2_vsdfn")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = false
 required_for_destruction = false
