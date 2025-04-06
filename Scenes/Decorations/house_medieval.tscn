@@ -1,16 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://q0a03p4jso3a"]
+[gd_scene load_steps=6 format=3 uid="uid://q0a03p4jso3a"]
 
-[ext_resource type="Texture2D" uid="uid://dg22ufli7gh5q" path="res://Textures/Decorations/Medieval/sred1.png" id="1_4b2fw"]
+[ext_resource type="Texture2D" uid="uid://bq8kbjtec10uh" path="res://Textures/Decorations/Medieval/dom4.png" id="2_3tu8t"]
 [ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="2_y4o01"]
-[ext_resource type="Texture2D" uid="uid://cchmcyr8wy8je" path="res://Textures/Decorations/Medieval/sred2.png" id="3_gd6mh"]
-[ext_resource type="Texture2D" uid="uid://cw6o325yr4ekd" path="res://Textures/Decorations/Medieval/sred3.png" id="4_n5ori"]
+[ext_resource type="Texture2D" uid="uid://qn2dugb0plie" path="res://Textures/Decorations/Medieval/dom3.png" id="3_81wcs"]
+[ext_resource type="Texture2D" uid="uid://dhrot3ac76vey" path="res://Textures/Decorations/Medieval/dom1.png" id="4_jt4pn"]
+[ext_resource type="Texture2D" uid="uid://b457er8tkarbn" path="res://Textures/Decorations/Medieval/dom2.png" id="5_k1ok2"]
 
 [node name="House1Med" type="Sprite2D"]
-self_modulate = Color(0.639216, 0.639216, 0.639216, 1)
 z_index = -2
-position = Vector2(-46, 45)
-scale = Vector2(6, 6)
-texture = ExtResource("1_4b2fw")
-offset = Vector2(8.16638, -51)
+scale = Vector2(3, 3)
+texture = ExtResource("5_k1ok2")
+offset = Vector2(0, 3)
 script = ExtResource("2_y4o01")
-visual_variations = Array[Texture2D]([ExtResource("1_4b2fw"), ExtResource("3_gd6mh"), ExtResource("4_n5ori")])
+visual_variations = Array[Texture2D]([ExtResource("2_3tu8t"), ExtResource("3_81wcs"), ExtResource("4_jt4pn"), ExtResource("5_k1ok2")])

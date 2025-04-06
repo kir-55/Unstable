@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkmat6ysmk6ks"]
+[gd_scene load_steps=21 format=3 uid="uid://bkmat6ysmk6ks"]
 
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_dnxob"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_lupqq"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/go_to_transition.gd" id="14_co4vu"]
 [ext_resource type="Resource" uid="uid://7c3qumhckc0x" path="res://Decorations/Medieval/house.tres" id="14_qu7ts"]
 [ext_resource type="Resource" uid="uid://dfnt6xi0bxdpj" path="res://Decorations/Medieval/thorns.tres" id="15_0ytbq"]
+[ext_resource type="Resource" uid="uid://vms017kct8up" path="res://Decorations/Medieval/barrel.tres" id="16_mxrs0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
 bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
@@ -173,11 +174,11 @@ terrain_generator = NodePath("..")
 [node name="GroundLine" type="Line2D" parent="TerrainGenerator"]
 material = SubResource("ShaderMaterial_53rot")
 position = Vector2(0, 8)
-default_color = Color(0.509804, 0.337255, 0.27451, 1)
+default_color = Color(0.407843, 0.25098, 0.223529, 1)
 
 [node name="GrassLine" type="Line2D" parent="TerrainGenerator"]
 width = 30.0
-default_color = Color(0.760784, 0.839216, 0.309804, 1)
+default_color = Color(0.247059, 0.262745, 0.156863, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 collision_layer = 257
@@ -193,7 +194,7 @@ line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
 spawn_pattern = "RAB*C*|R|RHB*B*C*|RA*BC*|RHC*|RB*B*B*C*|RHC*"
 spawn_from = 3
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("14_qu7ts"), ExtResource("15_0ytbq")])
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("16_mxrs0"), ExtResource("15_0ytbq"), ExtResource("14_qu7ts")])
 
 [node name="TransitionTimer" type="Timer" parent="."]
 wait_time = 20.0

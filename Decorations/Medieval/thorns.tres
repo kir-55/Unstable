@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("2_oahoa")
 prefab = ExtResource("1_u0gki")
-name = "Hydrant"
+name = "Thorns"
 spawn_on_center = false
 chance_to_spawn = 20.0
-width = 60
+width = 150
 pattern_type = "B"
 type = 1
 ignore_types = Array[int]([0])

@@ -41,9 +41,9 @@ func fire_weapon() -> void:
 func on_passive_weapon(weapon_type: WeaponType):
 	if weapon_type and weapon_type.bullet_prefab and !weapon_type.active:
 		if Client.active:
-			spawn.rpc(current_weapon_type.bullet_prefab, global_position, get_parent().velocity.x, current_weapon_type.bullet_speed)
+			spawn.rpc(weapon_type.bullet_prefab, global_position, get_parent().velocity.x, weapon_type.bullet_speed)
 		else:
-			spawn(current_weapon_type.bullet_prefab, global_position, get_parent().velocity.x, current_weapon_type.bullet_speed)
+			spawn(weapon_type.bullet_prefab, global_position, get_parent().velocity.x, weapon_type.bullet_speed)
 
 
 func on_active_weapon():

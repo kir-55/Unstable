@@ -196,7 +196,7 @@ rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_pattern = "RAB*C*|R|RHB*B*C*|RA*BC*|RHC*|RB*B*B*C*|RHC*"
+spawn_pattern = "RAB*C*|R|RHB*C*|RA*BC*|RHC*|RB*B*C*|RHC*"
 spawn_from = 3
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("14_stlej"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 

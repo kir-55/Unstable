@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_jrflh"]
 [ext_resource type="Texture2D" uid="uid://b5gjlj6d2t2ot" path="res://Textures/Decorations/Medieval/kolce.png" id="2_w3mxu"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_twyhe"]
-[ext_resource type="PackedScene" uid="uid://cu6h8qbv3df6m" path="res://Scenes/Explosions/hydrant_explosion.tscn" id="4_s2ycb"]
+[ext_resource type="PackedScene" uid="uid://b2v457chva6wm" path="res://Scenes/Explosions/wood_explosion.tscn" id="4_ish7h"]
 
 [node name="Hydrant" type="Area2D" groups=["Obsticle"]]
 scale = Vector2(3, 3)
@@ -22,9 +22,10 @@ position = Vector2(0, -3)
 texture = ExtResource("2_w3mxu")
 offset = Vector2(-0.250283, -8)
 
-[node name="HealthSystem" type="Node" parent="."]
+[node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
 script = ExtResource("3_twyhe")
 max_health = 90.0
-explosion_prefab = ExtResource("4_s2ycb")
+explosion_prefab = ExtResource("4_ish7h")
+explosion_point = NodePath("../CollisionPolygon2D")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

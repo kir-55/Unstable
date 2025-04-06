@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckycmxim7berr"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_qp2x4"]
+[ext_resource type="Texture2D" uid="uid://cwkrnf4inhmog" path="res://Textures/Decorations/Medieval/beczka.png" id="2_emxo7"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_rc5ct"]
+[ext_resource type="PackedScene" uid="uid://b2v457chva6wm" path="res://Scenes/Explosions/wood_explosion.tscn" id="4_d8tdk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryhyg"]
+radius = 33.0
+
+[node name="Hydrant" type="Area2D" groups=["Obsticle"]]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_qp2x4")
+death_messages = Array[String](["There was a hydrant!", "You broke your leg, while kicking the hydrant", "You were curious, what is the hydrant made of (it was metal)"])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+texture = ExtResource("2_emxo7")
+offset = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.33333)
+scale = Vector2(0.333333, 0.333333)
+shape = SubResource("CircleShape2D_ryhyg")
+
+[node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("3_rc5ct")
+max_health = 90.0
+explosion_prefab = ExtResource("4_d8tdk")
+explosion_point = NodePath("../CollisionShape2D")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

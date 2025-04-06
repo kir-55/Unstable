@@ -11,6 +11,7 @@ name = "Microbot BackPack"
 description = "Backpack with your new innovation, once a while generates microbot wich scales down nearby obstacle"
 texture = ExtResource("2_ibapu")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = false
 required_for_destruction = false

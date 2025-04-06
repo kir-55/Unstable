@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuytrv5kl6n1o"]
+[gd_scene load_steps=4 format=3 uid="uid://dqm0m1uj8kv5u"]
 
 [ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="1_gp08d"]
-[ext_resource type="AudioStream" uid="uid://6qd3inw0pf42" path="res://Audio/Sounds/break.mp3" id="2_1vnew"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_el4mc"]
 
-[sub_resource type="Curve" id="Curve_25yfo"]
+[sub_resource type="Curve" id="Curve_dqkve"]
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -12,27 +12,25 @@ z_index = 20
 scale = Vector2(6, 6)
 emitting = false
 amount = 64
+lifetime = 2.0
 one_shot = true
-speed_scale = 1.85
+speed_scale = 4.35
 explosiveness = 1.0
 randomness = 1.0
 lifetime_randomness = 0.61
 emission_shape = 1
 emission_sphere_radius = 1.0
-spread = 158.95
-gravity = Vector2(0, 100)
-initial_velocity_min = 4.0
-initial_velocity_max = 10.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
 angular_velocity_max = 360.0
-orbit_velocity_min = -1.0
-orbit_velocity_max = 1.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
 scale_amount_min = 5.0
 scale_amount_max = 10.0
-scale_amount_curve = SubResource("Curve_25yfo")
-color_ramp = ExtResource("1_gp08d")
+scale_amount_curve = SubResource("Curve_dqkve")
+color_initial_ramp = ExtResource("1_gp08d")
+script = ExtResource("2_el4mc")
 
-[node name="wybuch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_1vnew")
-volume_db = -10.0
-autoplay = true
-mix_target = 1
+[connection signal="finished" from="." to="." method="_on_finished"]

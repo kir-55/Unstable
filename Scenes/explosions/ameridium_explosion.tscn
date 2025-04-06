@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Amulets/ameridium_explosion.gd" id="1_y6spp"]
 [ext_resource type="Gradient" uid="uid://bo6o3coe52wpb" path="res://Styles/ameridium_gradient.tres" id="2_es1xb"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_jugoj"]
-[ext_resource type="PackedScene" uid="uid://bl1r5fx6p83e5" path="res://Audio/Prefabs/armedium_explosion_sound.tscn" id="3_pxxoj"]
+[ext_resource type="PackedScene" uid="uid://bl1r5fx6p83e5" path="res://Audio/Prefabs/ameridium_explosion_sound.tscn" id="3_pxxoj"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
@@ -30,21 +30,21 @@ emitting = false
 amount = 500
 lifetime = 1.5
 one_shot = true
-speed_scale = 3.58
+speed_scale = 5.0
 explosiveness = 1.0
 randomness = 1.0
 lifetime_randomness = 0.61
-emission_shape = 1
-emission_sphere_radius = 60.0
-spread = 158.95
+spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 20.0
+initial_velocity_max = 40.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
 scale_amount_min = 5.0
 scale_amount_max = 15.1
 scale_amount_curve = SubResource("Curve_25yfo")
-color = Color(0.415686, 0.556863, 0.415686, 1)
-color_ramp = ExtResource("2_es1xb")
+color_initial_ramp = ExtResource("2_es1xb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pldu1")
