@@ -9,3 +9,4 @@ bullet_prefab = ExtResource("1_kklf3")
 active = false
 bullet_speed = 0.0
 knockback_force = 0.0
+spawn_on_peers = true

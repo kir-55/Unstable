@@ -212,7 +212,6 @@ animation_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.85714, 1.07143)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
