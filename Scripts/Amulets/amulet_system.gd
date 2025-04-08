@@ -7,7 +7,7 @@ extends Node
 @export var amulet_timers: AmuletTimers
 @export var amulet_timer_bar: PackedScene
 
-@export var animation_player: AnimationPlayer
+@export var effects_animator: AnimationPlayer
 
 var amulets_displayed = false
 
@@ -30,7 +30,7 @@ func use_amulet(event: InputEvent, amulet_id: int):
 		if amulet_id == 8:
 			Engine.time_scale = 1.5
 		if amulet_id == 12:
-			animation_player.play("immunity")
+			effects_animator.play("immunity")
 
 		if GlobalVariables.amulets[amulet_id].sound:
 			var instance = GlobalVariables.amulets[amulet_id].sound.instantiate()

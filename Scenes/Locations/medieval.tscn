@@ -1,7 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://bkmat6ysmk6ks"]
 
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_dnxob"]
-[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_lupqq"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="2_eqd0k"]
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="3_mxhv6"]
 [ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="4_abefe"]
@@ -17,6 +16,13 @@
 [ext_resource type="Resource" uid="uid://7c3qumhckc0x" path="res://Decorations/Medieval/house.tres" id="14_qu7ts"]
 [ext_resource type="Resource" uid="uid://dfnt6xi0bxdpj" path="res://Decorations/Medieval/thorns.tres" id="15_0ytbq"]
 [ext_resource type="Resource" uid="uid://vms017kct8up" path="res://Decorations/Medieval/barrel.tres" id="16_mxrs0"]
+
+[sub_resource type="Environment" id="Environment_t0skf"]
+background_mode = 3
+tonemap_exposure = 0.09
+glow_strength = 1.64
+glow_bloom = 1.0
+glow_hdr_threshold = 1.57
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
 bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
@@ -40,7 +46,7 @@ countdown_panel = NodePath("CanvasLayer/Panel")
 countdown_label = NodePath("CanvasLayer/Panel/Label")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_lupqq")
+environment = SubResource("Environment_t0skf")
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 9

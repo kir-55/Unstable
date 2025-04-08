@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=31 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
@@ -10,10 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://cwtnwotylrivo" path="res://Scenes/amulet_timer_bar.tscn" id="5_ewkn8"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_timers.gd" id="9_nhkjf"]
-[ext_resource type="Texture2D" uid="uid://bnys5fc6h1lee" path="res://Textures/Player/player1.png" id="12_v6ld3"]
-[ext_resource type="Texture2D" uid="uid://bblo3tnwe2qed" path="res://Textures/Player/player2.png" id="13_hbve7"]
-[ext_resource type="Texture2D" uid="uid://dhcb5ttourgf4" path="res://Textures/Player/player3.png" id="14_6f2jj"]
-[ext_resource type="Texture2D" uid="uid://ls8cfynictng" path="res://Textures/Player/player4.png" id="15_tdqt8"]
+[ext_resource type="Texture2D" uid="uid://32xrkifl7066" path="res://Textures/Player/player.png" id="11_1af4h"]
+[ext_resource type="Texture2D" uid="uid://d08ea4vma8hjs" path="res://Textures/Player/player1.png" id="12_v6ld3"]
+[ext_resource type="Texture2D" uid="uid://c3re6nvqymf4" path="res://Textures/Player/player2.png" id="13_hbve7"]
+[ext_resource type="Texture2D" uid="uid://7j0aow2adt5f" path="res://Textures/Player/player3.png" id="14_6f2jj"]
+[ext_resource type="Texture2D" uid="uid://dt7kjtf67ophw" path="res://Textures/Player/player5.png" id="15_3n5px"]
+[ext_resource type="Texture2D" uid="uid://clrtokea2vvw5" path="res://Textures/Player/player4.png" id="15_tdqt8"]
+[ext_resource type="Texture2D" uid="uid://bqrgui30spc2b" path="res://Textures/Player/player6.png" id="16_1e15d"]
+[ext_resource type="Texture2D" uid="uid://br7uwr7vqfujr" path="res://Textures/Player/player7.png" id="17_bkkjm"]
+[ext_resource type="Texture2D" uid="uid://ctyjja587lxj4" path="res://Textures/Player/player8.png" id="18_18h50"]
+[ext_resource type="Texture2D" uid="uid://ckvgiluws43c0" path="res://Textures/Player/player9.png" id="19_s3nxb"]
+[ext_resource type="Texture2D" uid="uid://csm3u676aw7hi" path="res://Textures/Player/player10.png" id="20_xf8dg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_avjva"]
 outline_size = 7
@@ -46,55 +53,27 @@ properties/7/spawn = true
 properties/7/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
-size = Vector2(24.2857, 60.7143)
+size = Vector2(24.2857, 58.5715)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ob57i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_hbve7")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_v6ld3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_hbve7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_6f2jj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_tdqt8")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 13.0
-}]
-
-[sub_resource type="Animation" id="Animation_0arwh"]
+[sub_resource type="Animation" id="Animation_i83s6"]
 resource_name = "immunity"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/path = NodePath("../Sprite2D:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 2.8, 3.1, 3.7, 4, 4.4, 4.6, 4.9, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3, 3.1, 3.2, 3.8, 3.9, 4, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.615686), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0.619608), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 1), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 1), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 1), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 1), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 0.619608), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:collision_layer")
+tracks/1/path = NodePath("..:collision_layer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -104,40 +83,150 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_1mkn3"]
-resource_name = "normal"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sv5sp"]
+_data = {
+"immunity": SubResource("Animation_i83s6")
+}
+
+[sub_resource type="Animation" id="Animation_im8hn"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/path = NodePath("Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(16.4286, 7.85714)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:collision_layer")
+tracks/1/path = NodePath("CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.71428, 16.4286)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24.2857, 58.5715)]
+}
+
+[sub_resource type="Animation" id="Animation_udid8"]
+resource_name = "jump"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [ExtResource("11_1af4h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.71428, 16.4286)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24.2857, 58.5715)]
+}
+
+[sub_resource type="Animation" id="Animation_1mkn3"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_v6ld3"), ExtResource("13_hbve7"), ExtResource("14_6f2jj"), ExtResource("15_tdqt8"), ExtResource("15_3n5px"), ExtResource("16_1e15d"), ExtResource("17_bkkjm"), ExtResource("18_18h50"), ExtResource("19_s3nxb"), ExtResource("20_xf8dg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(15.7143, 0.714286), Vector2(15, 4.28572), Vector2(15, 0.714286), Vector2(15, -2.14286), Vector2(15.102, -1.73469), Vector2(15, 0.714286), Vector2(15.1429, 3.57143), Vector2(15.7143, 1.42857), Vector2(15.7143, -1.42857), Vector2(15.7143, -2.14286)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25.7143, 72.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.28571, 12.6786)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebyxs"]
 _data = {
-"immunity": SubResource("Animation_0arwh"),
-"normal": SubResource("Animation_1mkn3")
+"RESET": SubResource("Animation_im8hn"),
+"jump": SubResource("Animation_udid8"),
+"run": SubResource("Animation_1mkn3")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_animator", "effects_animator", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet")]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)
@@ -148,7 +237,9 @@ DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
 STOP_DURATION = 0.6
 STOP_COOLDOWN = 1.5
-animated_sprite = NodePath("AnimatedSprite2D")
+sprite = NodePath("Sprite2D")
+player_animator = NodePath("AnimationPlayer")
+effects_animator = NodePath("EffectsPlayer")
 trail = NodePath("Trail")
 weapon = NodePath("Weapon")
 amulet_system = NodePath("Amulets")
@@ -174,6 +265,11 @@ horizontal_alignment = 1
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." groups=["multiplayer_sync"]]
 replication_config = SubResource("SceneReplicationConfig_ftbv5")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.85714, 1.42857)
+scale = Vector2(3, 3)
+texture = ExtResource("20_xf8dg")
+
 [node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails", "amulet_system")]
 script = ExtResource("9_lardo")
 trails = [NodePath("Trail"), NodePath("Trail2"), NodePath("Trail3")]
@@ -193,9 +289,9 @@ width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
 [node name="Weapon" type="Sprite2D" parent="."]
-z_index = 3
-position = Vector2(10.7143, -3.57143)
-scale = Vector2(2, 2)
+z_index = -1
+position = Vector2(16.4286, 7.85714)
+scale = Vector2(3, 3)
 script = ExtResource("4_db2y7")
 
 [node name="AmuletTimers" type="Node" parent="." node_paths=PackedStringArray("weapon")]
@@ -203,31 +299,31 @@ script = ExtResource("9_nhkjf")
 amulet_timer_prefab = ExtResource("5_382f2")
 weapon = NodePath("../Weapon")
 
-[node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("amulet_timers", "animation_player")]
+[node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("amulet_timers", "effects_animator")]
 script = ExtResource("2_sxsw1")
 amulet_icon_template = ExtResource("4_e8l5m")
 amulet_timers = NodePath("../AmuletTimers")
 amulet_timer_bar = ExtResource("5_ewkn8")
-animation_player = NodePath("../AnimationPlayer")
+effects_animator = NodePath("../EffectsPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.85714, 1.07143)
+position = Vector2(5.71428, 16.4286)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.85714, -15.7143)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_ob57i")
-animation = &"jump"
-autoplay = "walk"
+[node name="EffectsPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_sv5sp")
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ebyxs")
 }
+autoplay = "run"
 
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]

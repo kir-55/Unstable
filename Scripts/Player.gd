@@ -21,7 +21,11 @@ extends CharacterBody2D
 @export var score_label: Label
 
 
-@export var animated_sprite: AnimatedSprite2D
+@export var sprite: Sprite2D
+@export var player_animator: AnimationPlayer
+@export var effects_animator: AnimationPlayer
+
+
 @export var trail: Node
 
 @export var weapon: Node
@@ -93,7 +97,7 @@ func _ready():
 		reset_velocity()
 	else:
 		collision_shape.disabled = true
-		animated_sprite.self_modulate = Color("#ffffff8e")
+		sprite.self_modulate = Color("#ffffff8e")
 
 		$Amulets.queue_free()
 		$Weapon.queue_free()
@@ -134,13 +138,13 @@ func _physics_process(delta: float) -> void:
 				end_dash()
 
 		if is_stopping:
-			animated_sprite.stop()
+			player_animator.stop()
 			velocity.x = 0
 			stop_timer -= delta
 			if stop_timer <= 0:
 				reset_velocity()
 				is_stopping = false
-				animated_sprite.play()
+				player_animator.play()
 
 		if is_dropping:
 			trail.process_points()
@@ -191,9 +195,9 @@ func _physics_process(delta: float) -> void:
 		var direction = 1
 
 		if not is_on_floor():
-			animated_sprite.play("jump")
+			player_animator.play("jump")
 		else:
-			animated_sprite.play("walk")
+			player_animator.play("run")
 
 
 		# Move the character
@@ -203,7 +207,7 @@ func _physics_process(delta: float) -> void:
 		if velocity.x < SPEED and !is_stopping:
 			reset_velocity()
 
-		animated_sprite.stop()
+		player_animator.stop()
 		global_position = REMOTE_PLAYER_POSITION
 	else:
 		global_position = REMOTE_PLAYER_POSITION
