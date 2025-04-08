@@ -42,7 +42,7 @@ var start_x
 @export var dash_sound_prefab: PackedScene
 
 # Doble jump
-@onready var doble_jump_active = GlobalVariables.player_amulets.has(5)  # checks if player has pizza
+@onready var doble_jump_active = GlobalVariables.player_amulets.has(9)  # checks if player has pizza
 var doble_jump_used = false
 
 
@@ -86,7 +86,7 @@ func _ready():
 		if GlobalVariables.player_global_speed:
 			SPEED = GlobalVariables.player_global_speed
 
-		if GlobalVariables.player_amulets.has(11):
+		if GlobalVariables.player_amulets.has(3):
 			var camera = get_tree().current_scene.find_child("Camera2D")
 			camera.zoom = Vector2(0.7, 0.7)
 			camera.offsett.y = -300
@@ -121,10 +121,10 @@ func _physics_process(delta: float) -> void:
 		# Handle dash activation
 		if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
 			start_dash()
-		if Input.is_action_just_pressed("stop") and stop_cooldown_timer <= 0 and not is_stopping:
-			is_stopping = true
-			stop_timer = STOP_DURATION
-			stop_cooldown_timer = STOP_COOLDOWN
+		#if Input.is_action_just_pressed("stop") and stop_cooldown_timer <= 0 and not is_stopping:
+			#is_stopping = true
+			#stop_timer = STOP_DURATION
+			#stop_cooldown_timer = STOP_COOLDOWN
 		# Handle dashing
 		if is_dashing:
 			trail.process_points()
@@ -249,8 +249,8 @@ func drop_through() -> void:
 	velocity.y = DROP_THROUGH_VELOCITY
 
 func kill():
-	if amulet_system.amulets_available.has(3):
-		amulet_system.remove_amulet(3)
+	if amulet_system.amulets_available.has(11): #check if has heart
+		amulet_system.remove_amulet(11)
 		return false;
 	return true;
 

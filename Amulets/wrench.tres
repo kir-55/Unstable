@@ -1,22 +1,25 @@
-[gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://e1k2wmn1gx6m"]
+[gd_resource type="Resource" script_class="Amulet" load_steps=4 format=3 uid="uid://e1k2wmn1gx6m"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ofyad"]
 [ext_resource type="Texture2D" uid="uid://b5747t13hg1or" path="res://Textures/Amulets/wrench.png" id="2_7dhaf"]
+[ext_resource type="Resource" uid="uid://cma8rmxom5age" path="res://WeaponTypes/Active/wrench.tres" id="3_uk3ft"]
 
 [resource]
 script = ExtResource("1_ofyad")
-id = 4
-name = "Right Wrench"
-description = "Adjusts machine to reduce your speed, decreases machine lags; more tools needed for full repair."
+id = 13
+name = "Wrench"
+description = "Works as a boomerang destroying obsticles (required for machine repair)"
 texture = ExtResource("2_7dhaf")
-incompatible_amulets = Array[int]([])
+incompatible_amulets = Array[int]([0])
+available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = true
 required_for_destruction = false
 consumable = false
-is_weapon = false
-has_timer = false
-timer_reload = 1.0
+is_weapon = true
+weapon = ExtResource("3_uk3ft")
+has_timer = true
+timer_reload = 2.0
 stack_limit = true
 limit = 1
-chance_multiplier = 1
+chance_multiplier = 100

@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_ghsfj")
-id = 14
+id = 1
 name = "Bananas"
 description = "Very slippery!!! - spawns slippery banana behind you now and then"
 texture = ExtResource("2_clt6l")

@@ -5,11 +5,12 @@
 
 [resource]
 script = ExtResource("1_y1s8g")
-id = 3
+id = 11
 name = "Second Heart"
 description = "Gives you second chance to live (removes when used)"
 texture = ExtResource("2_wwwrf")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = false
 required_for_destruction = false

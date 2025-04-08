@@ -25,11 +25,9 @@ var amulets_displayed = false
 
 func use_amulet(event: InputEvent, amulet_id: int):
 	if event is InputEventMouseButton and event.pressed:
-		if amulet_id == 7:
-			Engine.time_scale = 0.5
 		if amulet_id == 8:
-			Engine.time_scale = 1.5
-		if amulet_id == 12:
+			Engine.time_scale = 0.5
+		if amulet_id == 4:
 			animation_player.play("immunity")
 
 		if GlobalVariables.amulets[amulet_id].sound:

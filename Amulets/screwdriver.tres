@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://wpr3ugy4rld8"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_d836v"]
-[ext_resource type="Texture2D" uid="uid://cd11pqsufupee" path="res://Textures/Amulets/screwdriver.png" id="2_0g2cb"]
+[ext_resource type="Texture2D" uid="uid://dr1eqpsneaore" path="res://Textures/Amulets/screwdriver.png" id="2_0g2cb"]
 
 [resource]
 script = ExtResource("1_d836v")
-id = 13
+id = 10
 name = "Screwdriver"
 description = "It doesn't affect your gameplay but is required for an escape!"
 texture = ExtResource("2_0g2cb")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = true
 required_for_destruction = false

@@ -5,15 +5,17 @@
 
 [resource]
 script = ExtResource("1_ybbcq")
-id = 7
+id = 8
 name = "Some Pill"
 description = "Makes you think faster, therefore slowing the environment (click to use)"
 texture = ExtResource("2_y06ph")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = false
-consumable = true
 required_for_repair = false
 required_for_destruction = false
+consumable = true
+is_weapon = false
 has_timer = false
 timer_reload = 1.0
 stack_limit = true

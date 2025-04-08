@@ -5,11 +5,12 @@
 
 [resource]
 script = ExtResource("1_cayfh")
-id = 6
+id = 7
 name = "Notes"
 description = "Your notes about machine, desplays next epoch, required for repair."
 texture = ExtResource("2_862eq")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = false
 required_for_repair = true
 required_for_destruction = false

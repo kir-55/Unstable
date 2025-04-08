@@ -1,46 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhjxp4p8df2qp"]
+[gd_scene load_steps=13 format=3 uid="uid://bhjxp4p8df2qp"]
 
-[ext_resource type="Texture2D" uid="uid://dr46dnkcbkqui" path="res://Textures/Baners/Home/unstable_home4.png" id="1_1s6hv"]
-[ext_resource type="Texture2D" uid="uid://dfwhenvxmjuvc" path="res://Textures/Baners/Home/unstable_home3.png" id="2_5fefa"]
 [ext_resource type="PackedScene" uid="uid://j2nldvt0tvg5" path="res://Scenes/Menus/progress_menu.tscn" id="2_ucxui"]
-[ext_resource type="Texture2D" uid="uid://cgs0nsb18ahpp" path="res://Textures/Baners/Home/unstable_home2.png" id="3_dv88k"]
-[ext_resource type="Texture2D" uid="uid://cehxuhsv2bhp8" path="res://Textures/Baners/Home/unstable_home.png" id="4_swkg2"]
+[ext_resource type="Texture2D" uid="uid://dpfu38xn0kwim" path="res://Textures/Baners/Home/home1.png" id="4_5r2u0"]
+[ext_resource type="Texture2D" uid="uid://dyosrgir2i5ra" path="res://Textures/Baners/Home/home2.png" id="5_i2n18"]
 [ext_resource type="Script" path="res://Scripts/Amulets/home.gd" id="5_i6kwn"]
+[ext_resource type="Texture2D" uid="uid://3jehxq8m71u4" path="res://Textures/Baners/Home/home3.png" id="6_4pm11"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="6_58chv"]
+[ext_resource type="Texture2D" uid="uid://b7cfudcke3rq1" path="res://Textures/Baners/Home/home4.png" id="7_hqjd7"]
 [ext_resource type="AudioStream" uid="uid://wux0ga41vj27" path="res://Audio/house.mp3" id="8_ypbu8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_1s6hv")
+"texture": ExtResource("4_5r2u0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_5fefa")
+"texture": ExtResource("5_i2n18")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_dv88k")
+"texture": ExtResource("6_4pm11")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_swkg2")
+"texture": ExtResource("7_hqjd7")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjjjx"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.882353, 0.658824, 0.270588, 1)
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_gidgj"]
 font_size = 66
@@ -59,8 +46,8 @@ script = ExtResource("5_i6kwn")
 label_container = NodePath("CanvasLayer/ColorRect")
 displayed_amulets_container = NodePath("CanvasLayer/HBoxContainer")
 canvas_layer = NodePath("CanvasLayer")
-panel = NodePath("CanvasLayer/Panel")
-texture_rect = NodePath("CanvasLayer/Panel/TextureRect")
+panel = NodePath("")
+texture_rect = NodePath("CanvasLayer/TextureRect")
 win_menu_scene = ExtResource("2_ucxui")
 amulet_prefab = ExtResource("6_58chv")
 
@@ -74,58 +61,54 @@ sprite_frames = SubResource("SpriteFrames_fxmdu")
 autoplay = "default"
 frame_progress = 0.619749
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 72.0
-offset_top = 32.0
-offset_right = 328.0
-offset_bottom = 167.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_tjjjx")
-
-[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
+[node name="Label2" type="Label" parent="CanvasLayer"]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -37.5
-offset_bottom = 73.5
+offset_left = 682.0
+offset_top = -183.0
+offset_right = -110.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "?"
 label_settings = SubResource("LabelSettings_gidgj")
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 custom_minimum_size = Vector2(0, 90)
-layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -135.0
+offset_left = 684.0
+offset_top = -546.0
+offset_right = -111.0
+offset_bottom = -399.0
 grow_horizontal = 2
 grow_vertical = 0
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
+[node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 5.0
-offset_bottom = 41.0
+offset_left = 682.0
+offset_top = 102.0
+offset_right = -112.0
+offset_bottom = 142.0
 grow_horizontal = 2
 text = "Next Epoch:"
 label_settings = SubResource("LabelSettings_kaiwq")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(500, 70)
-offset_left = 538.0
-offset_top = 393.0
-offset_right = 1038.0
-offset_bottom = 463.0
-rotation = 0.0198443
+custom_minimum_size = Vector2(400, 70)
+offset_left = 652.0
+offset_top = 271.0
+offset_right = 1052.0
+offset_bottom = 341.0
 size_flags_vertical = 3
 alignment = 1
 
@@ -133,7 +116,7 @@ alignment = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 555.0
+offset_left = 582.0
 offset_top = 16.0
 offset_right = -14.0
 offset_bottom = -565.0
@@ -143,7 +126,7 @@ color = Color(0.0862745, 0.0901961, 0.109804, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
-offset_right = 583.0
+offset_right = 555.0
 offset_bottom = 66.0
 text = "You have a few seconds to grab 1 item"
 label_settings = SubResource("LabelSettings_1lncj")

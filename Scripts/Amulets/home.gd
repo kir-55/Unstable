@@ -10,7 +10,7 @@ extends Node2D
 
 var amulets_chosen: Array[int]
 
-var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(1) + 1
+var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(2) + 1
 var win_type := GlobalEnums.WIN_TYPES.NONE
 
 
@@ -22,7 +22,7 @@ var win_type := GlobalEnums.WIN_TYPES.NONE
 
 func _ready():
 	check_for_win()
-	if GlobalVariables.player_amulets.has(6):
+	if GlobalVariables.player_amulets.has(7):
 		texture_rect.texture = GlobalVariables.epochs[GlobalVariables.next_epoch].baner
 
 	label_container.get_child(0).text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1 else ".")
@@ -114,12 +114,12 @@ func spawn_amulet(amulet):
 func chosed_amulet(event: InputEvent, amulet):
 	if event is InputEventMouseButton and event.pressed and amulets_chosen.size() < amount_of_items_to_take:
 		print("amulet clicked " + str(amulet[0]))
-		if amulet[0] == 1:
+		if amulet[0] == 2:
 			GlobalVariables.player_global_speed += 100
 			GlobalVariables.items_in_home += 1
-		if amulet[0] == 4:
-			GlobalVariables.player_global_speed -= 100
-			GlobalVariables.initial_chance_for_lag -= 10
+		#if amulet[0] == 4:
+			#GlobalVariables.player_global_speed -= 100
+			#GlobalVariables.initial_chance_for_lag -= 10
 		amulets_chosen.append(amulet[0])
 
 		if amount_of_items_to_take -amulets_chosen.size() <= 0 and Client.active:
@@ -130,7 +130,7 @@ func chosed_amulet(event: InputEvent, amulet):
 
 		amulet[1].queue_free()
 
-		if !GlobalVariables.player_amulets.has(1) or amulets_chosen.size() >= amount_of_items_to_take:
+		if !GlobalVariables.player_amulets.has(2) or amulets_chosen.size() >= amount_of_items_to_take:
 			grab_and_leave()
 		else:
 			check_for_win()

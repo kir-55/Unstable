@@ -17,8 +17,8 @@ func transition(destination):
 		GlobalVariables.last_score = GlobalVariables.last_score + int(player.global_position.x) / GlobalVariables.score_divider
 		GlobalVariables.last_epoch = current_world
 		
-		if GlobalVariables.player_amulets.has(5):
-			GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(5))
+		if GlobalVariables.player_amulets.has(9):
+			GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(9))
 		
 		
 		GlobalVariables.next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]

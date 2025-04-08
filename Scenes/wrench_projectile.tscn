@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8itocxc1xfcd"]
+[gd_scene load_steps=5 format=3 uid="uid://b8itocxc1xfcd"]
 
-[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="1_tf08y"]
-[ext_resource type="PackedScene" uid="uid://ntmdlggfg36e" path="res://Audio/Prefabs/shoot_sound.tscn" id="2_kgh4u"]
+[ext_resource type="Texture2D" uid="uid://b5747t13hg1or" path="res://Textures/Amulets/wrench.png" id="1_po5j5"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_g7mpc"]
+[ext_resource type="PackedScene" uid="uid://ntmdlggfg36e" path="res://Audio/Prefabs/shoot_sound.tscn" id="3_gewf2"]
 
 [sub_resource type="GDScript" id="GDScript_tmomb"]
 script/source = "extends Area2D
@@ -11,7 +12,7 @@ var velocity: Vector2 = Vector2.ZERO   # Bullet velocity
 
 
 func _process(delta: float) -> void:
-	
+	rotation += 0.1
 	# Move the bullet based on velocity
 	if GlobalVariables.game_is_on:
 		position += velocity * delta
@@ -23,7 +24,7 @@ func set_velocity(direction: Vector2) -> void:
 
 func _on_area_entered(body: Node) -> void:
 	if body and body.has_node(\"HealthSystem\"):
-		body.get_node(\"HealthSystem\").take_damage(40) 
+		body.get_node(\"HealthSystem\").take_damage(100) 
 	queue_free()  # Destroy the bullet upon collision
 
 	 # Example: Apply 10 damages
@@ -33,25 +34,13 @@ func _on_body_entered(body):
 	queue_free()  # D
 "
 
-[sub_resource type="Gradient" id="Gradient_3w352"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.976471, 0.552941, 0.0196078, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_its3e"]
-gradient = SubResource("Gradient_3w352")
-width = 1
-height = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hog3m"]
-size = Vector2(1, 1)
-
 [node name="Bullet" type="Area2D"]
 z_index = -2
-scale = Vector2(12, 12)
+scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 2
 script = SubResource("GDScript_tmomb")
-speed = 2000.0
+speed = 700.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 lifetime = 0.1
@@ -64,18 +53,18 @@ scale_amount_max = 7.0
 color = Color(0.624211, 0.433471, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_its3e")
+texture = ExtResource("1_po5j5")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hog3m")
-
 [node name="SoundSpawner" type="Node" parent="."]
-script = ExtResource("1_tf08y")
-spawn_on_start_prefab = ExtResource("2_kgh4u")
+script = ExtResource("2_g7mpc")
+spawn_on_start_prefab = ExtResource("3_gewf2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5.33333, 3.33333, 3.66667, -6.33333, 6, -3.66667, -3, 5.33333)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponType" load_steps=3 format=3 uid="uid://cma8rmxom5age"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon/weapon_type.gd" id="1_jt0pb"]
+[ext_resource type="Texture2D" uid="uid://b5747t13hg1or" path="res://Textures/Amulets/wrench.png" id="2_6xqpa"]
+
+[resource]
+script = ExtResource("1_jt0pb")
+bullet_prefab = "res://Scenes/wrench_projectile.tscn"
+active = true
+texture = ExtResource("2_6xqpa")
+bullet_speed = 600.0
+knockback_force = 150.0

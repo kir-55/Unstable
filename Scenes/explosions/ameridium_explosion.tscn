@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Amulets/ameridium_explosion.gd" id="1_y6spp"]
 [ext_resource type="Gradient" uid="uid://bo6o3coe52wpb" path="res://Styles/ameridium_gradient.tres" id="2_es1xb"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_jugoj"]
-[ext_resource type="PackedScene" uid="uid://bl1r5fx6p83e5" path="res://Audio/Prefabs/armedium_explosion_sound.tscn" id="3_pxxoj"]
+[ext_resource type="PackedScene" uid="uid://bl1r5fx6p83e5" path="res://Audio/Prefabs/ameridium_explosion_sound.tscn" id="3_smog7"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
@@ -21,7 +21,7 @@ collision_shape = NodePath("CollisionShape2D")
 
 [node name="SoundSpawner" type="Node" parent="."]
 script = ExtResource("2_jugoj")
-spawn_on_start_prefab = ExtResource("3_pxxoj")
+spawn_on_start_prefab = ExtResource("3_smog7")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 20

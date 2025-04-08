@@ -5,11 +5,12 @@
 
 [resource]
 script = ExtResource("1_tus25")
-id = 12
+id = 4
 name = "Immunity potion"
 description = "Allows player to become invulnerable to all obstacles for 5 seconds (click to use)"
 texture = ExtResource("2_k4p7q")
 incompatible_amulets = Array[int]([])
+available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = false
 required_for_destruction = false
