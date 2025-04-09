@@ -276,15 +276,16 @@ trails = [NodePath("Trail"), NodePath("Trail2"), NodePath("Trail3")]
 amulet_system = NodePath("../Amulets")
 
 [node name="Trail" type="Line2D" parent="Trail"]
+position = Vector2(1, 24)
 default_color = Color(1, 1, 1, 0.321569)
 
 [node name="Trail2" type="Line2D" parent="Trail"]
-position = Vector2(12, -16)
+position = Vector2(13, 8)
 width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
 [node name="Trail3" type="Line2D" parent="Trail"]
-position = Vector2(-13, 14)
+position = Vector2(-12, 38)
 width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
@@ -302,8 +303,8 @@ weapon = NodePath("../Weapon")
 [node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("amulet_timers", "effects_animator")]
 script = ExtResource("2_sxsw1")
 amulet_icon_template = ExtResource("4_e8l5m")
-amulet_timer_bar = ExtResource("5_ewkn8")
 amulet_timers = NodePath("../AmuletTimers")
+amulet_timer_bar = ExtResource("5_ewkn8")
 effects_animator = NodePath("../EffectsPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
