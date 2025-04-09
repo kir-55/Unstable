@@ -2,7 +2,6 @@ extends Node
 
 enum LEVELS {
 	START,
-	FUTURE,
 	MEDIVEL
 }
 

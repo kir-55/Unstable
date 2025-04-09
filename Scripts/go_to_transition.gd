@@ -25,7 +25,7 @@ func transition(destination):
 		while GlobalVariables.last_epoch == GlobalVariables.next_epoch:
 			GlobalVariables.next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
 				
-		
+		print("Next epoch" + str(GlobalVariables.next_epoch))
 		GlobalVariables.times_treveled += 1
 		GlobalVariables.terrain_code += 1
 		get_tree().change_scene_to_file(destination)

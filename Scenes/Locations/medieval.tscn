@@ -1,18 +1,36 @@
-[gd_scene load_steps=15 format=3 uid="uid://caupmfpqwlmdt"]
+[gd_scene load_steps=21 format=3 uid="uid://bkmat6ysmk6ks"]
 
-[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_lupqq"]
+[ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_dnxob"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="2_eqd0k"]
-[ext_resource type="AudioStream" uid="uid://b4mjxnd6d0142" path="res://Audio/Melodies/gra sre4.mp3" id="3_3pf4p"]
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="3_mxhv6"]
+[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="4_abefe"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="4_aeiye"]
+[ext_resource type="Script" path="res://Scripts/score_updater.gd" id="5_1sa8f"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="5_8ma2d"]
-[ext_resource type="PackedScene" uid="uid://bty2oxq2nwcn6" path="res://Scenes/Entities/player.tscn" id="6_wyh8r"]
-[ext_resource type="Script" path="res://Scripts/Decorations/arrow_physics.gd" id="7_pucfl"]
+[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="7_kiqr0"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="8_n6r57"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="9_dlgnq"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="10_gvfmj"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="11_v7fia"]
-[ext_resource type="Resource" uid="uid://7c3qumhckc0x" path="res://Decorations/Medieval/house.tres" id="13_mm0x4"]
 [ext_resource type="Script" path="res://Scripts/go_to_transition.gd" id="14_co4vu"]
+[ext_resource type="Resource" uid="uid://7c3qumhckc0x" path="res://Decorations/Medieval/house.tres" id="14_qu7ts"]
+[ext_resource type="Resource" uid="uid://dfnt6xi0bxdpj" path="res://Decorations/Medieval/thorns.tres" id="15_0ytbq"]
+[ext_resource type="Resource" uid="uid://vms017kct8up" path="res://Decorations/Medieval/barrel.tres" id="16_mxrs0"]
+
+[sub_resource type="Environment" id="Environment_t0skf"]
+background_mode = 3
+tonemap_exposure = 0.09
+glow_strength = 1.64
+glow_bloom = 1.0
+glow_hdr_threshold = 1.57
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
+bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hg04r"]
+font_size = 150
+outline_size = 40
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53rot"]
 shader = ExtResource("10_gvfmj")
@@ -20,14 +38,87 @@ shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-[node name="Medieval" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "countdown_panel", "countdown_label")]
+script = ExtResource("1_dnxob")
+spawn_point = NodePath("SpawnPoint")
+amulets_panel = NodePath("CanvasLayer/AmuletLIst")
+countdown_panel = NodePath("CanvasLayer/Panel")
+countdown_label = NodePath("CanvasLayer/Panel/Label")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_lupqq")
+environment = SubResource("Environment_t0skf")
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = 9
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+z_index = -2
+position = Vector2(6, 215)
+motion_scale = Vector2(1.6, 0.9)
+motion_mirroring = Vector2(7000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+position = Vector2(-16, -312)
+scale = Vector2(12, 12)
+texture = ExtResource("3_mxhv6")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(1000, 0)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+self_modulate = Color(1, 1, 1, 0.984314)
+position = Vector2(-621, 67)
+motion_scale = Vector2(0.1, 0.9)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(199, 168)
+scale = Vector2(2, 2)
+texture = ExtResource("4_abefe")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(1208, 171)
+scale = Vector2(2, 2)
+texture = ExtResource("4_abefe")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-6, 32)
+motion_scale = Vector2(0.3, 0.93)
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(200, 76)
+scale = Vector2(4, 4)
+texture = ExtResource("4_abefe")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1cbu")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 200.0
+offset_right = 624.0
+offset_bottom = 405.0
+text = "3"
+label_settings = SubResource("LabelSettings_hg04r")
+
+[node name="CountdownTimer" type="Timer" parent="CanvasLayer/Panel"]
+wait_time = 0.5
+autostart = true
+
+[node name="Score" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -36,10 +127,23 @@ offset_bottom = 69.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
+script = ExtResource("5_1sa8f")
 metadata/_edit_use_anchors_ = true
 
+[node name="AmuletLIst" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1143.0
+offset_top = 8.0
+offset_right = -1081.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(305, 56)
+position = Vector2(1, 91)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("2_eqd0k")
@@ -47,7 +151,7 @@ speed = 30.0
 max_distance = Vector2(1, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
-stream = ExtResource("3_3pf4p")
+stream = ExtResource("7_kiqr0")
 autoplay = true
 bus = &"Music"
 script = ExtResource("4_aeiye")
@@ -55,25 +159,14 @@ script = ExtResource("4_aeiye")
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("5_8ma2d")
 
-[node name="Player" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("6_wyh8r")]
+[node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(0, 114)
-score_label = NodePath("../CanvasLayer/Label")
+scale = Vector2(1.4, 1.4)
 
-[node name="ArrowSpawner" type="Node2D" parent="Player" node_paths=PackedStringArray("player")]
-script = ExtResource("7_pucfl")
-player = NodePath("..")
 
-[node name="Timer" type="Timer" parent="Player/ArrowSpawner"]
-autostart = true
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
+position = Vector2(-650, 271)
 
-[node name="Timer" type="Timer" parent="Player"]
-autostart = true
-
-[node name="Line2D" type="Line2D" parent="Player"]
-
-[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "player")]
-position = Vector2(-314, 278)
-scale = Vector2(0.982645, 1.14761)
 script = ExtResource("8_n6r57")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
@@ -81,7 +174,6 @@ floor_collider = NodePath("GrassLine/StaticBody2D")
 rs = NodePath("../RandomSystem")
 line_section_length = 500
 section_y_change_amplitude = 0
-player = NodePath("../Player")
 
 [node name="Sloper" type="Node" parent="TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
 script = ExtResource("9_dlgnq")
@@ -90,35 +182,38 @@ terrain_generator = NodePath("..")
 
 [node name="GroundLine" type="Line2D" parent="TerrainGenerator"]
 material = SubResource("ShaderMaterial_53rot")
-position = Vector2(0, 18)
-default_color = Color(0.216512, 0.1184, 8.42288e-08, 1)
+position = Vector2(0, 8)
+default_color = Color(0.407843, 0.25098, 0.223529, 1)
 
 [node name="GrassLine" type="Line2D" parent="TerrainGenerator"]
-width = 50.0
-default_color = Color(0.462833, 0.406401, 0.0475139, 1)
+width = 30.0
+default_color = Color(0.247059, 0.262745, 0.156863, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
+collision_layer = 257
 
-[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "player", "line", "terrain_generator")]
+[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "line", "terrain_generator")]
 scale = Vector2(1.10038, 1.15793)
 script = ExtResource("11_v7fia")
-load_radius = 3
+load_radius = 6
 max_radius = 10
 rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
-player = NodePath("../../Player")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
+spawn_pattern = "RAB*C*|R|RHB*B*C*|RA*BC*|RHC*|RB*B*B*C*|RHC*"
 spawn_from = 3
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("13_mm0x4")])
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("16_mxrs0"), ExtResource("15_0ytbq"), ExtResource("14_qu7ts")])
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+script = ExtResource("14_co4vu")
+current_world = 1
 
 [node name="Line2D" type="Line2D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-script = ExtResource("14_co4vu")
-current_world = 2
 
-[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
+[connection signal="timeout" from="CanvasLayer/Panel/CountdownTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TransitionTimer" to="TransitionTimer" method="_on_timeout"]
+

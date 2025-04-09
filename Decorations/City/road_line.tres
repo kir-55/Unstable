@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://1n4aegfhapd"]
 
-[ext_resource type="PackedScene" uid="uid://x3hv7dmnnyrr" path="res://Scenes/Decorations/road_line.tscn" id="1_08a4n"]
+[ext_resource type="PackedScene" uid="uid://x3hv7dmnnyrr" path="res://Scenes/Decorations/City/road_line.tscn" id="1_08a4n"]
 [ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="1_hldvd"]
 
 [resource]

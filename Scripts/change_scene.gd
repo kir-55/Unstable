@@ -12,11 +12,8 @@ var destination_level_info: LevelInfo
 @export var description: Label
 
 func _ready():
-	# TEMPORARY CHSNGE FOR MULTIPLAYER
-	var destination = GlobalEnums.LEVELS.START #GlobalVariables.next_epoch
-	
 	for level_info in GlobalVariables.epochs:
-		if level_info.level == destination:
+		if level_info.level == GlobalVariables.next_epoch:
 			destination_level_info = level_info
 	
 	if !destination_level_info:

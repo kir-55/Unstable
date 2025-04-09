@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ir5mw"]
 [ext_resource type="Texture2D" uid="uid://da8t7fx0yw4rw" path="res://Textures/Amulets/ameridium_gun.png" id="2_l01fq"]
-[ext_resource type="Resource" uid="uid://d0inmgs5oxuhn" path="res://WeaponTypes/Active/ameridium_gun.tres" id="3_yw6lr"]
+
+[ext_resource type="Resource" uid="uid://d0inmgs5oxuhn" path="res://WeaponTypes/Active/ameridium_gun.tres" id="3_415il"]
+
 
 [resource]
 script = ExtResource("1_ir5mw")
@@ -17,9 +19,11 @@ required_for_repair = false
 required_for_destruction = false
 consumable = false
 is_weapon = true
-weapon = ExtResource("3_yw6lr")
+
+weapon = ExtResource("3_415il")
 has_timer = true
-timer_reload = 7.0
+timer_reload = 1.0
+
 stack_limit = true
 limit = 1
 chance_multiplier = 100

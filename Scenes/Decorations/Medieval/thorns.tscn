@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck30tg7fmieo7"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_jrflh"]
+[ext_resource type="Texture2D" uid="uid://b5gjlj6d2t2ot" path="res://Textures/Decorations/Medieval/kolce.png" id="2_w3mxu"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_twyhe"]
+[ext_resource type="PackedScene" uid="uid://b2v457chva6wm" path="res://Scenes/Explosions/wood_explosion.tscn" id="4_ish7h"]
+
+[node name="Hydrant" type="Area2D" groups=["Obsticle"]]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_jrflh")
+death_messages = Array[String](["There was a hydrant!", "You broke your leg, while kicking the hydrant", "You were curious, what is the hydrant made of (it was metal)"])
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(2.16667, -9.83333)
+polygon = PackedVector2Array(20.1667, 11.8333, 17.8333, -1.16667, 10.5, -8.83334, 3.16666, -2.16667, -6.16667, -12.8333, -12.8333, 1.5, -19.8333, -5.16667, -24.8333, 11.8333)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -3)
+texture = ExtResource("2_w3mxu")
+offset = Vector2(-0.250283, -8)
+
+[node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("3_twyhe")
+max_health = 90.0
+explosion_prefab = ExtResource("4_ish7h")
+explosion_point = NodePath("../CollisionPolygon2D")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
