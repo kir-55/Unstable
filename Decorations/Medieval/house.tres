@@ -1,13 +1,10 @@
-[gd_resource type="Resource" script_class="Decoration" load_steps=2 format=3 uid="uid://7c3qumhckc0x"]
-
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://7c3qumhckc0x"]
 
 [ext_resource type="PackedScene" uid="uid://q0a03p4jso3a" path="res://Scenes/Decorations/house_medieval.tscn" id="1_fmajk"]
-
 [ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_in3e8"]
 
 [resource]
 script = ExtResource("2_in3e8")
-
 prefab = ExtResource("1_fmajk")
 name = "House"
 spawn_on_center = true

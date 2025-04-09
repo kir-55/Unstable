@@ -20,9 +20,10 @@
 [sub_resource type="Environment" id="Environment_t0skf"]
 background_mode = 3
 tonemap_exposure = 0.09
-glow_strength = 1.64
+glow_strength = 1.99
 glow_bloom = 1.0
-glow_hdr_threshold = 1.57
+adjustment_enabled = true
+adjustment_brightness = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
 bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
@@ -163,10 +164,8 @@ script = ExtResource("5_8ma2d")
 position = Vector2(0, 114)
 scale = Vector2(1.4, 1.4)
 
-
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
 position = Vector2(-650, 271)
-
 script = ExtResource("8_n6r57")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
@@ -213,7 +212,5 @@ current_world = 1
 
 [node name="Line2D" type="Line2D" parent="."]
 
-
 [connection signal="timeout" from="CanvasLayer/Panel/CountdownTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TransitionTimer" to="TransitionTimer" method="_on_timeout"]
-

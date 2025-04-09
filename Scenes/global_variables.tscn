@@ -1,28 +1,26 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0fjlwsniivuy"]
+[gd_scene load_steps=18 format=3 uid="uid://b0fjlwsniivuy"]
 
 [ext_resource type="Script" path="res://Scripts/global_variables.gd" id="1_6fhdc"]
 [ext_resource type="Resource" uid="uid://ctr8ofv38du6p" path="res://Ages/city.tres" id="2_tede6"]
+[ext_resource type="Resource" uid="uid://cy4dj5okjguw3" path="res://Amulets/ameridium_gun.tres" id="4_df78c"]
 [ext_resource type="Resource" uid="uid://d4jipchxnkrhx" path="res://Ages/medieval.tres" id="4_rv33m"]
-[ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="6_1i2bb"]
-[ext_resource type="Resource" uid="uid://cgk8wbbvqcoc7" path="res://Amulets/some_plant.tres" id="7_2hcst"]
-[ext_resource type="Resource" uid="uid://yuapycu40c26" path="res://Amulets/second_heart.tres" id="8_xnc4u"]
-[ext_resource type="Resource" uid="uid://b8eetrsna3r4n" path="res://Amulets/pizza_slice.tres" id="9_g67nn"]
-[ext_resource type="Resource" uid="uid://e1k2wmn1gx6m" path="res://Amulets/wrench.tres" id="9_x0npk"]
-[ext_resource type="Resource" uid="uid://bhobshe57i1af" path="res://Amulets/notes.tres" id="10_6kl3f"]
-[ext_resource type="Resource" uid="uid://dbw5s5ormsd16" path="res://Amulets/pill.tres" id="11_tgtug"]
-[ext_resource type="Resource" uid="uid://cw3j7kvwcevbv" path="res://Amulets/mystery_pill.tres" id="12_ex3xr"]
-[ext_resource type="Resource" uid="uid://d3l6fb2c4pdeg" path="res://Amulets/microbot_backpack.tres" id="14_nnbhk"]
-[ext_resource type="Resource" uid="uid://cy4dj5okjguw3" path="res://Amulets/ameridium_gun.tres" id="15_okhnc"]
-[ext_resource type="Resource" uid="uid://crd8o4hn3c05k" path="res://Amulets/glasses.tres" id="16_hclqi"]
-[ext_resource type="Resource" uid="uid://kxfxw3rbc6ya" path="res://Amulets/immunity_potion.tres" id="17_x0qbh"]
-[ext_resource type="Resource" uid="uid://wpr3ugy4rld8" path="res://Amulets/screwdriver.tres" id="18_5pbgg"]
-[ext_resource type="Resource" uid="uid://d4cyjr008vvsd" path="res://Amulets/bananas.tres" id="19_jorxr"]
+[ext_resource type="Resource" uid="uid://d4cyjr008vvsd" path="res://Amulets/bananas.tres" id="5_te0wx"]
+[ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="6_hl7hl"]
+[ext_resource type="Resource" uid="uid://crd8o4hn3c05k" path="res://Amulets/glasses.tres" id="7_bk885"]
+[ext_resource type="Resource" uid="uid://kxfxw3rbc6ya" path="res://Amulets/immunity_potion.tres" id="8_kmuya"]
+[ext_resource type="Resource" uid="uid://d3l6fb2c4pdeg" path="res://Amulets/microbot_backpack.tres" id="9_ycsj6"]
+[ext_resource type="Resource" uid="uid://cw3j7kvwcevbv" path="res://Amulets/mystery_pill.tres" id="10_yn5hf"]
+[ext_resource type="Resource" uid="uid://bhobshe57i1af" path="res://Amulets/notes.tres" id="11_cj8g2"]
+[ext_resource type="Resource" uid="uid://dbw5s5ormsd16" path="res://Amulets/pill.tres" id="12_qmwf1"]
+[ext_resource type="Resource" uid="uid://b8eetrsna3r4n" path="res://Amulets/pizza_slice.tres" id="13_up6k6"]
+[ext_resource type="Resource" uid="uid://wpr3ugy4rld8" path="res://Amulets/screwdriver.tres" id="14_u4ca8"]
+[ext_resource type="Resource" uid="uid://yuapycu40c26" path="res://Amulets/second_heart.tres" id="15_ni7fs"]
+[ext_resource type="Resource" uid="uid://cgk8wbbvqcoc7" path="res://Amulets/some_plant.tres" id="16_d7gbk"]
+[ext_resource type="Resource" uid="uid://e1k2wmn1gx6m" path="res://Amulets/wrench.tres" id="17_d2hwq"]
 
 [node name="GlobalVariables" type="Node"]
 script = ExtResource("1_6fhdc")
 initial_player_speed = 400
 initial_player_amulets = []
-
 epochs = Array[Resource("res://Scripts/level_info.gd")]([ExtResource("2_tede6"), ExtResource("4_rv33m")])
-amulets = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("5_pw5te"), ExtResource("6_1i2bb"), ExtResource("7_2hcst"), ExtResource("8_xnc4u"), ExtResource("9_x0npk"), ExtResource("9_g67nn"), ExtResource("10_6kl3f"), ExtResource("11_tgtug"), ExtResource("12_ex3xr"), ExtResource("14_nnbhk"), ExtResource("15_okhnc"), ExtResource("16_hclqi"), ExtResource("17_x0qbh"), ExtResource("18_5pbgg"), ExtResource("19_jorxr")])
-
+amulets = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("4_df78c"), ExtResource("5_te0wx"), ExtResource("6_hl7hl"), ExtResource("7_bk885"), ExtResource("8_kmuya"), ExtResource("9_ycsj6"), ExtResource("10_yn5hf"), ExtResource("11_cj8g2"), ExtResource("12_qmwf1"), ExtResource("13_up6k6"), ExtResource("14_u4ca8"), ExtResource("15_ni7fs"), ExtResource("16_d7gbk"), ExtResource("17_d2hwq")])

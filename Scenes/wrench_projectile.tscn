@@ -12,7 +12,7 @@ var velocity: Vector2 = Vector2.ZERO   # Bullet velocity
 
 
 func _process(delta: float) -> void:
-	rotation += 0.1
+	rotation += 0.3
 	# Move the bullet based on velocity
 	if GlobalVariables.game_is_on:
 		position += velocity * delta
@@ -41,16 +41,6 @@ collision_layer = 2
 collision_mask = 2
 script = SubResource("GDScript_tmomb")
 speed = 700.0
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-lifetime = 0.1
-emission_shape = 1
-emission_sphere_radius = 1.0
-gravity = Vector2(0, 2)
-angular_velocity_min = -103.65
-angular_velocity_max = 167.06
-scale_amount_max = 7.0
-color = Color(0.624211, 0.433471, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_po5j5")

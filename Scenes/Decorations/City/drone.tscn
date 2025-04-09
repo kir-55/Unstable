@@ -29,7 +29,7 @@ z_index = -1
 position = Vector2(0, -7)
 texture = ExtResource("2_wdacg")
 script = ExtResource("2_q6afg")
-min_height = 70.0
+min_height = 50.0
 speed = 0.04
 
 [node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]

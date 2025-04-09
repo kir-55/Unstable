@@ -83,7 +83,6 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sv5sp"]
 _data = {
 "immunity": SubResource("Animation_i83s6")
@@ -228,7 +227,6 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_animator", "effects_animator", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet")]
-
 self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)
@@ -304,8 +302,8 @@ weapon = NodePath("../Weapon")
 [node name="Amulets" type="Node" parent="." node_paths=PackedStringArray("amulet_timers", "effects_animator")]
 script = ExtResource("2_sxsw1")
 amulet_icon_template = ExtResource("4_e8l5m")
-amulet_timers = NodePath("../AmuletTimers")
 amulet_timer_bar = ExtResource("5_ewkn8")
+amulet_timers = NodePath("../AmuletTimers")
 effects_animator = NodePath("../EffectsPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -313,7 +311,7 @@ position = Vector2(5.71428, 16.4286)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 6.0
 autostart = true
 
 [node name="EffectsPlayer" type="AnimationPlayer" parent="."]

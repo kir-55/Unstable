@@ -14,6 +14,7 @@ var time_started: int = 0
 var time_ended: int = 0
 
 
+
 var times_treveled: int = 0
 
 var win_after_next_epoch : bool = false

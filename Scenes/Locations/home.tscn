@@ -41,15 +41,15 @@ outline_color = Color(1, 1, 1, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_1lncj"]
 font_size = 24
 
-[node name="Home" type="Node2D" node_paths=PackedStringArray("label_container", "displayed_amulets_container", "canvas_layer", "panel", "texture_rect")]
+[node name="Home" type="Node2D" node_paths=PackedStringArray("label_container", "displayed_amulets_container", "canvas_layer", "texture_rect")]
 script = ExtResource("5_i6kwn")
+win_menu_scene = ExtResource("2_ucxui")
+amulet_prefab = ExtResource("6_58chv")
 label_container = NodePath("CanvasLayer/ColorRect")
 displayed_amulets_container = NodePath("CanvasLayer/HBoxContainer")
 canvas_layer = NodePath("CanvasLayer")
-panel = NodePath("")
+panel = null
 texture_rect = NodePath("CanvasLayer/TextureRect")
-win_menu_scene = ExtResource("2_ucxui")
-amulet_prefab = ExtResource("6_58chv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
