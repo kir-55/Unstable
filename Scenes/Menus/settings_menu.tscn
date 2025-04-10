@@ -142,6 +142,8 @@ size_flags_stretch_ratio = 0.05
 
 [node name="MasterLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 18
 text = "100%"
 
@@ -169,6 +171,8 @@ size_flags_stretch_ratio = 0.05
 
 [node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer4"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 18
 text = "100%"
 
@@ -197,7 +201,8 @@ size_flags_stretch_ratio = 0.05
 
 [node name="SFXLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer3"]
 layout_mode = 2
-size_flags_stretch_ratio = 0.5
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 18
 text = "100%"
 
