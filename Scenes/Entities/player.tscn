@@ -226,7 +226,7 @@ _data = {
 "run": SubResource("Animation_1mkn3")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_animator", "effects_animator", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_animator", "effects_animator", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet") groups=["Player"]]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)
