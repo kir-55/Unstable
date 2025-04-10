@@ -7,20 +7,32 @@
 [sub_resource type="GDScript" id="GDScript_tmomb"]
 script/source = "extends Area2D
 
-@export var speed: float = 600.0        # Bullet movement speed
+@export var rotation_factor := 0.3
 var velocity: Vector2 = Vector2.ZERO   # Bullet velocity
+var speed_value
+
+var rotation_direction = 1
 
 
 func _process(delta: float) -> void:
-	rotation += 0.3
-	# Move the bullet based on velocity
+	rotation += rotation_factor * rotation_direction
+	# Move the bullet based on velocity and direction
 	if GlobalVariables.game_is_on:
+		var direction_to_player = (GlobalVariables.player.global_position - global_position).normalized()
+		var is_behind_player = global_position.x < GlobalVariables.player.global_position.x
+		print(is_behind_player)
+		if rotation_direction != 1:
+			if is_behind_player:
+				velocity = direction_to_player * (GlobalVariables.player.velocity.x + speed_value)
+			else:
+				velocity = direction_to_player * (speed_value / 6)
 		position += velocity * delta
 
 
-func set_velocity(direction: Vector2) -> void:
+func set_velocity(speed: Vector2) -> void:
 	# Set the bullet's velocity in a specific direction
-	velocity = direction.normalized() * speed
+	velocity = speed
+	speed_value = velocity.x
 
 func _on_area_entered(body: Node) -> void:
 	if body and body.has_node(\"HealthSystem\"):
@@ -32,6 +44,11 @@ func _on_area_entered(body: Node) -> void:
 
 func _on_body_entered(body):
 	queue_free()  # D
+
+
+func _on_timer_2_timeout():
+	rotation_direction = -1
+	set_collision_mask_value(1, true)
 "
 
 [node name="Bullet" type="Area2D"]
@@ -40,14 +57,12 @@ scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 2
 script = SubResource("GDScript_tmomb")
-speed = 700.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_po5j5")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="SoundSpawner" type="Node" parent="."]
 script = ExtResource("2_g7mpc")
@@ -56,6 +71,11 @@ spawn_on_start_prefab = ExtResource("3_gewf2")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-5.33333, 3.33333, 3.66667, -6.33333, 6, -3.66667, -3, 5.33333)
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

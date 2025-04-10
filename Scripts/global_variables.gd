@@ -5,6 +5,8 @@ signal game_state_changed(state)
 
 var terrain_code: int = 1
 
+var player : CharacterBody2D
+
 var player_global_speed: float = 0
 var best_score : int = 0
 var last_score : int = 0

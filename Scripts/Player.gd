@@ -71,6 +71,7 @@ func _enter_tree():
 		set_multiplayer_authority(name.to_int())
 
 func _ready():
+	GlobalVariables.player = self
 	if Client.active:
 		nickname_label.text = Client.players[str(name.to_int())].name
 	else:
