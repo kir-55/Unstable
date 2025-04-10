@@ -10,7 +10,7 @@ var player_old_positon: Vector2
 
 func _ready():
 	player_old_positon = player.global_position
-	if GlobalVariables.player_amulets.count(2) > 0:
+	if GlobalVariables.player_amulets.count(12) > 0:
 		for trail in trails:
 			trail.default_color = amulet_system.trail_color
 

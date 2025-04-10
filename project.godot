@@ -91,5 +91,5 @@ stop={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.672196, 0.7339, 1, 1)
+environment/defaults/default_clear_color=Color(0.603922, 0.898039, 0.835294, 1)
 viewport/hdr_2d=true

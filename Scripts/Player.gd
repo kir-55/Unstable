@@ -80,7 +80,7 @@ func _ready():
 		$Nickname.queue_free()
 		amulet_system.amulets_available = GlobalVariables.player_amulets
 
-		for i in range(amulet_system.amulets_available.count(2)):
+		for i in range(amulet_system.amulets_available.count(12)):
 			DASH_DURATION += amulet_system.dash_duration_increase
 			DASH_SPEED_BOOST += amulet_system.dash_speed_increase
 			DASH_COOLDOWN += amulet_system.dash_cooldown_increase
