@@ -8,6 +8,6 @@ script = ExtResource("1_jt0pb")
 bullet_prefab = "res://Scenes/wrench_projectile.tscn"
 active = true
 texture = ExtResource("2_6xqpa")
-bullet_speed = 200.0
+bullet_speed = 600.0
 knockback_force = 150.0
 spawn_on_peers = false

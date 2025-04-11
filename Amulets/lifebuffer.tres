@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Amulet" load_steps=7 format=3 uid="uid://bgj73poah58ef"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_ns7yh"]
+[ext_resource type="Resource" uid="uid://b1t854ou6mdb2" path="res://WeaponTypes/Passive/lifebuffer.tres" id="2_cga2s"]
+
+[sub_resource type="Curve" id="Curve_r5dum"]
+
+[sub_resource type="Curve" id="Curve_pea8g"]
+
+[sub_resource type="Curve" id="Curve_1hblp"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_agvrn"]
+width = 64
+curve_x = SubResource("Curve_r5dum")
+curve_y = SubResource("Curve_pea8g")
+curve_z = SubResource("Curve_1hblp")
+
+[resource]
+script = ExtResource("1_ns7yh")
+id = 14
+name = "LifeBuffer"
+description = "Grants you one Heart every 12 seconds - but only if you have none! "
+texture = SubResource("CurveXYZTexture_agvrn")
+incompatible_amulets = Array[int]([0])
+available_in_singleplayer = true
+available_in_multiplayer = true
+required_for_repair = false
+required_for_destruction = false
+consumable = false
+is_weapon = true
+weapon = ExtResource("2_cga2s")
+has_timer = true
+timer_reload = 12.0
+stack_limit = true
+limit = 1
+chance_multiplier = 5

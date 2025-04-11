@@ -73,7 +73,7 @@ func _process(delta):
 	if !amulets_displayed and amulets_panel:
 		display_amulets()
 
-func atach_amulet(id):
+func attach_amulet(id):
 	amulets_available.append(id)
 	var amulet_representation = amulet_icon_template.instantiate()
 	amulet_representation.texture = GlobalVariables.amulets[id].texture

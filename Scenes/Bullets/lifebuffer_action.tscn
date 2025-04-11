@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ikfuq5e8nbab"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/lifebuffer_action.gd" id="1_cnoo3"]
+
+[node name="LifebufferAction" type="Node2D"]
+script = ExtResource("1_cnoo3")
