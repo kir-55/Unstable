@@ -289,11 +289,16 @@ position = Vector2(-12, 38)
 width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
-[node name="Weapon" type="Sprite2D" parent="."]
+[node name="ShootPoint" type="Node2D" parent="."]
+position = Vector2(9.28571, 15)
+scale = Vector2(1, 1)
+
+[node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("shoot_point")]
 z_index = -1
 position = Vector2(16.4286, 7.85714)
 scale = Vector2(3, 3)
 script = ExtResource("4_db2y7")
+shoot_point = NodePath("../ShootPoint")
 
 [node name="AmuletTimers" type="Node" parent="." node_paths=PackedStringArray("weapon")]
 script = ExtResource("9_nhkjf")

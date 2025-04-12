@@ -1,7 +1,6 @@
 [gd_resource type="Environment" format=3 uid="uid://ojw38xadkg2v"]
 
 [resource]
-background_mode = 3
 background_color = Color(0.395486, 0.193712, 0.350941, 1)
 ssao_power = 0.53033
 ssao_detail = 3.01
@@ -13,6 +12,7 @@ sdfgi_cascade0_distance = 1296.0
 sdfgi_max_distance = 20736.0
 sdfgi_energy = 24.035
 glow_enabled = true
-glow_strength = 1.08
-glow_blend_mode = 1
+glow_intensity = 0.11
+glow_strength = 0.23
+glow_hdr_luminance_cap = 14.0
 fog_light_color = Color(0.799625, 0.437415, 0.291485, 1)

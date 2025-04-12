@@ -66,13 +66,13 @@ scroll_offset = Vector2(1000, 0)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 self_modulate = Color(1, 1, 1, 0.984314)
-position = Vector2(-621, 67)
+position = Vector2(-647, 25)
 motion_scale = Vector2(0.1, 0.9)
-motion_mirroring = Vector2(2000, 0)
+motion_mirroring = Vector2(1840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 self_modulate = Color(1, 1, 1, 0.556863)
-position = Vector2(199, 168)
+position = Vector2(288, 171)
 scale = Vector2(2, 2)
 texture = ExtResource("1_b5qif")
 
@@ -83,12 +83,12 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_b5qif")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-6, 32)
+position = Vector2(17, -26)
 motion_scale = Vector2(0.3, 0.93)
-motion_mirroring = Vector2(1900, 0)
+motion_mirroring = Vector2(1840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(200, 76)
+position = Vector2(164, 160)
 scale = Vector2(4, 4)
 texture = ExtResource("1_b5qif")
 
@@ -197,7 +197,7 @@ rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_pattern = "RAB*C*|R|RHB*C*|RA*B|RHC*|RB*B*C*|RHC*|RB*"
+spawn_pattern = "RAC*|R|RHB*C*|RA*B|RHC*|RB*B*C*|RHC*|RB*"
 spawn_from = 3
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("14_stlej"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 

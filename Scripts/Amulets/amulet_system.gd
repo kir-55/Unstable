@@ -34,6 +34,10 @@ func use_amulet(event: InputEvent, amulet_id: int):
 		if GlobalVariables.amulets[amulet_id].sound:
 			var instance = GlobalVariables.amulets[amulet_id].sound.instantiate()
 			get_tree().current_scene.add_child(instance)
+		
+		if amulet_id == 6:
+			for tm in amulet_timers.timers:
+				amulet_timers.timers[tm].start(amulet_timers.timers[tm].wait_time / 2)
 
 		remove_amulet(amulet_id)
 
