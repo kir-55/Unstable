@@ -291,7 +291,6 @@ default_color = Color(1, 1, 1, 0.321569)
 
 [node name="ShootPoint" type="Node2D" parent="."]
 position = Vector2(9.28571, 15)
-scale = Vector2(1, 1)
 
 [node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("shoot_point")]
 z_index = -1

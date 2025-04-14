@@ -361,7 +361,8 @@ func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: f
 	var instance = load(prefab).instantiate()
 	instance.global_position = position
 	get_tree().current_scene.add_child(instance)
-	instance.set_velocity(Vector2(player_velocity_x, 0) + Vector2.RIGHT * speed)
+	if instance.has_method("set_velocity"):
+		instance.set_velocity(Vector2(player_velocity_x, 0) + Vector2.RIGHT * speed)
 	return instance
 	
 

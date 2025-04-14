@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://gxiejmgxxgqd"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/ameridium_explosion.gd" id="1_lcwqa"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_0poy8"]
+[ext_resource type="PackedScene" uid="uid://bl1r5fx6p83e5" path="res://Audio/Prefabs/ameridium_explosion_sound.tscn" id="3_xgdos"]
+
+[sub_resource type="Curve" id="Curve_25yfo"]
+_data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qgu5q"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.723473)
+colors = PackedColorArray(1, 1, 1, 1, 0.882353, 0.658824, 0.270588, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pldu1"]
+radius = 90.956
+
+[node name="AmeridiumExplosion" type="Area2D" node_paths=PackedStringArray("particles", "collision_shape")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_lcwqa")
+particles = NodePath("CPUParticles2D")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("2_0poy8")
+spawn_on_start_prefab = ExtResource("3_xgdos")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 20
+scale = Vector2(6, 6)
+emitting = false
+amount = 500
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 20.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+scale_amount_min = 5.0
+scale_amount_max = 15.1
+scale_amount_curve = SubResource("Curve_25yfo")
+color_initial_ramp = SubResource("Gradient_qgu5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pldu1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

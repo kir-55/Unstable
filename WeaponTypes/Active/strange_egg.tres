@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponType" load_steps=3 format=3 uid="uid://dywg4e5e6f48c"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon/weapon_type.gd" id="1_68cjd"]
+[ext_resource type="Texture2D" uid="uid://debwb7kfpmhbt" path="res://Textures/Amulets/strange_egg.png" id="2_cavjy"]
+
+[resource]
+script = ExtResource("1_68cjd")
+bullet_prefab = "res://Scenes/Bullets/egg.tscn"
+active = true
+texture = ExtResource("2_cavjy")
+bullet_speed = 0.0
+knockback_force = 100.0
+spawn_on_peers = false

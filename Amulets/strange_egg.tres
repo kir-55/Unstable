@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Amulet" load_steps=4 format=3 uid="uid://c7h1mf1ywtgs6"]
+
+[ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_7wfvy"]
+[ext_resource type="Texture2D" uid="uid://debwb7kfpmhbt" path="res://Textures/Amulets/strange_egg.png" id="2_0rbnn"]
+[ext_resource type="Resource" uid="uid://dywg4e5e6f48c" path="res://WeaponTypes/Active/strange_egg.tres" id="3_fne6l"]
+
+[resource]
+script = ExtResource("1_7wfvy")
+id = 15
+name = "Strange Egg"
+description = "It's too strong for an egg"
+texture = ExtResource("2_0rbnn")
+incompatible_amulets = Array[int]([0, 14])
+available_in_singleplayer = true
+available_in_multiplayer = true
+required_for_repair = true
+required_for_destruction = false
+consumable = false
+is_weapon = true
+weapon = ExtResource("3_fne6l")
+has_timer = true
+timer_reload = 1.0
+stack_limit = true
+limit = 1
+chance_multiplier = 50

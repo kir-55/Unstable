@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpvvyxf5lpn0w"]
+
+[ext_resource type="Script" path="res://Scripts/egg.gd" id="1_78xu5"]
+[ext_resource type="PackedScene" uid="uid://gxiejmgxxgqd" path="res://Scenes/Explosions/egg_explosion.tscn" id="2_b5um6"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_iaay0"]
+[ext_resource type="PackedScene" uid="uid://deamx4rbgej4j" path="res://Audio/Prefabs/ameridium_shot_sound.tscn" id="4_qnj8u"]
+[ext_resource type="Texture2D" uid="uid://debwb7kfpmhbt" path="res://Textures/Amulets/strange_egg.png" id="5_lo1if"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1lox"]
+radius = 5.07813
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_78xu5")
+explosion_scene = ExtResource("2_b5um6")
+
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("3_iaay0")
+spawn_on_start_prefab = ExtResource("4_qnj8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(2.56, 2.56)
+shape = SubResource("CircleShape2D_h1lox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.56, 2.56)
+texture = ExtResource("5_lo1if")
+
+[node name="AmeridiumBullet" type="Area2D" parent="."]
+scale = Vector2(2.56, 2.56)
+collision_layer = 2
+collision_mask = 3
+
+[connection signal="area_entered" from="AmeridiumBullet" to="." method="_on_ameridium_bullet_area_entered"]
