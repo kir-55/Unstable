@@ -22,4 +22,4 @@ has_timer = true
 timer_reload = 1.0
 stack_limit = true
 limit = 1
-chance_multiplier = 50
+chance_multiplier = 5
