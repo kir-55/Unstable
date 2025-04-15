@@ -8,9 +8,9 @@
 script = ExtResource("1_7wfvy")
 id = 15
 name = "Strange Egg"
-description = "It's too strong for an egg"
+description = "It's too strong for an egg, short reload speed high damage, small area damage"
 texture = ExtResource("2_0rbnn")
-incompatible_amulets = Array[int]([0, 14])
+incompatible_amulets = Array[int]([0, 13])
 available_in_singleplayer = true
 available_in_multiplayer = true
 required_for_repair = true

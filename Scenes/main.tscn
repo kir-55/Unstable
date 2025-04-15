@@ -48,7 +48,7 @@ scroll_offset = Vector2(1000, 0)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
 self_modulate = Color(1, 1, 1, 0.984314)
-position = Vector2(-647, 17)
+position = Vector2(-647, 25)
 motion_scale = Vector2(0.1, 0.9)
 motion_mirroring = Vector2(1840, 0)
 
@@ -65,13 +65,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_las88")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
-position = Vector2(17, -24)
+position = Vector2(81, -106)
 motion_scale = Vector2(0.3, 0.93)
-motion_mirroring = Vector2(1840, 0)
+motion_mirroring = Vector2(2760, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer2"]
 position = Vector2(164, 160)
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 texture = ExtResource("2_las88")
 
 [node name="Camera2D" type="Camera2D" parent="MovingGround"]

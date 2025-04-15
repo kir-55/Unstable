@@ -356,13 +356,21 @@ func start_game(id: int):
 
 
 @rpc("any_peer", "call_local")
-func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: float):
+func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: float, initial_rotation: float):
 	print(prefab)
 	var instance = load(prefab).instantiate()
 	instance.global_position = position
 	get_tree().current_scene.add_child(instance)
+
 	if instance.has_method("set_velocity"):
-		instance.set_velocity(Vector2(player_velocity_x, 0) + Vector2.RIGHT * speed)
+		instance.set_velocity(Vector2(player_velocity_x, 0) + Vector2.RIGHT.rotated(initial_rotation) * speed)
+
+	if "rotation" in instance:
+		instance.rotation = initial_rotation
+	if "speed" in instance:
+		instance.speed += speed + player_velocity_x
+ 
+
 	return instance
 	
 

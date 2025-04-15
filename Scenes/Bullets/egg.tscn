@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://debwb7kfpmhbt" path="res://Textures/Amulets/strange_egg.png" id="5_lo1if"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1lox"]
-radius = 5.07813
+radius = 6.25
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 258
+collision_mask = 258
 script = ExtResource("1_78xu5")
 explosion_scene = ExtResource("2_b5um6")
 
@@ -17,18 +19,18 @@ explosion_scene = ExtResource("2_b5um6")
 script = ExtResource("3_iaay0")
 spawn_on_start_prefab = ExtResource("4_qnj8u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-scale = Vector2(2.56, 2.56)
-shape = SubResource("CircleShape2D_h1lox")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.56, 2.56)
+scale = Vector2(3, 3)
 texture = ExtResource("5_lo1if")
 
-[node name="AmeridiumBullet" type="Area2D" parent="."]
+[node name="EggArea" type="Area2D" parent="."]
 scale = Vector2(2.56, 2.56)
-collision_layer = 2
-collision_mask = 3
+collision_layer = 258
+collision_mask = 258
 
-[connection signal="area_entered" from="AmeridiumBullet" to="." method="_on_ameridium_bullet_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EggArea"]
+position = Vector2(0, 1.5625)
+shape = SubResource("CircleShape2D_h1lox")
+
+[connection signal="area_entered" from="EggArea" to="." method="_on_egg_area_area_entered"]
+[connection signal="body_entered" from="EggArea" to="." method="_on_egg_area_body_entered"]

@@ -27,9 +27,9 @@ func fire_weapon() -> void:
 	if current_weapon_type and current_weapon_type.bullet_prefab and current_weapon_type.active:
 
 		if Client.active and current_weapon_type.spawn_on_peers:
-			Client.spawn.rpc(current_weapon_type.bullet_prefab, shoot_point.global_position, get_parent().velocity.x, current_weapon_type.bullet_speed)
+			Client.spawn.rpc(current_weapon_type.bullet_prefab, shoot_point.global_position, get_parent().velocity.x, current_weapon_type.bullet_speed, current_weapon_type.initial_rotation)
 		else:
-			Client.spawn(current_weapon_type.bullet_prefab, shoot_point.global_position, get_parent().velocity.x, current_weapon_type.bullet_speed)
+			Client.spawn(current_weapon_type.bullet_prefab, shoot_point.global_position, get_parent().velocity.x, current_weapon_type.bullet_speed, current_weapon_type.initial_rotation)
 
 
 		get_parent().velocity.x -= current_weapon_type.knockback_force
@@ -41,9 +41,9 @@ func fire_weapon() -> void:
 func on_passive_weapon(weapon_type: WeaponType):
 	if weapon_type and weapon_type.bullet_prefab and !weapon_type.active:
 		if Client.active and weapon_type.spawn_on_peers:
-			Client.spawn.rpc(weapon_type.bullet_prefab, shoot_point.global_position, 0, weapon_type.bullet_speed)
+			Client.spawn.rpc(weapon_type.bullet_prefab, shoot_point.global_position, 0, weapon_type.bullet_speed, weapon_type.initial_rotation)
 		else:
-			Client.spawn(weapon_type.bullet_prefab, shoot_point.global_position, 0, weapon_type.bullet_speed)
+			Client.spawn(weapon_type.bullet_prefab, shoot_point.global_position, 0, weapon_type.bullet_speed, weapon_type.initial_rotation)
 
 
 

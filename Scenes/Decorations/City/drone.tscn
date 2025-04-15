@@ -17,6 +17,8 @@ point_count = 2
 [node name="Area2D" type="Area2D" groups=["Obsticle"]]
 position = Vector2(0, -7)
 scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2_uyrou")
 death_messages = Array[String](["Drone didn't liked you", "You kicked the drone with your head (the drone was harder)", "You jumped into the drone"])
 

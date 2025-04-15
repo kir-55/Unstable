@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dobytmimtlevb"]
+
+[ext_resource type="AudioStream" uid="uid://dkpg4e3kql8n4" path="res://Audio/Sounds/617471__cupido-1__egg-fall.mp3" id="1_xgj26"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_xp0bg"]
+
+[node name="EggSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_xgj26")
+volume_db = 5.0
+autoplay = true
+mix_target = 1
+script = ExtResource("2_xp0bg")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -20,6 +20,8 @@ extends Resource
 @export var spawn_on_peers: bool = false
 
 
+@export var initial_rotation: float = 0 
+
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["texture"] and !active:
 		property.usage = PROPERTY_USAGE_NO_EDITOR

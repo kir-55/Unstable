@@ -11,3 +11,4 @@ texture = ExtResource("2_cavjy")
 bullet_speed = 0.0
 knockback_force = 100.0
 spawn_on_peers = false
+initial_rotation = 45.0
