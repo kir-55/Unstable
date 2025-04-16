@@ -38,6 +38,9 @@ func use_amulet(event: InputEvent, amulet_id: int):
 		if amulet_id == 6:
 			for tm in amulet_timers.timers:
 				amulet_timers.timers[tm].start(amulet_timers.timers[tm].wait_time / 2)
+		
+		if amulet_id == 16:
+			pass
 
 		remove_amulet(amulet_id)
 

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtklth83wok5p"]
+
+[ext_resource type="Texture2D" uid="uid://dwwiq1spsuljb" path="res://Textures/Effects/dust5.png" id="1_u2ga6"]
+[ext_resource type="Texture2D" uid="uid://5maiov15t7e4" path="res://Textures/Effects/dust1.png" id="2_qh6m6"]
+[ext_resource type="Texture2D" uid="uid://cvhilatt36tpk" path="res://Textures/Effects/dust2.png" id="3_o3bho"]
+[ext_resource type="Texture2D" uid="uid://bassbrayhl26g" path="res://Textures/Effects/dust3.png" id="4_gkk5m"]
+[ext_resource type="Texture2D" uid="uid://y7dmrgfm8u1d" path="res://Textures/Effects/dust4.png" id="5_pncur"]
+
+[sub_resource type="Animation" id="Animation_scjft"]
+resource_name = "dust"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_qh6m6"), ExtResource("3_o3bho"), ExtResource("4_gkk5m"), ExtResource("5_pncur"), ExtResource("1_u2ga6"), ExtResource("2_qh6m6"), ExtResource("3_o3bho"), ExtResource("4_gkk5m"), ExtResource("5_pncur"), ExtResource("1_u2ga6"), ExtResource("2_qh6m6"), ExtResource("3_o3bho"), ExtResource("4_gkk5m"), ExtResource("5_pncur"), ExtResource("1_u2ga6"), ExtResource("2_qh6m6"), ExtResource("3_o3bho"), ExtResource("4_gkk5m"), ExtResource("5_pncur"), ExtResource("1_u2ga6"), ExtResource("2_qh6m6"), ExtResource("3_o3bho"), ExtResource("4_gkk5m"), ExtResource("5_pncur"), ExtResource("1_u2ga6"), ExtResource("2_qh6m6"), ExtResource("3_o3bho"), ExtResource("4_gkk5m"), ExtResource("5_pncur"), ExtResource("1_u2ga6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blje1"]
+_data = {
+"dust": SubResource("Animation_scjft")
+}
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_qh6m6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_blje1")
+}
+autoplay = "dust"
