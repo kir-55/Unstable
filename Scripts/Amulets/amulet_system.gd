@@ -42,7 +42,8 @@ func use_amulet(event: InputEvent, amulet_id: int):
 			
 			if amulet_id == 16:
 				var screen_effect_path = GlobalVariables.amulets[amulet_id].screen_effect.resource_path
-				Client.apply_screen_effect.rpc(screen_effect_path)
+				for alive_player in Client.players_alive:
+					Client.apply_screen_effect.rpc_id(alive_player, screen_effect_path)
 
 			remove_amulet(amulet_id)
 
