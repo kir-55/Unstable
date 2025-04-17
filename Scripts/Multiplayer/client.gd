@@ -301,7 +301,8 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		update_players.rpc(players.erase(id))
+		players.erase(id)
+		update_players.rpc(players)
 		if host_id == id:
 			set_new_host(players_alive.pick_random())
 		reset_multiplayer_connection()
