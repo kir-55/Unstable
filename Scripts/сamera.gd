@@ -50,7 +50,7 @@ func _process(delta):
 				var pos = target.global_position + offsett + lerp(Vector2(), mouse_offset.normalized() * 200, mouse_offset.length() / 1000)
 				pos.y = min(pos.y, target.global_position.y + offsett.y - 1)
 				global_position = pos
-	else:
-		target_id = Client.players_alive.pick_random()
-		target = get_tree().current_scene.find_child("Player" + str(target_id), true, false)
+	elif Client.active and Client.players_alive:
+			target_id = Client.players_alive.pick_random()
+			target = get_tree().current_scene.find_child("Player" + str(target_id), true, false)
 		
