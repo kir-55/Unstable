@@ -306,7 +306,9 @@ func _notification(what):
 		players.erase(str(id))
 		update_players.rpc(players)
 		if host_id == id:
-			set_new_host(players_alive.pick_random())
+			set_new_host.rpc(players_alive.pick_random())
+		if new_host_id == id:
+			set_new_host.rpc(players_alive.pick_random())
 		reset_multiplayer_connection()
 		get_tree().quit() # You *must* call this if you still want the window to close
 
@@ -486,6 +488,8 @@ func player_died(id: int, name, score, time):
 	if self.id == host_id and still_playing:  # Only host runs this block
 		if players_alive.size() > 1:
 			if self.id == id:
+				set_new_host.rpc(players_alive.pick_random())
+			if self.id == new_host_id:
 				set_new_host.rpc(players_alive.pick_random())
 
 
