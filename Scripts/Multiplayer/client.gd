@@ -1,6 +1,9 @@
 extends Node
 
 
+
+
+
 var game_scene: String = "res://Scenes/Locations/city.tscn"
 
 #@export var player_prefab: PackedScene
@@ -23,6 +26,7 @@ var players_voted = []
 
 var active = false
 
+var still_playing = true
 # Votes for events
 
 
@@ -65,6 +69,8 @@ var host_id: int = 0
 var lobby_id: String
 var public_ip: String
 
+# will be used and applied to host id on next transition
+var new_host_id: int = 0
 
 var player_name: String = ""
 
@@ -363,6 +369,7 @@ func start_game(id: int):
 			"lobby_id": lobby_id
 		}
 		
+		still_playing = true
 		GlobalVariables.last_score = 0
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 		GlobalVariables.game_is_on = true
@@ -396,9 +403,12 @@ func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: f
 
 	return instance
 	
-
 @rpc("any_peer", "call_local")
 func leave_home(id):
+	if new_host_id:
+		host_id = new_host_id
+		new_host_id = 0
+	
 	if (id != self.id or !voted_to_leave_home) and players_alive.has(id):
 		if id == self.id:
 			voted_to_leave_home = true
@@ -423,7 +433,7 @@ func end_game(result: EndStates):
 
 @rpc("any_peer", "call_local")
 func set_new_host(id: int):
-	host_id = id
+	new_host_id = id
 	
 
 @rpc("any_peer", "call_local")
@@ -443,14 +453,15 @@ func player_died(id: int, name, score, time):
 	}
 	players_alive.erase(id)
 	
-	if self.id == host_id: # Only host runs this block
+	if self.id == host_id and still_playing: # Only host runs this block
 		if players_alive.size() > 1:
 			if self.id == id:
 				set_new_host.rpc(players_alive.pick_random())
 				
 		
-		
-		if players_alive.size() == 1:
+		print(players_alive)
+		if players_alive.size() <= 1:
+			
 			# One player left — victory for them
 			for player_id in players.keys():
 				if players_alive.has(player_id.to_int()):
@@ -459,6 +470,7 @@ func player_died(id: int, name, score, time):
 				else:
 					# Others get a loss screen
 					end_game.rpc_id(player_id.to_int(), EndStates.Fail)
+			still_playing = false
 			print("Victory for one player, loss for others.")
 		else:
 			# Only one player died (more still alive), just update state

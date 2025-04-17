@@ -5,6 +5,9 @@ extends Camera2D
 var target = initial_target
 var target_id: int
 
+var new_target
+
+
 @export var max_distance: Vector2
 var distance_to_target: Vector2
 @export var offsett:= Vector2(400, -130)
@@ -35,9 +38,10 @@ func _process(delta):
 			if Client.active:
 				if Client.players_alive.size() <= 1:
 					target = initial_target
-				else:
+				elif !target_id or !Client.players_alive.has(target_id):
 					target_id = Client.players_alive.pick_random()
 					target = get_tree().current_scene.find_child("Player" + str(target_id), true, false)
+					
 			
 			if !target:
 				target = initial_target
@@ -46,4 +50,3 @@ func _process(delta):
 			var pos = target.global_position + offsett + lerp(Vector2(), mouse_offset.normalized() * 200, mouse_offset.length() / 1000)
 			pos.y = min(pos.y, target.global_position.y + offsett.y - 1)
 			global_position = pos
-			

@@ -32,7 +32,7 @@ func transition(destination):
 
 
 func _on_timeout():
-	if !Client.active or Client.host_id == Client.id:
+	if !Client.active or (Client.new_host_id  != 0 and Client.new_host_id == Client.id) or (Client.new_host_id == 0 and Client.host_id == Client.id):
 		if GlobalVariables.game_is_on and player:
 			var rnd = randi_range(0, 100)
 			var destination = ""
