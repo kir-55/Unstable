@@ -48,7 +48,6 @@ func use_amulet(event: InputEvent, amulet_id: int):
 
 func display_amulets():
 	if !Client.active or get_parent().is_multiplayer_authority():
-		print("displaying: " + str(amulets_available))
 		var unique_amulets = {}
 
 		for item in amulets_available:

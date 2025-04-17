@@ -5,6 +5,9 @@ extends Camera2D
 var target = initial_target
 var target_id: int
 
+var new_target
+
+
 @export var max_distance: Vector2
 var distance_to_target: Vector2
 @export var offsett:= Vector2(400, -130)
@@ -32,20 +35,18 @@ func _process(delta):
 				if distance_to_target.y > max_distance.y:
 					position.y = lerp(position.y, target.global_position.y + offsett.y, delta*speed)
 		else:
-			if Client.dead_players.size() >= Client.players.size() - 1:
-				target = initial_target
-			else:
-				var keys = Client.players.keys()
-				print("target id: "  + str(target_id))
-				print("players died: " +  str(Client.dead_players))
-				print("client: " + str(Client.dead_players.keys().has(target_id)))
-				while Client.active and Client.dead_players.has(target_id):
-					target_id = keys[randi() % keys.size()].to_int()
+			if Client.active:
+				if Client.players_alive.size() <= 1:
+					target = initial_target
+				elif !target_id or !Client.players_alive.has(target_id):
+					target_id = Client.players_alive.pick_random()
 					target = get_tree().current_scene.find_child("Player" + str(target_id), true, false)
-					print("target: " + str(target))
+					
+			
+			if !target:
+				target = initial_target
 				
 			var mouse_offset = (get_viewport().get_mouse_position() - Vector2( get_viewport().size / 2))
 			var pos = target.global_position + offsett + lerp(Vector2(), mouse_offset.normalized() * 200, mouse_offset.length() / 1000)
 			pos.y = min(pos.y, target.global_position.y + offsett.y - 1)
 			global_position = pos
-			
