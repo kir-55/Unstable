@@ -185,13 +185,14 @@ default_color = Color(0.247059, 0.262745, 0.156863, 1)
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 collision_layer = 257
 
-[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "line", "terrain_generator")]
+[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
 scale = Vector2(1.10038, 1.15793)
 script = ExtResource("11_v7fia")
 load_radius = 6
 max_radius = 10
 rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
+camera = NodePath("../../Camera2D")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
 spawn_pattern = "RA*C*|R|RHB*B*C*|RAC*|RHC*|RB*B*C*|RHC*"
