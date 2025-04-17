@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 			if is_behind_player:
 				velocity = direction_to_player * (GlobalVariables.player.velocity.x + speed_value)
 			else:
-				scale *= 0.98
+				scale *= 0.99
 				velocity = direction_to_player * (speed_value - GlobalVariables.player.velocity.x)
 		position += velocity * delta
 

@@ -11,7 +11,7 @@ func _set_player(player):
 	self.player = player 
 
 @rpc("any_peer", "call_local")
-func transition(destination):
+func transition(destination, next_epoch: GlobalEnums.LEVELS):
 	if (GlobalVariables.game_is_on or (Client.active and Client.players_alive.size() > 1)):
 		
 		GlobalVariables.last_epoch = current_world
@@ -22,7 +22,7 @@ func transition(destination):
 			if GlobalVariables.game_is_on and GlobalVariables.player_amulets.has(9):
 				GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(9))
 		
-		print("Next epoch" + str(GlobalVariables.next_epoch))
+		GlobalVariables.next_epoch = next_epoch
 		GlobalVariables.times_treveled += 1
 		GlobalVariables.terrain_code += 1
 		get_tree().change_scene_to_file(destination)
@@ -39,12 +39,12 @@ func _on_timeout():
 				destination = "res://Scenes/age_travel_machine.tscn"
 				
 			GlobalVariables.last_epoch = current_world
-			GlobalVariables.next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
-			while GlobalVariables.last_epoch == GlobalVariables.next_epoch:
-				GlobalVariables.next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]	
+			var next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
+			while GlobalVariables.last_epoch == next_epoch:
+				next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
 				
 			if Client.active:
-				transition.rpc(destination)
+				transition.rpc(destination, next_epoch) 
 			else: 
-				transition(destination)
+				transition(destination, next_epoch)
 	
