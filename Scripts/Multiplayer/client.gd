@@ -129,7 +129,9 @@ func update_players(new_players):
 		players_alive.append(int(id))
 
 	players_dead.clear()
-
+	
+	print("players alive: " + str(players_alive))
+	
 	for array in arrays_to_clean:
 		for e in array:
 			if !valid_ids.has(str(e)):
@@ -301,7 +303,7 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		players.erase(id)
+		players.erase(str(id))
 		update_players.rpc(players)
 		if host_id == id:
 			set_new_host(players_alive.pick_random())
