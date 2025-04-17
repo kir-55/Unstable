@@ -3,6 +3,8 @@ extends Timer
 var player: Node2D
 @export var current_world: GlobalEnums.LEVELS
 
+
+
 func _enter_tree():
 	if !player:
 		get_tree().root.get_child(4).player_spawned.connect(_set_player)

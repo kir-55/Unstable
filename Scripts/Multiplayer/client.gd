@@ -116,6 +116,7 @@ func rtc_peer_disconnected(id):
 
 var candidate_queues = {}  # Add this at the top of your client script
 
+@rpc("any_peer")
 func update_players(new_players):
 	print("updating players")
 	players = new_players
@@ -282,6 +283,8 @@ func _on_offer_created(type, data, id):
 		send_answer(id, modified_sdp)
 
 
+
+
 func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 	print("ICE Candidate for %d: %s" % [id, sdp_name])
 	var message = {
@@ -294,6 +297,15 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 		"lobby": lobby_id
 	}
 	send_to_server(message)
+
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		update_players.rpc(players.erase(id))
+		if host_id == id:
+			set_new_host(players_alive.pick_random())
+		reset_multiplayer_connection()
+		get_tree().quit() # You *must* call this if you still want the window to close
 
 func reset_multiplayer_connection():
 	if multiplayer.multiplayer_peer:
