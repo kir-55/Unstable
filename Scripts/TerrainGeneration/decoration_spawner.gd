@@ -9,7 +9,7 @@ var line_section_length: int
 @export var rs: RandomSystem
 @export var sloper: Sloper
 
-@export var player: Node2D
+@export var camera : Camera2D
 
 @export var line: Line2D
 @export var terrain_generator: Node2D
@@ -33,28 +33,13 @@ class DecorationSegment:
 	var layer: GlobalEnums.DECORATION_LAYERS
 	var position: Position
 
-
-
-func _enter_tree():
-	if !player:
-		get_tree().current_scene.player_spawned.connect(_set_player)
-
-
-func _set_player(player):
-	self.player = player
-
 func _ready():
 	line_start_x = line.global_position.x
 	line_section_length = terrain_generator.line_section_length
-	#var road_line_index = decorations.map(func(x): return x.name).find("RoadLine")
-	#if road_line_index != -1:
-		#road_line_prefab = decorations[road_line_index].prefab
-	#spawn_from += int(GlobalVariables.times_treveled / 3)
 
 func _process(delta):
-	if player:
-
-		var x = player.position.x
+	if camera:
+		var x = camera.position.x
 		var closest_point = int((x - line_start_x) / line_section_length)
 		
 		for loaded_segment in loaded_segments:
