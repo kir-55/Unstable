@@ -27,6 +27,9 @@ extends Resource
 		notify_property_list_changed()
 @export var sound: PackedScene
 
+#SPECIAL EFFECTS
+@export var screen_effect : PackedScene
+
 
 
 # WEAPON

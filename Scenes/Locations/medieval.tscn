@@ -32,10 +32,11 @@ shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "countdown_panel", "countdown_label")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "canvas_layer", "countdown_panel", "countdown_label")]
 script = ExtResource("1_dnxob")
 spawn_point = NodePath("SpawnPoint")
 amulets_panel = NodePath("CanvasLayer/AmuletLIst")
+canvas_layer = NodePath("CanvasLayer")
 countdown_panel = NodePath("CanvasLayer/Panel")
 countdown_label = NodePath("CanvasLayer/Panel/Label")
 

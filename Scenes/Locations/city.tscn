@@ -36,10 +36,11 @@ shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "countdown_panel", "countdown_label")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "canvas_layer", "countdown_panel", "countdown_label")]
 script = ExtResource("1_77yam")
 spawn_point = NodePath("SpawnPoint")
 amulets_panel = NodePath("CanvasLayer/AmuletLIst")
+canvas_layer = NodePath("CanvasLayer")
 countdown_panel = NodePath("CanvasLayer/Panel")
 countdown_label = NodePath("CanvasLayer/Panel/Label")
 
@@ -202,7 +203,7 @@ spawn_from = 3
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("14_stlej"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 5.0
 autostart = true
 script = ExtResource("14_8ml7d")
 

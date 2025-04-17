@@ -372,7 +372,20 @@ func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: f
  
 
 	return instance
+
+@rpc("any_peer")
+func apply_screen_effect(effect : PackedScene, delete_other_effects := false): #effect must be TextureRect
+	var canvas_layer = get_tree().current_scene.canvas_layer
+	if !canvas_layer:
+		print("Function 'apply_screen_effect' in client.gd could not find canvas layer!")
+		return
 	
+	if delete_other_effects:
+		for child in canvas_layer.get_children():
+			if child is TextureRect:
+				child.queue_free()
+	var effect_instance = effect.instantiate()
+	canvas_layer.add_child(effect_instance)
 
 @rpc("any_peer", "call_local")
 func leave_home(id):

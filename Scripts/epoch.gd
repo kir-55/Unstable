@@ -5,6 +5,7 @@ signal player_spawned(player)
 @export var player_prefab: String = "res://Scenes/Entities/player.tscn"
 @export var spawn_point: Node2D
 @export var amulets_panel: VBoxContainer
+@export var canvas_layer : CanvasLayer
 
 @export var countdown_panel: Panel
 @export var countdown_label: Label

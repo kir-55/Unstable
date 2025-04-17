@@ -24,25 +24,28 @@ var amulets_displayed = false
 @export var trail_color = Color("#eff37c")
 
 func use_amulet(event: InputEvent, amulet_id: int):
-	if event is InputEventMouseButton and event.pressed:
-		if amulet_id == 8:
-			Engine.time_scale = 0.5
+	if GlobalVariables.game_is_on:
+		if event is InputEventMouseButton and event.pressed:
+			if amulet_id == 8:
+				Engine.time_scale = 0.5
 
-		if amulet_id == 4:
-			effects_animator.play("immunity")
+			if amulet_id == 4:
+				effects_animator.play("immunity")
 
-		if GlobalVariables.amulets[amulet_id].sound:
-			var instance = GlobalVariables.amulets[amulet_id].sound.instantiate()
-			get_tree().current_scene.add_child(instance)
-		
-		if amulet_id == 6:
-			for tm in amulet_timers.timers:
-				amulet_timers.timers[tm].start(amulet_timers.timers[tm].wait_time / 2)
-		
-		if amulet_id == 16:
-			pass
+			if GlobalVariables.amulets[amulet_id].sound:
+				var instance = GlobalVariables.amulets[amulet_id].sound.instantiate()
+				get_tree().current_scene.add_child(instance)
+			
+			if amulet_id == 6:
+				for tm in amulet_timers.timers:
+					amulet_timers.timers[tm].start(amulet_timers.timers[tm].wait_time / 2)
+			
+			if amulet_id == 16:
+				var screen_effect = GlobalVariables.amulets[amulet_id].screen_effect
+				Client.apply_screen_effect.rpc(screen_effect, false)
+				
 
-		remove_amulet(amulet_id)
+			remove_amulet(amulet_id)
 
 func display_amulets():
 	if !Client.active or get_parent().is_multiplayer_authority():
