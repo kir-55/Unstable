@@ -26,6 +26,8 @@ func transition(destination, next_epoch: GlobalEnums.LEVELS):
 		GlobalVariables.times_treveled += 1
 		GlobalVariables.terrain_code += 1
 		get_tree().change_scene_to_file(destination)
+	else:
+		print("cannot make transition")
 
 
 func _on_timeout():

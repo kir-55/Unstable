@@ -35,6 +35,7 @@ func _on_progress_button_pressed():
 
 
 func _on_main_menu_button_pressed():
+	Client.active = false
 	GlobalFunctions.load_menu("main", true, true)
 
 

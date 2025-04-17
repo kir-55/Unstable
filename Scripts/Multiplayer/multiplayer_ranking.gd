@@ -37,4 +37,5 @@ func _on_play_again_pressed():
 
 func _on_leave_pressed():
 	Client.reset_multiplayer_connection()
+	Client.active = false
 	GlobalFunctions.load_menu("main")
