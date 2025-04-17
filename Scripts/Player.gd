@@ -76,7 +76,6 @@ func _enter_tree():
 		set_multiplayer_authority(id)
 
 func _ready():
-	GlobalVariables.player = self
 	if Client.active:
 		nickname_label.text = Client.players[str(id)].name
 	else:
@@ -85,6 +84,7 @@ func _ready():
 	if is_multiplayer_authority() or !Client.active:
 		$Nickname.queue_free()
 		amulet_system.amulets_available = GlobalVariables.player_amulets
+		GlobalVariables.player = self
 
 		for i in range(amulet_system.amulets_available.count(12)):
 			DASH_DURATION += amulet_system.dash_duration_increase
