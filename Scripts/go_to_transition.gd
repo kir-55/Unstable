@@ -12,7 +12,7 @@ func _set_player(player):
 
 @rpc("any_peer", "call_local")
 func transition(destination):
-	if GlobalVariables.game_is_on or (Client.active and Client.players_alive.size() > 1):
+	if (GlobalVariables.game_is_on or (Client.active and Client.players_alive.size() > 1)) and player:
 		Engine.time_scale = 1
 		GlobalVariables.last_score = GlobalVariables.last_score + int(player.global_position.x) / GlobalVariables.score_divider
 		GlobalVariables.last_epoch = current_world
