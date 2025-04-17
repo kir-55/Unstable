@@ -44,7 +44,7 @@ _data = {
 [node name="TextureRect" type="TextureRect"]
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_u2ga6")
+texture = ExtResource("2_qh6m6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

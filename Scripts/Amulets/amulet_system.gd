@@ -41,9 +41,8 @@ func use_amulet(event: InputEvent, amulet_id: int):
 					amulet_timers.timers[tm].start(amulet_timers.timers[tm].wait_time / 2)
 			
 			if amulet_id == 16:
-				var screen_effect = GlobalVariables.amulets[amulet_id].screen_effect
-				Client.apply_screen_effect.rpc(screen_effect, false)
-				
+				var screen_effect_path = GlobalVariables.amulets[amulet_id].screen_effect.resource_path
+				Client.apply_screen_effect.rpc(screen_effect_path)
 
 			remove_amulet(amulet_id)
 

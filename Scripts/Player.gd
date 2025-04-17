@@ -40,6 +40,7 @@ var start_x
 @export var collision_shape: CollisionShape2D
 @export var nickname_label: Label
 
+@export var head: Node2D
 @export var feet: Node2D
 @export var landing_particles_prefab: PackedScene
 
