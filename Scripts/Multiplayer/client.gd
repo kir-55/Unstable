@@ -12,10 +12,13 @@ const LOBBY_ID_LENGHT = 3
 const LOBBY_ID_SYMBOLS = "abcdefghijklmnopqrstuvwxyz1234567890"
 const DELETE_LOBBY_AFTER = 3  #measured in hours
 
+# dictionary with nicknames, id's
 var players = {}
-var dead_players = {}
 
-var rtc_players = []
+# arrays of id's
+var players_dead = {}
+var players_alive = []
+var players_rtc = []
 var players_voted = []
 
 var active = false
@@ -95,17 +98,37 @@ func rtc_server_connected():
 
 
 func rtc_peer_connected(id):
-	rtc_players.append(id)
+	players_rtc.append(id)
 	print("RTC peer connected " + str(id))
 	
 
 
 func rtc_peer_disconnected(id):
-	rtc_players.erase(id)
+	players_rtc.erase(id)
 	print("RTC peer disonnected " + str(id))
 
 
 var candidate_queues = {}  # Add this at the top of your client script
+
+func update_players(new_players):
+	print("updating players")
+	players = new_players
+	var valid_ids = players.keys()
+
+	var arrays_to_clean = [players_rtc, players_voted]
+
+	players_alive.clear()
+	for id in valid_ids:
+		players_alive.append(int(id))
+
+	players_dead.clear()
+
+	for array in arrays_to_clean:
+		for e in array:
+			if !valid_ids.has(str(e)):
+				array.erase(e)
+	
+
 
 func _process(delta):
 	peer.poll()
@@ -123,11 +146,11 @@ func _process(delta):
 			elif data.message_type == MessageTypes.USER_CONNECTED:
 				create_peer(data.id)
 			elif data.message_type == MessageTypes.LEAVE_LOBBY:
-				players = data.players
+				update_players(data.players)
 				lobby_id = data.lobby_id
 				host_id = data.host
 			elif data.message_type == MessageTypes.LOBBY:
-				players = data.players
+				update_players(data.players)
 				lobby_id = data.lobby_id
 				host_id = data.host
 
@@ -276,10 +299,7 @@ func reset_multiplayer_connection():
 	rtc_peer = WebRTCMultiplayerPeer.new()
 	
 	# Ensure all peers are removed
-	rtc_players.clear()
-	players_voted.clear()
-	players.clear()
-	dead_players.clear()
+	update_players({})
 	
 	# Removes all mp sync from scene
 	for node in get_tree().get_nodes_in_group("multiplayer_sync"):
@@ -291,10 +311,10 @@ func reset_multiplayer_connection():
 @rpc("any_peer")
 func rejoin(lobby_id: String):
 	print("trying to rejoin")
-	players.clear()
-	dead_players.clear()
+	
 	id_to_rejoin = lobby_id
 	reset_multiplayer_connection()
+	update_players({})
 	
 	
 
@@ -306,13 +326,16 @@ func leave_lobby():
 		"lobby_id": lobby_id
 	}
 	send_to_server(message)
+	update_players({})
 	GlobalFunctions.load_menu("main")
+	
 	#reset_multiplayer_connection()
 	
 	
 
 @rpc("any_peer")
 func join_lobby(lobby_id: String, nickname: String = ""):
+	update_players({})
 	if nickname == "" and player_name != "":
 		nickname = player_name
 	else:
@@ -376,12 +399,12 @@ func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: f
 
 @rpc("any_peer", "call_local")
 func leave_home(id):
-	if id != self.id or !voted_to_leave_home:
+	if (id != self.id or !voted_to_leave_home) and players_alive.has(id):
 		if id == self.id:
 			voted_to_leave_home = true
 		leave_home_vote += 1
 		
-	if leave_home_vote >= players.size() - dead_players.size():
+	if leave_home_vote >= players_alive.size():
 		leave_home_vote = 0
 		voted_to_leave_home = false
 		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
@@ -398,6 +421,10 @@ func end_game(result: EndStates):
 		EndStates.Draw:
 			GlobalFunctions.load_menu("multiplayer_draw", false)
 
+@rpc("any_peer", "call_local")
+func set_new_host(id: int):
+	host_id = id
+	
 
 @rpc("any_peer", "call_local")
 func player_died(id: int, name, score, time):
@@ -407,17 +434,26 @@ func player_died(id: int, name, score, time):
 		"score": score,
 		"time": time
 	}
-	dead_players[id] = player
+	
+	players_dead[id] = {
+		"id" : id,
+		"name" : name,
+		"time" : time,
+		"score" : score
+	}
+	players_alive.erase(id)
 	
 	if self.id == host_id: # Only host runs this block
-		#if dead_players.size() == players.size():
-			## All died, draw
-			#end_game.rpc(EndStates.Draw)
-			#print("It's a Draw")
-		if dead_players.size() == players.size() - 1:
+		if players_alive.size() > 1:
+			if self.id == id:
+				set_new_host.rpc(players_alive.pick_random())
+				
+		
+		
+		if players_alive.size() == 1:
 			# One player left — victory for them
 			for player_id in players.keys():
-				if !dead_players.has(player_id.to_int()):
+				if players_alive.has(player_id.to_int()):
 					# Send victory to the last alive player
 					end_game.rpc_id(player_id.to_int(), EndStates.Victory)
 				else:

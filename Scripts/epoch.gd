@@ -16,13 +16,16 @@ func _ready():
 	current_countdown_value = GlobalVariables.pre_game_countdown_time
 	
 	if Client.active:
-		for i in Client.players:
+		for i in Client.players_alive:
+			print(Client.players_alive)
 			var player = load(player_prefab).instantiate()
 			if int(i) == Client.id:
 				player_spawned.emit(player)
 			
 			player.global_position = spawn_point.global_position + Vector2(randf_range(-1000, 1000), randf_range(-1000, 1000))
 			player.name = "Player" + str(i)
+			player.id = int(i)
+			print("spawning player: " + str(player.id))
 			get_tree().current_scene.add_child(player)
 	else:
 		var player = load(player_prefab).instantiate()
@@ -35,7 +38,8 @@ func _on_timer_timeout():
 	current_countdown_value -= 1
 	if current_countdown_value <= 0:
 		countdown_panel.queue_free()
-		GlobalVariables.game_is_on = true
+		if !Client.active or Client.players_alive.has(Client.id):
+			GlobalVariables.game_is_on = true
 	else:
 		countdown_label.text = str(current_countdown_value)
 	

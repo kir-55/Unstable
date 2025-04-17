@@ -17,7 +17,7 @@ func _on_body_entered(body):
 			GlobalVariables.last_score = last_score
 			GlobalFunctions.end_timer()
 
-
+				
 
 			if !Client.active:
 				# spawning death menu

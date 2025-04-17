@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+
+var id
+
 @export var REMOTE_PLAYER_POSITION: Vector2
 
 # Constants
@@ -68,12 +71,13 @@ var is_jumping
 
 func _enter_tree():
 	if Client.active:
-		set_multiplayer_authority(name.to_int())
+		print("player name in enter tree: " + name)
+		set_multiplayer_authority(id)
 
 func _ready():
 	GlobalVariables.player = self
 	if Client.active:
-		nickname_label.text = Client.players[str(name.to_int())].name
+		nickname_label.text = Client.players[str(id)].name
 	else:
 		multiplayer_synchronizer.queue_free()
 
