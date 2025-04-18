@@ -118,7 +118,7 @@ var candidate_queues = {}  # Add this at the top of your client script
 
 @rpc("any_peer")
 func update_players(new_players, players_voted_start = []):
-	print("Updating players")	
+	print("Updating players")
 	
 	
 	if players_voted_start != []:
