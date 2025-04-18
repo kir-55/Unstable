@@ -304,12 +304,18 @@ func _notification(what):
 		print("players alive when closing: ", players_alive)
 		players.erase(str(id))
 		players_alive.erase(id)
-		update_players.rpc(players)
+		
+		for p in players:
+			update_players.rpc_id(int(p), players)
 		print("players alive when closing updated: ", players_alive)
+		
+		
 		
 		if host_id == id or new_host_id == id:
 			print("host is leaving -> changeing host via rpc")
-			set_new_host.rpc(players_alive.pick_random())
+			for p in players:
+				set_new_host.rpc_id(int(p), players_alive.pick_random())
+			
 		get_tree().quit() # You *must* call this if you still want the window to close
 
 func reset_multiplayer_connection():
@@ -464,7 +470,7 @@ func end_game(result: EndStates):
 @rpc("any_peer", "call_local")
 func set_new_host(id: int):
 	host_id = id
-	print("SETTING NEW HOST IN / ", Client.id, "  ", Client.player_name ," /")
+	print("SETTING NEW HOST IN /// ", Client.id, "  ", Client.player_name ," ///")
 	print("my players alive:", Client.players_alive)
 	print("my new_host_id:", Client.new_host_id)
 	print("my host_id:", Client.host_id)
@@ -491,9 +497,7 @@ func player_died(id: int, name, score, time):
 
 	if self.id == host_id and still_playing:  # Only host runs this block
 		if players_alive.size() > 1:
-			if self.id == id:
-				set_new_host.rpc(players_alive.pick_random())
-			if self.id == new_host_id:
+			if self.id == id or self.id == new_host_id:
 				set_new_host.rpc(players_alive.pick_random())
 
 

@@ -95,4 +95,4 @@ func remove_amulet(id):
 		if index >= 0 and index < amulets_available.size() and amulets_available[index] == id:
 			amulets_available.remove_at(index)
 		else:
-		amulets_displayed = false
+			amulets_displayed = false
