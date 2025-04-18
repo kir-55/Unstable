@@ -13,14 +13,14 @@ var old_votes
 
 
 func _on_button_pressed():
-	if !Client.players_voted.has(Client.id):
+	if !Client.players_voted_start.has(Client.id):
 		Client.start_game.rpc(Client.id)
 		start_game_button.disabled = true
 		
 func _process(delta):
-	if Client.players != old_players or Client.players_voted != old_votes:
+	if Client.players != old_players or Client.players_voted_start != old_votes:
 		rtc_players = Client.players_rtc.duplicate()
-		old_votes = Client.players_voted.duplicate()
+		old_votes = Client.players_voted_start.duplicate()
 		
 		if Client.players.size() != Client.players_rtc.size()+1:
 			start_game_button.disabled = true
@@ -32,7 +32,7 @@ func _process(delta):
 	if Client.players_rtc != rtc_players:
 		rtc_players = Client.players_rtc.duplicate()
 		print("rtc players changed: " + str(rtc_players))
-		if Client.players.size() == Client.players_rtc.size()+1 and !Client.players_voted.has(Client.id):
+		if Client.players.size() == Client.players_rtc.size()+1 and !Client.players_voted_start.has(Client.id):
 			start_game_button.disabled = false
 
 func _on_timer_timeout():

@@ -22,16 +22,12 @@ var players = {}
 var players_dead = {}
 var players_alive = []
 var players_rtc = []
-var players_voted = []
+var players_voted_start = []
+var players_voted_leave_home = []
 
 var active = false
 
 var still_playing = true
-# Votes for events
-
-
-var leave_home_vote = 0
-var voted_to_leave_home = false
 
 var id_to_rejoin: String = ""
 
@@ -122,7 +118,7 @@ func update_players(new_players):
 	players = new_players
 	var valid_ids = players.keys()
 
-	var arrays_to_clean = [players_rtc, players_voted]
+	var arrays_to_clean = [players_rtc, players_voted_start]
 
 	Client.players_alive.clear()
 	for id in valid_ids:
@@ -382,11 +378,11 @@ func join_lobby(lobby_id: String, nickname: String = ""):
 
 @rpc("any_peer", "call_local")
 func start_game(id: int):
-	if !players_voted.has(id):
-		players_voted.append(id)
+	if !players_voted_start.has(id):
+		players_voted_start.append(id)
 
-	if players_voted.size() >= players.size():
-		players_voted.clear()
+	if players_voted_start.size() >= players.size():
+		players_voted_start.clear()
 		var message = {
 			"message_type": MessageTypes.REMOVE_LOBBY,
 			"lobby_id": lobby_id
@@ -441,18 +437,19 @@ func apply_screen_effect(effect_prefab: String, delete_other_effects := false): 
 
 @rpc("any_peer", "call_local")
 func leave_home(id):
-	if new_host_id:
-		host_id = new_host_id
-		new_host_id = 0
+	#if new_host_id = :
+		#host_id = new_host_id
+		#new_host_id = 0
 
-	if (id != self.id or !voted_to_leave_home) and players_alive.has(id):
-		if id == self.id:
-			voted_to_leave_home = true
-		leave_home_vote += 1
+	if !players_voted_leave_home.has(id) and players_alive.has(id):
+		players_voted_leave_home.append(id)
+		print("NEW PLAYER VOTED: ", players_voted_leave_home)
+		
 
-	if leave_home_vote >= players_alive.size():
-		leave_home_vote = 0
-		voted_to_leave_home = false
+	if players_voted_leave_home == players_alive:
+		print("LEAVING HOME, RESETING VOTES")
+		print()
+		players_voted_leave_home.clear()
 		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
 
 @rpc("any_peer", "call_local")
