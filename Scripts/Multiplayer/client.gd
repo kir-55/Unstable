@@ -302,11 +302,11 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print("lekefgekjbegjo: ", players_alive)
+		print("players alive when closing: ", players_alive)
 		players.erase(str(id))
 		players_alive.erase(id)
 		update_players.rpc(players)
-		print("lekefgekjbegjo: ", players_alive)
+		print("players alive when closing after removing: ", players_alive)
 		if host_id == id:
 			Client.set_new_host.rpc(players_alive.pick_random())
 		if new_host_id == id:
@@ -466,7 +466,7 @@ func end_game(result: EndStates):
 
 @rpc("any_peer", "call_local")
 func set_new_host(id: int):
-	new_host_id = id
+	host_id = id
 	print("////////////////////////// ", Client.id, "  ", Client.player_name ," /////////////////////////////////")
 	print("my players alive:", Client.players_alive)
 	print("my new_host_id:", Client.new_host_id)
