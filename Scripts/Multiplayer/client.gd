@@ -101,24 +101,34 @@ func rtc_server_connected():
 
 func rtc_peer_connected(id):
 	players_rtc.append(id)
+	if host_id == self.id:
+		print("Giveing newly connected peer updated votes")
+		update_players.rpc_id(id, players, players_voted_start)
 	print("RTC peer connected " + str(id))
 
 
 
 func rtc_peer_disconnected(id):
-	players_rtc.erase(id)
+	players.erase(str(id))
+	update_players(players)
 	print("RTC peer disonnected " + str(id))
 
 
 var candidate_queues = {}  # Add this at the top of your client script
 
 @rpc("any_peer")
-func update_players(new_players):
-	print("updating players")
+func update_players(new_players, players_voted_start = []):
+	print("Updating players")	
+	
+	
+	if players_voted_start != []:
+		print("Getting up to date with votes: ", players_voted_start)
+		self.players_voted_start = players_voted_start
+		
 	players = new_players
 	var valid_ids = players.keys()
 
-	var arrays_to_clean = [players_rtc, players_voted_start]
+	var arrays_to_clean = [players_rtc, self.players_voted_start]
 
 	Client.players_alive.clear()
 	for id in valid_ids:
@@ -445,7 +455,9 @@ func leave_home(id):
 		players_voted_leave_home.append(id)
 		print("NEW PLAYER VOTED: ", players_voted_leave_home)
 		
-
+	
+	players_voted_leave_home.sort()
+	players_alive.sort()
 	if players_voted_leave_home == players_alive:
 		print("LEAVING HOME, RESETING VOTES")
 		print()
@@ -467,6 +479,7 @@ func end_game(result: EndStates):
 @rpc("any_peer", "call_local")
 func set_new_host(id: int):
 	host_id = id
+	print()
 	print("SETTING NEW HOST IN /// ", Client.id, "  ", Client.player_name ," ///")
 	print("my players alive:", Client.players_alive)
 	print("my new_host_id:", Client.new_host_id)

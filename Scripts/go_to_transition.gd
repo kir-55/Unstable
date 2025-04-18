@@ -33,6 +33,7 @@ func transition(destination, next_epoch: GlobalEnums.LEVELS):
 
 
 func _on_timeout():
+	print()
 	print("TIMEOUT IN ", Client.id, "  ", Client.player_name ," ***************************************")
 	print("my players alive:", Client.players_alive)
 	print("my new_host_id:", Client.new_host_id)

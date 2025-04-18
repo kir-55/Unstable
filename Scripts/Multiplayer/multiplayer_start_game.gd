@@ -22,6 +22,8 @@ func _process(delta):
 		rtc_players = Client.players_rtc.duplicate()
 		old_votes = Client.players_voted_start.duplicate()
 		
+		
+		
 		if Client.players.size() != Client.players_rtc.size()+1:
 			start_game_button.disabled = true
 		players_list.text = ""
