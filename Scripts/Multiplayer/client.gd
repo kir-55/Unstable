@@ -124,18 +124,17 @@ func update_players(new_players):
 
 	var arrays_to_clean = [players_rtc, players_voted]
 
-	players_alive.clear()
+	Client.players_alive.clear()
+	print("valid ids: ", valid_ids)
 	for id in valid_ids:
-		players_alive.append(int(id))
+		Client.players_alive.append(int(id))
 
 	players_dead.clear()
 	
-	print("players alive: " + str(players_alive))
+	print("players alive: " + str(players_alive) + str(id))
 	
 	for array in arrays_to_clean:
-		for e in array:
-			if !valid_ids.has(str(e)):
-				array.erase(e)
+		array = array.filter(func(e): return valid_ids.has(str(e)))
 
 
 
@@ -303,13 +302,15 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		print("lekefgekjbegjo: ", players_alive)
 		players.erase(str(id))
+		players_alive.erase(id)
 		update_players.rpc(players)
+		print("lekefgekjbegjo: ", players_alive)
 		if host_id == id:
-			set_new_host.rpc(players_alive.pick_random())
+			Client.set_new_host.rpc(players_alive.pick_random())
 		if new_host_id == id:
-			set_new_host.rpc(players_alive.pick_random())
-		reset_multiplayer_connection()
+			Client.set_new_host.rpc(players_alive.pick_random())
 		get_tree().quit() # You *must* call this if you still want the window to close
 
 func reset_multiplayer_connection():
@@ -466,6 +467,13 @@ func end_game(result: EndStates):
 @rpc("any_peer", "call_local")
 func set_new_host(id: int):
 	new_host_id = id
+	print("////////////////////////// ", Client.id, "  ", Client.player_name ," /////////////////////////////////")
+	print("my players alive:", Client.players_alive)
+	print("my new_host_id:", Client.new_host_id)
+	print("my host_id:", Client.host_id)
+	print("my players:", Client.players)
+	print("my players_voted:", Client.players_voted)
+	print("my players_rtc:", Client.players_rtc)
 
 
 @rpc("any_peer", "call_local")
