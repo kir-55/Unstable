@@ -22,5 +22,5 @@ func take_damage(value):
 			
 		get_tree().current_scene.add_child(explosion)
 		
-		print("damage")
+		#print("damage")
 		get_parent().queue_free()

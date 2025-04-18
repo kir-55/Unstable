@@ -17,7 +17,8 @@ func _ready():
 			destination_level_info = level_info
 	
 	if !destination_level_info:
-		print("error")
+		#print("error")
+		pass
 		
 	baner.texture = destination_level_info.baner
 	title.text = destination_level_info.title

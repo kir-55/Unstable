@@ -17,8 +17,6 @@ func _ready():
 	elif win_type == GlobalEnums.WIN_TYPES.DESTRUCTION:
 		escape_amulets = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction)
 		win_label.text = "[center]You [color=#c33c40][wave]destroyed[/wave][/color] the time machine!!![/center]"
-	else:
-		print("Invalid/NONE Win Type!")
 	for amulet in escape_amulets:
 		spawn_amulet(amulet)
 

@@ -18,7 +18,7 @@ func _ready():
 	
 	if Client.active:
 		for i in Client.players_alive:
-			print(Client.players_alive)
+			#(Client.players_alive)
 			var player = load(player_prefab).instantiate()
 			if int(i) == Client.id:
 				player_spawned.emit(player)
@@ -26,7 +26,7 @@ func _ready():
 			player.global_position = spawn_point.global_position + Vector2(randf_range(-1000, 1000), randf_range(-1000, 1000))
 			player.name = "Player" + str(i)
 			player.id = int(i)
-			print("spawning player: " + str(player.id))
+			#print("spawning player: " + str(player.id))
 			get_tree().current_scene.add_child(player)
 	else:
 		var player = load(player_prefab).instantiate()

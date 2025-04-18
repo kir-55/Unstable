@@ -125,7 +125,6 @@ func update_players(new_players):
 	var arrays_to_clean = [players_rtc, players_voted]
 
 	Client.players_alive.clear()
-	print("valid ids: ", valid_ids)
 	for id in valid_ids:
 		Client.players_alive.append(int(id))
 
@@ -146,11 +145,11 @@ func _process(delta):
 		if packet:
 			var data_string = packet.get_string_from_utf8()
 			var data = JSON.parse_string(data_string)
-			print(data)
+			#print(data)
 			if data.message_type == MessageTypes.ID:
 				id = data.id
 				connected(id)
-				print("CLIENT: Recieved id: " + str(id))
+				#print("CLIENT: Recieved id: " + str(id))
 			elif data.message_type == MessageTypes.USER_CONNECTED:
 				create_peer(data.id)
 			elif data.message_type == MessageTypes.LEAVE_LOBBY:
@@ -173,7 +172,7 @@ func _process(delta):
 
 			elif data.message_type == MessageTypes.CANDIDATE:
 				if rtc_peer.has_peer(data.org_peer):
-					print("CLIENT(" + str(id) + ") Got candidate: " + str(data.org_peer))
+					#print("CLIENT(" + str(id) + ") Got candidate: " + str(data.org_peer))
 					rtc_peer.get_peer(data.org_peer).connection.add_ice_candidate(data.mid, int(data.index), data.sdp)
 			elif data.message_type == MessageTypes.OFFER:
 				if rtc_peer.has_peer(data.org_peer):
@@ -193,7 +192,7 @@ func connected(id):
 
 func create_peer(id):
 	if id != self.id:
-		print("CLIENT(" + str(self.id) + "): Creating peer for id " + str(id))
+		#print("CLIENT(" + str(self.id) + "): Creating peer for id " + str(id))
 
 		var peer := WebRTCPeerConnection.new()
 		peer.initialize({
@@ -219,8 +218,8 @@ func create_peer(id):
 			var signaling_states = ["stable", "have-local-offer", "have-remote-offer", "have-local-pranswer", "have-remote-pranswer", "closed"]
 			var connection_states = ["new", "checking", "connected", "completed", "failed", "disconnected", "closed"]
 
-			print("Peer %d signaling state: %s" % [id, signaling_states[peer.get_signaling_state()]])
-			print("Peer %d connection state: %s" % [id, connection_states[peer.get_connection_state()]])
+			#print("Peer %d signaling state: %s" % [id, signaling_states[peer.get_signaling_state()]])
+			#print("Peer %d connection state: %s" % [id, connection_states[peer.get_connection_state()]])
 
 		)
 
@@ -259,12 +258,12 @@ func send_answer(id, data):
 
 
 func _on_request_completed(_result, _response_code, _headers, body):
-	print("result: " + str(_result))
-	print("response code: " + str(_response_code))
-	print("hearders: " + str(_headers))
-	print("body: " + str(body))
+	#print("result: " + str(_result))
+	#print("response code: " + str(_response_code))
+	#print("hearders: " + str(_headers))
+	#print("body: " + str(body))
 	public_ip = body.get_string_from_utf8()
-	print("Public IPv4 Address: ", public_ip)
+	#print("Public IPv4 Address: ", public_ip)
 
 
 
@@ -287,7 +286,7 @@ func _on_offer_created(type, data, id):
 
 
 func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
-	print("ICE Candidate for %d: %s" % [id, sdp_name])
+	#print("ICE Candidate for %d: %s" % [id, sdp_name])
 	var message = {
 		"message_type": MessageTypes.CANDIDATE,
 		"id": id,
@@ -306,11 +305,11 @@ func _notification(what):
 		players.erase(str(id))
 		players_alive.erase(id)
 		update_players.rpc(players)
-		print("players alive when closing after removing: ", players_alive)
-		if host_id == id:
-			Client.set_new_host.rpc(players_alive.pick_random())
-		if new_host_id == id:
-			Client.set_new_host.rpc(players_alive.pick_random())
+		print("players alive when closing updated: ", players_alive)
+		
+		if host_id == id or new_host_id == id:
+			print("host is leaving -> changeing host via rpc")
+			set_new_host.rpc(players_alive.pick_random())
 		get_tree().quit() # You *must* call this if you still want the window to close
 
 func reset_multiplayer_connection():
@@ -405,7 +404,6 @@ func start_game(id: int):
 
 @rpc("any_peer", "call_local")
 func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: float, initial_rotation: float):
-	print(prefab)
 	var instance = load(prefab).instantiate()
 	instance.global_position = position
 	get_tree().current_scene.add_child(instance)
@@ -425,7 +423,6 @@ func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: f
 func apply_screen_effect(effect_prefab: String, delete_other_effects := false):  #effect_prefab must be a path to TextureRect scene
 	var canvas_layer = get_tree().current_scene.canvas_layer
 	if !canvas_layer:
-		print("Function 'apply_screen_effect' in client.gd could not find canvas layer!")
 		return
 
 	if delete_other_effects:
@@ -467,13 +464,12 @@ func end_game(result: EndStates):
 @rpc("any_peer", "call_local")
 func set_new_host(id: int):
 	host_id = id
-	print("////////////////////////// ", Client.id, "  ", Client.player_name ," /////////////////////////////////")
+	print("SETTING NEW HOST IN / ", Client.id, "  ", Client.player_name ," /")
 	print("my players alive:", Client.players_alive)
 	print("my new_host_id:", Client.new_host_id)
 	print("my host_id:", Client.host_id)
 	print("my players:", Client.players)
-	print("my players_voted:", Client.players_voted)
-	print("my players_rtc:", Client.players_rtc)
+
 
 
 @rpc("any_peer", "call_local")
@@ -501,7 +497,7 @@ func player_died(id: int, name, score, time):
 				set_new_host.rpc(players_alive.pick_random())
 
 
-		print(players_alive)
+		print("player " + str(id) + " died new players alive:" + str(players_alive))
 		if players_alive.size() <= 1:
 
 			# One player left — victory for them

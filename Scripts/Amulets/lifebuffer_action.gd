@@ -7,8 +7,6 @@ func _ready():
 		if amulet_system:
 			amulet_system.attach_amulet(11)
 			amulet_system.display_amulets()
-		else:
-			print("Lifebuffer projectile: Amulet System not found! Please change node name")
 	queue_free()
 
 func set_velocity(speed : Vector2):

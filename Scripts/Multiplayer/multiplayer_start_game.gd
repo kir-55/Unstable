@@ -31,9 +31,8 @@ func _process(delta):
 		
 	if Client.players_rtc != rtc_players:
 		rtc_players = Client.players_rtc.duplicate()
-		print("rtc playrert: " + str(rtc_players))
+		print("rtc players changed: " + str(rtc_players))
 		if Client.players.size() == Client.players_rtc.size()+1 and !Client.players_voted.has(Client.id):
-			print(Client.players.size())
 			start_game_button.disabled = false
 
 func _on_timer_timeout():
@@ -54,4 +53,3 @@ func _on_in_lobby_meta_clicked(meta):
 	DisplayServer.clipboard_set(li)
 	
 	in_lobby_label.text = '[center][color=c2d64f]Coppied to clipboard![/color] [url={"lobby": "' + Client.lobby_id + '"}]' + Client.lobby_id + '[/url][/center]'
-	print("clicked on: " + li)

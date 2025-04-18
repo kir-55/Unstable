@@ -72,7 +72,7 @@ var is_jumping
 
 func _enter_tree():
 	if Client.active:
-		print("player name in enter tree: " + name)
+		#print("player name in enter tree: " + name)
 		set_multiplayer_authority(id)
 
 func _ready():

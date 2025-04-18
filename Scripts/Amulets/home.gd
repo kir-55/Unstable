@@ -35,7 +35,6 @@ func _ready():
 				for i in range(amulet.chance_multiplier):
 					multiplied_amulets_list.append(amulet)
 			
-		print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)))
 		
 		
 		for i in range(GlobalVariables.items_in_home):
@@ -45,7 +44,6 @@ func _ready():
 			while !can_be_generated(random_amulet.id):
 				while multiplied_amulets_list.has(random_amulet):
 					multiplied_amulets_list.erase(random_amulet)
-				print(str(multiplied_amulets_list.map(func(amulet): return amulet.id)) + " po usunieciu")
 				random_amulet = multiplied_amulets_list.pick_random()
 
 			amulets_displayed.append(random_amulet.id)
@@ -83,7 +81,6 @@ func menu_instance_destruction_callable(menu):
 
 func are_amulets_compatible(amulet1_id: int, amulet2_id: int):
 	if GlobalVariables.amulets[amulet1_id].incompatible_amulets.has(amulet2_id) or GlobalVariables.amulets[amulet2_id].incompatible_amulets.has(amulet1_id):
-		print(str(amulet1_id) + " " + str(amulet2_id) + " are not compatible")
 		return false
 	else:
 		return true
@@ -123,7 +120,6 @@ func spawn_amulet(amulet):
 func chosed_amulet(event: InputEvent, amulet):
 	if !Client.active or Client.players_alive.has(Client.id):
 		if event is InputEventMouseButton and event.pressed and amulets_chosen.size() < amount_of_items_to_take:
-			print("amulet clicked " + str(amulet[0]))
 			if amulet[0] == 2:
 				GlobalVariables.player_global_speed += 100
 				GlobalVariables.items_in_home += 1
@@ -150,7 +146,6 @@ func grab_and_leave():
 		GlobalVariables.player_amulets.append_array(amulets_chosen)
 		for i in GlobalVariables.player_amulets:
 			if ! (i in GlobalVariables.player_amulet_collection):
-				print(str(i) + "grab and leave")
 				GlobalVariables.player_new_amulets.append(i)
 				GlobalVariables.player_amulet_collection.append(i)
 		Client.leave_home.rpc(Client.id)

@@ -33,15 +33,14 @@ func transition(destination, next_epoch: GlobalEnums.LEVELS):
 
 
 func _on_timeout():
-	print("*************************************** ", Client.id, "  ", Client.player_name ," ***************************************")
+	print("TIMEOUT IN ", Client.id, "  ", Client.player_name ," ***************************************")
 	print("my players alive:", Client.players_alive)
 	print("my new_host_id:", Client.new_host_id)
 	print("my host_id:", Client.host_id)
 	print("my players:", Client.players)
-	print("my players_voted:", Client.players_voted)
-	print("my players_rtc:", Client.players_rtc)
 	
 	if !Client.active or (Client.new_host_id != 0 and Client.new_host_id == Client.id) or (Client.new_host_id == 0 and Client.host_id == Client.id):
+		print("CALLING TRANSITION (host is fine)")
 		if GlobalVariables.game_is_on and player:
 			var rnd = randi_range(0, 100)
 			var destination = ""

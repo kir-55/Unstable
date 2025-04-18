@@ -85,7 +85,7 @@ func load_menu(menu: String, remove_all_children = true, transition_to_main = fa
 	var container = get_tree().current_scene.find_child("CanvasLayer")
 	
 	if !container:
-		print("Could not find canvas layer. Please add one!")
+		#print("Could not find canvas layer. Please add one!")
 		return
 	
 	if remove_all_children:

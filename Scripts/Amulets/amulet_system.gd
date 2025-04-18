@@ -95,5 +95,4 @@ func remove_amulet(id):
 		if index >= 0 and index < amulets_available.size() and amulets_available[index] == id:
 			amulets_available.remove_at(index)
 		else:
-			print("ID not found in the array.")
 		amulets_displayed = false

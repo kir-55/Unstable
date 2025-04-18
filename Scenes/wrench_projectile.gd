@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	if GlobalVariables.game_is_on:
 		var direction_to_player = (GlobalVariables.player.global_position - global_position).normalized()
 		var is_behind_player = global_position.x < GlobalVariables.player.global_position.x
-		print(is_behind_player)
+		
 		if rotation_direction != 1:
 			if is_behind_player:
 				velocity = direction_to_player * (GlobalVariables.player.velocity.x + speed_value)
