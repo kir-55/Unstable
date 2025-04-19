@@ -13,3 +13,4 @@ width = 150
 pattern_type = "B"
 type = 1
 ignore_types = Array[int]([0])
+can_be_mirrored = true

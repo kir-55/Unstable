@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn1n12yuikd8i"
-path="res://.godot/imported/taczka.png-7b613ec05309d98a5a33b07c583481a3.ctex"
+uid="uid://b8b5qg2wavhe"
+path="res://.godot/imported/swiatlo.png-e7ae4e20c6cd684ef91fdc8a57967577.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/taczka.png"
-dest_files=["res://.godot/imported/taczka.png-7b613ec05309d98a5a33b07c583481a3.ctex"]
+source_file="res://Textures/Decorations/City/swiatlo.png"
+dest_files=["res://.godot/imported/swiatlo.png-e7ae4e20c6cd684ef91fdc8a57967577.ctex"]
 
 [params]
 

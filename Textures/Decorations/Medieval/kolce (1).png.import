@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddgpygvm3g5ik"
-path="res://.godot/imported/lodz.png-be881ec498a8a61ffe3a284ab1bb5282.ctex"
+uid="uid://dwihutech86ly"
+path="res://.godot/imported/kolce (1).png-0bf0b8c1971d41b0ee37db8746ee0e7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/lodz.png"
-dest_files=["res://.godot/imported/lodz.png-be881ec498a8a61ffe3a284ab1bb5282.ctex"]
+source_file="res://Textures/Decorations/Medieval/kolce (1).png"
+dest_files=["res://.godot/imported/kolce (1).png-0bf0b8c1971d41b0ee37db8746ee0e7b.ctex"]
 
 [params]
 

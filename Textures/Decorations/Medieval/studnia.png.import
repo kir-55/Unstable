@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwihutech86ly"
-path="res://.godot/imported/kolce (1).png-0cfced856ddf4eb89949d83178ea8990.ctex"
+uid="uid://ccqm2qxekwc1o"
+path="res://.godot/imported/studnia.png-a447175ed31df343c21e3e914b9377c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/kolce (1).png"
-dest_files=["res://.godot/imported/kolce (1).png-0cfced856ddf4eb89949d83178ea8990.ctex"]
+source_file="res://Textures/Decorations/Medieval/studnia.png"
+dest_files=["res://.godot/imported/studnia.png-a447175ed31df343c21e3e914b9377c0.ctex"]
 
 [params]
 

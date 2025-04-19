@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfe4ymutjtyn1"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_miynu"]
-[ext_resource type="Texture2D" uid="uid://dn1n12yuikd8i" path="res://Textures/taczka.png" id="2_r62c1"]
+[ext_resource type="Texture2D" uid="uid://dn1n12yuikd8i" path="res://Textures/Decorations/Medieval/taczka.png" id="2_r62c1"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_bo8i7"]
 [ext_resource type="PackedScene" uid="uid://bbtqfru2j1bqk" path="res://Scenes/Explosions/wagon_explosion.tscn" id="4_ndy1l"]
 

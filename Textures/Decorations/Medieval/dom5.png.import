@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccqm2qxekwc1o"
-path="res://.godot/imported/studnia.png-2221a35aaf272728d8a7ed1a6f2434cb.ctex"
+uid="uid://bq4m5vvu1ojqq"
+path="res://.godot/imported/dom5.png-634d5a07668a9b9562b281e3a7aa8f6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/studnia.png"
-dest_files=["res://.godot/imported/studnia.png-2221a35aaf272728d8a7ed1a6f2434cb.ctex"]
+source_file="res://Textures/Decorations/Medieval/dom5.png"
+dest_files=["res://.godot/imported/dom5.png-634d5a07668a9b9562b281e3a7aa8f6e.ctex"]
 
 [params]
 

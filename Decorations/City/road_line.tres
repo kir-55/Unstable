@@ -13,3 +13,4 @@ width = 0
 pattern_type = "R"
 type = 3
 ignore_types = Array[int]([0, 1, 2, 3])
+can_be_mirrored = true

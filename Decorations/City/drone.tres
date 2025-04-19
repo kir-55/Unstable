@@ -13,3 +13,4 @@ width = 110
 pattern_type = "C"
 type = 0
 ignore_types = Array[int]([1, 2, 3])
+can_be_mirrored = true

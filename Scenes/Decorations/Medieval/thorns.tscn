@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ck30tg7fmieo7"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_jrflh"]
-[ext_resource type="Texture2D" uid="uid://dwihutech86ly" path="res://Textures/kolce (1).png" id="2_2o57i"]
+[ext_resource type="Texture2D" uid="uid://dwihutech86ly" path="res://Textures/Decorations/Medieval/kolce (1).png" id="2_2o57i"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_twyhe"]
 [ext_resource type="PackedScene" uid="uid://b2v457chva6wm" path="res://Scenes/Explosions/wood_explosion.tscn" id="4_ish7h"]
 
