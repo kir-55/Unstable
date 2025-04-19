@@ -44,8 +44,10 @@ countdown_panel = NodePath("CanvasLayer/Panel")
 countdown_label = NodePath("CanvasLayer/Panel/Label")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.899827, 0.834361, 1)
 energy = 0.7
 blend_mode = 1
+range_layer_min = -100
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_24bpy")
