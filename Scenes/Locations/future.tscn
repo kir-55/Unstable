@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://dpvkb0rwmnqll" path="res://Decorations/Future/ufo.tres" id="11_f7px4"]
 [ext_resource type="Resource" uid="uid://c5yelpxafnl1j" path="res://Decorations/Future/house.tres" id="13_pikp5"]
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_t2yep"]
-[ext_resource type="Script" path="res://Scripts/go_to_transition.gd" id="15_0fvja"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="15_0fvja"]
 
 [sub_resource type="Gradient" id="Gradient_bnu6x"]
 interpolation_mode = 2

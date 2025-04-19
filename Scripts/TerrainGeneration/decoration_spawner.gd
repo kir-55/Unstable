@@ -137,7 +137,6 @@ func check_collision(decoration_segment: DecorationSegment, ignore_types: Array[
 			continue
 		
 		if decoration_segment.position.end >= segment.position.start and decoration_segment.position.start <= segment.position.end:
-			#print("collision")
 			return true
 	
 	return false

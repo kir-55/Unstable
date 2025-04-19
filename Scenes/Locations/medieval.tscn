@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="9_dlgnq"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="10_gvfmj"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="11_v7fia"]
-[ext_resource type="Script" path="res://Scripts/go_to_transition.gd" id="14_co4vu"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="14_co4vu"]
 [ext_resource type="Resource" uid="uid://7c3qumhckc0x" path="res://Decorations/Medieval/house.tres" id="14_qu7ts"]
 [ext_resource type="Resource" uid="uid://dfnt6xi0bxdpj" path="res://Decorations/Medieval/thorns.tres" id="15_0ytbq"]
 [ext_resource type="Resource" uid="uid://vms017kct8up" path="res://Decorations/Medieval/barrel.tres" id="16_mxrs0"]
@@ -195,12 +195,12 @@ sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_pattern = ""
+spawn_pattern = "RA*B*C*|RHB*C*|RB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|R|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
 spawn_from = 3
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("16_mxrs0"), ExtResource("15_0ytbq"), ExtResource("14_qu7ts")])
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 25.0
 autostart = true
 script = ExtResource("14_co4vu")
 current_world = 1

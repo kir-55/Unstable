@@ -37,7 +37,7 @@ func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segme
 	var a = (p2.y - p1.y) / (p2.x - p1.x)
 	var b = -a * p2.x + p2.y
 	
-	var distance = p2 - p1
+	var distance = abs(p2 - p1)
 	var instance = object.instantiate()
 	var x = p1.x + line_section_length*part_of_segment
 	

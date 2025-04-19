@@ -26,9 +26,11 @@ var players_voted_start = []
 var players_voted_leave_home = []
 
 var active = false
+var is_in_lobby = false
 
 var still_playing = true
 
+var need_to_rejoin: bool = false
 var id_to_rejoin: String = ""
 
 enum MessageTypes {
@@ -62,11 +64,12 @@ var rtc_peer = WebRTCMultiplayerPeer.new()
 
 var id: int = 0
 var host_id: int = 0
+# if host dies he will be host and he will find reserve host
+var reserve_host_id: int = 0
+
 var lobby_id: String
 var public_ip: String
 
-# will be used and applied to host id on next transition
-var new_host_id: int = 0
 
 var player_name: String = ""
 
@@ -100,46 +103,94 @@ func rtc_server_connected():
 
 
 func rtc_peer_connected(id):
+	print("RTC peer connected " + str(id))
 	players_rtc.append(id)
 	if host_id == self.id:
 		print("Giveing newly connected peer updated votes")
 		update_players.rpc_id(id, players, players_voted_start)
-	print("RTC peer connected " + str(id))
-
-
-
-func rtc_peer_disconnected(id):
-	players.erase(str(id))
+	
 	update_players(players)
-	print("RTC peer disonnected " + str(id))
+
+
+
+func rtc_peer_disconnected(disconnected_id):
+	print("RTC peer disonnected ", disconnected_id)
+	players.erase(str(disconnected_id))
+	players_rtc.erase(disconnected_id)
+	if players_voted_start.has(disconnected_id):
+		players_voted_start.erase(disconnected_id)
+	if players_voted_leave_home.has(disconnected_id):
+		players_voted_leave_home.erase(disconnected_id)
+	update_players(players)
+	
 
 
 var candidate_queues = {}  # Add this at the top of your client script
 
-@rpc("any_peer")
+@rpc("any_peer", "call_local")
 func update_players(new_players, players_voted_start = []):
-	print("Updating players")
+	print()
+	print("___ UPDATING PLAYERS (", self.id, ")","[HOST]" if self.id == host_id else ("[RESERVE HOST]" if self.id == reserve_host_id else "") ," ___")
 	
-	
+
+			
 	if players_voted_start != []:
-		print("Getting up to date with votes: ", players_voted_start)
+		print("___ Getting up to date with votes: ", players_voted_start)
 		self.players_voted_start = players_voted_start
 		
 	players = new_players
 	var valid_ids = players.keys()
 
-	var arrays_to_clean = [players_rtc, self.players_voted_start]
+	
 
-	Client.players_alive.clear()
+	players_alive.clear()
 	for id in valid_ids:
-		Client.players_alive.append(int(id))
+		players_alive.append(int(id))
 
 	players_dead.clear()
 	
-	print("players alive: " + str(players_alive) + str(id))
-	
+	# NOT WORKING
+	var arrays_to_clean = [players_rtc, self.players_voted_start]
 	for array in arrays_to_clean:
 		array = array.filter(func(e): return valid_ids.has(str(e)))
+	
+	
+	if players.size() == 1 and !is_in_lobby:
+		reset_multiplayer_connection()
+		has_to_rejoin = true
+		id_to_rejoin = ""
+		return
+	
+	print("___ players: ", players.keys())
+	print("___ players rtc: ", players_rtc)
+		
+
+	# HOST REPLACEMENT
+	if !players.has(str(host_id)):
+		print("___ NO HOST FOUND")
+		if self.id == reserve_host_id:
+			print("___ TRYING TO REPLACE HOST")
+			# reserved host becomes host
+			# and finds new reserved host
+			if players.size() > 1:
+				set_new_host.rpc(self.id, players_rtc.pick_random())
+
+	
+	
+	if reserve_host_id == 0 or !players.has(str(reserve_host_id)):
+		print("___ NO RESERVE FOUND")
+		if self.id == host_id:
+			print("___ TRYING TO SET RESERVE")
+			if players.size() < 2:
+				print("___ NOT ENOUGH PLAYERS")
+			elif players.size() != players_rtc.size() + 1:
+				print("___ NOT ENOUGH RTC PLAYERS")
+			else:
+				set_new_host.rpc(self.id, players_rtc.pick_random())
+		
+	if players_alive.size() > 1 and self.players_voted_start.size() == players_alive.size(): 
+		#if someone who hasnt voted disconnects 
+		start_game.rpc(0) #trying to start game
 
 
 
@@ -187,19 +238,19 @@ func _process(delta):
 				if rtc_peer.has_peer(data.org_peer):
 					rtc_peer.get_peer(data.org_peer).connection.set_remote_description("answer", data.data)
 
+
 func connected(id):
 	rtc_peer.create_mesh(id)
 	multiplayer.multiplayer_peer = rtc_peer
-	if id_to_rejoin != "":
+	if has_to_rejoin:
 		join_lobby(id_to_rejoin)
 		id_to_rejoin = ""
+		has_to_rejoin = false
 
 
 
 func create_peer(id):
 	if id != self.id:
-		#print("CLIENT(" + str(self.id) + "): Creating peer for id " + str(id))
-
 		var peer := WebRTCPeerConnection.new()
 		peer.initialize({
 			"iceServers": [
@@ -223,10 +274,6 @@ func create_peer(id):
 		get_tree().create_timer(1.0).timeout.connect(func():
 			var signaling_states = ["stable", "have-local-offer", "have-remote-offer", "have-local-pranswer", "have-remote-pranswer", "closed"]
 			var connection_states = ["new", "checking", "connected", "completed", "failed", "disconnected", "closed"]
-
-			#print("Peer %d signaling state: %s" % [id, signaling_states[peer.get_signaling_state()]])
-			#print("Peer %d connection state: %s" % [id, connection_states[peer.get_connection_state()]])
-
 		)
 
 		rtc_peer.add_peer(peer, id)
@@ -237,7 +284,6 @@ func create_peer(id):
 
 func send_to_server(message):
 	var message_bytes = JSON.stringify(message).to_utf8_buffer()
-	# replace with direct to server
 	peer.put_packet(message_bytes)
 
 
@@ -264,12 +310,8 @@ func send_answer(id, data):
 
 
 func _on_request_completed(_result, _response_code, _headers, body):
-	#print("result: " + str(_result))
-	#print("response code: " + str(_response_code))
-	#print("hearders: " + str(_headers))
-	#print("body: " + str(body))
 	public_ip = body.get_string_from_utf8()
-	#print("Public IPv4 Address: ", public_ip)
+
 
 
 
@@ -305,24 +347,6 @@ func _on_ice_candidate_created(mid_name, index_name, sdp_name, id):
 	send_to_server(message)
 
 
-func _notification(what):
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print("players alive when closing: ", players_alive)
-		players.erase(str(id))
-		players_alive.erase(id)
-		
-		for p in players:
-			update_players.rpc_id(int(p), players)
-		print("players alive when closing updated: ", players_alive)
-		
-		
-		
-		if host_id == id or new_host_id == id:
-			print("host is leaving -> changeing host via rpc")
-			for p in players:
-				set_new_host.rpc_id(int(p), players_alive.pick_random())
-			
-		get_tree().quit() # You *must* call this if you still want the window to close
 
 func reset_multiplayer_connection():
 	if multiplayer.multiplayer_peer:
@@ -345,8 +369,11 @@ func reset_multiplayer_connection():
 
 @rpc("any_peer")
 func rejoin(lobby_id: String):
-	print("trying to rejoin")
-
+	print()
+	print("TRYING TO REJOIN")
+	print()
+	
+	has_to_rejoin = true
 	id_to_rejoin = lobby_id
 	reset_multiplayer_connection()
 	update_players({})
@@ -363,13 +390,15 @@ func leave_lobby():
 	send_to_server(message)
 	update_players({})
 	GlobalFunctions.load_menu("main")
-
+	is_in_lobby = false
 	#reset_multiplayer_connection()
 
 
 
 @rpc("any_peer")
 func join_lobby(lobby_id: String, nickname: String = ""):
+	is_in_lobby = true
+	
 	update_players({})
 	if nickname == "" and player_name != "":
 		nickname = player_name
@@ -388,10 +417,15 @@ func join_lobby(lobby_id: String, nickname: String = ""):
 
 @rpc("any_peer", "call_local")
 func start_game(id: int):
-	if !players_voted_start.has(id):
+	# id == 0 means this is is just recheck if can start game 
+	if id != 0 and !players_voted_start.has(id):
+		print("New player voted")
 		players_voted_start.append(id)
-
-	if players_voted_start.size() >= players.size():
+	
+	players_voted_start.sort()
+	players_alive.sort()
+	
+	if players_voted_start == players_alive:
 		players_voted_start.clear()
 		var message = {
 			"message_type": MessageTypes.REMOVE_LOBBY,
@@ -399,6 +433,7 @@ func start_game(id: int):
 		}
 
 		still_playing = true
+		is_in_lobby = false
 		GlobalVariables.last_score = 0
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 		GlobalVariables.game_is_on = true
@@ -412,7 +447,10 @@ func start_game(id: int):
 		GlobalFunctions.start_timer()
 		send_to_server(message)
 		get_tree().change_scene_to_file(game_scene)
-
+	else:
+		print("Not enough players to start!")
+		print("players alive: ", players_alive)
+		print("players voted: ", players_voted_start)
 
 @rpc("any_peer", "call_local")
 func spawn(prefab: String, position: Vector2, player_velocity_x: float, speed: float, initial_rotation: float):
@@ -476,15 +514,22 @@ func end_game(result: EndStates):
 		EndStates.Draw:
 			GlobalFunctions.load_menu("multiplayer_draw", false)
 
+
 @rpc("any_peer", "call_local")
-func set_new_host(id: int):
-	host_id = id
+func set_new_host(new_host_id: int, new_reserve_host_id: int):
 	print()
-	print("SETTING NEW HOST IN /// ", Client.id, "  ", Client.player_name ," ///")
-	print("my players alive:", Client.players_alive)
-	print("my new_host_id:", Client.new_host_id)
-	print("my host_id:", Client.host_id)
-	print("my players:", Client.players)
+	if host_id != new_host_id:
+		print("SETTING NEW HOST AND RESERVE IN /// ", Client.id, "  ", Client.player_name ," ///")
+		host_id = new_host_id
+	else:
+		print("SETTING NEW RESERVE IN /// ", Client.id, "  ", Client.player_name ," ///")
+		
+	reserve_host_id = new_reserve_host_id
+	
+	print("/// players", Client.players.keys())
+	print("/// players rtc:", Client.players_rtc)
+	print("/// host_id:", Client.host_id)
+	print("/// reserve host:", Client.reserve_host_id)
 
 
 
@@ -506,14 +551,8 @@ func player_died(id: int, name, score, time):
 	players_alive.erase(id)
 
 	if self.id == host_id and still_playing:  # Only host runs this block
-		if players_alive.size() > 1:
-			if self.id == id or self.id == new_host_id:
-				set_new_host.rpc(players_alive.pick_random())
-
-
 		print("player " + str(id) + " died new players alive:" + str(players_alive))
 		if players_alive.size() <= 1:
-
 			# One player left — victory for them
 			for player_id in players.keys():
 				if players_alive.has(player_id.to_int()):
