@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://hqspj08hycbj"]
+[gd_scene load_steps=9 format=3 uid="uid://hqspj08hycbj"]
 
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_lfwwc"]
 [ext_resource type="Texture2D" uid="uid://b2gcmxd5wp2xn" path="res://Textures/Decorations/City/house1_city.png" id="1_nlixq"]
 [ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="2_w7xei"]
 [ext_resource type="Texture2D" uid="uid://83f86u5t53jv" path="res://Textures/Decorations/City/house2_city.png" id="3_5uwxn"]
@@ -10,6 +11,7 @@
 
 [node name="HouseCity" type="Sprite2D"]
 z_index = -2
+material = ExtResource("1_lfwwc")
 position = Vector2(2, -1)
 scale = Vector2(3, 3)
 texture = ExtResource("1_nlixq")

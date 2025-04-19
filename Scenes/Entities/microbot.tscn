@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://1yeqs86rbxvb" path="res://Audio/Prefabs/sizedown_sound.tscn" id="2_vlc2j"]
 [ext_resource type="Texture2D" uid="uid://c6e1wc2j1i0y3" path="res://Textures/microbot.png" id="2_wm70c"]
 [ext_resource type="PackedScene" uid="uid://w8qf3hk6l8m0" path="res://Audio/Prefabs/bot_spawn_sound.tscn" id="3_316ld"]
-[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/smoke_gradient.tres" id="5_dlcke"]
-[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="6_3pwo5"]
+[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/Gradients/smoke_gradient.tres" id="5_dlcke"]
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="6_3pwo5"]
 
 [sub_resource type="Curve" id="Curve_pf85d"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.326893), 0.0, 0.0, 0, 0]

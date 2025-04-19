@@ -13,3 +13,4 @@ width = 0
 pattern_type = "H"
 type = 3
 ignore_types = Array[int]([])
+can_be_mirrored = false

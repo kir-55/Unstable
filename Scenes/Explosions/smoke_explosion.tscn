@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ko5bji4xe6gk"]
 
-[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/smoke_gradient.tres" id="1_wkeja"]
+[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/Gradients/smoke_gradient.tres" id="1_wkeja"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]

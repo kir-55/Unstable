@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfe4ymutjtyn1"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_miynu"]
+[ext_resource type="Texture2D" uid="uid://dn1n12yuikd8i" path="res://Textures/taczka.png" id="2_r62c1"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_bo8i7"]
+[ext_resource type="PackedScene" uid="uid://bbtqfru2j1bqk" path="res://Scenes/Explosions/wagon_explosion.tscn" id="4_ndy1l"]
+
+[node name="Wagon" type="Area2D" groups=["Obsticle"]]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_miynu")
+death_messages = Array[String](["Another soul lost to the great medieval traffic jam", "Thou shouldst have looked both ways", "Thou wert no match for a rolling cart of doom"])
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(3.03334, -19.6667)
+polygon = PackedVector2Array(23.6333, 21, 9.3, 12.3333, 16.5, -0.500004, -20.1667, -15.5, -24.5, 5.5, -17.7, 21)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0.866669, -8.83333)
+texture = ExtResource("2_r62c1")
+offset = Vector2(-0.250283, -8)
+
+[node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("3_bo8i7")
+max_health = 150.0
+explosion_prefab = ExtResource("4_ndy1l")
+explosion_point = NodePath("../CollisionPolygon2D")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

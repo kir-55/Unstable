@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5me2g2doorus"
-path="res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"
+uid="uid://ccqm2qxekwc1o"
+path="res://.godot/imported/studnia.png-2221a35aaf272728d8a7ed1a6f2434cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/Home/home1.png"
-dest_files=["res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"]
+source_file="res://Textures/studnia.png"
+dest_files=["res://.godot/imported/studnia.png-2221a35aaf272728d8a7ed1a6f2434cb.ctex"]
 
 [params]
 

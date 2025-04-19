@@ -10,3 +10,4 @@ extends Resource
 @export var pattern_type : String
 @export var type: GlobalEnums.DECORATION_LAYERS = GlobalEnums.DECORATION_LAYERS.ON_GROUND
 @export var ignore_types: Array[GlobalEnums.DECORATION_LAYERS]
+@export var can_be_mirrored: bool = true

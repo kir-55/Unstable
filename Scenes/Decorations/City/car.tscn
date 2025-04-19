@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://da7dr7k2t2rsa" path="res://Textures/Decorations/City/car1.png" id="2_wket5"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_jpva4"]
 [ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/Explosions/car_explosion.tscn" id="5_fhbkp"]
-[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/smoke_gradient.tres" id="6_nhulb"]
+[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/Gradients/smoke_gradient.tres" id="6_7p3a8"]
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]
 script/source = "extends Sprite2D
@@ -65,6 +65,6 @@ angle_max = 180.0
 scale_amount_min = 2.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_wv4n3")
-color_initial_ramp = ExtResource("6_nhulb")
+color_initial_ramp = ExtResource("6_7p3a8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

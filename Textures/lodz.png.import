@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5me2g2doorus"
-path="res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"
+uid="uid://ddgpygvm3g5ik"
+path="res://.godot/imported/lodz.png-be881ec498a8a61ffe3a284ab1bb5282.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/Home/home1.png"
-dest_files=["res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"]
+source_file="res://Textures/lodz.png"
+dest_files=["res://.godot/imported/lodz.png-be881ec498a8a61ffe3a284ab1bb5282.ctex"]
 
 [params]
 

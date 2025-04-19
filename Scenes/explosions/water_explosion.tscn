@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqs5nqfwvon56"]
 
-[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/water_gradient.tres" id="1_0xmdf"]
+[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="1_iih40"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_kapp7"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_v0gik"]
 [ext_resource type="PackedScene" uid="uid://yosh8a7tov2o" path="res://Audio/Prefabs/water_explosion_sound.tscn" id="4_eb7a5"]
@@ -32,7 +32,7 @@ orbit_velocity_max = 0.1
 scale_amount_min = 5.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_25yfo")
-color_ramp = ExtResource("1_0xmdf")
+color_ramp = ExtResource("1_iih40")
 script = ExtResource("2_kapp7")
 
 [node name="SoundSpawner" type="Node" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcgd5r2fn3b7v"]
 
-[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="1_qsgmi"]
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="1_llqqb"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_ggaey"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_81k0v"]
 [ext_resource type="PackedScene" uid="uid://clnnujnjrdem3" path="res://Audio/Prefabs/car_break_sound.tscn" id="4_j0lgf"]
@@ -33,7 +33,7 @@ radial_accel_max = 90.0
 scale_amount_min = 5.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_25yfo")
-color_ramp = ExtResource("1_qsgmi")
+color_ramp = ExtResource("1_llqqb")
 script = ExtResource("2_ggaey")
 
 [node name="SoundSpawner" type="Node" parent="."]

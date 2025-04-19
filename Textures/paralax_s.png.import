@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5me2g2doorus"
-path="res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"
+uid="uid://dychjjjtx41xi"
+path="res://.godot/imported/paralax_s.png-56127b1148662542192709a95a9df714.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/Home/home1.png"
-dest_files=["res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"]
+source_file="res://Textures/paralax_s.png"
+dest_files=["res://.godot/imported/paralax_s.png-56127b1148662542192709a95a9df714.ctex"]
 
 [params]
 

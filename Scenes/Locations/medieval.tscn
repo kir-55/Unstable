@@ -1,11 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bkmat6ysmk6ks"]
+[gd_scene load_steps=23 format=3 uid="uid://bkmat6ysmk6ks"]
 
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_dnxob"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="2_eqd0k"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="2_u3k2h"]
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="3_mxhv6"]
-[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="4_abefe"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="4_aeiye"]
+[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/paralax_s.png" id="4_u031k"]
 [ext_resource type="Script" path="res://Scripts/score_updater.gd" id="5_1sa8f"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="5_8ma2d"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="7_kiqr0"]
@@ -17,6 +17,8 @@
 [ext_resource type="Resource" uid="uid://7c3qumhckc0x" path="res://Decorations/Medieval/house.tres" id="14_qu7ts"]
 [ext_resource type="Resource" uid="uid://dfnt6xi0bxdpj" path="res://Decorations/Medieval/thorns.tres" id="15_0ytbq"]
 [ext_resource type="Resource" uid="uid://vms017kct8up" path="res://Decorations/Medieval/barrel.tres" id="16_mxrs0"]
+[ext_resource type="Resource" uid="uid://oa7vsrwr1co4" path="res://Decorations/Medieval/well.tres" id="17_prhyu"]
+[ext_resource type="Resource" uid="uid://hjcsqoyumoxs" path="res://Decorations/Medieval/wagon.tres" id="18_8cgfw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
 bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
@@ -56,13 +58,13 @@ motion_mirroring = Vector2(1840, 0)
 self_modulate = Color(1, 1, 1, 0.556863)
 position = Vector2(288, 171)
 scale = Vector2(2, 2)
-texture = ExtResource("4_abefe")
+texture = ExtResource("4_u031k")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 self_modulate = Color(1, 1, 1, 0.556863)
 position = Vector2(1208, 171)
 scale = Vector2(2, 2)
-texture = ExtResource("4_abefe")
+texture = ExtResource("4_u031k")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(81, -106)
@@ -72,7 +74,7 @@ motion_mirroring = Vector2(2760, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(164, 160)
 scale = Vector2(6, 6)
-texture = ExtResource("4_abefe")
+texture = ExtResource("4_u031k")
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 9
@@ -195,9 +197,9 @@ sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_pattern = "RA*B*C*|RHB*C*|RB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|R|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
+spawn_pattern = "RA*B*C*|RHB*C*|RDB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|RD|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
 spawn_from = 3
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("16_mxrs0"), ExtResource("15_0ytbq"), ExtResource("14_qu7ts")])
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("16_mxrs0"), ExtResource("15_0ytbq"), ExtResource("14_qu7ts"), ExtResource("17_prhyu"), ExtResource("18_8cgfw")])
 
 [node name="TransitionTimer" type="Timer" parent="."]
 wait_time = 25.0

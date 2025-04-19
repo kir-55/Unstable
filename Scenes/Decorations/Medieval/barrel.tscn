@@ -8,12 +8,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryhyg"]
 radius = 33.0
 
-[node name="Hydrant" type="Area2D" groups=["Obsticle"]]
+[node name="Barrel" type="Area2D" groups=["Obsticle"]]
 scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_qp2x4")
-death_messages = Array[String](["There was a hydrant!", "You broke your leg, while kicking the hydrant", "You were curious, what is the hydrant made of (it was metal)"])
+death_messages = Array[String](["They say wine brings joy. This one brought death", "The barrel showed no mercy... nor contents"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5

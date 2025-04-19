@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/throwable.gd" id="1_5dgw7"]
 [ext_resource type="Texture2D" uid="uid://careweli3bkl2" path="res://Textures/Decorations/City/hydrant.png" id="1_hjqmu"]
 [ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="2_i1p1x"]
-[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/water_gradient.tres" id="2_rb372"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_x5pe0"]
 [ext_resource type="PackedScene" uid="uid://beaj23h3o8msf" path="res://Audio/Prefabs/hydrant_sound.tscn" id="4_qmddn"]
+[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="5_06s5g"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.943396), 0.0, 0.0, 0, 0]
@@ -50,7 +50,7 @@ angular_velocity_max = 360.0
 scale_amount_min = 6.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_25yfo")
-color_initial_ramp = ExtResource("2_rb372")
+color_initial_ramp = ExtResource("5_06s5g")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3

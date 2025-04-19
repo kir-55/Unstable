@@ -13,3 +13,4 @@ width = 300
 pattern_type = "A"
 type = 2
 ignore_types = Array[int]([0, 3])
+can_be_mirrored = false

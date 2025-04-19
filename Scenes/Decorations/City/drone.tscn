@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_uyrou"]
 [ext_resource type="Texture2D" uid="uid://ejxlmcq2w5r1" path="res://Textures/Decorations/City/dron.png" id="2_wdacg"]
 [ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/Explosions/drone_explosion.tscn" id="3_eoxcv"]
-[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="6_rlf4s"]
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="6_f88ta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
 size = Vector2(14.3333, 15.3333)
@@ -31,7 +31,7 @@ z_index = -1
 position = Vector2(0, -7)
 texture = ExtResource("2_wdacg")
 script = ExtResource("2_q6afg")
-min_height = 50.0
+min_height = 30.0
 speed = 0.04
 
 [node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
@@ -53,7 +53,7 @@ angle_min = -180.0
 angle_max = 180.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_c3nl4")
-color_initial_ramp = ExtResource("6_rlf4s")
+color_initial_ramp = ExtResource("6_f88ta")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 position = Vector2(12.6667, -1)
@@ -68,6 +68,6 @@ angle_min = -180.0
 angle_max = 180.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_c3nl4")
-color_initial_ramp = ExtResource("6_rlf4s")
+color_initial_ramp = ExtResource("6_f88ta")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

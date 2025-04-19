@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqm0m1uj8kv5u"]
 
-[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/fire_gradient.tres" id="1_gp08d"]
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="1_gp08d"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_el4mc"]
 
 [sub_resource type="Curve" id="Curve_dqkve"]

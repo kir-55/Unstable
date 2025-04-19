@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3fdfqr1y35e7"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/ameridium_explosion.gd" id="1_y6spp"]
-[ext_resource type="Gradient" uid="uid://bo6o3coe52wpb" path="res://Styles/ameridium_gradient.tres" id="2_es1xb"]
+[ext_resource type="Gradient" uid="uid://bo6o3coe52wpb" path="res://Styles/Gradients/ameridium_gradient.tres" id="2_es1xb"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_jugoj"]
 [ext_resource type="PackedScene" uid="uid://bl1r5fx6p83e5" path="res://Audio/Prefabs/ameridium_explosion_sound.tscn" id="3_dr06g"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5me2g2doorus"
-path="res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"
+uid="uid://dwihutech86ly"
+path="res://.godot/imported/kolce (1).png-0cfced856ddf4eb89949d83178ea8990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/Home/home1.png"
-dest_files=["res://.godot/imported/home1.png-a0e20f45fe597f73117624946d5c4a4a.ctex"]
+source_file="res://Textures/kolce (1).png"
+dest_files=["res://.godot/imported/kolce (1).png-0cfced856ddf4eb89949d83178ea8990.ctex"]
 
 [params]
 
