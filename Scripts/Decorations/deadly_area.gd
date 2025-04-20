@@ -2,12 +2,6 @@ extends Area2D
 
 @export var death_messages: Array[String]
 
-# NOTE: pattern_letter should not be asigned here. It is later assigned by decoration spawner
-#		if you want to change this variable name please also update it in decoration_spawner.gd and other scripts
-var pattern_letter := ""
-
-
-
 func _on_body_entered(body):
 	if (body.name == "Player" or body.name == "Player" + str(Client.id)) and GlobalVariables.game_is_on:
 		var canvas_layer = get_tree().current_scene.canvas_layer

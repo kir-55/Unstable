@@ -124,7 +124,7 @@ func spawn_decoration(point):
 						break
 					
 					var mirror = (rs.get_rnd_int(0, 2) == 1) if decoration.can_be_mirrored else false
-					var spawned_decoration = sloper.spawn_at_point(decoration.prefab, self, point, segment_part,  mirror, pattern_segment_char)
+					sloper.spawn_at_point(decoration.prefab, self, point, segment_part,  mirror)
 					spawned = true
 					#print(decoration.name)
 					break

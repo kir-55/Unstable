@@ -30,7 +30,7 @@ func calc_closest_point(entity) -> int:
 
 
 
-func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segment: float = 0, mirror: bool = true, decoration_pattern_char = ""):
+func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segment: float = 0, mirror: bool = true):
 	var p1 = line.get_point_position(point)
 	var p2 = line.get_point_position(point + 1)
 	
@@ -44,9 +44,6 @@ func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segme
 	instance.position = Vector2(x, x * a + b - line_offset)
 	instance.rotation = distance.angle()
 	instance.scale.x *= -1 if mirror else 1
-	
-	var pattern_letter_variable_name = "pattern_letter"
-	if decoration_pattern_char != "" and pattern_letter_variable_name in instance:
-		instance[pattern_letter_variable_name] = decoration_pattern_char
 	parent.add_child(instance)
+	
 	return instance

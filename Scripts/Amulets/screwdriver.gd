@@ -3,10 +3,10 @@ extends CharacterBody2D
 @export_category("Movement")
 @export var speed = 100.0
 @export var acceleration: float = 5.0
-@export var min_flight_time = 1.2 # Measured in seconds
+@export var min_flight_time = 1.5 # Measured in seconds
 
 @export_category("Attack related")
-@export var damage_factor := 70.0
+@export var damage_factor_percent := 70.0
 
 @onready var player_speed = GlobalVariables.player.velocity.x
 
@@ -15,7 +15,6 @@ var target : Node2D = null
 
 func _ready():
 	min_distance_from_player = player_speed * min_flight_time
-	print(min_distance_from_player)
 	position.y -= 50
 	find_closest_target()
 
@@ -24,8 +23,7 @@ func _physics_process(delta):
 
 func find_closest_target():
 	var closest_distance = INF
-	var target_areas = get_tree().get_nodes_in_group("Obsticle").filter(func(obj): 
-		var distance = global_position.distance_to(obj.global_position)
+	var target_areas = get_tree().get_nodes_in_group("Obsticle").filter(func(obj):
 		if obj.has_node("HealthSystem"):
 			return obj.global_position.x - min_distance_from_player - global_position.x > 0
 		else:
@@ -59,5 +57,5 @@ func move_towards_target(delta):
 func _on_area_2d_area_entered(area):
 	if area and area.has_node("HealthSystem"):
 		var area_health_system = area.get_node("HealthSystem")
-		area_health_system.take_damage(area_health_system.max_health * damage_factor / 100)
+		area_health_system.take_damage(area_health_system.max_health * damage_factor_percent / 100)
 		queue_free()
