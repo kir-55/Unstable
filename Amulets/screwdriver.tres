@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Amulet" load_steps=3 format=3 uid="uid://wpr3ugy4rld8"]
+[gd_resource type="Resource" script_class="Amulet" load_steps=4 format=3 uid="uid://wpr3ugy4rld8"]
 
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet.gd" id="1_d836v"]
 [ext_resource type="Texture2D" uid="uid://dr1eqpsneaore" path="res://Textures/Amulets/screwdriver.png" id="2_0g2cb"]
+[ext_resource type="Resource" uid="uid://dqkio1srmpyxd" path="res://WeaponTypes/Passive/screwdriver.tres" id="3_s0ofg"]
 
 [resource]
 script = ExtResource("1_d836v")
@@ -15,9 +16,10 @@ available_in_multiplayer = true
 required_for_repair = true
 required_for_destruction = false
 consumable = false
-is_weapon = false
-has_timer = false
-timer_reload = 5.0
+is_weapon = true
+weapon = ExtResource("3_s0ofg")
+has_timer = true
+timer_reload = 7.0
 stack_limit = true
 limit = 1
 chance_multiplier = 1

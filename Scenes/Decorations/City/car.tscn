@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_3v8b0"]
 [ext_resource type="Texture2D" uid="uid://da7dr7k2t2rsa" path="res://Textures/Decorations/City/car1.png" id="2_wket5"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_jpva4"]
-[ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/Explosions/car_explosion.tscn" id="5_fhbkp"]
+[ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/explosions/car_explosion.tscn" id="5_fhbkp"]
 [ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/Gradients/smoke_gradient.tres" id="6_7p3a8"]
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]

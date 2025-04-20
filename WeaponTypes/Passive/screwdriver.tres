@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponType" load_steps=2 format=3 uid="uid://dqkio1srmpyxd"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon/weapon_type.gd" id="1_a8n2e"]
+
+[resource]
+script = ExtResource("1_a8n2e")
+bullet_prefab = "res://Scenes/Entities/screwdriver.tscn"
+active = false
+bullet_speed = 0.0
+knockback_force = 0.0
+spawn_on_peers = false
+initial_rotation = 0.0

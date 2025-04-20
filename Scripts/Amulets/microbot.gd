@@ -39,4 +39,4 @@ func move_towards_target(delta):
 			var instance = sizedown_sound_prefab.instantiate()
 			get_tree().current_scene.add_child(instance)
 			target.scale *= Vector2(0.5, 0.5)
-			queue_free() 
+			queue_free()
