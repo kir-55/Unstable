@@ -397,7 +397,8 @@ func leave_lobby():
 	update_players({})
 	GlobalFunctions.load_menu("main")
 	is_in_lobby = false
-	#reset_multiplayer_connection()
+	reset_multiplayer_connection()
+	Client.active = false
 
 
 
