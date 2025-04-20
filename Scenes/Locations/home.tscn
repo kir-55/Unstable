@@ -1,6 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bhjxp4p8df2qp"]
 
 [ext_resource type="PackedScene" uid="uid://j2nldvt0tvg5" path="res://Scenes/Menus/progress_menu.tscn" id="2_ucxui"]
+[ext_resource type="Texture2D" uid="uid://c5me2g2doorus" path="res://Textures/Baners/Home/home1.png" id="4_lk56c"]
 [ext_resource type="Texture2D" uid="uid://dyosrgir2i5ra" path="res://Textures/Baners/Home/home2.png" id="5_i2n18"]
 [ext_resource type="Script" path="res://Scripts/Amulets/home.gd" id="5_i6kwn"]
 [ext_resource type="Texture2D" uid="uid://3jehxq8m71u4" path="res://Textures/Baners/Home/home3.png" id="6_4pm11"]
@@ -8,14 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://b7cfudcke3rq1" path="res://Textures/Baners/Home/home4.png" id="7_hqjd7"]
 [ext_resource type="AudioStream" uid="uid://wux0ga41vj27" path="res://Audio/house.mp3" id="8_ypbu8"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_igm3a"]
-load_path = "res://.godot/imported/home1.png-c8e429c924b7c5ea0e8085bb376fc612.ctex"
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_igm3a")
+"texture": ExtResource("4_lk56c")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_i2n18")
@@ -60,7 +58,7 @@ position = Vector2(576, 324)
 scale = Vector2(3.209, 3.209)
 sprite_frames = SubResource("SpriteFrames_fxmdu")
 autoplay = "default"
-frame_progress = 0.619749
+frame_progress = 0.0428435
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
 anchors_preset = 14
