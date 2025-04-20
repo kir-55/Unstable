@@ -2,12 +2,18 @@ extends CharacterBody2D
 
 @export var speed: float = 100.0  # Movement speed
 @export var acceleration: float = 5.0  # Smooth movement
-var target: Node2D = null
-@onready var player = get_tree().get
-
+@export var min_flight_time = 1.2 # Measured in seconds
 @export var sizedown_sound_prefab: PackedScene
 
+@onready var player_speed = GlobalVariables.player.velocity.x
+@onready var player = get_tree().get
+
+var min_distance_from_player = 0
+var target: Node2D = null
+
+
 func _ready():
+	min_distance_from_player = player_speed * min_flight_time
 	find_closest_target()
 
 func _physics_process(delta):
@@ -22,7 +28,7 @@ func find_closest_target():
 		if area is Node2D:
 			
 			var distance = global_position.distance_to(area.global_position)
-			if area.global_position.x - 500 - global_position.x > 0 and distance < closest_distance:
+			if area.global_position.x - min_distance_from_player - global_position.x > 0 and distance < closest_distance:
 				closest_distance = distance
 				target = area
 

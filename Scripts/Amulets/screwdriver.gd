@@ -1,15 +1,21 @@
 extends CharacterBody2D
 
-@export var target_decoration_pattern_char = "A"
+@export_category("Movement")
 @export var speed = 100.0
 @export var acceleration: float = 5.0
+@export var min_flight_time = 1.2 # Measured in seconds
 
+@export_category("Attack related")
 @export var damage_factor := 70.0
 
+@onready var player_speed = GlobalVariables.player.velocity.x
+
+var min_distance_from_player = 0
 var target : Node2D = null
-var pattern_letter_variable_name = "pattern_letter"
 
 func _ready():
+	min_distance_from_player = player_speed * min_flight_time
+	print(min_distance_from_player)
 	position.y -= 50
 	find_closest_target()
 
@@ -18,17 +24,23 @@ func _physics_process(delta):
 
 func find_closest_target():
 	var closest_distance = INF
-	var target_areas = get_tree().get_nodes_in_group("Obsticle").filter(func(obj):
-		if pattern_letter_variable_name in obj and obj.has_node("HealthSystem"):
-			return obj[pattern_letter_variable_name] == target_decoration_pattern_char
+	var target_areas = get_tree().get_nodes_in_group("Obsticle").filter(func(obj): 
+		var distance = global_position.distance_to(obj.global_position)
+		if obj.has_node("HealthSystem"):
+			return obj.global_position.x - min_distance_from_player - global_position.x > 0
 		else:
 			return false
+		)
+	target_areas.sort_custom(func(a, b):
+		if a.get_node("HealthSystem").health == b.get_node("HealthSystem").health:
+			return global_position.distance_to(a.global_position) >= global_position.distance_to(b.global_position)
+		return a.get_node("HealthSystem").health > b.get_node("HealthSystem").health
 	)
 	
 	for obj in target_areas:
 		if obj is Node2D:
 			var distance = global_position.distance_to(obj.global_position)
-			if obj.global_position.x - 500 - global_position.x > 0 and distance < closest_distance:
+			if obj.global_position.x - min_distance_from_player - global_position.x > 0 and distance < closest_distance:
 				closest_distance = distance
 				target = obj
 	if !target:
@@ -46,8 +58,6 @@ func move_towards_target(delta):
 
 func _on_area_2d_area_entered(area):
 	if area and area.has_node("HealthSystem"):
-		if pattern_letter_variable_name in area:
-			if area[pattern_letter_variable_name] == target_decoration_pattern_char:
-				var area_health_system = area.get_node("HealthSystem")
-				area_health_system.take_damage(area_health_system.max_health * damage_factor / 100)
-				queue_free()
+		var area_health_system = area.get_node("HealthSystem")
+		area_health_system.take_damage(area_health_system.max_health * damage_factor / 100)
+		queue_free()

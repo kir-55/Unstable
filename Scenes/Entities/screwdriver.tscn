@@ -10,12 +10,11 @@ size = Vector2(20, 3.57143)
 z_index = 3
 scale = Vector2(4.04, 4.04)
 script = ExtResource("1_q2cd5")
-speed = 850.0
-acceleration = 30.0
+speed = 900.0
+acceleration = 70.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(9.90099, 1.73267)
-scale = Vector2(1, 1)
 amount = 2
 lifetime = 0.6
 speed_scale = 3.0
@@ -27,7 +26,6 @@ scale_amount_min = 0.5
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 position = Vector2(5.44555, 2.47525)
-scale = Vector2(1, 1)
 amount = 5
 lifetime = 1.55
 speed_scale = 2.0
@@ -39,7 +37,6 @@ scale_amount_min = 0.5
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
 position = Vector2(10.1485, -1.23762)
-scale = Vector2(1, 1)
 amount = 2
 lifetime = 0.6
 speed_scale = 2.0
@@ -51,7 +48,6 @@ scale_amount_min = 0.5
 
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
 position = Vector2(5.44555, -2.22772)
-scale = Vector2(1, 1)
 amount = 5
 lifetime = 1.55
 speed_scale = 2.0
@@ -63,13 +59,11 @@ scale_amount_min = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 0.785398
-scale = Vector2(1, 1)
 texture = ExtResource("1_vd6uq")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource("RectangleShape2D_mwmrn")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
