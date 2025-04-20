@@ -54,7 +54,6 @@ var start_x
 var doble_jump_used = false
 
 
-
 # Dash variables
 var is_dashing: bool = false
 var dash_timer: float = 0.0
@@ -69,6 +68,10 @@ var stop_cooldown_timer: float = 0.0
 # Drop
 var is_dropping = false
 var is_jumping
+
+@export var has_glasses: bool = false
+
+
 
 func _enter_tree():
 	if Client.active:
@@ -106,7 +109,6 @@ func _ready():
 		sprite.self_modulate = Color("#ffffff8e")
 
 		$Amulets.queue_free()
-		$Weapon.queue_free()
 		$SpeedUpTimer.queue_free()
 
 
@@ -190,9 +192,6 @@ func _physics_process(delta: float) -> void:
 
 			if JUMP_VELOCITY < MAX_JUMP_VEL:
 				JUMP_VELOCITY += 5
-
-
-
 
 		# Handle dropping down
 		if Input.is_action_just_pressed("bottom") and not is_on_floor():

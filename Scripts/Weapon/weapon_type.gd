@@ -3,6 +3,8 @@
 class_name WeaponType
 extends Resource
 
+
+
 @export var bullet_prefab: String
 
 # if triggered with user input - active
@@ -12,6 +14,7 @@ extends Resource
 		active = value
 		notify_property_list_changed()
 @export var texture: Texture2D
+@export var id: int
 
 
 @export var bullet_speed: float = 600.0      # Speed of the spawned bullets
@@ -25,4 +28,5 @@ extends Resource
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["texture"] and !active:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
-		
+	if property.name in ["id"] and !active:
+		property.usage = PROPERTY_USAGE_NO_EDITOR

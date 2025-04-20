@@ -8,6 +8,7 @@ script = ExtResource("1_68cjd")
 bullet_prefab = "res://Scenes/Bullets/egg.tscn"
 active = true
 texture = ExtResource("2_cavjy")
+id = 1
 bullet_speed = 0.0
 knockback_force = 100.0
 spawn_on_peers = false

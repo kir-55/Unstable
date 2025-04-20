@@ -45,6 +45,8 @@ var player_amulet_collection : Array[int]
 var player_new_amulets : Array[int]
 
 
+@export var active_weapon_types: Array[WeaponType]
+
 var last_epoch: GlobalEnums.LEVELS
 var next_epoch: GlobalEnums.LEVELS
 
@@ -76,4 +78,34 @@ var settings = {
 	"sfx_volume": 100
 }
 
+var player_colors := {
+	"skin_color": Color(1, 0.8, 0.6),
+	"skin_shadow": Color(0.9, 0.6, 0.4),
+	"ear_color": Color(1, 0.8, 0.6),
+
+	"hair_color": Color(0.2, 0.1, 0.05),
+	"hair_shadow": Color(0.1, 0.05, 0.02),
+
+	"coat_color": Color(0.2, 0.4, 0.6),
+	"coat_shadow": Color(0.15, 0.3, 0.45),
+	"coat_shadow2": Color(0.1, 0.2, 0.3),
+
+	"tshirt_color": Color(1, 1, 1),
+	"tshirt_shadow": Color(0.8, 0.8, 0.8),
+
+	"pocket_color": Color(0.2, 0.4, 0.6),
+	"pocket_color2": Color(0.15, 0.3, 0.45),
+
+	"pants_light": Color(0.4, 0.4, 0.4),
+	"pants_color": Color(0.2, 0.2, 0.2),
+	"pants_shadow": Color(0.1, 0.1, 0.1),
+
+	"shoes_light": Color(0.7, 0.7, 0.7),
+	"shoes_color": Color(0.3, 0.3, 0.3),
+	"shoes_shadow": Color(0.1, 0.1, 0.1),
+
+	"glasses_color": Color(0, 0, 0),
+	"glasses_frame": Color(0.1, 0.1, 0.1),
+	"glasses_light": Color(1, 1, 1)
+}
 

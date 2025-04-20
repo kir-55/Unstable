@@ -50,10 +50,16 @@ func load_settings():
 func save_player_data():
 	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.WRITE)
 	if file:
+		var serialized_colors = {}
+		for key in GlobalVariables.player_colors:
+			var color = GlobalVariables.player_colors[key]
+			serialized_colors[key] = [color.r, color.g, color.b, color.a]
+		
 		var data = {
 			"best_score": GlobalVariables.best_score,
 			"amulet_collection": GlobalVariables.player_amulet_collection,
-			"settings": GlobalVariables.settings
+			"settings": GlobalVariables.settings,
+			"player_colors": serialized_colors
 		}
 		file.store_string(JSON.stringify(data))
 		file.close()
@@ -75,6 +81,11 @@ func load_player_data():
 				for setting in data["settings"]:
 					if setting in GlobalVariables.settings:
 						GlobalVariables.settings[setting] = data["settings"][setting]
+			if "player_colors" in data:
+				for key in data["player_colors"]:
+					if key in GlobalVariables.player_colors:
+						var arr = data["player_colors"][key]
+						GlobalVariables.player_colors[key] = Color(arr[0], arr[1], arr[2], arr[3])
 
 func load_menu(menu: String, remove_all_children = true, transition_to_main = false, menu_instance_callable : Callable = func(x): pass):
 	if transition_to_main:

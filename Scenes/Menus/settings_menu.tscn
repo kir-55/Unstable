@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf6gfirsvyabg"]
+[gd_scene load_steps=6 format=3 uid="uid://cf6gfirsvyabg"]
 
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_40crx"]
 [ext_resource type="Script" path="res://Scripts/menus/settings_menu.gd" id="1_huv8h"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_7una3"]
+[ext_resource type="PackedScene" uid="uid://d0dlvjtvg61fd" path="res://color_prefab.tscn" id="3_sh0b1"]
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="4_qwwwi"]
 
-[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "master_volume_percantage", "music_volume_percantage", "sfx_volume_percantage")]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "master_volume_percantage", "music_volume_percantage", "sfx_volume_percantage", "color_picker_container")]
+z_index = 500
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,14 +21,17 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_huv8h")
-master_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer2/MasterSlider")
-music_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer4/MusicSlider")
-sfx_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer3/SFXSlider")
-master_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer2/MasterLabel")
-music_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer4/MusicLabel")
-sfx_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer3/SFXLabel")
+master_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2/MasterSlider")
+music_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4/MusicSlider")
+sfx_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3/SFXSlider")
+master_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2/MasterLabel")
+music_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4/MusicLabel")
+sfx_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3/SFXLabel")
+color_prefab = ExtResource("3_sh0b1")
+color_picker_container = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin")
 
 [node name="Panel" type="Panel" parent="."]
+z_index = 500
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,9 +39,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -213.0
-offset_top = -239.5
+offset_top = -335.0
 offset_right = 213.0
-offset_bottom = 239.5
+offset_bottom = 336.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -75,136 +80,197 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.03
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14.16, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Audio" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2"]
+[node name="Audio" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer"]
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "AUDIO"
 
-[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer"]
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="ColorRect3" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer2"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
 text = "Master Volume"
 
-[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer2"]
+[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 scrollable = false
 
-[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer2"]
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.05
 
-[node name="MasterLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer2"]
+[node name="MasterLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 18
 text = "100%"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer4"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
 text = "Music Volume"
 
-[node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer4"]
+[node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 scrollable = false
 
-[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer4"]
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.05
 
-[node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer4"]
+[node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 18
 text = "100%"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer3"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
 text = "SFX Volume
 "
 
-[node name="SFXSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer3"]
+[node name="SFXSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 scrollable = false
 
-[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer3"]
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.05
 
-[node name="SFXLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer2/Audio/HBoxContainer3"]
+[node name="SFXLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 18
 text = "100%"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30.34)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="Skin" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "COLORS"
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin/HBoxContainer5"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14.16, 0)
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.03
 
 [node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2

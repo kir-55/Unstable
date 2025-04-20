@@ -141,7 +141,13 @@ func update_players(new_players, players_voted_start = []):
 	players = new_players
 	var valid_ids = players.keys()
 
-	
+	if players.size() == 0:
+		self.players_rtc.clear()
+		self.players_dead.clear()
+		self.players_alive.clear()
+		self.players_voted_start.clear()
+		self.players_voted_leave_home.clear()
+		return
 
 	players_alive.clear()
 	for id in valid_ids:

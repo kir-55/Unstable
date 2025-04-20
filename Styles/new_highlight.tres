@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_gexga")
-shader_parameter/highlight_color = Color(0.772549, 0.470588, 0.207843, 1)
+shader_parameter/highlight_color = Color(0.882353, 0.658824, 0.270588, 1)
 shader_parameter/frequency = 4.235
 shader_parameter/highlight_speed = 1.608
 shader_parameter/highlight_width = 789.189

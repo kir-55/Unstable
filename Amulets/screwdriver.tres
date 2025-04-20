@@ -8,7 +8,7 @@
 script = ExtResource("1_d836v")
 id = 10
 name = "Screwdriver"
-description = "It doesn't affect your gameplay but is required for an escape!"
+description = "Spawns every now and then takeing 50% of health of large obsticles (required for repair)"
 texture = ExtResource("2_0g2cb")
 incompatible_amulets = Array[int]([])
 available_in_singleplayer = true
@@ -22,4 +22,4 @@ has_timer = true
 timer_reload = 7.0
 stack_limit = true
 limit = 1
-chance_multiplier = 1
+chance_multiplier = 3

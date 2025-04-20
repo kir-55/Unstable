@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8itocxc1xfcd"]
 
 [ext_resource type="Texture2D" uid="uid://b5747t13hg1or" path="res://Textures/Amulets/wrench.png" id="1_po5j5"]
-[ext_resource type="Script" path="res://Scenes/wrench_projectile.gd" id="1_rp00l"]
+[ext_resource type="Script" path="res://Scripts/wrench_projectile.gd" id="1_rp00l"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_g7mpc"]
 [ext_resource type="PackedScene" uid="uid://ntmdlggfg36e" path="res://Audio/Prefabs/shoot_sound.tscn" id="3_gewf2"]
 

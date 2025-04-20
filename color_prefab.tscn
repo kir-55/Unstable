@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d0dlvjtvg61fd"]
+
+[node name="ColorPrefab" type="HBoxContainer"]
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "SFX Volume
+"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+custom_minimum_size = Vector2(217.735, 0)
+layout_mode = 2

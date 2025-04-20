@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=33 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://du64msy80vl6r" path="res://Audio/Prefabs/dash_sound.tscn" id="3_4uhw1"]
 [ext_resource type="Script" path="res://Scripts/Weapon/weapon.gd" id="4_db2y7"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="4_e8l5m"]
+[ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="4_ehog4"]
 [ext_resource type="PackedScene" uid="uid://c8lspr0ou0j8r" path="res://Scenes/amulet_timer.tscn" id="5_382f2"]
 [ext_resource type="PackedScene" uid="uid://cwtnwotylrivo" path="res://Scenes/amulet_timer_bar.tscn" id="5_ewkn8"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
@@ -51,6 +52,15 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath(".:scale")
 properties/7/spawn = true
 properties/7/replication_mode = 2
+properties/8/path = NodePath("EffectsPlayer:current_animation")
+properties/8/spawn = true
+properties/8/replication_mode = 2
+properties/9/path = NodePath("AnimationPlayer:current_animation")
+properties/9/spawn = true
+properties/9/replication_mode = 2
+properties/10/path = NodePath("Weapon:current_weapon_type_id")
+properties/10/spawn = true
+properties/10/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
 size = Vector2(24.2857, 58.5715)
@@ -83,9 +93,49 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_87imb"]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sv5sp"]
 _data = {
-"immunity": SubResource("Animation_i83s6")
+"immunity": SubResource("Animation_i83s6"),
+"normal": SubResource("Animation_87imb")
 }
 
 [sub_resource type="Animation" id="Animation_im8hn"]
@@ -105,22 +155,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/path = NodePath("CollisionShape2D:shape:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5.71428, 16.4286)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:shape:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -145,26 +183,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/path = NodePath("CollisionShape2D:shape:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(5.71428, 16.4286)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:shape:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(24.2857, 58.5715)]
+"values": [Vector2(24.286, 65)]
 }
 
 [sub_resource type="Animation" id="Animation_1mkn3"]
@@ -206,18 +232,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(25.7143, 72.5)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4.28571, 12.6786)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebyxs"]
 _data = {
@@ -227,9 +241,9 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_animator", "effects_animator", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet") groups=["Player"]]
-self_modulate = Color(1, 1, 1, 0)
 z_index = 6
 scale = Vector2(1.4, 1.4)
+collision_layer = 0
 script = ExtResource("1_22t7u")
 SPEED = 0.0
 MAX_JUMP_VEL = -1000.0
@@ -266,9 +280,11 @@ horizontal_alignment = 1
 replication_config = SubResource("SceneReplicationConfig_ftbv5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.619608)
+material = ExtResource("4_ehog4")
 position = Vector2(2.85714, 1.42857)
 scale = Vector2(3, 3)
-texture = ExtResource("20_xf8dg")
+texture = ExtResource("12_v6ld3")
 
 [node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails", "amulet_system")]
 script = ExtResource("9_lardo")
@@ -312,7 +328,8 @@ amulet_timer_bar = ExtResource("5_ewkn8")
 effects_animator = NodePath("../EffectsPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5.71428, 16.4286)
+position = Vector2(5, 10.7143)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
@@ -324,6 +341,7 @@ root_node = NodePath("../AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_sv5sp")
 }
+autoplay = "normal"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

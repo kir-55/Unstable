@@ -20,10 +20,10 @@ func _ready():
 			
 			if GlobalVariables.amulets[amulet_id].is_weapon and GlobalVariables.amulets[amulet_id].weapon:
 				if GlobalVariables.amulets[amulet_id].weapon.active:
-					weapon.current_weapon_type = GlobalVariables.amulets[amulet_id].weapon
+					weapon.current_weapon_type_id = GlobalVariables.amulets[amulet_id].weapon.id + 1
 					weapon.shooting_weapon_timer = amulet_timer_representation
 					amulet_timer_representation.timeout.connect(weapon.on_active_weapon)
-					weapon.texture = GlobalVariables.amulets[amulet_id].weapon.texture
+					
 				else:
 					amulet_timer_representation.autostart = true
 					amulet_timer_representation.set_one_shot(false)
