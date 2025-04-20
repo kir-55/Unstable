@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf6gfirsvyabg"]
+[gd_scene load_steps=9 format=3 uid="uid://cf6gfirsvyabg"]
 
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_40crx"]
 [ext_resource type="Script" path="res://Scripts/menus/settings_menu.gd" id="1_huv8h"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://d08ea4vma8hjs" path="res://Textures/Player/player1.png" id="6_pikr2"]
 [ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="6_rqky7"]
 [ext_resource type="Script" path="res://Scenes/Menus/apply_skin.gd" id="8_2sr7k"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytqxn"]
 
 [node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "master_volume_percantage", "music_volume_percantage", "sfx_volume_percantage", "player_presentation", "color_picker_container")]
 z_index = 500
@@ -322,14 +320,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -71.0
-offset_right = -114.0
-offset_bottom = -40.0
+offset_left = 39.0
+offset_top = -86.0
+offset_right = -115.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.5, 1.5)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ytqxn")
 text = "show glasses"
 alignment = 1
 

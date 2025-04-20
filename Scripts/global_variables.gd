@@ -2,8 +2,10 @@ class_name Global
 extends Node
 
 signal game_state_changed(state)
+signal player_colors_changed
 
 var terrain_code: int = 1
+
 
 var player : CharacterBody2D
 
@@ -81,7 +83,7 @@ var settings = {
 var player_colors := {
 	"skin_color": Color(1, 0.8, 0.6),
 	"skin_shadow": Color(0.9, 0.6, 0.4),
-	"ear_color": Color(1, 0.8, 0.6),
+	"ear_color": Color(1, 0.8, 0.8),
 
 	"hair_color": Color(0.2, 0.1, 0.05),
 	"hair_shadow": Color(0.1, 0.05, 0.02),
@@ -106,6 +108,10 @@ var player_colors := {
 
 	"glasses_color": Color(0, 0, 0),
 	"glasses_frame": Color(0.1, 0.1, 0.1),
-	"glasses_light": Color(1, 1, 1)
+	"glasses_light": Color(1, 1, 1),
+	
+	"mouth_color" : Color(1, 0.8, 0.8),
+	"hand_color" :  Color(0.9, 0.6, 0.4),
+	"hand_color_shadow" :  Color(0.9, 0.6, 0.4)
 }
 

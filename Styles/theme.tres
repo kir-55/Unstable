@@ -1,6 +1,72 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://o1p54tv8dklw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qiea"]
+[gd_resource type="Theme" format=3 uid="uid://cgi0nd72fsrou"]
 
 [resource]
-PopupPanel/styles/panel = SubResource("StyleBoxEmpty_7qiea")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/icon_disabled_color = Color(0, 0, 0, 1)
+Button/colors/icon_focus_color = Color(0, 0, 0, 1)
+Button/colors/icon_hover_color = Color(0, 0, 0, 1)
+Button/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_disabled_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_focus_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_outline_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_pressed_color = Color(0, 0, 0, 1)
+CheckBox/constants/check_v_offset = 0
+CheckBox/constants/h_separation = 0
+CheckBox/constants/outline_size = 0
+CheckBox/font_sizes/font_size = 16
+CheckBox/fonts/font = null
+CheckBox/icons/checked = null
+CheckBox/icons/checked_disabled = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_checked_disabled = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/radio_unchecked_disabled = null
+CheckBox/icons/unchecked = null
+CheckBox/icons/unchecked_disabled = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+ColorPicker/constants/center_slider_grabbers = 0
+ColorPicker/constants/h_width = 0
+ColorPicker/constants/label_width = 0
+ColorPicker/constants/margin = 0
+ColorPicker/constants/sv_height = 0
+ColorPicker/constants/sv_width = 0
+ColorPicker/icons/add_preset = null
+ColorPicker/icons/bar_arrow = null
+ColorPicker/icons/color_hue = null
+ColorPicker/icons/color_okhsl_hue = null
+ColorPicker/icons/expanded_arrow = null
+ColorPicker/icons/folded_arrow = null
+ColorPicker/icons/overbright_indicator = null
+ColorPicker/icons/picker_cursor = null
+ColorPicker/icons/sample_bg = null
+ColorPicker/icons/screen_picker = null
+ColorPicker/icons/shape_circle = null
+ColorPicker/icons/shape_rect = null
+ColorPicker/icons/shape_rect_wheel = null
+Panel/styles/panel = null

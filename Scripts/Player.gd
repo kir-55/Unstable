@@ -69,7 +69,6 @@ var stop_cooldown_timer: float = 0.0
 var is_dropping = false
 var is_jumping
 
-@export var has_glasses: bool = false
 
 
 
@@ -88,7 +87,10 @@ func _ready():
 		$Nickname.queue_free()
 		amulet_system.amulets_available = GlobalVariables.player_amulets
 		GlobalVariables.player = self
-
+		
+		if GlobalVariables.player_amulets.has(3):
+			$Sprite2D.glasses = true
+		
 		for i in range(amulet_system.amulets_available.count(12)):
 			DASH_DURATION += amulet_system.dash_duration_increase
 			DASH_SPEED_BOOST += amulet_system.dash_speed_increase

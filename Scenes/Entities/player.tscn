@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bty2oxq2nwcn6"]
+[gd_scene load_steps=34 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
 [ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="4_ehog4"]
 [ext_resource type="PackedScene" uid="uid://c8lspr0ou0j8r" path="res://Scenes/amulet_timer.tscn" id="5_382f2"]
 [ext_resource type="PackedScene" uid="uid://cwtnwotylrivo" path="res://Scenes/amulet_timer_bar.tscn" id="5_ewkn8"]
+[ext_resource type="Script" path="res://Scenes/Menus/apply_skin.gd" id="6_816a3"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_timers.gd" id="9_nhkjf"]
 [ext_resource type="Texture2D" uid="uid://32xrkifl7066" path="res://Textures/Player/player.png" id="11_1af4h"]
@@ -61,6 +62,75 @@ properties/9/replication_mode = 2
 properties/10/path = NodePath("Weapon:current_weapon_type_id")
 properties/10/spawn = true
 properties/10/replication_mode = 2
+properties/11/path = NodePath("Sprite2D:skin_color")
+properties/11/spawn = true
+properties/11/replication_mode = 2
+properties/12/path = NodePath("Sprite2D:skin_shadow")
+properties/12/spawn = true
+properties/12/replication_mode = 2
+properties/13/path = NodePath("Sprite2D:ear_color")
+properties/13/spawn = true
+properties/13/replication_mode = 2
+properties/14/path = NodePath("Sprite2D:hair_color")
+properties/14/spawn = true
+properties/14/replication_mode = 2
+properties/15/path = NodePath("Sprite2D:coat_color")
+properties/15/spawn = true
+properties/15/replication_mode = 2
+properties/16/path = NodePath("Sprite2D:coat_shadow")
+properties/16/spawn = true
+properties/16/replication_mode = 2
+properties/17/path = NodePath("Sprite2D:coat_shadow2")
+properties/17/spawn = true
+properties/17/replication_mode = 2
+properties/18/path = NodePath("Sprite2D:tshirt_color")
+properties/18/spawn = true
+properties/18/replication_mode = 2
+properties/19/path = NodePath("Sprite2D:tshirt_shadow")
+properties/19/spawn = true
+properties/19/replication_mode = 2
+properties/20/path = NodePath("Sprite2D:pocket_color")
+properties/20/spawn = true
+properties/20/replication_mode = 2
+properties/21/path = NodePath("Sprite2D:pocket_color2")
+properties/21/spawn = true
+properties/21/replication_mode = 2
+properties/22/path = NodePath("Sprite2D:pants_light")
+properties/22/spawn = true
+properties/22/replication_mode = 2
+properties/23/path = NodePath("Sprite2D:pants_shadow")
+properties/23/spawn = true
+properties/23/replication_mode = 2
+properties/24/path = NodePath("Sprite2D:shoes_light")
+properties/24/spawn = true
+properties/24/replication_mode = 2
+properties/25/path = NodePath("Sprite2D:shoes_color")
+properties/25/spawn = true
+properties/25/replication_mode = 2
+properties/26/path = NodePath("Sprite2D:shoes_shadow")
+properties/26/spawn = true
+properties/26/replication_mode = 2
+properties/27/path = NodePath("Sprite2D:glasses_color")
+properties/27/spawn = true
+properties/27/replication_mode = 2
+properties/28/path = NodePath("Sprite2D:glasses_frame")
+properties/28/spawn = true
+properties/28/replication_mode = 2
+properties/29/path = NodePath("Sprite2D:glasses_light")
+properties/29/spawn = true
+properties/29/replication_mode = 2
+properties/30/path = NodePath("Sprite2D:glasses")
+properties/30/spawn = true
+properties/30/replication_mode = 2
+properties/31/path = NodePath("Sprite2D:mouth_color")
+properties/31/spawn = true
+properties/31/replication_mode = 2
+properties/32/path = NodePath("Sprite2D:hand_color")
+properties/32/spawn = true
+properties/32/replication_mode = 2
+properties/33/path = NodePath("Sprite2D:hand_color_shadow")
+properties/33/spawn = true
+properties/33/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4jv"]
 size = Vector2(24.2857, 58.5715)
@@ -285,6 +355,7 @@ material = ExtResource("4_ehog4")
 position = Vector2(2.85714, 1.42857)
 scale = Vector2(3, 3)
 texture = ExtResource("12_v6ld3")
+script = ExtResource("6_816a3")
 
 [node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails", "amulet_system")]
 script = ExtResource("9_lardo")
@@ -328,8 +399,7 @@ amulet_timer_bar = ExtResource("5_ewkn8")
 effects_animator = NodePath("../EffectsPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 10.7143)
-scale = Vector2(1, 1)
+position = Vector2(6.42857, 20)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]

@@ -11,6 +11,7 @@ extends Control
 @export var sfx_volume_percantage : Label
 
 @export_category("Color Pickers")
+@export var player_presentation: CanvasItem
 @export var color_prefab : PackedScene 
 @export var color_picker_container : Control  # Container for dynamically generated color pickers
 
@@ -61,9 +62,13 @@ extends Control
 	"shoes_color": "Shoes Color",
 	"shoes_shadow": "Shoes Shadow",
 
-	"glasses_color": "Glasses Color",
+	"glasses_color": "Eye Color",
+	"glasses_light": "Eye Highlight",
 	"glasses_frame": "Glasses Frame",
-	"glasses_light": "Glasses Light"
+	
+	"mouth_color": "Mouth",
+	"hand_color": "Hand Color",
+	"hand_color_shadow": "Hand Shadow"
 }
 
 func _ready():
@@ -119,6 +124,11 @@ func _on_color_changed(new_color: Color, color_key: String) -> void:
 	# Update the color in global variables
 	GlobalVariables.player_colors[color_key] = new_color
 	GlobalFunctions.save_player_data()
+	GlobalVariables.player_colors_changed.emit()
 
 func _on_back_pressed():
 	GlobalFunctions.load_menu("main", true)
+
+
+func _on_check_box_toggled(toggled_on):
+	player_presentation.glasses = toggled_on

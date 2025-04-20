@@ -1,9 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4gt65xd5xb3n"]
+[gd_scene load_steps=8 format=3 uid="uid://b4gt65xd5xb3n"]
 
-[ext_resource type="Theme" uid="uid://o1p54tv8dklw" path="res://Styles/theme.tres" id="1_7aqtk"]
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_tr2bt"]
 [ext_resource type="Texture2D" uid="uid://bj4bdslc6roka" path="res://Textures/Amulets/clock.png" id="2_l7lqn"]
 [ext_resource type="Script" path="res://Scripts/custom_tooltip.gd" id="3_287wm"]
 [ext_resource type="PackedScene" uid="uid://bigmbkrs23ifx" path="res://Scenes/Menus/tooltip.tscn" id="4_qkxax"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qiea"]
+
+[sub_resource type="Theme" id="Theme_nlop2"]
+default_base_scale = 1.0
+ColorPicker/constants/center_slider_grabbers = 0
+ColorPicker/constants/h_width = 0
+ColorPicker/constants/label_width = 0
+ColorPicker/constants/margin = 0
+ColorPicker/constants/sv_height = 0
+ColorPicker/constants/sv_width = 0
+ColorPicker/icons/add_preset = null
+ColorPicker/icons/bar_arrow = null
+ColorPicker/icons/color_hue = null
+ColorPicker/icons/overbright_indicator = null
+ColorPicker/icons/picker_cursor = null
+ColorPicker/icons/sample_bg = null
+ColorPicker/icons/screen_picker = null
+ColorPicker/icons/shape_circle = null
+ColorPicker/icons/shape_rect = null
+ColorPicker/icons/shape_rect_wheel = null
+Panel/styles/panel = ExtResource("1_tr2bt")
+PopupPanel/styles/panel = SubResource("StyleBoxEmpty_7qiea")
 
 [sub_resource type="LabelSettings" id="LabelSettings_v2uu3"]
 font_size = 32
@@ -13,7 +36,7 @@ custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 64.0
 mouse_default_cursor_shape = 16
-theme = ExtResource("1_7aqtk")
+theme = SubResource("Theme_nlop2")
 texture = ExtResource("2_l7lqn")
 stretch_mode = 6
 script = ExtResource("3_287wm")

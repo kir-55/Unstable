@@ -71,16 +71,22 @@ uniform vec4 shoes_color : source_color;
 uniform vec4 initial_shoes_shadow : source_color;
 uniform vec4 shoes_shadow : source_color;
 
+// Mouth and Hands
+uniform vec4 initial_mouth_color : source_color;
+uniform vec4 mouth_color : source_color;
+
+uniform vec4 initial_hand_color : source_color;
+uniform vec4 hand_color : source_color;
+
+uniform vec4 initial_hand_color_shadow : source_color;
+uniform vec4 hand_color_shadow : source_color;
+
 uniform float threshold = 0.01;
 
 void fragment() {
 	vec4 tex_color = texture(TEXTURE, UV);
 
-	bool replace_glasses_hide = !has_glasses && (
-		distance(tex_color.rgb, initial_glasses_frame.rgb) < threshold ||
-		distance(tex_color.rgb, initial_glasses_color.rgb) < threshold ||
-		distance(tex_color.rgb, initial_glasses_light.rgb) < threshold
-	);
+	bool replace_glasses_hide = !has_glasses && distance(tex_color.rgb, initial_glasses_frame.rgb) < threshold;
 
 	bool replace_skin = distance(tex_color.rgb, initial_skin_color.rgb) < threshold;
 	bool replace_shadow = distance(tex_color.rgb, initial_skin_shadow.rgb) < threshold;
@@ -110,12 +116,22 @@ void fragment() {
 	bool replace_glasses_color = distance(tex_color.rgb, initial_glasses_color.rgb) < threshold;
 	bool replace_glasses_light = distance(tex_color.rgb, initial_glasses_light.rgb) < threshold;
 
+	bool replace_mouth = distance(tex_color.rgb, initial_mouth_color.rgb) < threshold;
+	bool replace_hand = distance(tex_color.rgb, initial_hand_color.rgb) < threshold;
+	bool replace_hand_shadow = distance(tex_color.rgb, initial_hand_color_shadow.rgb) < threshold;
+
 	if (replace_glasses_hide || replace_skin) {
 		COLOR = vec4(skin_color.rgb, tex_color.a);
 	} else if (replace_shadow) {
 		COLOR = vec4(skin_shadow.rgb, tex_color.a);
 	} else if (replace_ear) {
 		COLOR = vec4(ear_color.rgb, tex_color.a);
+	} else if (replace_mouth) {
+		COLOR = vec4(mouth_color.rgb, tex_color.a);
+	} else if (replace_hand) {
+		COLOR = vec4(hand_color.rgb, tex_color.a);
+	} else if (replace_hand_shadow) {
+		COLOR = vec4(hand_color_shadow.rgb, tex_color.a);
 	} else if (replace_hair) {
 		COLOR = vec4(hair_color.rgb, tex_color.a);
 	} else if (replace_hair_shadow) {
