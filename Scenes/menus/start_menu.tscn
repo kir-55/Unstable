@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b34nhv4f6un8n"]
+[gd_scene load_steps=14 format=3 uid="uid://b34nhv4f6un8n"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yv4ht"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_rrgdv"]
@@ -6,7 +6,10 @@
 [ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="6_4jgwr"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="6_25x81"]
 [ext_resource type="StyleBox" uid="uid://bagr45t17aie2" path="res://Styles/button_hover_blue.tres" id="6_abaoq"]
+[ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="7_oxedd"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="7_ug5gg"]
+[ext_resource type="Texture2D" uid="uid://d08ea4vma8hjs" path="res://Textures/Player/player1.png" id="8_wifob"]
+[ext_resource type="Script" path="res://Scenes/Menus/apply_skin.gd" id="9_x14u2"]
 
 [sub_resource type="FontFile" id="FontFile_iau70"]
 cache/0/16/0/ascent = 0.0
@@ -244,6 +247,17 @@ theme_override_styles/pressed = ExtResource("6_abaoq")
 theme_override_styles/focus = ExtResource("6_abaoq")
 text = "Settings
 "
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/Settings"]
+material = ExtResource("7_oxedd")
+layout_mode = 0
+offset_left = 254.0
+offset_top = -9.49951
+offset_right = 314.0
+offset_bottom = 45.5005
+texture = ExtResource("8_wifob")
+stretch_mode = 4
+script = ExtResource("9_x14u2")
 
 [node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2

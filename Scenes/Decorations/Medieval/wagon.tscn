@@ -14,7 +14,7 @@ death_messages = Array[String](["Another soul lost to the great medieval traffic
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(3.03334, -19.6667)
-polygon = PackedVector2Array(23.6333, 21, 9.3, 12.3333, 16.5, -0.500004, -20.1667, -15.5, -24.5, 5.5, -17.7, 21)
+polygon = PackedVector2Array(23.6333, 21, 9.3, 12.3333, 14.3, -0.666634, -19.3667, -14, -24.5, 5.5, -17.7, 21)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
