@@ -77,7 +77,8 @@ var current_menu = "main"
 var settings = {
 	"master_volume": 100,
 	"music_volume": 100,
-	"sfx_volume": 100
+	"sfx_volume": 100,
+	"fullscreen": false
 }
 
 var player_colors := {

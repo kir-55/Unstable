@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf6gfirsvyabg"]
+[gd_scene load_steps=11 format=3 uid="uid://cf6gfirsvyabg"]
 
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_40crx"]
 [ext_resource type="Script" path="res://Scripts/menus/settings_menu.gd" id="1_huv8h"]
@@ -9,9 +9,11 @@
 [ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="6_rqky7"]
 [ext_resource type="Script" path="res://Scenes/Menus/apply_skin.gd" id="8_2sr7k"]
 
+[sub_resource type="Theme" id="Theme_m6wom"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytqxn"]
 
-[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "master_volume_percantage", "music_volume_percantage", "sfx_volume_percantage", "player_presentation", "color_picker_container")]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("fullscreen_checkbutton", "master_slider", "music_slider", "sfx_slider", "master_volume_percantage", "music_volume_percantage", "sfx_volume_percantage", "player_presentation", "color_picker_container")]
 z_index = 500
 layout_mode = 3
 anchors_preset = 8
@@ -26,6 +28,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_huv8h")
+fullscreen_checkbutton = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer2/CheckButton")
 master_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2/MasterSlider")
 music_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4/MusicSlider")
 sfx_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3/SFXSlider")
@@ -102,6 +105,63 @@ layout_mode = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Graphics" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "GRAPHICS"
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Fullscreen"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_m6wom")
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30.34)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.03
 
 [node name="Audio" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -333,5 +393,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ytqxn")
 text = "show glasses"
 alignment = 1
 
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer2/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Panel2/CheckBox" to="." method="_on_check_box_toggled"]

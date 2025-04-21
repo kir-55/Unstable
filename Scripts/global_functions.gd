@@ -28,6 +28,12 @@ func end_timer():
 	GlobalVariables.time_ended = Time.get_ticks_msec()
 
 func load_settings():
+	############################ GRAPHICS SETTINGS ###############################
+	
+	if GlobalVariables.settings["fullscreen"] == true:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	##############################################################################
 	
 	############################ AUDIO SETTINGS ###############################
 	

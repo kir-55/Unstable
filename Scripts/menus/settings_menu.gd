@@ -1,5 +1,8 @@
 extends Control
 
+@export_category("Graphics")
+@export var fullscreen_checkbutton : CheckButton
+
 @export_category("Audio Sliders")
 @export var master_slider : Slider
 @export var music_slider : Slider
@@ -14,6 +17,7 @@ extends Control
 @export var player_presentation: CanvasItem
 @export var color_prefab : PackedScene 
 @export var color_picker_container : Control  # Container for dynamically generated color pickers
+
 
 @onready var settings := {
 	"master_volume": {
@@ -71,7 +75,14 @@ extends Control
 	"hand_color_shadow": "Hand Shadow"
 }
 
+@onready var default_viewport_size := Vector2i(
+	ProjectSettings.get_setting("display/window/size/viewport_width"),
+	ProjectSettings.get_setting("display/window/size/viewport_height")
+)
+
 func _ready():
+	fullscreen_checkbutton.button_pressed = (GlobalVariables.settings.get("fullscreen"))
+	
 	# Audio sliders setup
 	for setting_name in settings.keys():
 		var setting = settings[setting_name]
@@ -132,3 +143,18 @@ func _on_back_pressed():
 
 func _on_check_box_toggled(toggled_on):
 	player_presentation.glasses = toggled_on
+
+
+func _on_check_button_toggled(toggled_on):
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		GlobalVariables.settings["fullscreen"] =  true
+		GlobalFunctions.save_player_data()
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(default_viewport_size)
+		var screen_size = DisplayServer.screen_get_size()
+		var window_position = (screen_size - default_viewport_size) / 2
+		DisplayServer.window_set_position(window_position)
+		GlobalVariables.settings["fullscreen"] = false
+		GlobalFunctions.save_player_data()
