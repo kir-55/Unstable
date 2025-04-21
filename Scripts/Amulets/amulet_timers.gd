@@ -9,7 +9,7 @@ var shooting_weapon_timer : Timer
 var timers := {}
 
 func _ready():
-	GlobalVariables.game_state_changed.connect(_state_changed)
+	GlobalVariables.on_game_state_changed.connect(_state_changed)
 	
 	for amulet_id in GlobalVariables.player_amulets:
 		if GlobalVariables.amulets[amulet_id].has_timer:

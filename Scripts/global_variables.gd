@@ -1,11 +1,13 @@
 class_name Global
 extends Node
 
-signal game_state_changed(state)
-signal player_colors_changed
+signal on_game_state_changed(state)
+signal on_player_colors_changed
+signal on_player_amulets_changed
+
+
 
 var terrain_code: int = 1
-
 
 var player : CharacterBody2D
 
@@ -42,7 +44,11 @@ var items_in_home: int = initial_items_in_home
 @export var epochs: Array[LevelInfo]
 
 @export var amulets: Array[Amulet]
-var player_amulets: Array[int]
+var player_amulets: Array[int]:
+	set(value):
+		player_amulets = value
+		on_player_amulets_changed.emit()
+		
 var player_amulet_collection : Array[int]
 var player_new_amulets : Array[int]
 
@@ -55,7 +61,7 @@ var next_epoch: GlobalEnums.LEVELS
 var game_is_on := true:
 	set(value):
 		game_is_on = value
-		game_state_changed.emit(value)
+		on_game_state_changed.emit(value)
 		
 
 var menus = {

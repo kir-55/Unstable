@@ -85,13 +85,13 @@ func _ready():
 
 	if is_multiplayer_authority() or !Client.active:
 		$Nickname.queue_free()
-		amulet_system.amulets_available = GlobalVariables.player_amulets
+		#amulet_system.amulets_available = GlobalVariables.player_amulets
 		GlobalVariables.player = self
 		
 		if GlobalVariables.player_amulets.has(3):
 			$Sprite2D.glasses = true
 		
-		for i in range(amulet_system.amulets_available.count(12)):
+		for i in range(GlobalVariables.player_amulets.count(12)):
 			DASH_DURATION += amulet_system.dash_duration_increase
 			DASH_SPEED_BOOST += amulet_system.dash_speed_increase
 			DASH_COOLDOWN += amulet_system.dash_cooldown_increase
@@ -260,8 +260,8 @@ func drop_through() -> void:
 	velocity.y = DROP_THROUGH_VELOCITY
 
 func kill():
-	if amulet_system.amulets_available.has(11): #check if has heart
-		amulet_system.remove_amulet(11)
+	if GlobalVariables.player_amulets.has(11): #check if has heart
+		GlobalFunctions.remove_amulet(11)
 		return false;
 	return true;
 

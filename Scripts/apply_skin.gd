@@ -40,7 +40,7 @@ extends CanvasItem
 
 func _ready():
 	update_colors()
-	GlobalVariables.player_colors_changed.connect(update_colors)
+	GlobalVariables.on_player_colors_changed.connect(update_colors)
 
 func update_colors():
 	if !Client.active or get_parent().is_multiplayer_authority():

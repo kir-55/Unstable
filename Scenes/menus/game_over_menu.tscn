@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://hj7nfep0o7s3"]
+[gd_scene load_steps=21 format=3 uid="uid://hj7nfep0o7s3"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_fseod"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
@@ -21,6 +21,28 @@ metadata/_snap_enabled = true
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_j0opp"]
 script = ExtResource("4_eh833")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4gsj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le7je"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sg24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gr8ps"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qypu6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gwn6x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0oaf7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1csu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kee5h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8s4s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0033"]
 
 [node name="GameOverMenu" type="Control" node_paths=PackedStringArray("death_info", "new_amulet_count_label")]
 layout_mode = 3
@@ -75,7 +97,7 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 
 [node name="DeathMessage" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 bbcode_enabled = true
 
@@ -100,6 +122,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p4gsj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_le7je")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2sg24")
 text = "Play again"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
@@ -108,6 +133,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gr8ps")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qypu6")
 bbcode_enabled = true
 fit_content = true
 custom_effects = [ExtResource("5_o7vdc")]
@@ -124,7 +151,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.3
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("3_ca5b1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gwn6x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0oaf7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s1csu")
 
 [node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -132,6 +161,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kee5h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f8s4s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g0033")
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,5 +1,19 @@
 extends Node
 
+
+func _ready():
+	load_player_data()
+	load_settings()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fullscreen"):
+		var mode := DisplayServer.window_get_mode()
+		var window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if window else DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+
 func reload():
 	start_timer()
 	Engine.time_scale = 1
@@ -16,9 +30,7 @@ func reload():
 	get_tree().change_scene_to_file("res://Scenes/Locations/city.tscn")
 
 
-func _ready():
-	load_player_data()
-	load_settings()
+
 
 
 func start_timer():
@@ -92,6 +104,15 @@ func load_player_data():
 					if key in GlobalVariables.player_colors:
 						var arr = data["player_colors"][key]
 						GlobalVariables.player_colors[key] = Color(arr[0], arr[1], arr[2], arr[3])
+
+
+func add_amulet(id):
+	GlobalVariables.player_amulets.append(id)
+	GlobalVariables.on_player_amulets_changed.emit()
+	
+func remove_amulet(id):
+	GlobalVariables.player_amulets.erase(id)
+	GlobalVariables.on_player_amulets_changed.emit()
 
 func load_menu(menu: String, remove_all_children = true, transition_to_main = false, menu_instance_callable : Callable = func(x): pass):
 	if transition_to_main:

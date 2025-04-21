@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b34nhv4f6un8n"]
+[gd_scene load_steps=11 format=3 uid="uid://b34nhv4f6un8n"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_yv4ht"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="4_rrgdv"]
@@ -9,134 +9,7 @@
 [ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="7_oxedd"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="7_ug5gg"]
 [ext_resource type="Texture2D" uid="uid://d08ea4vma8hjs" path="res://Textures/Player/player1.png" id="8_wifob"]
-[ext_resource type="Script" path="res://Scenes/Menus/apply_skin.gd" id="9_x14u2"]
-
-[sub_resource type="FontFile" id="FontFile_iau70"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/2/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/2/0/ascent = 0.0
-cache/0/2/0/descent = 0.0
-cache/0/2/0/underline_position = 0.0
-cache/0/2/0/underline_thickness = 0.0
-cache/0/2/0/scale = 1.0
-cache/0/2/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/2/0/kerning_overrides/2/0 = Vector2(0, 0)
-cache/0/2/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/2/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/2/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/2/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/2/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/2/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/5/0/ascent = 0.0
-cache/0/5/0/descent = 0.0
-cache/0/5/0/underline_position = 0.0
-cache/0/5/0/underline_thickness = 0.0
-cache/0/5/0/scale = 1.0
-cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/2/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/2/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/8/0/ascent = 0.0
-cache/0/8/0/descent = 0.0
-cache/0/8/0/underline_position = 0.0
-cache/0/8/0/underline_thickness = 0.0
-cache/0/8/0/scale = 1.0
-cache/0/8/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/2/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/80/0/ascent = 0.0
-cache/0/80/0/descent = 0.0
-cache/0/80/0/underline_position = 0.0
-cache/0/80/0/underline_thickness = 0.0
-cache/0/80/0/scale = 1.0
-cache/0/80/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/2/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/80/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="FontFile_fbtt6"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/8/0/ascent = 0.0
-cache/0/8/0/descent = 0.0
-cache/0/8/0/underline_position = 0.0
-cache/0/8/0/underline_thickness = 0.0
-cache/0/8/0/scale = 1.0
-cache/0/8/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/80/0 = Vector2(0, 0)
-cache/0/80/0/ascent = 0.0
-cache/0/80/0/descent = 0.0
-cache/0/80/0/underline_position = 0.0
-cache/0/80/0/underline_thickness = 0.0
-cache/0/80/0/scale = 1.0
-cache/0/80/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/80/0/kerning_overrides/80/0 = Vector2(0, 0)
-
-[sub_resource type="FontVariation" id="FontVariation_vserv"]
-base_font = SubResource("FontFile_fbtt6")
+[ext_resource type="Script" path="res://Scripts/apply_skin.gd" id="9_x14u2"]
 
 [node name="StartMenu" type="Control"]
 z_index = 3
@@ -188,8 +61,6 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-theme_override_fonts/normal_font = SubResource("FontFile_iau70")
-theme_override_fonts/bold_font = SubResource("FontVariation_vserv")
 bbcode_enabled = true
 text = "[center][font_size=50][color=c33c40][/color][pulse freq=1.0 color=#ffffff40 ease=-2.0][shake rate=20.0 level=30 connected=1][font_size=80][color=c33c40][b]U[/b][/color][/font_size][color=#8d3649]N[/color][/shake][/pulse][wave amp=20.0 freq=5.0 connected=1][color=3d80a3]S[/color][color=94ad39]T[/color][color=e1a845]A[/color][color=9ae5d5]B[/color][color=a5c67c]L[/color][color=d16974]E[/color][/wave][/font_size][/center]"
 fit_content = true
@@ -204,6 +75,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Again" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -215,6 +87,7 @@ theme_override_styles/focus = ExtResource("4_rrgdv")
 text = "Play"
 
 [node name="Multiplayer" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -226,6 +99,7 @@ theme_override_styles/focus = ExtResource("6_abaoq")
 text = "Multiplayer"
 
 [node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -237,6 +111,7 @@ theme_override_styles/focus = ExtResource("4_rrgdv")
 text = "Progress"
 
 [node name="Settings" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -251,15 +126,16 @@ text = "Settings
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/Settings"]
 material = ExtResource("7_oxedd")
 layout_mode = 0
-offset_left = 254.0
-offset_top = -9.49951
-offset_right = 314.0
-offset_bottom = 45.5005
+offset_left = 258.0
+offset_top = -3.99951
+offset_right = 300.0
+offset_bottom = 32.0005
 texture = ExtResource("8_wifob")
 stretch_mode = 4
 script = ExtResource("9_x14u2")
 
 [node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0

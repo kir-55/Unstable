@@ -61,6 +61,10 @@ alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Control3" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(154.32, 0)
+layout_mode = 2
+
 [node name="Progress" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -77,6 +81,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_styles/fill = ExtResource("4_7j6te")
 script = ExtResource("3_lcw86")
+
+[node name="Control4" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(154.32, 0)
+layout_mode = 2
 
 [node name="Margin2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -110,8 +118,15 @@ amulet_prefab = ExtResource("5_b7kvo")
 not_found_amulet_texture = ExtResource("6_v6gmf")
 new_amulet_outline = ExtResource("8_mjkde")
 
-[node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 0)
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(346.175, 0)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(122.91, 43.945)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_mkup5")
@@ -120,4 +135,8 @@ theme_override_styles/pressed = ExtResource("4_7j6te")
 theme_override_styles/focus = ExtResource("4_7j6te")
 text = "Back"
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(346.175, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/Back" to="." method="_on_back_pressed"]

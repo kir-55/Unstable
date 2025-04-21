@@ -9,7 +9,7 @@
 [ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="4_ehog4"]
 [ext_resource type="PackedScene" uid="uid://c8lspr0ou0j8r" path="res://Scenes/amulet_timer.tscn" id="5_382f2"]
 [ext_resource type="PackedScene" uid="uid://cwtnwotylrivo" path="res://Scenes/amulet_timer_bar.tscn" id="5_ewkn8"]
-[ext_resource type="Script" path="res://Scenes/Menus/apply_skin.gd" id="6_816a3"]
+[ext_resource type="Script" path="res://Scripts/apply_skin.gd" id="6_816a3"]
 [ext_resource type="Script" path="res://Scripts/trail.gd" id="9_lardo"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_timers.gd" id="9_nhkjf"]
 [ext_resource type="Texture2D" uid="uid://32xrkifl7066" path="res://Textures/Player/player.png" id="11_1af4h"]

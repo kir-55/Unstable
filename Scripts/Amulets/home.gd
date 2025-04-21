@@ -1,12 +1,15 @@
 extends Node2D
 
 
-@export var label_container: ColorRect
+@export var label: Label
 @export var displayed_amulets_container: HBoxContainer
 @export var canvas_layer: CanvasLayer
-@export var panel: Panel
 @export var texture_rect: TextureRect
 @export var win_menu_scene: PackedScene
+
+@export var to_delete_when_won: Array[Node]
+
+
 
 var amulets_chosen: Array[int]
 
@@ -20,7 +23,12 @@ var win_type := GlobalEnums.WIN_TYPES.NONE
 
 @export var amulets_displayed: Array[int]
 
+var label_with: int = 0
+
 func _ready():
+	label_with = label.size.x
+	label.size.x = 0
+	
 	if !Client.active:
 		check_for_win()
 		
@@ -28,7 +36,7 @@ func _ready():
 		if GlobalVariables.player_amulets.has(7):
 			texture_rect.texture = GlobalVariables.epochs[GlobalVariables.next_epoch].baner
 
-		label_container.get_child(0).text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1 else ".")
+		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1 else ".")
 		var multiplied_amulets_list: Array[Amulet]
 		for amulet in GlobalVariables.amulets:
 			if (!Client.active and amulet.available_in_singleplayer) or (Client.active and amulet.available_in_multiplayer):
@@ -49,7 +57,13 @@ func _ready():
 			amulets_displayed.append(random_amulet.id)
 			spawn_amulet(random_amulet)
 	else:
-		label_container.get_child(0).text = "(You are dead) other players choose amulets!"
+		label.text = "(You are dead) other players choose amulets!"
+
+
+func _process(delta):
+	if label.size.x < label_with:
+		label.size.x += 4
+
 
 func check_for_win():
 	
@@ -68,9 +82,8 @@ func check_for_win():
 		else:
 			return
 
-		panel.queue_free()
-		label_container.queue_free()
-		displayed_amulets_container.queue_free()
+		for n in to_delete_when_won:
+			n.queue_free()
 
 func menu_instance_repair_callable(menu):
 	menu.win_type = GlobalEnums.WIN_TYPES.REPAIR
@@ -129,9 +142,9 @@ func chosed_amulet(event: InputEvent, amulet):
 			amulets_chosen.append(amulet[0])
 
 			if amount_of_items_to_take -amulets_chosen.size() <= 0 and Client.active:
-				label_container.get_child(0).text = "Wait for other players!"
+				label.text = "Wait for other players!"
 			else:
-				label_container.get_child(0).text = "You have a few seconds to grab " + str(amount_of_items_to_take -amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take -amulets_chosen.size() > 1 else ".")
+				label.text = "You have a few seconds to grab " + str(amount_of_items_to_take -amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take -amulets_chosen.size() > 1 else ".")
 
 
 			amulet[1].queue_free()

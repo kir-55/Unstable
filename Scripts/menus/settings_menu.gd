@@ -135,7 +135,7 @@ func _on_color_changed(new_color: Color, color_key: String) -> void:
 	# Update the color in global variables
 	GlobalVariables.player_colors[color_key] = new_color
 	GlobalFunctions.save_player_data()
-	GlobalVariables.player_colors_changed.emit()
+	GlobalVariables.on_player_colors_changed.emit()
 
 func _on_back_pressed():
 	GlobalFunctions.load_menu("main", true)

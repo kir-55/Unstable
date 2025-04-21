@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bigmbkrs23ifx"]
+[gd_scene load_steps=2 format=3 uid="uid://bigmbkrs23ifx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc02b"]
-bg_color = Color(0.360784, 0.227451, 0.435294, 1)
+bg_color = Color(0.148989, 0.0818637, 0.186326, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_4jjfd"]
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(300, 150)
@@ -23,6 +21,7 @@ offset_left = 6.0
 offset_top = 5.0
 offset_right = 294.0
 offset_bottom = 145.0
-text = "dfgdfgdfg"
-label_settings = SubResource("LabelSettings_4jjfd")
+theme_override_font_sizes/font_size = 16
+text = "WRRNCH
+Works as a boomerang destroying obsticles (required for machine repair)"
 autowrap_mode = 3

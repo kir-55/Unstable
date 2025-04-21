@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhjxp4p8df2qp"]
+[gd_scene load_steps=10 format=3 uid="uid://bhjxp4p8df2qp"]
 
 [ext_resource type="PackedScene" uid="uid://j2nldvt0tvg5" path="res://Scenes/Menus/progress_menu.tscn" id="2_ucxui"]
 [ext_resource type="Texture2D" uid="uid://c5me2g2doorus" path="res://Textures/Baners/Home/home1.png" id="4_lk56c"]
@@ -29,25 +29,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gidgj"]
-font_size = 66
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_kaiwq"]
-font_size = 26
-font_color = Color(0, 0, 0, 1)
-outline_color = Color(1, 1, 1, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_1lncj"]
-font_size = 24
-
-[node name="Home" type="Node2D" node_paths=PackedStringArray("label_container", "displayed_amulets_container", "canvas_layer", "texture_rect")]
+[node name="Home" type="Node2D" node_paths=PackedStringArray("label", "displayed_amulets_container", "canvas_layer", "texture_rect", "to_delete_when_won")]
 script = ExtResource("5_i6kwn")
-label_container = NodePath("CanvasLayer/ColorRect")
+label = NodePath("CanvasLayer/Message")
 displayed_amulets_container = NodePath("CanvasLayer/HBoxContainer")
 canvas_layer = NodePath("CanvasLayer")
 texture_rect = NodePath("CanvasLayer/TextureRect")
 win_menu_scene = ExtResource("2_ucxui")
+to_delete_when_won = [NodePath("CanvasLayer/Label2"), NodePath("CanvasLayer/Label"), NodePath("CanvasLayer/TextureRect"), NodePath("CanvasLayer/Message")]
 amulet_prefab = ExtResource("6_58chv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -66,14 +55,29 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 682.0
-offset_top = -183.0
+offset_top = -174.0
 offset_right = -110.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
 text = "?"
-label_settings = SubResource("LabelSettings_gidgj")
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 682.0
+offset_top = 102.0
+offset_right = -112.0
+offset_bottom = 148.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Next Epoch:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 custom_minimum_size = Vector2(0, 90)
@@ -90,18 +94,6 @@ grow_vertical = 0
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 682.0
-offset_top = 102.0
-offset_right = -112.0
-offset_bottom = 142.0
-grow_horizontal = 2
-text = "Next Epoch:"
-label_settings = SubResource("LabelSettings_kaiwq")
-horizontal_alignment = 1
-
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(400, 70)
 offset_left = 652.0
@@ -111,26 +103,18 @@ offset_bottom = 341.0
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 582.0
-offset_top = 16.0
-offset_right = -14.0
-offset_bottom = -565.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0862745, 0.0901961, 0.109804, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_right = 555.0
-offset_bottom = 66.0
+[node name="Message" type="Label" parent="CanvasLayer"]
+offset_left = 661.0
+offset_top = 4.0
+offset_right = 1151.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
 text = "You have a few seconds to grab 1 item"
-label_settings = SubResource("LabelSettings_1lncj")
-horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

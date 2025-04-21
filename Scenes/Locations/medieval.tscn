@@ -110,27 +110,35 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o1cbu")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 526.0
-offset_top = 200.0
-offset_right = 624.0
-offset_bottom = 405.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "3"
 label_settings = SubResource("LabelSettings_hg04r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CountdownTimer" type="Timer" parent="CanvasLayer/Panel"]
 wait_time = 0.5
 autostart = true
 
 [node name="Score" type="Label" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.953125
 anchor_right = 1.0
+anchor_bottom = 0.0339506
 offset_left = -120.0
 offset_bottom = 69.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 48
+text = "2325"
+vertical_alignment = 1
 script = ExtResource("5_1sa8f")
 metadata/_edit_use_anchors_ = true
 

@@ -11,7 +11,6 @@ extends Node
 
 var amulets_displayed = false
 
-@export var amulets_available = GlobalVariables.player_amulets
 
 @export_group("amulets variables")
 
@@ -22,6 +21,10 @@ var amulets_displayed = false
 @export var drop_throgh_speed_increase: float = 100
 
 @export var trail_color = Color("#eff37c")
+
+func _ready():
+	display_amulets()
+	GlobalVariables.on_player_amulets_changed.connect(display_amulets)
 
 func use_amulet(event: InputEvent, amulet_id: int):
 	if GlobalVariables.game_is_on:
@@ -44,14 +47,15 @@ func use_amulet(event: InputEvent, amulet_id: int):
 				var screen_effect_path = GlobalVariables.amulets[amulet_id].screen_effect.resource_path
 				for alive_player in Client.players_alive:
 					Client.apply_screen_effect.rpc_id(alive_player, screen_effect_path)
-
-			remove_amulet(amulet_id)
+			
+			GlobalFunctions.remove_amulet(amulet_id)
+			#remove_amulet(amulet_id)
 
 func display_amulets():
 	if !Client.active or get_parent().is_multiplayer_authority():
 		var unique_amulets = {}
 
-		for item in amulets_available:
+		for item in GlobalVariables.player_amulets:
 			if item in unique_amulets:
 				unique_amulets[item] += 1
 			else:
@@ -75,24 +79,19 @@ func display_amulets():
 			amulets_panel.add_child(amulet_representation)
 		amulets_displayed = true
 
-func _ready():
-	display_amulets()
-
-func _process(delta):
-	if !amulets_displayed and amulets_panel:
-		display_amulets()
-
-func attach_amulet(id):
-	amulets_available.append(id)
-	var amulet_representation = amulet_icon_template.instantiate()
-	amulet_representation.texture = GlobalVariables.amulets[id].texture
-	amulet_representation.tooltip_text = GlobalVariables.amulets[id].name.to_upper() + "\n" + GlobalVariables.amulets[id].description
-	amulets_panel.add_child(amulet_representation)
-
-func remove_amulet(id):
-	if amulets_available.size() > 0:
-		var index = amulets_available.find(id)
-		if index >= 0 and index < amulets_available.size() and amulets_available[index] == id:
-			amulets_available.remove_at(index)
-		else:
-			amulets_displayed = false
+#
+#func attach_amulet(id):
+	#GlobalVariables.player_amulets.append(id)
+	##var amulet_representation = amulet_icon_template.instantiate()
+	##amulet_representation.texture = GlobalVariables.amulets[id].texture
+	##amulet_representation.tooltip_text = GlobalVariables.amulets[id].name.to_upper() + "\n" + GlobalVariables.amulets[id].description
+	##amulets_panel.add_child(amulet_representation)
+#
+#func remove_amulet(id):
+	#GlobalVariables.player_amulets.erase(id)
+	##if amulets_available.size() > 0:
+		##var index = amulets_available.find(id)
+		##if index >= 0 and index < amulets_available.size() and amulets_available[index] == id:
+			##amulets_available.remove_at(index)
+		##else:
+			##amulets_displayed = false

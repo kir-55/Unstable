@@ -49,7 +49,11 @@ folder_colors={
 
 [gui]
 
+theme/custom_font="res://Styles/Fonts/Minecraft.ttf"
 theme/default_font_antialiasing=2
+theme/default_font_subpixel_positioning=0
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
 timers/tooltip_delay_sec=0.1
 
 [input]
