@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bigmbkrs23ifx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc02b"]
-bg_color = Color(0.148989, 0.0818637, 0.186326, 1)
+bg_color = Color(0.458824, 0.454902, 0.462745, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10

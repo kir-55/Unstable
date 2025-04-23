@@ -62,7 +62,7 @@ func _ready():
 
 func _process(delta):
 	if label.size.x < label_with:
-		label.size.x += 4
+		label.size.x += 10
 
 
 func check_for_win():

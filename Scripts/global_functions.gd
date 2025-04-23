@@ -6,12 +6,28 @@ func _ready():
 	load_settings()
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("fullscreen"):
-		var mode := DisplayServer.window_get_mode()
-		var window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if window else DisplayServer.WINDOW_MODE_WINDOWED)
 
+func _input(event):
+	if event.is_action_pressed("fullscreen"):  # Check if F11 is pressed
+		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			GlobalVariables.settings["fullscreen"] = true
+			GlobalFunctions.save_player_data()
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			GlobalVariables.settings["fullscreen"] = false
+			GlobalFunctions.save_player_data()
+
+
+
+# Function to apply the theme to a scene
+func apply_theme_to_scene(scene: Node):
+	if scene is Control:
+		scene.theme = GlobalVariables.global_theme
+
+# This function will be triggered whenever the scene changes
+func _on_scene_changed(_from: Node, to: Node):
+	apply_theme_to_scene(to)
 
 
 func reload():

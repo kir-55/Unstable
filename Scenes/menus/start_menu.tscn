@@ -75,7 +75,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Again" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 47.245)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -87,7 +87,7 @@ theme_override_styles/focus = ExtResource("4_rrgdv")
 text = "Play"
 
 [node name="Multiplayer" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 47.245)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -99,7 +99,7 @@ theme_override_styles/focus = ExtResource("6_abaoq")
 text = "Multiplayer"
 
 [node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 47.245)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -111,7 +111,7 @@ theme_override_styles/focus = ExtResource("4_rrgdv")
 text = "Progress"
 
 [node name="Settings" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 47.245)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -135,7 +135,7 @@ stretch_mode = 4
 script = ExtResource("9_x14u2")
 
 [node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 47.245)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0

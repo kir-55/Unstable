@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://c4nt37xo2x33p"]
+
+[ext_resource type="PackedScene" uid="uid://dj8t3o8vw2ko1" path="res://Scenes/Decorations/Medieval/grass.tscn" id="1_m72d2"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_rasru"]
+
+[resource]
+script = ExtResource("2_rasru")
+prefab = ExtResource("1_m72d2")
+name = "TrafficLights"
+spawn_on_center = false
+chance_to_spawn = 60.0
+width = 50
+pattern_type = "G"
+type = 3
+ignore_types = Array[int]([])
+can_be_mirrored = true

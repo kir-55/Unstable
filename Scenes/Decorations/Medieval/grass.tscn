@@ -1,0 +1,22 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj8t3o8vw2ko1"]
+
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_l1gke"]
+[ext_resource type="Texture2D" uid="uid://3wseqs2wt6dl" path="res://Textures/Decorations/Medieval/grass.png" id="2_nbq80"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="3_e1vrq"]
+[ext_resource type="Texture2D" uid="uid://dp4afgl1y37ad" path="res://Textures/Decorations/Medieval/grass1.png" id="4_gkns3"]
+[ext_resource type="Texture2D" uid="uid://cqi6osy1egvko" path="res://Textures/Decorations/Medieval/grass2.png" id="5_gmurr"]
+[ext_resource type="Texture2D" uid="uid://kx0s1hy6t67q" path="res://Textures/Decorations/Medieval/grass3.png" id="6_irk4h"]
+[ext_resource type="Texture2D" uid="uid://bdo3orov6qk14" path="res://Textures/Decorations/Medieval/grass4.png" id="7_05cid"]
+[ext_resource type="Texture2D" uid="uid://b5yd10674lit4" path="res://Textures/Decorations/Medieval/grass5.png" id="8_7sbao"]
+[ext_resource type="Texture2D" uid="uid://c64u1o7mknbxd" path="res://Textures/Decorations/Medieval/grass6.png" id="9_5x0eq"]
+[ext_resource type="Texture2D" uid="uid://bveh25nd4vk0u" path="res://Textures/Decorations/Medieval/grass7.png" id="10_e7itk"]
+
+[node name="Grass" type="Sprite2D"]
+z_index = 10
+material = ExtResource("1_l1gke")
+position = Vector2(0, -32)
+scale = Vector2(3, 3)
+texture = ExtResource("2_nbq80")
+offset = Vector2(0.41638, 4)
+script = ExtResource("3_e1vrq")
+visual_variations = Array[Texture2D]([ExtResource("4_gkns3"), ExtResource("5_gmurr"), ExtResource("6_irk4h"), ExtResource("7_05cid"), ExtResource("8_7sbao"), ExtResource("9_5x0eq"), ExtResource("10_e7itk")])

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="2_mexp6"]
 [ext_resource type="Script" path="res://Scripts/drone.gd" id="2_q6afg"]
+[ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://Textures/Decorations/City/drone_city.png" id="2_qborx"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_uyrou"]
-[ext_resource type="Texture2D" uid="uid://ejxlmcq2w5r1" path="res://Textures/Decorations/City/dron.png" id="2_wdacg"]
 [ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/Explosions/drone_explosion.tscn" id="3_eoxcv"]
 [ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="6_f88ta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
-size = Vector2(14.3333, 15.3333)
+size = Vector2(17.3333, 13.6667)
 
 [sub_resource type="Curve" id="Curve_c3nl4"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.805243, 0.537867), 0.0, 0.0, 0, 0]
@@ -23,13 +23,13 @@ script = ExtResource("2_uyrou")
 death_messages = Array[String](["Drone didn't liked you", "You kicked the drone with your head (the drone was harder)", "You jumped into the drone"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.166667, -6.33333)
+position = Vector2(-3.17891e-07, -6.16667)
 shape = SubResource("RectangleShape2D_1iamu")
 
 [node name="Drone City" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(0, -7)
-texture = ExtResource("2_wdacg")
+texture = ExtResource("2_qborx")
 script = ExtResource("2_q6afg")
 min_height = 30.0
 speed = 0.04
@@ -41,7 +41,7 @@ explosion_prefab = ExtResource("3_eoxcv")
 explosion_point = NodePath("..")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-12.6667, -1)
+position = Vector2(-13.6667, -3.33333)
 amount = 32
 lifetime = 0.5
 lifetime_randomness = 1.0
@@ -56,7 +56,7 @@ scale_amount_curve = SubResource("Curve_c3nl4")
 color_initial_ramp = ExtResource("6_f88ta")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2(12.6667, -1)
+position = Vector2(13.6667, -3.33333)
 amount = 32
 lifetime = 0.5
 lifetime_randomness = 1.0

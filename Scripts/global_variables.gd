@@ -122,3 +122,6 @@ var player_colors := {
 	"hand_color_shadow" :  Color(0.9, 0.6, 0.4)
 }
 
+
+var global_theme := Theme.new() #needed for font
+var fonts = ["res://Styles/Fonts/Minecraft.ttf", "res://Styles/Fonts/C&C Red Alert [LAN].ttf"]
