@@ -7,10 +7,13 @@ extends Control
 @export var new_amulet_count_label: RichTextLabel
 
 
+func _on_start_exit_pressed():
+	Client.reset_multiplayer_connection()
+	get_tree().quit()
 
 func _on_exit_pressed():
 	Client.reset_multiplayer_connection()
-	get_tree().quit()
+	GlobalFunctions.load_menu("main", true, true)
 
 
 # has to be fixed, two identical functions
@@ -51,3 +54,5 @@ func _on_multiplayer_pressed():
 
 func _on_settings_pressed():
 	GlobalFunctions.load_menu("settings", true)
+
+

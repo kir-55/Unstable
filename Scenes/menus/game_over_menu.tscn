@@ -4,8 +4,11 @@
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
 [ext_resource type="Script" path="res://Scripts/superscript_effect.gd" id="4_eh833"]
+[ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="5_4hrvk"]
 [ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="5_o7vdc"]
+[ext_resource type="StyleBox" uid="uid://bagr45t17aie2" path="res://Styles/button_hover_blue.tres" id="6_13l3d"]
 [ext_resource type="AudioStream" uid="uid://c5wvmtwmlcki6" path="res://Audio/hartbeat.mp3" id="6_c8ekr"]
+[ext_resource type="StyleBox" uid="uid://depdhdvh1mnip" path="res://Styles/button_hover_green.tres" id="7_t2inp"]
 
 [sub_resource type="Gradient" id="Gradient_p7q16"]
 colors = PackedColorArray(0, 0, 0, 0, 0.8, 0.192157, 0.2, 1)
@@ -22,8 +25,6 @@ metadata/_snap_enabled = true
 [sub_resource type="RichTextEffect" id="RichTextEffect_j0opp"]
 script = ExtResource("4_eh833")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4gsj"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le7je"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sg24"]
@@ -34,11 +35,7 @@ script = ExtResource("4_eh833")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gwn6x"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0oaf7"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1csu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kee5h"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8s4s"]
 
@@ -107,6 +104,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="DeathInfo" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+clip_contents = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 bbcode_enabled = true
@@ -122,7 +120,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_p4gsj")
+theme_override_styles/hover = ExtResource("5_4hrvk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_le7je")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2sg24")
 text = "Play again"
@@ -152,19 +150,19 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 5.3
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_gwn6x")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0oaf7")
+theme_override_styles/hover = ExtResource("6_13l3d")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_s1csu")
 
-[node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_ca5b1")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kee5h")
+theme_override_styles/hover = ExtResource("7_t2inp")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_f8s4s")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g0033")
-text = "Exit"
+text = "Main menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_c8ekr")
@@ -175,4 +173,4 @@ bus = &"SFX"
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
 [connection signal="ready" from="Panel/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_new_amulet_count_ready"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/RichTextLabel/Progress" to="." method="_on_gameover_progress_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_exit_pressed"]

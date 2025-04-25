@@ -150,4 +150,4 @@ text = "Exit"
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Progress" to="." method="_on_progress_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_start_exit_pressed"]
