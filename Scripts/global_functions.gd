@@ -130,17 +130,28 @@ func remove_amulet(id):
 	GlobalVariables.player_amulets.erase(id)
 	GlobalVariables.on_player_amulets_changed.emit()
 
+func get_current_menu_instance():
+	var canvas_layer = get_tree().current_scene.find_child("CanvasLayer")
+	if canvas_layer:
+		var menu = canvas_layer.find_child("menu", false, false)
+		return menu if menu else null
+	else:
+		return null
+
 func load_menu(menu: String, remove_all_children = true, transition_to_main = false, menu_instance_callable : Callable = func(x): pass):
-	if transition_to_main:
-		GlobalVariables.current_menu = menu
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
-		return
-	
 	var container = get_tree().current_scene.find_child("CanvasLayer")
 	
 	if !container:
 		#print("Could not find canvas layer. Please add one!")
 		return
+	
+	GlobalVariables.previous_menu = GlobalVariables.current_menu
+	
+	if transition_to_main:
+		GlobalVariables.current_menu = menu
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		return
+	
 	
 	if remove_all_children:
 		for menu_child in container.get_children():

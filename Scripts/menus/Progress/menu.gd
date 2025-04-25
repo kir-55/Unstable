@@ -1,7 +1,16 @@
 extends Control
 
-
-
 func _on_back_pressed():
 	GlobalVariables.player_new_amulets.clear()
-	GlobalFunctions.load_menu("main", false)
+	if GlobalVariables.previous_menu == "game_over":
+		var current_menu_instance = GlobalFunctions.get_current_menu_instance()
+		if current_menu_instance and current_menu_instance.has_meta("death_message"):
+			GlobalFunctions.load_menu("game_over", true, false, func(instance):
+				var death_message = current_menu_instance.get_meta("death_message")
+				instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_message + "[/color][/shake][/font_size][center]")
+				instance.set_meta("death_message", death_message)
+			)
+		else:
+			GlobalFunctions.load_menu("game_over")
+	else:
+		GlobalFunctions.load_menu("main", false)

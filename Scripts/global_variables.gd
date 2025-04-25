@@ -69,13 +69,15 @@ var menus = {
 	"settings" : load("res://Scenes/Menus/settings_menu.tscn"),
 	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
 	"win" : load("res://Scenes/Menus/win_menu.tscn"),
+	"game_over": load("res://Scenes/Menus/game_over_menu.tscn"),
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
 	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
 	"multiplayer_victory" : load("res://Scenes/Menus/multiplayer_victory.tscn"),
 	"multiplayer_loss" : load("res://Scenes/Menus/multiplayer_loss.tscn"),
-	"multiplayer_draw" : load("res://Scenes/Menus/multiplayer_draw.tscn")
-	
+	"multiplayer_draw" : load("res://Scenes/Menus/multiplayer_draw.tscn")	
 }
+
+var previous_menu = null
 var current_menu = "main"
 
 @export var player_data_path: String = "res://player_data.json"

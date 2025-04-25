@@ -25,12 +25,10 @@ func _on_body_entered(body):
 				
 
 			if !Client.active:
-				# spawning death menu
-				var game_over_menu = load("res://Scenes/Menus/game_over_menu.tscn")
-				var instance = game_over_menu.instantiate()
 				if death_messages and death_messages.size() != 0:
-					instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_messages.pick_random() + "[/color][/shake][/font_size][center]")
-				canvas_layer.add_child(instance)
+					GlobalFunctions.load_menu("game_over", true, false, add_death_message)
+				else:
+					GlobalFunctions.load_menu("game_over", true, false)
 			else:
 				var time_elapsed = GlobalVariables.time_ended - GlobalVariables.time_started
 				Client.player_died.rpc(Client.id, Client.player_name, last_score, time_elapsed)
@@ -38,4 +36,7 @@ func _on_body_entered(body):
 		else:
 				queue_free()
 
-
+func add_death_message(instance):
+	var death_message = death_messages.pick_random()
+	instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_message + "[/color][/shake][/font_size][center]")
+	instance.set_meta("death_message", death_message)

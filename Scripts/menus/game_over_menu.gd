@@ -15,14 +15,18 @@ func _on_exit_pressed():
 	Client.reset_multiplayer_connection()
 	GlobalFunctions.load_menu("main", true, true)
 
-
-# has to be fixed, two identical functions
 func _on_progress_pressed():
 	GlobalFunctions.load_menu("progress", true)
 
 
 func _on_gameover_progress_pressed():
-	GlobalFunctions.load_menu("progress", true)
+	var current_menu_instance = GlobalFunctions.get_current_menu_instance()
+	if current_menu_instance:
+		var death_message = current_menu_instance.get_meta("death_message") if current_menu_instance.has_meta("death_message") else null
+		GlobalFunctions.load_menu("progress", true, false, func(instance):
+			if death_message != null:
+				instance.set_meta("death_message", death_message)
+		)
 
 
 func _on_again_pressed():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sntjooc6xaot"]
+[gd_scene load_steps=10 format=3 uid="uid://sntjooc6xaot"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_start_game.gd" id="1_ifo1o"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_n648y"]
@@ -7,6 +7,14 @@
 [ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="5_l023l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_shl63"]
+
+[sub_resource type="FontFile" id="FontFile_iivtk"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b08np"]
 
@@ -86,6 +94,7 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 focus_mode = 2
+theme_override_fonts/normal_font = SubResource("FontFile_iivtk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b08np")
 bbcode_enabled = true
 selection_enabled = true
