@@ -2,6 +2,8 @@ class_name Global
 extends Node
 
 signal on_game_state_changed(state)
+signal on_player_died(message)
+
 signal on_player_colors_changed
 signal on_player_amulets_changed
 

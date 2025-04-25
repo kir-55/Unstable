@@ -6,6 +6,7 @@ func _on_body_entered(body):
 	if (body.name == "Player" or body.name == "Player" + str(Client.id)) and GlobalVariables.game_is_on:
 		var canvas_layer = get_tree().current_scene.canvas_layer
 		if body.kill():
+			
 			Engine.time_scale = 1
 			GlobalVariables.game_is_on = false
 			if canvas_layer:
@@ -28,8 +29,13 @@ func _on_body_entered(body):
 				# spawning death menu
 				var game_over_menu = load("res://Scenes/Menus/game_over_menu.tscn")
 				var instance = game_over_menu.instantiate()
+				
 				if death_messages and death_messages.size() != 0:
-					instance.find_child("DeathMessage").append_text("[center][font_size=24][shake rate=20.0 level=3 connected=1][color='#c33c40']" + death_messages.pick_random() + "[/color][/shake][/font_size][center]")
+					GlobalVariables.on_player_died.emit(death_messages.pick_random())
+				else:
+					GlobalVariables.on_player_died.emit()
+					
+					
 				canvas_layer.add_child(instance)
 			else:
 				var time_elapsed = GlobalVariables.time_ended - GlobalVariables.time_started

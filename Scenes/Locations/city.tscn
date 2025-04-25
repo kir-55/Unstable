@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=32 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="1_38dti"]
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_77yam"]
@@ -11,9 +11,14 @@
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="3_skbog"]
 [ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/paralax_s.png" id="4_qxaw6"]
 [ext_resource type="Script" path="res://Scripts/score_updater.gd" id="5_y8nvw"]
+[ext_resource type="Shader" path="res://Scenes/Entities/player_pixelate.gdshader" id="6_r55mh"]
+[ext_resource type="StyleBox" uid="uid://bpi32n02mrp7h" path="res://Styles/death_panel_style.tres" id="7_lxdlr"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="8_42q7i"]
+[ext_resource type="LabelSettings" uid="uid://c3yu6js050cyh" path="res://Scenes/Locations/death_message_label_style.tres" id="8_q6du6"]
+[ext_resource type="StyleBox" uid="uid://bi3dcc0vcy1hr" path="res://Styles/countdown_panel_style.tres" id="9_m12ex"]
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="9_s7k86"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="10_sqdli"]
+[ext_resource type="LabelSettings" uid="uid://c26omcfad10i" path="res://Scenes/Locations/countdown_label_style.tres" id="10_tqvsl"]
 [ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="11_ce5fi"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="11_kir3x"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="12_gsrp6"]
@@ -23,13 +28,35 @@
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_tk21i"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="15_6haxf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
-bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02lam"]
+shader = ExtResource("6_r55mh")
+shader_parameter/circle_size = 1.17
+shader_parameter/feather = 0.275
+shader_parameter/circle_position = Vector2(0.5, 0.5)
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_hg04r"]
-font_size = 150
-outline_size = 40
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="GDScript" id="GDScript_5ud2n"]
+script/source = "extends Panel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dxt6"]
+shader = ExtResource("6_r55mh")
+shader_parameter/circle_size = 0.095
+shader_parameter/feather = 2.12
+shader_parameter/circle_position = Vector2(0.5, 0.5)
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53rot"]
 shader = ExtResource("11_kir3x")
@@ -37,13 +64,15 @@ shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "canvas_layer", "countdown_panel", "countdown_label")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "canvas_layer", "countdown_panel", "countdown_label", "death_panel", "death_message_label")]
 script = ExtResource("1_77yam")
 spawn_point = NodePath("SpawnPoint")
 amulets_panel = NodePath("CanvasLayer/AmuletLIst")
 canvas_layer = NodePath("CanvasLayer")
-countdown_panel = NodePath("CanvasLayer/Panel")
-countdown_label = NodePath("CanvasLayer/Panel/Label")
+countdown_panel = NodePath("CanvasLayer/CountdownPanel")
+countdown_label = NodePath("CanvasLayer/CountdownPanel/Label")
+death_panel = NodePath("CanvasLayer/DeathPanel")
+death_message_label = NodePath("CanvasLayer/DeathPanel/Label")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_uj810")
@@ -97,15 +126,45 @@ texture = ExtResource("1_b5qif")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 20
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="DeathPanel" type="Panel" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_02lam")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_o1cbu")
+theme_override_styles/panel = ExtResource("7_lxdlr")
+script = SubResource("GDScript_5ud2n")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/DeathPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_bottom = 63.925
+grow_horizontal = 2
+grow_vertical = 2
+text = "You broke your leg, while kicking the car"
+label_settings = ExtResource("8_q6du6")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="CountdownPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_5dxt6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("9_m12ex")
+script = SubResource("GDScript_5ud2n")
+
+[node name="Label" type="Label" parent="CanvasLayer/CountdownPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,11 +172,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "3"
-label_settings = SubResource("LabelSettings_hg04r")
+label_settings = ExtResource("10_tqvsl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CountdownTimer" type="Timer" parent="CanvasLayer/Panel"]
+[node name="CountdownTimer" type="Timer" parent="CanvasLayer/CountdownPanel"]
 wait_time = 0.5
 autostart = true
 
@@ -219,5 +278,5 @@ script = ExtResource("14_8ml7d")
 
 [node name="Line2D" type="Line2D" parent="."]
 
-[connection signal="timeout" from="CanvasLayer/Panel/CountdownTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/CountdownPanel/CountdownTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TransitionTimer" to="TransitionTimer" method="_on_timeout"]
