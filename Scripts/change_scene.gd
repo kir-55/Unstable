@@ -25,5 +25,6 @@ func _ready():
 	description.text = destination_level_info.description
 		
 func _on_timeout():
-	get_tree().change_scene_to_file(destination_level_info.scene)
+	GlobalVariables.current_epoch = destination_level_info.level
+	get_tree().change_scene_to_file("res://Scenes/epoch.tscn")
  

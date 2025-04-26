@@ -1,27 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=16 format=3 uid="uid://bva6jjs3q5tws"]
 
-[ext_resource type="Script" path="res://Scripts/random_system.gd" id="1_38dti"]
-[ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_77yam"]
-[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="1_b5qif"]
-[ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_g3w6i"]
-[ext_resource type="Script" path="res://Scripts/sloper.gd" id="1_pfyk3"]
-[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_uj810"]
-[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="2_fxvmq"]
-[ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="2_redno"]
-[ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="3_skbog"]
-[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/paralax_s.png" id="4_qxaw6"]
-[ext_resource type="Script" path="res://Scripts/score_updater.gd" id="5_y8nvw"]
-[ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="8_42q7i"]
-[ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="9_s7k86"]
-[ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="10_sqdli"]
-[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="11_ce5fi"]
-[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="11_kir3x"]
-[ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="12_gsrp6"]
-[ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="13_3ljpo"]
-[ext_resource type="Script" path="res://Scripts/transition.gd" id="14_8ml7d"]
-[ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="14_stlej"]
-[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="14_tk21i"]
-[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="15_6haxf"]
+[ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_hkfjw"]
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="2_hm5tp"]
+[ext_resource type="Script" path="res://Scripts/score_updater.gd" id="3_vv445"]
+[ext_resource type="Script" path="res://Scripts/сamera.gd" id="4_k0bwq"]
+[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="5_jcgvu"]
+[ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="6_7uxip"]
+[ext_resource type="Script" path="res://Scripts/random_system.gd" id="7_2jho4"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="8_g8evp"]
+[ext_resource type="Script" path="res://Scripts/sloper.gd" id="9_s6le5"]
+[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="10_85tu7"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="11_aggff"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="19_r1eo0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1cbu"]
 bg_color = Color(0.156863, 0.180392, 0.231373, 0.701961)
@@ -32,21 +22,25 @@ outline_size = 40
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53rot"]
-shader = ExtResource("11_kir3x")
+shader = ExtResource("10_85tu7")
 shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "canvas_layer", "countdown_panel", "countdown_label")]
-script = ExtResource("1_77yam")
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "canvas_layer", "world_environment", "grass_line", "ground_line", "audio_player", "decoration_spawner", "countdown_panel", "countdown_label")]
+script = ExtResource("1_hkfjw")
 spawn_point = NodePath("SpawnPoint")
 amulets_panel = NodePath("CanvasLayer/AmuletLIst")
 canvas_layer = NodePath("CanvasLayer")
+world_environment = NodePath("WorldEnvironment")
+grass_line = NodePath("TerrainGenerator/GrassLine")
+ground_line = NodePath("TerrainGenerator/GroundLine")
+audio_player = NodePath("Camera2D/AudioStreamPlayer2D")
+decoration_spawner = NodePath("TerrainGenerator/DecorationSpawner")
 countdown_panel = NodePath("CanvasLayer/Panel")
 countdown_label = NodePath("CanvasLayer/Panel/Label")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_uj810")
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 9
@@ -61,38 +55,7 @@ motion_mirroring = Vector2(7000, 0)
 self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
 position = Vector2(-16, -312)
 scale = Vector2(12, 12)
-texture = ExtResource("2_fxvmq")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2(1000, 0)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-self_modulate = Color(1, 1, 1, 0.984314)
-position = Vector2(-647, 25)
-motion_scale = Vector2(0.1, 0.9)
-motion_mirroring = Vector2(1840, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-self_modulate = Color(1, 1, 1, 0.556863)
-position = Vector2(288, 171)
-scale = Vector2(2, 2)
-texture = ExtResource("4_qxaw6")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-self_modulate = Color(1, 1, 1, 0.556863)
-position = Vector2(1208, 171)
-scale = Vector2(2, 2)
-texture = ExtResource("4_qxaw6")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(81, -106)
-motion_scale = Vector2(0.3, 0.93)
-motion_mirroring = Vector2(2760, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(164, 160)
-scale = Vector2(6, 6)
-texture = ExtResource("1_b5qif")
+texture = ExtResource("2_hm5tp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 20
@@ -135,7 +98,7 @@ theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 48
 text = "2325"
 vertical_alignment = 1
-script = ExtResource("5_y8nvw")
+script = ExtResource("3_vv445")
 metadata/_edit_use_anchors_ = true
 
 [node name="AmuletLIst" type="VBoxContainer" parent="CanvasLayer"]
@@ -154,18 +117,18 @@ grow_vertical = 2
 position = Vector2(217, 22)
 process_callback = 0
 position_smoothing_enabled = true
-script = ExtResource("1_g3w6i")
+script = ExtResource("4_k0bwq")
 speed = 30.0
 max_distance = Vector2(1, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
-stream = ExtResource("15_6haxf")
+stream = ExtResource("5_jcgvu")
 autoplay = true
 bus = &"Music"
-script = ExtResource("3_skbog")
+script = ExtResource("6_7uxip")
 
 [node name="RandomSystem" type="Node" parent="."]
-script = ExtResource("1_38dti")
+script = ExtResource("7_2jho4")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(0, 170)
@@ -173,7 +136,7 @@ scale = Vector2(1.4, 1.4)
 
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
 position = Vector2(-650, 271)
-script = ExtResource("2_redno")
+script = ExtResource("8_g8evp")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
@@ -182,7 +145,7 @@ line_section_length = 500
 section_y_change_amplitude = 0
 
 [node name="Sloper" type="Node" parent="TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
-script = ExtResource("1_pfyk3")
+script = ExtResource("9_s6le5")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 
@@ -200,7 +163,7 @@ collision_layer = 257
 
 [node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
 scale = Vector2(1.10038, 1.15793)
-script = ExtResource("12_gsrp6")
+script = ExtResource("11_aggff")
 load_radius = 6
 max_radius = 10
 rs = NodePath("../../RandomSystem")
@@ -208,14 +171,12 @@ sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_pattern = "RA*B*C*|RHB*C*|RDB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|RD|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
 spawn_from = 3
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("8_42q7i"), ExtResource("14_stlej"), ExtResource("13_3ljpo"), ExtResource("9_s7k86"), ExtResource("10_sqdli"), ExtResource("11_ce5fi"), ExtResource("14_tk21i")])
 
 [node name="TransitionTimer" type="Timer" parent="."]
 wait_time = 25.0
 autostart = true
-script = ExtResource("14_8ml7d")
+script = ExtResource("19_r1eo0")
 
 [node name="Line2D" type="Line2D" parent="."]
 

@@ -56,6 +56,7 @@ var player_new_amulets : Array[int]
 @export var active_weapon_types: Array[WeaponType]
 
 var last_epoch: GlobalEnums.LEVELS
+var current_epoch : GlobalEnums.LEVELS = GlobalEnums.LEVELS.START
 var next_epoch: GlobalEnums.LEVELS
 
 var game_is_on := true:

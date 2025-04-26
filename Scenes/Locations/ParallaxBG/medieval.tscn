@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://b00p65geifnhm"]
+
+[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/paralax_s.png" id="1_isoeh"]
+
+[node name="Medieval" type="ParallaxBackground"]
+scroll_offset = Vector2(1000, 0)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+self_modulate = Color(1, 1, 1, 0.984314)
+position = Vector2(-647, 25)
+motion_scale = Vector2(0.1, 0.9)
+motion_mirroring = Vector2(1840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(288, 171)
+scale = Vector2(2, 2)
+texture = ExtResource("1_isoeh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(1208, 171)
+scale = Vector2(2, 2)
+texture = ExtResource("1_isoeh")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(81, -106)
+motion_scale = Vector2(0.3, 0.93)
+motion_mirroring = Vector2(2760, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(164, 160)
+scale = Vector2(6, 6)
+texture = ExtResource("1_isoeh")

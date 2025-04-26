@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bh2l45rd6upik"]
 
-[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://environment.tres" id="1_ea0pi"]
+[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://Ages/Environments/city.tres" id="1_ea0pi"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="1_x54wi"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="2_sjffl"]
 [ext_resource type="AudioStream" uid="uid://dpveeo85b2dpw" path="res://Audio/Melodies/cyberpunk.mp3" id="3_5v1p8"]

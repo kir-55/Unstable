@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://da211utn7uld2"]
+
+[node name="Medieval" type="DirectionalLight2D"]
+color = Color(1, 0.899827, 0.834361, 1)
+energy = 0.7
+blend_mode = 1
+range_layer_min = -100

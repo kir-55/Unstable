@@ -1,12 +1,28 @@
-[gd_resource type="Resource" script_class="LevelInfo" load_steps=3 format=3 uid="uid://ctr8ofv38du6p"]
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=13 format=3 uid="uid://ctr8ofv38du6p"]
 
 [ext_resource type="Texture2D" uid="uid://dnwwaxloyoewm" path="res://Textures/Baners/city_baner.png" id="1_cx422"]
+[ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://Ages/Environments/city.tres" id="2_5sogd"]
+[ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="2_qdhdi"]
+[ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="3_71il6"]
 [ext_resource type="Script" path="res://Scripts/level_info.gd" id="3_p7c1v"]
+[ext_resource type="PackedScene" uid="uid://bgopl05fsqicm" path="res://Scenes/Locations/ParallaxBG/city.tscn" id="3_wi1co"]
+[ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="4_muq4h"]
+[ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="5_brfca"]
+[ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="6_xlhnf"]
+[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="7_ia6ne"]
+[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="8_bwyms"]
+[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="10_ydb03"]
 
 [resource]
 script = ExtResource("3_p7c1v")
 level = 0
-scene = "res://Scenes/Locations/city.tscn"
 title = "City"
 description = "21` century, cars, drones, road fixes, ..."
 baner = ExtResource("1_cx422")
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_qdhdi"), ExtResource("3_71il6"), ExtResource("4_muq4h"), ExtResource("5_brfca"), ExtResource("6_xlhnf"), ExtResource("7_ia6ne"), ExtResource("8_bwyms")])
+decoration_spawn_pattern = "RA*B*C*|RHB*C*|RDB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|RD|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
+environment = ExtResource("2_5sogd")
+parallax_background = ExtResource("3_wi1co")
+ground_color = Color(0.168627, 0.133333, 0.164706, 1)
+grass_color = Color(0.156863, 0.180392, 0.231373, 1)
+music = ExtResource("10_ydb03")

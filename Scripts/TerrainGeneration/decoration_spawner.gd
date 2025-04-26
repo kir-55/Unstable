@@ -14,12 +14,11 @@ var line_section_length: int
 @export var line: Line2D
 @export var terrain_generator: Node2D
 
-@export var spawn_pattern := "ACCCCCC|S"
 
 @export var spawn_from: int = 2
 
-@export var decorations: Array[Decoration]
-
+var spawn_pattern := ""
+var decorations : Array[Decoration]
 var last_point: int
 var loaded_segments: Array[int]
 var current_pattern_segment_index = 0
