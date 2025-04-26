@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://daai0thrp4xay"]
+[gd_scene load_steps=11 format=3 uid="uid://daai0thrp4xay"]
 
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="1_uh0gs"]
 [ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Unstable_paralax_layer1.png" id="2_las88"]
@@ -9,13 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="7_ravml"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="8_yms20"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="9_hthcy"]
-[ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="10_b7u2u"]
-[ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="11_023w8"]
-[ext_resource type="Resource" uid="uid://cj0iuschfqh2i" path="res://Decorations/City/hole.tres" id="12_bklag"]
-[ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="13_t2mn0"]
-[ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="14_esdkr"]
-[ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="15_y0x6r"]
-[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="16_6eu5w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v15ys"]
 shader = ExtResource("8_yms20")
@@ -127,6 +120,4 @@ sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
-spawn_pattern = "RA*B*C*|RHB*C*|RDB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|RD|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
 spawn_from = 0
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("10_b7u2u"), ExtResource("11_023w8"), ExtResource("12_bklag"), ExtResource("13_t2mn0"), ExtResource("14_esdkr"), ExtResource("15_y0x6r"), ExtResource("16_6eu5w")])

@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqabtg1hsllsa"]
+
+[ext_resource type="Script" path="res://Scripts/drone.gd" id="1_ml32s"]
+[ext_resource type="Texture2D" uid="uid://cr2rvtkqb6fpf" path="res://Textures/flag.png" id="1_ycpua"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_31e8k"]
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_34xbf"]
+resource_name = "jump"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gf6x"]
+_data = {
+"jump": SubResource("Animation_34xbf")
+}
+
+[node name="Node2D" type="Node2D"]
+rotation = 6.19623
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -103.0
+offset_top = -299.0
+offset_right = 102.0
+offset_bottom = -264.0
+grow_horizontal = 2
+text = "Score: 7921
+Best: 9323"
+label_settings = SubResource("LabelSettings_31e8k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_ycpua")
+offset = Vector2(12, -38)
+script = ExtResource("1_ml32s")
+min_height = 230.0
+speed = 0.4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_0gf6x")
+}
+autoplay = "jump"

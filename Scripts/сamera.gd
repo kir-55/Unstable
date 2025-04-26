@@ -26,7 +26,7 @@ func _set_target(target):
 
 func _process(delta):
 	if target and !target.is_queued_for_deletion():
-		if GlobalVariables.game_is_on or epoch.death_animation:
+		if GlobalVariables.game_is_on or epoch.death_animation or !epoch.can_accept_input:
 				distance_to_target.x = abs(position.x - target.global_position.x + offsett.x) 
 				distance_to_target.y = abs(position.y - target.global_position.y + offsett.y)
 				

@@ -1,11 +1,14 @@
-
-[gd_scene load_steps=16 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=23 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_hkfjw"]
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Unstable_paralax_layer-1.png" id="2_hm5tp"]
+[ext_resource type="PackedScene" uid="uid://cqabtg1hsllsa" path="res://Scenes/score_mark.tscn" id="2_kesfm"]
+[ext_resource type="Shader" path="res://Scenes/Entities/fade_circle.gdshader" id="3_j3dqh"]
 [ext_resource type="Script" path="res://Scripts/score_updater.gd" id="3_vv445"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="4_k0bwq"]
+[ext_resource type="LabelSettings" uid="uid://c3yu6js050cyh" path="res://Scenes/Locations/death_message_label_style.tres" id="4_poebi"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="5_jcgvu"]
+[ext_resource type="LabelSettings" uid="uid://c26omcfad10i" path="res://Scenes/Locations/countdown_label_style.tres" id="5_tfopc"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="6_7uxip"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="7_2jho4"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="8_g8evp"]
@@ -14,13 +17,12 @@
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="11_aggff"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="19_r1eo0"]
 
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_02lam"]
-shader = ExtResource("6_r55mh")
+shader = ExtResource("3_j3dqh")
 shader_parameter/circle_size = 3.0
 shader_parameter/feather_inner = 0.0
-shader_parameter/feather_outer = 0.153
-shader_parameter/circle_position = Vector2(0.54, 0.5)
+shader_parameter/feather_outer = 0.198
+shader_parameter/circle_position = Vector2(0.5, 0.5)
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 shader_parameter/color = Color(0.360784, 0.168627, 0.203922, 1)
@@ -52,10 +54,10 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5dxt6"]
-shader = ExtResource("6_r55mh")
-shader_parameter/circle_size = 0.161
-shader_parameter/feather_inner = 0.633
-shader_parameter/feather_outer = 1.044
+shader = ExtResource("3_j3dqh")
+shader_parameter/circle_size = 0.544
+shader_parameter/feather_inner = 0.59
+shader_parameter/feather_outer = 0.538
 shader_parameter/circle_position = Vector2(0.5, 0.5)
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
@@ -67,20 +69,24 @@ shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-
-[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_point", "amulets_panel", "canvas_layer", "world_environment", "grass_line", "ground_line", "audio_player", "decoration_spawner", "countdown_panel", "countdown_label")]
+[node name="Epoch" type="Node2D" node_paths=PackedStringArray("world_environment", "grass_line", "ground_line", "audio_player", "decoration_spawner", "spawn_point", "amulets_panel", "canvas_layer", "score_label", "camera", "countdown_panel", "countdown_label", "death_panel", "death_message_label", "press_to_continue_label")]
 script = ExtResource("1_hkfjw")
-spawn_point = NodePath("SpawnPoint")
-amulets_panel = NodePath("CanvasLayer/AmuletLIst")
-canvas_layer = NodePath("CanvasLayer")
 world_environment = NodePath("WorldEnvironment")
 grass_line = NodePath("TerrainGenerator/GrassLine")
 ground_line = NodePath("TerrainGenerator/GroundLine")
 audio_player = NodePath("Camera2D/AudioStreamPlayer2D")
 decoration_spawner = NodePath("TerrainGenerator/DecorationSpawner")
-countdown_panel = NodePath("CanvasLayer/Panel")
-countdown_label = NodePath("CanvasLayer/Panel/Label")
-
+spawn_point = NodePath("SpawnPoint")
+amulets_panel = NodePath("CanvasLayer/AmuletLIst")
+canvas_layer = NodePath("CanvasLayer")
+score_label = NodePath("CanvasLayer/Score")
+camera = NodePath("Camera2D")
+countdown_panel = NodePath("CanvasLayer/CountdownPanel")
+countdown_label = NodePath("CanvasLayer/CountdownPanel/Label")
+death_panel = NodePath("CanvasLayer/DeathPanel")
+death_message_label = NodePath("CanvasLayer/DeathPanel/DeathMessage")
+press_to_continue_label = NodePath("CanvasLayer/DeathPanel/PressToContinue")
+score_mark_prefab = ExtResource("2_kesfm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -109,7 +115,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("7_lxdlr")
 
 [node name="DeathMessage" type="Label" parent="CanvasLayer/DeathPanel"]
 layout_mode = 1
@@ -124,14 +129,13 @@ offset_bottom = -184.075
 grow_horizontal = 2
 grow_vertical = 2
 text = "You broke your leg, while kicking the car"
-label_settings = ExtResource("8_q6du6")
+label_settings = ExtResource("4_poebi")
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 1
 
 [node name="PressToContinue" type="Label" parent="CanvasLayer/DeathPanel"]
-self_modulate = Color(1, 1, 1, 0.846034)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -163,7 +167,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("9_m12ex")
 
 [node name="Label" type="Label" parent="CanvasLayer/CountdownPanel"]
 layout_mode = 1
@@ -173,7 +176,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "3"
-label_settings = ExtResource("10_tqvsl")
+label_settings = ExtResource("5_tfopc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -211,7 +214,6 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("epoch")]
-position = Vector2(217, 22)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("4_k0bwq")

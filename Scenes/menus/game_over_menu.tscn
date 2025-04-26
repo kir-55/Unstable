@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://hj7nfep0o7s3"]
+[gd_scene load_steps=19 format=3 uid="uid://hj7nfep0o7s3"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_fseod"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
-[ext_resource type="Script" path="res://Scripts/superscript_effect.gd" id="4_eh833"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="5_4hrvk"]
 [ext_resource type="RichTextEffect" uid="uid://bhy7ev10oun1v" path="res://Styles/superscript_effect.tres" id="5_o7vdc"]
 [ext_resource type="StyleBox" uid="uid://bagr45t17aie2" path="res://Styles/button_hover_blue.tres" id="6_13l3d"]
@@ -22,20 +21,17 @@ fill_from = Vector2(0, 0.3)
 fill_to = Vector2(0.991453, 0)
 metadata/_snap_enabled = true
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_j0opp"]
-script = ExtResource("4_eh833")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le7je"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sg24"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gr8ps"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qypu6"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gwn6x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1csu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gr8ps"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qypu6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8s4s"]
 
@@ -53,8 +49,8 @@ grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 script = ExtResource("1_fseod")
-death_info = NodePath("Panel/MarginContainer/VBoxContainer/DeathInfo")
-new_amulet_count_label = NodePath("Panel/MarginContainer/VBoxContainer/RichTextLabel")
+death_info = NodePath("")
+new_amulet_count_label = NodePath("Panel/VBoxContainer/HBoxContainer/RichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -72,50 +68,29 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -181.0
-offset_right = 403.0
-offset_bottom = 181.0
+offset_left = 58.0
+offset_top = -172.0
+offset_right = 461.0
+offset_bottom = 74.0
 grow_vertical = 2
 scale = Vector2(1, 1.03)
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("2_1y0su")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 0
-offset_left = -2.61246
-offset_top = -3.883
-offset_right = 407.388
-offset_bottom = 383.117
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 50
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="Control2" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 39.615)
 layout_mode = 2
 
-[node name="DeathMessage" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-bbcode_enabled = true
-
-[node name="Margin3" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="DeathInfo" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
-clip_contents = false
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-bbcode_enabled = true
-custom_effects = [SubResource("RichTextEffect_j0opp")]
-
-[node name="Margin2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Again" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Again" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 46.76)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -126,35 +101,40 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_le7je")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2sg24")
 text = "Play again"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Progress" type="Button" parent="Panel/VBoxContainer"]
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 46.76)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gwn6x")
+theme_override_styles/hover = ExtResource("6_13l3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s1csu")
+text = "Progress
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 46.76)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/HBoxContainer"]
 z_index = 30
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gr8ps")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qypu6")
 bbcode_enabled = true
 fit_content = true
+autowrap_mode = 0
 custom_effects = [ExtResource("5_o7vdc")]
 
-[node name="Progress" type="Button" parent="Panel/MarginContainer/VBoxContainer/RichTextLabel"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 5.3
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gwn6x")
-theme_override_styles/hover = ExtResource("6_13l3d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_s1csu")
-
-[node name="MainMenu" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 46.76)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -165,13 +145,17 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_f8s4s")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g0033")
 text = "Main menu"
 
+[node name="Control" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 39.615)
+layout_mode = 2
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_c8ekr")
 volume_db = 6.0
 autoplay = true
 bus = &"SFX"
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Again" to="." method="_on_again_pressed"]
-[connection signal="ready" from="Panel/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_new_amulet_count_ready"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/RichTextLabel/Progress" to="." method="_on_gameover_progress_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Progress" to="." method="_on_gameover_progress_pressed"]
+[connection signal="ready" from="Panel/VBoxContainer/HBoxContainer/RichTextLabel" to="." method="_on_new_amulet_count_ready"]
+[connection signal="pressed" from="Panel/VBoxContainer/MainMenu" to="." method="_on_exit_pressed"]

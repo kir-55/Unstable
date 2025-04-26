@@ -17,6 +17,7 @@ signal player_spawned(player)
 var player: Player
 
 
+
 @export_category("Countdown Panel")
 @export var countdown_panel: Panel
 @export var countdown_label: Label
@@ -26,16 +27,23 @@ var current_countdown_value: int
 @export var death_panel: Panel
 @export var death_message_label: Label
 
+@export var press_to_continue_label: Label
+
 var death_animation: bool = false
 var can_accept_input: bool = false
 @export var text_unwrap_speed: float = 12
 @export var death_circle_min_size: float = 0.1
 
+@export var score_mark_prefab: PackedScene
+
+var initial_view_port_size := Vector2(1152, 648)
+
 func _ready():
 	death_panel.visible = false
+	countdown_panel.visible = true
+	
 	GlobalVariables.game_is_on = false
 	current_countdown_value = GlobalVariables.pre_game_countdown_time
-<< << << < HEAD
 	var current_epoch = GlobalVariables.epochs[GlobalVariables.current_epoch]
 	if current_epoch:
 		decoration_spawner.decorations = current_epoch.decorations
@@ -75,9 +83,25 @@ func _ready():
 		self.player = player
 		get_tree().root.get_child(4).add_child(player)
 
-
+var last_zoom = Vector2(0,0)
+var last_viewport = Vector2.ZERO
 
 func _process(delta):
+	# Musisz mieć aktualne viewport_size i zoom
+	var zoom = camera.zoom
+	if zoom != last_zoom:
+		print("zoom: ",zoom)
+		last_zoom = zoom
+		
+	
+		
+	var viewport_size_pixels = Vector2(get_viewport().size)
+	if viewport_size_pixels != last_viewport:
+		print("viewport: ", viewport_size_pixels)
+		last_viewport = viewport_size_pixels
+		
+
+	
 	if death_animation:
 		var circle_size = death_panel.material.get_shader_parameter("circle_size")
 		if circle_size >= death_circle_min_size:
@@ -87,12 +111,17 @@ func _process(delta):
 			death_message_label.position.x -= text_unwrap_speed / 2
 		else:
 			can_accept_input = true
+			press_to_continue_label.visible = true
 
 
 func _input(event):
 	if can_accept_input and death_animation and event.is_pressed():
 		death_animation = false
 		GlobalFunctions.load_menu("game_over")
+		var score_mark_instance = score_mark_prefab.instantiate()
+		score_mark_instance.global_position = player.global_position
+		score_mark_instance.get_child(0).text = "Score: " + str(GlobalVariables.last_score) + "\nBest Score: " + str(GlobalVariables.best_score)
+		get_tree().current_scene.add_child(score_mark_instance)
 
 # SMART PANEL
 func _on_timer_timeout():
@@ -108,30 +137,33 @@ func on_player_died(message):
 	if !Client.active and death_panel and death_message_label:
 		score_label.visible = false
 		death_panel.visible = true
+		press_to_continue_label.visible = false
 
+
+		var scale_factor = Vector2(get_viewport().size) / initial_view_port_size
 		death_message_label.size.x = 0
-		death_message_label.position.x = get_viewport().size.x / 2
+		death_message_label.position.x = get_viewport().size.x / scale_factor.x / 2
 		death_message_label.text = message
 		#death_panel.material.set_shader_parameter("circle_size", 0.34)
 
-		var viewport := get_viewport()
-		var viewport_size = viewport.size
-
-		# The camera center in world space is its global position
-		# So the top-left corner is global_position - half viewport_size * zoom
-		var camera_top_left = camera.global_position - (viewport_size * 0.5 * camera.zoom)
-
-		# Local player position relative to camera view
-		var local_pos = (player.global_position - camera_top_left) / camera.zoom
-
-		# Normalize to 0-1
-		var normalized_pos = local_pos / Vector2(viewport_size)
+		var zoom = camera.zoom
 
 
+		print("scale factor", scale_factor)
+		var viewport_size = Vector2(get_viewport().size) / scale_factor / zoom
+
+		var camera_top_left = camera.global_position - (viewport_size * 0.5)
+
+		var local_pos = player.global_position - camera_top_left
+
+		# the final position shoud be in rage 0-1 where (0.5, 0.5) is center of screen 0 and one are the edges
+		var normalized_pos = local_pos / (Vector2(viewport_size))
+
+		death_panel.material.set_shader_parameter("circle_size",  3)
 		death_panel.material.set_shader_parameter("circle_position", normalized_pos)
 		print(normalized_pos)
 		death_animation = true
 		# spawning death menu
 		#var game_over_menu = load("res://Scenes/Menus/game_over_menu.tscn")
 		#var instance = game_over_menu.instantiate()
-
+	
