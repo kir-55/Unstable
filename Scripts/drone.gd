@@ -7,18 +7,20 @@ extends Sprite2D
 @onready var acceptable_difference: float = randf_range(10, 30)
 var go_up:bool = true
 
+
 func _process(delta):
-	if abs(get_parent().global_position.y - min_height) > acceptable_difference:
-		acceptable_difference = randf_range(10, 30)
-		go_up = true
-		
-		
-	if go_up:
-		get_parent().global_position.y = lerp(get_parent().global_position.y, get_parent().global_position.y - 20, 0.1)
-		if abs(get_parent().global_position.y - min_height) < 10:
-			go_up = false
+	if GlobalVariables.game_is_on:
+		if abs(get_parent().global_position.y - min_height) > acceptable_difference:
+			acceptable_difference = randf_range(10, 30)
+			go_up = true
 			
-	else:
-		get_parent().global_position.y = lerp(get_parent().global_position.y, get_parent().global_position.y + 20, 0.01)
+			
+		if go_up:
+			get_parent().global_position.y = lerp(get_parent().global_position.y, get_parent().global_position.y - 20, 0.1)
+			if abs(get_parent().global_position.y - min_height) < 10:
+				go_up = false
+				
+		else:
+			get_parent().global_position.y = lerp(get_parent().global_position.y, get_parent().global_position.y + 20, 0.01)
 		
 	

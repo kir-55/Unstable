@@ -68,6 +68,7 @@ var game_is_on := true:
 
 var menus = {
 	"main" : load("res://Scenes/Menus/start_menu.tscn"),
+	"game_over" : load("res://Scenes/Menus/game_over_menu.tscn"),
 	"settings" : load("res://Scenes/Menus/settings_menu.tscn"),
 	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
 	"win" : load("res://Scenes/Menus/win_menu.tscn"),

@@ -23,12 +23,12 @@ func _ready():
 	
 
 func _unhandled_input(event):
-	if GlobalVariables.game_is_on and Input.is_action_just_pressed("fire") and can_shoot and get_parent().is_multiplayer_authority():
+	if GlobalVariables.game_is_on and Input.is_action_just_pressed("fire") and can_shoot and (!Client.active or get_parent().is_multiplayer_authority()):
 		fire_weapon()
 
 
 func fire_weapon() -> void:
-	if current_weapon_type_id != 0  and GlobalVariables.active_weapon_types[current_weapon_type_id-1].bullet_prefab and GlobalVariables.active_weapon_types[current_weapon_type_id-1].active and get_parent().is_multiplayer_authority():
+	if current_weapon_type_id != 0  and GlobalVariables.active_weapon_types[current_weapon_type_id-1].bullet_prefab and GlobalVariables.active_weapon_types[current_weapon_type_id-1].active and (!Client.active or get_parent().is_multiplayer_authority()):
 
 		if Client.active and GlobalVariables.active_weapon_types[current_weapon_type_id - 1].spawn_on_peers:
 			Client.spawn.rpc(GlobalVariables.active_weapon_types[current_weapon_type_id - 1].bullet_prefab, shoot_point.global_position, get_parent().original_speed, GlobalVariables.active_weapon_types[current_weapon_type_id - 1].bullet_speed, GlobalVariables.active_weapon_types[current_weapon_type_id - 1].initial_rotation)
@@ -43,7 +43,7 @@ func fire_weapon() -> void:
 
 
 func on_passive_weapon(weapon_type: WeaponType):
-	if weapon_type and weapon_type.bullet_prefab and !weapon_type.active and get_parent().is_multiplayer_authority():
+	if weapon_type and weapon_type.bullet_prefab and !weapon_type.active and (!Client.active or get_parent().is_multiplayer_authority()):
 		if Client.active and weapon_type.spawn_on_peers:
 			Client.spawn.rpc(weapon_type.bullet_prefab, shoot_point.global_position, 0, weapon_type.bullet_speed, weapon_type.initial_rotation)
 		else:
