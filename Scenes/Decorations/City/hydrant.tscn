@@ -13,7 +13,7 @@ scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("5_shcd0")
-death_messages = Array[String](["There was a hydrant!", "You broke your leg, while kicking the hydrant", "You were curious, what is the hydrant made of (it was metal)"])
+death_messages = Array[String](["There was a hydrant!", "You broke your leg, while kicking the hydrant", "You were curious, what is the hydrant made of"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.19209e-07, -5.5)

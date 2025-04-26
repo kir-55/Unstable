@@ -2,6 +2,8 @@ class_name Global
 extends Node
 
 signal on_game_state_changed(state)
+signal on_player_died(message)
+
 signal on_player_colors_changed
 signal on_player_amulets_changed
 
@@ -67,6 +69,7 @@ var game_is_on := true:
 
 var menus = {
 	"main" : load("res://Scenes/Menus/start_menu.tscn"),
+	"game_over" : load("res://Scenes/Menus/game_over_menu.tscn"),
 	"settings" : load("res://Scenes/Menus/settings_menu.tscn"),
 	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
 	"win" : load("res://Scenes/Menus/win_menu.tscn"),

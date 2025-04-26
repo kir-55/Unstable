@@ -57,6 +57,7 @@ death_info = NodePath("Panel/MarginContainer/VBoxContainer/DeathInfo")
 new_amulet_count_label = NodePath("Panel/MarginContainer/VBoxContainer/RichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
