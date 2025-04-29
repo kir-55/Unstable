@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_jt0pb")
-bullet_prefab = "res://Scenes/wrench_projectile.tscn"
+bullet_prefab = "res://Scenes/Bullets/wrench_projectile.tscn"
 active = true
 texture = ExtResource("2_6xqpa")
 id = 2

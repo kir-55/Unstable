@@ -25,7 +25,6 @@ var time_ended: int = 0
 
 var times_treveled: int = 0
 
-var win_after_next_epoch : bool = false
 
 @export var initial_player_speed: int = 500
 @export var initial_player_amulets: Array[int]
@@ -43,7 +42,7 @@ var items_in_home: int = initial_items_in_home
 
 @export var score_divider: int = 12
 
-@export var epochs: Array[LevelInfo]
+@export var epochs: Array[EpochInfo]
 
 @export var amulets: Array[Amulet]
 var player_amulets: Array[int]:
@@ -57,9 +56,8 @@ var player_new_amulets : Array[int]
 
 @export var active_weapon_types: Array[WeaponType]
 
-var last_epoch: GlobalEnums.LEVELS
-var current_epoch : GlobalEnums.LEVELS = GlobalEnums.LEVELS.START
-var next_epoch: GlobalEnums.LEVELS
+var current_epoch_id : int = 0
+var next_epoch_id: int
 
 var game_is_on := true:
 	set(value):

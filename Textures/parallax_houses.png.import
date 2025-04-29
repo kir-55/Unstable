@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wsj0ecnendr2"
-path="res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"
+uid="uid://3qdpdvrtb63r"
+path="res://.godot/imported/parallax_houses.png-d172a7f1bd92115c56d47c76db769376.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/medieval_baner.png"
-dest_files=["res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"]
+source_file="res://Textures/parallax_houses.png"
+dest_files=["res://.godot/imported/parallax_houses.png-d172a7f1bd92115c56d47c76db769376.ctex"]
 
 [params]
 

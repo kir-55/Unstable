@@ -446,6 +446,11 @@ func start_game(id: int):
 		GlobalVariables.game_is_on = true
 		GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets.duplicate())
 		GlobalVariables.player_new_amulets.clear()
+		
+		# start epoch is decided by id of last player that hit start
+		GlobalVariables.current_epoch_id = id%GlobalVariables.epochs.size()
+		# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		
 		GlobalVariables.times_treveled = 0
 		GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 		GlobalVariables.terrain_code = hash(lobby_id)
@@ -507,7 +512,7 @@ func leave_home(id):
 		print("LEAVING HOME, RESETING VOTES")
 		print()
 		players_voted_leave_home.clear()
-		get_tree().change_scene_to_file("res://Scenes/age_travel_machine.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Locations/age_travel_machine.tscn")
 
 @rpc("any_peer", "call_local")
 func end_game(result: EndStates):

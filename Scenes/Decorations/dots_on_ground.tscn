@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6otxt2vqdqfo"]
+
+[ext_resource type="Texture2D" uid="uid://usxayiotqndq" path="res://Textures/Decorations/Jurassic/road_dots.png" id="1_g0ysa"]
+
+[node name="RoadDots" type="Node2D"]
+
+[node name="road_line" type="Sprite2D" parent="."]
+modulate = Color(0.772549, 0.470588, 0.207843, 1)
+position = Vector2(0, 8.003)
+scale = Vector2(6, 3)
+texture = ExtResource("1_g0ysa")
+offset = Vector2(-0.166666, 2.33333)
+
+[node name="road_line2" type="Sprite2D" parent="."]
+modulate = Color(0.772549, 0.470588, 0.207843, 1)
+position = Vector2(176, 11)
+scale = Vector2(6, 3)
+texture = ExtResource("1_g0ysa")
+offset = Vector2(0, 2.333)
+
+[node name="road_line3" type="Sprite2D" parent="."]
+modulate = Color(0.772549, 0.470588, 0.207843, 1)
+position = Vector2(-178, 7)
+scale = Vector2(6, 3)
+texture = ExtResource("1_g0ysa")
+offset = Vector2(0, 2.333)

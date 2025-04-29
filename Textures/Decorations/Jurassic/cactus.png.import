@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wsj0ecnendr2"
-path="res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"
+uid="uid://biow8hqv2yh3"
+path="res://.godot/imported/cactus.png-5cfd819300ca394cb7d9d9da47754bdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/medieval_baner.png"
-dest_files=["res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"]
+source_file="res://Textures/Decorations/Jurassic/cactus.png"
+dest_files=["res://.godot/imported/cactus.png-5cfd819300ca394cb7d9d9da47754bdc.ctex"]
 
 [params]
 

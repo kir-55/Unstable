@@ -38,12 +38,13 @@ func reload():
 	GlobalVariables.game_is_on = true
 	print(GlobalVariables.player_amulets)
 	#GlobalVariables.player_amulets.clear()
+	GlobalVariables.current_epoch_id = randi_range(0, GlobalVariables.epochs.size()-1)
 	GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets.duplicate())
 	GlobalVariables.player_new_amulets.clear()
 	GlobalVariables.times_treveled = 0
 	GlobalVariables.terrain_code = randi()
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
-	get_tree().change_scene_to_file("res://Scenes/epoch.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Locations/epoch.tscn")
 
 
 
@@ -149,7 +150,7 @@ func load_menu(menu: String, remove_all_children = true, transition_to_main = fa
 	
 	if transition_to_main:
 		GlobalVariables.current_menu = menu
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Locations/main.tscn")
 		return
 	
 	

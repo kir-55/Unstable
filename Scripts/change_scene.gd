@@ -1,10 +1,6 @@
 extends Timer
 
-
-
-
-
-var destination_level_info: LevelInfo
+var destination_epoch: EpochInfo
 
 
 @export var baner: TextureRect
@@ -12,19 +8,13 @@ var destination_level_info: LevelInfo
 @export var description: Label
 
 func _ready():
-	for level_info in GlobalVariables.epochs:
-		if level_info.level == GlobalVariables.next_epoch:
-			destination_level_info = level_info
+	destination_epoch = GlobalVariables.epochs[GlobalVariables.next_epoch_id]
 	
-	if !destination_level_info:
-		#print("error")
-		pass
-		
-	baner.texture = destination_level_info.baner
-	title.text = destination_level_info.title
-	description.text = destination_level_info.description
+	baner.texture = destination_epoch.baner
+	title.text = destination_epoch.title
+	description.text = destination_epoch.description
 		
 func _on_timeout():
-	GlobalVariables.current_epoch = destination_level_info.level
-	get_tree().change_scene_to_file("res://Scenes/epoch.tscn")
+	GlobalVariables.current_epoch_id = GlobalVariables.next_epoch_id
+	get_tree().change_scene_to_file("res://Scenes/Locations/epoch.tscn")
  

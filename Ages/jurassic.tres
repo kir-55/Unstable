@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=8 format=3 uid="uid://b5ga8fmqhitgk"]
+
+[ext_resource type="Texture2D" uid="uid://ctx3s4l74xb6d" path="res://Textures/Baners/future_baner.png" id="1_wt5mg"]
+[ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="2_gavku"]
+[ext_resource type="Resource" uid="uid://csp7afsaaxtvl" path="res://Decorations/Jurassic/cactus_big.tres" id="2_ljbw5"]
+[ext_resource type="Resource" uid="uid://b55gcsjj04sht" path="res://Decorations/Jurassic/cactus.tres" id="3_vhql8"]
+[ext_resource type="Resource" uid="uid://cl75jnlf31660" path="res://Decorations/Jurassic/cactus_round.tres" id="4_tbn52"]
+[ext_resource type="Resource" uid="uid://mhgkhfmgvn56" path="res://Decorations/Jurassic/dots_on_ground.tres" id="5_pldws"]
+[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/parallax_trees.png" id="6_3ksr7"]
+
+[resource]
+script = ExtResource("2_gavku")
+title = "Future"
+description = "22` century, acid, ufo"
+baner = ExtResource("1_wt5mg")
+ground_color = Color(0.882353, 0.658824, 0.270588, 1)
+grass_color = Color(0.933333, 0.796078, 0.564706, 1)
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_ljbw5"), ExtResource("3_vhql8"), ExtResource("4_tbn52"), ExtResource("5_pldws")])
+decoration_spawn_pattern = "RA*B*C*|RHA*B*C*|RDB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|RD|RA*BC*|RB*B*|RH|RA*|RB*C*|RA*|RHC*|RB*C*|RA*"
+background_color = Color(0, 0, 0, 1)
+parallax_background_close = ExtResource("6_3ksr7")
+parallax_background_far = ExtResource("6_3ksr7")

@@ -34,7 +34,7 @@ func _ready():
 		
 	if !Client.active or Client.players_alive.has(Client.id):
 		if GlobalVariables.player_amulets.has(7):
-			texture_rect.texture = GlobalVariables.epochs[GlobalVariables.next_epoch].baner
+			texture_rect.texture = GlobalVariables.epochs[GlobalVariables.next_epoch_id].baner
 
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take) + " item" + ("s." if amount_of_items_to_take > 1 else ".")
 		var multiplied_amulets_list: Array[Amulet]

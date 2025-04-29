@@ -37,7 +37,7 @@ metadata/_snap_enabled = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0033"]
 
-[node name="GameOverMenu" type="Control" node_paths=PackedStringArray("death_info", "new_amulet_count_label")]
+[node name="GameOverMenu" type="Control" node_paths=PackedStringArray("new_amulet_count_label")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,7 +49,6 @@ grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 script = ExtResource("1_fseod")
-death_info = NodePath("")
 new_amulet_count_label = NodePath("Panel/VBoxContainer/HBoxContainer/RichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]

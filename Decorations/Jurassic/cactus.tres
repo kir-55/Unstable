@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://b55gcsjj04sht"]
+
+[ext_resource type="PackedScene" uid="uid://0ak76kfa5fqf" path="res://Scenes/Decorations/Jurassic/cactus.tscn" id="1_ni2tj"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_6my44"]
+
+[resource]
+script = ExtResource("2_6my44")
+prefab = ExtResource("1_ni2tj")
+name = "Big Cactus"
+spawn_on_center = false
+chance_to_spawn = 40.0
+width = 30
+pattern_type = "B"
+type = 1
+ignore_types = Array[int]([0, 3])
+can_be_mirrored = false

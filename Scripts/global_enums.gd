@@ -1,14 +1,10 @@
 extends Node
 
-enum LEVELS {
-	START,
-	MEDIVEL
-}
-
 enum WIN_TYPES{
 	NONE,
 	REPAIR,
-	DESTRUCTION
+	DESTRUCTION,
+	SCORE
 }
 
 enum DECORATION_LAYERS{

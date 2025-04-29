@@ -1,7 +1,8 @@
 extends Timer
 
 var player: Node2D
-@export var current_world: GlobalEnums.LEVELS
+# 
+@export var current_world_id: int
 
 
 
@@ -13,10 +14,9 @@ func _set_player(player):
 	self.player = player 
 
 @rpc("any_peer", "call_local")
-func transition(destination, next_epoch: GlobalEnums.LEVELS):
+func transition(destination, next_epoch_id: int):
 	if (GlobalVariables.game_is_on or (Client.active and Client.players_alive.size() > 1)):
 		
-		GlobalVariables.last_epoch = current_world
 		Engine.time_scale = 1
 		if player:
 			GlobalVariables.last_score = GlobalVariables.last_score + int(player.global_position.x) / GlobalVariables.score_divider
@@ -24,7 +24,7 @@ func transition(destination, next_epoch: GlobalEnums.LEVELS):
 			if GlobalVariables.game_is_on and GlobalVariables.player_amulets.has(9):
 				GlobalVariables.player_amulets.remove_at(GlobalVariables.player_amulets.find(9))
 		
-		GlobalVariables.next_epoch = next_epoch
+		GlobalVariables.next_epoch_id = next_epoch_id
 		GlobalVariables.times_treveled += 1
 		GlobalVariables.terrain_code += 1
 		get_tree().change_scene_to_file(destination)
@@ -50,14 +50,16 @@ func _on_timeout():
 				destination = "res://Scenes/Locations/home.tscn"
 			else:
 				destination = "res://Scenes/age_travel_machine.tscn"
-				
-			GlobalVariables.last_epoch = current_world
-			var next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
-			while GlobalVariables.last_epoch == next_epoch:
-				next_epoch = GlobalEnums.LEVELS[GlobalEnums.LEVELS.keys()[randi() % GlobalEnums.LEVELS.size()]]
+			
+			
+			var possible_epochs = range(GlobalVariables.epochs.size())
+			print(possible_epochs)
+			possible_epochs.erase(GlobalVariables.current_epoch_id)
+			var next_epoch_id = possible_epochs.pick_random()
+
 				
 			if Client.active:
-				transition.rpc(destination, next_epoch) 
+				transition.rpc(destination, next_epoch_id) 
 			else: 
-				transition(destination, next_epoch)
+				transition(destination, next_epoch_id)
 	

@@ -14,6 +14,14 @@ signal player_spawned(player)
 @export var canvas_layer: CanvasLayer
 @export var score_label: Label
 @export var camera: Camera2D
+
+@export var parallax_background_close: Sprite2D
+
+@export var parallax_background_far1: Sprite2D
+@export var parallax_background_far2: Sprite2D
+
+@export var parallax_foreground: Sprite2D
+
 var player: Player
 
 
@@ -44,7 +52,7 @@ func _ready():
 	
 	GlobalVariables.game_is_on = false
 	current_countdown_value = GlobalVariables.pre_game_countdown_time
-	var current_epoch = GlobalVariables.epochs[GlobalVariables.current_epoch]
+	var current_epoch = GlobalVariables.epochs[GlobalVariables.current_epoch_id]
 	if current_epoch:
 		decoration_spawner.decorations = current_epoch.decorations
 		decoration_spawner.spawn_pattern = current_epoch.decoration_spawn_pattern
@@ -56,8 +64,13 @@ func _ready():
 			world_environment.environment = current_epoch.environment
 		if current_epoch.directional_light:
 			add_child(current_epoch.directional_light.instantiate())
-		if current_epoch.parallax_background:
-			add_child(current_epoch.parallax_background.instantiate())
+		if current_epoch.parallax_background_close:
+			parallax_background_close.texture = current_epoch.parallax_background_close
+		if current_epoch.parallax_background_far:
+			parallax_background_far1.texture = current_epoch.parallax_background_far
+			parallax_background_far2.texture = current_epoch.parallax_background_far
+		if current_epoch.parallax_foreground:
+			parallax_foreground.texture = current_epoch.parallax_foreground
 
 
 	GlobalVariables.on_player_died.connect(on_player_died)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://spdye7fmeaws"]
+[gd_scene load_steps=10 format=3 uid="uid://spdye7fmeaws"]
 
 [ext_resource type="Texture2D" uid="uid://dmq13ktr5f57d" path="res://Textures/Decorations/City/car.png" id="1_q7l73"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_3v8b0"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_jpva4"]
 [ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/Explosions/car_explosion.tscn" id="5_fhbkp"]
 [ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/Gradients/smoke_gradient.tres" id="6_7p3a8"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ej1ae"]
+a = Vector2(-7.3766, -6.57956)
+b = Vector2(24.1049, -6.57956)
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]
 script/source = "extends Sprite2D
@@ -30,10 +34,18 @@ collision_mask = 3
 script = ExtResource("2_3v8b0")
 death_messages = Array[String](["You were slain by a car", "You broke your leg, while kicking the car", "You were curious, what is the car made of"])
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1.30006, -12.8)
+scale = Vector2(1.08, 1.14496)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(1, 1)
+shape = SubResource("SegmentShape2D_ej1ae")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1.30006, -12.8)
 scale = Vector2(1.08, 1.14496)
-polygon = PackedVector2Array(-7.03704, -7.16182, 23.5185, -7.16182, 36.4815, 7.68586, -32.963, 10.306, -36.6667, -7.16182, -24.6296, -7.16182, -13.5185, -1.04807)
+polygon = PackedVector2Array(-7.68524, -3.08599, 24.1049, -3.08599, 36.4506, 9.72377, -32.963, 10.306, -35.7717, -6.28843, -24.0433, -6.28843, -12.3149, -1.3392)
 
 [node name="Car" type="Sprite2D" parent="."]
 z_index = 5

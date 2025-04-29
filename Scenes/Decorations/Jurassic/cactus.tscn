@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://0ak76kfa5fqf"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_04sj8"]
+[ext_resource type="Texture2D" uid="uid://biow8hqv2yh3" path="res://Textures/Decorations/Jurassic/cactus.png" id="2_n2r1c"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="3_q5x23"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="7_w4ham"]
+[ext_resource type="PackedScene" uid="uid://nbcg5wmcolx5" path="res://Scenes/Explosions/cactus_explosion.tscn" id="8_8migf"]
+
+[node name="Cactus" type="Area2D" groups=["Obsticle"]]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_04sj8")
+death_messages = Array[String](["There was a cactus!", "Phew, that must have hurt", "Probably most painful death in this game"])
+
+[node name="ExplosionPoint" type="Node2D" parent="."]
+position = Vector2(-0.333333, -14.3333)
+scale = Vector2(0.333333, 0.333333)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.19209e-07, -11.5)
+polygon = PackedVector2Array(5, 2.83333, -0.333333, -2.83333, -5.66667, 1.83333, -3.33333, 12.5, 2.66667, 12.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0, 1.66667)
+texture = ExtResource("2_n2r1c")
+script = ExtResource("3_q5x23")
+visual_variations = Array[Texture2D]([ExtResource("2_n2r1c")])
+
+[node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("7_w4ham")
+max_health = 30.0
+explosion_prefab = ExtResource("8_8migf")
+explosion_point = NodePath("../ExplosionPoint")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

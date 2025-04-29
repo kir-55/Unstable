@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wsj0ecnendr2"
-path="res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"
+uid="uid://usxayiotqndq"
+path="res://.godot/imported/road_dots.png-5a7fd6a014df4395ea45e2c7c1fdd67b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Baners/medieval_baner.png"
-dest_files=["res://.godot/imported/medieval_baner.png-5e4c67f32c5ec1ed92a40e3a75bfc441.ctex"]
+source_file="res://Textures/Decorations/Jurassic/road_dots.png"
+dest_files=["res://.godot/imported/road_dots.png-5a7fd6a014df4395ea45e2c7c1fdd67b.ctex"]
 
 [params]
 

@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://daai0thrp4xay"]
+
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/parallax_bushes.png" id="1_7s4ct"]
+[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/parallax_houses.png" id="2_x2scm"]
+[ext_resource type="Script" path="res://Scripts/move_right.gd" id="3_hnq2e"]
+[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="4_h7wn6"]
+[ext_resource type="Script" path="res://Scripts/random_system.gd" id="5_covuj"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="6_isusy"]
+[ext_resource type="Script" path="res://Scripts/sloper.gd" id="7_tsxp3"]
+[ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="8_7qpjy"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="9_ob6c0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v15ys"]
+shader = ExtResource("8_7qpjy")
+shader_parameter/XShiftAmplitude = null
+shader_parameter/MinLineThikness = Vector2(0, 300)
+shader_parameter/MaxThikness = 3000.0
+
+[node name="Main" type="Node2D"]
+
+[node name="MovingGround" type="Node2D" parent="."]
+position = Vector2(-2, 2)
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="MovingGround"]
+layer = 10
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="MovingGround/ParallaxBackground2"]
+z_index = -2
+position = Vector2(24, 142)
+motion_scale = Vector2(1.6, 0.9)
+motion_mirroring = Vector2(7000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground2/ParallaxLayer"]
+self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+position = Vector2(-16, -312)
+scale = Vector2(12, 12)
+texture = ExtResource("1_7s4ct")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="MovingGround"]
+scroll_offset = Vector2(1000, 0)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
+self_modulate = Color(1, 1, 1, 0.984314)
+position = Vector2(-647, 25)
+motion_scale = Vector2(0.1, 0.9)
+motion_mirroring = Vector2(1840, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(288, 171)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x2scm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer3"]
+self_modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(1208, 171)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x2scm")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="MovingGround/ParallaxBackground"]
+position = Vector2(81, -106)
+motion_scale = Vector2(0.3, 0.93)
+motion_mirroring = Vector2(2760, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingGround/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(164, 160)
+scale = Vector2(6, 6)
+texture = ExtResource("2_x2scm")
+
+[node name="Camera2D" type="Camera2D" parent="MovingGround"]
+position = Vector2(-338, 17)
+position_smoothing_enabled = true
+script = ExtResource("3_hnq2e")
+speed = 300
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MovingGround/Camera2D"]
+layer = 128
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MovingGround/Camera2D"]
+stream = ExtResource("4_h7wn6")
+autoplay = true
+bus = &"Music"
+
+[node name="RandomSystem" type="Node" parent="MovingGround"]
+script = ExtResource("5_covuj")
+
+[node name="TerrainGenerator" type="Node2D" parent="MovingGround" node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "player")]
+position = Vector2(-1029, 271)
+script = ExtResource("6_isusy")
+ground_line = NodePath("GroundLine")
+grass_line = NodePath("GrassLine")
+floor_collider = NodePath("GrassLine/StaticBody2D")
+rs = NodePath("../RandomSystem")
+line_section_length = 500
+section_y_change_amplitude = 0
+player = NodePath("../Camera2D")
+
+[node name="Sloper" type="Node" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("line", "terrain_generator")]
+script = ExtResource("7_tsxp3")
+line = NodePath("../GrassLine")
+terrain_generator = NodePath("..")
+
+[node name="GroundLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
+material = SubResource("ShaderMaterial_v15ys")
+position = Vector2(0, 8)
+default_color = Color(0.168627, 0.133333, 0.164706, 1)
+
+[node name="GrassLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
+width = 30.0
+default_color = Color(0.156863, 0.180392, 0.231373, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MovingGround/TerrainGenerator/GrassLine"]
+
+[node name="DecorationSpawner" type="Node2D" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
+script = ExtResource("9_ob6c0")
+load_radius = 3
+max_radius = 10
+rs = NodePath("../../RandomSystem")
+sloper = NodePath("../Sloper")
+camera = NodePath("../../Camera2D")
+line = NodePath("../GrassLine")
+terrain_generator = NodePath("..")
+spawn_from = 0
