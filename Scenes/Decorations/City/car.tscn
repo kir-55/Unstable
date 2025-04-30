@@ -39,7 +39,6 @@ position = Vector2(1.30006, -12.8)
 scale = Vector2(1.08, 1.14496)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_ej1ae")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

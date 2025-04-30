@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddgpygvm3g5ik"
-path="res://.godot/imported/lodz.png-45dfe826ebc381050d1bebdd5a6a97a8.ctex"
+uid="uid://bi5vles0txk4t"
+path="res://.godot/imported/tenticle.png-6918289a514b18348ec2a7d3828a4bb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/Medieval/lodz.png"
-dest_files=["res://.godot/imported/lodz.png-45dfe826ebc381050d1bebdd5a6a97a8.ctex"]
+source_file="res://Textures/tenticle.png"
+dest_files=["res://.godot/imported/tenticle.png-6918289a514b18348ec2a7d3828a4bb9.ctex"]
 
 [params]
 

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://dl7047qekcmc5"]
+
+[ext_resource type="PackedScene" uid="uid://ccfy73pj6b21i" path="res://Scenes/Decorations/Medieval/lake1.tscn" id="1_g2lye"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_5fnqk"]
+
+[resource]
+script = ExtResource("2_5fnqk")
+prefab = ExtResource("1_g2lye")
+name = "Wagon"
+spawn_on_center = true
+chance_to_spawn = 40.0
+width = 500
+pattern_type = "S"
+type = 1
+ignore_types = Array[int]([0, 3])
+can_be_mirrored = true

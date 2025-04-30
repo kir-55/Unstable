@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhoh3jaudmhqo"
-path="res://.godot/imported/lampa.png-dcb3b2bccf2378c6c2b0b7d4a871b0e9.ctex"
+uid="uid://dsr10tb1hw3ef"
+path="res://.godot/imported/tenticle2.png-ae250231b67b35a69bace50319fa711c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/Medieval/lampa.png"
-dest_files=["res://.godot/imported/lampa.png-dcb3b2bccf2378c6c2b0b7d4a871b0e9.ctex"]
+source_file="res://Textures/tenticle2.png"
+dest_files=["res://.godot/imported/tenticle2.png-ae250231b67b35a69bace50319fa711c.ctex"]
 
 [params]
 

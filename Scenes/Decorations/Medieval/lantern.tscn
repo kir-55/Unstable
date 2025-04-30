@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://b14nlleq4wx03"]
 
 [ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_acq22"]
-[ext_resource type="Texture2D" uid="uid://dmp655w0q6a0e" path="res://Textures/Decorations/Medieval/lampa.png" id="2_wppt8"]
+[ext_resource type="Texture2D" uid="uid://bhoh3jaudmhqo" path="res://Textures/Decorations/Medieval/lampa.png" id="2_wppt8"]
 
 [sub_resource type="Gradient" id="Gradient_gu1qk"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jijhr"]
 gradient = SubResource("Gradient_gu1qk")
-width = 256
-height = 256
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 1)
@@ -17,12 +17,12 @@ metadata/_snap_enabled = true
 
 [node name="Lantern" type="Sprite2D"]
 material = ExtResource("1_acq22")
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_wppt8")
-offset = Vector2(13.3333, -60.9917)
+offset = Vector2(0, -28)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(26, -92)
+position = Vector2(6, -41)
 scale = Vector2(2.58203, 1.89583)
 color = Color(1, 1, 0.545098, 1)
 shadow_color = Color(0, 0, 0, 1)

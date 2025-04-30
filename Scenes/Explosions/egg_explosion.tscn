@@ -31,7 +31,7 @@ spawn_on_start_prefab = ExtResource("3_6d134")
 z_index = 20
 scale = Vector2(6, 6)
 emitting = false
-amount = 32
+amount = 64
 one_shot = true
 speed_scale = 3.0
 explosiveness = 1.0
@@ -47,7 +47,7 @@ orbit_velocity_max = 0.5
 radial_accel_min = -1.0
 radial_accel_max = 1.0
 scale_amount_min = 5.0
-scale_amount_max = 15.1
+scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_25yfo")
 color_initial_ramp = SubResource("Gradient_qgu5q")
 

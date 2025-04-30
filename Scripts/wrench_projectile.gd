@@ -36,7 +36,7 @@ func set_velocity(speed: Vector2) -> void:
 func _on_area_entered(body: Node) -> void:
 	if GlobalVariables.game_is_on and body and body.has_node("HealthSystem"):
 		var body_health_system = body.get_node("HealthSystem")
-		if body_health_system.max_health >= return_on_minimum_max_health:
+		if body_health_system.health >= return_on_minimum_max_health:
 			rotation_direction = -1
 		
 		body_health_system.take_damage(damage)

@@ -6,10 +6,11 @@
 [resource]
 script = ExtResource("2_w5ce5")
 prefab = ExtResource("1_nr488")
-name = "TrafficLights"
+name = "Well"
 spawn_on_center = false
 chance_to_spawn = 60.0
-width = 50
+width = 200
 pattern_type = "D"
 type = 3
 ignore_types = Array[int]([])
+can_be_mirrored = true

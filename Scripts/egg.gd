@@ -50,7 +50,7 @@ func _on_egg_area_body_entered(body):
 
 
 func _on_egg_area_area_entered(area):
-	if area.is_in_group("Obsticle") or area.get_parent().is_in_group("Obsticle"):
+	if area.is_in_group("Obsticle") or area.get_parent().is_in_group("Obsticle") or area.is_in_group("Breakable"):
 		if explosion_scene:
 			var explosion = explosion_scene.instantiate()
 			explosion.global_position = global_position

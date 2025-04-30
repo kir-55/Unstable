@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=3 uid="uid://bbwnp6scwiqgc"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_h03wl"]
+[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="2_hxkgl"]
+[ext_resource type="Texture2D" uid="uid://ddgpygvm3g5ik" path="res://Textures/Decorations/Medieval/boat.png" id="2_pjwhm"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_3rvlr"]
+[ext_resource type="Texture2D" uid="uid://dsr10tb1hw3ef" path="res://Textures/tenticle2.png" id="4_5hgt2"]
+[ext_resource type="Script" path="res://Scripts/rotation.gd" id="5_b64w5"]
+[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="5_o3c14"]
+[ext_resource type="Texture2D" uid="uid://bi5vles0txk4t" path="res://Textures/tenticle.png" id="5_refo0"]
+
+[sub_resource type="Gradient" id="Gradient_sfcij"]
+offsets = PackedFloat32Array(0.557185)
+colors = PackedColorArray(0.184314, 0.298039, 0.423529, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0pnkb"]
+gradient = SubResource("Gradient_sfcij")
+width = 1
+height = 1
+fill_from = Vector2(0.448718, 0.380342)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fatmh"]
+a = Vector2(-26.1111, -4.66667)
+b = Vector2(22.8889, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghcjb"]
+size = Vector2(423.5, 10)
+
+[node name="Lake" type="Area2D"]
+position = Vector2(492, 358)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_h03wl")
+death_messages = Array[String](["Turns out... scientists can't breathe underwater.", "The lake didn't like visitors.", "In still waters, thy story found its end.", "The lake whispers thy final lullaby.", "Why are there boats in such a small lake?"])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(1.19209e-07, 13.5)
+scale = Vector2(500, 27)
+texture = SubResource("GradientTexture2D_0pnkb")
+
+[node name="Boat" type="StaticBody2D" parent="."]
+position = Vector2(-1, 3)
+scale = Vector2(3, 3)
+script = ExtResource("2_hxkgl")
+can_mirror = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
+position = Vector2(0.666667, -2)
+shape = SubResource("SegmentShape2D_fatmh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Boat"]
+z_index = 21
+position = Vector2(-0.777778, 3.33333)
+texture = ExtResource("2_pjwhm")
+offset = Vector2(-0.250283, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.75, 17)
+shape = SubResource("RectangleShape2D_ghcjb")
+
+[node name="Kraken" type="Node2D" parent="."]
+position = Vector2(163, -9)
+scale = Vector2(3, 3)
+script = ExtResource("2_hxkgl")
+can_mirror = true
+chance_to_despawn = 80
+
+[node name="Area2D" type="Area2D" parent="Kraken" groups=["Obsticle"]]
+z_index = 22
+script = ExtResource("1_h03wl")
+death_messages = Array[String](["Eaten by the ocean's monstrous will.", "Swallowed by shadow, drowned in teeth.", "Mistook the Kraken for a friendly squid. Oops."])
+
+[node name="HealthSystem" type="Node" parent="Kraken/Area2D" node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("3_3rvlr")
+explosion_prefab = ExtResource("5_o3c14")
+explosion_point = NodePath("../..")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Kraken/Area2D"]
+position = Vector2(-0.333332, -1)
+scale = Vector2(0.333333, 0.333333)
+polygon = PackedVector2Array(-40, -5, -17, -20, -14, -28, -16, -45, -3, -52, 9, -32, 27, -12, 32, 13, 28, 27, -35, 27)
+
+[node name="Sprite2D" type="Sprite2D" parent="Kraken/Area2D"]
+z_index = 1
+position = Vector2(7, 6.66666)
+texture = ExtResource("4_5hgt2")
+offset = Vector2(1, -6.66666)
+script = ExtResource("5_b64w5")
+rotation_speed_range = Vector2(1, 2)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Kraken/Area2D"]
+z_index = 2
+position = Vector2(-9.38864, 6.87742)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("4_5hgt2")
+offset = Vector2(1.61136, -6.54408)
+script = ExtResource("5_b64w5")
+rotation_speed_range = Vector2(1, 2)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Kraken/Area2D"]
+position = Vector2(-1.33334, 6.33334)
+texture = ExtResource("5_refo0")
+offset = Vector2(-0.666656, -14.3333)
+script = ExtResource("5_b64w5")
+rotation_speed_range = Vector2(0.75, 1)
+direction_change_interval_range = Vector2(5, 10)
+
+[node name="Kraken2" type="Node2D" parent="."]
+position = Vector2(-156, -8)
+scale = Vector2(3, 3)
+script = ExtResource("2_hxkgl")
+can_mirror = true
+chance_to_despawn = 80
+
+[node name="Area2D" type="Area2D" parent="Kraken2" groups=["Obsticle"]]
+z_index = 22
+script = ExtResource("1_h03wl")
+death_messages = Array[String](["Eaten by the ocean's monstrous will.", "Swallowed by shadow, drowned in teeth.", "Mistook the Kraken for a friendly squid. Oops."])
+
+[node name="HealthSystem" type="Node" parent="Kraken2/Area2D" node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("3_3rvlr")
+explosion_prefab = ExtResource("5_o3c14")
+explosion_point = NodePath("../../../Kraken")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Kraken2/Area2D"]
+position = Vector2(-0.333332, -1)
+scale = Vector2(0.333333, 0.333333)
+polygon = PackedVector2Array(-40, -5, -17, -20, -14, -28, -16, -45, -3, -52, 9, -32, 27, -12, 32, 13, 28, 27, -35, 27)
+
+[node name="Sprite2D" type="Sprite2D" parent="Kraken2/Area2D"]
+z_index = 1
+position = Vector2(7, 6.66666)
+texture = ExtResource("4_5hgt2")
+offset = Vector2(1, -6.66666)
+script = ExtResource("5_b64w5")
+rotation_speed_range = Vector2(1, 2)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Kraken2/Area2D"]
+z_index = 2
+position = Vector2(-9.38864, 6.87742)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("4_5hgt2")
+offset = Vector2(1.61136, -6.54408)
+script = ExtResource("5_b64w5")
+rotation_speed_range = Vector2(1, 2)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Kraken2/Area2D"]
+position = Vector2(-1.33334, 6.33334)
+texture = ExtResource("5_refo0")
+offset = Vector2(-0.666656, -14.3333)
+script = ExtResource("5_b64w5")
+rotation_speed_range = Vector2(0.75, 1)
+direction_change_interval_range = Vector2(5, 10)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

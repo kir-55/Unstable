@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://nhchsqd2k4vt"]
+
+[ext_resource type="PackedScene" uid="uid://c3sfspnoyhpld" path="res://Scenes/Decorations/Medieval/cloud.tscn" id="1_iml8j"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_bwtmx"]
+
+[resource]
+script = ExtResource("2_bwtmx")
+prefab = ExtResource("1_iml8j")
+name = "Cloud"
+spawn_on_center = false
+chance_to_spawn = 60.0
+width = 130
+pattern_type = "D"
+type = 3
+ignore_types = Array[int]([1, 2])
+can_be_mirrored = true

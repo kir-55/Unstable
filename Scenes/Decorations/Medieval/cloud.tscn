@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3sfspnoyhpld"]
+
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_1re8d"]
+[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="1_d2er0"]
+[ext_resource type="Texture2D" uid="uid://dboxwqgvl7wu4" path="res://Textures/cloud2.png" id="2_n78wv"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="3_gltqj"]
+[ext_resource type="Texture2D" uid="uid://dw0mxmctbtwdy" path="res://Textures/cloud.png" id="4_a147o"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="6_usl4d"]
+[ext_resource type="PackedScene" uid="uid://ciob5h61r4481" path="res://Scenes/Explosions/cloud_explosion.tscn" id="7_gedra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4mwm"]
+size = Vector2(62, 22)
+
+[node name="Area2D" type="Area2D" groups=["Breakable"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_d2er0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -259)
+shape = SubResource("RectangleShape2D_g4mwm")
+
+[node name="Cloud" type="Sprite2D" parent="."]
+z_index = -1
+material = ExtResource("1_1re8d")
+position = Vector2(-1, -259)
+scale = Vector2(3, 3)
+texture = ExtResource("2_n78wv")
+offset = Vector2(0.749714, -1.66667)
+script = ExtResource("3_gltqj")
+visual_variations = Array[Texture2D]([ExtResource("2_n78wv"), ExtResource("4_a147o")])
+
+[node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
+script = ExtResource("6_usl4d")
+max_health = 20.0
+explosion_prefab = ExtResource("7_gedra")
+explosion_point = NodePath("../CollisionShape2D")
