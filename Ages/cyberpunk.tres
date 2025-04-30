@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=13 format=3 uid="uid://c24oqomxlons6"]
+
+[ext_resource type="Texture2D" uid="uid://wsj0ecnendr2" path="res://Textures/Baners/medieval_baner.png" id="1_8tc6x"]
+[ext_resource type="Environment" uid="uid://by34g5eel3o71" path="res://Ages/Environments/cyberpunk.tres" id="2_8mxvc"]
+[ext_resource type="Resource" uid="uid://cu68820tnhrfq" path="res://Decorations/Cyberpunk/house.tres" id="2_bmoe8"]
+[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="3_rolpx"]
+[ext_resource type="Resource" uid="uid://c6t115vklgmav" path="res://Decorations/Cyberpunk/motorbike.tres" id="4_gm80n"]
+[ext_resource type="Resource" uid="uid://b7r04ltmg0ano" path="res://Decorations/Cyberpunk/barrier.tres" id="5_yu2nq"]
+[ext_resource type="Resource" uid="uid://bdd7vf538npx" path="res://Decorations/Cyberpunk/drone1.tres" id="6_1dem3"]
+[ext_resource type="Resource" uid="uid://duyheh6m0uwo3" path="res://Decorations/Cyberpunk/drone2.tres" id="7_1d18d"]
+[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="11_easgu"]
+[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/parallax_trees.png" id="12_l5jtt"]
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/parallax_bushes.png" id="13_d1gd0"]
+[ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="14_ar4ej"]
+
+[resource]
+script = ExtResource("14_ar4ej")
+title = "Cyberpunk"
+description = "22nd century, futuristic motorbikes, drones and mines"
+baner = ExtResource("1_8tc6x")
+ground_color = Color(0, 0, 0, 1)
+grass_color = Color(0, 0, 0, 1)
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_bmoe8"), ExtResource("3_rolpx"), ExtResource("4_gm80n"), ExtResource("5_yu2nq"), ExtResource("6_1dem3"), ExtResource("7_1d18d")])
+decoration_spawn_pattern = "RL*A*B*C*G*G*G*|RL*HB*C*G*G*G*|RL*DB*B*C*G*G*G*G*|RL*G*G*G*|RL*A*G*G*G*|RL*C*G*G*G*|RL*H*G*G*G*|RL*B*C*G*G*G*|RL*AB*C*G*G*G*|RL*D*G*G*G*|RL*A*BC*G*G*G*|RL*B*B*G*G*G*|RL*H*G*G*G*|RL*G*G*G*|RL*B*C*G*G*G*|RL*A*G*G*G*|RL*HC*G*G*G*|RL*B*C*G*G*G*|RL*G*G*G*|"
+environment = ExtResource("2_8mxvc")
+background_color = Color(0, 0, 0, 1)
+parallax_background_close = ExtResource("12_l5jtt")
+parallax_background_far = ExtResource("12_l5jtt")
+parallax_foreground = ExtResource("13_d1gd0")
+music = ExtResource("11_easgu")

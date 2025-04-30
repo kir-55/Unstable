@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://duyheh6m0uwo3"]
+
+[ext_resource type="PackedScene" uid="uid://3rt4qv6rqmcq" path="res://Scenes/Decorations/Cyberpunk/drone2.tscn" id="1_qpnfb"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_ejg60"]
+
+[resource]
+script = ExtResource("2_ejg60")
+prefab = ExtResource("1_qpnfb")
+name = "Drone2"
+spawn_on_center = true
+chance_to_spawn = 50.0
+width = 100
+pattern_type = "C"
+type = 0
+ignore_types = Array[int]([2, 1])
+can_be_mirrored = false

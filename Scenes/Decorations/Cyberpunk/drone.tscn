@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwwxy7v7fye4k"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_opeoa"]
+[ext_resource type="Texture2D" uid="uid://d21brerex0ss1" path="res://Textures/Decorations/Cyberpunk/drone.png" id="2_n2mlw"]
+[ext_resource type="Script" path="res://Scripts/drone.gd" id="3_2ijpj"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_13ooq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
+size = Vector2(14, 14.9167)
+
+[node name="Area2D" type="Area2D" groups=["Obsticle"]]
+z_index = 5
+position = Vector2(0, -21)
+scale = Vector2(5, 5)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_opeoa")
+death_messages = Array[String](["Drone didn't liked you", "You kicked the drone with your head", "You jumped into the drone"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, -8.19166)
+shape = SubResource("RectangleShape2D_1iamu")
+
+[node name="Drone" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -8.4)
+texture = ExtResource("2_n2mlw")
+script = ExtResource("3_2ijpj")
+min_height = 30.0
+speed = 0.04
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("4_13ooq")
+max_health = 90.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

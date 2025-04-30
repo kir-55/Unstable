@@ -39,6 +39,7 @@ func reload():
 	print(GlobalVariables.player_amulets)
 	#GlobalVariables.player_amulets.clear()
 	GlobalVariables.current_epoch_id = randi_range(0, GlobalVariables.epochs.size()-1)
+	#GlobalVariables.current_epoch_id = 3
 	GlobalVariables.player_amulets.assign(GlobalVariables.initial_player_amulets.duplicate())
 	GlobalVariables.player_new_amulets.clear()
 	GlobalVariables.times_treveled = 0

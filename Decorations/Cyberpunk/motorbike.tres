@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://c6t115vklgmav"]
+
+[ext_resource type="PackedScene" uid="uid://hh002f2srny1" path="res://Scenes/Decorations/Cyberpunk/motorbike.tscn" id="1_ju4qa"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_2fxg7"]
+
+[resource]
+script = ExtResource("2_2fxg7")
+prefab = ExtResource("1_ju4qa")
+name = "Motorbike"
+spawn_on_center = true
+chance_to_spawn = 50.0
+width = 150
+pattern_type = "A"
+type = 1
+ignore_types = Array[int]([0, 3])
+can_be_mirrored = false

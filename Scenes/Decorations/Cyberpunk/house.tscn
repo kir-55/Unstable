@@ -1,0 +1,19 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5m1thfnye3t7"]
+
+[ext_resource type="Texture2D" uid="uid://bn688rgh3fw6k" path="res://Textures/Decorations/Cyberpunk/house.png" id="1_3w3lk"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="2_yujr6"]
+[ext_resource type="Texture2D" uid="uid://buxv721b56f11" path="res://Textures/Decorations/Cyberpunk/house2.png" id="3_4ti8r"]
+[ext_resource type="Texture2D" uid="uid://d4do7b2gop1if" path="res://Textures/Decorations/Cyberpunk/house3.png" id="4_76ngo"]
+[ext_resource type="Texture2D" uid="uid://d1eyt0sl3h5dh" path="res://Textures/Decorations/Cyberpunk/house4.png" id="5_nvcyf"]
+[ext_resource type="Texture2D" uid="uid://bsveoiq0eylc4" path="res://Textures/Decorations/Cyberpunk/house5.png" id="6_kpu2j"]
+[ext_resource type="Texture2D" uid="uid://cr67as8hg4v7b" path="res://Textures/Decorations/Cyberpunk/house6.png" id="7_ebkjy"]
+[ext_resource type="Texture2D" uid="uid://lj254ll7nwhd" path="res://Textures/Decorations/Cyberpunk/house7.png" id="8_8gwkm"]
+
+[node name="House" type="Sprite2D"]
+z_index = 5
+position = Vector2(0.7, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_3w3lk")
+offset = Vector2(0, 2)
+script = ExtResource("2_yujr6")
+visual_variations = Array[Texture2D]([ExtResource("3_4ti8r"), ExtResource("4_76ngo"), ExtResource("5_nvcyf"), ExtResource("6_kpu2j"), ExtResource("7_ebkjy"), ExtResource("8_8gwkm"), ExtResource("1_3w3lk")])
