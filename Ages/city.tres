@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=15 format=3 uid="uid://ctr8ofv38du6p"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=12 format=3 uid="uid://ctr8ofv38du6p"]
 
 [ext_resource type="Texture2D" uid="uid://ckylbj6m8lylk" path="res://Textures/Baners/city_baner.png" id="1_cx422"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://Ages/Environments/city.tres" id="2_5sogd"]
@@ -11,9 +11,6 @@
 [ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="7_ia6ne"]
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="8_bwyms"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="10_ydb03"]
-[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/parallax_houses.png" id="11_qgoqt"]
-[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/parallax_trees.png" id="12_og4f0"]
-[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/parallax_bushes.png" id="13_0pvtr"]
 
 [resource]
 script = ExtResource("3_p7c1v")
@@ -26,7 +23,4 @@ decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtRes
 decoration_spawn_pattern = "RA*B*C*|RHB*C*|RDB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|RD|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
 environment = ExtResource("2_5sogd")
 background_color = Color(0.603922, 0.898039, 0.835294, 1)
-parallax_background_close = ExtResource("11_qgoqt")
-parallax_background_far = ExtResource("12_og4f0")
-parallax_foreground = ExtResource("13_0pvtr")
 music = ExtResource("10_ydb03")
