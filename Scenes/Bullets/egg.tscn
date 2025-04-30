@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bpvvyxf5lpn0w"]
 
 [ext_resource type="Script" path="res://Scripts/egg.gd" id="1_78xu5"]
-[ext_resource type="PackedScene" uid="uid://gxiejmgxxgqd" path="res://Scenes/explosions/egg_explosion.tscn" id="2_b5um6"]
+[ext_resource type="PackedScene" uid="uid://gxiejmgxxgqd" path="res://Scenes/Explosions/egg_explosion.tscn" id="2_b5um6"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_iaay0"]
 [ext_resource type="PackedScene" uid="uid://deamx4rbgej4j" path="res://Audio/Prefabs/ameridium_shot_sound.tscn" id="4_qnj8u"]
 [ext_resource type="Texture2D" uid="uid://debwb7kfpmhbt" path="res://Textures/Amulets/strange_egg.png" id="5_lo1if"]

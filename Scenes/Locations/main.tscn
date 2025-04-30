@@ -11,7 +11,7 @@
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="8_7qpjy"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="9_ob6c0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v15ys"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1eol6"]
 shader = ExtResource("8_7qpjy")
 shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
@@ -113,17 +113,6 @@ script = ExtResource("7_tsxp3")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 
-[node name="GroundLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
-material = SubResource("ShaderMaterial_v15ys")
-position = Vector2(0, 8)
-default_color = Color(0.168627, 0.133333, 0.164706, 1)
-
-[node name="GrassLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
-width = 30.0
-default_color = Color(0.156863, 0.180392, 0.231373, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MovingGround/TerrainGenerator/GrassLine"]
-
 [node name="DecorationSpawner" type="Node2D" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
 script = ExtResource("9_ob6c0")
 load_radius = 3
@@ -134,3 +123,15 @@ camera = NodePath("../../Camera2D")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 spawn_from = 0
+
+[node name="GroundLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
+material = SubResource("ShaderMaterial_1eol6")
+position = Vector2(0, 8)
+default_color = Color(0.168627, 0.133333, 0.164706, 1)
+
+[node name="GrassLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
+width = 30.0
+default_color = Color(0.156863, 0.180392, 0.231373, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MovingGround/TerrainGenerator/GrassLine"]
+collision_layer = 257
