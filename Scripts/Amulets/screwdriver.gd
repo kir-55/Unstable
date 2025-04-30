@@ -11,14 +11,17 @@ extends CharacterBody2D
 @onready var player_speed = GlobalVariables.player.velocity.x
 
 var min_distance_from_player = 0
+var actual_speed : float
 var target : Node2D = null
 
 func _ready():
 	min_distance_from_player = player_speed * min_flight_time
+	actual_speed = player_speed + speed
 	position.y -= 50
 	find_closest_target()
 
 func _physics_process(delta):
+	actual_speed = player_speed + speed
 	move_towards_target(delta)
 
 func find_closest_target():
@@ -42,12 +45,12 @@ func find_closest_target():
 				closest_distance = distance
 				target = obj
 	if !target:
-		velocity.x = speed
+		velocity.x = actual_speed
 
 func move_towards_target(delta):
 	if target and is_instance_valid(target) and !target.is_queued_for_deletion():
 		var direction = (target.global_position - global_position).normalized()
-		velocity = velocity.lerp(direction * speed, acceleration * delta)
+		velocity = velocity.lerp(direction * actual_speed, acceleration * delta)
 		rotation = velocity.angle()  # Rotate towards movement direction
 	else:
 		find_closest_target()

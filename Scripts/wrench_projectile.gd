@@ -9,10 +9,8 @@ var speed_value
 
 var rotation_direction = 1
 
-
 func _process(delta: float) -> void:
 	rotation += rotation_factor * rotation_direction
-	# Move the bullet based on velocity and direction
 	if GlobalVariables.game_is_on:
 		var direction_to_player = (GlobalVariables.player.global_position - global_position).normalized()
 		var is_behind_player = global_position.x < GlobalVariables.player.global_position.x
@@ -22,7 +20,7 @@ func _process(delta: float) -> void:
 				velocity = direction_to_player * (GlobalVariables.player.velocity.x + speed_value)
 			else:
 				scale *= 0.99
-				velocity = direction_to_player * (speed_value - GlobalVariables.player.velocity.x)
+				velocity = direction_to_player * speed_value
 		position += velocity * delta
 
 
@@ -30,7 +28,11 @@ func set_velocity(speed: Vector2) -> void:
 	# Set the bullet's velocity in a specific direction
 	velocity = speed
 	speed_value = velocity.x
-
+	if GlobalVariables.player.is_dashing:
+		velocity.x = GlobalVariables.player.velocity.x - GlobalVariables.player.DASH_SPEED_BOOST + speed_value
+	else:
+		velocity.x = GlobalVariables.player.velocity.x + speed_value
+	
 func _on_area_entered(body: Node) -> void:
 	if GlobalVariables.game_is_on and body and body.has_node("HealthSystem"):
 		var body_health_system = body.get_node("HealthSystem")

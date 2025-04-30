@@ -9,15 +9,18 @@ extends CharacterBody2D
 @onready var player = get_tree().get
 
 var min_distance_from_player = 0
+var actual_speed : float
 var target: Node2D = null
 
 
 func _ready():
 	min_distance_from_player = player_speed * min_flight_time
+	actual_speed = player_speed + speed
 	find_closest_target()
 
 func _physics_process(delta):
 	if target:
+		actual_speed = player_speed + speed
 		move_towards_target(delta)
 
 func find_closest_target():
@@ -35,7 +38,7 @@ func find_closest_target():
 func move_towards_target(delta):
 	if target and is_instance_valid(target) and !target.is_queued_for_deletion():
 		var direction = (target.global_position - global_position).normalized()
-		velocity = velocity.lerp(direction * speed, acceleration * delta)  # Smooth movement
+		velocity = velocity.lerp(direction * actual_speed, acceleration * delta)  # Smooth movement
 		rotation = velocity.angle()  # Rotate towards movement direction
 
 		move_and_slide()

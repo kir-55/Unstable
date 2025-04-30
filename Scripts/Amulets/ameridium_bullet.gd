@@ -13,7 +13,7 @@ func explode():
 	queue_free()
 
 func _physics_process(delta):
-	position += velocity * delta
+	position += (velocity + Vector2(GlobalVariables.player.velocity.x, 0)) * delta
 
 
 func _on_area_entered(area):

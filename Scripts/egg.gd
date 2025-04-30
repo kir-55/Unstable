@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var explosion_scene: PackedScene
 
-var speed = 500
+var speed = max(350, GlobalVariables.player.velocity.x)
 const GRAVITY = 1000
 const air_resistance = 2
 var angle_change = 0.02

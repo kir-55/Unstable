@@ -19,7 +19,7 @@ radius = 4.8534
 position = Vector2(39, 120)
 scale = Vector2(3, 3)
 script = ExtResource("1_bpl4y")
-speed = 1300.0
+speed = 600.0
 acceleration = 10.0
 sizedown_sound_prefab = ExtResource("2_vlc2j")
 

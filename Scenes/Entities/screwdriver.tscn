@@ -10,7 +10,7 @@ size = Vector2(20, 3.57143)
 z_index = 3
 scale = Vector2(4.04, 4.04)
 script = ExtResource("1_q2cd5")
-speed = 900.0
+speed = 650.0
 acceleration = 70.0
 damage_factor_percent = 85.0
 
