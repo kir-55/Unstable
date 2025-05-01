@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx0rbrr0eucl6"]
 
-[ext_resource type="AudioStream" uid="uid://b5fj2rxrcqwao" path="res://Audio/Sounds/352175__inspectorj__dropping-wood-l.mp3" id="1_py8dy"]
+[ext_resource type="AudioStream" uid="uid://b5fj2rxrcqwao" path="res://Audio/Sounds/wood_break.mp3" id="1_mam5b"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_guqmy"]
 
 [node name="WoodSound" type="AudioStreamPlayer"]
-stream = ExtResource("1_py8dy")
+stream = ExtResource("1_mam5b")
 volume_db = 10.0
 autoplay = true
 mix_target = 1

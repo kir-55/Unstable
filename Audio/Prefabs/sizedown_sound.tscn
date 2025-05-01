@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://1yeqs86rbxvb"]
 
-[ext_resource type="AudioStream" uid="uid://d3raserssp20k" path="res://Audio/Sounds/mixkit-fall-on-foam-splash-754.mp3" id="1_hhp4h"]
+[ext_resource type="AudioStream" uid="uid://d3raserssp20k" path="res://Audio/Sounds/cactus_break.mp3" id="1_hhp4h"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_wv7oo"]
 
 [node name="Sizedown" type="AudioStreamPlayer"]

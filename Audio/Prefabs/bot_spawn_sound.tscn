@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://w8qf3hk6l8m0"]
 
-[ext_resource type="AudioStream" uid="uid://0kevt2qsoggd" path="res://Audio/Sounds/mixkit-video-game-mystery-alert-234.mp3" id="1_yj4kp"]
+[ext_resource type="AudioStream" uid="uid://0kevt2qsoggd" path="res://Audio/Sounds/microbot_spawn.mp3" id="1_yj4kp"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_kyxda"]
 
 [node name="Shoot" type="AudioStreamPlayer"]

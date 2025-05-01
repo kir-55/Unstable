@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cl75jnlf31660"]
 
-[ext_resource type="PackedScene" uid="uid://bfyyyys48e2jc" path="res://Scenes/Decorations/Jurassic/cactus_round.tscn" id="1_g00u1"]
+[ext_resource type="PackedScene" uid="uid://bfyyyys48e2jc" path="res://Scenes/Decorations/WildWest/cactus_round.tscn" id="1_g00u1"]
 [ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_y8aap"]
 
 [resource]

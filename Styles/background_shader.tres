@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_gpk7c")
 shader_parameter/saturation = 1.0
-shader_parameter/blueness = 0.1
+shader_parameter/blueness = 0.223

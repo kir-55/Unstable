@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://deamx4rbgej4j"]
 
-[ext_resource type="AudioStream" uid="uid://pr2exdum005v" path="res://Audio/Sounds/mixkit-golf-shot-breaking-the-air-2124.mp3" id="1_7pef2"]
+[ext_resource type="AudioStream" uid="uid://pr2exdum005v" path="res://Audio/Sounds/ameridium_shot.mp3" id="1_7pef2"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_nyivn"]
 
 [node name="Shoot" type="AudioStreamPlayer"]

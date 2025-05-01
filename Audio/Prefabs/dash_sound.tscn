@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://du64msy80vl6r"]
 
-[ext_resource type="AudioStream" uid="uid://ckjg1sx7nfprc" path="res://Audio/Sounds/mixkit-punch-with-a-hard-whistle-2050.mp3" id="1_mybh4"]
+[ext_resource type="AudioStream" uid="uid://ckjg1sx7nfprc" path="res://Audio/Sounds/dash.mp3" id="1_mybh4"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_bwjp7"]
 
 [node name="Dash" type="AudioStreamPlayer"]

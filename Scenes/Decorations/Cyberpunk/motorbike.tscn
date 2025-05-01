@@ -5,11 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://blwy3jf6lbrc" path="res://Textures/Decorations/Cyberpunk/motorbike2.png" id="3_3fql7"]
 [ext_resource type="Texture2D" uid="uid://cer8yb72d2dv0" path="res://Textures/Decorations/Cyberpunk/motorbike3.png" id="4_86dg1"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_sdops"]
-[ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/explosions/car_explosion.tscn" id="5_y0f5x"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ej1ae"]
-a = Vector2(-7.3766, -6.57956)
-b = Vector2(24.1049, -6.57956)
+[ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/Explosions/car_explosion.tscn" id="5_y0f5x"]
+[ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/Gradients/smoke_gradient.tres" id="7_3clgh"]
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]
 script/source = "extends Sprite2D
@@ -29,7 +26,7 @@ scale = Vector2(3.3, 3.3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_1ocql")
-death_messages = Array[String](["You didn’t see that bike? It wasn't moving at all...", "You can’t blame the bike for that one", "You were feeling invincible but the bike disagreed"])
+death_messages = Array[String](["You didn’t see that bike? It wasn't moving at all...", "You can’t blame the bike for that one", "Felt invincible—bike said no."])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1.30006, -12.8)
@@ -38,11 +35,7 @@ scale = Vector2(1.08, 1.14496)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1.30006, -12.8)
 scale = Vector2(1.08, 1.14496)
-polygon = PackedVector2Array(22.8703, 3.61002, 21.9444, 14.0907, -21.5741, 14.0907, -24.0433, 6.81246, -20.3396, 0.407583, -8.91981, -10.0731, 5.27772, -5.70617, 19.1666, -5.9973, 20.0925, -0.174675)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionPolygon2D"]
-position = Vector2(-11.0803, 7.1036)
-shape = SubResource("SegmentShape2D_ej1ae")
+polygon = PackedVector2Array(19.5594, 4.82748, 18.4371, 14.0907, -16.9164, 14.0907, -20.2834, 7.73879, -16.9164, 2.71017, -10.1824, -5.22977, 5.24966, -1.2598, 17.0342, -4.43578, 17.0342, 0.328184)
 
 [node name="Motorbike" type="Sprite2D" parent="."]
 z_index = 5
@@ -58,18 +51,14 @@ max_health = 500.0
 explosion_prefab = ExtResource("5_y0f5x")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-8.66667, -16.6667)
+position = Vector2(18.4848, -15.7576)
 rotation = -1.40321
 amount = 30
-lifetime = 0.1
-speed_scale = 0.2
-explosiveness = 0.4
 lifetime_randomness = 0.9
-gravity = Vector2(0, 0)
-initial_velocity_min = 400.0
-initial_velocity_max = 400.0
+gravity = Vector2(706.07, 400)
+orbit_velocity_min = -1.0
 scale_amount_min = 3.0
 scale_amount_max = 5.0
-color = Color(0, 1, 0, 1)
+color_initial_ramp = ExtResource("7_3clgh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

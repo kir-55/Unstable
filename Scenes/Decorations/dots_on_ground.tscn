@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6otxt2vqdqfo"]
 
-[ext_resource type="Texture2D" uid="uid://usxayiotqndq" path="res://Textures/Decorations/Jurassic/road_dots.png" id="1_g0ysa"]
+[ext_resource type="Texture2D" uid="uid://usxayiotqndq" path="res://Textures/Decorations/WildWest/road_dots.png" id="1_g0ysa"]
 
 [node name="RoadDots" type="Node2D"]
 

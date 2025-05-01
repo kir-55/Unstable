@@ -5,6 +5,7 @@ extends Node
 
 
 func _ready():
+	print("sound:", get_parent().name)
 	var instance = spawn_on_start_prefab.instantiate()
 	get_tree().current_scene.add_child(instance)
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="1_qujva"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_jtbbi"]
-[ext_resource type="PackedScene" uid="uid://dx0rbrr0eucl6" path="res://Audio/Prefabs/wood_sound.tscn" id="3_0w10e"]
+[ext_resource type="PackedScene" uid="uid://w0uawvaeiw1i" path="res://Audio/Prefabs/cloud_sound.tscn" id="3_1w6n8"]
 
 [sub_resource type="Curve" id="Curve_25yfo"]
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
@@ -45,6 +45,6 @@ script = ExtResource("1_qujva")
 
 [node name="SoundSpawner" type="Node" parent="."]
 script = ExtResource("2_jtbbi")
-spawn_on_start_prefab = ExtResource("3_0w10e")
+spawn_on_start_prefab = ExtResource("3_1w6n8")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

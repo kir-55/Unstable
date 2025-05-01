@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqm0m1uj8kv5u"]
+[gd_scene load_steps=5 format=3 uid="uid://dqm0m1uj8kv5u"]
 
 [ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="1_gp08d"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_el4mc"]
+[ext_resource type="AudioStream" uid="uid://be6r3tp1ttto5" path="res://Audio/Sounds/breaking_drone.mp3" id="3_f1nmk"]
 
 [sub_resource type="Curve" id="Curve_dqkve"]
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
@@ -34,9 +35,10 @@ color_initial_ramp = ExtResource("1_gp08d")
 script = ExtResource("2_el4mc")
 
 [node name="wybuch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_1vnew")
-volume_db = -10.0
+stream = ExtResource("3_f1nmk")
+volume_db = 10.0
 autoplay = true
 mix_target = 1
 bus = &"SFX"
+
 [connection signal="finished" from="." to="." method="_on_finished"]

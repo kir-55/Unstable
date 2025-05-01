@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://elw0pacqsbvk"]
 
-[ext_resource type="Texture2D" uid="uid://dbs38orvhoai" path="res://Textures/Decorations/Cyberpunk/barrier.png" id="1_3yeoq"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_ttsre"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="2_gckqn"]
-[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/explosions/barier_explosion.tscn" id="3_gs082"]
+[ext_resource type="Texture2D" uid="uid://dbs38orvhoai" path="res://Textures/Decorations/Cyberpunk/barrier.png" id="2_rj0cb"]
+[ext_resource type="PackedScene" uid="uid://c6jkxex0pqycv" path="res://Scenes/Explosions/barier_explosion.tscn" id="3_gs082"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngbbo"]
-size = Vector2(33, 25)
+size = Vector2(26.6667, 17)
 
 [node name="Barrier" type="Area2D"]
 scale = Vector2(3, 3)
@@ -17,12 +17,12 @@ death_messages = Array[String](["You were obliterated by deadly lasers", "You ra
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
-position = Vector2(0, -11.8333)
+position = Vector2(0, -7.83332)
 shape = SubResource("RectangleShape2D_ngbbo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 0.333332)
-texture = ExtResource("1_3yeoq")
+texture = ExtResource("2_rj0cb")
 offset = Vector2(0, -12.1667)
 
 [node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]

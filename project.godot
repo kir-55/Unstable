@@ -42,6 +42,7 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Amulets/": "blue",
+"res://Audio/": "teal",
 "res://Scenes/": "red",
 "res://Scripts/": "green",
 "res://Textures/": "yellow"

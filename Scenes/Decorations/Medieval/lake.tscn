@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbwnp6scwiqgc"]
+[gd_scene load_steps=14 format=3 uid="uid://bbwnp6scwiqgc"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_h03wl"]
 [ext_resource type="Script" path="res://Scripts/position_variations.gd" id="2_hxkgl"]
 [ext_resource type="Texture2D" uid="uid://ddgpygvm3g5ik" path="res://Textures/Decorations/Medieval/boat.png" id="2_pjwhm"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_3rvlr"]
 [ext_resource type="Texture2D" uid="uid://dsr10tb1hw3ef" path="res://Textures/tenticle2.png" id="4_5hgt2"]
+[ext_resource type="PackedScene" uid="uid://btnq5ny4j571t" path="res://Audio/Prefabs/kraken_sound.tscn" id="4_u6dme"]
 [ext_resource type="Script" path="res://Scripts/rotation.gd" id="5_b64w5"]
 [ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="5_o3c14"]
 [ext_resource type="Texture2D" uid="uid://bi5vles0txk4t" path="res://Textures/tenticle.png" id="5_refo0"]
@@ -70,6 +71,8 @@ chance_to_despawn = 80
 z_index = 22
 script = ExtResource("1_h03wl")
 death_messages = Array[String](["Eaten by the ocean's monstrous will.", "Swallowed by shadow, drowned in teeth.", "Mistook the Kraken for a friendly squid. Oops."])
+
+[node name="KrakenSound" parent="Kraken/Area2D" instance=ExtResource("4_u6dme")]
 
 [node name="HealthSystem" type="Node" parent="Kraken/Area2D" node_paths=PackedStringArray("explosion_point")]
 script = ExtResource("3_3rvlr")
@@ -154,5 +157,7 @@ offset = Vector2(-0.666656, -14.3333)
 script = ExtResource("5_b64w5")
 rotation_speed_range = Vector2(0.75, 1)
 direction_change_interval_range = Vector2(5, 10)
+
+[node name="KrakenSound" parent="Kraken2/Area2D" instance=ExtResource("4_u6dme")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

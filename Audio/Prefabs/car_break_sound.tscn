@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://clnnujnjrdem3"]
 
-[ext_resource type="AudioStream" uid="uid://ds7r1bagx1ixs" path="res://Audio/Sounds/mixkit-car-window-breaking-1551.mp3" id="1_yiprc"]
+[ext_resource type="AudioStream" uid="uid://ds7r1bagx1ixs" path="res://Audio/Sounds/car_explosion.mp3" id="1_yiprc"]
 [ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_v46k0"]
 
 [node name="CarBreakSound" type="AudioStreamPlayer"]

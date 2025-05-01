@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://w0uawvaeiw1i"]
+
+[ext_resource type="AudioStream" uid="uid://b8txibe2lr3x3" path="res://Audio/Sounds/cloud_break.mp3" id="1_il52v"]
+[ext_resource type="Script" path="res://Scripts/auto_destroy.gd" id="2_ljary"]
+
+[node name="CloudSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_il52v")
+volume_db = 10.0
+autoplay = true
+mix_target = 1
+bus = &"SFX"
+script = ExtResource("2_ljary")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
