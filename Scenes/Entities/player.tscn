@@ -260,7 +260,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(24.286, 65)]
+"values": [Vector2(24.286, 60)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.571, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_1mkn3"]
@@ -301,6 +313,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(25.7143, 72.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.571, 13)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebyxs"]
@@ -354,7 +378,7 @@ self_modulate = Color(1, 1, 1, 0.619608)
 material = ExtResource("4_ehog4")
 position = Vector2(2.85714, 1.42857)
 scale = Vector2(3, 3)
-texture = ExtResource("12_v6ld3")
+texture = ExtResource("13_hbve7")
 script = ExtResource("6_816a3")
 
 [node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails", "amulet_system")]
@@ -377,7 +401,7 @@ width = 5.0
 default_color = Color(1, 1, 1, 0.321569)
 
 [node name="ShootPoint" type="Node2D" parent="."]
-position = Vector2(9.28571, 15)
+position = Vector2(6.42857, 21.4286)
 
 [node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("shoot_point")]
 z_index = -1
@@ -399,7 +423,8 @@ amulet_timer_bar = ExtResource("5_ewkn8")
 effects_animator = NodePath("../EffectsPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6.42857, 20)
+position = Vector2(3.571, 13)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]

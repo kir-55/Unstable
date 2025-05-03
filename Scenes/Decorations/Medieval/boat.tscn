@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq8qxncifdvdu"]
+
+[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="1_bkypd"]
+[ext_resource type="Texture2D" uid="uid://ddgpygvm3g5ik" path="res://Textures/Decorations/Medieval/boat.png" id="2_m1o1d"]
+[ext_resource type="Script" path="res://Scripts/boat_falling.gd" id="3_j5k0g"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pld4k"]
+a = Vector2(-26.1111, -4.66667)
+b = Vector2(22.8889, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_norgp"]
+size = Vector2(43.3333, 2)
+
+[node name="Boat" type="StaticBody2D"]
+position = Vector2(-1, 4)
+scale = Vector2(3, 3)
+script = ExtResource("1_bkypd")
+can_mirror = true
+x_variation_radius = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.666667, -2)
+shape = SubResource("SegmentShape2D_pld4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 21
+position = Vector2(-0.777778, 3.33333)
+texture = ExtResource("2_m1o1d")
+offset = Vector2(-0.250283, -8)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_j5k0g")
+return_delay = 0.0
+return_duration = 0.3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.666668, -9.33333)
+shape = SubResource("RectangleShape2D_norgp")
+
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

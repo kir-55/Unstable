@@ -18,5 +18,3 @@ func _on_area_entered(area2d):
 		if area.is_in_group("Obsticle") or area.get_parent().is_in_group("Obsticle") or area.is_in_group("Breakable"):
 			if area.has_node("HealthSystem"):
 				area.get_node("HealthSystem").take_damage(3000)
-			else:
-				area.queue_free()

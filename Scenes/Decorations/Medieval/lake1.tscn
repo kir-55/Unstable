@@ -1,24 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccfy73pj6b21i"]
+[gd_scene load_steps=8 format=3 uid="uid://ccfy73pj6b21i"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_flv8t"]
-[ext_resource type="Texture2D" uid="uid://ddgpygvm3g5ik" path="res://Textures/Decorations/Medieval/boat.png" id="2_6kkyu"]
+[ext_resource type="Texture2D" uid="uid://cletl62etvvt7" path="res://Textures/Decorations/Medieval/lake_color.tres" id="2_u7dej"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_5tq32"]
-[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="3_hfyrk"]
+[ext_resource type="Texture2D" uid="uid://ku5awcxcyfoj" path="res://Textures/Decorations/Medieval/lake_color_deep.tres" id="3_8woc2"]
 [ext_resource type="PackedScene" uid="uid://bbtqfru2j1bqk" path="res://Scenes/Explosions/wagon_explosion.tscn" id="4_kiame"]
-
-[sub_resource type="Gradient" id="Gradient_sfcij"]
-offsets = PackedFloat32Array(0.557185)
-colors = PackedColorArray(0.184314, 0.298039, 0.423529, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0pnkb"]
-gradient = SubResource("Gradient_sfcij")
-width = 1
-height = 1
-fill_from = Vector2(0.448718, 0.380342)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_fatmh"]
-a = Vector2(-26.1111, -4.66667)
-b = Vector2(22.8889, -5)
+[ext_resource type="PackedScene" uid="uid://cq8qxncifdvdu" path="res://Scenes/Decorations/Medieval/boat.tscn" id="6_kwgrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghcjb"]
 size = Vector2(423.5, 10)
@@ -31,43 +18,15 @@ death_messages = Array[String](["Turns out... scientists can't breathe underwate
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 20
-position = Vector2(1.19209e-07, 13.5)
+position = Vector2(0, 13)
 scale = Vector2(500, 30)
-texture = SubResource("GradientTexture2D_0pnkb")
+texture = ExtResource("2_u7dej")
 
-[node name="Boat" type="StaticBody2D" parent="."]
-position = Vector2(-109, 1)
-scale = Vector2(3, 3)
-script = ExtResource("3_hfyrk")
-can_mirror = true
-x_variation_radius = 20
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
-position = Vector2(0.666667, -2)
-shape = SubResource("SegmentShape2D_fatmh")
-
-[node name="Sprite2D" type="Sprite2D" parent="Boat"]
-z_index = 21
-position = Vector2(-0.777778, 3.33333)
-texture = ExtResource("2_6kkyu")
-offset = Vector2(-0.250283, -8)
-
-[node name="Boat2" type="StaticBody2D" parent="."]
-position = Vector2(112, 0)
-scale = Vector2(3, 3)
-script = ExtResource("3_hfyrk")
-can_mirror = true
-x_variation_radius = 20
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat2"]
-position = Vector2(0.666667, -2)
-shape = SubResource("SegmentShape2D_fatmh")
-
-[node name="Sprite2D" type="Sprite2D" parent="Boat2"]
-z_index = 21
-position = Vector2(-0.777778, 3.33333)
-texture = ExtResource("2_6kkyu")
-offset = Vector2(-0.250283, -8)
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 15
+position = Vector2(0, 126.5)
+scale = Vector2(500, 257)
+texture = ExtResource("3_8woc2")
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("3_5tq32")
@@ -77,5 +36,11 @@ explosion_prefab = ExtResource("4_kiame")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.75, 17)
 shape = SubResource("RectangleShape2D_ghcjb")
+
+[node name="Boat" parent="." instance=ExtResource("6_kwgrg")]
+position = Vector2(109, -1)
+
+[node name="Boat2" parent="." instance=ExtResource("6_kwgrg")]
+position = Vector2(-138, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

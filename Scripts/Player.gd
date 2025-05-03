@@ -175,10 +175,9 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			doble_jump_used = false
 			if is_dropping:
-				var particles = landing_particles_prefab.instantiate()
-				particles.global_position = feet.global_position
-				particles.emitting = true
-				get_tree().current_scene.add_child(particles)
+				var grass_color = GlobalVariables.epochs[GlobalVariables.current_epoch_id].grass_color
+				var ground_color = GlobalVariables.epochs[GlobalVariables.current_epoch_id].ground_color
+				spawn_landing_particles(grass_color, ground_color, feet.global_position)
 				is_dropping = false
 
 		# Handle jumping
@@ -271,5 +270,25 @@ func _on_speed_up_timer_timeout():
 	if SPEED < MAX_SPEED:
 		SPEED += 20
 		GlobalVariables.player_global_speed = SPEED
+
+func spawn_landing_particles(grass_color: Color, ground_color: Color, position: Vector2):
+	var particles = landing_particles_prefab.instantiate()
+	particles.global_position = position
+
+	# Create gradient from grass to ground
+	print("grass color: ", grass_color)
+	var gradient := Gradient.new()
+
+	gradient.add_point(0.5, grass_color)
+	gradient.add_point(0.99, ground_color)
+	gradient.remove_point(0)
+	gradient.remove_point(0)
+
+
+	# Clone the existing process_material to avoid editing the original
+	particles.color_initial_ramp = gradient
+
+	get_tree().current_scene.add_child(particles)
+	particles.emitting = true
 
 

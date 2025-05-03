@@ -1,0 +1,17 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmfof605ugo30"]
+
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_k8w1x"]
+[ext_resource type="Texture2D" uid="uid://dpilh6tyjem0n" path="res://Textures/Decorations/Medieval/bush.png" id="2_jwqgi"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="3_hncu5"]
+[ext_resource type="Texture2D" uid="uid://bvikli0irx7k8" path="res://Textures/Decorations/Medieval/bush4.png" id="4_mv1sv"]
+[ext_resource type="Texture2D" uid="uid://bbeugpft7mimw" path="res://Textures/Decorations/Medieval/bush2.png" id="5_mwdf2"]
+[ext_resource type="Texture2D" uid="uid://dq5qjwjj2b5ob" path="res://Textures/Decorations/Medieval/bush3.png" id="6_rp8cd"]
+
+[node name="Bush" type="Sprite2D"]
+material = ExtResource("1_k8w1x")
+position = Vector2(0, -2)
+scale = Vector2(3, 3)
+texture = ExtResource("2_jwqgi")
+offset = Vector2(0, 0.666667)
+script = ExtResource("3_hncu5")
+visual_variations = Array[Texture2D]([ExtResource("2_jwqgi"), ExtResource("4_mv1sv"), ExtResource("5_mwdf2"), ExtResource("6_rp8cd")])

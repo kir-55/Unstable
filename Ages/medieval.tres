@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=17 format=3 uid="uid://d4jipchxnkrhx"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=20 format=3 uid="uid://d4jipchxnkrhx"]
 
 [ext_resource type="Texture2D" uid="uid://wsj0ecnendr2" path="res://Textures/Baners/medieval_baner.png" id="1_30qj5"]
 [ext_resource type="PackedScene" uid="uid://da211utn7uld2" path="res://Scenes/Locations/DirectionalLights/medieval.tscn" id="2_4no1v"]
@@ -13,9 +13,12 @@
 [ext_resource type="Resource" uid="uid://c4nt37xo2x33p" path="res://Decorations/Medieval/grass.tres" id="8_1mgop"]
 [ext_resource type="Resource" uid="uid://bxigmc82eqq0l" path="res://Decorations/Medieval/lake.tres" id="9_gjdmh"]
 [ext_resource type="Resource" uid="uid://dl7047qekcmc5" path="res://Decorations/Medieval/lake1.tres" id="10_jnu4b"]
+[ext_resource type="Resource" uid="uid://cdnu37net2xdn" path="res://Decorations/Medieval/tree.tres" id="11_mwxig"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="11_pcad3"]
-[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/parallax_trees.png" id="12_qnfwd"]
+[ext_resource type="Resource" uid="uid://wetcpwt4il03" path="res://Decorations/Medieval/bush.tres" id="12_vtjys"]
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/parallax_bushes.png" id="13_dg8m5"]
+[ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="13_ubjus"]
+[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/parallax_forest.png" id="14_yjpm5"]
 
 [resource]
 script = ExtResource("3_326o4")
@@ -24,12 +27,12 @@ description = "13` century, hay, arrows"
 baner = ExtResource("1_30qj5")
 ground_color = Color(0.407843, 0.25098, 0.223529, 1)
 grass_color = Color(0.580392, 0.678431, 0.223529, 1)
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_ys7oq"), ExtResource("3_yl3y6"), ExtResource("4_40rjh"), ExtResource("5_gggf3"), ExtResource("6_fdxuw"), ExtResource("7_liq0e"), ExtResource("8_1mgop"), ExtResource("9_gjdmh"), ExtResource("10_jnu4b")])
-decoration_spawn_pattern = "RA*B*C*G*G*G*|RLHB*C*G*G*G*|RDB*B*C*G*G*G*G*|RLG*G*G*|S|S|S|S|RLH*G*G*G*|RB*C*G*G*G*|RLAB*C*G*G*G*|RD*G*G*G*|RLA*BC*G*G*G*|RB*B*G*G*G*|RLH*G*G*G*|RG*G*G*|RLB*C*G*G*G*|RA*G*G*G*|RLHC*G*G*G*|R*B*C*G*G*G*|RL*G*G*G*|"
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_ys7oq"), ExtResource("3_yl3y6"), ExtResource("4_40rjh"), ExtResource("5_gggf3"), ExtResource("6_fdxuw"), ExtResource("7_liq0e"), ExtResource("8_1mgop"), ExtResource("9_gjdmh"), ExtResource("10_jnu4b"), ExtResource("11_mwxig"), ExtResource("12_vtjys"), ExtResource("13_ubjus")])
+decoration_spawn_pattern = "FRA*B*C*G*G*G*T*|FRLHB*C*G*G*G*|FRTDB*B*C*G*G*G*G*|FRLG*G*G*G*|S|S|S|S|S|FRLH*G*G*G*|FRB*C*G*G*G*T*|FRLAB*C*G*G*G*|FRD*G*G*G*|FRLA*BC*G*G*G*T*|FRB*B*G*G*G*|FRLH*G*G*G*|FRG*G*G*|FRLB*C*G*G*G*T*|FRA*G*G*G*|FRLHC*G*G*G*|FR*B*C*G*G*G*T*|FRL*G*G*G*|FRHA*B*C*"
 environment = ExtResource("3_j14gh")
 directional_light = ExtResource("2_4no1v")
-background_color = Color(0.603922, 0.898039, 0.835294, 1)
-parallax_background_close = ExtResource("12_qnfwd")
-parallax_background_far = ExtResource("12_qnfwd")
+background_color = Color(0.301961, 0.4, 0.34902, 1)
+parallax_background_close = ExtResource("14_yjpm5")
+parallax_background_far = ExtResource("14_yjpm5")
 parallax_foreground = ExtResource("13_dg8m5")
 music = ExtResource("11_pcad3")

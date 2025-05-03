@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3qe2ciqi3ei2"]
+
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_8tf4a"]
+[ext_resource type="Texture2D" uid="uid://5sug25eabmaw" path="res://Textures/Decorations/Medieval/tree2.png" id="2_n87cg"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="3_w56qi"]
+[ext_resource type="Texture2D" uid="uid://ddt6p8cxwt1uy" path="res://Textures/Decorations/Medieval/tree.png" id="4_rhxy3"]
+[ext_resource type="Texture2D" uid="uid://bagaum8ftuvc8" path="res://Textures/Decorations/Medieval/tree3.png" id="5_v7ohw"]
+
+[node name="Tree" type="Sprite2D"]
+material = ExtResource("1_8tf4a")
+scale = Vector2(3, 3)
+texture = ExtResource("2_n87cg")
+script = ExtResource("3_w56qi")
+visual_variations = Array[Texture2D]([ExtResource("4_rhxy3"), ExtResource("2_n87cg"), ExtResource("5_v7ohw")])

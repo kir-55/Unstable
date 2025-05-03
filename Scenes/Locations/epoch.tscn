@@ -1,11 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=27 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_6kdng"]
 [ext_resource type="PackedScene" uid="uid://cqabtg1hsllsa" path="res://Scenes/Prefabs/score_mark.tscn" id="2_60wf2"]
 [ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/parallax_bushes.png" id="3_lk1yb"]
+[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/parallax_forest.png" id="4_28wnr"]
 [ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/parallax_houses.png" id="4_231io"]
+[ext_resource type="Material" uid="uid://bugicnmsuxi4u" path="res://parallax_far_shader.tres" id="4_sqc2y"]
 [ext_resource type="Script" path="res://Scripts/score_updater.gd" id="5_nxrbs"]
 [ext_resource type="Shader" path="res://Scenes/Entities/fade_circle.gdshader" id="6_dhf5r"]
+[ext_resource type="Material" uid="uid://cu4ygnr4xr2it" path="res://parallax_close_shader.tres" id="6_sr5h5"]
 [ext_resource type="LabelSettings" uid="uid://c26omcfad10i" path="res://Scenes/Locations/countdown_label_style.tres" id="7_c50sw"]
 [ext_resource type="LabelSettings" uid="uid://c3yu6js050cyh" path="res://Scenes/Locations/death_message_label_style.tres" id="8_dies4"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="9_cjea4"]
@@ -93,8 +96,6 @@ death_message_label = NodePath("CanvasLayer/DeathPanel/DeathMessage")
 press_to_continue_label = NodePath("CanvasLayer/DeathPanel/PressToContinue")
 score_mark_prefab = ExtResource("2_60wf2")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 10
 
@@ -115,31 +116,35 @@ scroll_offset = Vector2(1000, 0)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 self_modulate = Color(1, 1, 1, 0.984314)
-position = Vector2(-646, 40)
+position = Vector2(1734, -71)
 motion_scale = Vector2(0.1, 0.9)
-motion_mirroring = Vector2(1840, 0)
+motion_mirroring = Vector2(2600, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-self_modulate = Color(1, 1, 1, 0.556863)
-position = Vector2(288, 171)
+material = ExtResource("4_sqc2y")
+position = Vector2(-3232, 171)
 scale = Vector2(2, 2)
-texture = ExtResource("4_231io")
+texture = ExtResource("4_28wnr")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 self_modulate = Color(1, 1, 1, 0.556863)
-position = Vector2(1208, 171)
+material = ExtResource("4_sqc2y")
+position = Vector2(1968, 171)
 scale = Vector2(2, 2)
-texture = ExtResource("4_231io")
+texture = ExtResource("4_28wnr")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(76, -89)
+position = Vector2(179, 406)
 motion_scale = Vector2(0.3, 0.93)
-motion_mirroring = Vector2(2760, 0)
+motion_mirroring = Vector2(3900, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(164, 160)
-scale = Vector2(6, 6)
+material = ExtResource("6_sr5h5")
+position = Vector2(77, -347)
+scale = Vector2(3, 3)
 texture = ExtResource("4_231io")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 20
@@ -299,7 +304,6 @@ default_color = Color(0.156863, 0.180392, 0.231373, 1)
 collision_layer = 257
 
 [node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
-scale = Vector2(1.10038, 1.15793)
 script = ExtResource("16_5yy0h")
 load_radius = 6
 max_radius = 10

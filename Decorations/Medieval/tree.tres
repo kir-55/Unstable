@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cdnu37net2xdn"]
+
+[ext_resource type="PackedScene" uid="uid://d3qe2ciqi3ei2" path="res://Scenes/Decorations/Medieval/tree.tscn" id="1_suvih"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_ku1hl"]
+
+[resource]
+script = ExtResource("2_ku1hl")
+prefab = ExtResource("1_suvih")
+name = "Tree"
+spawn_on_center = false
+chance_to_spawn = 100.0
+width = 150
+pattern_type = "T"
+type = 3
+ignore_types = Array[int]([0, 2])
+can_be_mirrored = false

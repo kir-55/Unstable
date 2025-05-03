@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3sfspnoyhpld"]
+[gd_scene load_steps=10 format=3 uid="uid://c3sfspnoyhpld"]
 
 [ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_1re8d"]
 [ext_resource type="Script" path="res://Scripts/position_variations.gd" id="1_d2er0"]
+[ext_resource type="Script" path="res://Scripts/highly_breakable.gd" id="2_eo476"]
 [ext_resource type="Texture2D" uid="uid://dboxwqgvl7wu4" path="res://Textures/cloud2.png" id="2_n78wv"]
 [ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="3_gltqj"]
 [ext_resource type="Texture2D" uid="uid://dw0mxmctbtwdy" path="res://Textures/cloud.png" id="4_a147o"]
@@ -15,6 +16,7 @@ size = Vector2(62, 22)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_d2er0")
+y_variation_radius = 70
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -259)
@@ -30,8 +32,13 @@ offset = Vector2(0.749714, -1.66667)
 script = ExtResource("3_gltqj")
 visual_variations = Array[Texture2D]([ExtResource("2_n78wv"), ExtResource("4_a147o")])
 
+[node name="HighlyBreakable" type="Node" parent="." node_paths=PackedStringArray("area", "health_system")]
+script = ExtResource("2_eo476")
+area = NodePath("..")
+health_system = NodePath("../HealthSystem")
+
 [node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]
 script = ExtResource("6_usl4d")
-max_health = 20.0
+max_health = 10.0
 explosion_prefab = ExtResource("7_gedra")
 explosion_point = NodePath("../CollisionShape2D")

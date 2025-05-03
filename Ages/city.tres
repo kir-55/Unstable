@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=12 format=3 uid="uid://ctr8ofv38du6p"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=15 format=3 uid="uid://ctr8ofv38du6p"]
 
 [ext_resource type="Texture2D" uid="uid://ckylbj6m8lylk" path="res://Textures/Baners/city_baner.png" id="1_cx422"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://Ages/Environments/city.tres" id="2_5sogd"]
+[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/road_line.tres" id="2_21vsy"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="2_qdhdi"]
 [ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="3_71il6"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="3_p7c1v"]
@@ -9,8 +10,10 @@
 [ext_resource type="Resource" uid="uid://cdegcvopwdhdo" path="res://Decorations/City/drone.tres" id="5_brfca"]
 [ext_resource type="Resource" uid="uid://c35v8c7ihbvso" path="res://Decorations/City/trafic_lights.tres" id="6_xlhnf"]
 [ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="7_ia6ne"]
-[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="8_bwyms"]
+[ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="9_2ta8g"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="10_ydb03"]
+[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/parallax_houses.png" id="11_kiy1v"]
+[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/parallax_forest.png" id="12_xs85d"]
 
 [resource]
 script = ExtResource("3_p7c1v")
@@ -19,8 +22,10 @@ description = "21` century, cars, drones, road fixes, ..."
 baner = ExtResource("1_cx422")
 ground_color = Color(0.235294, 0.145098, 0.168627, 1)
 grass_color = Color(0.101961, 0.121569, 0.180392, 1)
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_qdhdi"), ExtResource("3_71il6"), ExtResource("4_muq4h"), ExtResource("5_brfca"), ExtResource("6_xlhnf"), ExtResource("7_ia6ne"), ExtResource("8_bwyms")])
-decoration_spawn_pattern = "RA*B*C*|RHB*C*|RDB*B*C*|R|RA*|RC*|RH|RB*C*|RAB*C*|RD|RA*BC*|RB*B*|RH|R|RB*C*|RA*|RHC*|RB*C*|R"
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_21vsy"), ExtResource("3_71il6"), ExtResource("4_muq4h"), ExtResource("5_brfca"), ExtResource("6_xlhnf"), ExtResource("7_ia6ne"), ExtResource("2_qdhdi"), ExtResource("9_2ta8g")])
+decoration_spawn_pattern = "FRA*B*C*|FRHB*C*|FRDB*B*C*|FR|FRA*|FRC*|FRH|FRB*C*|FRAB*C*|FRD|FRA*BC*|FRB*B*|FRH|FR|FRB*C*|FRA*|FRHC*|FRB*C*|FR"
 environment = ExtResource("2_5sogd")
 background_color = Color(0.603922, 0.898039, 0.835294, 1)
+parallax_background_close = ExtResource("11_kiy1v")
+parallax_background_far = ExtResource("12_xs85d")
 music = ExtResource("10_ydb03")

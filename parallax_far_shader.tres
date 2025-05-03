@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bugicnmsuxi4u"]
+
+[ext_resource type="Shader" path="res://Styles/desaturation.gdshader" id="1_w05e0"]
+
+[resource]
+shader = ExtResource("1_w05e0")
+shader_parameter/saturation = 0.785
+shader_parameter/blueness = 0.624

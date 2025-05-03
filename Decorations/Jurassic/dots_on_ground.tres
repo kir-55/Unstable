@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://mhgkhfmgvn56"]
 
-[ext_resource type="PackedScene" uid="uid://b6otxt2vqdqfo" path="res://Scenes/Decorations/dots_on_ground.tscn" id="1_4ut8k"]
+[ext_resource type="PackedScene" uid="uid://b6otxt2vqdqfo" path="res://Scenes/Decorations/WildWest/dots_on_ground.tscn" id="1_4ut8k"]
 [ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_jyvet"]
 
 [resource]

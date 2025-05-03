@@ -32,3 +32,4 @@ func _ready():
 			parallax_background_far2.texture = current_epoch.parallax_background_far
 		if current_epoch.parallax_foreground:
 			parallax_foreground.texture = current_epoch.parallax_foreground
+		RenderingServer.set_default_clear_color(current_epoch.background_color) 

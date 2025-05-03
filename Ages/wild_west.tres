@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=9 format=3 uid="uid://b5ga8fmqhitgk"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=11 format=3 uid="uid://b5ga8fmqhitgk"]
 
 [ext_resource type="Texture2D" uid="uid://ctx3s4l74xb6d" path="res://Textures/Baners/future_baner.png" id="1_wt5mg"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="2_gavku"]
@@ -6,18 +6,21 @@
 [ext_resource type="Resource" uid="uid://b55gcsjj04sht" path="res://Decorations/Jurassic/cactus.tres" id="3_vhql8"]
 [ext_resource type="Resource" uid="uid://cl75jnlf31660" path="res://Decorations/Jurassic/cactus_round.tres" id="4_tbn52"]
 [ext_resource type="Resource" uid="uid://mhgkhfmgvn56" path="res://Decorations/Jurassic/dots_on_ground.tres" id="5_pldws"]
-[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/parallax_trees.png" id="6_3ksr7"]
 [ext_resource type="Resource" uid="uid://nhchsqd2k4vt" path="res://Decorations/Medieval/cloud.tres" id="6_ftsgt"]
+[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/parallax_forest.png" id="7_385xd"]
+[ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="7_vmlr6"]
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/parallax_bushes.png" id="8_jb4oo"]
 
 [resource]
 script = ExtResource("2_gavku")
-title = "Jurassic"
+title = "Wild West"
 description = "201.3 (+/- 0.2) million years ago - 145 million years ago"
 baner = ExtResource("1_wt5mg")
 ground_color = Color(0.882353, 0.658824, 0.270588, 1)
 grass_color = Color(0.933333, 0.796078, 0.564706, 1)
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_ljbw5"), ExtResource("3_vhql8"), ExtResource("4_tbn52"), ExtResource("5_pldws"), ExtResource("6_ftsgt")])
-decoration_spawn_pattern = "RA*B*C*D*|RHA*B*C*|RDB*B*C*D*|R|RA*D*|RC*D*|RH|RB*C*D*|RAB*C*|RD|RA*BC*D*|RB*B*D*|RH|RA*D*|RB*C*D*|RA*|RHC*D*|RB*C*D*|RA*"
-background_color = Color(0, 0, 0, 1)
-parallax_background_close = ExtResource("6_3ksr7")
-parallax_background_far = ExtResource("6_3ksr7")
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_ljbw5"), ExtResource("3_vhql8"), ExtResource("4_tbn52"), ExtResource("5_pldws"), ExtResource("6_ftsgt"), ExtResource("7_vmlr6")])
+decoration_spawn_pattern = "FRA*B*C*D*|FRAHA*B*C*|FRDB*B*C*D*|FR|FRA*D*|FRC*D*|FRH|FRB*C*D*|FRAB*C*|FRD|FRA*BC*D*|FRB*B*D*|FRH|FRA*D*|FRB*C*D*|FRA*|FRHC*D*|FRB*C*D*|FRA*"
+background_color = Color(0.603922, 0.898039, 0.835294, 1)
+parallax_background_close = ExtResource("7_385xd")
+parallax_background_far = ExtResource("7_385xd")
+parallax_foreground = ExtResource("8_jb4oo")

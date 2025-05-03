@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://wetcpwt4il03"]
+
+[ext_resource type="PackedScene" uid="uid://bmfof605ugo30" path="res://Scenes/Decorations/Medieval/bush.tscn" id="1_b73m6"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_2kais"]
+
+[resource]
+script = ExtResource("2_2kais")
+prefab = ExtResource("1_b73m6")
+name = "Tree"
+spawn_on_center = false
+chance_to_spawn = 20.0
+width = 150
+pattern_type = "G"
+type = 3
+ignore_types = Array[int]([0])
+can_be_mirrored = false

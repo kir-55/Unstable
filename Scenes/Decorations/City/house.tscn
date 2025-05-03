@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://hqspj08hycbj"]
+[gd_scene load_steps=11 format=3 uid="uid://hqspj08hycbj"]
 
 [ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_lfwwc"]
 [ext_resource type="Texture2D" uid="uid://b2gcmxd5wp2xn" path="res://Textures/Decorations/City/house1_city.png" id="1_nlixq"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://0s3b03t4fe0s" path="res://Textures/Decorations/City/house4_city.png" id="5_sfmcf"]
 [ext_resource type="Texture2D" uid="uid://btaeeaihu625b" path="res://Textures/Decorations/City/house5_city.png" id="6_0a363"]
 [ext_resource type="Texture2D" uid="uid://np1o1p8twl4j" path="res://Textures/Decorations/City/house6_city.png" id="7_rfx3e"]
+[ext_resource type="Texture2D" uid="uid://b47ibekilm8qm" path="res://Textures/Decorations/City/house7_city.png" id="9_gii0i"]
+[ext_resource type="Texture2D" uid="uid://bw4wy1482hkij" path="res://Textures/Decorations/City/house8_city.png" id="10_02q26"]
 
 [node name="HouseCity" type="Sprite2D"]
 z_index = -2
@@ -16,4 +18,4 @@ position = Vector2(2, -1)
 scale = Vector2(3, 3)
 texture = ExtResource("1_nlixq")
 script = ExtResource("2_w7xei")
-visual_variations = Array[Texture2D]([ExtResource("1_nlixq"), ExtResource("3_5uwxn"), ExtResource("4_xkmby"), ExtResource("5_sfmcf"), ExtResource("6_0a363"), ExtResource("7_rfx3e")])
+visual_variations = Array[Texture2D]([ExtResource("1_nlixq"), ExtResource("3_5uwxn"), ExtResource("4_xkmby"), ExtResource("5_sfmcf"), ExtResource("6_0a363"), ExtResource("7_rfx3e"), ExtResource("9_gii0i"), ExtResource("10_02q26")])

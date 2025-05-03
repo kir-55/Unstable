@@ -1,9 +1,12 @@
+class_name HealthSystem
 extends Node
 
 @export var max_health := 80.0
 @export var explosion_prefab:PackedScene
 @export var explosion_point: Node2D
 @onready var health = max_health
+
+
 
 
 func take_damage(value):
