@@ -6,6 +6,14 @@ extends Area2D
 func set_velocity(new_velocity: Vector2):
 	pass
 
+func get_player_no_dash_speed():
+	var player_speed
+	if GlobalVariables.player.is_dashing:
+		player_speed = GlobalVariables.player.velocity.x - GlobalVariables.player.DASH_SPEED_BOOST
+	else:
+		player_speed = GlobalVariables.player.velocity.x
+	return player_speed
+
 func explode():
 	var explosion = explosion_scene.instantiate()
 	explosion.global_position = global_position
@@ -13,7 +21,7 @@ func explode():
 	queue_free()
 
 func _physics_process(delta):
-	position += (velocity + Vector2(GlobalVariables.player.velocity.x, 0)) * delta
+	position += (velocity + Vector2(get_player_no_dash_speed(), 0)) * delta
 
 
 func _on_area_entered(area):

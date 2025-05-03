@@ -14,14 +14,22 @@ var min_distance_from_player = 0
 var actual_speed : float
 var target : Node2D = null
 
+func get_new_speed():
+	var new_speed
+	if GlobalVariables.player.is_dashing:
+		new_speed = GlobalVariables.player.velocity.x - GlobalVariables.player.DASH_SPEED_BOOST + speed
+	else:
+		new_speed = GlobalVariables.player.velocity.x + speed
+	return new_speed
+
 func _ready():
 	min_distance_from_player = player_speed * min_flight_time
-	actual_speed = player_speed + speed
+	actual_speed = get_new_speed()
 	position.y -= 50
 	find_closest_target()
 
 func _physics_process(delta):
-	actual_speed = player_speed + speed
+	actual_speed = get_new_speed()
 	move_towards_target(delta)
 
 func find_closest_target():

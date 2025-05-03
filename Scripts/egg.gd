@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var explosion_scene: PackedScene
 
-var speed = max(350, GlobalVariables.player.velocity.x)
+var speed = 250
 const GRAVITY = 1000
 const air_resistance = 2
 var angle_change = 0.02
@@ -10,6 +10,14 @@ var angle_change = 0.02
 var in_flight := true
 
 var motion = Vector2()
+
+func _ready():
+	var new_speed
+	if GlobalVariables.player.is_dashing:
+		new_speed = GlobalVariables.player.velocity.x - GlobalVariables.player.DASH_SPEED_BOOST + speed
+	else:
+		new_speed = GlobalVariables.player.velocity.x + speed
+	speed = max(speed, new_speed)
 
 
 func _physics_process(delta):
