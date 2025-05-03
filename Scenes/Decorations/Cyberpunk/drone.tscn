@@ -20,7 +20,6 @@ death_messages = Array[String](["Drone didn't liked you", "You kicked the drone 
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.100001, -7)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1iamu")
 
 [node name="Drone" type="Sprite2D" parent="."]
