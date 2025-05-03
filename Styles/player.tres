@@ -6,11 +6,11 @@
 shader = ExtResource("1_xw2as")
 shader_parameter/has_glasses = true
 shader_parameter/initial_skin_color = Color(0.933333, 0.796078, 0.564706, 1)
-shader_parameter/skin_color = Color(0.691362, 0.490322, 0.274262, 1)
+shader_parameter/skin_color = Color(0.690196, 0.490196, 0.27451, 1)
 shader_parameter/initial_skin_shadow = Color(0.882353, 0.658824, 0.270588, 1)
 shader_parameter/skin_shadow = Color(0.542593, 0.348037, 0.123368, 1)
 shader_parameter/initial_ear_color = Color(0.772549, 0.470588, 0.207843, 1)
-shader_parameter/ear_color = Color(0.999616, 0.761698, 0.759183, 1)
+shader_parameter/ear_color = Color(1, 0.760784, 0.760784, 1)
 shader_parameter/initial_glasses_frame = Color(0.156863, 0.180392, 0.231373, 1)
 shader_parameter/glasses_frame = Color(0.247059, 0.262745, 0.156863, 1)
 shader_parameter/initial_glasses_color = Color(0.372549, 0.443137, 0.196078, 1)

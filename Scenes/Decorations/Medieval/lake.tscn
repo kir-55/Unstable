@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsr10tb1hw3ef" path="res://Textures/tenticle2.png" id="4_5hgt2"]
 [ext_resource type="PackedScene" uid="uid://btnq5ny4j571t" path="res://Audio/Prefabs/kraken_sound.tscn" id="4_u6dme"]
 [ext_resource type="Script" path="res://Scripts/rotation.gd" id="5_b64w5"]
-[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="5_o3c14"]
+[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/explosions/water_explosion.tscn" id="5_o3c14"]
 [ext_resource type="Texture2D" uid="uid://bi5vles0txk4t" path="res://Textures/tenticle.png" id="5_refo0"]
 [ext_resource type="PackedScene" uid="uid://cq8qxncifdvdu" path="res://Scenes/Decorations/Medieval/boat.tscn" id="11_56x0h"]
 

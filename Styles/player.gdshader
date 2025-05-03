@@ -84,6 +84,7 @@ uniform vec4 hand_color_shadow : source_color;
 uniform float threshold = 0.01;
 
 void fragment() {
+	vec4 modulate_color = COLOR;
 	vec4 tex_color = texture(TEXTURE, UV);
 
 	bool replace_glasses_hide = !has_glasses && distance(tex_color.rgb, initial_glasses_frame.rgb) < threshold;
@@ -169,4 +170,7 @@ void fragment() {
 	} else {
 		COLOR = tex_color;
 	}
+	
+	COLOR.a *= modulate_color.a;
+
 }
