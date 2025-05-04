@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://xujhhhjio2v"]
 
-[ext_resource type="Texture2D" uid="uid://eeprgcj6lb3g" path="res://Textures/ground_fade.png" id="1_7my3l"]
+[ext_resource type="Texture2D" uid="uid://eeprgcj6lb3g" path="res://Textures/Decorations/ground_fade.png" id="1_qqav2"]
 [ext_resource type="Script" path="res://Scripts/ground_fade.gd" id="2_yglfn"]
 
 [node name="GroundFade" type="Sprite2D"]
 scale = Vector2(3, 3)
-texture = ExtResource("1_7my3l")
+texture = ExtResource("1_qqav2")
 offset = Vector2(0, 13)
 script = ExtResource("2_yglfn")

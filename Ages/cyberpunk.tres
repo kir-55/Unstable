@@ -9,9 +9,9 @@
 [ext_resource type="Resource" uid="uid://bdd7vf538npx" path="res://Decorations/Cyberpunk/drone1.tres" id="6_1dem3"]
 [ext_resource type="Resource" uid="uid://duyheh6m0uwo3" path="res://Decorations/Cyberpunk/drone2.tres" id="7_1d18d"]
 [ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="8_h6jeg"]
-[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/parallax_forest.png" id="10_g8rcl"]
+[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/Parallaxes/parallax_forest.png" id="10_g8rcl"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="11_easgu"]
-[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/parallax_bushes.png" id="13_d1gd0"]
+[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Parallaxes/parallax_bushes.png" id="13_d1gd0"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="14_ar4ej"]
 
 [resource]

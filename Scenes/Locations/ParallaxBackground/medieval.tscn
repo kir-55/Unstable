@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b00p65geifnhm"]
 
-[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/parallax_trees.png" id="1_dnpxs"]
+[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/Parallaxes/parallax_trees.png" id="1_dnpxs"]
 
 [node name="Medieval" type="ParallaxBackground"]
 scroll_offset = Vector2(1000, 0)

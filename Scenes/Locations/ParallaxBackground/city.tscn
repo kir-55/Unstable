@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgopl05fsqicm"]
 
-[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/parallax_trees.png" id="1_axgd1"]
-[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/parallax_houses.png" id="2_nxqsw"]
+[ext_resource type="Texture2D" uid="uid://dychjjjtx41xi" path="res://Textures/Parallaxes/parallax_trees.png" id="1_axgd1"]
+[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Parallaxes/parallax_houses.png" id="2_nxqsw"]
 
 [node name="City" type="ParallaxBackground"]
 scroll_offset = Vector2(1000, 0)

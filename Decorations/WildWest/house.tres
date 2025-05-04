@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://bphmqc28dm5jl"]
+
+[ext_resource type="PackedScene" uid="uid://5h61pg36cety" path="res://Scenes/Decorations/WildWest/house.tscn" id="1_1afk2"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_idvgo"]
+
+[resource]
+script = ExtResource("2_idvgo")
+prefab = ExtResource("1_1afk2")
+name = "House"
+spawn_on_center = true
+chance_to_spawn = 60.0
+width = 0
+pattern_type = "H"
+type = 3
+ignore_types = Array[int]([])
+can_be_mirrored = false

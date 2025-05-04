@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm85340u4k466"]
 
-[ext_resource type="Texture2D" uid="uid://cf4nuq84o1vlw" path="res://Textures/Decorations/cyber1.png" id="1_kl4vu"]
+[ext_resource type="Texture2D" uid="uid://cf4nuq84o1vlw" path="res://Textures/Decorations/Cyberpunk/cyber1.png" id="1_kl4vu"]
 [ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="2_35gdf"]
-[ext_resource type="Texture2D" uid="uid://bravuad5e8urb" path="res://Textures/Decorations/cyber2.png" id="3_r3qyu"]
+[ext_resource type="Texture2D" uid="uid://bravuad5e8urb" path="res://Textures/Decorations/Cyberpunk/cyber2.png" id="3_r3qyu"]
 
 [node name="House Future" type="Sprite2D"]
 self_modulate = Color(0.639216, 0.639216, 0.639216, 1)

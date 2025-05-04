@@ -12,8 +12,8 @@
 [ext_resource type="Resource" uid="uid://c14irlak1u1mm" path="res://Decorations/City/house.tres" id="7_ia6ne"]
 [ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="9_2ta8g"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="10_ydb03"]
-[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/parallax_houses.png" id="11_kiy1v"]
-[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/parallax_forest.png" id="12_xs85d"]
+[ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Parallaxes/parallax_houses.png" id="11_kiy1v"]
+[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/Parallaxes/parallax_forest.png" id="12_xs85d"]
 
 [resource]
 script = ExtResource("3_p7c1v")

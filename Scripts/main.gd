@@ -13,7 +13,8 @@ extends Node2D
 @export var parallax_foreground: Sprite2D
 
 func _ready():
-	var current_epoch = GlobalVariables.epochs.pick_random()
+	GlobalVariables.current_epoch_id = randi_range(0, GlobalVariables.epochs.size()-1)
+	var current_epoch = GlobalVariables.epochs[GlobalVariables.current_epoch_id]
 	if current_epoch:
 		decoration_spawner.decorations = current_epoch.decorations
 		decoration_spawner.spawn_pattern = current_epoch.decoration_spawn_pattern

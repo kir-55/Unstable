@@ -1,0 +1,19 @@
+[gd_scene load_steps=9 format=3 uid="uid://5h61pg36cety"]
+
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_pgnrn"]
+[ext_resource type="Texture2D" uid="uid://b457er8tkarbn" path="res://Textures/Decorations/Medieval/dom2.png" id="2_cx5qq"]
+[ext_resource type="Script" path="res://Scripts/visual_variations.gd" id="3_o4hrw"]
+[ext_resource type="Texture2D" uid="uid://bcgf3i2bvmeyu" path="res://Textures/Decorations/WildWest/dom1.png" id="4_fdtbj"]
+[ext_resource type="Texture2D" uid="uid://dkc6wc377c8hx" path="res://Textures/Decorations/WildWest/dom2.png" id="5_gv8s1"]
+[ext_resource type="Texture2D" uid="uid://bhlom70y36e20" path="res://Textures/Decorations/WildWest/dom3.png" id="6_ug1n4"]
+[ext_resource type="Texture2D" uid="uid://ccnxaafu1aa1i" path="res://Textures/Decorations/WildWest/dom4.png" id="7_4t8ln"]
+[ext_resource type="Texture2D" uid="uid://bpw0pu753vovk" path="res://Textures/Decorations/WildWest/dom5.png" id="8_f63x8"]
+
+[node name="House" type="Sprite2D"]
+z_index = -2
+material = ExtResource("1_pgnrn")
+scale = Vector2(3, 3)
+texture = ExtResource("2_cx5qq")
+offset = Vector2(0, 3)
+script = ExtResource("3_o4hrw")
+visual_variations = Array[Texture2D]([ExtResource("4_fdtbj"), ExtResource("5_gv8s1"), ExtResource("6_ug1n4"), ExtResource("7_4t8ln"), ExtResource("8_f63x8")])

@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngbbo"]
 size = Vector2(26.6667, 17)
 
-[node name="Barrier" type="Area2D"]
+[node name="Barrier" type="Area2D" groups=["Obsticle"]]
 scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3

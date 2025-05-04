@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cletl62etvvt7" path="res://Textures/Decorations/Medieval/lake_color.tres" id="2_mjqi5"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_3rvlr"]
 [ext_resource type="Texture2D" uid="uid://ku5awcxcyfoj" path="res://Textures/Decorations/Medieval/lake_color_deep.tres" id="3_7kqwr"]
-[ext_resource type="Texture2D" uid="uid://dsr10tb1hw3ef" path="res://Textures/tenticle2.png" id="4_5hgt2"]
 [ext_resource type="PackedScene" uid="uid://btnq5ny4j571t" path="res://Audio/Prefabs/kraken_sound.tscn" id="4_u6dme"]
 [ext_resource type="Script" path="res://Scripts/rotation.gd" id="5_b64w5"]
-[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/explosions/water_explosion.tscn" id="5_o3c14"]
-[ext_resource type="Texture2D" uid="uid://bi5vles0txk4t" path="res://Textures/tenticle.png" id="5_refo0"]
+[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="5_o3c14"]
+[ext_resource type="Texture2D" uid="uid://dsr10tb1hw3ef" path="res://Textures/Decorations/Medieval/tenticle2.png" id="8_wo1se"]
+[ext_resource type="Texture2D" uid="uid://bi5vles0txk4t" path="res://Textures/Decorations/Medieval/tenticle.png" id="10_lwpa1"]
 [ext_resource type="PackedScene" uid="uid://cq8qxncifdvdu" path="res://Scenes/Decorations/Medieval/boat.tscn" id="11_56x0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghcjb"]
@@ -67,7 +67,7 @@ polygon = PackedVector2Array(-40, -5, -17, -20, -14, -28, -16, -45, -3, -52, 9, 
 [node name="Sprite2D" type="Sprite2D" parent="Kraken/Area2D"]
 z_index = 1
 position = Vector2(7, 6.66666)
-texture = ExtResource("4_5hgt2")
+texture = ExtResource("8_wo1se")
 offset = Vector2(1, -6.66666)
 script = ExtResource("5_b64w5")
 rotation_speed_range = Vector2(1, 2)
@@ -77,14 +77,14 @@ z_index = 2
 position = Vector2(-9.38864, 6.87742)
 rotation = 3.14159
 scale = Vector2(1, -1)
-texture = ExtResource("4_5hgt2")
+texture = ExtResource("8_wo1se")
 offset = Vector2(1.61136, -6.54408)
 script = ExtResource("5_b64w5")
 rotation_speed_range = Vector2(1, 2)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Kraken/Area2D"]
 position = Vector2(-1.33334, 6.33334)
-texture = ExtResource("5_refo0")
+texture = ExtResource("10_lwpa1")
 offset = Vector2(-0.666656, -14.3333)
 script = ExtResource("5_b64w5")
 rotation_speed_range = Vector2(0.75, 1)
@@ -117,7 +117,7 @@ polygon = PackedVector2Array(-40, -5, -17, -20, -14, -28, -16, -45, -3, -52, 9, 
 [node name="Sprite2D" type="Sprite2D" parent="Kraken2/Area2D"]
 z_index = 1
 position = Vector2(7, 6.66666)
-texture = ExtResource("4_5hgt2")
+texture = ExtResource("8_wo1se")
 offset = Vector2(1, -6.66666)
 script = ExtResource("5_b64w5")
 rotation_speed_range = Vector2(1, 2)
@@ -127,14 +127,14 @@ z_index = 2
 position = Vector2(-9.38864, 6.87742)
 rotation = 3.14159
 scale = Vector2(1, -1)
-texture = ExtResource("4_5hgt2")
+texture = ExtResource("8_wo1se")
 offset = Vector2(1.61136, -6.54408)
 script = ExtResource("5_b64w5")
 rotation_speed_range = Vector2(1, 2)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Kraken2/Area2D"]
 position = Vector2(-1.33334, 6.33334)
-texture = ExtResource("5_refo0")
+texture = ExtResource("10_lwpa1")
 offset = Vector2(-0.666656, -14.3333)
 script = ExtResource("5_b64w5")
 rotation_speed_range = Vector2(0.75, 1)
