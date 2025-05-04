@@ -21,9 +21,8 @@ var last_score : int = 0
 var time_started: int = 0
 var time_ended: int = 0
 
-
-
 var times_treveled: int = 0
+
 
 
 @export var initial_player_speed: int = 500
@@ -55,6 +54,7 @@ var player_new_amulets : Array[int]
 
 
 @export var active_weapon_types: Array[WeaponType]
+@export var decoration_breaking_effect_color : Color = Color.BLACK
 
 var current_epoch_id : int = 0
 var next_epoch_id: int

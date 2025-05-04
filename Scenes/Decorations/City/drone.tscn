@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/drone.gd" id="2_q6afg"]
 [ext_resource type="Texture2D" uid="uid://cwec6cfkjf6vn" path="res://Textures/Decorations/City/drone_city.png" id="2_qborx"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_uyrou"]
-[ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/Explosions/drone_explosion.tscn" id="3_eoxcv"]
+[ext_resource type="PackedScene" uid="uid://q6vw7hxexvpu" path="res://Scenes/explosions/drone_explosion.tscn" id="3_eoxcv"]
 [ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="6_f88ta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
