@@ -29,7 +29,7 @@ shape = SubResource("RectangleShape2D_1iamu")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-36, -9.33333)
-target_position = Vector2(0, 59)
+target_position = Vector2(0, 142.333)
 
 [node name="Drone" type="Sprite2D" parent="."]
 z_index = -1

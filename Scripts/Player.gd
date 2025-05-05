@@ -16,6 +16,17 @@ var id
 var jump_buffer_time = 0.15  # seconds to remember the jump input
 var jump_buffer_timer = 0.0
 
+
+
+const BASE_JUMP_VELOCITY = -300.0
+const JUMP_HOLD_FORCE = -25
+const MAX_JUMP_HOLD_TIME = 0.35 
+
+var jump_hold_timer = 0.0
+var is_jump_button_held = false
+
+
+
 @export var DROP_THROUGH_VELOCITY: float = 700  # Downward drop velocity (controlled fall)
 
 @export var DASH_SPEED_BOOST: float = 400.0  # Speed boost for dash
@@ -132,27 +143,29 @@ func _physics_process(delta: float) -> void:
 	if GlobalVariables.game_is_on and (!Client.active or is_multiplayer_authority()):
 		if velocity.x < SPEED:
 			velocity.x += 10
-		
+
 		if jump_buffer_timer > 0:
 			jump_buffer_timer -= delta
-			
-			
-			
+
 		REMOTE_PLAYER_POSITION = global_position
+
 		# Apply gravity if not on the floor
 		if not is_on_floor():
 			velocity.y += gravity * delta
 
+		# Apply extra jump force while holding jump
+		if is_jump_button_held and jump_hold_timer > 0 and velocity.y < 0:
+			var hold_strength = JUMP_HOLD_FORCE * (jump_hold_timer / MAX_JUMP_HOLD_TIME)
+			velocity.y += hold_strength
+			jump_hold_timer -= delta
+
 		# Handle movement input
 		direction.x = 1  # Fixed direction (right movement)
-		
+
 		# Handle dash activation
 		if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
 			start_dash()
-		#if Input.is_action_just_pressed("stop") and stop_cooldown_timer <= 0 and not is_stopping:
-			#is_stopping = true
-			#stop_timer = STOP_DURATION
-			#stop_cooldown_timer = STOP_COOLDOWN
+
 		# Handle dashing
 		if is_dashing:
 			trail.process_points()
@@ -194,24 +207,29 @@ func _physics_process(delta: float) -> void:
 				is_dropping = false
 
 		# Handle jumping
-		
 		if Input.is_action_just_pressed("up"):
 			jump_buffer_timer = jump_buffer_time
-			
-		if (jump_buffer_timer > 0 and can_jump()):
+
+		if jump_buffer_timer > 0 and can_jump():
 			trail.remove_points()
 			is_jumping = true
-			
+			jump_buffer_timer = 0
+			is_jump_button_held = true
+			jump_hold_timer = MAX_JUMP_HOLD_TIME
+			velocity.y = BASE_JUMP_VELOCITY
+
 			if is_dashing:
 				end_dash()
-
-			velocity.y = JUMP_VELOCITY
 
 			if !is_on_floor():
 				doble_jump_used = true
 
-			if JUMP_VELOCITY < MAX_JUMP_VEL:
-				JUMP_VELOCITY += 5
+		if Input.is_action_just_released("up"):
+			is_jump_button_held = false
+
+		# Stop applying extra force if rising ends
+		if velocity.y >= 0:
+			is_jump_button_held = false
 
 		# Handle dropping down
 		if Input.is_action_just_pressed("bottom") and not is_on_floor():
@@ -224,7 +242,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			player_animator.play("run")
 
-
 		# Move the character
 		move_and_slide()
 
@@ -236,7 +253,6 @@ func _physics_process(delta: float) -> void:
 		global_position = REMOTE_PLAYER_POSITION
 	else:
 		global_position = REMOTE_PLAYER_POSITION
-		#lerp(global_position, REMOTE_PLAYER_POSITION, 1)
 
 
 
