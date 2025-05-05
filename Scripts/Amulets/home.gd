@@ -61,7 +61,7 @@ func _ready():
 
 
 func _process(delta):
-	if label.size.x < label_with:
+	if is_instance_valid(label) and label.size.x < label_with:
 		label.size.x += 10
 
 
