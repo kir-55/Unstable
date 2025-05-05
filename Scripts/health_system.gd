@@ -4,7 +4,6 @@ extends Node
 @export var max_health := 80.0
 @export var explosion_prefab:PackedScene
 @export var explosion_point: Node2D
-@export var breakable_sprites : Array[Sprite2D] #IF NO ELEMENTS ARE DEFINED IT IS ASSUMED THAT SPRITE2D IS A DIRECT CHILD OF ROOT NODE
 @export var breaking_shader : Shader = preload("res://Styles/breaking.gdshader")
 @onready var health = max_health
 
@@ -13,19 +12,11 @@ func set_breaking_shader_parameters(material):
 	material.set_shader_parameter("cracks_color", GlobalVariables.decoration_breaking_effect_color)
 
 func apply_breaking_shader():
-	if breakable_sprites.size() > 0:
-		for sprite in breakable_sprites:
-			sprite.material = ShaderMaterial.new()
-			sprite.material.shader = breaking_shader
-			set_breaking_shader_parameters(sprite.material)
-			
-	else:
-		for child in get_parent().get_children():
-			if child is Sprite2D:
-				child.material = ShaderMaterial.new()
-				child.material.shader = breaking_shader
-				set_breaking_shader_parameters(child.material)
-				break
+	for child in get_parent().get_children():
+		if child is Sprite2D:
+			child.material = ShaderMaterial.new()
+			child.material.shader = breaking_shader
+			set_breaking_shader_parameters(child.material)
 
 func take_damage(value):
 	health -= value
