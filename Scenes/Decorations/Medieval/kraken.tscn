@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxiyp3hmm26bd"]
+
+[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="1_nfyh7"]
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="2_ak8th"]
+[ext_resource type="PackedScene" uid="uid://btnq5ny4j571t" path="res://Audio/Prefabs/kraken_sound.tscn" id="3_wqan3"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_v81cc"]
+[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="5_i2dn6"]
+[ext_resource type="Texture2D" uid="uid://dsr10tb1hw3ef" path="res://Textures/Decorations/Medieval/tenticle2.png" id="6_x6dqy"]
+[ext_resource type="Script" path="res://Scripts/rotation.gd" id="7_tpucf"]
+[ext_resource type="Texture2D" uid="uid://bi5vles0txk4t" path="res://Textures/Decorations/Medieval/tenticle.png" id="8_1vkj0"]
+
+[node name="Kraken" type="Node2D" groups=["Obsticle"]]
+position = Vector2(163, -9)
+scale = Vector2(3, 3)
+script = ExtResource("1_nfyh7")
+can_mirror = true
+chance_to_despawn = 80
+
+[node name="Area2D" type="Area2D" parent="." groups=["Obsticle"]]
+z_index = 22
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_ak8th")
+death_messages = Array[String](["Eaten by the ocean's monstrous will.", "Swallowed by shadow, drowned in teeth.", "Mistook the Kraken for a friendly squid. Oops."])
+
+[node name="KrakenSound" parent="Area2D" instance=ExtResource("3_wqan3")]
+
+[node name="HealthSystem" type="Node" parent="Area2D"]
+script = ExtResource("4_v81cc")
+explosion_prefab = ExtResource("5_i2dn6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-0.333332, -1)
+scale = Vector2(0.333333, 0.333333)
+polygon = PackedVector2Array(-40, -5, -17, -20, -14, -28, -16, -45, -3, -52, 9, -32, 27, -12, 32, 13, 28, 27, -35, 27)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+z_index = 1
+position = Vector2(7, 6.66666)
+texture = ExtResource("6_x6dqy")
+offset = Vector2(1, -6.66666)
+script = ExtResource("7_tpucf")
+rotation_speed_range = Vector2(1, 2)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Area2D"]
+z_index = 2
+position = Vector2(-9.38864, 6.87742)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("6_x6dqy")
+offset = Vector2(1.61136, -6.54408)
+script = ExtResource("7_tpucf")
+rotation_speed_range = Vector2(1, 2)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+position = Vector2(-1.33334, 6.33334)
+texture = ExtResource("8_1vkj0")
+offset = Vector2(-0.666656, -14.3333)
+script = ExtResource("7_tpucf")
+rotation_speed_range = Vector2(0.75, 1)
+direction_change_interval_range = Vector2(5, 10)

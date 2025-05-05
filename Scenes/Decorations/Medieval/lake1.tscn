@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghcjb"]
 size = Vector2(423.5, 10)
 
-[node name="Lake" type="Area2D" groups=["Obsticle"]]
+[node name="Lake" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_flv8t")

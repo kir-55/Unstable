@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://bty2oxq2nwcn6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_22t7u"]
-[ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/explosions/ground_explosion.tscn" id="2_5q8jb"]
+[ext_resource type="PackedScene" uid="uid://dnnv6na38hyhh" path="res://Scenes/Explosions/ground_explosion.tscn" id="2_5q8jb"]
 [ext_resource type="Script" path="res://Scripts/Amulets/amulet_system.gd" id="2_sxsw1"]
 [ext_resource type="PackedScene" uid="uid://du64msy80vl6r" path="res://Audio/Prefabs/dash_sound.tscn" id="3_4uhw1"]
 [ext_resource type="Script" path="res://Scripts/Weapon/weapon.gd" id="4_db2y7"]
