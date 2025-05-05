@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccnxaafu1aa1i"
-path="res://.godot/imported/dom4.png-6944bdacfc75a01f4eed7337b8bdf561.ctex"
+uid="uid://dkc6wc377c8hx"
+path="res://.godot/imported/house2.png-235243becdbb38be4d65f2d048d68961.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/WildWest/dom4.png"
-dest_files=["res://.godot/imported/dom4.png-6944bdacfc75a01f4eed7337b8bdf561.ctex"]
+source_file="res://Textures/Decorations/WildWest/house2.png"
+dest_files=["res://.godot/imported/house2.png-235243becdbb38be4d65f2d048d68961.ctex"]
 
 [params]
 

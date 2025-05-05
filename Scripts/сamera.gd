@@ -1,6 +1,7 @@
 extends Camera2D
 
 @export var speed: float
+@export var vertical_speed: float
 @export var initial_target: Node
 @export var epoch: Epoch
 var target = initial_target
@@ -34,7 +35,7 @@ func _process(delta):
 					position.x = lerp(position.x, target.global_position.x + offsett.x, delta*speed)
 				
 				if distance_to_target.y > max_distance.y:
-					position.y = lerp(position.y, target.global_position.y + offsett.y, delta*speed)
+					position.y = lerp(position.y, target.global_position.y + offsett.y, delta*vertical_speed)
 		else:
 			if Client.active:
 				if Client.players_alive.size() <= 1:

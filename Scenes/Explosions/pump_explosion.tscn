@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://biw1e4xod2nhn"]
+
+[ext_resource type="Script" path="res://Scripts/throwable.gd" id="1_s2ok8"]
+[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="2_uxpxn"]
+[ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_emehr"]
+[ext_resource type="PackedScene" uid="uid://beaj23h3o8msf" path="res://Audio/Prefabs/hydrant_sound.tscn" id="4_7oe6h"]
+[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="5_fe35k"]
+[ext_resource type="Texture2D" uid="uid://dso0jbnr2ehbc" path="res://Textures/Decorations/WildWest/pump.png" id="6_p7obv"]
+
+[sub_resource type="Curve" id="Curve_25yfo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.943396), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]
+size = Vector2(9, 68)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfwsl"]
+radius = 6.0
+height = 64.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+z_index = 6
+disable_mode = 2
+collision_layer = 2
+collision_mask = 3
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, -10)
+linear_velocity = Vector2(1000, -700)
+angular_velocity = 0.349066
+script = ExtResource("1_s2ok8")
+explosion_prefab = ExtResource("2_uxpxn")
+
+[node name="SoundSpawner" type="Node" parent="."]
+script = ExtResource("3_emehr")
+spawn_on_start_prefab = ExtResource("4_7oe6h")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 20
+position = Vector2(1, 30)
+scale = Vector2(6, 6)
+amount = 64
+randomness = 1.0
+lifetime_randomness = 0.61
+emission_shape = 1
+emission_sphere_radius = 2.35
+direction = Vector2(0, 1)
+spread = 33.0
+gravity = Vector2(0, 900)
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+scale_amount_min = 6.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_25yfo")
+color_initial_ramp = ExtResource("5_fe35k")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, -2)
+shape = SubResource("RectangleShape2D_0t1dm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_cfwsl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -7)
+scale = Vector2(3, 3)
+texture = ExtResource("6_p7obv")
+
+[node name="Destructor" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Destructor" to="." method="_on_destructor_timeout"]

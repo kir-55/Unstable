@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_6kdng"]
 [ext_resource type="PackedScene" uid="uid://cqabtg1hsllsa" path="res://Scenes/Prefabs/score_mark.tscn" id="2_60wf2"]
-[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Parallaxes/parallax_bushes.png" id="3_lk1yb"]
+[ext_resource type="Texture2D" uid="uid://caablqkf77rj" path="res://Textures/Parallaxes/parallax_bushes2.png" id="3_truov"]
 [ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/Parallaxes/parallax_forest.png" id="4_28wnr"]
 [ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Parallaxes/parallax_houses.png" id="4_231io"]
 [ext_resource type="Material" uid="uid://bugicnmsuxi4u" path="res://parallax_far_shader.tres" id="4_sqc2y"]
@@ -101,15 +101,15 @@ layer = 10
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
 z_index = -2
-position = Vector2(24, 193)
+position = Vector2(1419, 99)
 motion_scale = Vector2(1.6, 0.9)
-motion_mirroring = Vector2(7000, 0)
+motion_mirroring = Vector2(3900, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
 self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
-position = Vector2(-16, -312)
-scale = Vector2(12, 12)
-texture = ExtResource("3_lk1yb")
+position = Vector2(308, 222)
+scale = Vector2(3, 3)
+texture = ExtResource("3_truov")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(1000, 0)
@@ -260,6 +260,7 @@ process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("9_cjea4")
 speed = 30.0
+vertical_speed = 15.0
 epoch = NodePath("..")
 max_distance = Vector2(1, 1)
 

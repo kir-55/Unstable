@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdw5ltvgv1w8v"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_0vh4g"]
+[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="2_gtinl"]
+[ext_resource type="Texture2D" uid="uid://dso0jbnr2ehbc" path="res://Textures/Decorations/WildWest/pump.png" id="3_jc2ex"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_qa4x8"]
+[ext_resource type="PackedScene" uid="uid://biw1e4xod2nhn" path="res://Scenes/Explosions/pump_explosion.tscn" id="5_1pr8l"]
+
+[sub_resource type="Curve" id="Curve_ileal"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.943396), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvb52"]
+size = Vector2(3.66667, 25.6667)
+
+[node name="Pump" type="Area2D" groups=["Obsticle"]]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_0vh4g")
+death_messages = Array[String](["There was a pump!", "You broke your leg, while kicking the pump", "You were curious, what is the pump made of", "Pump it up!"])
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 20
+position = Vector2(5.33333, -13.6667)
+scale = Vector2(6, 6)
+amount = 64
+lifetime = 0.5
+randomness = 1.0
+lifetime_randomness = 0.61
+direction = Vector2(0.66, 1)
+gravity = Vector2(0, 400)
+initial_velocity_max = 1.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+angle_min = -82.6
+angle_max = 51.6
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ileal")
+color_initial_ramp = ExtResource("2_gtinl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.166667, -11.8333)
+shape = SubResource("RectangleShape2D_lvb52")
+debug_color = Color(0.125904, 0.545454, 0.919934, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-2, -4)
+texture = ExtResource("3_jc2ex")
+offset = Vector2(-0.250283, -8)
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("3_qa4x8")
+max_health = 90.0
+explosion_prefab = ExtResource("5_1pr8l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

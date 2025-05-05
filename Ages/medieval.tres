@@ -16,9 +16,9 @@
 [ext_resource type="Resource" uid="uid://cdnu37net2xdn" path="res://Decorations/Medieval/tree.tres" id="11_mwxig"]
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="11_pcad3"]
 [ext_resource type="Resource" uid="uid://wetcpwt4il03" path="res://Decorations/Medieval/bush.tres" id="12_vtjys"]
-[ext_resource type="Texture2D" uid="uid://b2g18eyedc21g" path="res://Textures/Parallaxes/parallax_bushes.png" id="13_dg8m5"]
 [ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="13_ubjus"]
 [ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/Parallaxes/parallax_forest.png" id="14_yjpm5"]
+[ext_resource type="Texture2D" uid="uid://caablqkf77rj" path="res://Textures/Parallaxes/parallax_bushes2.png" id="18_c52oq"]
 
 [resource]
 script = ExtResource("3_326o4")
@@ -34,5 +34,5 @@ directional_light = ExtResource("2_4no1v")
 background_color = Color(0.301961, 0.4, 0.34902, 1)
 parallax_background_close = ExtResource("14_yjpm5")
 parallax_background_far = ExtResource("14_yjpm5")
-parallax_foreground = ExtResource("13_dg8m5")
+parallax_foreground = ExtResource("18_c52oq")
 music = ExtResource("11_pcad3")

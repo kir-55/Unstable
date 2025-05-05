@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=15 format=3 uid="uid://ctr8ofv38du6p"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=16 format=3 uid="uid://ctr8ofv38du6p"]
 
 [ext_resource type="Texture2D" uid="uid://ckylbj6m8lylk" path="res://Textures/Baners/city_baner.png" id="1_cx422"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://Ages/Environments/city.tres" id="2_5sogd"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="10_ydb03"]
 [ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Parallaxes/parallax_houses.png" id="11_kiy1v"]
 [ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/Parallaxes/parallax_forest.png" id="12_xs85d"]
+[ext_resource type="Texture2D" uid="uid://caablqkf77rj" path="res://Textures/Parallaxes/parallax_bushes2.png" id="14_2ucj5"]
 
 [resource]
 script = ExtResource("3_p7c1v")
@@ -28,4 +29,5 @@ environment = ExtResource("2_5sogd")
 background_color = Color(0.603922, 0.898039, 0.835294, 1)
 parallax_background_close = ExtResource("11_kiy1v")
 parallax_background_far = ExtResource("12_xs85d")
+parallax_foreground = ExtResource("14_2ucj5")
 music = ExtResource("10_ydb03")

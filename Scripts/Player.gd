@@ -9,8 +9,12 @@ var id
 # Constants
 @export var SPEED: float = 600.0  # Horizontal movement speed
 @export var MAX_SPEED: float = 1000.0
+
+@export var jump_grace_ray: RayCast2D
 @export var JUMP_VELOCITY: float = -500.0  # Jump velocity
 @export var MAX_JUMP_VEL: float = -700.0
+var jump_buffer_time = 0.15  # seconds to remember the jump input
+var jump_buffer_timer = 0.0
 
 @export var DROP_THROUGH_VELOCITY: float = 700  # Downward drop velocity (controlled fall)
 
@@ -116,6 +120,10 @@ func _ready():
 
 
 
+	
+func can_jump() -> bool:
+	return jump_grace_ray.is_colliding() or (doble_jump_active and !doble_jump_used)
+
 func reset_velocity():
 	velocity.x = SPEED
 
@@ -124,6 +132,11 @@ func _physics_process(delta: float) -> void:
 	if GlobalVariables.game_is_on and (!Client.active or is_multiplayer_authority()):
 		if velocity.x < SPEED:
 			velocity.x += 10
+		
+		if jump_buffer_timer > 0:
+			jump_buffer_timer -= delta
+			
+			
 			
 		REMOTE_PLAYER_POSITION = global_position
 		# Apply gravity if not on the floor
@@ -132,7 +145,7 @@ func _physics_process(delta: float) -> void:
 
 		# Handle movement input
 		direction.x = 1  # Fixed direction (right movement)
-
+		
 		# Handle dash activation
 		if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
 			start_dash()
@@ -181,9 +194,14 @@ func _physics_process(delta: float) -> void:
 				is_dropping = false
 
 		# Handle jumping
-		if (is_on_floor() or (doble_jump_active and !doble_jump_used)) and Input.is_action_just_pressed("up"):
+		
+		if Input.is_action_just_pressed("up"):
+			jump_buffer_timer = jump_buffer_time
+			
+		if (jump_buffer_timer > 0 and can_jump()):
 			trail.remove_points()
 			is_jumping = true
+			
 			if is_dashing:
 				end_dash()
 

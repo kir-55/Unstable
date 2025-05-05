@@ -334,11 +334,12 @@ _data = {
 "run": SubResource("Animation_1mkn3")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "player_animator", "effects_animator", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_grace_ray", "sprite", "player_animator", "effects_animator", "trail", "weapon", "amulet_system", "multiplayer_synchronizer", "collision_shape", "nickname_label", "feet") groups=["Player"]]
 z_index = 6
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_22t7u")
 SPEED = 0.0
+jump_grace_ray = NodePath("JumpGraceRay")
 MAX_JUMP_VEL = -1000.0
 DASH_SPEED_BOOST = 600.0
 DASH_DURATION = 0.2
@@ -441,5 +442,8 @@ libraries = {
 "": SubResource("AnimationLibrary_ebyxs")
 }
 autoplay = "run"
+
+[node name="JumpGraceRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 53.5714)
 
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]

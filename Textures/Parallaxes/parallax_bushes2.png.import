@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcgf3i2bvmeyu"
-path="res://.godot/imported/dom1.png-148bcf3a3cb2fe850b7d5f6100394c00.ctex"
+uid="uid://caablqkf77rj"
+path="res://.godot/imported/parallax_bushes2.png-74a5f004d87578aefe84f21dee197ac6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/WildWest/dom1.png"
-dest_files=["res://.godot/imported/dom1.png-148bcf3a3cb2fe850b7d5f6100394c00.ctex"]
+source_file="res://Textures/Parallaxes/parallax_bushes2.png"
+dest_files=["res://.godot/imported/parallax_bushes2.png-74a5f004d87578aefe84f21dee197ac6.ctex"]
 
 [params]
 

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://hb81c030mjp8"]
+
+[ext_resource type="PackedScene" uid="uid://cdw5ltvgv1w8v" path="res://Scenes/Decorations/WildWest/pump.tscn" id="1_mok6e"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_jk8q2"]
+
+[resource]
+script = ExtResource("2_jk8q2")
+prefab = ExtResource("1_mok6e")
+name = "Hydrant"
+spawn_on_center = false
+chance_to_spawn = 20.0
+width = 60
+pattern_type = "B"
+type = 1
+ignore_types = Array[int]([0])
+can_be_mirrored = true

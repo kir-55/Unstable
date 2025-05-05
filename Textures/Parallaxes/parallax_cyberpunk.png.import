@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkc6wc377c8hx"
-path="res://.godot/imported/dom2.png-503e1510faa019b9f29bb6224af27dde.ctex"
+uid="uid://b37yjf2ljn3oe"
+path="res://.godot/imported/parallax_cyberpunk.png-a8426fdae5ed4f5bf77cf0023c65f670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decorations/WildWest/dom2.png"
-dest_files=["res://.godot/imported/dom2.png-503e1510faa019b9f29bb6224af27dde.ctex"]
+source_file="res://Textures/Parallaxes/parallax_cyberpunk.png"
+dest_files=["res://.godot/imported/parallax_cyberpunk.png-a8426fdae5ed4f5bf77cf0023c65f670.ctex"]
 
 [params]
 
