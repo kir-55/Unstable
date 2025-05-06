@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.0862745, 0.0901961, 0.109804, 1)
 boot_splash/image="res://Textures/UnstableLogo.png"
 boot_splash/fullsize=false
+config/icon="res://Textures/microbot.png"
 
 [autoload]
 

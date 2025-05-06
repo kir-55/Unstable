@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpfk8fttkndua"
+path="res://.godot/imported/cyberpunk — kopia.mp3-14cfc900f4c22360d56ce3ba6fe2e2c6.mp3str"
+
+[deps]
+
+source_file="res://Audio/Melodies/cyberpunk — kopia.mp3"
+dest_files=["res://.godot/imported/cyberpunk — kopia.mp3-14cfc900f4c22360d56ce3ba6fe2e2c6.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

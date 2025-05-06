@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EpochInfo" load_steps=20 format=3 uid="uid://d4jipchxnkrhx"]
 
-[ext_resource type="Texture2D" uid="uid://wsj0ecnendr2" path="res://Textures/Baners/medieval_baner.png" id="1_30qj5"]
+[ext_resource type="Texture2D" uid="uid://ha16fy1w3o4a" path="res://Textures/Baners/medieval.png" id="1_vobd1"]
 [ext_resource type="PackedScene" uid="uid://da211utn7uld2" path="res://Scenes/Locations/DirectionalLights/medieval.tscn" id="2_4no1v"]
 [ext_resource type="Resource" uid="uid://vms017kct8up" path="res://Decorations/Medieval/barrel.tres" id="2_ys7oq"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="3_326o4"]
@@ -14,17 +14,17 @@
 [ext_resource type="Resource" uid="uid://bxigmc82eqq0l" path="res://Decorations/Medieval/lake.tres" id="9_gjdmh"]
 [ext_resource type="Resource" uid="uid://dl7047qekcmc5" path="res://Decorations/Medieval/lake1.tres" id="10_jnu4b"]
 [ext_resource type="Resource" uid="uid://cdnu37net2xdn" path="res://Decorations/Medieval/tree.tres" id="11_mwxig"]
-[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="11_pcad3"]
 [ext_resource type="Resource" uid="uid://wetcpwt4il03" path="res://Decorations/Medieval/bush.tres" id="12_vtjys"]
 [ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="13_ubjus"]
 [ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/Parallaxes/parallax_forest.png" id="14_yjpm5"]
+[ext_resource type="AudioStream" uid="uid://dmq5b6p1y4kqv" path="res://Audio/Melodies/sredniowiecze (mp3cut.net).mp3" id="16_0naw8"]
 [ext_resource type="Texture2D" uid="uid://caablqkf77rj" path="res://Textures/Parallaxes/parallax_bushes2.png" id="18_c52oq"]
 
 [resource]
 script = ExtResource("3_326o4")
 title = "Medieval"
 description = "13` century, hay, arrows"
-baner = ExtResource("1_30qj5")
+baner = ExtResource("1_vobd1")
 ground_color = Color(0.407843, 0.25098, 0.223529, 1)
 grass_color = Color(0.580392, 0.678431, 0.223529, 1)
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_ys7oq"), ExtResource("3_yl3y6"), ExtResource("4_40rjh"), ExtResource("5_gggf3"), ExtResource("6_fdxuw"), ExtResource("7_liq0e"), ExtResource("8_1mgop"), ExtResource("9_gjdmh"), ExtResource("10_jnu4b"), ExtResource("11_mwxig"), ExtResource("12_vtjys"), ExtResource("13_ubjus")])
@@ -35,4 +35,4 @@ background_color = Color(0.301961, 0.4, 0.34902, 1)
 parallax_background_close = ExtResource("14_yjpm5")
 parallax_background_far = ExtResource("14_yjpm5")
 parallax_foreground = ExtResource("18_c52oq")
-music = ExtResource("11_pcad3")
+music = ExtResource("16_0naw8")

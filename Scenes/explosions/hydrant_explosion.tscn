@@ -16,9 +16,9 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.943396), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]
-size = Vector2(34, 90)
+size = Vector2(13, 30.3333)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("explosion_point")]
 z_index = 6
 disable_mode = 2
 collision_layer = 2
@@ -29,6 +29,7 @@ linear_velocity = Vector2(1000, -700)
 angular_velocity = 0.349066
 script = ExtResource("1_5dgw7")
 explosion_prefab = ExtResource("2_i1p1x")
+explosion_point = NodePath("CollisionShapeAndScale")
 
 [node name="CollisionShapeAndScale" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -60,15 +61,13 @@ color_initial_ramp = ExtResource("5_06s5g")
 
 [node name="Area2D" type="Area2D" parent="CollisionShapeAndScale"]
 position = Vector2(-0.333333, 0)
-scale = Vector2(0.333333, 0.333333)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShapeAndScale/Area2D"]
-position = Vector2(2, 2)
+position = Vector2(0.166666, 0.5)
 shape = SubResource("RectangleShape2D_0t1dm")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShapeAndScale"]
-position = Vector2(-0.333333, 0)
 texture = ExtResource("1_hjqmu")
 
 [node name="Destructor" type="Timer" parent="CollisionShapeAndScale"]

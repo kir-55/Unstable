@@ -1,0 +1,176 @@
+[gd_scene load_steps=14 format=3 uid="uid://c7x0qhw6faurw"]
+
+[ext_resource type="Script" path="res://Scripts/tnt.gd" id="1_qq0p3"]
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_r0n3b"]
+[ext_resource type="Texture2D" uid="uid://c0q7ttke7o1vl" path="res://Textures/Decorations/WildWest/tnt_exploded.png" id="2_koakj"]
+[ext_resource type="Texture2D" uid="uid://vkxiwk2tmjxh" path="res://Textures/Decorations/WildWest/tnt.png" id="2_qfgm4"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_43yp5"]
+[ext_resource type="PackedScene" uid="uid://b2v457chva6wm" path="res://Scenes/Explosions/wood_explosion.tscn" id="4_c3y7q"]
+[ext_resource type="PackedScene" uid="uid://dqm0m1uj8kv5u" path="res://Scenes/Explosions/fire_explosion.tscn" id="6_6qf3n"]
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="6_yhxru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s43m0"]
+size = Vector2(103, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2jp8"]
+size = Vector2(39, 23.6667)
+
+[sub_resource type="Animation" id="Animation_57t4c"]
+resource_name = "explosion"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_qfgm4"), ExtResource("2_koakj")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StaticBody2D:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StaticBody2D:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D:material")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_yhxru")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqwmh"]
+_data = {
+"explosion": SubResource("Animation_57t4c")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jw568"]
+radius = 51.0011
+
+[node name="TNT" type="Area2D" node_paths=PackedStringArray("animation_player") groups=["Obsticle"]]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_qq0p3")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(0.333333, 0.333333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -21)
+shape = SubResource("RectangleShape2D_s43m0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.166667, -6.83333)
+shape = SubResource("RectangleShape2D_f2jp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0, 1)
+texture = ExtResource("2_qfgm4")
+offset = Vector2(-0.250283, -8)
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("3_43yp5")
+max_health = 90.0
+explosion_prefab = ExtResource("4_c3y7q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eqwmh")
+}
+speed_scale = 3.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_r0n3b")
+death_messages = Array[String](["TNT exploded!", "Can't touch this!"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.666667, -5)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_jw568")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("6_6qf3n")]
+scale = Vector2(2, 2)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

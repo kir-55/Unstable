@@ -25,7 +25,13 @@ func take_damage(value):
 		var explosion = explosion_prefab.instantiate()
 		# sale bug fixed
 		if explosion is RigidBody2D:
-			explosion.get_child(0).scale = get_parent().scale
+			# necessary funcion 
+			# assumption is that every throwable rigidbody has script 
+			# scale_workaround.gd
+			explosion.get_child(0).scale = get_parent().scale / 2
+			#for child in explosion.get_children():
+				#if child is Node2D and not child is CollisionShape2D:
+					#child.scale = get_parent().scale
 		else:
 			explosion.scale = get_parent().scale
 			

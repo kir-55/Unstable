@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cdw5ltvgv1w8v"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_0vh4g"]
-[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="2_gtinl"]
+[ext_resource type="Gradient" uid="uid://dvf2wfppggb5u" path="res://Styles/Gradients/oil_gradient.tres" id="2_iegp2"]
 [ext_resource type="Texture2D" uid="uid://dso0jbnr2ehbc" path="res://Textures/Decorations/WildWest/pump.png" id="3_jc2ex"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_qa4x8"]
 [ext_resource type="PackedScene" uid="uid://biw1e4xod2nhn" path="res://Scenes/Explosions/pump_explosion.tscn" id="5_1pr8l"]
@@ -21,7 +21,6 @@ script = ExtResource("1_0vh4g")
 death_messages = Array[String](["There was a pump!", "You broke your leg, while kicking the pump", "You were curious, what is the pump made of", "Pump it up!"])
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-z_index = 20
 position = Vector2(5.33333, -13.6667)
 scale = Vector2(6, 6)
 amount = 64
@@ -38,7 +37,7 @@ angle_max = 51.6
 scale_amount_min = 3.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_ileal")
-color_initial_ramp = ExtResource("2_gtinl")
+color_initial_ramp = ExtResource("2_iegp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.166667, -11.8333)

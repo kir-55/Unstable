@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://brq18r4wge0we"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_yp65e"]
+[ext_resource type="Texture2D" uid="uid://cqcp4o5rk8afg" path="res://Textures/Decorations/WildWest/przod.png" id="2_0t80l"]
+[ext_resource type="Script" path="res://Scripts/Decorations/big_wagon.gd" id="2_ubja3"]
+[ext_resource type="Texture2D" uid="uid://bbogr4kghw7p" path="res://Textures/Decorations/WildWest/kola.png" id="3_njyqj"]
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="7_f7n6r"]
+[ext_resource type="Texture2D" uid="uid://0hsa4umc5k26" path="res://Textures/Decorations/WildWest/tyl.png" id="8_j0rj3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vutdy"]
+size = Vector2(59.0741, 1.65199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yhv0"]
+size = Vector2(160.333, 74)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ej1ae"]
+a = Vector2(-32.9939, -11.3541)
+b = Vector2(30.895, -11.3541)
+
+[node name="BigWagon" type="Area2D"]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_yp65e")
+death_messages = Array[String](["You were slain by a wagon", "You broke your leg, while kicking the wagon", "You were curious, what is the wagon made of"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.23333, -76.6124)
+scale = Vector2(1.08, 1.14496)
+shape = SubResource("RectangleShape2D_vutdy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(5.66667, -12)
+scale = Vector2(1.08, 1.14496)
+polygon = PackedVector2Array(29.9383, -9.02506, 34.2593, -7.5694, 33.9506, 10.7718, -70.0617, 10.7718, -40.7407, -9.02506)
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("front_side")]
+position = Vector2(-13.8333, -38.8383)
+script = ExtResource("2_ubja3")
+front_side = NodePath("../Przod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-10.3333, 1.83833)
+shape = SubResource("RectangleShape2D_4yhv0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1.30006, -12.8)
+scale = Vector2(1.08, 1.14496)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_ej1ae")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -45.5911)
+shape = SubResource("SegmentShape2D_ej1ae")
+
+[node name="Przod" type="Sprite2D" parent="."]
+z_index = 200
+position = Vector2(-13.8333, -38.8383)
+texture = ExtResource("2_0t80l")
+
+[node name="Wheels" type="Sprite2D" parent="."]
+z_index = 201
+position = Vector2(-12.8333, -41.1717)
+texture = ExtResource("3_njyqj")
+offset = Vector2(0, 0.505)
+
+[node name="Tyl" type="Sprite2D" parent="."]
+material = ExtResource("7_f7n6r")
+position = Vector2(-13.8333, -38.8383)
+texture = ExtResource("8_j0rj3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

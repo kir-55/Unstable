@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="2_uxpxn"]
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="3_emehr"]
 [ext_resource type="PackedScene" uid="uid://beaj23h3o8msf" path="res://Audio/Prefabs/hydrant_sound.tscn" id="4_7oe6h"]
-[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="5_fe35k"]
+[ext_resource type="Gradient" uid="uid://dvf2wfppggb5u" path="res://Styles/Gradients/oil_gradient.tres" id="5_4gdgq"]
 [ext_resource type="Texture2D" uid="uid://dso0jbnr2ehbc" path="res://Textures/Decorations/WildWest/pump.png" id="6_p7obv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfwsl"]
@@ -54,9 +54,9 @@ gravity = Vector2(0, 900)
 angular_velocity_min = -360.0
 angular_velocity_max = 360.0
 scale_amount_min = 6.0
-scale_amount_max = 10.0
+scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_25yfo")
-color_initial_ramp = ExtResource("5_fe35k")
+color_initial_ramp = ExtResource("5_4gdgq")
 
 [node name="Area2D" type="Area2D" parent="CollisionShapeAndScale"]
 position = Vector2(-0.333333, 0)

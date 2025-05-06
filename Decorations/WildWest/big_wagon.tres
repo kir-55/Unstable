@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cvag7jnqh0w1b"]
+
+[ext_resource type="PackedScene" uid="uid://brq18r4wge0we" path="res://Scenes/Decorations/WildWest/big_wagon.tscn" id="1_g4biw"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_sdvof"]
+
+[resource]
+script = ExtResource("2_sdvof")
+prefab = ExtResource("1_g4biw")
+name = "Car"
+spawn_on_center = true
+chance_to_spawn = 20.0
+width = 400
+pattern_type = "A"
+type = 1
+ignore_types = Array[int]([0, 3])
+can_be_mirrored = false

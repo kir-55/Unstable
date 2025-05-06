@@ -12,9 +12,9 @@
 [ext_resource type="LabelSettings" uid="uid://c26omcfad10i" path="res://Scenes/Locations/countdown_label_style.tres" id="7_c50sw"]
 [ext_resource type="LabelSettings" uid="uid://c3yu6js050cyh" path="res://Scenes/Locations/death_message_label_style.tres" id="8_dies4"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="9_cjea4"]
-[ext_resource type="AudioStream" uid="uid://s13upthllfum" path="res://Audio/Melodies/do gry2.mp3" id="10_bw4av"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="11_vmtw0"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="12_x6lqm"]
+[ext_resource type="AudioStream" uid="uid://6jjsxk23adj7" path="res://Audio/Melodies/cyberpunk.wav" id="13_5jpri"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="13_s27q1"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="14_7bud7"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="15_t8v38"]
@@ -265,7 +265,7 @@ epoch = NodePath("..")
 max_distance = Vector2(1, 70)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
-stream = ExtResource("10_bw4av")
+stream = ExtResource("13_5jpri")
 autoplay = true
 bus = &"Music"
 script = ExtResource("11_vmtw0")

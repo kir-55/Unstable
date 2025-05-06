@@ -5,6 +5,8 @@ extends RigidBody2D
 @export var explosion_point: Node2D
 
 
+@export var throwable: Node = self
+
 
 func _on_area_2d_area_entered(body):
 	if body and body.has_node("HealthSystem"):
@@ -13,9 +15,9 @@ func _on_area_2d_area_entered(body):
 	var explosion = explosion_prefab.instantiate()
 	
 	if explosion is RigidBody2D:
-		explosion.get_child(0).scale = get_parent().scale
+		explosion.get_child(0).scale = get_child(0).scale / 2
 	else:
-		explosion.scale = get_parent().scale
+		explosion.scale = get_child(0).scale
 	
 	if explosion_point:
 		explosion.global_position = explosion_point.global_position
@@ -29,13 +31,21 @@ func _on_area_2d_area_entered(body):
 		
 	get_tree().current_scene.add_child(explosion)
 	
-	queue_free()  # Destroy the bullet upon collision
+	throwable.queue_free()  # Destroy the bullet upon collision
 
 
 
 
 func _on_destructor_timeout():
 	var explosion = explosion_prefab.instantiate()
+	
+	
+	if explosion is RigidBody2D:
+		explosion.get_child(0).scale = get_child(0).scale / 2
+	else:
+		explosion.scale = get_child(0).scale
+	
+	
 	if explosion_point:
 		explosion.global_position = explosion_point.global_position
 	else:
@@ -48,4 +58,8 @@ func _on_destructor_timeout():
 		
 	get_tree().current_scene.add_child(explosion)
 	
-	queue_free()  # Destroy the bullet upon collision
+	throwable.queue_free()  # Destroy the bullet upon collision
+
+
+func _on_area_entered(area):
+	pass # Replace with function body.

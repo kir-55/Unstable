@@ -7,7 +7,6 @@ func _on_body_entered(body):
 		var canvas_layer = get_tree().current_scene.canvas_layer
 
 		if body.kill():
-
 			Engine.time_scale = 1
 			GlobalVariables.game_is_on = false
 
@@ -20,8 +19,6 @@ func _on_body_entered(body):
 			# Reset the variables
 			GlobalVariables.last_score = last_score
 			GlobalFunctions.end_timer()
-
-
 
 			if !Client.active:
 				# GlobalFunctions.load_menu("game_over", true, false, add_death_message)

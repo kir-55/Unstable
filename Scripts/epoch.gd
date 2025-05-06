@@ -60,6 +60,7 @@ func _ready():
 		ground_line.default_color = current_epoch.ground_color
 		if current_epoch.music:
 			audio_player.stream = current_epoch.music
+			audio_player.playing = true
 		if current_epoch.environment:
 			world_environment.environment = current_epoch.environment
 		if current_epoch.directional_light:

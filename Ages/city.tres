@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EpochInfo" load_steps=16 format=3 uid="uid://ctr8ofv38du6p"]
 
-[ext_resource type="Texture2D" uid="uid://ckylbj6m8lylk" path="res://Textures/Baners/city_baner.png" id="1_cx422"]
+[ext_resource type="Texture2D" uid="uid://bgfb687uek7qw" path="res://Textures/Baners/city.png" id="1_f5157"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://Ages/Environments/city.tres" id="2_5sogd"]
 [ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/road_line.tres" id="2_21vsy"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="2_qdhdi"]
@@ -20,7 +20,7 @@
 script = ExtResource("3_p7c1v")
 title = "City"
 description = "21` century, cars, drones, road fixes, ..."
-baner = ExtResource("1_cx422")
+baner = ExtResource("1_f5157")
 ground_color = Color(0.235294, 0.145098, 0.168627, 1)
 grass_color = Color(0.101961, 0.121569, 0.180392, 1)
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_21vsy"), ExtResource("3_71il6"), ExtResource("4_muq4h"), ExtResource("5_brfca"), ExtResource("6_xlhnf"), ExtResource("7_ia6ne"), ExtResource("2_qdhdi"), ExtResource("9_2ta8g")])

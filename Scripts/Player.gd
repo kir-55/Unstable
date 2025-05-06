@@ -309,8 +309,6 @@ func spawn_landing_particles(grass_color: Color, ground_color: Color, position: 
 	var particles = landing_particles_prefab.instantiate()
 	particles.global_position = position
 
-	# Create gradient from grass to ground
-	print("grass color: ", grass_color)
 	var gradient := Gradient.new()
 
 	gradient.add_point(0.5, grass_color)
