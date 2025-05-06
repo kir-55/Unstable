@@ -15,7 +15,7 @@
 z_index = -2
 material = ExtResource("1_lfwwc")
 position = Vector2(2, -1)
-scale = Vector2(3, 3)
+scale = Vector2(4.2, 4.2)
 texture = ExtResource("1_nlixq")
 script = ExtResource("2_w7xei")
 visual_variations = Array[Texture2D]([ExtResource("1_nlixq"), ExtResource("3_5uwxn"), ExtResource("4_xkmby"), ExtResource("5_sfmcf"), ExtResource("6_0a363"), ExtResource("7_rfx3e"), ExtResource("9_gii0i"), ExtResource("10_02q26")])

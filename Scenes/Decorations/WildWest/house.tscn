@@ -13,7 +13,7 @@
 [node name="House" type="Sprite2D"]
 z_index = -2
 material = ExtResource("1_pgnrn")
-scale = Vector2(3, 3)
+scale = Vector2(4.2, 4.2)
 texture = ExtResource("2_wxfsp")
 offset = Vector2(0, 3)
 script = ExtResource("3_o4hrw")
