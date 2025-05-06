@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b14nlleq4wx03"]
+[gd_scene load_steps=6 format=3 uid="uid://cgdiu3n0v2w3o"]
 
-[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_acq22"]
-[ext_resource type="Texture2D" uid="uid://bhoh3jaudmhqo" path="res://Textures/Decorations/Medieval/lampa.png" id="2_wppt8"]
-[ext_resource type="Script" path="res://Scripts/Decorations/lantern_light.gd" id="3_0iw2a"]
+[ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_aghxh"]
+[ext_resource type="Texture2D" uid="uid://ckiqv8fyrh4se" path="res://Textures/Decorations/Medieval/lampka.png" id="2_vrd62"]
+[ext_resource type="Script" path="res://Scripts/Decorations/lantern_light.gd" id="3_tt06h"]
 
 [sub_resource type="Gradient" id="Gradient_gu1qk"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -16,20 +16,21 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 1)
 metadata/_snap_enabled = true
 
-[node name="Lantern" type="Sprite2D"]
-material = ExtResource("1_acq22")
+[node name="Lamp" type="Sprite2D"]
+material = ExtResource("1_aghxh")
 scale = Vector2(3, 3)
-texture = ExtResource("2_wppt8")
-offset = Vector2(3.667, -29.5)
+texture = ExtResource("2_vrd62")
+offset = Vector2(0.000333309, -6.5)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(6, -41)
+position = Vector2(0, -5)
 scale = Vector2(2.58203, 1.89583)
 color = Color(1, 1, 0.545098, 1)
 energy = 0.7
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_jijhr")
-script = ExtResource("3_0iw2a")
+texture_scale = 0.5
+script = ExtResource("3_tt06h")
 min_energy = 0.68
 max_energy = 0.78
 color1 = Color(0.954272, 0.849424, 0.544006, 1)

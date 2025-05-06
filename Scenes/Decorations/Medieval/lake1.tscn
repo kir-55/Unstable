@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccfy73pj6b21i"]
+[gd_scene load_steps=10 format=3 uid="uid://ccfy73pj6b21i"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_flv8t"]
 [ext_resource type="Texture2D" uid="uid://cletl62etvvt7" path="res://Textures/Decorations/Medieval/lake_color.tres" id="2_u7dej"]
@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://ku5awcxcyfoj" path="res://Textures/Decorations/Medieval/lake_color_deep.tres" id="3_8woc2"]
 [ext_resource type="PackedScene" uid="uid://bbtqfru2j1bqk" path="res://Scenes/Explosions/wagon_explosion.tscn" id="4_kiame"]
 [ext_resource type="PackedScene" uid="uid://cq8qxncifdvdu" path="res://Scenes/Decorations/Medieval/boat.tscn" id="6_kwgrg"]
+[ext_resource type="PackedScene" uid="uid://cgdiu3n0v2w3o" path="res://Scenes/Decorations/Medieval/lamp.tscn" id="7_5gskw"]
+[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="8_d0ypr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghcjb"]
-size = Vector2(423.5, 10)
+size = Vector2(441, 10)
 
 [node name="Lake" type="Area2D"]
 collision_layer = 3
@@ -34,13 +36,27 @@ max_health = 150.0
 explosion_prefab = ExtResource("4_kiame")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.75, 17)
+position = Vector2(2.5, 17)
 shape = SubResource("RectangleShape2D_ghcjb")
 
 [node name="Boat" parent="." instance=ExtResource("6_kwgrg")]
-position = Vector2(109, -1)
+position = Vector2(-110, 0)
+
+[node name="Lamp" parent="Boat" instance=ExtResource("7_5gskw")]
+position = Vector2(0, -8.33333)
+scale = Vector2(1, 1)
+script = ExtResource("8_d0ypr")
+x_variation_radius = 20
+chance_to_despawn = 75
 
 [node name="Boat2" parent="." instance=ExtResource("6_kwgrg")]
-position = Vector2(-138, 0)
+position = Vector2(109, -1)
+
+[node name="Lamp2" parent="Boat2" instance=ExtResource("7_5gskw")]
+position = Vector2(1.33334, -8.66667)
+scale = Vector2(1, 1)
+script = ExtResource("8_d0ypr")
+x_variation_radius = 20
+chance_to_despawn = 75
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

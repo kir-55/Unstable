@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbwnp6scwiqgc"]
+[gd_scene load_steps=9 format=3 uid="uid://bbwnp6scwiqgc"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_h03wl"]
 [ext_resource type="Texture2D" uid="uid://cletl62etvvt7" path="res://Textures/Decorations/Medieval/lake_color.tres" id="2_mjqi5"]
 [ext_resource type="Texture2D" uid="uid://ku5awcxcyfoj" path="res://Textures/Decorations/Medieval/lake_color_deep.tres" id="3_7kqwr"]
 [ext_resource type="PackedScene" uid="uid://bxiyp3hmm26bd" path="res://Scenes/Decorations/Medieval/kraken.tscn" id="4_sk6uy"]
+[ext_resource type="PackedScene" uid="uid://cgdiu3n0v2w3o" path="res://Scenes/Decorations/Medieval/lamp.tscn" id="6_yqh0p"]
+[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="7_5ic5f"]
 [ext_resource type="PackedScene" uid="uid://cq8qxncifdvdu" path="res://Scenes/Decorations/Medieval/boat.tscn" id="11_56x0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghcjb"]
@@ -38,5 +40,12 @@ shape = SubResource("RectangleShape2D_ghcjb")
 position = Vector2(-159, -9)
 
 [node name="Boat" parent="." instance=ExtResource("11_56x0h")]
+
+[node name="Lamp" parent="Boat" instance=ExtResource("6_yqh0p")]
+position = Vector2(0.666672, -8.66667)
+scale = Vector2(1, 1)
+script = ExtResource("7_5ic5f")
+x_variation_radius = 20
+chance_to_despawn = 50
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
