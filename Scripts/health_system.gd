@@ -23,6 +23,13 @@ func take_damage(value):
 	apply_breaking_shader()
 	if health <= 0:
 		var explosion = explosion_prefab.instantiate()
+		# sale bug fixed
+		if explosion is RigidBody2D:
+			explosion.get_child(0).scale = get_parent().scale
+		else:
+			explosion.scale = get_parent().scale
+			
+			
 		if explosion_point:
 			explosion.global_position = explosion_point.global_position
 		else:

@@ -26,12 +26,12 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]
-size = Vector2(23, 33)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfwsl"]
-radius = 18.0
-height = 58.0
+radius = 5.66667
+height = 21.3333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]
+size = Vector2(29, 53)
 
 [node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("explosion_point")]
 z_index = 6
@@ -43,27 +43,30 @@ linear_velocity = Vector2(300, -200)
 angular_velocity = 0.349066
 script = ExtResource("1_q46o6")
 explosion_prefab = SubResource("PackedScene_kvohj")
-explosion_point = NodePath("Sprite2D")
+explosion_point = NodePath("CollisionShapeAndScale/Sprite2D")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, -15.5)
-shape = SubResource("RectangleShape2D_0t1dm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShapeAndScale" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -10)
+scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_cfwsl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -11)
-scale = Vector2(3, 3)
+[node name="Area2D" type="Area2D" parent="CollisionShapeAndScale"]
+position = Vector2(0.333333, 3.33333)
+scale = Vector2(0.333333, 0.333333)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShapeAndScale/Area2D"]
+position = Vector2(-0.5, -5.5)
+shape = SubResource("RectangleShape2D_0t1dm")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShapeAndScale"]
+position = Vector2(0, -0.333333)
 texture = ExtResource("4_acs87")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CollisionShapeAndScale"]
 z_index = 20
-scale = Vector2(6, 6)
+position = Vector2(0.333333, 3.33333)
+scale = Vector2(2, 2)
 emitting = false
 amount = 64
 one_shot = true
@@ -87,10 +90,9 @@ color_ramp = SubResource("Gradient_vs83w")
 color_initial_ramp = ExtResource("2_3sada")
 script = ExtResource("3_njowa")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-1, 10)
-scale = Vector2(3, 3)
+[node name="Sprite2D2" type="Sprite2D" parent="CollisionShapeAndScale"]
+position = Vector2(0, 6.66667)
 texture = ExtResource("5_xaoj7")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="finished" from="CPUParticles2D" to="CPUParticles2D" method="_on_finished"]
+[connection signal="area_entered" from="CollisionShapeAndScale/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="CollisionShapeAndScale/CPUParticles2D" to="CollisionShapeAndScale/CPUParticles2D" method="_on_finished"]

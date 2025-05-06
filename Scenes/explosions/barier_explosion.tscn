@@ -17,7 +17,7 @@ colors = PackedColorArray(0.764706, 0.235294, 0.25098, 1, 1, 1, 1, 1, 0.247059, 
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 z_index = 20
-scale = Vector2(6, 6)
+scale = Vector2(3, 3)
 emitting = false
 amount = 32
 lifetime = 2.0
@@ -34,7 +34,7 @@ initial_velocity_min = 10.0
 initial_velocity_max = 20.0
 angle_max = 360.0
 scale_amount_min = 4.0
-scale_amount_max = 10.0
+scale_amount_max = 16.0
 scale_amount_curve = SubResource("Curve_25yfo")
 color_ramp = SubResource("Gradient_lao0w")
 color_initial_ramp = SubResource("Gradient_kqvgi")

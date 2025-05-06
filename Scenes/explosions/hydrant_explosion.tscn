@@ -7,16 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://beaj23h3o8msf" path="res://Audio/Prefabs/hydrant_sound.tscn" id="4_qmddn"]
 [ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="5_06s5g"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfwsl"]
+radius = 6.66667
+height = 31.3333
+
 [sub_resource type="Curve" id="Curve_25yfo"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.943396), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1dm"]
-size = Vector2(21, 62.5)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfwsl"]
-radius = 18.0
-height = 64.0
+size = Vector2(34, 90)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 z_index = 6
@@ -30,13 +30,19 @@ angular_velocity = 0.349066
 script = ExtResource("1_5dgw7")
 explosion_prefab = ExtResource("2_i1p1x")
 
-[node name="SoundSpawner" type="Node" parent="."]
+[node name="CollisionShapeAndScale" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_cfwsl")
+
+[node name="SoundSpawner" type="Node" parent="CollisionShapeAndScale"]
 script = ExtResource("3_x5pe0")
 spawn_on_start_prefab = ExtResource("4_qmddn")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CollisionShapeAndScale"]
 z_index = 20
-scale = Vector2(6, 6)
+position = Vector2(-0.333333, 0)
+scale = Vector2(2, 2)
 amount = 64
 randomness = 1.0
 lifetime_randomness = 0.61
@@ -52,26 +58,24 @@ scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_25yfo")
 color_initial_ramp = ExtResource("5_06s5g")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="CollisionShapeAndScale"]
+position = Vector2(-0.333333, 0)
+scale = Vector2(0.333333, 0.333333)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 0.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShapeAndScale/Area2D"]
+position = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_0t1dm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
-shape = SubResource("CapsuleShape2D_cfwsl")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShapeAndScale"]
+position = Vector2(-0.333333, 0)
 texture = ExtResource("1_hjqmu")
 
-[node name="Destructor" type="Timer" parent="."]
+[node name="Destructor" type="Timer" parent="CollisionShapeAndScale"]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="Destructor" to="." method="_on_destructor_timeout"]
+[connection signal="area_entered" from="CollisionShapeAndScale/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="CollisionShapeAndScale/Destructor" to="." method="_on_destructor_timeout"]

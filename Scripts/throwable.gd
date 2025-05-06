@@ -11,6 +11,12 @@ func _on_area_2d_area_entered(body):
 		body.get_node("HealthSystem").take_damage(damage)
 		
 	var explosion = explosion_prefab.instantiate()
+	
+	if explosion is RigidBody2D:
+		explosion.get_child(0).scale = get_parent().scale
+	else:
+		explosion.scale = get_parent().scale
+	
 	if explosion_point:
 		explosion.global_position = explosion_point.global_position
 	else:

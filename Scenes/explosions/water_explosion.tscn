@@ -11,7 +11,7 @@ point_count = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 z_index = 20
-scale = Vector2(6, 6)
+scale = Vector2(3, 3)
 emitting = false
 amount = 64
 lifetime = 2.0
@@ -25,7 +25,7 @@ emission_sphere_radius = 1.0
 spread = 180.0
 gravity = Vector2(0, 100)
 initial_velocity_min = 10.0
-initial_velocity_max = 20.0
+initial_velocity_max = 40.0
 angular_velocity_max = 360.0
 orbit_velocity_min = -0.1
 orbit_velocity_max = 0.1

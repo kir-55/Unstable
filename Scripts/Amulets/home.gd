@@ -101,7 +101,7 @@ func are_amulets_compatible(amulet1_id: int, amulet2_id: int):
 func can_be_generated(amulet_id: int):
 	if amount_of_items_to_take > 1:
 		# used combined array to avoid checking the same id twice in function: are_amulets_compatible(id ,amulet_id)
-		var combined_id_arrays := GlobalVariables.player_amulets + amulets_displayed
+		var combined_id_arrays = GlobalVariables.player_amulets + amulets_displayed
 
 		for i in combined_id_arrays:
 			while combined_id_arrays.has(i):

@@ -11,7 +11,7 @@ point_count = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 z_index = 20
-scale = Vector2(6, 6)
+scale = Vector2(3, 3)
 emitting = false
 amount = 64
 lifetime = 2.0
@@ -21,7 +21,7 @@ explosiveness = 1.0
 randomness = 1.0
 lifetime_randomness = 0.61
 emission_shape = 3
-emission_rect_extents = Vector2(21.19, 2.89)
+emission_rect_extents = Vector2(40, 2.89)
 spread = 180.0
 gravity = Vector2(0, -100)
 initial_velocity_min = 4.0
