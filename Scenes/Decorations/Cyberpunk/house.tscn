@@ -14,7 +14,7 @@
 z_index = -1
 material = ExtResource("1_ew6ks")
 position = Vector2(0.7, 0)
-scale = Vector2(5.88, 4.2)
+scale = Vector2(4.2, 3)
 texture = ExtResource("1_nlivu")
 offset = Vector2(0, 2)
 script = ExtResource("2_yujr6")
