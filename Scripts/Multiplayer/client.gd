@@ -4,7 +4,7 @@ extends Node
 
 
 
-var game_scene: String = "res://Scenes/Locations/city.tscn"
+var game_scene: String = "res://Scenes/Locations/epoch.tscn"
 
 #@export var player_prefab: PackedScene
 const DEFAULT_PORT = 12345
@@ -428,6 +428,7 @@ func start_game(id: int):
 	if id != 0 and !players_voted_start.has(id):
 		print("New player voted")
 		players_voted_start.append(id)
+		print("players_voted_start", players_voted_start)
 	
 	players_voted_start.sort()
 	players_alive.sort()
