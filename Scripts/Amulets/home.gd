@@ -68,23 +68,28 @@ func _process(delta):
 
 func check_for_win():
 	
-	if !Client.active:
-		var amulets_required_for_repair = GlobalVariables.amulets.filter(func(x): return x.required_for_repair).map(func(x): return x.id)
-		var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
-		if amulets_required_for_repair.all(func(x): return x in GlobalVariables.player_amulets):
-			print("you won by repair")
-			GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_repair_callable"))
-			# repair - call the repair menu, run the repair animation
-
-		elif amulets_required_for_destruction.size() > 0 and amulets_required_for_destruction.all(func(x): return x in GlobalVariables.player_amulets):
-			# destruction - call the destruction menu, run the destruction animation
-			GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_destruction_callable"))
-			print("you won by destruction")
-		else:
-			return
-
+	var amulets_required_for_repair = GlobalVariables.amulets.filter(func(x): return x.required_for_repair).map(func(x): return x.id)
+	var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
+	if amulets_required_for_repair.all(func(x): return x in GlobalVariables.player_amulets):
+		print("you won by repair")
+		GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_repair_callable"))
 		for n in to_delete_when_won:
 			n.queue_free()
+		return true
+		# repair - call the repair menu, run the repair animation
+
+	elif amulets_required_for_destruction.size() > 0 and amulets_required_for_destruction.all(func(x): return x in GlobalVariables.player_amulets):
+		# destruction - call the destruction menu, run the destruction animation
+		GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_destruction_callable"))
+		print("you won by destruction")
+		for n in to_delete_when_won:
+			n.queue_free()
+		return true
+	else:
+		return false
+
+	for n in to_delete_when_won:
+		n.queue_free()
 
 func menu_instance_repair_callable(menu):
 	menu.win_type = GlobalEnums.WIN_TYPES.REPAIR
@@ -140,22 +145,35 @@ func chosed_amulet(event: InputEvent, amulet):
 			if amulet[0] == 2:
 				GlobalVariables.player_global_speed += 100
 				GlobalVariables.items_in_home += 1
-			#if amulet[0] == 4:
-				#GlobalVariables.player_global_speed -= 100
-				#GlobalVariables.initial_chance_for_lag -= 10
+			
+			amulets_chosen.append(amulet[0])
 			
 			var unique_amulets = {}
-			var combined_player_amulets = GlobalVariables.player_amulets.duplicate()
-			combined_player_amulets.append_array(amulets_chosen)
-			for item in combined_player_amulets:
+			for item in GlobalVariables.player_amulets:
 				if item in unique_amulets:
 					unique_amulets[item] += 1
 				else:
 					unique_amulets[item] = 1
-			amulets_chosen.append(amulet[0])
+			#if !amulets_chosen[amulets_chosen.size() - 1] in unique_amulets:
+				#unique_amulets[amulets_chosen[amulets_chosen.size() - 1]] = 1
 			if unique_amulets.keys().size() >= GlobalVariables.max_amulets:
-				GlobalFunctions.load_menu("replace_amulet", false, false, Callable(self, "replace_amulet_menu_callable"))
-				return
+				var chosen_amulet = GlobalVariables.amulets[amulet[0]]
+				var needs_replacement = false
+
+				if chosen_amulet.stack_limit or chosen_amulet.is_weapon:
+					if !(GlobalVariables.player_amulets.has(amulet[0]) and chosen_amulet.limit > GlobalVariables.player_amulets.count(amulet[0])):
+						needs_replacement = true
+				elif !chosen_amulet.stack_limit and !chosen_amulet.is_weapon:
+					if !GlobalVariables.player_amulets.has(amulet[0]):
+						needs_replacement = true
+				else:
+					needs_replacement = true
+
+				if needs_replacement:
+					amulet[1].queue_free()
+					GlobalFunctions.load_menu("replace_amulet", false, false, Callable(self, "replace_amulet_menu_callable"))
+					return
+
 			
 			complete_amulet_choice(amulet)
 
@@ -165,12 +183,15 @@ func complete_amulet_choice(amulet = null):
 	else:
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take - amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take - amulets_chosen.size() > 1 else ".")
 	if amulet != null:
+		GlobalVariables.player_amulets.append(amulets_chosen[amulets_chosen.size() - 1])
 		amulet[1].queue_free()
 	elif !GlobalVariables.player_amulets.has(2) or amulets_chosen.size() >= amount_of_items_to_take:
-		Client.leave_home.rpc(Client.id)
+		if Client.active:
+			Client.leave_home.rpc(Client.id)
+		else:
+			if !check_for_win():
+				Client.leave_home.rpc(Client.id)
 		return
-	else:
-		check_for_win()
 	if !GlobalVariables.player_amulets.has(2) or amulets_chosen.size() >= amount_of_items_to_take:
 		grab_and_leave()
 	elif !Client.active:
@@ -178,7 +199,6 @@ func complete_amulet_choice(amulet = null):
 
 func grab_and_leave():
 	if !Client.active or Client.players_alive.has(Client.id):
-		GlobalVariables.player_amulets.append_array(amulets_chosen)
 		for i in GlobalVariables.player_amulets:
 			if !(i in GlobalVariables.player_amulet_collection):
 				GlobalVariables.player_new_amulets.append(i)

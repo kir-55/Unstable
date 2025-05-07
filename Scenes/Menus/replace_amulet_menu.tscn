@@ -87,9 +87,9 @@ offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_la4h0")
 amulet_icon_scene = ExtResource("2_ucqs4")
-label_and_new_amulet_container = NodePath("Panel/TextAndAmuletContainer")
-current_player_amulets_container = NodePath("Panel/Panel/PlayerAmuletsContainer")
-border_container = NodePath("Panel/Panel")
+label_and_new_amulet_container = NodePath("Panel/VBoxContainer/TextAndAmuletContainer")
+current_player_amulets_container = NodePath("Panel/VBoxContainer/Panel/PlayerAmuletsContainer")
+border_container = NodePath("Panel/VBoxContainer/Panel")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(576, 324)
@@ -113,37 +113,42 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h8bx3")
 
-[node name="TextAndAmuletContainer" type="HBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -282.5
-offset_top = -137.0
-offset_right = 282.5
-offset_bottom = -97.0
+offset_left = -352.0
+offset_top = -27.5
+offset_right = 352.0
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/TextAndAmuletContainer"]
+[node name="TextAndAmuletContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/TextAndAmuletContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Choose one of your amulets to be replaced with:"
 
-[node name="Panel" type="Panel" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.397701, 0.329255, 1)
+theme_override_font_sizes/font_size = 24
+text = "Replacing chronometer instantly teleports you to the next epoch!"
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_o31fd")
 
-[node name="PlayerAmuletsContainer" type="HBoxContainer" parent="Panel/Panel"]
+[node name="PlayerAmuletsContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

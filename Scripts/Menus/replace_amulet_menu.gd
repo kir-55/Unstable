@@ -17,7 +17,6 @@ func _ready():
 		
 	if current_player_amulets_container:
 		var displayed_amulets : Dictionary
-		#GlobalVariables.player_amulets.append_array([1,1,5, 4])
 		for amulet_id in GlobalVariables.player_amulets:
 			if displayed_amulets.keys().count(amulet_id) > 0:
 				displayed_amulets[amulet_id].get_child(0).text = str(str(GlobalVariables.player_amulets.count(amulet_id)) + "X")
@@ -69,5 +68,5 @@ func on_amulet_click_swap(event: InputEvent, amulet):
 				if GlobalVariables.player_amulets.filter(func(id): return id == new_amulet_id).size() > 1:
 					GlobalVariables.player_amulets.erase(new_amulet_id)
 		#print(GlobalVariables.player_amulets)
-		get_parent().get_parent().complete_amulet_choice()
+		get_tree().current_scene.complete_amulet_choice()
 		queue_free()
