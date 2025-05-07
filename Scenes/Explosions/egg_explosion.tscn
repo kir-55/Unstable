@@ -16,7 +16,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.882353, 0.658824, 0.270588, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pldu1"]
 radius = 42.19
 
-[node name="EggExplosion" type="Area2D" node_paths=PackedStringArray("particles", "collision_shape")]
+[node name="EggExplosion" type="Area2D" node_paths=PackedStringArray("particles", "collision_shape") groups=["Projectile"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_lcwqa")

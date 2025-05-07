@@ -16,7 +16,7 @@ size = Vector2(10, 6)
 
 [node name="Area2D" type="Area2D" groups=["Obsticle"]]
 z_index = 5
-position = Vector2(0, -16)
+position = Vector2(0, -53)
 scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
@@ -28,7 +28,7 @@ position = Vector2(1, -10.6667)
 shape = SubResource("RectangleShape2D_1iamu")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-36, -9.33333)
+position = Vector2(-59.6667, -10)
 target_position = Vector2(0, 142.333)
 
 [node name="Drone" type="Sprite2D" parent="."]
@@ -36,6 +36,7 @@ z_index = -1
 position = Vector2(1, -7.66667)
 texture = ExtResource("2_hld7q")
 script = ExtResource("3_113mu")
+min_height = 20.0
 speed = 0.04
 
 [node name="HealthSystem" type="Node" parent="." node_paths=PackedStringArray("explosion_point")]

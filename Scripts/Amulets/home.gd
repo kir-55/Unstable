@@ -9,6 +9,7 @@ extends Node2D
 
 @export var to_delete_when_won: Array[Node]
 
+@export var animation_palayer: AnimationPlayer
 
 
 var amulets_chosen: Array[int]
@@ -65,6 +66,13 @@ func _process(delta):
 		label.size.x += 10
 
 
+func load_repair_menu():
+	GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_repair_callable"))
+	
+func load_destruction_menu():
+	GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_destruction_callable"))
+
+
 func check_for_win():
 	
 	if !Client.active:
@@ -72,13 +80,13 @@ func check_for_win():
 		var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
 		if amulets_required_for_repair.all(func(x): return x in GlobalVariables.player_amulets):
 			print("you won by repair")
-			GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_repair_callable"))
+			animation_palayer.play("repair")
 			# repair - call the repair menu, run the repair animation
 
 		elif amulets_required_for_destruction.size() > 0 and amulets_required_for_destruction.all(func(x): return x in GlobalVariables.player_amulets):
 			# destruction - call the destruction menu, run the destruction animation
-			GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_destruction_callable"))
-			print("you won by destruction")
+			print("you won by destruction")			
+			animation_palayer.play("destruction")
 		else:
 			return
 

@@ -237,7 +237,7 @@ func _physics_process(delta: float) -> void:
 
 		var direction = 1
 
-		if not is_on_floor():
+		if not jump_grace_ray.is_colliding():
 			player_animator.play("jump")
 		else:
 			player_animator.play("run")
@@ -322,5 +322,7 @@ func spawn_landing_particles(grass_color: Color, ground_color: Color, position: 
 
 	get_tree().current_scene.add_child(particles)
 	particles.emitting = true
+
+
 
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cdw5ltvgv1w8v"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_0vh4g"]
-[ext_resource type="Gradient" uid="uid://dvf2wfppggb5u" path="res://Styles/Gradients/oil_gradient.tres" id="2_iegp2"]
+[ext_resource type="Gradient" uid="uid://0w4ugak1xvxo" path="res://Styles/Gradients/water_gradient.tres" id="2_6tbm7"]
 [ext_resource type="Texture2D" uid="uid://dso0jbnr2ehbc" path="res://Textures/Decorations/WildWest/pump.png" id="3_jc2ex"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_qa4x8"]
-[ext_resource type="PackedScene" uid="uid://biw1e4xod2nhn" path="res://Scenes/Explosions/pump_explosion.tscn" id="5_1pr8l"]
+[ext_resource type="PackedScene" uid="uid://dqs5nqfwvon56" path="res://Scenes/Explosions/water_explosion.tscn" id="5_kvcv4"]
 
 [sub_resource type="Curve" id="Curve_ileal"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.943396), 0.0, 0.0, 0, 0]
@@ -37,7 +37,7 @@ angle_max = 51.6
 scale_amount_min = 3.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_ileal")
-color_initial_ramp = ExtResource("2_iegp2")
+color_initial_ramp = ExtResource("2_6tbm7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.166667, -11.8333)
@@ -53,6 +53,6 @@ offset = Vector2(-0.250283, -8)
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("3_qa4x8")
 max_health = 90.0
-explosion_prefab = ExtResource("5_1pr8l")
+explosion_prefab = ExtResource("5_kvcv4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

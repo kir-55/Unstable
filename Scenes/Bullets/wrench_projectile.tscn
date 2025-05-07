@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/sound_spawner.gd" id="2_g7mpc"]
 [ext_resource type="PackedScene" uid="uid://ntmdlggfg36e" path="res://Audio/Prefabs/shoot_sound.tscn" id="3_gewf2"]
 
-[node name="Wrench" type="Area2D"]
+[node name="Wrench" type="Area2D" groups=["Projectile"]]
 z_index = -2
 scale = Vector2(3, 3)
 collision_layer = 2
