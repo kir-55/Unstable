@@ -26,6 +26,7 @@ var win_type := GlobalEnums.WIN_TYPES.NONE
 var label_with: int = 0
 
 func _ready():
+	print(GlobalVariables.player_amulets)
 	label_with = label.size.x
 	label.size.x = 0
 	
@@ -91,6 +92,8 @@ func menu_instance_repair_callable(menu):
 func menu_instance_destruction_callable(menu):
 	menu.win_type = GlobalEnums.WIN_TYPES.DESTRUCTION
 
+func replace_amulet_menu_callable(menu):
+	menu.new_amulet_id = amulets_chosen[amulets_chosen.size() - 1]
 
 func are_amulets_compatible(amulet1_id: int, amulet2_id: int):
 	if GlobalVariables.amulets[amulet1_id].incompatible_amulets.has(amulet2_id) or GlobalVariables.amulets[amulet2_id].incompatible_amulets.has(amulet1_id):
@@ -133,32 +136,51 @@ func spawn_amulet(amulet):
 func chosed_amulet(event: InputEvent, amulet):
 	if !Client.active or Client.players_alive.has(Client.id):
 		if event is InputEventMouseButton and event.pressed and amulets_chosen.size() < amount_of_items_to_take:
+			
 			if amulet[0] == 2:
 				GlobalVariables.player_global_speed += 100
 				GlobalVariables.items_in_home += 1
 			#if amulet[0] == 4:
 				#GlobalVariables.player_global_speed -= 100
 				#GlobalVariables.initial_chance_for_lag -= 10
+			
+			var unique_amulets = {}
+			var combined_player_amulets = GlobalVariables.player_amulets.duplicate()
+			combined_player_amulets.append_array(amulets_chosen)
+			for item in combined_player_amulets:
+				if item in unique_amulets:
+					unique_amulets[item] += 1
+				else:
+					unique_amulets[item] = 1
 			amulets_chosen.append(amulet[0])
+			if unique_amulets.keys().size() >= GlobalVariables.max_amulets:
+				GlobalFunctions.load_menu("replace_amulet", false, false, Callable(self, "replace_amulet_menu_callable"))
+				return
+			
+			complete_amulet_choice(amulet)
 
-			if amount_of_items_to_take -amulets_chosen.size() <= 0 and Client.active:
-				label.text = "Wait for other players!"
-			else:
-				label.text = "You have a few seconds to grab " + str(amount_of_items_to_take -amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take -amulets_chosen.size() > 1 else ".")
-
-
-			amulet[1].queue_free()
-
-			if !GlobalVariables.player_amulets.has(2) or amulets_chosen.size() >= amount_of_items_to_take:
-				grab_and_leave()
-			elif !Client.active:
-				check_for_win()
+func complete_amulet_choice(amulet = null):
+	if amount_of_items_to_take - amulets_chosen.size() <= 0 and Client.active:
+		label.text = "Wait for other players!"
+	else:
+		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take - amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take - amulets_chosen.size() > 1 else ".")
+	if amulet != null:
+		amulet[1].queue_free()
+	elif !GlobalVariables.player_amulets.has(2) or amulets_chosen.size() >= amount_of_items_to_take:
+		Client.leave_home.rpc(Client.id)
+		return
+	else:
+		check_for_win()
+	if !GlobalVariables.player_amulets.has(2) or amulets_chosen.size() >= amount_of_items_to_take:
+		grab_and_leave()
+	elif !Client.active:
+		check_for_win()
 
 func grab_and_leave():
 	if !Client.active or Client.players_alive.has(Client.id):
 		GlobalVariables.player_amulets.append_array(amulets_chosen)
 		for i in GlobalVariables.player_amulets:
-			if ! (i in GlobalVariables.player_amulet_collection):
+			if !(i in GlobalVariables.player_amulet_collection):
 				GlobalVariables.player_new_amulets.append(i)
 				GlobalVariables.player_amulet_collection.append(i)
 		Client.leave_home.rpc(Client.id)
