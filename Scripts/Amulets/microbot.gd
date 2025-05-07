@@ -29,11 +29,15 @@ func _physics_process(delta):
 	if target:
 		actual_speed = get_new_speed()
 		move_towards_target(delta)
+	elif get_tree().get_nodes_in_group("Obsticle").size() == 0 or !is_instance_valid(target):
+		velocity.x = lerp(velocity.x, actual_speed, acceleration * delta)
+		find_closest_target()
+		move_and_slide()
 
 func find_closest_target():
 	var closest_distance = INF
-	var deadly_areas = get_tree().get_nodes_in_group("Obsticle")  # Make sure nodes are in this group
-
+	var deadly_areas = get_tree().get_nodes_in_group("Obsticle")
+	
 	for area in deadly_areas:
 		if area is Node2D:
 			
@@ -56,3 +60,5 @@ func move_towards_target(delta):
 			get_tree().current_scene.add_child(instance)
 			target.scale *= Vector2(0.5, 0.5)
 			queue_free()
+	else:
+		find_closest_target()
