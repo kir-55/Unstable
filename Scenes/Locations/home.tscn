@@ -86,6 +86,36 @@ animations = [{
 "speed": 5.0
 }]
 
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n5ck"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.278431, 0.423529, 0.054902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lbe6"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.278431, 0.423529, 0.054902, 0.52549)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[node name="Home" type="Node2D" node_paths=PackedStringArray("label", "displayed_amulets_container", "canvas_layer", "texture_rect")]
 [sub_resource type="Animation" id="Animation_t2dc1"]
 length = 0.001
 tracks/0/type = "value"
@@ -532,6 +562,17 @@ text = "You have a few seconds to grab 1 item"
 vertical_alignment = 1
 text_overrun_behavior = 1
 
+[node name="LeaveButton" type="Button" parent="CanvasLayer"]
+offset_left = 926.0
+offset_top = 515.0
+offset_right = 1152.0
+offset_bottom = 591.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_7n5ck")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8lbe6")
+text = "Leave"
+
 [node name="Player" type="Sprite2D" parent="CanvasLayer"]
 material = ExtResource("16_s0vsq")
 position = Vector2(1052, 447)
@@ -551,6 +592,8 @@ anchor_mode = 0
 stream = ExtResource("8_ypbu8")
 autoplay = true
 bus = &"Music"
+
+[connection signal="pressed" from="CanvasLayer/LeaveButton" to="." method="_on_leave_button_pressed"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
