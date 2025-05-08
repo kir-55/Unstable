@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=37 format=3 uid="uid://bhjxp4p8df2qp"]
+
 
 [ext_resource type="PackedScene" uid="uid://j2nldvt0tvg5" path="res://Scenes/Menus/progress_menu.tscn" id="2_ucxui"]
 [ext_resource type="Texture2D" uid="uid://third2ockyr2" path="res://Textures/Home/Broken/home1_b.png" id="4_n14ty"]
@@ -85,6 +87,7 @@ animations = [{
 "name": &"repair",
 "speed": 5.0
 }]
+
 
 [sub_resource type="Animation" id="Animation_t2dc1"]
 length = 0.001
@@ -446,7 +449,38 @@ _data = {
 "repair": SubResource("Animation_140lf")
 }
 
+
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n5ck"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.278431, 0.423529, 0.054902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lbe6"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.278431, 0.423529, 0.054902, 0.52549)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
 [node name="Home" type="Node2D" node_paths=PackedStringArray("label", "displayed_amulets_container", "canvas_layer", "texture_rect", "animation_palayer")]
+
 script = ExtResource("5_i6kwn")
 label = NodePath("CanvasLayer/Message")
 displayed_amulets_container = NodePath("CanvasLayer/HBoxContainer")
@@ -543,6 +577,16 @@ script = ExtResource("18_qpcsm")
 [node name="OneAmueltDisplayer" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(498, 283)
 scale = Vector2(5, 5)
+[node name="LeaveButton" type="Button" parent="CanvasLayer"]
+offset_left = 926.0
+offset_top = 515.0
+offset_right = 1152.0
+offset_bottom = 591.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_7n5ck")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8lbe6")
+text = "Leave"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -557,3 +601,4 @@ libraries = {
 "": SubResource("AnimationLibrary_rose0")
 }
 autoplay = "RESET"
+[connection signal="pressed" from="CanvasLayer/LeaveButton" to="." method="_on_leave_button_pressed"]

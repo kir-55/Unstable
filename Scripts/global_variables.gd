@@ -32,7 +32,7 @@ var times_treveled: int = 0
 @export var pre_game_countdown_time = 3
 
 
-
+@export var max_amulets : int = 5
 @export var initial_items_in_home: int = 3
 var items_in_home: int = initial_items_in_home
 
@@ -71,11 +71,12 @@ var menus = {
 	"settings" : load("res://Scenes/Menus/settings_menu.tscn"),
 	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
 	"win" : load("res://Scenes/Menus/win_menu.tscn"),
+	"replace_amulet" : load("res://Scenes/Menus/replace_amulet_menu.tscn"),
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
 	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
 	"multiplayer_victory" : load("res://Scenes/Menus/multiplayer_victory.tscn"),
 	"multiplayer_loss" : load("res://Scenes/Menus/multiplayer_loss.tscn"),
-	"multiplayer_draw" : load("res://Scenes/Menus/multiplayer_draw.tscn")	
+	"multiplayer_draw" : load("res://Scenes/Menus/multiplayer_draw.tscn")
 }
 
 var previous_menu = null
