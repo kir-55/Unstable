@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://hh002f2srny1"]
+[gd_scene load_steps=10 format=3 uid="uid://hh002f2srny1"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_1ocql"]
 [ext_resource type="Texture2D" uid="uid://blwug7qhvvgmh" path="res://Textures/Decorations/Cyberpunk/motorbike.png" id="2_xdxfo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_sdops"]
 [ext_resource type="PackedScene" uid="uid://bcgd5r2fn3b7v" path="res://Scenes/Explosions/car_explosion.tscn" id="5_y0f5x"]
 [ext_resource type="Gradient" uid="uid://bbxlsyj30h0sp" path="res://Styles/Gradients/smoke_gradient.tres" id="7_3clgh"]
+[ext_resource type="Script" path="res://Scripts/take_texture.gd" id="8_rh76p"]
 
 [sub_resource type="GDScript" id="GDScript_yi0s1"]
 script/source = "extends Sprite2D
@@ -44,6 +45,12 @@ texture = ExtResource("2_xdxfo")
 offset = Vector2(0, 0.505)
 script = SubResource("GDScript_yi0s1")
 visual_variations = Array[Texture2D]([ExtResource("2_xdxfo"), ExtResource("3_3fql7"), ExtResource("4_86dg1")])
+
+[node name="PointLight2D" type="PointLight2D" parent="Motorbike" node_paths=PackedStringArray("take_from")]
+position = Vector2(-0.70005, 4.63636)
+energy = 2.0
+script = ExtResource("8_rh76p")
+take_from = NodePath("..")
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("4_sdops")

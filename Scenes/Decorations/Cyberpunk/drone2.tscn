@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3rt4qv6rqmcq"]
+[gd_scene load_steps=14 format=3 uid="uid://3rt4qv6rqmcq"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_8g2ud"]
 [ext_resource type="Texture2D" uid="uid://bo7lvifmwj66y" path="res://Textures/Decorations/Cyberpunk/drone2.png" id="2_hld7q"]
@@ -13,6 +13,30 @@ size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcyxb"]
 size = Vector2(10, 6)
+
+[sub_resource type="Gradient" id="Gradient_ojpjs"]
+colors = PackedColorArray(0.982456, 0.982456, 0.982456, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nddy5"]
+gradient = SubResource("Gradient_ojpjs")
+width = 30
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_7sest"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6ne3h"]
+gradient = SubResource("Gradient_7sest")
+width = 16
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
 
 [node name="Area2D" type="Area2D" groups=["Obsticle"]]
 z_index = 5
@@ -61,6 +85,24 @@ texture = ExtResource("6_5mhlc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Package/Area2D"]
 shape = SubResource("RectangleShape2D_lcyxb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, -12)
+color = Color(0.961026, 0.765469, 0.451691, 1)
+energy = 2.0
+texture = SubResource("GradientTexture2D_nddy5")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-8.33333, -18.3333)
+color = Color(0.603922, 0.898039, 0.835294, 1)
+energy = 2.0
+texture = SubResource("GradientTexture2D_6ne3h")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(10, -18.3333)
+color = Color(0.603922, 0.898039, 0.835294, 1)
+energy = 2.0
+texture = SubResource("GradientTexture2D_6ne3h")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Package/Area2D" to="Package/Area2D" method="_on_body_entered"]
