@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://5taa48bb4lv0"]
+
+[ext_resource type="PackedScene" uid="uid://6rponudo5dj8" path="res://Scenes/Decorations/WildWest/wanted_sign.tscn" id="1_ffad2"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_jwvhg"]
+
+[resource]
+script = ExtResource("2_jwvhg")
+prefab = ExtResource("1_ffad2")
+name = "Well"
+spawn_on_center = false
+chance_to_spawn = 13.0
+width = 400
+pattern_type = "E"
+type = 3
+ignore_types = Array[int]([])
+can_be_mirrored = true

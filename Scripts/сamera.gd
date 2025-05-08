@@ -27,7 +27,8 @@ func _set_target(target):
 
 func _process(delta):
 	if target and !target.is_queued_for_deletion():
-		if GlobalVariables.game_is_on or epoch.death_animation or !epoch.can_accept_input:
+		# following player state
+		if GlobalVariables.game_is_on or epoch.death_animation or (!epoch.can_accept_input and !Client.active):
 				distance_to_target.x = abs(position.x - target.global_position.x + offsett.x) 
 				distance_to_target.y = abs(position.y - target.global_position.y + offsett.y)
 				
@@ -36,7 +37,9 @@ func _process(delta):
 				
 				if distance_to_target.y > max_distance.y:
 					position.y = lerp(position.y, target.global_position.y + offsett.y, delta*vertical_speed)
+		
 		else:
+			# following cursor state
 			if Client.active:
 				if Client.players_alive.size() <= 1:
 					target = initial_target
@@ -47,6 +50,7 @@ func _process(delta):
 			
 			if !target:
 				target = initial_target
+			# following cursor state
 			else:
 				var mouse_offset = (get_viewport().get_mouse_position() - Vector2( get_viewport().size / 2))
 				var pos = target.global_position + offsett + lerp(Vector2(), mouse_offset.normalized() * 200, mouse_offset.length() / 1000)

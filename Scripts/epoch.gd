@@ -84,6 +84,8 @@ func _ready():
 			if int(i) == Client.id:
 				self.player = player
 				player_spawned.emit(player)
+			else:
+				player.get_node("CollisionShape2D").disabled = true
 
 			player.global_position = spawn_point.global_position + Vector2(randf_range(-1000, 1000), randf_range(-1000, 1000))
 			player.name = "Player" + str(i)
@@ -114,7 +116,6 @@ func _process(delta):
 		print("viewport: ", viewport_size_pixels)
 		last_viewport = viewport_size_pixels
 		
-
 	
 	if death_animation:
 		var circle_size = death_panel.material.get_shader_parameter("circle_size")

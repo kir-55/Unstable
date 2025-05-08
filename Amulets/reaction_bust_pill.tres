@@ -7,7 +7,7 @@
 script = ExtResource("1_468ax")
 id = 8
 name = "Reactinon bust "
-description = "Makes you think faster, therefore slowing the environment (click to use)"
+description = "Makes you think faster, therefore slowing the environment [may have side effects] (click to use)"
 texture = ExtResource("2_ijt4b")
 incompatible_amulets = Array[int]([])
 available_in_singleplayer = true

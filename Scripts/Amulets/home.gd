@@ -9,6 +9,7 @@ extends Node2D
 
 @export var to_delete_when_won: Array[Node]
 
+@export var animation_palayer: AnimationPlayer
 
 
 var amulets_chosen: Array[int]
@@ -65,6 +66,13 @@ func _ready():
 func _process(delta):
 	if is_instance_valid(label) and label.size.x < label_with:
 		label.size.x += 10
+
+
+func load_repair_menu():
+	GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_repair_callable"))
+	
+func load_destruction_menu():
+	GlobalFunctions.load_menu("win", false, false, Callable(self, "menu_instance_destruction_callable"))
 
 
 func check_for_win():
