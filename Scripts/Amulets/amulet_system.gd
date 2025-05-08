@@ -77,7 +77,21 @@ func display_amulets():
 				amulet_timer_bar_representation.amulet_timer = amulet_timers.timers[amulet_id]
 				amulet_representation.add_child(amulet_timer_bar_representation)
 			amulets_panel.add_child(amulet_representation)
+		scale_panel_amulets(unique_amulets)
 		amulets_displayed = true
+
+func scale_panel_amulets(unique_amulets):
+	if unique_amulets.keys().size() > 9:
+		var max_height = (amulets_panel.size.y - 100) / unique_amulets.keys().size()
+		for amulet in amulets_panel.get_children():
+			amulet.custom_minimum_size = Vector2(max_height, max_height)
+			amulet.stretch_mode = 0
+			for child in amulet.get_children():
+				if child is ProgressBar:
+					child.size.x = max_height
+					child.position.x += 8
+					child.position.y = max_height - 8
+#
 #func attach_amulet(id):
 	#GlobalVariables.player_amulets.append(id)
 	##var amulet_representation = amulet_icon_template.instantiate()
