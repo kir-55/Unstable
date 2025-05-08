@@ -12,6 +12,7 @@ extends Node2D
 
 
 var amulets_chosen: Array[int]
+var latest_chosen_amulet = null
 
 var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(2) + 1
 var win_type := GlobalEnums.WIN_TYPES.NONE
@@ -99,6 +100,8 @@ func menu_instance_destruction_callable(menu):
 
 func replace_amulet_menu_callable(menu):
 	menu.new_amulet_id = amulets_chosen[amulets_chosen.size() - 1]
+	if latest_chosen_amulet:
+		menu.chosen_amulet = latest_chosen_amulet
 
 func are_amulets_compatible(amulet1_id: int, amulet2_id: int):
 	if GlobalVariables.amulets[amulet1_id].incompatible_amulets.has(amulet2_id) or GlobalVariables.amulets[amulet2_id].incompatible_amulets.has(amulet1_id):
@@ -140,6 +143,7 @@ func spawn_amulet(amulet):
 
 func chosed_amulet(event: InputEvent, amulet):
 	if !Client.active or Client.players_alive.has(Client.id):
+		latest_chosen_amulet = amulet
 		if event is InputEventMouseButton and event.pressed and amulets_chosen.size() < amount_of_items_to_take:
 			
 			if amulet[0] == 2:
@@ -170,7 +174,6 @@ func chosed_amulet(event: InputEvent, amulet):
 					needs_replacement = true
 
 				if needs_replacement:
-					amulet[1].queue_free()
 					GlobalFunctions.load_menu("replace_amulet", false, false, Callable(self, "replace_amulet_menu_callable"))
 					return
 
@@ -205,3 +208,7 @@ func grab_and_leave():
 				GlobalVariables.player_amulet_collection.append(i)
 		Client.leave_home.rpc(Client.id)
 
+
+
+func _on_leave_button_pressed():
+	Client.leave_home.rpc(Client.id)

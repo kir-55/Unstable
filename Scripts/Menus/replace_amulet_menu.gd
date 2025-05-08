@@ -6,6 +6,7 @@ extends Control
 @export var border_container : Panel
 
 var new_amulet_id = 0
+var chosen_amulet = null
 
 func _ready():
 	if label_and_new_amulet_container:
@@ -68,5 +69,12 @@ func on_amulet_click_swap(event: InputEvent, amulet):
 				if GlobalVariables.player_amulets.filter(func(id): return id == new_amulet_id).size() > 1:
 					GlobalVariables.player_amulets.erase(new_amulet_id)
 		#print(GlobalVariables.player_amulets)
+		if chosen_amulet:
+			chosen_amulet[1].queue_free()
 		get_tree().current_scene.complete_amulet_choice()
 		queue_free()
+
+func _on_cancel_pressed():
+	var home = get_tree().current_scene
+	home.amulets_chosen.pop_back()
+	queue_free()

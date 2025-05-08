@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cga0nulgiwpjf"]
+[gd_scene load_steps=20 format=3 uid="uid://cga0nulgiwpjf"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/replace_amulet_menu.gd" id="1_la4h0"]
 [ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="2_ucqs4"]
@@ -80,6 +80,28 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3w8h"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.29219, 0.29219, 0.29219, 0.862745)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3cxl"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.454524, 0.454524, 0.454524, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="ReplaceMenu" type="Control" node_paths=PackedStringArray("label_and_new_amulet_container", "current_player_amulets_container", "border_container")]
 layout_mode = 3
 anchors_preset = 0
@@ -158,3 +180,31 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CancelButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_l3w8h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r3cxl")
+text = "Cancel"
+
+[node name="Control2" type="Control" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_pressed"]
