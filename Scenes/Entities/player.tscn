@@ -378,7 +378,7 @@ texture_filter = 1
 material = ExtResource("4_ehog4")
 position = Vector2(2.85714, 1.42857)
 scale = Vector2(3, 3)
-texture = ExtResource("11_1af4h")
+texture = ExtResource("13_hbve7")
 script = ExtResource("6_816a3")
 
 [node name="Trail" type="Node" parent="." node_paths=PackedStringArray("trails", "amulet_system")]
@@ -423,7 +423,7 @@ amulet_timer_bar = ExtResource("5_ewkn8")
 effects_animator = NodePath("../EffectsPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.571, 16)
+position = Vector2(3.571, 13)
 shape = SubResource("RectangleShape2D_uu4jv")
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
@@ -444,6 +444,6 @@ libraries = {
 autoplay = "run"
 
 [node name="JumpGraceRay" type="RayCast2D" parent="."]
-target_position = Vector2(0, 57.1429)
+target_position = Vector2(0, 53.5714)
 
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]

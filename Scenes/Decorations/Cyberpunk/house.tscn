@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5m1thfnye3t7"]
+[gd_scene load_steps=10 format=3 uid="uid://c5m1thfnye3t7"]
 
 [ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="1_ew6ks"]
 [ext_resource type="Texture2D" uid="uid://bn688rgh3fw6k" path="res://Textures/Decorations/Cyberpunk/house.png" id="1_nlivu"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bsveoiq0eylc4" path="res://Textures/Decorations/Cyberpunk/house5.png" id="6_5nbg1"]
 [ext_resource type="Texture2D" uid="uid://cr67as8hg4v7b" path="res://Textures/Decorations/Cyberpunk/house6.png" id="7_fg8s3"]
 [ext_resource type="Texture2D" uid="uid://lj254ll7nwhd" path="res://Textures/Decorations/Cyberpunk/house7.png" id="8_0vf7y"]
-[ext_resource type="Script" path="res://Scripts/take_texture.gd" id="10_wm2mx"]
 
 [node name="House" type="Sprite2D"]
 z_index = -1
@@ -19,9 +18,3 @@ texture = ExtResource("1_nlivu")
 offset = Vector2(0, 2)
 script = ExtResource("2_yujr6")
 visual_variations = Array[Texture2D]([ExtResource("1_nlivu"), ExtResource("3_1uf1k"), ExtResource("4_hdtab"), ExtResource("5_i8b0a"), ExtResource("6_5nbg1"), ExtResource("7_fg8s3"), ExtResource("8_0vf7y")])
-
-[node name="PointLight2D" type="PointLight2D" parent="." node_paths=PackedStringArray("take_from")]
-energy = 2.0
-range_z_max = 0
-script = ExtResource("10_wm2mx")
-take_from = NodePath("..")

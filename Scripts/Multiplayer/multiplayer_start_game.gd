@@ -12,8 +12,10 @@ var rtc_players
 var old_votes
 
 func _ready():
-	start_game_button.disabled = true
-	
+	if Client.players.size() <= 1:
+		start_game_button.disabled = true
+	else:
+		start_game_button.disabled = false
 
 func _on_button_pressed():
 	if !Client.players_voted_start.has(Client.id):

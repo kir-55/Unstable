@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=18 format=3 uid="uid://b5ga8fmqhitgk"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=17 format=3 uid="uid://b5ga8fmqhitgk"]
 
 [ext_resource type="Texture2D" uid="uid://b888ypg357ebc" path="res://Textures/Baners/western.png" id="1_plupu"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="2_gavku"]
@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://5fvsg64ql018" path="res://Audio/Melodies/western.mp3" id="11_v3jex"]
 [ext_resource type="Texture2D" uid="uid://wdoqj1j5p7bd" path="res://Textures/Parallaxes/parallax_cactuses.png" id="12_6ayj6"]
 [ext_resource type="Resource" uid="uid://l103elfmnjir" path="res://Decorations/WildWest/tnt.tres" id="12_476ct"]
-[ext_resource type="Resource" uid="uid://5taa48bb4lv0" path="res://Decorations/WildWest/wanted_sign.tres" id="13_4g6q7"]
 
 [resource]
 script = ExtResource("2_gavku")
@@ -25,8 +24,8 @@ description = "Cactuses, big wagons, barrels, TNT"
 baner = ExtResource("1_plupu")
 ground_color = Color(0.882353, 0.658824, 0.270588, 1)
 grass_color = Color(0.933333, 0.796078, 0.564706, 1)
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("12_476ct"), ExtResource("2_ln6wu"), ExtResource("3_du160"), ExtResource("4_sbmgx"), ExtResource("5_fv8s2"), ExtResource("6_ftsgt"), ExtResource("7_vmlr6"), ExtResource("8_e36an"), ExtResource("9_ohr0c"), ExtResource("10_26ypt"), ExtResource("11_885au"), ExtResource("13_4g6q7")])
-decoration_spawn_pattern = "FRA*B*C*D*|FRAHA*B*C*|FRDB*B*C*D*|FRE*|FRA*D*|FRC*D*|FRH|FRB*C*D*|FRAB*C*|FRD|FRA*BC*D*|FRB*B*D*|FRH|FRA*D*|FRB*C*D*|FRA*|FRHC*D*|FRB*C*D*|FRA*"
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("12_476ct"), ExtResource("2_ln6wu"), ExtResource("3_du160"), ExtResource("4_sbmgx"), ExtResource("5_fv8s2"), ExtResource("6_ftsgt"), ExtResource("7_vmlr6"), ExtResource("8_e36an"), ExtResource("9_ohr0c"), ExtResource("10_26ypt"), ExtResource("11_885au")])
+decoration_spawn_pattern = "FRA*B*C*D*|FRAHA*B*C*|FRDB*B*C*D*|FR|FRA*D*|FRC*D*|FRH|FRB*C*D*|FRAB*C*|FRD|FRA*BC*D*|FRB*B*D*|FRH|FRA*D*|FRB*C*D*|FRA*|FRHC*D*|FRB*C*D*|FRA*"
 background_color = Color(0.603922, 0.898039, 0.835294, 1)
 parallax_background_close = ExtResource("9_t7o3k")
 parallax_background_far = ExtResource("9_t7o3k")

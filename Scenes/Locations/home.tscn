@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bhjxp4p8df2qp"]
+[gd_scene load_steps=20 format=3 uid="uid://bhjxp4p8df2qp"]
 
 [ext_resource type="PackedScene" uid="uid://j2nldvt0tvg5" path="res://Scenes/Menus/progress_menu.tscn" id="2_ucxui"]
 [ext_resource type="Texture2D" uid="uid://third2ockyr2" path="res://Textures/Home/Broken/home1_b.png" id="4_n14ty"]
@@ -16,21 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://bkvmkefpupbj" path="res://Textures/Home/Repair/home2_f.png" id="9_x3ee2"]
 [ext_resource type="Texture2D" uid="uid://dsfi5rkurita3" path="res://Textures/Home/Repair/home3_f.png" id="10_0n5bo"]
 [ext_resource type="Texture2D" uid="uid://bxp50smu3cd2" path="res://Textures/Home/Repair/home4_f.png" id="11_wgmvs"]
-[ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="16_s0vsq"]
-[ext_resource type="Texture2D" uid="uid://dt7kjtf67ophw" path="res://Textures/Player/player5.png" id="17_lj4m6"]
-[ext_resource type="Script" path="res://Scripts/apply_skin.gd" id="18_qpcsm"]
-[ext_resource type="Texture2D" uid="uid://d08ea4vma8hjs" path="res://Textures/Player/player1.png" id="19_chs1r"]
-[ext_resource type="Texture2D" uid="uid://c3re6nvqymf4" path="res://Textures/Player/player2.png" id="20_kr83y"]
-[ext_resource type="Texture2D" uid="uid://7j0aow2adt5f" path="res://Textures/Player/player3.png" id="21_wf646"]
-[ext_resource type="Texture2D" uid="uid://clrtokea2vvw5" path="res://Textures/Player/player4.png" id="22_w7gh6"]
-[ext_resource type="Texture2D" uid="uid://bqrgui30spc2b" path="res://Textures/Player/player6.png" id="23_dhxjk"]
-[ext_resource type="Texture2D" uid="uid://br7uwr7vqfujr" path="res://Textures/Player/player7.png" id="24_oenkw"]
-[ext_resource type="Texture2D" uid="uid://ctyjja587lxj4" path="res://Textures/Player/player8.png" id="25_xibfs"]
-[ext_resource type="Texture2D" uid="uid://ckvgiluws43c0" path="res://Textures/Player/player9.png" id="26_uxpy1"]
-[ext_resource type="Texture2D" uid="uid://buq7p2x78eg0x" path="res://Textures/Amulets/notes.png" id="27_p3sn7"]
-[ext_resource type="Texture2D" uid="uid://b5747t13hg1or" path="res://Textures/Amulets/wrench.png" id="28_bvopa"]
-[ext_resource type="Texture2D" uid="uid://dr1eqpsneaore" path="res://Textures/Amulets/screwdriver.png" id="29_mwngb"]
-[ext_resource type="Texture2D" uid="uid://da8t7fx0yw4rw" path="res://Textures/Amulets/ameridium_gun.png" id="30_8qejx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxmdu"]
 animations = [{
@@ -453,8 +438,35 @@ displayed_amulets_container = NodePath("CanvasLayer/HBoxContainer")
 canvas_layer = NodePath("CanvasLayer")
 texture_rect = NodePath("CanvasLayer/TextureRect")
 win_menu_scene = ExtResource("2_ucxui")
-animation_palayer = NodePath("AnimationPlayer")
 amulet_prefab = ExtResource("6_58chv")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n5ck"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.278431, 0.423529, 0.054902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lbe6"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.278431, 0.423529, 0.054902, 0.52549)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -463,7 +475,9 @@ follow_viewport_enabled = true
 position = Vector2(576, 324)
 scale = Vector2(3.209, 3.209)
 sprite_frames = SubResource("SpriteFrames_fxmdu")
+animation = &"broken"
 autoplay = "default"
+frame_progress = 0.673602
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
 anchors_preset = 14
@@ -544,6 +558,18 @@ script = ExtResource("18_qpcsm")
 position = Vector2(498, 283)
 scale = Vector2(5, 5)
 
+
+[node name="LeaveButton" type="Button" parent="CanvasLayer"]
+offset_left = 926.0
+offset_top = 515.0
+offset_right = 1152.0
+offset_bottom = 591.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_7n5ck")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8lbe6")
+text = "Leave"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
@@ -557,3 +583,5 @@ libraries = {
 "": SubResource("AnimationLibrary_rose0")
 }
 autoplay = "RESET"
+
+[connection signal="pressed" from="CanvasLayer/LeaveButton" to="." method="_on_leave_button_pressed"]

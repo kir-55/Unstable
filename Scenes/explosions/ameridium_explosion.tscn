@@ -12,7 +12,7 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_pldu1"]
 radius = 327.098
 
-[node name="AmeridiumExplosion" type="Area2D" node_paths=PackedStringArray("particles", "collision_shape") groups=["Projectile"]]
+[node name="AmeridiumExplosion" type="Area2D" node_paths=PackedStringArray("particles", "collision_shape")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_y6spp")
