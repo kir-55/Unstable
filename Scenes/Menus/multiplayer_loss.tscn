@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://13bgyn5tbelr"]
+[gd_scene load_steps=13 format=3 uid="uid://13bgyn5tbelr"]
 
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_4n8oe"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="2_8jf83"]
@@ -18,28 +18,6 @@ fill = 1
 fill_from = Vector2(0, 0.3)
 fill_to = Vector2(0.991453, 0)
 metadata/_snap_enabled = true
-
-[sub_resource type="Animation" id="Animation_r0of4"]
-resource_name = "waiting"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": ["Waiting for a winner", "Waiting for a winner.", "Waiting for a winner..", "Waiting for a winner..."]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_taksl"]
-_data = {
-"waiting": SubResource("Animation_r0of4")
-}
 
 [sub_resource type="LabelSettings" id="LabelSettings_b4dck"]
 font_size = 24
@@ -133,24 +111,6 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_4n8oe")
 
-[node name="Label2" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 522.0
-offset_right = 376.0
-offset_bottom = 580.0
-theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
-theme_override_font_sizes/font_size = 24
-text = "Waiting for a winner"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Label2"]
-libraries = {
-"": SubResource("AnimationLibrary_taksl")
-}
-autoplay = "waiting"
-
 [node name="Leave" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 12
@@ -161,7 +121,7 @@ offset_top = -71.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = ExtResource("2_8jf83")
 theme_override_styles/hover = ExtResource("4_unfpl")
 theme_override_styles/pressed = ExtResource("4_unfpl")

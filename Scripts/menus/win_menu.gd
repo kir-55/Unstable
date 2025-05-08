@@ -9,7 +9,7 @@ extends Control
 var win_type = GlobalEnums.WIN_TYPES.NONE
 
 func _ready():
-	score.text += str(float(GlobalVariables.last_score)/100.0) + " meters"
+	score.text += str(GlobalVariables.last_score)
 	var escape_amulets : Array
 	if win_type == GlobalEnums.WIN_TYPES.REPAIR:
 		escape_amulets = GlobalVariables.amulets.filter(func(x): return x.required_for_repair)

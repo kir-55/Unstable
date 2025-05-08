@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7x0qhw6faurw"]
+[gd_scene load_steps=14 format=3 uid="uid://c7x0qhw6faurw"]
 
 [ext_resource type="Script" path="res://Scripts/tnt.gd" id="1_qq0p3"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_r0n3b"]
 [ext_resource type="Texture2D" uid="uid://c0q7ttke7o1vl" path="res://Textures/Decorations/WildWest/tnt_exploded.png" id="2_koakj"]
 [ext_resource type="Texture2D" uid="uid://vkxiwk2tmjxh" path="res://Textures/Decorations/WildWest/tnt.png" id="2_qfgm4"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_43yp5"]
+[ext_resource type="PackedScene" uid="uid://b2v457chva6wm" path="res://Scenes/Explosions/wood_explosion.tscn" id="4_c3y7q"]
 [ext_resource type="PackedScene" uid="uid://dqm0m1uj8kv5u" path="res://Scenes/Explosions/fire_explosion.tscn" id="6_6qf3n"]
 [ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="6_yhxru"]
 
@@ -145,6 +147,11 @@ position = Vector2(0, 1)
 texture = ExtResource("2_qfgm4")
 offset = Vector2(-0.250283, -8)
 
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("3_43yp5")
+max_health = 90.0
+explosion_prefab = ExtResource("4_c3y7q")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_eqwmh")
@@ -155,7 +162,7 @@ speed_scale = 3.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_r0n3b")
-death_messages = Array[String](["TNT exploded!", "Can't touch this!", ""])
+death_messages = Array[String](["TNT exploded!", "Can't touch this!"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.666667, -5)
@@ -165,6 +172,5 @@ shape = SubResource("CircleShape2D_jw568")
 [node name="CPUParticles2D" parent="." instance=ExtResource("6_6qf3n")]
 scale = Vector2(2, 2)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

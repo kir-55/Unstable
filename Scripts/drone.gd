@@ -9,7 +9,7 @@ var go_up:bool = true
 
 
 func _process(delta):
-	if GlobalVariables.game_is_on or (Client.active and Client.players_alive.size() > 1):
+	if GlobalVariables.game_is_on:
 		if abs(get_parent().global_position.y - min_height) > acceptable_difference:
 			acceptable_difference = randf_range(10, 30)
 			go_up = true
