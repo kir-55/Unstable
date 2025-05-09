@@ -8,7 +8,7 @@
 _data = [Vector2(0.00550964, 0.965241), 0.0, 0.0, 0, 0, Vector2(0.983471, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="CPUParticles2D" type="CPUParticles2D"]
+[node name="CPUParticles2D" type="CPUParticles2D" node_paths=PackedStringArray("audio_stream")]
 z_index = 20
 scale = Vector2(3, 3)
 emitting = false
@@ -33,11 +33,11 @@ scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_dqkve")
 color_initial_ramp = ExtResource("1_gp08d")
 script = ExtResource("2_el4mc")
+audio_stream = NodePath("wybuch")
 
 [node name="wybuch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f1nmk")
 volume_db = 10.0
-autoplay = true
 mix_target = 1
 bus = &"SFX"
 
