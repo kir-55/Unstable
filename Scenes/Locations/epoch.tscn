@@ -316,7 +316,7 @@ terrain_generator = NodePath("..")
 spawn_from = 3
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 13.0
 autostart = true
 script = ExtResource("17_qsufl")
 
