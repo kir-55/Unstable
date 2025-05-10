@@ -226,7 +226,6 @@ func create_amulet_use_actions():
 		var action_name = GlobalVariables.use_amulet_action_name + "_" + str(i)
 		InputMap.add_action(action_name)
 		InputMap.action_add_event(action_name, get_input_event_from_str(GlobalVariables.default_use_amulet_events[action_name]))
-		print(InputMap.action_get_events(action_name))
 		GlobalVariables.remappable_actions[action_name] = GlobalVariables.default_use_amulet_events[action_name]
 
 func get_input_event_from_str(name : StringName):

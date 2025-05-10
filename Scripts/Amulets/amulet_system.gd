@@ -10,6 +10,7 @@ extends Node
 @export var effects_animator: AnimationPlayer
 
 var amulets_displayed = false
+var displayed_amulets : Array[int]
 
 
 @export_group("amulets variables")
@@ -26,9 +27,27 @@ func _ready():
 	display_amulets()
 	GlobalVariables.on_player_amulets_changed.connect(display_amulets)
 
+func _input(event):
+	if displayed_amulets.size() > 0:
+		var event_str
+		if event is InputEventKey:
+			event_str = OS.get_keycode_string(event.physical_keycode)
+		elif event is InputEventMouseButton:
+			event_str = "mouse_" + str(event.button_index)
+		var action_name = GlobalVariables.settings["keybinds"].find_key(event_str)
+
+		if event_str is String and action_name:
+			if action_name.contains(GlobalVariables.use_amulet_action_name):
+				var index = int(action_name[action_name.length() - 1]) - 1
+				if (event_str in GlobalVariables.settings["keybinds"].values()) and (index >= 0 and index < displayed_amulets.size()):
+					var amulet_id = displayed_amulets[int(action_name[action_name.length() - 1]) - 1]
+					var artificial_triggering_event = InputEventMouseButton.new()
+					artificial_triggering_event.pressed = true
+					
+					use_amulet(artificial_triggering_event, amulet_id)
 func use_amulet(event: InputEvent, amulet_id: int):
 	if GlobalVariables.game_is_on:
-		if event is InputEventMouseButton and event.pressed:
+		if (event is InputEventMouseButton and event.pressed):
 			if amulet_id == 8:
 				Engine.time_scale = 0.5
 
@@ -76,6 +95,7 @@ func display_amulets():
 				var amulet_timer_bar_representation = amulet_timer_bar.instantiate()
 				amulet_timer_bar_representation.amulet_timer = amulet_timers.timers[amulet_id]
 				amulet_representation.add_child(amulet_timer_bar_representation)
+			displayed_amulets.append(amulet_id)
 			amulets_panel.add_child(amulet_representation)
 		amulets_displayed = true
 #func attach_amulet(id):

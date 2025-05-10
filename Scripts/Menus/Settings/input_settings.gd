@@ -8,11 +8,11 @@ var action_to_remap = null
 var remapping_button = null
 
 var input_actions = {
-	"use_amulet_1": "1",
-	"use_amulet_2": "2",
-	"use_amulet_3": "3",
-	"use_amulet_4": "4",
-	"use_amulet_5": "5"
+	"use_amulet_1": "1st Amulet",
+	"use_amulet_2": "2nd Amulet",
+	"use_amulet_3": "3rd Amulet",
+	"use_amulet_4": "4th Amulet",
+	"use_amulet_5": "5th Amulet"
 }
 
 func _ready():
