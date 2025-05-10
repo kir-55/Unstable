@@ -2,12 +2,16 @@ extends Node
 
 
 func _ready():
+	create_amulet_use_actions()
 	load_player_data()
 	load_settings()
 
 
 
 func _input(event):
+	if Input.is_action_just_pressed("use_amulet_1"):
+		print("Akcja use_amulet_1 została uruchomiona!")
+	
 	if event.is_action_pressed("fullscreen"):  # Check if F11 is pressed
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -58,14 +62,14 @@ func end_timer():
 	GlobalVariables.time_ended = Time.get_ticks_msec()
 
 func load_settings():
-	############################ GRAPHICS SETTINGS ###############################
+	############################ GRAPHICS SETTINGS #############################
 	
 	if GlobalVariables.settings["fullscreen"] == true:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
-	##############################################################################
+	############################################################################
 	
-	############################ AUDIO SETTINGS ###############################
+	############################ AUDIO SETTINGS ################################
 	
 	var bus_to_setting_keys = {
 	"Master": "master_volume",
@@ -81,7 +85,42 @@ func load_settings():
 			var volume_db = linear_to_db(value / 100)
 			AudioServer.set_bus_volume_db(i, volume_db)
 	
-	###########################################################################
+	############################################################################
+	
+	############################ KEYBIND SETTINGS ##############################
+	
+	if GlobalVariables.settings["keybinds"].is_empty():
+		for action in GlobalVariables.remappable_actions:
+			if action in GlobalVariables.default_use_amulet_events:
+				GlobalVariables.settings["keybinds"][action] = GlobalVariables.default_use_amulet_events[action]
+			else:
+				GlobalVariables.settings["keybinds"][action] = InputMap.action_get_events(action)[0].as_text().trim_suffix(" (Physical)")
+			
+	elif GlobalVariables.settings["keybinds"].has_all(GlobalVariables.remappable_actions.keys()):
+		for action in GlobalVariables.settings["keybinds"]:
+				if action in GlobalVariables.remappable_actions:
+					var event_name = GlobalVariables.settings["keybinds"].get(action)
+					if event_name and (event_name != "" or !(event_name is String)):
+						InputMap.action_erase_event(action, InputMap.action_get_events(action)[0])
+						InputMap.action_add_event(action, get_input_event_from_str(event_name))
+
+	else:
+		var valid_keybinds = {}
+		for action in GlobalVariables.settings["keybinds"]:
+			if action in GlobalVariables.remappable_actions:
+				InputMap.action_erase_event(action, InputMap.action_get_events(action)[0])
+				InputMap.action_add_event(action, get_input_event_from_str(GlobalVariables.settings["keybinds"][action]))
+				valid_keybinds[action] = GlobalVariables.settings["keybinds"][action]
+		GlobalVariables.settings["keybinds"] = valid_keybinds
+		
+		for action in GlobalVariables.remappable_actions:
+			if !(action in valid_keybinds):
+				InputMap.action_erase_event(action, InputMap.action_get_events(action)[0])
+				InputMap.action_add_event(action, get_input_event_from_str(GlobalVariables.default_use_amulet_events[action]))
+	save_player_data()
+	
+	############################################################################
+	
 
 func save_player_data():
 	var file = FileAccess.open(GlobalVariables.player_data_path, FileAccess.WRITE)
@@ -171,3 +210,36 @@ func load_menu(menu: String, remove_all_children = true, transition_to_main = fa
 	menu_instance_callable.call(menu_instance)
 	container.add_child(menu_instance)
 
+func save_keybind(action : StringName, event : InputEvent):
+	var event_str
+	if event is InputEventKey:
+		event_str = OS.get_keycode_string(event.physical_keycode)
+	elif event is InputEventMouseButton:
+		event_str = "mouse_" + str(event.button_index)
+
+	var f = InputMap.action_get_events(action)
+	print(f)
+	InputMap.action_erase_events(action)
+	InputMap.action_add_event(action, get_input_event_from_str(event_str))
+	
+	GlobalVariables.settings["keybinds"][action] = event_str
+	save_player_data()
+
+func create_amulet_use_actions():
+	for i in range(1, GlobalVariables.max_amulets + 1):
+		var action_name = GlobalVariables.use_amulet_action_name + "_" + str(i)
+		InputMap.add_action(action_name)
+		InputMap.action_add_event(action_name, get_input_event_from_str(GlobalVariables.default_use_amulet_events[action_name]))
+		print(InputMap.action_get_events(action_name))
+		GlobalVariables.remappable_actions[action_name] = GlobalVariables.default_use_amulet_events[action_name]
+
+func get_input_event_from_str(name : StringName):
+	var input_event
+	if name.contains("mouse_"):
+		input_event = InputEventMouseButton.new()
+		input_event.button_index = int(name.split("_")[1])
+	else:
+		input_event = InputEventKey.new()
+		input_event.physical_keycode = OS.find_keycode_from_string(name)
+	
+	return input_event
