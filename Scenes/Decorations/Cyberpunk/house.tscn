@@ -22,6 +22,6 @@ visual_variations = Array[Texture2D]([ExtResource("1_nlivu"), ExtResource("3_1uf
 
 [node name="PointLight2D" type="PointLight2D" parent="." node_paths=PackedStringArray("take_from")]
 energy = 2.0
-range_z_max = 0
+range_z_max = -1
 script = ExtResource("10_wm2mx")
 take_from = NodePath("..")

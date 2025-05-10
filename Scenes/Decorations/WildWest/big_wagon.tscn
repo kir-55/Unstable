@@ -22,7 +22,7 @@ scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_yp65e")
-death_messages = Array[String](["You were slain by a wagon", "You broke your leg, while kicking the wagon", "You were curious, what is the wagon made of"])
+death_messages = Array[String](["You were slain by a wagon", "You hit the wagon"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.23333, -76.6124)

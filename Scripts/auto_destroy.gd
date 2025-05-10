@@ -4,6 +4,4 @@ extends Node
 
 func _on_finished():
 	queue_free()
-	
-func play_sound():
-	audio_stream.play()
+

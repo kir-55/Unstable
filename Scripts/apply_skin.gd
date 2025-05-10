@@ -43,7 +43,7 @@ func _ready():
 	GlobalVariables.on_player_colors_changed.connect(update_colors)
 
 func update_colors():
-	if !Client.active or get_parent().is_multiplayer_authority():
+	if !Client.active or GlobalVariables.is_in_epoch or get_parent().is_multiplayer_authority():
 		for key in GlobalVariables.player_colors:
 			self.set(key, GlobalVariables.player_colors[key])
 	

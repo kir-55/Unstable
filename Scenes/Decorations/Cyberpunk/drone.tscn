@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwwxy7v7fye4k"]
+[gd_scene load_steps=9 format=3 uid="uid://dwwxy7v7fye4k"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_opeoa"]
 [ext_resource type="Texture2D" uid="uid://d21brerex0ss1" path="res://Textures/Decorations/Cyberpunk/drone.png" id="2_n2mlw"]
@@ -14,20 +14,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xgdqd"]
 gradient = SubResource("Gradient_gnrnq")
-width = 16
-height = 16
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_ej8wb"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_d1w2s"]
-gradient = SubResource("Gradient_ej8wb")
-width = 12
-height = 6
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -62,20 +50,8 @@ explosion_point = NodePath("../CollisionShape2D")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -7)
-color = Color(0.957433, 0.521669, 0.505505, 1)
+color = Color(0.979127, 0.715729, 0.698377, 1)
 energy = 2.0
 texture = SubResource("GradientTexture2D_xgdqd")
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(-6, -15.3333)
-color = Color(0.865808, 0.970489, 0.945134, 1)
-energy = 2.0
-texture = SubResource("GradientTexture2D_d1w2s")
-
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-position = Vector2(6.33333, -15.3333)
-color = Color(0.865808, 0.970489, 0.945134, 1)
-energy = 2.0
-texture = SubResource("GradientTexture2D_d1w2s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

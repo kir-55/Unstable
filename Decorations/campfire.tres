@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://cvgjarm7gnuc4"]
+
+[ext_resource type="PackedScene" uid="uid://bfyyyys48e2jc" path="res://Scenes/Decorations/WildWest/campfire.tscn" id="1_lto6p"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_a1grn"]
+
+[resource]
+script = ExtResource("2_a1grn")
+prefab = ExtResource("1_lto6p")
+name = "Round Cactus"
+spawn_on_center = false
+chance_to_spawn = 30.0
+width = 150
+pattern_type = "B"
+type = 1
+ignore_types = Array[int]([0])
+can_be_mirrored = true

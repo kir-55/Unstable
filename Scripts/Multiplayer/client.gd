@@ -456,7 +456,8 @@ func start_game(id: int):
 		GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 		GlobalVariables.terrain_code = hash(lobby_id)
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
-
+		GlobalVariables.is_in_epoch = true
+		
 		GlobalFunctions.start_timer()
 		send_to_server(message)
 		get_tree().change_scene_to_file(game_scene)

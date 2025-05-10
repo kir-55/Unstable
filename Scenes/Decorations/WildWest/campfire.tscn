@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfyyyys48e2jc"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_vgm3q"]
+[ext_resource type="Texture2D" uid="uid://cyqy614kyncmy" path="res://Textures/Decorations/WildWest/ognisko.png" id="2_kpfnd"]
+[ext_resource type="AudioStream" uid="uid://barp314gjsnq3" path="res://Audio/Sounds/fire.wav" id="3_1fhkq"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/campfire_effect.gd" id="3_gpj7p"]
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="5_dn7rl"]
+
+[sub_resource type="Gradient" id="Gradient_rkr7w"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vkenh"]
+gradient = SubResource("Gradient_rkr7w")
+width = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qde6q"]
+gradient = ExtResource("5_dn7rl")
+
+[sub_resource type="Curve" id="Curve_b2a7n"]
+_data = [Vector2(0.021611, 0.857975), 0.0, 0.0, 0, 0, Vector2(1, 0.162054), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_20c01"]
+curve = SubResource("Curve_b2a7n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e8rki"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5.695, 1, 1)
+spread = 101.418
+gravity = Vector3(0, -100, 0)
+radial_accel_min = -100.0
+scale_min = 6.0
+scale_max = 9.0
+scale_curve = SubResource("CurveTexture_20c01")
+color_initial_ramp = SubResource("GradientTexture1D_qde6q")
+
+[node name="Campfire" type="Area2D" groups=["Obsticle"]]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_vgm3q")
+death_messages = Array[String](["Got too cozy with the flames.", "Grilled to perfection.", "Gone in a puff of smoke."])
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.333333, 0.333333)
+stream = ExtResource("3_1fhkq")
+volume_db = 10.0
+autoplay = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
+energy = 0.6
+texture = SubResource("GradientTexture2D_vkenh")
+script = ExtResource("3_gpj7p")
+max_energy = 0.8
+color1 = Color(0.995529, 1, 0.660334, 1)
+color2 = Color(1, 0.755078, 0.752765, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.19209e-07, -11.5)
+polygon = PackedVector2Array(-0.333333, -4.83333, -4, 7.16667, -10.3333, 14.5, 10, 14.5, 4, 7.16667)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-1, -10)
+texture = ExtResource("2_kpfnd")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -2.66667)
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_e8rki")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

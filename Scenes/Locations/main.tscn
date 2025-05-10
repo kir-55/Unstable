@@ -120,14 +120,15 @@ terrain_generator = NodePath("..")
 
 [node name="DecorationSpawner" type="Node2D" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
 script = ExtResource("9_ob6c0")
-load_radius = 3
+load_radius = 6
 max_radius = 10
+unload_radius = 1500
 rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
-line = NodePath("../GrassLine")
+line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_from = 0
+spawn_from = 3
 
 [node name="GroundLine" type="Line2D" parent="MovingGround/TerrainGenerator"]
 z_index = -1

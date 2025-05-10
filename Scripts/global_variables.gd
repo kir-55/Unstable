@@ -64,6 +64,7 @@ var game_is_on := true:
 		game_is_on = value
 		on_game_state_changed.emit(value)
 		
+var is_in_epoch = false
 
 var menus = {
 	"main" : load("res://Scenes/Menus/start_menu.tscn"),

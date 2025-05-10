@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bctt4qwmn8jqx"]
+
+[ext_resource type="Texture2D" uid="uid://c40frdglo8qia" path="res://Textures/Decorations/pasek.png" id="1_kfp8e"]
+[ext_resource type="Texture2D" uid="uid://c6umir5gnhkf6" path="res://Textures/Decorations/Cyberpunk/light.png" id="2_s76xj"]
+
+[node name="road_lines" type="Node2D"]
+
+[node name="road_line" type="Sprite2D" parent="."]
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(3, -3.998)
+scale = Vector2(6, 6)
+texture = ExtResource("1_kfp8e")
+offset = Vector2(0, 2.333)
+
+[node name="PointLight2D" type="PointLight2D" parent="road_line"]
+position = Vector2(-2.33336, 2.16633)
+color = Color(0.978664, 0.8271, 0.59297, 1)
+energy = 2.0
+range_z_max = 0
+texture = ExtResource("2_s76xj")
+
+[node name="road_line2" type="Sprite2D" parent="."]
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(166, -3.998)
+scale = Vector2(6, 6)
+texture = ExtResource("1_kfp8e")
+offset = Vector2(0, 2.333)
+
+[node name="PointLight2D2" type="PointLight2D" parent="road_line2"]
+position = Vector2(-56.3333, 2.49967)
+color = Color(0.978664, 0.8271, 0.59297, 1)
+energy = 2.0
+range_z_max = 0
+texture = ExtResource("2_s76xj")
+
+[node name="road_line3" type="Sprite2D" parent="."]
+modulate = Color(0.882353, 0.658824, 0.270588, 1)
+position = Vector2(-160, -3.998)
+scale = Vector2(6, 6)
+texture = ExtResource("1_kfp8e")
+offset = Vector2(0, 2.333)
+
+[node name="PointLight2D3" type="PointLight2D" parent="road_line3"]
+position = Vector2(52.5, 2.49967)
+color = Color(0.978664, 0.8271, 0.59297, 1)
+energy = 2.0
+range_z_max = 0
+texture = ExtResource("2_s76xj")

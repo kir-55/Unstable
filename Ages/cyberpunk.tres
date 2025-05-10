@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bravuad5e8urb" path="res://Textures/Decorations/Cyberpunk/cyber2.png" id="1_10ydi"]
 [ext_resource type="Environment" uid="uid://by34g5eel3o71" path="res://Ages/Environments/cyberpunk.tres" id="2_8mxvc"]
 [ext_resource type="Resource" uid="uid://cu68820tnhrfq" path="res://Decorations/Cyberpunk/house.tres" id="2_bmoe8"]
-[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/road_line.tres" id="3_hu16r"]
+[ext_resource type="Resource" uid="uid://0g1kqma7ny1k" path="res://Decorations/road_line_glowing.tres" id="3_44ddk"]
 [ext_resource type="Resource" uid="uid://c6t115vklgmav" path="res://Decorations/Cyberpunk/motorbike.tres" id="4_gm80n"]
 [ext_resource type="Resource" uid="uid://b7r04ltmg0ano" path="res://Decorations/Cyberpunk/barrier.tres" id="5_yu2nq"]
 [ext_resource type="Resource" uid="uid://bdd7vf538npx" path="res://Decorations/Cyberpunk/drone1.tres" id="6_1dem3"]
@@ -11,9 +11,9 @@
 [ext_resource type="Resource" uid="uid://cq0c77vrh4utc" path="res://Decorations/ground_fade.tres" id="8_h6jeg"]
 [ext_resource type="AudioStream" uid="uid://cpfk8fttkndua" path="res://Audio/Melodies/cyberpunk — kopia.mp3" id="9_lf31v"]
 [ext_resource type="Resource" uid="uid://chjtfr73cu0y8" path="res://Decorations/rain.tres" id="9_yccdc"]
-[ext_resource type="Texture2D" uid="uid://0acqbrycwmxj" path="res://Textures/Parallaxes/parallax_forest.png" id="10_g8rcl"]
 [ext_resource type="PackedScene" uid="uid://clh4vqfgdvkyb" path="res://Scenes/Locations/DirectionalLights/cyberpunk.tscn" id="10_mxpaf"]
 [ext_resource type="Texture2D" uid="uid://b37yjf2ljn3oe" path="res://Textures/Parallaxes/parallax_cyberpunk.png" id="12_go87e"]
+[ext_resource type="Texture2D" uid="uid://c2igi1mqsr43e" path="res://Textures/Parallaxes/parallax_cyberpunk2.png" id="13_yf724"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="14_ar4ej"]
 
 [resource]
@@ -23,12 +23,12 @@ description = "22nd century, futuristic motorbikes, drones and mines"
 baner = ExtResource("1_10ydi")
 ground_color = Color(0.223529, 0.152941, 0.368627, 1)
 grass_color = Color(0.184314, 0.0980392, 0.243137, 1)
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_bmoe8"), ExtResource("3_hu16r"), ExtResource("4_gm80n"), ExtResource("5_yu2nq"), ExtResource("6_1dem3"), ExtResource("7_1d18d"), ExtResource("8_h6jeg"), ExtResource("9_yccdc")])
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_bmoe8"), ExtResource("3_44ddk"), ExtResource("4_gm80n"), ExtResource("5_yu2nq"), ExtResource("6_1dem3"), ExtResource("7_1d18d"), ExtResource("8_h6jeg"), ExtResource("9_yccdc")])
 decoration_spawn_pattern = "NFRA*B*|NFRHB*C*|NFRDB*C*|NFR|NFRA*|NFRC*|NFRH|NFRB*C*|NFRAB*|NFRD|NFRA*B|NFRB*|NFRH|NFR|NFRB*C*|NFRA*|NFRHC*|NFRB*C*|NFRHC*|NFRC*|NFR"
 environment = ExtResource("2_8mxvc")
 directional_light = ExtResource("10_mxpaf")
 background_color = Color(0.407843, 0.25098, 0.223529, 1)
-parallax_background_close = ExtResource("10_g8rcl")
-parallax_background_far = ExtResource("10_g8rcl")
+parallax_background_close = ExtResource("13_yf724")
+parallax_background_far = ExtResource("13_yf724")
 parallax_foreground = ExtResource("12_go87e")
 music = ExtResource("9_lf31v")

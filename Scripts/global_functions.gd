@@ -45,8 +45,9 @@ func reload():
 	GlobalVariables.times_treveled = 0
 	GlobalVariables.terrain_code = randi()
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
+	GlobalVariables.is_in_epoch = true
 	get_tree().change_scene_to_file("res://Scenes/Locations/epoch.tscn")
-
+		
 
 
 

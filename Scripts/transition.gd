@@ -15,6 +15,7 @@ func _set_player(player):
 
 @rpc("any_peer", "call_local")
 func transition(destination, next_epoch_id: int):
+	GlobalVariables.is_in_epoch = false
 	if (GlobalVariables.game_is_on or (Client.active and Client.players_alive.size() > 1)):
 		
 		Engine.time_scale = 1

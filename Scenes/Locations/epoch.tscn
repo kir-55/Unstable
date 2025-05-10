@@ -308,6 +308,7 @@ collision_layer = 257
 script = ExtResource("16_5yy0h")
 load_radius = 6
 max_radius = 10
+unload_radius = 1500
 rs = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")

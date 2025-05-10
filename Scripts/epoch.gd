@@ -49,7 +49,7 @@ var initial_view_port_size := Vector2(1152, 648)
 func _ready():
 	death_panel.visible = false
 	countdown_panel.visible = true
-	
+	GlobalVariables.is_in_epoch = true
 	GlobalVariables.game_is_on = false
 	current_countdown_value = GlobalVariables.pre_game_countdown_time
 	var current_epoch = GlobalVariables.epochs[GlobalVariables.current_epoch_id]

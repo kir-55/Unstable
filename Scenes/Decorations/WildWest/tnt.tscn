@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7x0qhw6faurw"]
+[gd_scene load_steps=14 format=3 uid="uid://c7x0qhw6faurw"]
 
 [ext_resource type="Script" path="res://Scripts/tnt.gd" id="1_qq0p3"]
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_r0n3b"]
 [ext_resource type="Texture2D" uid="uid://c0q7ttke7o1vl" path="res://Textures/Decorations/WildWest/tnt_exploded.png" id="2_koakj"]
 [ext_resource type="Texture2D" uid="uid://vkxiwk2tmjxh" path="res://Textures/Decorations/WildWest/tnt.png" id="2_qfgm4"]
+[ext_resource type="AudioStream" uid="uid://cw4ufqtoy4au" path="res://Audio/explosion-312361.mp3" id="2_xqqwm"]
 [ext_resource type="PackedScene" uid="uid://dqm0m1uj8kv5u" path="res://Scenes/Explosions/fire_explosion.tscn" id="6_6qf3n"]
 [ext_resource type="Material" uid="uid://gyobn0guc6i2" path="res://Styles/background_shader.tres" id="6_yhxru"]
 
@@ -112,23 +113,49 @@ tracks/7/keys = {
 "update": 1,
 "values": [ExtResource("6_yhxru")]
 }
-tracks/8/type = "method"
+tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CPUParticles2D")
+tracks/8/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4ej8e"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_sound"
-}]
+"update": 1,
+"values": [ExtResource("2_qfgm4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqwmh"]
 _data = {
+"RESET": SubResource("Animation_4ej8e"),
 "explosion": SubResource("Animation_57t4c")
 }
 
@@ -141,6 +168,10 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_qq0p3")
 animation_player = NodePath("AnimationPlayer")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(2, 2)
+stream = ExtResource("2_xqqwm")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2(0.333333, 0.333333)
@@ -163,13 +194,14 @@ offset = Vector2(-0.250283, -8)
 libraries = {
 "": SubResource("AnimationLibrary_eqwmh")
 }
+autoplay = "RESET"
 speed_scale = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_r0n3b")
-death_messages = Array[String](["TNT exploded!", "Can't touch this!", ""])
+death_messages = Array[String](["TNT exploded!", "Can't touch this!"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.666667, -5)
