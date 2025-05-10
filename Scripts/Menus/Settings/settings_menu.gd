@@ -158,5 +158,3 @@ func _on_check_button_toggled(toggled_on):
 		DisplayServer.window_set_position(window_position)
 		GlobalVariables.settings["fullscreen"] = false
 		GlobalFunctions.save_player_data()
-
-

@@ -9,9 +9,6 @@ func _ready():
 
 
 func _input(event):
-	if Input.is_action_just_pressed("use_amulet_1"):
-		print("Akcja use_amulet_1 została uruchomiona!")
-	
 	if event.is_action_pressed("fullscreen"):  # Check if F11 is pressed
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -218,8 +215,6 @@ func save_keybind(action : StringName, event : InputEvent):
 	elif event is InputEventMouseButton:
 		event_str = "mouse_" + str(event.button_index)
 
-	var f = InputMap.action_get_events(action)
-	print(f)
 	InputMap.action_erase_events(action)
 	InputMap.action_add_event(action, get_input_event_from_str(event_str))
 	

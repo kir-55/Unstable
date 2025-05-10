@@ -219,6 +219,10 @@ script = ExtResource("4_3rl4e")
 input_button_scene = ExtResource("4_4jn32")
 action_list = NodePath(".")
 
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds"]
+layout_mode = 2
+text = "Reset to defaults"
+
 [node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 30.34)
 layout_mode = 2
@@ -464,5 +468,6 @@ text = "show glasses"
 label_settings = ExtResource("10_q2aww")
 
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer2/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds/Button" to="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds/ActionList" method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Panel2/CheckBox" to="." method="_on_check_box_toggled"]

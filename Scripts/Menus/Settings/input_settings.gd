@@ -19,9 +19,8 @@ func _ready():
 	_create_action_list()
 
 func _create_action_list():
-	InputMap.load_from_project_settings() 
 	for item in action_list.get_children():
-		queue_free()
+		item.queue_free()
 	
 	for action in GlobalVariables.remappable_actions:
 		var button = input_button_scene.instantiate()
@@ -54,8 +53,8 @@ func _input(event):
 		):
 			if event is InputEventMouseButton:
 				event.double_click = false
-			GlobalFunctions.save_keybind(action_to_remap, event)
 			
+			GlobalFunctions.save_keybind(action_to_remap, event)
 			remapping_button.find_child("ActionKeybindLabel").text = event.as_text().trim_suffix(" (Physical)")
 			
 			
@@ -64,3 +63,29 @@ func _input(event):
 			remapping_button = null
 			
 			accept_event()
+
+func reset_to_defaults():
+	for item in action_list.get_children():
+		item.queue_free()
+	
+	for action in GlobalVariables.remappable_actions:
+		var button = input_button_scene.instantiate()
+		var action_name_label = button.find_child("ActionNameLabel")
+		var action_keybind_label = button.find_child("ActionKeybindLabel")
+		
+		GlobalFunctions.save_keybind(action, GlobalFunctions.get_input_event_from_str(GlobalVariables.default_use_amulet_events[action]))
+		action_name_label.text = input_actions[action]
+		
+		var events = InputMap.action_get_events(action)
+		if events.size() > 0:
+			action_keybind_label.text = events[0].as_text().trim_suffix(" (Physical)")
+		else:
+			action_keybind_label.text = ""
+			
+		print("hmmm")
+		action_list.add_child(button)
+		button.pressed.connect(_on_input_button_pressed.bind(button, action))
+
+
+func _on_button_pressed():
+	reset_to_defaults()
