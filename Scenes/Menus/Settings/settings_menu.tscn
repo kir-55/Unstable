@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf6gfirsvyabg"]
+[gd_scene load_steps=15 format=3 uid="uid://cf6gfirsvyabg"]
 
-[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="1_40crx"]
-[ext_resource type="Script" path="res://Scripts/menus/settings_menu.gd" id="1_huv8h"]
-[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_7una3"]
-[ext_resource type="PackedScene" uid="uid://d0dlvjtvg61fd" path="res://color_prefab.tscn" id="3_sh0b1"]
-[ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="4_qwwwi"]
-[ext_resource type="Texture2D" uid="uid://d08ea4vma8hjs" path="res://Textures/Player/player1.png" id="6_pikr2"]
-[ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="6_rqky7"]
-[ext_resource type="Script" path="res://Scripts/apply_skin.gd" id="8_2sr7k"]
-[ext_resource type="LabelSettings" uid="uid://dewsb8scjp0ni" path="res://Styles/label_settings.tres" id="9_qk1mx"]
+[ext_resource type="Script" path="res://Scripts/Menus/Settings/settings_menu.gd" id="1_pi0yv"]
+[ext_resource type="PackedScene" uid="uid://d0dlvjtvg61fd" path="res://color_prefab.tscn" id="2_jbl77"]
+[ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="3_ku6ii"]
+[ext_resource type="Script" path="res://Scripts/Menus/Settings/input_settings.gd" id="4_3rl4e"]
+[ext_resource type="PackedScene" uid="uid://boj0t04g1vsht" path="res://Scenes/Menus/Settings/input_button.tscn" id="4_4jn32"]
+[ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="5_uw0dw"]
+[ext_resource type="StyleBox" uid="uid://cerythqxamdxh" path="res://Styles/button_hover_yellow.tres" id="6_pjfu3"]
+[ext_resource type="Material" uid="uid://wvph4b6l64ss" path="res://Styles/player.tres" id="7_w6jb4"]
+[ext_resource type="Texture2D" uid="uid://d08ea4vma8hjs" path="res://Textures/Player/player1.png" id="8_wny8s"]
+[ext_resource type="Script" path="res://Scripts/apply_skin.gd" id="9_sk6sa"]
+[ext_resource type="LabelSettings" uid="uid://dewsb8scjp0ni" path="res://Styles/label_settings.tres" id="10_q2aww"]
 
 [sub_resource type="Theme" id="Theme_m6wom"]
 
@@ -29,7 +31,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_huv8h")
+script = ExtResource("1_pi0yv")
 fullscreen_checkbutton = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer2/CheckButton")
 master_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer2/MasterSlider")
 music_slider = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4/MusicSlider")
@@ -38,7 +40,7 @@ master_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollC
 music_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer4/MusicLabel")
 sfx_volume_percantage = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Audio/HBoxContainer3/SFXLabel")
 player_presentation = NodePath("Panel2/TextureRect")
-color_prefab = ExtResource("3_sh0b1")
+color_prefab = ExtResource("2_jbl77")
 color_picker_container = NodePath("Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Skin")
 
 [node name="Panel" type="Panel" parent="."]
@@ -55,7 +57,7 @@ offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
-theme_override_styles/panel = ExtResource("1_40crx")
+theme_override_styles/panel = ExtResource("3_ku6ii")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -166,6 +168,56 @@ layout_mode = 2
 layout_mode = 2
 theme = SubResource("Theme_m6wom")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sldmt")
+
+[node name="Control3" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30.34)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="Keybinds" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "KEYBINDS
+"
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ActionList" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Keybinds" node_paths=PackedStringArray("action_list")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("4_3rl4e")
+input_button_scene = ExtResource("4_4jn32")
+action_list = NodePath(".")
 
 [node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 30.34)
@@ -348,10 +400,10 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.15
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("3_7una3")
-theme_override_styles/hover = ExtResource("4_qwwwi")
-theme_override_styles/pressed = ExtResource("4_qwwwi")
-theme_override_styles/focus = ExtResource("4_qwwwi")
+theme_override_styles/normal = ExtResource("5_uw0dw")
+theme_override_styles/hover = ExtResource("6_pjfu3")
+theme_override_styles/pressed = ExtResource("6_pjfu3")
+theme_override_styles/focus = ExtResource("6_pjfu3")
 text = "Save & Exit"
 
 [node name="Control3" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
@@ -365,10 +417,10 @@ offset_left = 262.0
 offset_top = -167.0
 offset_right = 568.0
 offset_bottom = 244.0
-theme_override_styles/panel = ExtResource("1_40crx")
+theme_override_styles/panel = ExtResource("3_ku6ii")
 
 [node name="TextureRect" type="TextureRect" parent="Panel2"]
-material = ExtResource("6_rqky7")
+material = ExtResource("7_w6jb4")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -381,10 +433,10 @@ offset_right = 186.0
 offset_bottom = 187.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_pikr2")
+texture = ExtResource("8_wny8s")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("8_2sr7k")
+script = ExtResource("9_sk6sa")
 
 [node name="CheckBox" type="CheckBox" parent="Panel2"]
 layout_mode = 1
@@ -409,7 +461,7 @@ offset_top = 6.66666
 offset_right = 127.0
 offset_bottom = 26.6666
 text = "show glasses"
-label_settings = ExtResource("9_qk1mx")
+label_settings = ExtResource("10_q2aww")
 
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/Graphics/HBoxContainer2/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

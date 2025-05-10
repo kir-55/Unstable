@@ -35,6 +35,7 @@ var times_treveled: int = 0
 @export var max_amulets : int = 5
 @export var initial_items_in_home: int = 3
 var items_in_home: int = initial_items_in_home
+var use_amulet_action_name = "use_amulet"
 
 
 @export var initial_chance_for_lag = 100
@@ -69,7 +70,7 @@ var is_in_epoch = false
 var menus = {
 	"main" : load("res://Scenes/Menus/start_menu.tscn"),
 	"game_over" : load("res://Scenes/Menus/game_over_menu.tscn"),
-	"settings" : load("res://Scenes/Menus/settings_menu.tscn"),
+	"settings" : load("res://Scenes/Menus/Settings/settings_menu.tscn"),
 	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
 	"win" : load("res://Scenes/Menus/win_menu.tscn"),
 	"replace_amulet" : load("res://Scenes/Menus/replace_amulet_menu.tscn"),
@@ -89,7 +90,8 @@ var settings = {
 	"master_volume": 100,
 	"music_volume": 100,
 	"sfx_volume": 100,
-	"fullscreen": false
+	"fullscreen": false,
+	"keybinds" : {}
 }
 
 var player_colors := {
@@ -127,6 +129,15 @@ var player_colors := {
 	"hand_color_shadow" :  Color(0.9, 0.6, 0.4)
 }
 
+var remappable_actions = {} #THIS IS ASSIGNED BY A FUNCTION BUT YOU CAN ADD SOMETHING HERE
+
+var default_use_amulet_events = {
+	"use_amulet_1": "C",
+	"use_amulet_2": "V",
+	"use_amulet_3": "B",
+	"use_amulet_4": "N",
+	"use_amulet_5": "M",
+}
 
 var global_theme := Theme.new() #needed for font
 var fonts = ["res://Styles/Fonts/Minecraft.ttf", "res://Styles/Fonts/C&C Red Alert [LAN].ttf"]
