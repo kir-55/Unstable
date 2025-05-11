@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://boj0t04g1vsht"]
+[gd_scene load_steps=2 format=3 uid="uid://boj0t04g1vsht"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Settings/input_keybind_timer.gd" id="1_kf1fb"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(100, 29)
@@ -45,3 +47,12 @@ mouse_filter = 2
 layout_mode = 2
 text = "Keybind"
 vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("action_keybind_label", "action_name_label")]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("1_kf1fb")
+action_keybind_label = NodePath("../MarginContainer/HBoxContainer/ActionKeybindLabel")
+action_name_label = NodePath("../MarginContainer/HBoxContainer/ActionNameLabel")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

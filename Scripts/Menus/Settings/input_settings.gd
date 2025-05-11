@@ -43,6 +43,7 @@ func _on_input_button_pressed(button, action):
 		is_user_remapping = true
 		action_to_remap = action
 		remapping_button = button
+		button.find_child("ActionKeybindLabel").remove_theme_color_override("font_color")
 		button.find_child("ActionKeybindLabel").text = "Press key to bind..."
 
 func _input(event):
@@ -54,8 +55,26 @@ func _input(event):
 			if event is InputEventMouseButton:
 				event.double_click = false
 			
-			GlobalFunctions.save_keybind(action_to_remap, event)
+			var actions_to_check = input_actions.duplicate()
+			for action in GlobalVariables.not_remappable_actions:
+				actions_to_check[action] = ""
+				
+			for action in actions_to_check:
+				for action_event in InputMap.action_get_events(action):
+					print(event.as_text(), action_event.as_text().trim_suffix(" (Physical)"))
+					if action_event.as_text().trim_suffix(" (Physical)") == event.as_text():
+						remapping_button.find_child("ActionKeybindLabel").text = "The key is already in use..."
+						remapping_button.find_child("ActionKeybindLabel").add_theme_color_override("font_color", Color(1, 0.4, 0.4))
+						remapping_button.find_child("Timer").start()
+						
+						is_user_remapping = false
+						action_to_remap = null
+						remapping_button = null
+						accept_event()
+						return
+			
 			remapping_button.find_child("ActionKeybindLabel").text = event.as_text().trim_suffix(" (Physical)")
+			GlobalFunctions.save_keybind(action_to_remap, event)
 			
 			
 			is_user_remapping = false

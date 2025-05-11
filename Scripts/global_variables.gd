@@ -141,5 +141,13 @@ var default_use_amulet_events = {
 	"use_amulet_5": "5",
 }
 
+var not_remappable_actions = [
+	"up",
+	"bottom",
+	"dash",
+	"fire",
+	"fullscreen"
+]
+
 var global_theme := Theme.new() #needed for font
 var fonts = ["res://Styles/Fonts/Minecraft.ttf", "res://Styles/Fonts/C&C Red Alert [LAN].ttf"]

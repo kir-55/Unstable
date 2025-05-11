@@ -40,13 +40,14 @@ func _input(event):
 			if action_name.contains(GlobalVariables.use_amulet_action_name):
 				var index = int(action_name[action_name.length() - 1]) - 1
 				if (event_str in GlobalVariables.settings["keybinds"].values()) and (index >= 0 and index < displayed_amulets.size()):
-					var amulet_id = displayed_amulets[int(action_name[action_name.length() - 1]) - 1]
+					var amulet_id = displayed_amulets[index - 1]
 					var artificial_triggering_event = InputEventMouseButton.new()
 					artificial_triggering_event.pressed = true
 					
 					use_amulet(artificial_triggering_event, amulet_id)
+
 func use_amulet(event: InputEvent, amulet_id: int):
-	if GlobalVariables.game_is_on:
+	if GlobalVariables.game_is_on and GlobalVariables.amulets[amulet_id].consumable:
 		if (event is InputEventMouseButton and event.pressed):
 			if amulet_id == 8:
 				Engine.time_scale = 0.5
