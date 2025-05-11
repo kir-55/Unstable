@@ -40,7 +40,7 @@ func _input(event):
 			if action_name.contains(GlobalVariables.use_amulet_action_name):
 				var index = int(action_name[action_name.length() - 1]) - 1
 				if (event_str in GlobalVariables.settings["keybinds"].values()) and (index >= 0 and index < displayed_amulets.size()):
-					var amulet_id = displayed_amulets[index - 1]
+					var amulet_id = displayed_amulets[index]
 					var artificial_triggering_event = InputEventMouseButton.new()
 					artificial_triggering_event.pressed = true
 					

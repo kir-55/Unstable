@@ -160,10 +160,6 @@ func chosed_amulet(event: InputEvent, amulet_id: int, amulet_representation: Nod
 		latest_chosen_amulet_representation = amulet_representation
 		if event is InputEventMouseButton and event.pressed and amulets_chosen.size() < amount_of_items_to_take:
 
-			if amulet_id == 2:
-				GlobalVariables.player_global_speed += 100
-				GlobalVariables.items_in_home += 1
-
 			amulets_chosen.append(amulet_id)
 
 			var unique_amulets = {}

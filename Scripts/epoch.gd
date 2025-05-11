@@ -50,6 +50,10 @@ var first_frame = true
 
 func _ready():
 	
+	var player_chronometer_count = GlobalVariables.player_amulets.filter(func(id): return id == 2).size()
+	GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed + player_chronometer_count * 100
+	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home + player_chronometer_count
+	
 	death_panel.visible = false
 	countdown_panel.visible = true
 	GlobalVariables.is_in_epoch = true
