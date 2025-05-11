@@ -101,7 +101,6 @@ func reset_to_defaults():
 		else:
 			action_keybind_label.text = ""
 			
-		print("hmmm")
 		action_list.add_child(button)
 		button.pressed.connect(_on_input_button_pressed.bind(button, action))
 

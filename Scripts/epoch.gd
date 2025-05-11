@@ -110,9 +110,8 @@ var last_zoom = Vector2(0,0)
 var last_viewport = Vector2.ZERO
 
 func _process(delta):
-	
-	
 	if first_frame:
+		player.REMOTE_PLAYER_POSITION = spawn_point.global_position
 		player.global_position = spawn_point.global_position
 		first_frame = false
 	

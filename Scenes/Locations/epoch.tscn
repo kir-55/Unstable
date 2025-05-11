@@ -275,7 +275,7 @@ script = ExtResource("11_vmtw0")
 script = ExtResource("12_x6lqm")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(475, -1316)
+position = Vector2(157, 202)
 
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
 position = Vector2(-650, 271)
