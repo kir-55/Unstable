@@ -74,6 +74,7 @@ var menus = {
 	"progress" : load("res://Scenes/Menus/progress_menu.tscn"),
 	"win" : load("res://Scenes/Menus/win_menu.tscn"),
 	"replace_amulet" : load("res://Scenes/Menus/replace_amulet_menu.tscn"),
+	"remove_amulet" : load("res://Scenes/Menus/remove_amulet_menu.tscn"),
 	"multiplayer_join" : load("res://Scenes/Menus/multiplayer_join.tscn"),
 	"multiplayer_lobby" : load("res://Scenes/Menus/multiplayer_lobby.tscn"),
 	"multiplayer_victory" : load("res://Scenes/Menus/multiplayer_victory.tscn"),
@@ -132,11 +133,11 @@ var player_colors := {
 var remappable_actions = {} #THIS IS ASSIGNED BY A FUNCTION BUT YOU CAN ADD SOMETHING HERE
 
 var default_use_amulet_events = {
-	"use_amulet_1": "C",
-	"use_amulet_2": "V",
-	"use_amulet_3": "B",
-	"use_amulet_4": "N",
-	"use_amulet_5": "M",
+	"use_amulet_1": "1",
+	"use_amulet_2": "2",
+	"use_amulet_3": "3",
+	"use_amulet_4": "4",
+	"use_amulet_5": "5",
 }
 
 var global_theme := Theme.new() #needed for font

@@ -24,7 +24,7 @@
 [resource]
 script = ExtResource("3_326o4")
 title = "Medieval"
-description = "13` century, hay, arrows"
+description = "Barrels, Wagons, Lake, Boats, Krakens"
 baner = ExtResource("1_vobd1")
 ground_color = Color(0.407843, 0.25098, 0.223529, 1)
 grass_color = Color(0.580392, 0.678431, 0.223529, 1)

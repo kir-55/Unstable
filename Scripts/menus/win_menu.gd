@@ -4,12 +4,12 @@ extends Control
 @export var win_label : RichTextLabel
 @export var amulet_prefab : PackedScene
 @export var new_amulet_count_label : RichTextLabel
-@export var amulets_container : GridContainer
 
 var win_type = GlobalEnums.WIN_TYPES.NONE
 
 func _ready():
-	score.text += str(float(GlobalVariables.last_score)/100.0) + " meters"
+	score.text += str(float(GlobalVariables.last_score)) + " score"
+	score.text += "\n" + str((Time.get_ticks_msec() - GlobalVariables.time_started)/1000) + " seconds"
 	var escape_amulets : Array
 	if win_type == GlobalEnums.WIN_TYPES.REPAIR:
 		escape_amulets = GlobalVariables.amulets.filter(func(x): return x.required_for_repair)
@@ -25,7 +25,6 @@ func spawn_amulet(amulet):
 	amulet_representation.texture = amulet.texture
 	amulet_representation.custom_minimum_size = Vector2(32, 32)
 	amulet_representation.tooltip_text = amulet.name.to_upper() + "\n" + amulet.description
-	amulets_container.add_child(amulet_representation)
 
 
 func _on_progress_button_pressed():

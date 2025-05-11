@@ -10,7 +10,8 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f73cc"]
 bg_color = Color(0.156863, 0.180392, 0.231373, 0.92549)
 
-[node name="WinMenu" type="Control" node_paths=PackedStringArray("score", "win_label", "new_amulet_count_label", "amulets_container")]
+[node name="WinMenu" type="Control" node_paths=PackedStringArray("score", "win_label", "new_amulet_count_label")]
+custom_minimum_size = Vector2(379.425, 0)
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
@@ -19,23 +20,16 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_22jkf")
-score = NodePath("Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/FinalScore")
+score = NodePath("Panel/VBoxContainer/MarginContainer/VBoxContainer/FinalScore")
 win_label = NodePath("Panel/VBoxContainer/MarginContainer/VBoxContainer/Label")
 amulet_prefab = ExtResource("2_rspx6")
 new_amulet_count_label = NodePath("Panel/VBoxContainer/ProgressCount")
-amulets_container = NodePath("Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/GridContainer")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -324.0
-offset_right = 1.0
-offset_bottom = 324.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f73cc")
@@ -65,44 +59,15 @@ bbcode_enabled = true
 text = "[center]You [color=#e1a845][wave]repaired[/wave][/color] the time machine!!![/center]"
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-alignment = 1
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.937255, 0.952941, 0.486275, 1)
-theme_override_font_sizes/font_size = 24
-text = "By obtaining:"
-
-[node name="Control" type="Control" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.3
-
-[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-columns = 4
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
-text = "You have traveled: 
-"
+text = "Stats:"
+horizontal_alignment = 1
 
-[node name="FinalScore" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="FinalScore" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110.145, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.494118, 0.396078, 0.607843, 1)

@@ -18,8 +18,8 @@
 
 [resource]
 script = ExtResource("3_p7c1v")
-title = "City"
-description = "21` century, cars, drones, road fixes, ..."
+title = "Today"
+description = "Cars, drones, constructio, hydrants"
 baner = ExtResource("1_f5157")
 ground_color = Color(0.235294, 0.145098, 0.168627, 1)
 grass_color = Color(0.101961, 0.121569, 0.180392, 1)

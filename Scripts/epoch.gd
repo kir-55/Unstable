@@ -46,7 +46,10 @@ var can_accept_input: bool = false
 
 var initial_view_port_size := Vector2(1152, 648)
 
+var first_frame = true
+
 func _ready():
+	
 	death_panel.visible = false
 	countdown_panel.visible = true
 	GlobalVariables.is_in_epoch = true
@@ -83,26 +86,36 @@ func _ready():
 			var player = load(player_prefab).instantiate()
 			if int(i) == Client.id:
 				self.player = player
+				player.z_index += 1
 				player_spawned.emit(player)
 			else:
+				player.get_node("Sprite2D").self_modulate = Color(1, 1, 1, 0.8)
 				player.get_node("CollisionShape2D").disabled = true
 
-			player.global_position = spawn_point.global_position + Vector2(randf_range(-1000, 1000), randf_range(-1000, 1000))
+			
 			player.name = "Player" + str(i)
 			player.id = int(i)
 			#print("spawning player: " + str(player.id))
 			get_tree().current_scene.add_child(player)
+			#player.global_position = spawn_point.global_position
 	else:
 		var player = load(player_prefab).instantiate()
-		player.global_position = spawn_point.global_position
+		
 		player_spawned.emit(player)
 		self.player = player
-		get_tree().root.get_child(4).add_child(player)
+		get_tree().current_scene.add_child(player)
+		#player.global_position = spawn_point.global_position
 
 var last_zoom = Vector2(0,0)
 var last_viewport = Vector2.ZERO
 
 func _process(delta):
+	
+	
+	if first_frame:
+		player.global_position = spawn_point.global_position
+		first_frame = false
+	
 	# Musisz mieć aktualne viewport_size i zoom
 	var zoom = camera.zoom
 	if zoom != last_zoom:

@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/take_texture.gd" id="10_wm2mx"]
 
 [node name="House" type="Sprite2D"]
-z_index = -1
+z_index = -3
 material = ExtResource("1_ew6ks")
 scale = Vector2(4.2, 4.2)
 texture = ExtResource("1_nlivu")
@@ -22,6 +22,6 @@ visual_variations = Array[Texture2D]([ExtResource("1_nlivu"), ExtResource("3_1uf
 
 [node name="PointLight2D" type="PointLight2D" parent="." node_paths=PackedStringArray("take_from")]
 energy = 2.0
-range_z_max = -1
+range_z_max = -2
 script = ExtResource("10_wm2mx")
 take_from = NodePath("..")

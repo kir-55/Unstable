@@ -28,7 +28,6 @@ metadata/_snap_enabled = true
 
 [node name="Area2D" type="Area2D" groups=["Obsticle"]]
 z_index = 5
-position = Vector2(0, -53)
 scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
@@ -36,16 +35,16 @@ script = ExtResource("1_8g2ud")
 death_messages = Array[String](["Drone didn't like you", "You kicked the drone with your head", "You jumped into the drone"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -10.6667)
+position = Vector2(0, -3.33786e-05)
 shape = SubResource("RectangleShape2D_1iamu")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-59.6667, -10)
+position = Vector2(-60.6667, 0.666667)
 target_position = Vector2(0, 142.333)
 
 [node name="Drone" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(1, -7.66667)
+position = Vector2(0, 3)
 texture = ExtResource("2_hld7q")
 script = ExtResource("3_113mu")
 min_height = 20.0
@@ -58,7 +57,7 @@ explosion_prefab = ExtResource("5_c3klr")
 explosion_point = NodePath("../CollisionShape2D")
 
 [node name="Package" type="Node2D" parent="." node_paths=PackedStringArray("ray")]
-position = Vector2(1, -1)
+position = Vector2(0, 9.66667)
 script = ExtResource("6_b0duv")
 ray = NodePath("../RayCast2D")
 
@@ -75,7 +74,7 @@ texture = ExtResource("6_5mhlc")
 shape = SubResource("RectangleShape2D_lcyxb")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1, -12)
+position = Vector2(0, -1.33333)
 color = Color(0.961026, 0.765469, 0.451691, 1)
 energy = 2.0
 texture = SubResource("GradientTexture2D_nddy5")

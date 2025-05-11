@@ -21,12 +21,10 @@ func _input(event):
 
 
 
-# Function to apply the theme to a scene
 func apply_theme_to_scene(scene: Node):
 	if scene is Control:
 		scene.theme = GlobalVariables.global_theme
 
-# This function will be triggered whenever the scene changes
 func _on_scene_changed(_from: Node, to: Node):
 	apply_theme_to_scene(to)
 
@@ -188,6 +186,7 @@ func load_menu(menu: String, remove_all_children = true, transition_to_main = fa
 	
 	if transition_to_main:
 		GlobalVariables.current_menu = menu
+		GlobalVariables.is_in_epoch = false
 		get_tree().change_scene_to_file("res://Scenes/Locations/main.tscn")
 		return
 	

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EpochInfo" load_steps=16 format=3 uid="uid://c24oqomxlons6"]
 
-[ext_resource type="Texture2D" uid="uid://bravuad5e8urb" path="res://Textures/Decorations/Cyberpunk/cyber2.png" id="1_10ydi"]
+[ext_resource type="Texture2D" uid="uid://c0o7ug1kedmic" path="res://Textures/Baners/baner_cyberpunk.png" id="1_58e3a"]
 [ext_resource type="Environment" uid="uid://by34g5eel3o71" path="res://Ages/Environments/cyberpunk.tres" id="2_8mxvc"]
 [ext_resource type="Resource" uid="uid://cu68820tnhrfq" path="res://Decorations/Cyberpunk/house.tres" id="2_bmoe8"]
 [ext_resource type="Resource" uid="uid://0g1kqma7ny1k" path="res://Decorations/road_line_glowing.tres" id="3_44ddk"]
@@ -19,8 +19,8 @@
 [resource]
 script = ExtResource("14_ar4ej")
 title = "Cyberpunk"
-description = "22nd century, futuristic motorbikes, drones and mines"
-baner = ExtResource("1_10ydi")
+description = "Drones, Laser bariers, Bikes"
+baner = ExtResource("1_58e3a")
 ground_color = Color(0.223529, 0.152941, 0.368627, 1)
 grass_color = Color(0.184314, 0.0980392, 0.243137, 1)
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_bmoe8"), ExtResource("3_44ddk"), ExtResource("4_gm80n"), ExtResource("5_yu2nq"), ExtResource("6_1dem3"), ExtResource("7_1d18d"), ExtResource("8_h6jeg"), ExtResource("9_yccdc")])

@@ -1,34 +1,34 @@
-[gd_scene load_steps=20 format=3 uid="uid://cga0nulgiwpjf"]
+[gd_scene load_steps=20 format=3 uid="uid://51qsjlqo2m02"]
 
-[ext_resource type="Script" path="res://Scripts/Menus/manage_amulets.gd" id="1_la4h0"]
-[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="2_ucqs4"]
-[ext_resource type="Texture2D" uid="uid://third2ockyr2" path="res://Textures/Home/Broken/home1_b.png" id="3_o5jkx"]
-[ext_resource type="Texture2D" uid="uid://dswm218tik85j" path="res://Textures/Home/Broken/home2_b.png" id="4_2ctdh"]
-[ext_resource type="Texture2D" uid="uid://djcj7k5cjrvwg" path="res://Textures/Home/Broken/home3_b.png" id="5_w2ang"]
-[ext_resource type="Texture2D" uid="uid://c28jsknto8v7m" path="res://Textures/Home/Broken/home4_b.png" id="6_84c4k"]
-[ext_resource type="Texture2D" uid="uid://degixlri82g5d" path="res://Textures/Home/Normal/home1_w.png" id="7_6501j"]
-[ext_resource type="Texture2D" uid="uid://c5omiaclq6t1r" path="res://Textures/Home/Normal/home2_w.png" id="8_1djf7"]
-[ext_resource type="Texture2D" uid="uid://cg2pdlvqrsfvn" path="res://Textures/Home/Normal/home3_w.png" id="9_im4g0"]
-[ext_resource type="Texture2D" uid="uid://bmg1h3w6wlqvw" path="res://Textures/Home/Normal/home4_w.png" id="10_uodq5"]
-[ext_resource type="Texture2D" uid="uid://ckbvaiva77r42" path="res://Textures/Home/Repair/home1_f.png" id="11_552cc"]
-[ext_resource type="Texture2D" uid="uid://bkvmkefpupbj" path="res://Textures/Home/Repair/home2_f.png" id="12_kajm5"]
-[ext_resource type="Texture2D" uid="uid://dsfi5rkurita3" path="res://Textures/Home/Repair/home3_f.png" id="13_tsd28"]
-[ext_resource type="Texture2D" uid="uid://bxp50smu3cd2" path="res://Textures/Home/Repair/home4_f.png" id="14_uefpj"]
+[ext_resource type="Script" path="res://Scripts/Menus/manage_amulets.gd" id="1_36eqt"]
+[ext_resource type="PackedScene" uid="uid://b4gt65xd5xb3n" path="res://Scenes/Menus/amulet_icon_template.tscn" id="2_24juq"]
+[ext_resource type="Texture2D" uid="uid://third2ockyr2" path="res://Textures/Home/Broken/home1_b.png" id="3_agbvu"]
+[ext_resource type="Texture2D" uid="uid://dswm218tik85j" path="res://Textures/Home/Broken/home2_b.png" id="4_0w8e8"]
+[ext_resource type="Texture2D" uid="uid://djcj7k5cjrvwg" path="res://Textures/Home/Broken/home3_b.png" id="5_j8n3w"]
+[ext_resource type="Texture2D" uid="uid://c28jsknto8v7m" path="res://Textures/Home/Broken/home4_b.png" id="6_2juck"]
+[ext_resource type="Texture2D" uid="uid://degixlri82g5d" path="res://Textures/Home/Normal/home1_w.png" id="7_kl181"]
+[ext_resource type="Texture2D" uid="uid://c5omiaclq6t1r" path="res://Textures/Home/Normal/home2_w.png" id="8_wssgl"]
+[ext_resource type="Texture2D" uid="uid://cg2pdlvqrsfvn" path="res://Textures/Home/Normal/home3_w.png" id="9_tbbv4"]
+[ext_resource type="Texture2D" uid="uid://bmg1h3w6wlqvw" path="res://Textures/Home/Normal/home4_w.png" id="10_tbmwu"]
+[ext_resource type="Texture2D" uid="uid://ckbvaiva77r42" path="res://Textures/Home/Repair/home1_f.png" id="11_yfpwo"]
+[ext_resource type="Texture2D" uid="uid://bkvmkefpupbj" path="res://Textures/Home/Repair/home2_f.png" id="12_cbmop"]
+[ext_resource type="Texture2D" uid="uid://dsfi5rkurita3" path="res://Textures/Home/Repair/home3_f.png" id="13_vkjmx"]
+[ext_resource type="Texture2D" uid="uid://bxp50smu3cd2" path="res://Textures/Home/Repair/home4_f.png" id="14_sqapf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r2xld"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_o5jkx")
+"texture": ExtResource("3_agbvu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_2ctdh")
+"texture": ExtResource("4_0w8e8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_w2ang")
+"texture": ExtResource("5_j8n3w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_84c4k")
+"texture": ExtResource("6_2juck")
 }],
 "loop": true,
 "name": &"broken",
@@ -36,16 +36,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_6501j")
+"texture": ExtResource("7_kl181")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_1djf7")
+"texture": ExtResource("8_wssgl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_im4g0")
+"texture": ExtResource("9_tbbv4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_uodq5")
+"texture": ExtResource("10_tbmwu")
 }],
 "loop": true,
 "name": &"default",
@@ -53,16 +53,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_552cc")
+"texture": ExtResource("11_yfpwo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_kajm5")
+"texture": ExtResource("12_cbmop")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_tsd28")
+"texture": ExtResource("13_vkjmx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_uefpj")
+"texture": ExtResource("14_sqapf")
 }],
 "loop": true,
 "name": &"repair",
@@ -107,12 +107,11 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-script = ExtResource("1_la4h0")
-amulet_icon_scene = ExtResource("2_ucqs4")
+script = ExtResource("1_36eqt")
+amulet_icon_scene = ExtResource("2_24juq")
 label_and_new_amulet_container = NodePath("Panel/VBoxContainer/TextAndAmuletContainer")
 current_player_amulets_container = NodePath("Panel/VBoxContainer/Panel/PlayerAmuletsContainer")
 border_container = NodePath("Panel/VBoxContainer/Panel")
-manage_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(576, 324)
@@ -157,13 +156,13 @@ alignment = 1
 [node name="Label" type="Label" parent="Panel/VBoxContainer/TextAndAmuletContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Choose one of your amulets to be replaced with:"
+text = "Choose amulet that you want to remove"
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.397701, 0.329255, 1)
 theme_override_font_sizes/font_size = 24
-text = "Replacing chronometer instantly teleports you to the next epoch!"
+text = "Removing chronometer may instantly teleport you to the next epoch!"
 
 [node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
 layout_mode = 2

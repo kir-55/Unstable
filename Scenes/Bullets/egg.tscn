@@ -23,7 +23,7 @@ spawn_on_start_prefab = ExtResource("4_qnj8u")
 scale = Vector2(3, 3)
 texture = ExtResource("5_lo1if")
 
-[node name="EggArea" type="Area2D" parent="."]
+[node name="EggArea" type="Area2D" parent="." groups=["Projectile"]]
 scale = Vector2(2.56, 2.56)
 collision_layer = 258
 collision_mask = 258

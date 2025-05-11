@@ -5,11 +5,18 @@ extends Control
 @export var current_player_amulets_container : HBoxContainer
 @export var border_container : Panel
 
+enum ManageTypes {
+	REMOVE,
+	REPLACE
+}
+
+@export var manage_type: ManageTypes
+
 var new_amulet_id = 0
-var chosen_amulet = null
+var chosen_amulet_representation = null
 
 func _ready():
-	if label_and_new_amulet_container:
+	if label_and_new_amulet_container and manage_type == ManageTypes.REPLACE:
 		var new_amulet_instance  = amulet_icon_scene.instantiate()
 		var new_amulet = GlobalVariables.amulets[new_amulet_id]
 		new_amulet_instance.texture = new_amulet.texture
@@ -34,8 +41,12 @@ func spawn_amulet_with_bind(container: HBoxContainer, amulet_id: int):
 	var amulet_instance = amulet_icon_scene.instantiate()
 	amulet_instance.texture = amulet.texture
 	amulet_instance.tooltip_text = amulet.name.to_upper() + "\n" + amulet.description
-	amulet_instance.gui_input.connect(on_amulet_click_swap.bind([amulet_id, amulet_instance]))
-
+	
+	if manage_type == ManageTypes.REPLACE:
+		amulet_instance.gui_input.connect(on_amulet_click_swap.bind(amulet_id))
+	elif manage_type == ManageTypes.REMOVE:
+		amulet_instance.gui_input.connect(on_amulet_click_remove.bind(amulet_id))
+	
 	var min_size = 120
 	var panel = Panel.new()
 	var style = StyleBoxFlat.new()
@@ -57,11 +68,11 @@ func spawn_amulet_with_bind(container: HBoxContainer, amulet_id: int):
 	return amulet_instance
 
 
-func on_amulet_click_swap(event: InputEvent, amulet):
+func on_amulet_click_swap(event: InputEvent, amulet_id):
 	if event is InputEventMouseButton and event.pressed:
 		#print(GlobalVariables.player_amulets)
 		for i in range(GlobalVariables.player_amulets.size()):
-			if GlobalVariables.player_amulets[i] == amulet[0]:
+			if GlobalVariables.player_amulets[i] == amulet_id:
 				GlobalVariables.player_amulets[i] = new_amulet_id
 		var copy_player_amulets = GlobalVariables.player_amulets.duplicate()
 		for id in copy_player_amulets:
@@ -69,12 +80,23 @@ func on_amulet_click_swap(event: InputEvent, amulet):
 				if GlobalVariables.player_amulets.filter(func(id): return id == new_amulet_id).size() > 1:
 					GlobalVariables.player_amulets.erase(new_amulet_id)
 		#print(GlobalVariables.player_amulets)
-		if chosen_amulet:
-			chosen_amulet[1].queue_free()
+		if chosen_amulet_representation:
+			chosen_amulet_representation.queue_free()
 		get_tree().current_scene.complete_amulet_choice()
 		queue_free()
+		
+		
+func on_amulet_click_remove(event: InputEvent, amulet_id):
+	if event is InputEventMouseButton and event.pressed:
+		GlobalVariables.player_amulets.erase(amulet_id)
+		get_tree().current_scene.check_if_can_stay()
+		queue_free()
+
+
+
 
 func _on_cancel_pressed():
 	var home = get_tree().current_scene
-	home.amulets_chosen.pop_back()
+	if chosen_amulet_representation:
+		home.amulets_chosen.pop_back()
 	queue_free()

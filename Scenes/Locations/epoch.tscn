@@ -256,11 +256,12 @@ libraries = {
 autoplay = "blinking"
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("epoch")]
+position = Vector2(-2, 55)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("9_cjea4")
 speed = 30.0
-vertical_speed = 7.0
+vertical_speed = 15.0
 epoch = NodePath("..")
 max_distance = Vector2(1, 70)
 
@@ -274,8 +275,7 @@ script = ExtResource("11_vmtw0")
 script = ExtResource("12_x6lqm")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(0, 170)
-scale = Vector2(1.4, 1.4)
+position = Vector2(475, -1316)
 
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
 position = Vector2(-650, 271)

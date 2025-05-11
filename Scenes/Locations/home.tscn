@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bhjxp4p8df2qp"]
+[gd_scene load_steps=40 format=3 uid="uid://bhjxp4p8df2qp"]
 
 [ext_resource type="PackedScene" uid="uid://j2nldvt0tvg5" path="res://Scenes/Menus/progress_menu.tscn" id="2_ucxui"]
 [ext_resource type="Texture2D" uid="uid://third2ockyr2" path="res://Textures/Home/Broken/home1_b.png" id="4_n14ty"]
@@ -91,27 +91,50 @@ content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-bg_color = Color(0.278431, 0.423529, 0.054902, 1)
+bg_color = Color(0.239216, 0.501961, 0.639216, 1)
 border_width_left = 5
 border_width_top = 5
+border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.184314, 0.298039, 0.423529, 1)
 border_blend = true
 corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lbe6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10iqj"]
 content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-bg_color = Color(0.278431, 0.423529, 0.054902, 0.52549)
+bg_color = Color(0.180027, 0.401656, 0.51659, 1)
 border_width_left = 5
 border_width_top = 5
+border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.184314, 0.298039, 0.423529, 1)
 border_blend = true
 corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u7fp"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.156024, 0.357844, 0.462302, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.184314, 0.298039, 0.423529, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Animation" id="Animation_t2dc1"]
@@ -211,6 +234,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("21_wf646")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/RemoveButton:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_5alp4"]
@@ -339,6 +374,30 @@ tracks/9/keys = {
 "method": &"load_destruction_menu"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/RemoveButton:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/LeaveButton:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_140lf"]
 resource_name = "repair"
@@ -466,6 +525,30 @@ tracks/9/keys = {
 "method": &"load_repair_menu"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/LeaveButton:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/RemoveButton:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rose0"]
 _data = {
@@ -573,15 +656,32 @@ position = Vector2(498, 283)
 scale = Vector2(5, 5)
 
 [node name="LeaveButton" type="Button" parent="CanvasLayer"]
-offset_left = 926.0
-offset_top = 515.0
-offset_right = 1152.0
-offset_bottom = 591.0
+offset_left = 805.0
+offset_top = 563.0
+offset_right = 1031.0
+offset_bottom = 639.0
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_7n5ck")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8lbe6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_10iqj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_10iqj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7n5ck")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7n5ck")
 text = "Leave"
+
+[node name="RemoveButton" type="Button" parent="CanvasLayer"]
+offset_left = 472.0
+offset_top = 563.0
+offset_right = 789.0
+offset_bottom = 639.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_7n5ck")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0u7fp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0u7fp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7n5ck")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7n5ck")
+text = "Remove amulet"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -598,3 +698,4 @@ libraries = {
 autoplay = "RESET"
 
 [connection signal="pressed" from="CanvasLayer/LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RemoveButton" to="." method="_on_remove_button_pressed"]
