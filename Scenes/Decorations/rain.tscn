@@ -17,9 +17,11 @@ color_initial_ramp = SubResource("GradientTexture1D_dektn")
 [node name="rain" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 10
 position = Vector2(19, -1307)
 scale = Vector2(6, 6)
 amount = 512
 process_material = SubResource("ParticleProcessMaterial_rjtki")
 lifetime = 5.5
 preprocess = 5.5
+visibility_rect = Rect2(-100, 0, 200, 500)

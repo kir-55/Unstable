@@ -54,6 +54,7 @@ var player_amulet_collection : Array[int]
 var player_new_amulets : Array[int]
 
 
+
 @export var active_weapon_types: Array[WeaponType]
 @export var decoration_breaking_effect_color : Color = Color.BLACK
 

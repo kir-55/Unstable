@@ -12,12 +12,15 @@ extends Node2D
 
 
 var amulets_chosen: Array[int]
+var should_be_added_after : Array[int]
+
+
+
 var latest_chosen_amulet_id: int
 var latest_chosen_amulet_representation: Node = null
 
 var amount_of_items_to_take: int = GlobalVariables.player_amulets.count(2) + 1
 var win_type := GlobalEnums.WIN_TYPES.NONE
-
 
 
 @export var amulet_prefab: PackedScene
@@ -196,7 +199,10 @@ func complete_amulet_choice(amulet_representation: Node = null):
 	else:
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take - amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take - amulets_chosen.size() > 1 else ".")
 	if amulet_representation != null:
-		GlobalVariables.player_amulets.append(amulets_chosen[amulets_chosen.size() - 1])
+		if not GlobalVariables.amulets[amulets_chosen[amulets_chosen.size() - 1]].should_be_added_after_home:
+			GlobalVariables.player_amulets.append(amulets_chosen[amulets_chosen.size() - 1])
+		else:
+			should_be_added_after.append(amulets_chosen[amulets_chosen.size() - 1])
 		amulet_representation.queue_free()
 		
 	check_if_can_stay()
@@ -206,11 +212,13 @@ func complete_amulet_choice(amulet_representation: Node = null):
 
 func grab_and_leave():
 	if !Client.active or Client.players_alive.has(Client.id):
+		GlobalVariables.player_amulets.append_array(should_be_added_after)
+		
 		for i in GlobalVariables.player_amulets:
 			if ! (i in GlobalVariables.player_amulet_collection):
 				GlobalVariables.player_new_amulets.append(i)
 				GlobalVariables.player_amulet_collection.append(i)
-				
+		
 		if Client.active:
 			Client.leave_home.rpc(Client.id)
 		else:

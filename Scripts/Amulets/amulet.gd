@@ -8,6 +8,9 @@ extends Resource
 @export var texture: Texture2D
 
 
+@export var should_be_added_after_home: bool = false
+
+
 @export var incompatible_amulets: Array[int]
 
 @export var available_in_singleplayer: bool = true

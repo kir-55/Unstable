@@ -1,10 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://b0fjlwsniivuy"]
+[gd_scene load_steps=23 format=3 uid="uid://b0fjlwsniivuy"]
 
 [ext_resource type="Script" path="res://Scripts/global_variables.gd" id="1_6fhdc"]
-[ext_resource type="Resource" uid="uid://d4jipchxnkrhx" path="res://Ages/medieval.tres" id="3_2see6"]
 [ext_resource type="Resource" uid="uid://cy4dj5okjguw3" path="res://Amulets/ameridium_gun.tres" id="4_df78c"]
-[ext_resource type="Resource" uid="uid://ctr8ofv38du6p" path="res://Ages/city.tres" id="4_gqd1p"]
-[ext_resource type="Resource" uid="uid://c24oqomxlons6" path="res://Ages/cyberpunk.tres" id="5_krq5o"]
 [ext_resource type="Resource" uid="uid://d4cyjr008vvsd" path="res://Amulets/bananas.tres" id="5_te0wx"]
 [ext_resource type="Resource" uid="uid://b5ga8fmqhitgk" path="res://Ages/wild_west.tres" id="5_tr486"]
 [ext_resource type="Resource" uid="uid://bh4tipha1kv5b" path="res://Amulets/chronometer.tres" id="6_hl7hl"]
@@ -29,6 +26,7 @@
 [node name="GlobalVariables" type="Node"]
 script = ExtResource("1_6fhdc")
 initial_player_speed = 400
-epochs = Array[Resource("res://Scripts/epoch_info.gd")]([ExtResource("4_gqd1p"), ExtResource("5_krq5o"), ExtResource("3_2see6"), ExtResource("5_tr486")])
+initial_player_amulets = Array[int]([13])
+epochs = Array[Resource("res://Scripts/epoch_info.gd")]([ExtResource("5_tr486"), ExtResource("5_tr486")])
 amulets = Array[Resource("res://Scripts/Amulets/amulet.gd")]([ExtResource("4_df78c"), ExtResource("5_te0wx"), ExtResource("6_hl7hl"), ExtResource("7_bk885"), ExtResource("8_kmuya"), ExtResource("9_ycsj6"), ExtResource("10_yn5hf"), ExtResource("11_cj8g2"), ExtResource("12_qmwf1"), ExtResource("13_up6k6"), ExtResource("14_u4ca8"), ExtResource("15_ni7fs"), ExtResource("16_d7gbk"), ExtResource("17_d2hwq"), ExtResource("18_8vsbb"), ExtResource("19_qelu2"), ExtResource("20_wmqs8")])
 active_weapon_types = Array[Resource("res://Scripts/Weapon/weapon_type.gd")]([ExtResource("21_7csw5"), ExtResource("22_7pj4x"), ExtResource("23_tpdih")])
