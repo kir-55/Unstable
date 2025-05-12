@@ -44,7 +44,7 @@ scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_vgm3q")
-death_messages = Array[String](["Got too cozy with the flames.", "Grilled to perfection.", "Gone in a puff of smoke."])
+death_messages = Array[String](["Got too cozy with the flames", "Grilled to perfection", "Gone in a puff of smoke"])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.333333, 0.333333)

@@ -32,7 +32,7 @@ scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_8g2ud")
-death_messages = Array[String](["Drone didn't like you", "You kicked the drone with your head", "You jumped into the drone"])
+death_messages = Array[String](["Drone didn't like you", "You hit the drone with your head", "You jumped into the drone"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.33786e-05)
@@ -65,7 +65,7 @@ ray = NodePath("../RayCast2D")
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_8g2ud")
-death_messages = Array[String](["Here is your delivery!", "Catch me if you can!", "Your package here!", "Hmm... there was a package!", "Finaly Arived"])
+death_messages = Array[String](["Here is your delivery!", "Catch me if you can!", "Your package here!", "Hmm... there was a package!", "Finally arrived!"])
 
 [node name="Package" type="Sprite2D" parent="Package/Area2D"]
 texture = ExtResource("6_5mhlc")

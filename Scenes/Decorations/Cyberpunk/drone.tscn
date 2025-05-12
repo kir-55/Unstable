@@ -28,7 +28,7 @@ scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_opeoa")
-death_messages = Array[String](["Drone didn't liked you", "You kicked the drone with your head", "You jumped into the drone"])
+death_messages = Array[String](["Drone didn't like you", "You hit the drone with your head", "You jumped into the drone"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.100001, -7)

@@ -10,7 +10,7 @@ scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_miynu")
-death_messages = Array[String](["Lost to the medieval traffic jam", "Thou shouldst have looked both ways", "Thou wert no match for a rolling cart of doom"])
+death_messages = Array[String](["Lost to the medieval traffic jam", "Thou should have looked both ways", "Thou weren't no match for a rolling cart of doom"])
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(3.03334, -19.6667)

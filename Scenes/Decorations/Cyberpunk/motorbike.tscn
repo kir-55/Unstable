@@ -27,7 +27,7 @@ scale = Vector2(3.3, 3.3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_1ocql")
-death_messages = Array[String](["You didn’t see that bike? It wasn't moving at all...", "You can’t blame the bike for that one", "Felt invincible—bike said no."])
+death_messages = Array[String](["You didn't see that motorbike? It wasn't moving at all...", "You can’t blame the motorbike for that one", "Felt invincible—motorbike said no."])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1.30006, -12.8)

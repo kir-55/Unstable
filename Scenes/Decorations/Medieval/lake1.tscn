@@ -16,7 +16,7 @@ size = Vector2(441, 10)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_flv8t")
-death_messages = Array[String](["Turns out... scientists can't breathe underwater.", "The lake didn't like visitors.", "In still waters, thy story found its end.", "The lake whispers thy final lullaby.", "Why are there boats in such a small lake?"])
+death_messages = Array[String](["Turns out... scientists can't breathe underwater.", "The lake didn't like visitors.", "In still waters, the story found its end.", "The lake whispers thy final lullaby.", "Why are there boats in such a small lake?"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 20

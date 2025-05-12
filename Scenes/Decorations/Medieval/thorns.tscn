@@ -10,7 +10,7 @@ scale = Vector2(3, 3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jrflh")
-death_messages = Array[String](["Thou met thy end upon sharpened wood", "Wooden justice for wandering fools", "Thine arrogance was no match for pointy sticks", "Why do they have spikes inside city???"])
+death_messages = Array[String](["Thou met the end upon sharpened wood", "Wooden justice for wandering fools", "Thine arrogance was no match for pointy sticks", "Why do they have spikes inside city???"])
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(2.16667, -9.83333)
