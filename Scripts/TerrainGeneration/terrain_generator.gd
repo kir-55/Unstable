@@ -4,7 +4,7 @@ extends Node
 @export var grass_line: Line2D
 @export var floor_collider: StaticBody2D
 
-@export var rs: RandomSystem
+@export var random_system: RandomSystem
 
 @export var points_amount := 100
 
@@ -33,7 +33,7 @@ func _ready():
 	
 	for i in range(points_amount):
 		if i % 2 == 1:
-			create_next_point(grass_line.get_point_position(i) + Vector2(line_section_length, rs.get_rnd_float(-section_y_change_amplitude, section_y_change_amplitude)), grass_line.get_point_position(i))
+			create_next_point(grass_line.get_point_position(i) + Vector2(line_section_length, random_system.get_rnd_float(-section_y_change_amplitude, section_y_change_amplitude)), grass_line.get_point_position(i))
 		else:
 			create_next_point(grass_line.get_point_position(i) + Vector2(line_section_length, 0), grass_line.get_point_position(i))
 		
@@ -46,7 +46,7 @@ func _process(delta):
 	if player:
 		if player.global_position.x > grass_line.get_point_position(grass_line.points.size()-1).x - 2000:
 			if grass_line.points.size() % 2 == 1:
-				create_next_point(grass_line.get_point_position(grass_line.points.size()-1) + Vector2(line_section_length, rs.get_rnd_float(-section_y_change_amplitude, section_y_change_amplitude)), grass_line.get_point_position(grass_line.points.size()-1))
+				create_next_point(grass_line.get_point_position(grass_line.points.size()-1) + Vector2(line_section_length, random_system.get_rnd_float(-section_y_change_amplitude, section_y_change_amplitude)), grass_line.get_point_position(grass_line.points.size()-1))
 			else:
 				create_next_point(grass_line.get_point_position(grass_line.points.size()-1) + Vector2(line_section_length, 0), grass_line.get_point_position(grass_line.points.size()-1))
 

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://qev8gvqkakyd"]
+
+[ext_resource type="Script" path="res://Scripts/tutorial_wall.gd" id="1_tyfr8"]
+
+[sub_resource type="Gradient" id="Gradient_01325"]
+offsets = PackedFloat32Array(0.0257353)
+colors = PackedColorArray(0.101961, 0.121569, 0.180392, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_622ut"]
+gradient = SubResource("Gradient_01325")
+width = 1
+height = 1
+fill_from = Vector2(0.448718, 0.380342)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na2qg"]
+size = Vector2(1970, 29)
+
+[node name="Barrel" type="Area2D" groups=["Obsticle"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_tyfr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1000, 14)
+scale = Vector2(2000, 30)
+texture = SubResource("GradientTexture2D_622ut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1015, 10.5)
+shape = SubResource("RectangleShape2D_na2qg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(670, 0)
+scale = Vector2(0.333333, 0.333333)
+amount = 256
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(2000, 1)
+gravity = Vector2(0, -400)
+initial_velocity_min = 0.8
+initial_velocity_max = 0.8
+scale_amount_min = 2.0
+scale_amount_max = 7.0
+color = Color(0.156863, 0.180392, 0.231373, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

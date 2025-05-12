@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6ieaa1aws86g"]
+
+[ext_resource type="LabelSettings" uid="uid://c3yu6js050cyh" path="res://Scenes/Locations/death_message_label_style.tres" id="1_u0kc2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TutorialMessage" type="Label" parent="."]
+custom_minimum_size = Vector2(593.61, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -339.0
+offset_top = -321.0
+offset_right = 297.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You broke your leg, while kicking the car"
+label_settings = ExtResource("1_u0kc2")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 1

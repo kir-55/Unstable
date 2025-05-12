@@ -102,13 +102,13 @@ bus = &"Music"
 [node name="RandomSystem" type="Node" parent="MovingGround"]
 script = ExtResource("5_covuj")
 
-[node name="TerrainGenerator" type="Node2D" parent="MovingGround" node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs", "player")]
+[node name="TerrainGenerator" type="Node2D" parent="MovingGround" node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "random_system", "player")]
 position = Vector2(-1029, 271)
 script = ExtResource("6_isusy")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
-rs = NodePath("../RandomSystem")
+random_system = NodePath("../RandomSystem")
 line_section_length = 500
 section_y_change_amplitude = 0
 player = NodePath("../Camera2D")
@@ -118,12 +118,12 @@ script = ExtResource("7_tsxp3")
 line = NodePath("../GrassLine")
 terrain_generator = NodePath("..")
 
-[node name="DecorationSpawner" type="Node2D" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
+[node name="DecorationSpawner" type="Node2D" parent="MovingGround/TerrainGenerator" node_paths=PackedStringArray("random_system", "sloper", "camera", "line", "terrain_generator")]
 script = ExtResource("9_ob6c0")
 load_radius = 6
 max_radius = 10
 unload_radius = 1500
-rs = NodePath("../../RandomSystem")
+random_system = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
 line = NodePath("../GroundLine")

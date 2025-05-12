@@ -48,6 +48,11 @@ var initial_view_port_size := Vector2(1152, 648)
 
 var first_frame = true
 
+
+var last_zoom = Vector2(0,0)
+var last_viewport = Vector2.ZERO
+
+
 func _ready():
 	
 	var player_chronometer_count = GlobalVariables.player_amulets.filter(func(id): return id == 2).size()
@@ -112,8 +117,7 @@ func _ready():
 		get_tree().current_scene.add_child(player)
 		#player.global_position = spawn_point.global_position
 
-var last_zoom = Vector2(0,0)
-var last_viewport = Vector2.ZERO
+
 
 func _process(delta):
 	if first_frame:
@@ -197,7 +201,4 @@ func on_player_died(message):
 		death_panel.material.set_shader_parameter("circle_position", normalized_pos)
 		print(normalized_pos)
 		death_animation = true
-		# spawning death menu
-		#var game_over_menu = load("res://Scenes/Menus/game_over_menu.tscn")
-		#var instance = game_over_menu.instantiate()
 	

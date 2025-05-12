@@ -8,7 +8,7 @@ var line_section_length: int
 
 @export var unload_radius := 500 # pixel-based
 
-@export var rs: RandomSystem
+@export var random_system: RandomSystem
 @export var sloper: Sloper
 
 @export var camera : Camera2D
@@ -85,7 +85,7 @@ func spawn_decoration(point):
 
 		if i + 1 < current_pattern_segment.length():
 			if current_pattern_segment[i + 1] == "*":
-				if rs.get_rnd_int_at(0, 99) < 50:
+				if random_system.get_rnd_int_at(0, 99) < 50:
 					continue
 
 		while !spawned:
@@ -97,20 +97,20 @@ func spawn_decoration(point):
 					spawned = true
 					break
 
-				var rnd = rs.get_rnd_int_at(0, 99)
+				var rnd = random_system.get_rnd_int_at(0, 99)
 				if rnd < decoration.chance_to_spawn:
 					var segment_part := 0.5
 					var decoration_spawn_offset = float(decoration.width) / 2 / line_section_length
 
 					if !decoration.spawn_on_center:
-						segment_part = rs.get_rnd_float(0 + decoration_spawn_offset, 1 - decoration_spawn_offset)
+						segment_part = random_system.get_rnd_float(0 + decoration_spawn_offset, 1 - decoration_spawn_offset)
 
 					decoration_segment.position = calculate_start_end_pos(decoration.width, segment_part)
 
 					var noMoreRetries = false
 					for _i in range(7):
 						if check_collision(decoration_segment, decoration.ignore_types, spawned_decorations_positions):
-							segment_part = rs.get_rnd_float(0 + decoration_spawn_offset, 1 - decoration_spawn_offset)
+							segment_part = random_system.get_rnd_float(0 + decoration_spawn_offset, 1 - decoration_spawn_offset)
 							decoration_segment.position = calculate_start_end_pos(decoration.width, segment_part)
 						else:
 							noMoreRetries = true
@@ -121,7 +121,7 @@ func spawn_decoration(point):
 						spawned = true
 						break
 
-					var mirror = (rs.get_rnd_int(0, 2) == 1) if decoration.can_be_mirrored else false
+					var mirror = (random_system.get_rnd_int(0, 2) == 1) if decoration.can_be_mirrored else false
 					sloper.spawn_at_point(decoration.prefab, self, point, segment_part, mirror)
 					spawned = true
 					break

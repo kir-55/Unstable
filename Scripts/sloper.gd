@@ -31,6 +31,9 @@ func calc_closest_point(entity) -> int:
 
 
 func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segment: float = 0, mirror: bool = true):
+	return spawn_instance_at_point(object.instantiate(), parent, point, part_of_segment, mirror)
+	
+func spawn_instance_at_point(instance: Node, parent: Node, point: int, part_of_segment: float = 0, mirror: bool = true):
 	var p1 = line.get_point_position(point)
 	var p2 = line.get_point_position(point + 1)
 	
@@ -38,7 +41,6 @@ func spawn_at_point(object: PackedScene, parent: Node, point: int, part_of_segme
 	var b = -a * p2.x + p2.y
 	
 	var distance = abs(p2 - p1)
-	var instance = object.instantiate()
 	var x = p1.x + line_section_length*part_of_segment
 	
 	instance.position = Vector2(x, x * a + b - line_offset)

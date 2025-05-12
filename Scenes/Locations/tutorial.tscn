@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://i4uw4qe651k2"]
+[gd_scene load_steps=25 format=3 uid="uid://i4uw4qe651k2"]
 
-[ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_83te6"]
+[ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_jii6s"]
 [ext_resource type="PackedScene" uid="uid://cqabtg1hsllsa" path="res://Scenes/Prefabs/score_mark.tscn" id="2_svdxl"]
 [ext_resource type="Texture2D" uid="uid://caablqkf77rj" path="res://Textures/Parallaxes/parallax_bushes2.png" id="3_b5754"]
 [ext_resource type="Material" uid="uid://bugicnmsuxi4u" path="res://parallax_far_shader.tres" id="4_qapdp"]
@@ -9,29 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://3qdpdvrtb63r" path="res://Textures/Parallaxes/parallax_houses.png" id="7_8uq7o"]
 [ext_resource type="Script" path="res://Scripts/score_updater.gd" id="8_qpp3j"]
 [ext_resource type="Shader" path="res://Scenes/Entities/fade_circle.gdshader" id="9_gosst"]
-[ext_resource type="LabelSettings" uid="uid://c26omcfad10i" path="res://Scenes/Locations/countdown_label_style.tres" id="10_ta3i3"]
+[ext_resource type="PackedScene" uid="uid://b6ieaa1aws86g" path="res://Scenes/tutorial_message.tscn" id="11_25fgy"]
 [ext_resource type="LabelSettings" uid="uid://c3yu6js050cyh" path="res://Scenes/Locations/death_message_label_style.tres" id="11_lqj8f"]
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="12_sp6a8"]
-[ext_resource type="AudioStream" uid="uid://6jjsxk23adj7" path="res://Audio/Melodies/cyberpunk.wav" id="13_vp7ja"]
+[ext_resource type="AudioStream" uid="uid://bteaatvgrrxi6" path="res://Audio/Melodies/koniec.wav" id="13_3f3ld"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="14_hire0"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="15_urje6"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="16_ah4mk"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="17_0uwkk"]
+[ext_resource type="Script" path="res://Scripts/TerrainGeneration/tutorial_decoration_spawner.gd" id="18_euakk"]
 [ext_resource type="Shader" uid="uid://v27jtucnjeeq" path="res://Styles/line.tres" id="18_tay2s"]
-[ext_resource type="Script" path="res://Scripts/TerrainGeneration/decoration_spawner.gd" id="19_laliv"]
-[ext_resource type="Script" path="res://Scripts/transition.gd" id="20_jvfou"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dxt6"]
-shader = ExtResource("9_gosst")
-shader_parameter/circle_size = 0.544
-shader_parameter/feather_inner = 0.59
-shader_parameter/feather_outer = 0.538
-shader_parameter/circle_position = Vector2(0.5, 0.5)
-shader_parameter/screen_width = 1920.0
-shader_parameter/screen_height = 1080.0
-shader_parameter/color = Color(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_02lam"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6swq"]
 shader = ExtResource("9_gosst")
 shader_parameter/circle_size = 3.0
 shader_parameter/feather_inner = 0.0
@@ -41,7 +30,7 @@ shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 shader_parameter/color = Color(0.360784, 0.168627, 0.203922, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_awiym"]
+[sub_resource type="LabelSettings" id="LabelSettings_hjvj7"]
 font_size = 24
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
@@ -73,13 +62,13 @@ shader_parameter/XShiftAmplitude = null
 shader_parameter/MinLineThikness = Vector2(0, 300)
 shader_parameter/MaxThikness = 3000.0
 
-[node name="Epoch" type="Node2D" node_paths=PackedStringArray("world_environment", "grass_line", "ground_line", "audio_player", "decoration_spawner", "spawn_point", "amulets_panel", "canvas_layer", "score_label", "camera", "parallax_background_close", "parallax_background_far1", "parallax_background_far2", "parallax_foreground", "countdown_panel", "countdown_label", "death_panel", "death_message_label", "press_to_continue_label")]
-script = ExtResource("1_83te6")
+[node name="Tutorial" type="Node2D" node_paths=PackedStringArray("decoration_spawner", "world_environment", "grass_line", "ground_line", "audio_player", "spawn_point", "amulets_panel", "canvas_layer", "score_label", "camera", "parallax_background_close", "parallax_background_far1", "parallax_background_far2", "parallax_foreground", "death_panel", "death_message_label", "press_to_continue_label")]
+script = ExtResource("1_jii6s")
+decoration_spawner = NodePath("TerrainGenerator/DecorationSpawner")
 world_environment = NodePath("WorldEnvironment")
 grass_line = NodePath("TerrainGenerator/GrassLine")
 ground_line = NodePath("TerrainGenerator/GroundLine")
 audio_player = NodePath("Camera2D/AudioStreamPlayer2D")
-decoration_spawner = NodePath("TerrainGenerator/DecorationSpawner")
 spawn_point = NodePath("SpawnPoint")
 amulets_panel = NodePath("CanvasLayer/AmuletLIst")
 canvas_layer = NodePath("CanvasLayer")
@@ -88,30 +77,31 @@ camera = NodePath("Camera2D")
 parallax_background_close = NodePath("ParallaxBackground/ParallaxLayer2/Sprite2D")
 parallax_background_far1 = NodePath("ParallaxBackground/ParallaxLayer3/Sprite2D")
 parallax_background_far2 = NodePath("ParallaxBackground/ParallaxLayer3/Sprite2D2")
-parallax_foreground = NodePath("ParallaxBackground2/ParallaxLayer/Sprite2D")
-countdown_panel = NodePath("CanvasLayer/CountdownPanel")
-countdown_label = NodePath("CanvasLayer/CountdownPanel/Label")
+parallax_foreground = NodePath("ParallaxForeground/ParallaxLayer/Sprite2D")
 death_panel = NodePath("CanvasLayer/DeathPanel")
 death_message_label = NodePath("CanvasLayer/DeathPanel/DeathMessage")
 press_to_continue_label = NodePath("CanvasLayer/DeathPanel/PressToContinue")
+text_unwrap_speed = 13.0
 score_mark_prefab = ExtResource("2_svdxl")
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 10
+visible = false
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
 z_index = -2
 position = Vector2(1419, 99)
 motion_scale = Vector2(1.6, 0.9)
 motion_mirroring = Vector2(3900, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
 position = Vector2(308, 222)
 scale = Vector2(3, 3)
 texture = ExtResource("3_b5754")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 scroll_offset = Vector2(1000, 0)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -144,12 +134,11 @@ position = Vector2(77, -347)
 scale = Vector2(3, 3)
 texture = ExtResource("7_8uq7o")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 20
 
 [node name="Score" type="Label" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.953125
 anchor_right = 1.0
@@ -178,33 +167,9 @@ offset_bottom = 8.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="CountdownPanel" type="Panel" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_5dxt6")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/CountdownPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "3"
-label_settings = ExtResource("10_ta3i3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CountdownTimer" type="Timer" parent="CanvasLayer/CountdownPanel"]
-wait_time = 0.5
-autostart = true
-
 [node name="DeathPanel" type="Panel" parent="CanvasLayer"]
 top_level = true
-material = SubResource("ShaderMaterial_02lam")
+material = SubResource("ShaderMaterial_y6swq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -243,7 +208,7 @@ offset_bottom = 314.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press any key to continue..."
-label_settings = SubResource("LabelSettings_awiym")
+label_settings = SubResource("LabelSettings_hjvj7")
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
@@ -254,6 +219,8 @@ libraries = {
 "": SubResource("AnimationLibrary_hy5e3")
 }
 autoplay = "blinking"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("epoch")]
 position = Vector2(431, 145)
@@ -269,24 +236,24 @@ max_distance = Vector2(1, 1)
 offsett = Vector2(0, 0)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
-stream = ExtResource("13_vp7ja")
+stream = ExtResource("13_3f3ld")
 autoplay = true
 bus = &"Music"
 script = ExtResource("14_hire0")
 
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(-19, 202)
+
 [node name="RandomSystem" type="Node" parent="."]
 script = ExtResource("15_urje6")
 
-[node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(157, 202)
-
-[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "random_system")]
 position = Vector2(-650, 271)
 script = ExtResource("16_ah4mk")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
-rs = NodePath("../RandomSystem")
+random_system = NodePath("../RandomSystem")
 line_section_length = 500
 section_y_change_amplitude = 0
 
@@ -307,24 +274,14 @@ default_color = Color(0.156863, 0.180392, 0.231373, 1)
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 collision_layer = 257
 
-[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
-script = ExtResource("19_laliv")
-load_radius = 6
-max_radius = 10
-unload_radius = 1500
-rs = NodePath("../../RandomSystem")
+[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("random_system", "sloper", "camera", "line", "terrain_generator")]
+script = ExtResource("18_euakk")
+unload_radius = 2000
+random_system = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
 line = NodePath("../GroundLine")
 terrain_generator = NodePath("..")
-spawn_from = 3
-
-[node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 13.0
-autostart = true
-script = ExtResource("20_jvfou")
-
-[node name="Line2D" type="Line2D" parent="."]
-
-[connection signal="timeout" from="CanvasLayer/CountdownPanel/CountdownTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="TransitionTimer" to="TransitionTimer" method="_on_timeout"]
+spawn_from = 20
+messages = Array[String](["", "Hello!", "I`m your mind.", "You are a scientist.", "You have built a time machine!", "And you wanted to test it...", "But now I realise that something went wrong", "Thats why i need to remind you...", "...of the obstacles that you may encounter", "Let`s start with what is your time ", "Here is a hydrant, you  have to jump above it", "Here is a car, its bigger, try stepping on top of it", "And this is a drone, it isn`t scarry", "But this is a delivery drone, be carefull it drops package", "Now try to focus, here is a fragment of the lake", "Uuu, be carefull don`t touch it", "Try to not be scared, just jump through the middle", "But some obstacles are in background", "They have lighter texture", "Now you are ready!"])
+message_template = ExtResource("11_25fgy")

@@ -39,10 +39,13 @@ var use_amulet_action_name = "use_amulet"
 
 var is_gamepad_controlling = false
 
+
 @export var initial_chance_for_lag = 100
 
 @export var score_divider: int = 12
 
+
+@export var tutorial_epoch: EpochInfo
 @export var epochs: Array[EpochInfo]
 
 @export var amulets: Array[Amulet]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bgfb687uek7qw" path="res://Textures/Baners/city.png" id="1_f5157"]
 [ext_resource type="Environment" uid="uid://ojw38xadkg2v" path="res://Ages/Environments/city.tres" id="2_5sogd"]
-[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/road_line.tres" id="2_21vsy"]
+[ext_resource type="Resource" uid="uid://1n4aegfhapd" path="res://Decorations/City/road_line.tres" id="2_21vsy"]
 [ext_resource type="Resource" uid="uid://ufc5a1438fe1" path="res://Decorations/City/car.tres" id="2_qdhdi"]
 [ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="3_71il6"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="3_p7c1v"]

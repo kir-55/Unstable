@@ -50,7 +50,11 @@ func reload(game_mode: GlobalEnums.GAME_MODES = GlobalVariables.game_mode):
 	GlobalVariables.terrain_code = randi()
 	GlobalVariables.items_in_home = GlobalVariables.initial_items_in_home
 	GlobalVariables.is_in_epoch = true
-	get_tree().change_scene_to_file("res://Scenes/Locations/epoch.tscn")
+	
+	if game_mode == GlobalEnums.GAME_MODES.TUTORIAL:
+		get_tree().change_scene_to_file("res://Scenes/Locations/tutorial.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Locations/epoch.tscn")
 		
 
 

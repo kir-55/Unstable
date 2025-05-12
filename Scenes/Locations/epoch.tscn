@@ -88,7 +88,7 @@ camera = NodePath("Camera2D")
 parallax_background_close = NodePath("ParallaxBackground/ParallaxLayer2/Sprite2D")
 parallax_background_far1 = NodePath("ParallaxBackground/ParallaxLayer3/Sprite2D")
 parallax_background_far2 = NodePath("ParallaxBackground/ParallaxLayer3/Sprite2D2")
-parallax_foreground = NodePath("ParallaxBackground2/ParallaxLayer/Sprite2D")
+parallax_foreground = NodePath("ParallaxForeground/ParallaxLayer/Sprite2D")
 countdown_panel = NodePath("CanvasLayer/CountdownPanel")
 countdown_label = NodePath("CanvasLayer/CountdownPanel/Label")
 death_panel = NodePath("CanvasLayer/DeathPanel")
@@ -97,16 +97,16 @@ press_to_continue_label = NodePath("CanvasLayer/DeathPanel/PressToContinue")
 text_unwrap_speed = 14.0
 score_mark_prefab = ExtResource("2_60wf2")
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 10
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
 z_index = -2
 position = Vector2(1419, 99)
 motion_scale = Vector2(1.6, 0.9)
 motion_mirroring = Vector2(3900, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 self_modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
 position = Vector2(308, 222)
 scale = Vector2(3, 3)
@@ -281,13 +281,13 @@ script = ExtResource("12_x6lqm")
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(150, 200)
 
-[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "rs")]
+[node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "random_system")]
 position = Vector2(-650, 271)
 script = ExtResource("13_s27q1")
 ground_line = NodePath("GroundLine")
 grass_line = NodePath("GrassLine")
 floor_collider = NodePath("GrassLine/StaticBody2D")
-rs = NodePath("../RandomSystem")
+random_system = NodePath("../RandomSystem")
 line_section_length = 500
 section_y_change_amplitude = 0
 
@@ -308,12 +308,12 @@ default_color = Color(0.156863, 0.180392, 0.231373, 1)
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainGenerator/GrassLine"]
 collision_layer = 257
 
-[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("rs", "sloper", "camera", "line", "terrain_generator")]
+[node name="DecorationSpawner" type="Node2D" parent="TerrainGenerator" node_paths=PackedStringArray("random_system", "sloper", "camera", "line", "terrain_generator")]
 script = ExtResource("16_5yy0h")
 load_radius = 6
 max_radius = 10
 unload_radius = 1500
-rs = NodePath("../../RandomSystem")
+random_system = NodePath("../../RandomSystem")
 sloper = NodePath("../Sloper")
 camera = NodePath("../../Camera2D")
 line = NodePath("../GroundLine")
@@ -324,8 +324,6 @@ spawn_from = 3
 wait_time = 13.0
 autostart = true
 script = ExtResource("17_qsufl")
-
-[node name="Line2D" type="Line2D" parent="."]
 
 [connection signal="timeout" from="CanvasLayer/CountdownPanel/CountdownTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TransitionTimer" to="TransitionTimer" method="_on_timeout"]

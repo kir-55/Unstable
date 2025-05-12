@@ -302,7 +302,7 @@ func kill():
 
 
 func _on_speed_up_timer_timeout():
-	if SPEED < MAX_SPEED:
+	if SPEED < MAX_SPEED and GlobalVariables.game_mode != GlobalEnums.GAME_MODES.TUTORIAL:
 		SPEED += 20
 		GlobalVariables.player_global_speed = SPEED
 

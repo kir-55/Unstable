@@ -3,7 +3,7 @@ extends Camera2D
 @export var speed: float
 @export var vertical_speed: float
 @export var initial_target: Node
-@export var epoch: Epoch
+@export var epoch: Node
 var target = initial_target
 var target_id: int
 
