@@ -63,7 +63,7 @@ func _ready():
 			amulets_displayed.append(random_amulet.id)
 			spawn_amulet(random_amulet)
 	else:
-		label.text = "(You are dead) other players choose amulets!"
+		label.text = "You died! Other players choose amulets"
 
 
 func _process(delta):
@@ -83,6 +83,7 @@ func check_if_can_stay():
 		if Client.active:
 			label.text = "Wait for other players!"
 			Client.leave_home.rpc(Client.id)
+			return
 		else:
 			grab_and_leave()
 		
