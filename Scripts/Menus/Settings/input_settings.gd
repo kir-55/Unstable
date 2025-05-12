@@ -32,7 +32,7 @@ func _create_action_list():
 		
 		var events = InputMap.action_get_events(action)
 		if events.size() > 0:
-			action_keybind_label.text = events[0].as_text().trim_suffix(" (Physical)")
+			action_keybind_label.text = get_keybind_string(events[0])
 		else:
 			action_keybind_label.text = ""
 		action_list.add_child(button)
@@ -64,7 +64,7 @@ func _input(event):
 			for action in actions_to_check:
 				for action_event in InputMap.action_get_events(action):
 					print(event.as_text(), action_event.as_text().trim_suffix(" (Physical)"))
-					if action_event.as_text().trim_suffix(" (Physical)") == event.as_text():
+					if get_keybind_string(action_event) == get_keybind_string(event):
 						remapping_button.find_child("ActionKeybindLabel").text = "The key is already in use..."
 						remapping_button.find_child("ActionKeybindLabel").add_theme_color_override("font_color", Color(1, 0.4, 0.4))
 						remapping_button.find_child("Timer").start()
@@ -75,7 +75,9 @@ func _input(event):
 						accept_event()
 						return
 			
-			remapping_button.find_child("ActionKeybindLabel").text = event.as_text().trim_suffix(" (Physical)")
+			
+			
+			remapping_button.find_child("ActionKeybindLabel").text = get_keybind_string(event)
 			GlobalFunctions.save_keybind(action_to_remap, event)
 			
 			
@@ -109,3 +111,19 @@ func reset_to_defaults():
 
 func _on_button_pressed():
 	reset_to_defaults()
+
+func get_keybind_string(event : InputEvent):
+	var keybind_label_text
+	if event is InputEventJoypadButton:
+		keybind_label_text = "Gamepad Button " + str(event.button_index)
+	elif event is InputEventJoypadMotion:
+		if event.axis == JOY_AXIS_TRIGGER_LEFT:
+			keybind_label_text = "Gamepad Trigger Left"
+		elif event.axis == JOY_AXIS_TRIGGER_RIGHT:
+			keybind_label_text = "Gamepad Trigger Right"
+		else:
+			keybind_label_text = "Gamepad Axis " + str(event.axis)
+	else:
+		keybind_label_text = event.as_text().trim_suffix(" (Physical)")
+		
+	return keybind_label_text

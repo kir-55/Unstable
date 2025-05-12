@@ -9,6 +9,6 @@ func _on_timeout():
 		var action = get_parent().get_parent().input_actions.find_key(action_name_label.text)
 		var events = InputMap.action_get_events(action)
 		if events.size() > 0:
-			action_keybind_label.text = events[0].as_text().trim_suffix(" (Physical)")
+			action_keybind_label.text = get_parent().get_parent().get_keybind_string(events[0])
 		else:
 			action_keybind_label.text = ""
