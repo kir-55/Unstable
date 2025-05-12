@@ -77,10 +77,10 @@ func _ready():
 	GlobalVariables.on_player_died.connect(on_player_died)
 
 	var player = load(player_prefab).instantiate()
-	
+	player.global_position = spawn_point.global_position
 	player_spawned.emit(player)
 	self.player = player
-	get_tree().current_scene.add_child(player)
+	get_tree().current_scene.add_child(player) 
 
 
 func _process(delta):

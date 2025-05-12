@@ -106,9 +106,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_ug5gg")
-theme_override_styles/hover = ExtResource("4_rrgdv")
-theme_override_styles/pressed = ExtResource("4_rrgdv")
-theme_override_styles/focus = ExtResource("4_rrgdv")
+theme_override_styles/hover = ExtResource("5_1mafq")
+theme_override_styles/pressed = ExtResource("5_1mafq")
+theme_override_styles/focus = ExtResource("5_1mafq")
 text = "Story Mode"
 
 [node name="EndlessPlay" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
@@ -130,9 +130,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_ug5gg")
-theme_override_styles/hover = ExtResource("4_rrgdv")
-theme_override_styles/pressed = ExtResource("4_rrgdv")
-theme_override_styles/focus = ExtResource("4_rrgdv")
+theme_override_styles/hover = ExtResource("6_abaoq")
+theme_override_styles/pressed = ExtResource("6_abaoq")
+theme_override_styles/focus = ExtResource("6_abaoq")
 text = "Tutorial"
 
 [node name="Cancel" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
@@ -142,9 +142,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_ug5gg")
-theme_override_styles/hover = ExtResource("4_rrgdv")
-theme_override_styles/pressed = ExtResource("4_rrgdv")
-theme_override_styles/focus = ExtResource("4_rrgdv")
+theme_override_styles/hover = ExtResource("6_4jgwr")
+theme_override_styles/pressed = ExtResource("6_4jgwr")
+theme_override_styles/focus = ExtResource("6_4jgwr")
 text = "Cancel
 "
 

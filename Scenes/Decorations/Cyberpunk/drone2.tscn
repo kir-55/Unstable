@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3rt4qv6rqmcq"]
+[gd_scene load_steps=14 format=3 uid="uid://3rt4qv6rqmcq"]
 
 [ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_8g2ud"]
 [ext_resource type="Texture2D" uid="uid://bo7lvifmwj66y" path="res://Textures/Decorations/Cyberpunk/drone2.png" id="2_hld7q"]
@@ -7,9 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://cgkrflp3aphk4" path="res://Scenes/Explosions/drone_cyberpunk_explosion2.tscn" id="5_c3klr"]
 [ext_resource type="Texture2D" uid="uid://b07lblermhrgy" path="res://Textures/Decorations/Cyberpunk/package.png" id="6_5mhlc"]
 [ext_resource type="Script" path="res://Scripts/package.gd" id="6_b0duv"]
+[ext_resource type="Gradient" uid="uid://dheic35wwrhmc" path="res://Styles/Gradients/fire_gradient.tres" id="6_rnjcm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iamu"]
 size = Vector2(10, 10)
+
+[sub_resource type="Curve" id="Curve_i1s7g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.805243, 0.537867), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcyxb"]
 size = Vector2(10, 6)
@@ -55,6 +60,36 @@ script = ExtResource("4_rcfce")
 max_health = 90.0
 explosion_prefab = ExtResource("5_c3klr")
 explosion_point = NodePath("../CollisionShape2D")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-9, -3.66667)
+amount = 32
+lifetime = 0.5
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_i1s7g")
+color_initial_ramp = ExtResource("6_rnjcm")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(9, -3.66667)
+amount = 32
+lifetime = 0.5
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_i1s7g")
+color_initial_ramp = ExtResource("6_rnjcm")
 
 [node name="Package" type="Node2D" parent="." node_paths=PackedStringArray("ray")]
 position = Vector2(0, 9.66667)
