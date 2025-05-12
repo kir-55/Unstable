@@ -14,12 +14,14 @@ var new_target
 var distance_to_target: Vector2
 @export var offsett:= Vector2(400, -130)
 
-func _ready():
-	target_id = Client.id
-
 func _enter_tree():
 	if !target and get_tree().root.get_child(4).has_signal("player_spawned"):
 		get_tree().root.get_child(4).player_spawned.connect(_set_target)
+
+
+func _ready():
+	target_id = Client.id
+
 
 func _set_target(target):
 	initial_target = target

@@ -120,7 +120,8 @@ func _ready():
 		if GlobalVariables.player_amulets.has(3):
 			var camera = get_tree().current_scene.find_child("Camera2D")
 			camera.zoom = Vector2(0.7, 0.7)
-			camera.offsett.y = -300
+			camera.offsett = Vector2(600, -250)
+			
 		reset_velocity()
 	else:
 		collision_shape.disabled = true
