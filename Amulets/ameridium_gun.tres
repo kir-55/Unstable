@@ -8,7 +8,7 @@
 script = ExtResource("1_ir5mw")
 id = 0
 name = "Ameridium gun"
-description = "Allows player to shoot explosive bullet every 5 seconds."
+description = "Allows player to shoot explosive bullet every 5 seconds (required for destroy)"
 texture = ExtResource("2_l01fq")
 should_be_added_after_home = false
 incompatible_amulets = Array[int]([13, 15])

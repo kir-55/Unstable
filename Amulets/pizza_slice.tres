@@ -7,8 +7,9 @@
 script = ExtResource("1_wyi2k")
 id = 9
 name = "Pizza Slice"
-description = "Gives you temporary energy to double jump, consumes by the end of next epoch"
+description = "Gives you temporary energy to double jump, consumed by the end of next epoch"
 texture = ExtResource("2_ptnk6")
+should_be_added_after_home = false
 incompatible_amulets = Array[int]([])
 available_in_singleplayer = true
 available_in_multiplayer = true

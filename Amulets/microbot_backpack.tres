@@ -8,7 +8,7 @@
 script = ExtResource("1_cihre")
 id = 5
 name = "Microbot BackPack"
-description = "Backpack with your new innovation, once a while generates microbot wich scales down nearby obsticle"
+description = "Backpack with your new innovation, once a while generates microbot wich scales down nearby obstacle"
 texture = ExtResource("2_ibapu")
 should_be_added_after_home = false
 incompatible_amulets = Array[int]([])

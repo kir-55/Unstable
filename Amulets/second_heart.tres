@@ -7,8 +7,9 @@
 script = ExtResource("1_y1s8g")
 id = 11
 name = "Second Heart"
-description = "Gives you second chance to live (removes when used)"
+description = "Gives you second chance to live (removed when used)"
 texture = ExtResource("2_wwwrf")
+should_be_added_after_home = false
 incompatible_amulets = Array[int]([])
 available_in_singleplayer = true
 available_in_multiplayer = true

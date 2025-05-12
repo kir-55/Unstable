@@ -7,8 +7,9 @@
 script = ExtResource("1_ddvoi")
 id = 12
 name = "Some Plant"
-description = "Gives you green energy"
+description = "Gives you green energy and makes your dash longer"
 texture = ExtResource("2_gch6j")
+should_be_added_after_home = false
 incompatible_amulets = Array[int]([])
 available_in_singleplayer = true
 available_in_multiplayer = true

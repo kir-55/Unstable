@@ -8,8 +8,9 @@
 script = ExtResource("1_ofyad")
 id = 13
 name = "Wrench"
-description = "Works as a boomerang destroying obsticles (required for machine repair)"
+description = "Works as a boomerang destroying obsticles (required for repair)"
 texture = ExtResource("2_7dhaf")
+should_be_added_after_home = false
 incompatible_amulets = Array[int]([0, 15])
 available_in_singleplayer = true
 available_in_multiplayer = true

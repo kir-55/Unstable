@@ -7,7 +7,7 @@
 script = ExtResource("1_cayfh")
 id = 7
 name = "Notes"
-description = "Your notes about machine, desplays next epoch, required for repair."
+description = "Your notes about machine, displays next epoch (required for repair and destroy)"
 texture = ExtResource("2_862eq")
 should_be_added_after_home = false
 incompatible_amulets = Array[int]([])

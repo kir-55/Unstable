@@ -7,8 +7,9 @@
 script = ExtResource("1_62vvv")
 id = 6
 name = "Performance Bust Pill"
-description = "Busts your timers a (click to use)"
+description = "Busts your timers (click to use)"
 texture = ExtResource("2_qprb1")
+should_be_added_after_home = false
 incompatible_amulets = Array[int]([])
 available_in_singleplayer = true
 available_in_multiplayer = true

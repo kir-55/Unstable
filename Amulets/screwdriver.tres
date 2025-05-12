@@ -8,7 +8,7 @@
 script = ExtResource("1_d836v")
 id = 10
 name = "Screwdriver"
-description = "Spawns every now and then takeing 50% of health of large obsticles (required for repair)"
+description = "Spawns every now and then taking 50% of health of large obstacles (required for repair)"
 texture = ExtResource("2_0g2cb")
 should_be_added_after_home = false
 incompatible_amulets = Array[int]([])
