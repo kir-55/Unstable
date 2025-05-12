@@ -15,6 +15,7 @@ extends Panel
 
 
 func _ready():
+	GlobalVariables.is_gamepad_controlling = false
 	play_button.visible = true
 	story_play_button.visible = false
 	endless_play_button.visible = false
@@ -27,6 +28,7 @@ func _ready():
 
 
 func _on_play_pressed():
+	GlobalVariables.is_gamepad_controlling = false
 	play_button.visible = false
 	story_play_button.visible = true
 	endless_play_button.visible = true
@@ -39,6 +41,7 @@ func _on_play_pressed():
 
 
 func _on_cancel_pressed():
+	GlobalVariables.is_gamepad_controlling = false
 	play_button.visible = true
 	story_play_button.visible = false
 	endless_play_button.visible = false

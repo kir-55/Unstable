@@ -6,8 +6,6 @@ func _ready():
 	load_player_data()
 	load_settings()
 
-
-
 func _input(event):
 	if event.is_action_pressed("fullscreen"):  # Check if F11 is pressed
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
@@ -19,7 +17,10 @@ func _input(event):
 			GlobalVariables.settings["fullscreen"] = false
 			GlobalFunctions.save_player_data()
 
-
+func gamepad_input_focus_button(event : InputEvent, button : Button):
+	if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and !GlobalVariables.is_gamepad_controlling:
+		GlobalVariables.is_gamepad_controlling = true
+		button.grab_focus()
 
 func apply_theme_to_scene(scene: Node):
 	if scene is Control:
@@ -209,6 +210,7 @@ func load_menu(menu: String, remove_all_children = true, transition_to_main = fa
 	menu_instance.name = "menu"
 	menu_instance_callable.call(menu_instance)
 	container.add_child(menu_instance)
+	GlobalVariables.is_gamepad_controlling = false
 
 func save_keybind(action : StringName, event : InputEvent):
 	var event_str

@@ -37,6 +37,7 @@ var times_treveled: int = 0
 var items_in_home: int = initial_items_in_home
 var use_amulet_action_name = "use_amulet"
 
+var is_gamepad_controlling = false
 
 @export var initial_chance_for_lag = 100
 

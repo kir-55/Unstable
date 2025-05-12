@@ -656,7 +656,6 @@ position = Vector2(498, 283)
 scale = Vector2(5, 5)
 
 [node name="LeaveButton" type="Button" parent="CanvasLayer"]
-visible = false
 offset_left = 805.0
 offset_top = 563.0
 offset_right = 1031.0
