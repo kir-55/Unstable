@@ -6,6 +6,8 @@ extends Node2D
 @export var canvas_layer: CanvasLayer
 @export var texture_rect: TextureRect
 @export var win_menu_scene: PackedScene
+@export var leave_button : Button
+@export var remove_button : Button
 
 
 @export var animation_palayer: AnimationPlayer
@@ -82,6 +84,8 @@ func check_if_can_stay():
 	if amulets_chosen.size() >= amount_of_items_to_take:
 		if Client.active:
 			label.text = "Wait for other players!"
+			leave_button.visible = false
+			remove_button.visible = false
 			Client.leave_home.rpc(Client.id)
 			return
 		else:
@@ -195,6 +199,9 @@ func chosed_amulet(event: InputEvent, amulet_id: int, amulet_representation: Nod
 func complete_amulet_choice(amulet_representation: Node = null):
 	if amount_of_items_to_take - amulets_chosen.size() <= 0 and Client.active:
 		label.text = "Wait for other players!"
+		leave_button.visible = false
+		remove_button.visible = false
+		
 	else:
 		label.text = "You have a few seconds to grab " + str(amount_of_items_to_take - amulets_chosen.size()) + " item" + ("s." if amount_of_items_to_take - amulets_chosen.size() > 1 else ".")
 	if amulet_representation != null:

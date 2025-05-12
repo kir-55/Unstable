@@ -557,13 +557,15 @@ _data = {
 "repair": SubResource("Animation_140lf")
 }
 
-[node name="Home" type="Node2D" node_paths=PackedStringArray("label", "displayed_amulets_container", "canvas_layer", "texture_rect", "animation_palayer")]
+[node name="Home" type="Node2D" node_paths=PackedStringArray("label", "displayed_amulets_container", "canvas_layer", "texture_rect", "leave_button", "remove_button", "animation_palayer")]
 script = ExtResource("5_i6kwn")
 label = NodePath("CanvasLayer/Message")
 displayed_amulets_container = NodePath("CanvasLayer/HBoxContainer")
 canvas_layer = NodePath("CanvasLayer")
 texture_rect = NodePath("CanvasLayer/TextureRect")
 win_menu_scene = ExtResource("2_ucxui")
+leave_button = NodePath("CanvasLayer/LeaveButton")
+remove_button = NodePath("CanvasLayer/RemoveButton")
 animation_palayer = NodePath("AnimationPlayer")
 amulet_prefab = ExtResource("6_58chv")
 
