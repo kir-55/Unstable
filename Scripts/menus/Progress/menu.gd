@@ -12,5 +12,14 @@ func _on_back_pressed():
 			)
 		else:
 			GlobalFunctions.load_menu("game_over")
+	elif GlobalVariables.previous_menu == "win":
+		if GlobalVariables.latest_win_type == GlobalEnums.WIN_TYPES.REPAIR:
+			GlobalFunctions.load_menu("win", false, false, func(instance):
+				instance.win_type = GlobalEnums.WIN_TYPES.REPAIR
+				)
+		elif GlobalVariables.latest_win_type == GlobalEnums.WIN_TYPES.DESTRUCTION:
+			GlobalFunctions.load_menu("win", false, false, func(instance):
+				instance.win_type = GlobalEnums.WIN_TYPES.DESTRUCTION
+				)
 	else:
 		GlobalFunctions.load_menu("main", false)

@@ -94,12 +94,14 @@ func check_for_win():
 	var amulets_required_for_destruction = GlobalVariables.amulets.filter(func(x): return x.required_for_destruction).map(func(x): return x.id)
 	if amulets_required_for_repair.all(func(x): return x in GlobalVariables.player_amulets):
 		print("you won by repair")
+		GlobalVariables.latest_win_type = GlobalEnums.WIN_TYPES.REPAIR
 		animation_palayer.play("repair")
 		return true
 		# repair - call the repair menu, run the repair animation
 
 	elif amulets_required_for_destruction.all(func(x): return x in GlobalVariables.player_amulets):
 		print("you won by destruction")
+		GlobalVariables.latest_win_type = GlobalEnums.WIN_TYPES.DESTRUCTION
 		animation_palayer.play("destruction")
 		return true
 	else:

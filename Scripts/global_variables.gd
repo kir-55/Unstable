@@ -60,6 +60,7 @@ var player_new_amulets : Array[int]
 
 var current_epoch_id : int = 0
 var next_epoch_id: int
+var latest_win_type = null
 
 var game_is_on := true:
 	set(value):
