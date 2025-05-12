@@ -66,6 +66,9 @@ func _ready():
 			spawn_amulet(random_amulet)
 	else:
 		label.text = "You died! Other players choose amulets"
+		leave_button.visible = false
+		remove_button.visible = false
+		
 
 
 func _process(delta):

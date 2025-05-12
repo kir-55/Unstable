@@ -18,9 +18,10 @@ func _input(event):
 			GlobalFunctions.save_player_data()
 
 func gamepad_input_focus_button(event : InputEvent, button : Button):
-	if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and !GlobalVariables.is_gamepad_controlling:
-		GlobalVariables.is_gamepad_controlling = true
-		button.grab_focus()
+	if button and is_instance_valid(button) and !button.is_queued_for_deletion():
+		if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and !GlobalVariables.is_gamepad_controlling:
+			GlobalVariables.is_gamepad_controlling = true
+			button.grab_focus()
 
 func apply_theme_to_scene(scene: Node):
 	if scene is Control:
