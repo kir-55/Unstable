@@ -213,6 +213,10 @@ func save_keybind(action : StringName, event : InputEvent):
 		event_str = OS.get_keycode_string(event.physical_keycode)
 	elif event is InputEventMouseButton:
 		event_str = "mouse_" + str(event.button_index)
+	elif event is InputEventJoypadMotion:
+		event_str = "joypad_axis_" + str(event.axis)
+	elif event is InputEventJoypadButton:
+		event_str = "joypad_" + str(event.button_index)
 
 	InputMap.action_erase_events(action)
 	InputMap.action_add_event(action, get_input_event_from_str(event_str))
@@ -231,6 +235,12 @@ func get_input_event_from_str(name : StringName):
 	var input_event
 	if name.contains("mouse_"):
 		input_event = InputEventMouseButton.new()
+		input_event.button_index = int(name.split("_")[1])
+	elif name.contains("joypad_axis_"):
+		input_event = InputEventJoypadMotion.new()
+		input_event.axis = int(name.split("_")[2])
+	elif name.contains("joypad_"):
+		input_event = InputEventJoypadButton.new()
 		input_event.button_index = int(name.split("_")[1])
 	else:
 		input_event = InputEventKey.new()

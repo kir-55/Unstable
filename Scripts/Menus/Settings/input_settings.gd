@@ -54,6 +54,8 @@ func _input(event):
 		):
 			if event is InputEventMouseButton:
 				event.double_click = false
+			if event is InputEventJoypadMotion and abs(event.axis_value) < 0.5:
+				return
 			
 			var actions_to_check = input_actions.duplicate()
 			for action in GlobalVariables.not_remappable_actions:

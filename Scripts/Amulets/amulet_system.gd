@@ -34,8 +34,14 @@ func _input(event):
 			event_str = OS.get_keycode_string(event.physical_keycode)
 		elif event is InputEventMouseButton:
 			event_str = "mouse_" + str(event.button_index)
+		elif event is InputEventJoypadButton:
+			event_str = "joypad_" + str(event.button_index)
+		elif event is InputEventJoypadMotion and abs(event.axis_value) > 0.5:
+			event_str = "joypad_axis_" + str(event.axis)
+		else:
+			event_str = ""
 		var action_name = GlobalVariables.settings["keybinds"].find_key(event_str)
-
+		
 		if event_str is String and action_name:
 			if action_name.contains(GlobalVariables.use_amulet_action_name):
 				var index = int(action_name[action_name.length() - 1]) - 1
