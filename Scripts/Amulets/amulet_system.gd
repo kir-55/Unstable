@@ -2,7 +2,7 @@ extends Node
 
 @export var amulet_icon_template: PackedScene
 
-@onready var amulets_panel: Container = get_tree().root.get_child(4).amulets_panel
+@onready var amulets_panel: Container = get_tree().current_scene.amulets_panel
 
 @export var amulet_timers: AmuletTimers
 @export var amulet_timer_bar: PackedScene

@@ -88,6 +88,7 @@ func _ready():
 		for i in Client.players_alive:
 			#(Client.players_alive)
 			var player = load(player_prefab).instantiate()
+			player.global_position = spawn_point.global_position
 			if int(i) == Client.id:
 				self.player = player
 				player.z_index += 1
@@ -104,6 +105,7 @@ func _ready():
 			#player.global_position = spawn_point.global_position
 	else:
 		var player = load(player_prefab).instantiate()
+		player.global_position = spawn_point.global_position
 		
 		player_spawned.emit(player)
 		self.player = player
