@@ -29,9 +29,12 @@ func _on_scene_changed(_from: Node, to: Node):
 	apply_theme_to_scene(to)
 
 
-func reload():
+func reload(game_mode: GlobalEnums.GAME_MODES = GlobalVariables.game_mode):
 	start_timer()
 	Engine.time_scale = 1
+	
+	
+	GlobalVariables.game_mode = game_mode
 	GlobalVariables.last_score = 0
 	GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 	GlobalVariables.game_is_on = true

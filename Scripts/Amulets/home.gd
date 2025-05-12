@@ -35,7 +35,7 @@ func _ready():
 	label_with = label.size.x
 	label.size.x = 0
 
-	if !Client.active:
+	if !Client.active and GlobalVariables.game_mode == GlobalEnums.GAME_MODES.STORY:
 		check_for_win()
 
 	if !Client.active or Client.players_alive.has(Client.id):
@@ -203,7 +203,7 @@ func complete_amulet_choice(amulet_representation: Node = null):
 		
 	check_if_can_stay()
 	
-	if !Client.active:
+	if !Client.active and GlobalVariables.game_mode == GlobalEnums.GAME_MODES.STORY:
 		check_for_win()
 
 func grab_and_leave():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://hj7nfep0o7s3"]
 
-[ext_resource type="Script" path="res://Scripts/Menus/game_over_menu.gd" id="1_fseod"]
+[ext_resource type="Script" path="res://Scripts/Menus/base_menu.gd" id="1_fseod"]
 [ext_resource type="StyleBox" uid="uid://bexrdmx650haa" path="res://Styles/panel.tres" id="2_1y0su"]
 [ext_resource type="StyleBox" uid="uid://sr3rv6n41wdu" path="res://Styles/transparent_button.tres" id="3_ca5b1"]
 [ext_resource type="StyleBox" uid="uid://d2bmcyyj3mhkh" path="res://Styles/button_hover.tres" id="5_4hrvk"]

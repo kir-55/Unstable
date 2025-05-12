@@ -139,7 +139,8 @@ func _process(delta):
 			death_panel.material.set_shader_parameter("circle_size", circle_size -0.1)
 		elif death_message_label.size.x < get_viewport().size.x:
 			death_message_label.size.x += text_unwrap_speed
-			death_message_label.position.x -= text_unwrap_speed / 2
+			death_message_label.position.x -= text_unwrap_speed / 2 
+			
 		else:
 			can_accept_input = true
 			press_to_continue_label.visible = true
@@ -174,8 +175,7 @@ func on_player_died(message):
 		var scale_factor = Vector2(get_viewport().size) / initial_view_port_size
 		death_message_label.size.x = 0
 		death_message_label.position.x = get_viewport().size.x / scale_factor.x / 2
-		death_message_label.text = message
-		#death_panel.material.set_shader_parameter("circle_size", 0.34)
+		death_message_label.text = message		#death_panel.material.set_shader_parameter("circle_size", 0.34)
 
 		var zoom = camera.zoom
 
@@ -183,7 +183,7 @@ func on_player_died(message):
 		print("scale factor", scale_factor)
 		var viewport_size = Vector2(get_viewport().size) / scale_factor / zoom
 
-		var camera_top_left = camera.global_position - (viewport_size * 0.5)
+		var camera_top_left = camera.global_position - (viewport_size * 0.5) + camera.offset
 
 		var local_pos = player.global_position - camera_top_left
 

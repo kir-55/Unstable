@@ -442,6 +442,8 @@ func start_game(id: int):
 
 		still_playing = true
 		is_in_lobby = false
+		
+		GlobalVariables.game_mode = GlobalEnums.GAME_MODES.MULTIPLAYER
 		GlobalVariables.last_score = 0
 		GlobalVariables.player_global_speed = GlobalVariables.initial_player_speed
 		GlobalVariables.game_is_on = true

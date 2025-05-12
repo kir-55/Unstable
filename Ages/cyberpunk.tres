@@ -19,12 +19,12 @@
 [resource]
 script = ExtResource("14_ar4ej")
 title = "Cyberpunk"
-description = "Drones, Laser bariers, Bikes"
+description = "Drones, Laser bariers, Bikes, Pipes"
 baner = ExtResource("1_58e3a")
 ground_color = Color(0.223529, 0.152941, 0.368627, 1)
 grass_color = Color(0.184314, 0.0980392, 0.243137, 1)
 decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_bmoe8"), ExtResource("3_44ddk"), ExtResource("4_gm80n"), ExtResource("5_yu2nq"), ExtResource("6_1dem3"), ExtResource("7_1d18d"), ExtResource("8_h6jeg"), ExtResource("9_yccdc")])
-decoration_spawn_pattern = "NFRA*B*|NFRHB*C*|NFRDB*B*C*|NFR|NFRA*|NFRC*|NFRH|NFRB*C*|NFRAB*|NFRD|NFRA*B|NFRB*|NFRC*C*|NFRC*C*|NFRB*C*|NFRA*|NFRHC*B*|NFRB*C*|NFRHC*|NFRC*|NFRB"
+decoration_spawn_pattern = "NFRA*B*|NFRB*C*|NFRDB*B*C*|NFR|NFRA*|NFRC*|NFRH|NFRB*C*|NFRAB*|NFRD|NFRA*B|NFRB*|NFRC*C*|NFRC*C*|NFRB*C*|NFRA*|NFRHC*B*|NFRB*C*|NFRHC*|NFRC*|NFRB"
 environment = ExtResource("2_8mxvc")
 directional_light = ExtResource("10_mxpaf")
 background_color = Color(0.407843, 0.25098, 0.223529, 1)

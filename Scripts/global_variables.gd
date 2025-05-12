@@ -23,7 +23,7 @@ var time_ended: int = 0
 
 var times_treveled: int = 0
 
-
+@export var game_mode: GlobalEnums.GAME_MODES = GlobalEnums.GAME_MODES.STORY
 
 @export var initial_player_speed: int = 500
 @export var initial_player_amulets: Array[int]

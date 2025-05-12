@@ -15,6 +15,9 @@ var distance_to_target: Vector2
 @export var offsett:= Vector2(400, -130)
 
 func _enter_tree():
+	if initial_target:
+		global_position = initial_target.global_position
+		
 	if !target and get_tree().root.get_child(4).has_signal("player_spawned"):
 		get_tree().root.get_child(4).player_spawned.connect(_set_target)
 
@@ -25,6 +28,7 @@ func _ready():
 
 func _set_target(target):
 	initial_target = target
+	global_position = target.global_position
 	self.target = target 
 
 func _process(delta):
