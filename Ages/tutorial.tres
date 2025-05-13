@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=15 format=3 uid="uid://m61d1pjry2yk"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=16 format=3 uid="uid://m61d1pjry2yk"]
 
 [ext_resource type="Texture2D" uid="uid://riixd6yx27ho" path="res://Textures/Amulets/pizza.png" id="1_sflaj"]
 [ext_resource type="Resource" uid="uid://ddjxwuj1qgcor" path="res://Decorations/City/hydrant.tres" id="2_mtlnl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://duyheh6m0uwo3" path="res://Decorations/Cyberpunk/drone2.tres" id="5_rcbi0"]
 [ext_resource type="Resource" uid="uid://dl7047qekcmc5" path="res://Decorations/Medieval/lake1.tres" id="7_6hr7w"]
 [ext_resource type="Environment" uid="uid://clfu5hliygcbr" path="res://Ages/Environments/medieval.tres" id="8_6jjmd"]
+[ext_resource type="Resource" uid="uid://dalrrafpho3pu" path="res://Decorations/Cyberpunk/pipe.tres" id="9_4yqj3"]
 [ext_resource type="Resource" uid="uid://cdnu37net2xdn" path="res://Decorations/Medieval/tree.tres" id="9_6n1lp"]
 [ext_resource type="Resource" uid="uid://oa7vsrwr1co4" path="res://Decorations/Medieval/well.tres" id="10_100lg"]
 [ext_resource type="Resource" uid="uid://du7li7e2t0u11" path="res://Decorations/tutorial_wall.tres" id="11_qwelq"]
@@ -22,7 +23,7 @@ description = "All of the obsticles"
 baner = ExtResource("1_sflaj")
 ground_color = Color(0.254902, 0.266667, 0.32549, 1)
 grass_color = Color(0.411765, 0.435294, 0.501961, 1)
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_mtlnl"), ExtResource("3_5jhop"), ExtResource("4_jyka8"), ExtResource("5_rcbi0"), ExtResource("7_6hr7w"), ExtResource("2_nfj4r"), ExtResource("12_ycvwk"), ExtResource("9_6n1lp"), ExtResource("10_100lg"), ExtResource("11_qwelq")])
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_mtlnl"), ExtResource("3_5jhop"), ExtResource("4_jyka8"), ExtResource("5_rcbi0"), ExtResource("7_6hr7w"), ExtResource("2_nfj4r"), ExtResource("12_ycvwk"), ExtResource("9_4yqj3"), ExtResource("9_6n1lp"), ExtResource("10_100lg"), ExtResource("11_qwelq")])
 decoration_spawn_pattern = ""
 environment = ExtResource("8_6jjmd")
 background_color = Color(0.898039, 0.937255, 0.937255, 1)

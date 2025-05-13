@@ -52,6 +52,7 @@ var first_frame = true
 var last_zoom = Vector2(0,0)
 var last_viewport = Vector2.ZERO
 
+var current_epoch = GlobalVariables.epochs[GlobalVariables.current_epoch_id]
 
 func _ready():
 	
@@ -64,7 +65,7 @@ func _ready():
 	GlobalVariables.is_in_epoch = true
 	GlobalVariables.game_is_on = false
 	current_countdown_value = GlobalVariables.pre_game_countdown_time
-	var current_epoch = GlobalVariables.epochs[GlobalVariables.current_epoch_id]
+	
 	if current_epoch:
 		decoration_spawner.decorations = current_epoch.decorations
 		decoration_spawner.spawn_pattern = current_epoch.decoration_spawn_pattern

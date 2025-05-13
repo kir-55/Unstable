@@ -32,13 +32,13 @@ shape = SubResource("RectangleShape2D_na2qg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = -1
-position = Vector2(670, 0)
+position = Vector2(1005, 0)
 scale = Vector2(0.333333, 0.333333)
 amount = 256
 randomness = 1.0
 lifetime_randomness = 1.0
 emission_shape = 3
-emission_rect_extents = Vector2(2000, 1)
+emission_rect_extents = Vector2(3000, 1)
 gravity = Vector2(0, -400)
 initial_velocity_min = 0.8
 initial_velocity_max = 0.8

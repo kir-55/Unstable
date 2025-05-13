@@ -44,6 +44,8 @@ var first_frame = true
 var last_zoom = Vector2(0,0)
 var last_viewport = Vector2.ZERO
 
+var current_epoch = GlobalVariables.tutorial_epoch
+
 func _ready():
 	death_panel.visible = false
 	
@@ -52,7 +54,7 @@ func _ready():
 	
 	GlobalVariables.player_global_speed = 300
 	
-	var current_epoch = GlobalVariables.tutorial_epoch
+	
 	if current_epoch:
 		grass_line.default_color = current_epoch.grass_color
 		ground_line.default_color = current_epoch.ground_color

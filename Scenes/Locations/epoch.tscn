@@ -257,7 +257,7 @@ libraries = {
 autoplay = "blinking"
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("initial_target", "epoch")]
-position = Vector2(150, 200)
+position = Vector2(150, 68)
 offset = Vector2(350, -75)
 zoom = Vector2(1.2, 1.2)
 process_callback = 0
@@ -279,7 +279,7 @@ script = ExtResource("11_vmtw0")
 script = ExtResource("12_x6lqm")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(150, 200)
+position = Vector2(150, 68)
 
 [node name="TerrainGenerator" type="Node2D" parent="." node_paths=PackedStringArray("ground_line", "grass_line", "floor_collider", "random_system")]
 position = Vector2(-650, 271)
@@ -321,7 +321,7 @@ terrain_generator = NodePath("..")
 spawn_from = 3
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 222.0
+wait_time = 20.0
 autostart = true
 script = ExtResource("17_qsufl")
 
