@@ -2,6 +2,6 @@
 
 [node name="Cyberpunk" type="DirectionalLight2D"]
 color = Color(1, 0.899827, 0.834361, 1)
-energy = 0.9
+energy = 0.7
 blend_mode = 1
 range_layer_min = -100
