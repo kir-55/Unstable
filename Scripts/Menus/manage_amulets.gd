@@ -70,6 +70,10 @@ func spawn_amulet_with_bind(container: HBoxContainer, amulet_id: int):
 
 func on_amulet_click_swap(event: InputEvent, amulet_id):
 	if event is InputEventMouseButton and event.pressed:
+		if amulet_id == 2:
+			var player_chronometer_count = GlobalVariables.player_amulets.filter(func(id): return id == 2).size()
+			for i in player_chronometer_count:
+				GlobalVariables.player_global_speed -= 100
 		#print(GlobalVariables.player_amulets)
 		for i in range(GlobalVariables.player_amulets.size()):
 			if GlobalVariables.player_amulets[i] == amulet_id:
@@ -88,6 +92,8 @@ func on_amulet_click_swap(event: InputEvent, amulet_id):
 		
 func on_amulet_click_remove(event: InputEvent, amulet_id):
 	if event is InputEventMouseButton and event.pressed:
+		if amulet_id == 2:
+			GlobalVariables.player_global_speed -= 100
 		GlobalVariables.player_amulets.erase(amulet_id)
 		get_tree().current_scene.check_if_can_stay()
 		queue_free()

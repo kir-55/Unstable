@@ -211,6 +211,8 @@ func complete_amulet_choice(amulet_representation: Node = null):
 		if not GlobalVariables.amulets[amulets_chosen[amulets_chosen.size() - 1]].should_be_added_after_home:
 			GlobalVariables.player_amulets.append(amulets_chosen[amulets_chosen.size() - 1])
 		else:
+			if GlobalVariables.amulets[amulets_chosen[amulets_chosen.size() - 1]].id == 2:
+				GlobalVariables.player_global_speed += 100
 			should_be_added_after.append(amulets_chosen[amulets_chosen.size() - 1])
 		amulet_representation.queue_free()
 		
