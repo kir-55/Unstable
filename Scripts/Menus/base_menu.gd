@@ -50,11 +50,13 @@ func _on_settings_pressed():
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and GlobalVariables.is_gamepad_controlling:
 		GlobalVariables.is_gamepad_controlling = false
-		play_button.release_focus()
-		story_play_button.release_focus()
-	if play_button.visible:
+		if is_instance_valid(play_button):
+			play_button.release_focus()
+		elif is_instance_valid(story_play_button):
+			story_play_button.release_focus()
+	if is_instance_valid(play_button) and play_button.visible:
 		GlobalFunctions.gamepad_input_focus_button(event, play_button)
-	else:
+	elif is_instance_valid(story_play_button) and story_play_button.visible:
 		GlobalFunctions.gamepad_input_focus_button(event, story_play_button)
 
 # GAME MODES

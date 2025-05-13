@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Decoration" load_steps=3 format=3 uid="uid://dalrrafpho3pu"]
+
+[ext_resource type="PackedScene" uid="uid://byvfctxmrpt5j" path="res://Scenes/Decorations/Cyberpunk/pipe.tscn" id="1_wieg0"]
+[ext_resource type="Script" path="res://Scripts/Decorations/decoration.gd" id="2_onfqg"]
+
+[resource]
+script = ExtResource("2_onfqg")
+prefab = ExtResource("1_wieg0")
+name = "Pipe"
+spawn_on_center = true
+chance_to_spawn = 50.0
+width = 180
+pattern_type = "A"
+type = 1
+ignore_types = Array[int]([0, 3])
+can_be_mirrored = false

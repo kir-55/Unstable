@@ -1,9 +1,12 @@
 extends Area2D
 
 @export var death_messages: Array[String]
+@export var dash_through := false
 
 func _on_body_entered(body):
 	if (body.name == "Player" or body.name == "Player" + str(Client.id)) and GlobalVariables.game_is_on:
+		if dash_through and body.is_dashing:
+			return
 		var canvas_layer = get_tree().current_scene.canvas_layer
 
 		if body.kill():

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EpochInfo" load_steps=16 format=3 uid="uid://c24oqomxlons6"]
+[gd_resource type="Resource" script_class="EpochInfo" load_steps=17 format=3 uid="uid://c24oqomxlons6"]
 
 [ext_resource type="Texture2D" uid="uid://c0o7ug1kedmic" path="res://Textures/Baners/baner_cyberpunk.png" id="1_58e3a"]
 [ext_resource type="Environment" uid="uid://by34g5eel3o71" path="res://Ages/Environments/cyberpunk.tres" id="2_8mxvc"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cpfk8fttkndua" path="res://Audio/Melodies/cyberpunk — kopia.mp3" id="9_lf31v"]
 [ext_resource type="Resource" uid="uid://chjtfr73cu0y8" path="res://Decorations/Cyberpunk/rain.tres" id="9_yccdc"]
 [ext_resource type="PackedScene" uid="uid://clh4vqfgdvkyb" path="res://Scenes/Locations/DirectionalLights/cyberpunk.tscn" id="10_mxpaf"]
+[ext_resource type="Resource" uid="uid://dalrrafpho3pu" path="res://Decorations/Cyberpunk/pipe.tres" id="10_pt250"]
 [ext_resource type="Texture2D" uid="uid://b37yjf2ljn3oe" path="res://Textures/Parallaxes/parallax_cyberpunk.png" id="12_go87e"]
 [ext_resource type="Texture2D" uid="uid://c2igi1mqsr43e" path="res://Textures/Parallaxes/parallax_cyberpunk2.png" id="13_yf724"]
 [ext_resource type="Script" path="res://Scripts/epoch_info.gd" id="14_ar4ej"]
@@ -23,7 +24,7 @@ description = "Drones, Laser bariers, Bikes, Pipes"
 baner = ExtResource("1_58e3a")
 ground_color = Color(0.223529, 0.152941, 0.368627, 1)
 grass_color = Color(0.184314, 0.0980392, 0.243137, 1)
-decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_bmoe8"), ExtResource("3_44ddk"), ExtResource("4_gm80n"), ExtResource("5_yu2nq"), ExtResource("6_1dem3"), ExtResource("7_1d18d"), ExtResource("8_h6jeg"), ExtResource("9_yccdc")])
+decorations = Array[Resource("res://Scripts/Decorations/decoration.gd")]([ExtResource("2_bmoe8"), ExtResource("3_44ddk"), ExtResource("4_gm80n"), ExtResource("5_yu2nq"), ExtResource("6_1dem3"), ExtResource("7_1d18d"), ExtResource("8_h6jeg"), ExtResource("9_yccdc"), ExtResource("10_pt250")])
 decoration_spawn_pattern = "NFRA*B*|NFRB*C*|NFRDB*B*C*|NFR|NFRA*|NFRC*|NFRH|NFRB*C*|NFRAB*|NFRD|NFRA*B|NFRB*|NFRC*C*|NFRC*C*|NFRB*C*|NFRA*|NFRHC*B*|NFRB*C*|NFRHC*|NFRC*|NFRB"
 environment = ExtResource("2_8mxvc")
 directional_light = ExtResource("10_mxpaf")

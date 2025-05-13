@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6ndsf6yn81xo"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_p0max"]
+
+[sub_resource type="Gradient" id="Gradient_de7nu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.101961, 0.121569, 0.180392, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l1air"]
+gradient = SubResource("Gradient_de7nu")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd2ik"]
+size = Vector2(2, 50)
+
+[sub_resource type="Gradient" id="Gradient_ekvdl"]
+offsets = PackedFloat32Array(0, 0.556886, 1)
+colors = PackedColorArray(0.93408, 0.93408, 0.93408, 1, 0.82606, 0.82606, 0.82606, 1, 0.89059, 0.89059, 0.89059, 1)
+
+[node name="Sprite2D" type="Sprite2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 6
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 3.0
+texture = SubResource("GradientTexture1D_l1air")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = 6
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 2.0
+texture = SubResource("GradientTexture1D_l1air")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+z_index = 6
+offset_left = -2.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 2.0
+texture = SubResource("GradientTexture1D_l1air")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+z_index = 6
+offset_left = -1.0
+offset_top = 2.0
+offset_bottom = 3.0
+texture = SubResource("GradientTexture1D_l1air")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+z_index = 6
+offset_left = -1.0
+offset_top = 3.0
+offset_bottom = 4.0
+texture = SubResource("GradientTexture1D_l1air")
+expand_mode = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -2)
+script = ExtResource("1_p0max")
+death_messages = Array[String](["You were boiled alive!", "The hot steam killed you", "You experienced severe burns"])
+dash_through = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_rd2ik")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Area2D"]
+z_index = 5
+amount = 250
+preprocess = 1.0
+speed_scale = 2.0
+local_coords = true
+direction = Vector2(0, -1)
+spread = 21.5
+gravity = Vector2(0, 10)
+initial_velocity_max = 65.43
+angular_velocity_min = 437.38
+angular_velocity_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.6)
+color_ramp = SubResource("Gradient_ekvdl")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

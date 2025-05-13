@@ -53,7 +53,7 @@ offset_top = -20.0
 offset_right = 48.0
 offset_bottom = -4.0
 scale = Vector2(0.15, 0.15)
-text = "Dromp"
+text = "DromP"
 horizontal_alignment = 1
 vertical_alignment = 2
 

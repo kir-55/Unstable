@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://byvfctxmrpt5j"]
+
+[ext_resource type="Script" path="res://Scripts/Decorations/deadly_area.gd" id="1_c1xyf"]
+[ext_resource type="Texture2D" uid="uid://dknkjabicmw05" path="res://Textures/Decorations/Cyberpunk/pipe.png" id="2_tn6i6"]
+[ext_resource type="PackedScene" uid="uid://c6ndsf6yn81xo" path="res://Scenes/Decorations/Cyberpunk/hot_steam.tscn" id="4_4w2m0"]
+[ext_resource type="PackedScene" uid="uid://jqu8nt2i88n8" path="res://Scenes/explosions/oil_explosion.tscn" id="4_c1bkx"]
+[ext_resource type="Script" path="res://Scripts/position_variations.gd" id="5_83p05"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="6_c5xdb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw6hb"]
+size = Vector2(52.7273, 10.9091)
+
+[node name="Pipe" type="Area2D" groups=["Obsticle"]]
+scale = Vector2(3.3, 3.3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_c1xyf")
+death_messages = Array[String](["Pipe: 1, You: 0", "That pipe wasn’t just for decoration", "A steel pipe hit you hard"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.45455)
+shape = SubResource("RectangleShape2D_cw6hb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -6.06061)
+texture = ExtResource("2_tn6i6")
+offset = Vector2(0, 0.505)
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("6_c5xdb")
+max_health = 100.0
+explosion_prefab = ExtResource("4_c1bkx")
+
+[node name="Pipe" parent="." instance=ExtResource("4_4w2m0")]
+position = Vector2(0, -11.2121)
+script = ExtResource("5_83p05")
+x_variation_radius = 27
+chance_to_despawn = 20
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
