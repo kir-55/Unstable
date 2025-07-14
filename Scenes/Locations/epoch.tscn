@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bva6jjs3q5tws"]
+[gd_scene load_steps=28 format=3 uid="uid://bva6jjs3q5tws"]
 
 [ext_resource type="Script" path="res://Scripts/epoch.gd" id="1_6kdng"]
 [ext_resource type="PackedScene" uid="uid://cqabtg1hsllsa" path="res://Scenes/Prefabs/score_mark.tscn" id="2_60wf2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/сamera.gd" id="9_cjea4"]
 [ext_resource type="Script" path="res://Scripts/audio_controll.gd" id="11_vmtw0"]
 [ext_resource type="Script" path="res://Scripts/random_system.gd" id="12_x6lqm"]
+[ext_resource type="Script" path="res://Scripts/swipe_detection.gd" id="13_0s34o"]
 [ext_resource type="AudioStream" uid="uid://6jjsxk23adj7" path="res://Audio/Melodies/cyberpunk.wav" id="13_5jpri"]
 [ext_resource type="Script" path="res://Scripts/TerrainGeneration/terrain_generator.gd" id="13_s27q1"]
 [ext_resource type="Script" path="res://Scripts/sloper.gd" id="14_7bud7"]
@@ -268,6 +269,9 @@ vertical_speed = 15.0
 initial_target = NodePath("../SpawnPoint")
 epoch = NodePath("..")
 offsett = Vector2(0, 0)
+
+[node name="SwipeDetection" type="Node" parent="Camera2D"]
+script = ExtResource("13_0s34o")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("13_5jpri")
