@@ -147,3 +147,5 @@ Below is a list of collectible amulets and tools, each enhancing your survival i
 Choose and personalize your character's appearance before you dive into chaos.
 
 <img src="https://github.com/user-attachments/assets/ea3e2d00-3014-4d2c-822e-74459e3361e3" width="400"/>
+
+## Now play Unstable!
