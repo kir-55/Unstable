@@ -194,7 +194,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "3"
 label_settings = ExtResource("7_c50sw")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -321,7 +320,7 @@ terrain_generator = NodePath("..")
 spawn_from = 3
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 40.0
 autostart = true
 script = ExtResource("17_qsufl")
 

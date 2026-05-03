@@ -91,23 +91,15 @@ func _ready():
 
 	if Client.active:
 		for i in Client.players_alive:
-			#(Client.players_alive)
 			var player = load(player_prefab).instantiate()
+			player.name = "Player" + str(i)
+			player.id = int(i)
+			get_tree().current_scene.add_child(player)
 			player.global_position = spawn_point.global_position
 			if int(i) == Client.id:
 				self.player = player
 				player.z_index += 1
 				player_spawned.emit(player)
-			else:
-				player.get_node("Sprite2D").self_modulate = Color(1, 1, 1, 0.8)
-				player.get_node("CollisionShape2D").disabled = true
-
-			
-			player.name = "Player" + str(i)
-			player.id = int(i)
-			#print("spawning player: " + str(player.id))
-			get_tree().current_scene.add_child(player)
-			#player.global_position = spawn_point.global_position
 	else:
 		var player = load(player_prefab).instantiate()
 		player.global_position = spawn_point.global_position

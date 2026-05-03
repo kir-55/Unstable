@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30mm"
+   height="30mm"
+   viewBox="0 0 30 30"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="bitmapa.svg"
+   inkscape:export-xdpi="96.157143"
+   inkscape:export-ydpi="96.157143"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1">
+    <rect
+       x="288.56903"
+       y="439.06674"
+       width="294.09186"
+       height="260.95477"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="text1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;font-family:Minecraft;-inkscape-font-specification:Minecraft;text-align:center;text-anchor:middle;white-space:pre;shape-inside:url(#rect1);fill:#ff0200;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:1.9;stroke-dashoffset:1.92756;paint-order:stroke fill markers"
+       d="m 8.1817961,2.2774242 v 9.252e-4 2.3109712 h -0.00436 v 0.00185 H 5.4541774 4.8428633 V 6.9042057 H 2.7266624 v 2.3130392 2.3135531 2.313034 2.313039 2.313039 2.313035 2.313039 2.313553 2.313039 H 5.4541774 8.181687 V 25.409537 23.095984 20.782945 18.46991 16.156871 13.843832 11.530798 11.103433 h 2.116201 V 8.7903942 h 0.112522 9.17965 0.112527 v 2.3130388 h 2.116196 v 0.427365 2.313034 2.313039 2.313039 2.313035 2.313039 2.313553 2.313039 h 2.72704 2.727515 V 25.409537 23.095984 20.782945 18.46991 16.156871 13.843832 11.530798 9.2172449 6.9042057 H 25.157143 V 4.5911711 h -0.61132 -2.665101 v -0.00185 h -0.06194 V 2.2783494 2.2774242 Z" />
+  </g>
+</svg>
